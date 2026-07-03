@@ -182,12 +182,12 @@ export function Footer() {
             >
               Terms of Service
             </Link>
-            <Link
+            <a
               href="/sitemap.xml"
               className="text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
               Sitemap
-            </Link>
+            </a>
           </div>
         </div>
       </div>
