@@ -11,7 +11,7 @@ export function TechBadge({ name, className }: TechBadgeProps) {
       className={cn(
         'inline-flex items-center rounded-full border border-border bg-muted',
         'px-3 py-1.5 text-xs font-medium text-muted-foreground',
-        'hover:border-primary/40 hover:text-foreground transition-colors',
+        'hover:border-primary/30 hover:bg-primary/10 hover:text-primary transition-all duration-200 cursor-default',
         className
       )}
     >
@@ -28,8 +28,8 @@ interface TechCategoryBlockProps {
 
 export function TechCategoryBlock({ title, technologies, className }: TechCategoryBlockProps) {
   return (
-    <div className={cn('space-y-3', className)}>
-      <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+    <div className={cn('group space-y-3 card-hover hover:border-primary/30', className)}>
+      <h3 className="text-xs font-semibold uppercase tracking-widest text-gradient-brand">
         {title}
       </h3>
       <div className="flex flex-wrap gap-2">

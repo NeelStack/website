@@ -24,7 +24,7 @@ const statusClass: Record<Project['status'], string> = {
 const sharedCardClass = (status: Project['status'], className?: string) =>
   cn(
     'group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card w-full max-w-md',
-    'hover:border-primary/30 transition-all duration-300',
+    'card-hover hover:border-primary/30',
     status === 'coming-soon' && 'opacity-70',
     className
   )
@@ -54,9 +54,9 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 function ProjectCardInner({ project, isLinked }: { project: Project; isLinked: boolean }) {
   return (
     <>
-      {/* Image / placeholder */}
-      <div className="relative h-48 w-full overflow-hidden bg-muted">
-        <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern">
+      {/* Image / placeholder with brand gradient */}
+      <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-card to-accent/10">
+        <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern opacity-50">
           <span
             className="text-5xl font-heading font-black text-foreground/5 select-none"
             aria-hidden="true"

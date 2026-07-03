@@ -68,26 +68,33 @@ export function ProcessSection() {
         <div className="grid grid-cols-1 gap-0 md:grid-cols-2 lg:grid-cols-3">
           {PROCESS_STEPS.map((step, idx) => {
             const Icon = step.icon
-            const isLast = idx === PROCESS_STEPS.length - 1
             return (
               <div
                 key={step.step}
-                className="relative flex flex-col gap-4 rounded-2xl p-8 border border-border hover:bg-muted/30 transition-colors duration-200"
+                className="relative flex flex-col gap-4 rounded-2xl p-8 border border-border card-hover hover:border-primary/30 hover:bg-muted/20 overflow-hidden"
               >
-                {/* Step number */}
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
+                {/* Large decorative background step number */}
+                <span
+                  className="absolute top-4 right-5 font-heading font-black text-7xl text-primary/8 select-none leading-none"
+                  aria-hidden="true"
+                >
+                  {step.step.toString().padStart(2, '0')}
+                </span>
+
+                {/* Icon + step number row */}
+                <div className="flex items-center gap-3 relative z-10">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 group-hover:shadow-[0_0_16px_oklch(0.62_0.22_258/20%)] transition-shadow duration-300">
                     <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
                   </div>
-                  <span className="text-xs font-bold text-muted-foreground/60 tabular-nums">
-                    {step.step.toString().padStart(2, '0')}
+                  <span className="text-xs font-bold text-muted-foreground/50 tabular-nums">
+                    Step {step.step.toString().padStart(2, '0')}
                   </span>
                 </div>
 
-                <h3 className="font-heading text-base font-semibold text-foreground">
+                <h3 className="font-heading text-base font-semibold text-foreground relative z-10">
                   {step.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
                   {step.description}
                 </p>
               </div>

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Building2, GraduationCap, Heart, Layers, ShoppingBag, Users } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 
@@ -7,38 +7,44 @@ const TRUST_SIGNALS = [
   {
     industry: 'Healthcare',
     description: 'Hospital management systems, EHR platforms, and telemedicine solutions for healthcare organizations across India.',
-    color: 'text-rose-400',
-    bg: 'bg-rose-500/10',
+    color: 'text-primary',
+    bg: 'bg-primary/10 border-primary/20',
+    icon: Heart,
   },
   {
     industry: 'Government',
     description: 'E-governance platforms and government recruitment systems used by public sector organizations.',
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/10',
+    color: 'text-accent',
+    bg: 'bg-accent/10 border-accent/20',
+    icon: Building2,
   },
   {
     industry: 'Education',
     description: 'EdTech platforms and ERP systems for educational institutions, coaching centers, and government exam aspirants.',
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/10',
+    color: 'text-primary',
+    bg: 'bg-primary/10 border-primary/20',
+    icon: GraduationCap,
   },
   {
     industry: 'Startups & SaaS',
     description: 'MVPs, SaaS platforms, and scalable architectures for startups from initial validation to growth stage.',
-    color: 'text-violet-400',
-    bg: 'bg-violet-500/10',
+    color: 'text-accent',
+    bg: 'bg-accent/10 border-accent/20',
+    icon: Layers,
   },
   {
     industry: 'Retail & E-Commerce',
     description: 'Omnichannel platforms, POS systems, and inventory management solutions for modern retail businesses.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
+    color: 'text-primary',
+    bg: 'bg-primary/10 border-primary/20',
+    icon: ShoppingBag,
   },
   {
     industry: 'Enterprise',
     description: 'Custom ERP, CRM, and workflow automation systems for mid-size and large enterprises.',
-    color: 'text-cyan-400',
-    bg: 'bg-cyan-500/10',
+    color: 'text-accent',
+    bg: 'bg-accent/10 border-accent/20',
+    icon: Users,
   },
 ]
 
@@ -53,19 +59,28 @@ export function TestimonialsSection() {
         />
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {TRUST_SIGNALS.map((signal) => (
-            <div
-              key={signal.industry}
-              className="flex flex-col gap-3 rounded-2xl border border-border bg-background p-6 hover:border-primary/30 transition-colors duration-200"
-            >
-              <span className={`text-xs font-bold uppercase tracking-widest ${signal.color}`}>
-                {signal.industry}
-              </span>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {signal.description}
-              </p>
-            </div>
-          ))}
+          {TRUST_SIGNALS.map((signal) => {
+            const Icon = signal.icon
+            return (
+              <div
+                key={signal.industry}
+                className="group flex flex-col gap-4 rounded-2xl border border-border bg-background p-6 card-hover hover:border-primary/30"
+              >
+                {/* Icon badge */}
+                <span className={`flex h-9 w-9 items-center justify-center rounded-lg border ${signal.bg} transition-shadow duration-300 group-hover:shadow-[0_0_14px_oklch(0.62_0.22_258/18%)]`}>
+                  <Icon className={`h-4 w-4 ${signal.color}`} aria-hidden="true" />
+                </span>
+                <div>
+                  <span className={`text-xs font-bold uppercase tracking-widest ${signal.color}`}>
+                    {signal.industry}
+                  </span>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {signal.description}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
         </div>
 
         <div className="mt-10 flex justify-center">

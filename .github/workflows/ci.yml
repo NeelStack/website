@@ -1,0 +1,47 @@
+name: CI — Lint, Type-Check & Build
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Lint, Type-check & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # 1. Checkout source
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js (match your local version)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Lint
+      - name: Run ESLint
+        run: npm run lint
+
+      # 5. Type-check (without emitting files)
+      - name: TypeScript type-check
+        run: npx tsc --noEmit
+
+      # 6. Build (proves the site compiles correctly)
+      #    Uses secrets for env vars — add these in GitHub repo settings
+      - name: Build Next.js
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          CONTACT_RECEIVER_EMAIL: ${{ secrets.CONTACT_RECEIVER_EMAIL }}
+          CONTACT_SENDER_EMAIL: ${{ secrets.CONTACT_SENDER_EMAIL }}
+        run: npm run build

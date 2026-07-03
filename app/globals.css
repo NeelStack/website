@@ -168,10 +168,29 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
+
+  /* Ensure pointer cursor on all interactive elements */
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  a[href],
+  label[for],
+  select:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role="button"]:disabled,
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    cursor: not-allowed;
+  }
 }
 
 /* Utility: gradient text for headlines */
 @layer utilities {
+  /* Primary gradient: white → electric blue (for hero headline contrast on dark bg) */
   .text-gradient {
     background: linear-gradient(135deg, oklch(0.97 0 0) 0%, oklch(0.62 0.22 258) 100%);
     -webkit-background-clip: text;
@@ -179,6 +198,7 @@
     background-clip: text;
   }
 
+  /* Brand gradient: electric blue → teal/cyan */
   .text-gradient-brand {
     background: linear-gradient(135deg, oklch(0.62 0.22 258) 0%, oklch(0.72 0.16 198) 100%);
     -webkit-background-clip: text;
@@ -210,4 +230,33 @@
   .glow-brand {
     box-shadow: 0 0 20px #3b82f620, 0 0 60px #06b6d410;
   }
+
+  /* CTA button glow — for primary action buttons that need attention */
+  .glow-cta {
+    box-shadow: 0 0 16px oklch(0.62 0.22 258 / 35%), 0 4px 24px oklch(0.62 0.22 258 / 15%);
+    transition: box-shadow 0.3s ease;
+  }
+  .glow-cta:hover {
+    box-shadow: 0 0 28px oklch(0.62 0.22 258 / 50%), 0 8px 40px oklch(0.62 0.22 258 / 20%);
+  }
+
+  /* Card lift — use on interactive card wrappers */
+  .card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px oklch(0.62 0.22 258 / 8%), 0 2px 8px oklch(0 0 0 / 30%);
+  }
+}
+
+/* Shimmer keyframe for badges and loading states */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }

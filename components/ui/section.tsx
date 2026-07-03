@@ -39,7 +39,11 @@ export function SectionHeader({
   return (
     <div className={cn('flex flex-col gap-4 mb-12 md:mb-16', alignClass, className)}>
       {badge && (
-        <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+        <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary shadow-[0_0_12px_oklch(0.62_0.22_258/12%)]">
+          <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-70" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+          </span>
           {badge}
         </span>
       )}

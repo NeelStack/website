@@ -121,10 +121,18 @@ export function Footer() {
 
   return (
     <footer
-      className="border-t border-border bg-card"
+      className="border-t border-border bg-card relative"
       role="contentinfo"
       aria-label="Site footer"
     >
+      {/* Brand gradient top edge */}
+      <div
+        className="absolute top-0 inset-x-0 h-px"
+        style={{
+          background: 'linear-gradient(90deg, transparent 0%, oklch(0.62 0.22 258 / 50%) 30%, oklch(0.72 0.16 198 / 50%) 70%, transparent 100%)',
+        }}
+        aria-hidden="true"
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
         <div className="py-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6">
@@ -141,7 +149,7 @@ export function Footer() {
                 <div
                   key={href}
                   aria-label={label}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-muted-foreground opacity-40 cursor-default"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-muted-foreground opacity-60 cursor-default"
                 >
                   <Icon className="h-4 w-4" />
                 </div>

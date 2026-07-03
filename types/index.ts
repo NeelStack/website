@@ -123,8 +123,10 @@ export interface CaseStudyResult {
 
 export interface BlogPost {
   id: string
+  slug: string
   title: string
   excerpt: string
+  content?: string
   category: string
   tags: string[]
   author: BlogAuthor

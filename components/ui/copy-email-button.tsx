@@ -19,7 +19,7 @@ export function CopyEmailButton() {
     <button
       type="button"
       onClick={handleCopy}
-      className="text-primary hover:underline font-mono focus:outline-none"
+      className="cursor-pointer text-primary hover:underline font-mono focus:outline-none"
     >
       {copied ? 'copied!' : 'copy email address'}
     </button>

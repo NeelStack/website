@@ -18,33 +18,43 @@ interface FAQItemProps {
 
 function FAQItemRow({ item, isOpen, onToggle }: FAQItemProps) {
   return (
-    <div className="border-b border-border last:border-0">
+    <div className={cn('border-b border-border last:border-0 transition-colors duration-200', isOpen && 'bg-primary/3')}>
       <button
-        className="flex w-full items-center justify-between py-5 text-left"
+        className={cn(
+          'flex w-full cursor-pointer items-center justify-between py-5 text-left gap-4',
+          isOpen ? 'pl-3 border-l-2 border-primary' : 'pl-0 border-l-2 border-transparent',
+          'transition-all duration-200'
+        )}
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`faq-${item.question.slice(0, 20).replace(/\s/g, '-')}`}
       >
-        <span className="pr-8 text-sm font-medium text-foreground sm:text-base">
+        <span
+          className={cn(
+            'text-sm sm:text-base transition-colors duration-200',
+            isOpen ? 'font-semibold text-foreground' : 'font-medium text-foreground/80'
+          )}
+        >
           {item.question}
         </span>
         <ChevronDown
           className={cn(
-            'h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200',
-            isOpen && 'rotate-180'
+            'h-5 w-5 shrink-0 transition-all duration-200',
+            isOpen ? 'rotate-180 text-primary' : 'text-muted-foreground'
           )}
           aria-hidden="true"
         />
       </button>
-      {isOpen && (
-        <div
-          id={`faq-${item.question.slice(0, 20).replace(/\s/g, '-')}`}
-          role="region"
-          className="pb-5"
-        >
-          <p className="text-sm text-muted-foreground leading-relaxed">{item.answer}</p>
-        </div>
-      )}
+      <div
+        id={`faq-${item.question.slice(0, 20).replace(/\s/g, '-')}`}
+        role="region"
+        className={cn(
+          'overflow-hidden transition-all duration-300 ease-in-out',
+          isOpen ? 'max-h-96 opacity-100 pb-5' : 'max-h-0 opacity-0'
+        )}
+      >
+        <p className="text-sm text-muted-foreground leading-relaxed pl-0">{item.answer}</p>
+      </div>
     </div>
   )
 }

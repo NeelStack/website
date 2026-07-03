@@ -92,12 +92,12 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
     <div
       className={cn(
         'group flex flex-col rounded-2xl border border-border bg-card p-6',
-        'hover:border-primary/30 transition-all duration-300',
+        'card-hover hover:border-primary/30',
         className
       )}
     >
       <span
-        className={cn('flex h-12 w-12 items-center justify-center rounded-xl mb-4', service.bgColor)}
+        className={cn('flex h-12 w-12 items-center justify-center rounded-xl mb-4 group-hover:shadow-[0_0_16px_oklch(0.62_0.22_258/20%)] transition-shadow duration-300', service.bgColor)}
         aria-hidden="true"
       >
         <Icon className={cn('h-6 w-6', service.color)} />
@@ -115,7 +115,7 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
         {service.highlights.map((h) => (
           <span
             key={h}
-            className="rounded-md border border-border bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+            className="rounded-md border border-border bg-muted px-2 py-0.5 text-xs text-muted-foreground hover:border-primary/20 hover:bg-primary/5 hover:text-primary/80 transition-colors duration-200"
           >
             {h}
           </span>
