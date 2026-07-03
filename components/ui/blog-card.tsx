@@ -46,9 +46,9 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
           className
         )}
       >
-        {/* Image placeholder */}
-        <div className="relative h-56 w-full overflow-hidden bg-muted">
-          <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern">
+        {/* Image placeholder with brand gradient */}
+        <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-card to-accent/10">
+          <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern opacity-40">
             <span
               className="text-4xl font-heading font-black text-foreground/5 select-none"
               aria-hidden="true"
@@ -107,9 +107,9 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
         className
       )}
     >
-      {/* Image placeholder */}
-      <div className="relative h-44 w-full overflow-hidden bg-muted">
-        <div className="absolute inset-0 flex items-center justify-center bg-dot-pattern">
+      {/* Image placeholder with brand gradient */}
+      <div className="relative h-44 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-card to-accent/10">
+        <div className="absolute inset-0 flex items-center justify-center bg-dot-pattern opacity-40">
           <span
             className="text-2xl font-heading font-black text-foreground/5 select-none"
             aria-hidden="true"

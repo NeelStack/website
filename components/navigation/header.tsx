@@ -85,7 +85,7 @@ function NavDropdown({
       <button
         onClick={onToggle}
         className={cn(
-          'flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+          'flex cursor-pointer items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
           isOpen
             ? 'text-foreground bg-muted'
             : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -104,7 +104,7 @@ function NavDropdown({
         <div
           role="menu"
           className={cn(
-            'absolute top-full mt-2 z-50 rounded-2xl border border-border bg-popover shadow-2xl',
+            'absolute top-full mt-2 z-50 rounded-2xl border border-border bg-gradient-to-b from-popover to-card shadow-2xl shadow-black/20',
             'animate-in fade-in-0 slide-in-from-top-2 duration-200',
             hasGroups ? 'w-[640px] -translate-x-1/4' : 'w-56 left-0'
           )}
@@ -209,7 +209,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           <NeelStackLogo />
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            className="cursor-pointer rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
             aria-label="Close menu"
           >
             <X className="h-5 w-5" aria-hidden="true" />
@@ -260,7 +260,7 @@ function MobileNavGroup({
     <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors"
+        className="flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-foreground hover:bg-muted transition-colors"
         aria-expanded={isOpen}
       >
         {label}
@@ -317,7 +317,7 @@ export function Header() {
         className={cn(
           'fixed inset-x-0 top-0 z-30 transition-all duration-300',
           scrolled
-            ? 'border-b border-border bg-background/80 backdrop-blur-xl shadow-sm'
+            ? 'border-b border-border/60 bg-background/85 backdrop-blur-2xl shadow-sm'
             : 'bg-transparent'
         )}
         role="banner"
@@ -347,14 +347,14 @@ export function Header() {
             >
               Contact
             </Link>
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="glow-cta">
               <Link href="/request-quote">Get a Quote</Link>
             </Button>
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            className="lg:hidden cursor-pointer rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
             onClick={() => setMobileOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={mobileOpen}

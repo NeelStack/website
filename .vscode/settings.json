@@ -1,0 +1,20 @@
+{
+  // Disable VS Code's built-in CSS validator — Tailwind CSS v4 uses its own
+  // at-rules (@theme, @custom-variant, @apply, etc.) that the native linter
+  // doesn't understand. The Tailwind IntelliSense extension handles validation.
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+
+  // Tell the Tailwind IntelliSense extension which files to activate on
+  "tailwindCSS.includeLanguages": {
+    "typescriptreact": "html",
+    "typescript": "html"
+  },
+
+  // Experimental class regex so IntelliSense picks up cn() / cva() calls
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}

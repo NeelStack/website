@@ -51,7 +51,7 @@ export function ProductCard({ product, className, variant = 'default' }: Product
     <div
       className={cn(
         'group relative flex flex-col rounded-2xl border border-border bg-card p-6 w-full max-w-md',
-        'hover:border-primary/30 transition-all duration-300',
+        'card-hover hover:border-primary/30',
         product.status === 'coming-soon' && 'opacity-80',
         className
       )}
