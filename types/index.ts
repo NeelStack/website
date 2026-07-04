@@ -46,6 +46,7 @@ export interface Product {
   href: string
   features: ProductFeature[]
   category: string
+  disclaimer?: string
 }
 
 // ─────────────────────────────────────────────

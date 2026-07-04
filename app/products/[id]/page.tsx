@@ -72,6 +72,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <p className="text-base text-muted-foreground leading-relaxed">
                   {product.description}
                 </p>
+
+                {product.disclaimer && (
+                  <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-amber-500/80 leading-relaxed font-sans">
+                    {product.disclaimer}
+                  </div>
+                )}
                 
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   We build our proprietary software utilizing modern frontend stacks and highly optimized databases. Each feature is designed to address quantifiable workflows, avoiding bloated features or unnecessary dependencies.

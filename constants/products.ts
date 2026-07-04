@@ -44,6 +44,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Study progression trackers' },
     ],
     category: 'Ed-Tech Platform',
+    disclaimer: 'Disclaimer: NaukariMitra is an independent AI-powered exam preparation companion. It is NOT affiliated with, sponsored by, or endorsed by any government entity or public recruitment board.',
   },
   {
     id: 'sarkarimitra',
@@ -63,25 +64,26 @@ export const PRODUCTS: Product[] = [
       { label: 'Step-by-step application guidance' },
     ],
     category: 'Gov-Tech Platform',
+    disclaimer: 'Disclaimer: SarkariMitra is an independent citizen information platform. It is NOT affiliated with, sponsored by, or endorsed by any government department, public agency, or ministry.',
   },
   {
     id: 'dhruvaos',
     name: 'DhruvaOS',
-    tagline: 'AI-powered Social Media Automation',
+    tagline: 'AI-powered Educational Operating System',
     description:
-      'AI-powered social media automation platform helping creators, startups and businesses manage content, publishing, workflows and digital growth.',
+      'A comprehensive, AI-driven learning workspace that organizes study notes, structures syllabi, generates mock evaluations, and provides custom AI tutors to streamline the academic lifecycle.',
     status: 'in-development',
-    icon: Share2,
+    icon: GraduationCap,
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     href: '/products/dhruvaos',
     features: [
-      { label: 'AI content ideas generation' },
-      { label: 'Multi-channel publisher scheduler' },
-      { label: 'Interactive content workflows manager' },
-      { label: 'Aggregated social digital analytics' },
+      { label: 'AI Study Assistant & Tutor' },
+      { label: 'Syllabus & Focus Planner' },
+      { label: 'Adaptive Mock Evaluations' },
+      { label: 'Collaborative Educator Hub' },
     ],
-    category: 'Marketing SaaS',
+    category: 'Educational OS',
   },
 ]
 

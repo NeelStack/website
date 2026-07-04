@@ -64,7 +64,7 @@ const JOURNEY = [
   { status: 'launching', name: 'LifeAsia Website', detail: 'Corporate website for a pharmaceutical company. The company develops, brands, markets and distributes pharmaceutical and healthcare products while partnering with certified third-party pharmaceutical manufacturers for product development and manufacturing.', label: 'Launching Soon' },
   { status: 'dev', name: 'NaukariMitra', detail: 'AI-powered government job preparation platform providing exam guidance, mock tests, previous papers, study resources and personalized learning assistance.', label: 'In Development' },
   { status: 'dev', name: 'SarkariMitra', detail: 'AI-powered citizen assistance platform helping people discover government schemes, benefits, public services, eligibility criteria, required documents and application guidance through conversational AI.', label: 'In Development' },
-  { status: 'dev', name: 'DhruvaOS', detail: 'AI-powered social media automation platform helping creators, startups and businesses automate content publishing, workflow management and digital growth.', label: 'In Development' },
+  { status: 'dev', name: 'DhruvaOS', detail: 'AI-powered educational operating system and workspace organizing notes, syllabi, mock evaluations, and AI tutoring for students and educators.', label: 'In Development' },
   { status: 'dev', name: 'School Management System', detail: 'Custom software platform for school administration, operations and management.', label: 'In Development' },
   { status: 'dev', name: 'Book Store Management System', detail: 'Custom software platform for educational book stores and institutional book distribution management.', label: 'In Development' },
 ]

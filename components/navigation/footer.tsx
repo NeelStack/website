@@ -182,6 +182,12 @@ export function Footer() {
             >
               Terms of Service
             </Link>
+            <Link
+              href="/refund-policy"
+              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Refund Policy
+            </Link>
             <a
               href="/sitemap.xml"
               className="text-xs text-muted-foreground hover:text-foreground transition-colors"
