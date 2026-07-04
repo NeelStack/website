@@ -50,10 +50,10 @@ const PORTFOLIO_PROJECTS: Project[] = [
     id: 'dhruvaos',
     name: 'DhruvaOS',
     description:
-      'AI-powered social media automation platform helping creators, startups and businesses automate content publishing, workflow management and digital growth.',
+      'AI-powered educational operating system and workspace organizing notes, syllabi, mock evaluations, and AI tutoring for students and educators.',
     status: 'in-progress',
-    category: 'Marketing SaaS (In Dev)',
-    tags: ['React', 'AI', 'Social Media', 'Automation'],
+    category: 'Educational OS (In Dev)',
+    tags: ['Next.js', 'AI', 'EdTech', 'Workspace'],
     href: '/products/dhruvaos',
     year: '2026',
   },

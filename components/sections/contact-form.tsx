@@ -200,7 +200,12 @@ export function ContactForm() {
           )}
         </Button>
 
-        <p className="text-xs text-muted-foreground text-center mt-4">
+        <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
+          By submitting this form, you consent to our processing of your details according to our{' '}
+          <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
+        </p>
+
+        <p className="text-xs text-muted-foreground text-center mt-3">
           We respond within 1 business day. Using webmail? Click to <CopyEmailButton />.
         </p>
       </form>

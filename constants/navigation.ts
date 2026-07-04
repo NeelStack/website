@@ -30,7 +30,7 @@ export const MAIN_NAV: NavMenu[] = [
           {
             label: 'DhruvaOS',
             href: '/products/dhruvaos',
-            description: 'Social media automation & content scheduling',
+            description: 'AI educational operating system & workspace',
           },
         ],
       },
@@ -155,5 +155,6 @@ export const FOOTER_NAV = {
     { label: 'Support Center', href: '/support' },
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms of Service', href: '/terms' },
+    { label: 'Refund Policy', href: '/refund-policy' },
   ],
 } as const
