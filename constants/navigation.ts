@@ -15,22 +15,27 @@ export const MAIN_NAV: NavMenu[] = [
         ],
       },
       {
+        label: 'Launching Soon',
+        items: [
+          {
+            label: 'DhruvaOS',
+            href: '/products/dhruvaos',
+            description: 'AI-Powered School Management & Education Operating System',
+          },
+        ],
+      },
+      {
         label: 'In Development',
         items: [
           {
             label: 'NaukariMitra',
             href: '/products/naukarimitra',
-            description: 'Government job prep & AI career assistant',
+            description: 'AI-powered government job prep & career assistant',
           },
           {
             label: 'SarkariMitra',
             href: '/products/sarkarimitra',
-            description: 'Government recruitment & workflow automation',
-          },
-          {
-            label: 'DhruvaOS',
-            href: '/products/dhruvaos',
-            description: 'AI educational operating system & workspace',
+            description: 'Government schemes & citizen services assistant',
           },
         ],
       },
@@ -127,34 +132,28 @@ export const MAIN_NAV: NavMenu[] = [
 
 export const FOOTER_NAV = {
   products: [
-    { label: 'ToolVines (Live)', href: '/products/toolvines' },
-    { label: 'NaukariMitra (Dev)', href: '/products/naukarimitra' },
-    { label: 'SarkariMitra (Dev)', href: '/products/sarkarimitra' },
-    { label: 'DhruvaOS (Dev)', href: '/products/dhruvaos' },
+    { label: 'ToolVines', href: '/products/toolvines' },
+    { label: 'DhruvaOS', href: '/products/dhruvaos' },
+    { label: 'Future Platforms', href: '/#roadmap' },
   ],
   services: [
-    { label: 'AI Application Dev', href: '/services/ai-development' },
-    { label: 'Modern Web Apps', href: '/services/web-applications' },
-    { label: 'Custom Software', href: '/services/custom-software' },
-    { label: 'DevOps & Cloud', href: '/services/devops-cloud' },
-    { label: 'Tech Consulting', href: '/services/technology-consulting' },
-    { label: 'Performance Engineering', href: '/services/performance-engineering' },
+    { label: 'Enterprise Development', href: '/services/custom-software' },
+    { label: 'AI Solutions', href: '/services/ai-development' },
+    { label: 'Cloud Engineering', href: '/services/devops-cloud' },
+    { label: 'Technology Consulting', href: '/services/technology-consulting' },
   ],
   company: [
-    { label: 'About Us', href: '/about' },
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Case Studies', href: '/case-studies' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'About', href: '/about' },
     { label: 'Careers', href: '/careers' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Contact', href: '/contact' },
   ],
   resources: [
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Request a Quote', href: '/request-quote' },
-    { label: 'Book Consultation', href: '/book-consultation' },
-    { label: 'Support Center', href: '/support' },
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms of Service', href: '/terms' },
-    { label: 'Refund Policy', href: '/refund-policy' },
+    { label: 'Documentation', href: '/docs' },
+    { label: 'Support', href: '/support' },
+    { label: 'Privacy', href: '/privacy' },
+    { label: 'Terms', href: '/terms' },
   ],
 } as const
+
+

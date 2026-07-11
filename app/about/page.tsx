@@ -60,25 +60,51 @@ const WHY_NEELSTACK = [
 ]
 
 const JOURNEY = [
-  { status: 'live', name: 'ToolVines', detail: 'Browser-based productivity platform providing PDF, image, video, annotation and document utilities with AI-powered features designed to simplify everyday workflows for individuals, professionals and businesses.', label: 'Live (2026)' },
-  { status: 'launching', name: 'LifeAsia Website', detail: 'Corporate website for a pharmaceutical company. The company develops, brands, markets and distributes pharmaceutical and healthcare products while partnering with certified third-party pharmaceutical manufacturers for product development and manufacturing.', label: 'Launching Soon' },
+  { status: 'live', name: 'ToolVines', detail: 'Browser-based utility platform providing PDF, image, video, annotation and document tools with AI-powered features — built for individuals, professionals, and businesses who need fast, no-install browser utilities.', label: 'Live (2026)' },
+  { status: 'launching', name: 'Lifeasia Pharma Website', detail: 'Corporate website for Lifeasia Pharma — a pharmaceutical company that develops, brands, markets, and distributes healthcare products while partnering with certified third-party manufacturers for product development.', label: 'Delivering This Month' },
+  { status: 'launching', name: 'K.D. Singh Public School', detail: 'Custom school management and digital presence solution for K.D. Singh Public School, Gorakhpur — covering institutional operations, student management, and communication workflows.', label: 'Delivering This Month' },
+  { status: 'launching', name: 'New Model Convent School', detail: 'Digital platform and school management system for New Model Convent School, Ghazipur — streamlining admissions, attendance, fee management, and parent communication.', label: 'Delivering This Month' },
+  { status: 'launching', name: 'DhruvaOS', detail: 'AI-powered School Management & Education Operating System. Covers admissions, attendance, fee collection, timetables, teacher tools, parent communication, and AI-driven institutional analytics for schools, colleges, and coaching institutes.', label: 'Launching Soon' },
   { status: 'dev', name: 'NaukariMitra', detail: 'AI-powered government job preparation platform providing exam guidance, mock tests, previous papers, study resources and personalized learning assistance.', label: 'In Development' },
   { status: 'dev', name: 'SarkariMitra', detail: 'AI-powered citizen assistance platform helping people discover government schemes, benefits, public services, eligibility criteria, required documents and application guidance through conversational AI.', label: 'In Development' },
-  { status: 'dev', name: 'DhruvaOS', detail: 'AI-powered educational operating system and workspace organizing notes, syllabi, mock evaluations, and AI tutoring for students and educators.', label: 'In Development' },
-  { status: 'dev', name: 'School Management System', detail: 'Custom software platform for school administration, operations and management.', label: 'In Development' },
-  { status: 'dev', name: 'Book Store Management System', detail: 'Custom software platform for educational book stores and institutional book distribution management.', label: 'In Development' },
 ]
 
 const LEADERSHIP = [
   {
     name: 'Shyam Chaurasiya',
     role: 'Founder & Engineering Lead',
-    bio: 'Responsible for product architecture, software engineering and technology strategy.',
+    bio: 'Leads product architecture, technology strategy, and overall engineering direction across all NeelStack products and client projects.',
+    category: 'leadership',
+  },
+  {
+    name: 'Shyam Singh',
+    role: 'Senior Full Stack Developer',
+    bio: 'Full stack engineer working across frontend and backend systems, building and shipping product features and client software.',
+    category: 'engineering',
+  },
+  {
+    name: 'Rakesh Kushwaha',
+    role: 'Senior Software Engineer',
+    bio: 'Core engineering team member responsible for backend systems, database architecture, and platform infrastructure.',
+    category: 'engineering',
+  },
+  {
+    name: 'Vishnu Chaurasiya',
+    role: 'Senior Software Engineer',
+    bio: 'Focuses on frontend engineering, UI/UX implementation, and building scalable client-side product interfaces.',
+    category: 'engineering',
+  },
+  {
+    name: 'Pradeep Kumar Maurya',
+    role: 'Business & Marketing',
+    bio: 'Manages client relationships, business development, and go-to-market strategy for NeelStack products and services.',
+    category: 'business',
   },
   {
     name: 'Neelam Chaurasiya',
-    role: 'Co-Founder',
-    bio: 'Focused on operations, business strategy and company growth.',
+    role: 'HR Manager',
+    bio: 'Handles human resources, team coordination, and people operations to support NeelStack\'s growing team.',
+    category: 'hr',
   },
 ]
 
@@ -87,8 +113,8 @@ export default function AboutPage() {
     <MarketingLayout>
       <PageHero
         badge="About NeelStack"
-        title="Ambitious Early-Stage AI Software Startup"
-        description="NeelStack is a distributed technology lab based in India. We design and deploy custom software architectures for clients worldwide while building our own proprietary SaaS platforms."
+        title="Engineering Software That Delivers Real Business Value"
+        description="NeelStack is a software engineering company based in India. We build custom software for clients across education, healthcare, and enterprise sectors — while developing our own AI-powered SaaS products."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 
@@ -173,26 +199,45 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Leadership Section */}
+      {/* Team Section */}
       <Section className="border-t border-border">
         <Container>
           <div className="text-center mb-12">
             <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
-              Leadership
+              Our Team
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
-              The Leadership Team
+              The People Behind NeelStack
             </h2>
+            <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
+              A focused team of engineers and business professionals building software that lasts.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 max-w-7xl mx-auto">
             {LEADERSHIP.map((person) => (
               <div
                 key={person.name}
-                className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between"
+                className={`rounded-2xl border bg-card p-6 flex flex-col justify-between ${
+                  person.category === 'leadership'
+                    ? 'border-primary/30 ring-1 ring-primary/10'
+                    : person.category === 'engineering'
+                    ? 'border-blue-500/20 bg-blue-500/5'
+                    : person.category === 'hr'
+                    ? 'border-rose-500/20 bg-rose-500/5'
+                    : 'border-emerald-500/20 bg-emerald-500/5'
+                }`}
               >
                 <div>
-                  <h3 className="font-heading text-lg font-bold text-foreground">{person.name}</h3>
+                  <div className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider mb-3 ${
+                    person.category === 'leadership' ? 'bg-primary/10 text-primary border border-primary/20' :
+                    person.category === 'engineering' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' :
+                    person.category === 'hr' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' :
+                    'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                  }`}>
+                    {person.category === 'leadership' ? 'Founder' : person.category === 'engineering' ? 'Engineering' : person.category === 'hr' ? 'HR' : 'Business'}
+                  </div>
+                  <h3 className="font-heading text-base font-bold text-foreground">{person.name}</h3>
                   <p className="text-xs font-semibold text-primary uppercase tracking-wide mt-1">
                     {person.role}
                   </p>

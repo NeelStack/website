@@ -13,7 +13,6 @@ export const PRODUCT_META: Record<string, { deployedLabel?: string; betaDate?: s
   },
   dhruvaos: {
     betaDate: 'July 15, 2026',
-    isSchoolProject: true,
   },
 }
 
@@ -80,21 +79,21 @@ export const PRODUCTS: Product[] = [
   {
     id: 'dhruvaos',
     name: 'DhruvaOS',
-    tagline: 'AI Educational OS · School Project · Beta July 15',
+    tagline: 'One Platform. Every Educational Workflow.',
     description:
-      'A comprehensive, AI-driven learning workspace that organizes study notes, structures syllabi, generates mock evaluations, and provides custom AI tutors to streamline the academic lifecycle. Beta release: July 15, 2026.',
+      'Digitally transform schools, colleges, universities, and educational institutions with one unified platform for administration, academics, communication, finance, analytics, and AI-powered learning.',
     status: 'beta',
     icon: Zap,
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     href: '/products/dhruvaos',
     features: [
-      { label: 'AI Study Assistant & Tutor' },
-      { label: 'Syllabus & Focus Planner' },
-      { label: 'Adaptive Mock Evaluations' },
-      { label: 'Collaborative Educator Hub' },
+      { label: 'Admissions & Fee Management' },
+      { label: 'LMS & AI-Powered Learning' },
+      { label: 'Institutional Analytics & HR' },
+      { label: 'Parent, Teacher & Student Portals' },
     ],
-    category: 'Educational OS · School Project',
+    category: 'Education Operating System (EdOS)',
   },
 ]
 
