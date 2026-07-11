@@ -17,26 +17,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Set up Node.js (match your local version)
+      # 2. Set up pnpm
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      # 3. Set up Node.js (match your local version)
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '22'
+          cache: 'pnpm'
 
-      # 3. Install dependencies
+      # 4. Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
-      # 4. Lint
+      # 5. Lint
       - name: Run ESLint
-        run: npm run lint
+        run: pnpm run lint
 
-      # 5. Type-check (without emitting files)
+      # 6. Type-check (without emitting files)
       - name: TypeScript type-check
-        run: npx tsc --noEmit
+        run: pnpm exec tsc --noEmit
 
-      # 6. Build (proves the site compiles correctly)
+      # 7. Build (proves the site compiles correctly)
       #    Uses secrets for env vars — add these in GitHub repo settings
       - name: Build Next.js
         env:
@@ -44,4 +48,4 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           CONTACT_RECEIVER_EMAIL: ${{ secrets.CONTACT_RECEIVER_EMAIL }}
           CONTACT_SENDER_EMAIL: ${{ secrets.CONTACT_SENDER_EMAIL }}
-        run: npm run build
+        run: pnpm run build
