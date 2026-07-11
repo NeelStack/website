@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import { ArrowRight, ExternalLink, Play, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
@@ -144,7 +144,7 @@ export function HeroSection() {
             className="group inline-flex items-center gap-2 rounded-full border border-amber-500/25 bg-amber-500/8 px-4 py-1.5 text-xs font-medium text-amber-300 hover:border-amber-400/40 hover:bg-amber-500/12 transition-all duration-300"
           >
             <Zap className="h-3.5 w-3.5 animate-pulse" aria-hidden="true" />
-            <span>DhruvaOS — School Project Beta drops <strong>July 15</strong></span>
+            <span>DhruvaOS — AI-Powered Education Operating System Beta drops <strong>July 15</strong></span>
             <ArrowRight className="h-3 w-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" aria-hidden="true" />
           </Link>
 
