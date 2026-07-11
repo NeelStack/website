@@ -2,6 +2,7 @@ import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { HeroSection } from '@/components/sections/hero-section'
 import { StatsSection } from '@/components/sections/stats-section'
 import { ServicesSection } from '@/components/sections/services-section'
+import { FreelancingSection } from '@/components/sections/freelancing-section'
 import { ProductsSection } from '@/components/sections/products-section'
 import { IndustriesSection } from '@/components/sections/industries-section'
 import { ProcessSection } from '@/components/sections/process-section'
@@ -17,6 +18,7 @@ export default function HomePage() {
       <HeroSection />
       <StatsSection />
       <ServicesSection limit={6} showViewAll={true} />
+      <FreelancingSection />
       <ProductsSection liveLimit={4} upcomingLimit={4} />
       <IndustriesSection limit={6} />
       <ProcessSection />
@@ -28,3 +30,4 @@ export default function HomePage() {
     </MarketingLayout>
   )
 }
+

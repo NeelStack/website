@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { ProductCard } from '@/components/ui/product-card'
-import { LIVE_PRODUCTS, UPCOMING_PRODUCTS } from '@/constants/products'
+import { PRODUCTS, LIVE_PRODUCTS, UPCOMING_PRODUCTS } from '@/constants/products'
 
 interface ProductsSectionProps {
   showUpcoming?: boolean
@@ -18,7 +18,15 @@ export function ProductsSection({
   liveLimit = 4,
   upcomingLimit = 4,
 }: ProductsSectionProps) {
-  const liveProducts = LIVE_PRODUCTS.slice(0, liveLimit)
+  const isGrouped = LIVE_PRODUCTS.length < 3
+
+  const displayProducts = isGrouped
+    ? [...PRODUCTS].sort((a, b) => {
+        const priority: Record<string, number> = { 'live': 0, 'beta': 1, 'in-development': 2, 'coming-soon': 3 }
+        return (priority[a.status] ?? 99) - (priority[b.status] ?? 99)
+      })
+    : LIVE_PRODUCTS.slice(0, liveLimit)
+
   const upcomingProducts = UPCOMING_PRODUCTS.slice(0, upcomingLimit)
 
   return (
@@ -30,30 +38,40 @@ export function ProductsSection({
           description="We don't just build software for clients — we build our own products to solve real-world problems and prove our technology in production."
         />
 
-        {/* Live Products */}
-        <div className="mb-12">
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
-            Live Products
-          </h3>
+        {isGrouped ? (
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {liveProducts.map((product) => (
+            {displayProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-        </div>
-
-        {/* Upcoming Products */}
-        {showUpcoming && (
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
-              In Development
-            </h3>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {upcomingProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+        ) : (
+          <>
+            {/* Live Products */}
+            <div className="mb-12">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+                Live Products
+              </h3>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                {displayProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
             </div>
-          </div>
+
+            {/* Upcoming Products */}
+            {showUpcoming && (
+              <div>
+                <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+                  In Development
+                </h3>
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                  {upcomingProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         )}
 
         {showViewAll && (

@@ -9,23 +9,27 @@ interface StatusBadgeProps {
 const statusConfig = {
   live: {
     label: 'Live',
-    className: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+    className: 'border-emerald-500/40 bg-emerald-500/12 text-emerald-300 shadow-[0_0_10px_rgba(52,211,153,0.15)]',
     dot: 'bg-emerald-400',
+    pingDot: true,
   },
   beta: {
-    label: 'Beta',
-    className: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+    label: 'Beta · Jul 15',
+    className: 'border-amber-500/40 bg-amber-500/12 text-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.15)]',
     dot: 'bg-amber-400',
+    pingDot: true,
   },
   'coming-soon': {
     label: 'Coming Soon',
     className: 'border-blue-500/30 bg-blue-500/10 text-blue-400',
     dot: 'bg-blue-400',
+    pingDot: false,
   },
   'in-development': {
     label: 'In Development',
     className: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400',
     dot: 'bg-cyan-400',
+    pingDot: false,
   },
 } as const
 
@@ -35,17 +39,23 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium',
+        'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-all duration-200',
         config.className,
         className
       )}
     >
-      <span
-        className={cn('h-1.5 w-1.5 rounded-full', config.dot, {
-          'animate-pulse': status === 'live',
-        })}
-        aria-hidden="true"
-      />
+      {/* Animated ping dot for live/beta */}
+      <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden="true">
+        {config.pingDot && (
+          <span
+            className={cn(
+              'absolute inline-flex h-full w-full animate-ping rounded-full opacity-75',
+              config.dot
+            )}
+          />
+        )}
+        <span className={cn('relative inline-flex h-1.5 w-1.5 rounded-full', config.dot)} />
+      </span>
       {config.label}
     </span>
   )

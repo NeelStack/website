@@ -1,6 +1,7 @@
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
+import { SafeEmailLink } from '@/components/ui/copy-email-button'
 import type { FAQItem } from '@/types'
 
 const HOME_FAQ: FAQItem[] = [
@@ -49,12 +50,13 @@ export function FAQSection() {
               description="Everything you need to know about working with NeelStack. Can't find what you're looking for?"
               align="left"
             />
-            <a
-              href="mailto:contact@neelstack.com"
-              className="mt-4 inline-flex items-center text-sm font-medium text-primary hover:underline"
+            <SafeEmailLink
+              user="contact"
+              domain="neelstack.com"
+              className="mt-4 inline-flex items-center text-sm font-medium text-primary"
             >
               Reach us at contact@neelstack.com
-            </a>
+            </SafeEmailLink>
           </div>
 
           {/* Right: Accordion */}

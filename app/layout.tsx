@@ -40,10 +40,16 @@ export const metadata: Metadata = {
     'web applications',
     'mobile apps',
     'NeelStack Technologies',
+    'software company India',
+    'hire developer hourly',
   ],
   authors: [{ name: 'NeelStack Technologies', url: 'https://neelstack.com' }],
   creator: 'NeelStack Technologies',
   publisher: 'NeelStack Technologies',
+  // SEO fix: canonical link — resolves "Canonical link not found" audit warning
+  alternates: {
+    canonical: 'https://neelstack.com',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -115,8 +121,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} bg-background`}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
     >
-      <body className="font-sans antialiased min-h-screen">
+      <body className="font-sans antialiased min-h-screen" suppressHydrationWarning>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
