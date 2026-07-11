@@ -4,6 +4,7 @@ import { Clock, Mail, MapPin, Globe } from 'lucide-react'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
+import { SafeEmailLink } from '@/components/ui/copy-email-button'
 import { SITE_CONFIG } from '@/constants/site'
 import { ContactForm } from '@/components/sections/contact-form'
 
@@ -30,7 +31,8 @@ const CONTACT_CARDS: ContactCard[] = [
     icon: Mail,
     title: 'Email',
     lines: [
-      { label: 'General & Inquiry', value: SITE_CONFIG.email.general, href: `mailto:${SITE_CONFIG.email.general}` },
+      // Note: no href here — rendered via SafeEmailLink to avoid Cloudflare email obfuscation
+      { label: 'General & Inquiry', value: SITE_CONFIG.email.general },
     ],
   },
   {
@@ -106,13 +108,14 @@ export default function ContactPage() {
                               <dt className="text-xs text-muted-foreground">{line.label}</dt>
                             )}
                             <dd>
-                              {line.href ? (
-                                <a
-                                  href={line.href}
+                              {line.value.includes('@') ? (
+                                // Use SafeEmailLink for email addresses to prevent
+                                // Cloudflare email obfuscation from creating 4xx cdn-cgi links
+                                <SafeEmailLink
+                                  user={line.value.split('@')[0]}
+                                  domain={line.value.split('@')[1]}
                                   className="text-sm text-foreground hover:text-primary transition-colors font-mono"
-                                >
-                                  {line.value}
-                                </a>
+                                />
                               ) : (
                                 <span className="text-sm text-foreground">{line.value}</span>
                               )}

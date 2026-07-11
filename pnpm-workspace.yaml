@@ -1,0 +1,12 @@
+catalog:
+  postcss: "^8.5.10"
+
+overrides:
+  hono: "4.12.25"
+  postcss: "catalog:"
+  glob: "^13.0.6"
+
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+

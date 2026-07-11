@@ -4,7 +4,7 @@ import { PageHero } from '@/components/ui/page-hero'
 import { ProductCard } from '@/components/ui/product-card'
 import { Container } from '@/components/ui/container'
 import { CTASection } from '@/components/ui/cta-section'
-import { LIVE_PRODUCTS, UPCOMING_PRODUCTS } from '@/constants/products'
+import { PRODUCTS, LIVE_PRODUCTS, UPCOMING_PRODUCTS } from '@/constants/products'
 
 export const metadata: Metadata = {
   title: 'Products',
@@ -13,6 +13,15 @@ export const metadata: Metadata = {
 }
 
 export default function ProductsPage() {
+  const isGrouped = LIVE_PRODUCTS.length < 3
+
+  const displayProducts = isGrouped
+    ? [...PRODUCTS].sort((a, b) => {
+        const priority: Record<string, number> = { 'live': 0, 'beta': 1, 'in-development': 2, 'coming-soon': 3 }
+        return (priority[a.status] ?? 99) - (priority[b.status] ?? 99)
+      })
+    : LIVE_PRODUCTS
+
   return (
     <MarketingLayout>
       <PageHero
@@ -22,37 +31,55 @@ export default function ProductsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
       />
 
-      <section className="py-16" aria-labelledby="live-products-heading">
+      <section className="py-16" aria-labelledby={isGrouped ? 'products-heading' : 'live-products-heading'}>
         <Container>
-          {/* Live Products */}
-          <div className="mb-16">
-            <h2
-              id="live-products-heading"
-              className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8"
-            >
-              Track 1: Shipped & Scaling
-            </h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {LIVE_PRODUCTS.map((product) => (
-                <ProductCard key={product.id} product={product} variant="detailed" />
-              ))}
+          {isGrouped ? (
+            <div className="mb-16">
+              <h2
+                id="products-heading"
+                className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8"
+              >
+                Active Product Portfolio
+              </h2>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {displayProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} variant="detailed" />
+                ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <>
+              {/* Live Products */}
+              <div className="mb-16">
+                <h2
+                  id="live-products-heading"
+                  className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8"
+                >
+                  Track 1: Shipped & Scaling
+                </h2>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {LIVE_PRODUCTS.map((product) => (
+                    <ProductCard key={product.id} product={product} variant="detailed" />
+                  ))}
+                </div>
+              </div>
 
-          {/* Upcoming Products */}
-          <div className="mb-16">
-            <h2
-              id="upcoming-products-heading"
-              className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8"
-            >
-              Track 2: Active Development Pipeline
-            </h2>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {UPCOMING_PRODUCTS.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          </div>
+              {/* Upcoming Products */}
+              <div className="mb-16">
+                <h2
+                  id="upcoming-products-heading"
+                  className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8"
+                >
+                  Track 2: Active Development Pipeline
+                </h2>
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                  {UPCOMING_PRODUCTS.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
 
           {/* Track 3: Research Frontiers (Future Vision) */}
           <div>

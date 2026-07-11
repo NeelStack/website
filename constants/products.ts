@@ -2,15 +2,26 @@ import {
   Building,
   FileText,
   GraduationCap,
-  Share2,
+  Zap,
 } from 'lucide-react'
 import type { Product } from '@/types'
+
+// Extended product metadata (not part of Product type — used as display hints)
+export const PRODUCT_META: Record<string, { deployedLabel?: string; betaDate?: string; isSchoolProject?: boolean }> = {
+  toolvines: {
+    deployedLabel: 'Live & Deployed',
+  },
+  dhruvaos: {
+    betaDate: 'July 15, 2026',
+    isSchoolProject: true,
+  },
+}
 
 export const PRODUCTS: Product[] = [
   {
     id: 'toolvines',
     name: 'ToolVines',
-    tagline: 'Browser-based Productivity Platform',
+    tagline: 'Browser Productivity Platform — Live & Deployed ✦',
     description:
       'Browser-based productivity platform providing PDF, image, video, annotation and document utilities with AI-powered features designed to simplify everyday workflows for individuals, professionals and businesses.',
     status: 'live',
@@ -69,11 +80,11 @@ export const PRODUCTS: Product[] = [
   {
     id: 'dhruvaos',
     name: 'DhruvaOS',
-    tagline: 'AI-powered Educational Operating System',
+    tagline: 'AI Educational OS · School Project · Beta July 15',
     description:
-      'A comprehensive, AI-driven learning workspace that organizes study notes, structures syllabi, generates mock evaluations, and provides custom AI tutors to streamline the academic lifecycle.',
-    status: 'in-development',
-    icon: GraduationCap,
+      'A comprehensive, AI-driven learning workspace that organizes study notes, structures syllabi, generates mock evaluations, and provides custom AI tutors to streamline the academic lifecycle. Beta release: July 15, 2026.',
+    status: 'beta',
+    icon: Zap,
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     href: '/products/dhruvaos',
@@ -83,7 +94,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Adaptive Mock Evaluations' },
       { label: 'Collaborative Educator Hub' },
     ],
-    category: 'Educational OS',
+    category: 'Educational OS · School Project',
   },
 ]
 
