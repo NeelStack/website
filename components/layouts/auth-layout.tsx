@@ -22,7 +22,7 @@ function AuthBrandPanel() {
         <Link
           href="/"
           className="flex items-center gap-2.5"
-          aria-label="NeelStack Technologies — Home"
+          aria-label="NeelStack — Home"
         >
           <svg
             width="36"
@@ -47,7 +47,7 @@ function AuthBrandPanel() {
             &ldquo;We build the software that powers tomorrow&rsquo;s enterprises.&rdquo;
           </p>
           <footer className="mt-4 text-sm text-muted-foreground">
-            — NeelStack Technologies
+            — NeelStack
           </footer>
         </blockquote>
       </div>

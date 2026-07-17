@@ -15,7 +15,7 @@ function NeelStackLogo({ className }: { className?: string }) {
     <Link
       href="/"
       className={cn('flex items-center gap-2.5 group', className)}
-      aria-label="NeelStack Technologies — Home"
+      aria-label="NeelStack — Home"
     >
       {/* Gradient N mark with glow */}
       <svg
@@ -29,11 +29,12 @@ function NeelStackLogo({ className }: { className?: string }) {
       >
         <defs>
           <linearGradient id="hdr-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#06b6d4" />
+            <stop offset="0%" stopColor="#46A6FC" />
+            <stop offset="50%" stopColor="#7C3AED" />
+            <stop offset="100%" stopColor="#F58D28" />
           </linearGradient>
           <filter id="hdr-glow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#3b82f6" floodOpacity="0.55" />
+            <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#7C3AED" floodOpacity="0.45" />
           </filter>
         </defs>
         <rect width="32" height="32" rx="8" fill="url(#hdr-bg)" filter="url(#hdr-glow)" />
@@ -65,6 +66,11 @@ function NavDropdown({
   onClose: () => void
 }) {
   const ref = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+
+  // Check if any item in this nav group matches current page
+  const allItems = menu.items ?? menu.groups?.flatMap((g) => g.items) ?? []
+  const isActive = allItems.some((item) => pathname.startsWith(item.href) && item.href !== '/')
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -85,7 +91,7 @@ function NavDropdown({
       <button
         onClick={onToggle}
         className={cn(
-          'flex cursor-pointer items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+          'relative flex cursor-pointer items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150',
           isOpen
             ? 'text-foreground bg-muted'
             : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -98,6 +104,10 @@ function NavDropdown({
           className={cn('h-3.5 w-3.5 transition-transform duration-200', isOpen && 'rotate-180')}
           aria-hidden="true"
         />
+        {/* Active page underline indicator */}
+        {isActive && !isOpen && (
+          <span className="absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-primary opacity-70" />
+        )}
       </button>
 
       {isOpen && (
@@ -123,7 +133,7 @@ function NavDropdown({
                         href={item.href}
                         role="menuitem"
                         onClick={onClose}
-                        className="flex flex-col rounded-lg px-2 py-2.5 hover:bg-muted transition-colors"
+                        className="group flex flex-col rounded-lg px-2 py-2.5 hover:bg-muted transition-colors duration-150"
                       >
                         <span className="text-sm font-medium text-foreground">{item.label}</span>
                         {item.description && (
@@ -145,11 +155,11 @@ function NavDropdown({
                   href={item.href}
                   role="menuitem"
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-lg px-3 py-2 hover:bg-muted transition-colors"
+                  className="group flex items-center justify-between rounded-lg px-3 py-2 hover:bg-muted transition-colors duration-150"
                 >
                   <span className="text-sm font-medium text-foreground">{item.label}</span>
                   <ArrowRight
-                    className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100"
+                    className="h-3.5 w-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-150"
                     aria-hidden="true"
                   />
                 </Link>

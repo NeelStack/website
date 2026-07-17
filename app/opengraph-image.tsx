@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'NeelStack Technologies — Enterprise Software & AI Solutions'
+export const alt = 'NeelStack | Enterprise AI & Software Solutions'
 export const size = {
   width: 1200,
   height: 630,
@@ -89,8 +89,8 @@ export default function Image() {
               width: '76px',
               height: '76px',
               borderRadius: '18px',
-              background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
-              boxShadow: '0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(59, 130, 246, 0.15)',
+              background: 'linear-gradient(135deg, #46A6FC 0%, #7C3AED 50%, #F58D28 100%)',
+              boxShadow: '0 0 30px rgba(124, 58, 237, 0.4), 0 0 60px rgba(124, 58, 237, 0.15)',
               color: 'white',
               fontSize: '42px',
               fontWeight: '900',
@@ -108,7 +108,7 @@ export default function Image() {
                 fontWeight: '800',
                 letterSpacing: '-0.04em',
                 lineHeight: 1,
-                background: 'linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%)',
+                background: 'linear-gradient(90deg, #46A6FC 0%, #7C3AED 50%, #F58D28 100%)',
                 backgroundClip: 'text',
                 color: 'transparent',
               }}
@@ -135,7 +135,7 @@ export default function Image() {
             width: '56px',
             height: '4px',
             borderRadius: '2px',
-            background: 'linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%)',
+            background: 'linear-gradient(90deg, #46A6FC 0%, #7C3AED 50%, #F58D28 100%)',
             marginBottom: '24px',
             position: 'relative',
           }}
@@ -157,7 +157,7 @@ export default function Image() {
           Building the Future of{' '}
           <span
             style={{
-              background: 'linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%)',
+              background: 'linear-gradient(90deg, #46A6FC 0%, #7C3AED 50%, #F58D28 100%)',
               backgroundClip: 'text',
               color: 'transparent',
             }}
@@ -188,7 +188,7 @@ export default function Image() {
             left: 0,
             right: 0,
             height: '4px',
-            background: 'linear-gradient(90deg, #3b82f6 0%, #06b6d4 50%, transparent 100%)',
+            background: 'linear-gradient(90deg, #46A6FC 0%, #7C3AED 50%, #F58D28 100%)',
           }}
         />
 

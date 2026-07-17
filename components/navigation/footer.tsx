@@ -57,7 +57,7 @@ function FooterLogo() {
     <Link
       href="/"
       className="flex items-center gap-2.5 group"
-      aria-label="NeelStack Technologies — Home"
+      aria-label="NeelStack — Home"
     >
       <svg
         width="30"
@@ -70,11 +70,12 @@ function FooterLogo() {
       >
         <defs>
           <linearGradient id="ftr-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#06b6d4" />
+            <stop offset="0%" stopColor="#46A6FC" />
+            <stop offset="50%" stopColor="#7C3AED" />
+            <stop offset="100%" stopColor="#F58D28" />
           </linearGradient>
           <filter id="ftr-glow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="0" dy="0" stdDeviation="2.5" floodColor="#3b82f6" floodOpacity="0.4" />
+            <feDropShadow dx="0" dy="0" stdDeviation="2.5" floodColor="#7C3AED" floodOpacity="0.35" />
           </filter>
         </defs>
         <rect width="32" height="32" rx="8" fill="url(#ftr-bg)" filter="url(#ftr-glow)" />
@@ -105,9 +106,10 @@ function FooterColumn({ title, links }: FooterColumnProps) {
           <li key={link.href}>
             <Link
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 relative group inline-block"
             >
               {link.label}
+              <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-primary/50 group-hover:w-full transition-all duration-200 ease-out" />
             </Link>
           </li>
         ))}
@@ -121,7 +123,7 @@ export function Footer() {
 
   return (
     <footer
-      className="border-t border-border bg-card relative"
+      className="border-t border-border bg-muted/20 relative"
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -146,13 +148,14 @@ export function Footer() {
             {/* Social links */}
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map(({ Icon, href, label }) => (
-                <div
+                <Link
                   key={href}
+                  href={href}
                   aria-label={label}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-muted-foreground opacity-60 cursor-default"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-primary/5 hover:scale-110 hover:shadow-sm transition-all duration-200 ease-out"
                 >
                   <Icon className="h-4 w-4" />
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -165,9 +168,9 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-border py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            &copy; {currentYear} NeelStack Technologies Pvt. Ltd. All rights reserved.
+        <div className="border-t border-border py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground text-center md:text-left">
+            &copy; {currentYear} NeelStack Technologies Private Limited. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link

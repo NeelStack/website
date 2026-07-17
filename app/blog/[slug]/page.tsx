@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) {
     return {
-      title: 'Article Not Found | NeelStack Technologies',
+      title: 'Article Not Found | NeelStack',
       robots: { index: false },
     }
   }

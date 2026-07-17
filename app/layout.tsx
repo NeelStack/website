@@ -25,11 +25,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: 'NeelStack Technologies — Enterprise Software & AI Solutions',
-    template: '%s | NeelStack Technologies',
+    default: 'NeelStack – AI, Cloud & Enterprise Software',
+    template: '%s | NeelStack',
   },
   description:
-    'NeelStack Technologies builds enterprise software, AI solutions, SaaS products, ERP systems, and custom applications for startups, SMBs, enterprises, healthcare, government, and organizations worldwide.',
+    'NeelStack builds enterprise software, AI solutions, SaaS products, ERP systems, and custom applications for startups, SMBs, enterprises, healthcare, government, and organizations worldwide.',
   keywords: [
     'enterprise software',
     'AI development',
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     'cloud solutions',
     'web applications',
     'mobile apps',
-    'NeelStack Technologies',
+    'NeelStack',
     'software company India',
     'hire developer hourly',
   ],
-  authors: [{ name: 'NeelStack Technologies', url: 'https://neelstack.com' }],
-  creator: 'NeelStack Technologies',
-  publisher: 'NeelStack Technologies',
+  authors: [{ name: 'NeelStack', url: 'https://neelstack.com' }],
+  creator: 'NeelStack',
+  publisher: 'NeelStack',
   // SEO fix: canonical link — resolves "Canonical link not found" audit warning
   alternates: {
     canonical: 'https://neelstack.com',
@@ -54,16 +54,16 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://neelstack.com',
-    siteName: 'NeelStack Technologies',
-    title: 'NeelStack Technologies — Enterprise Software & AI Solutions',
+    siteName: 'NeelStack',
+    title: 'NeelStack | Enterprise AI & Software Solutions',
     description:
       'Building enterprise software, AI solutions, SaaS products, and custom applications for organizations worldwide.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'NeelStack Technologies',
+        alt: 'NeelStack',
       },
     ],
   },
@@ -71,21 +71,15 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@neelstack',
     creator: '@neelstack',
-    title: 'NeelStack Technologies — Enterprise Software & AI Solutions',
+    title: 'NeelStack | Enterprise AI & Software Solutions',
     description:
       'Building enterprise software, AI solutions, SaaS products, and custom applications for organizations worldwide.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   icons: {
-    icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    icon: { url: '/icon.svg', type: 'image/svg+xml' },
     shortcut: '/icon.svg',
+    apple: { url: '/icon.svg', type: 'image/svg+xml' },
   },
   robots: {
     index: true,

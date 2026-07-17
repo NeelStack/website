@@ -17,7 +17,7 @@ interface SectionHeaderProps {
 
 export function Section({ children, className, id, as: Component = 'section' }: SectionProps) {
   return (
-    <Component id={id} className={cn('py-20 md:py-28', className)}>
+    <Component id={id} className={cn('py-14 md:py-20', className)}>
       {children}
     </Component>
   )

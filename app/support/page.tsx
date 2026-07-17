@@ -9,7 +9,7 @@ import { SITE_CONFIG } from '@/constants/site'
 export const metadata: Metadata = {
   title: 'Support Center',
   description:
-    'Get help from the NeelStack Technologies support team. Find answers, access documentation, or contact us directly.',
+    'Get help from the NeelStack support team. Find answers, access documentation, or contact us directly.',
 }
 
 const SUPPORT_OPTIONS = [

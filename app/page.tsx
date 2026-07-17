@@ -35,16 +35,16 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'NeelStack Technologies — AI-Native Enterprise Software & Products',
+  title: 'NeelStack | Enterprise AI & Software Solutions',
   description:
-    'NeelStack Technologies designs, develops, and delivers intelligent software platforms for businesses while creating next-generation AI-powered SaaS products.',
+    'NeelStack designs, develops, and delivers intelligent software platforms for businesses while creating next-generation AI-powered SaaS products.',
   keywords: [
     'Enterprise Software',
     'AI development',
     'Custom Software Development',
     'SaaS Product Engineering',
     'Cloud-Native Architectures',
-    'NeelStack Technologies',
+    'NeelStack',
     'DhruvaOS'
   ],
   alternates: {
@@ -56,12 +56,12 @@ export default function HomePage() {
   
   // Roadmap items
   const roadmapProducts = [
-    { title: 'DhruvaOS', type: 'Education Platform', desc: 'AI-Powered Education Operating System for schools, colleges, and academic trusts.', status: 'Launching Soon', color: 'border-amber-500/25 bg-amber-500/5 text-amber-305 text-[10px]' },
-    { title: 'HealthOS', type: 'Healthcare Platform', desc: 'Clinical workflow automation, patient charts, and AI medical assistants.', status: 'Research & Planning', color: 'border-purple-500/25 bg-purple-500/5 text-purple-305 text-[10px]' },
-    { title: 'PharmaOS', type: 'Pharmacy Platform', desc: 'Inventory trackers, drug interactions databases, and smart sales workflows.', status: 'Concept Validation', color: 'border-cyan-500/25 bg-cyan-500/5 text-cyan-305 text-[10px]' },
-    { title: 'RetailOS', type: 'Retail Platform', desc: 'Multi-store cash systems, supply chain automation, and purchase analysis.', status: 'Future Roadmap', color: 'border-border bg-muted/20 text-muted-foreground text-[10px]' },
-    { title: 'HospitalityOS', type: 'Hospitality Platform', desc: 'Booking engine, room service schedules, and guest experience portals.', status: 'Future Roadmap', color: 'border-border bg-muted/20 text-muted-foreground text-[10px]' },
-    { title: 'Enterprise AI Platform', type: 'AI Automation Platform', desc: 'Workflow triggers, automated compliance parsing, and internal AI agents.', status: 'Vision', color: 'border-border bg-muted/20 text-muted-foreground text-[10px]' }
+    { title: 'DhruvaOS', type: 'Education Platform', desc: 'AI-Powered Education Operating System for schools, colleges, and academic trusts.', status: 'Launching Soon', color: 'border-amber-500/25 bg-amber-500/5 text-amber-700 dark:text-amber-400 text-xs' },
+    { title: 'HealthOS', type: 'Healthcare Platform', desc: 'Clinical workflow automation, patient charts, and AI medical assistants.', status: 'Research & Planning', color: 'border-purple-500/25 bg-purple-500/5 text-purple-700 dark:text-purple-400 text-xs' },
+    { title: 'PharmaOS', type: 'Pharmacy Platform', desc: 'Inventory trackers, drug interactions databases, and smart sales workflows.', status: 'Concept Validation', color: 'border-cyan-500/25 bg-cyan-500/5 text-cyan-700 dark:text-cyan-400 text-xs' },
+    { title: 'RetailOS', type: 'Retail Platform', desc: 'Multi-store cash systems, supply chain automation, and purchase analysis.', status: 'Future Roadmap', color: 'border-border bg-muted/20 text-muted-foreground text-xs' },
+    { title: 'HospitalityOS', type: 'Hospitality Platform', desc: 'Booking engine, room service schedules, and guest experience portals.', status: 'Future Roadmap', color: 'border-border bg-muted/20 text-muted-foreground text-xs' },
+    { title: 'Enterprise AI Platform', type: 'AI Automation Platform', desc: 'Workflow triggers, automated compliance parsing, and internal AI agents.', status: 'Vision', color: 'border-border bg-muted/20 text-muted-foreground text-xs' }
   ]
 
   // Services
@@ -123,7 +123,7 @@ export default function HomePage() {
     <MarketingLayout>
       
       {/* ─── Hero Section ────────────────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-b from-blue-950/15 via-background to-background">
+      <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-b from-blue-500/10 via-background to-background dark:from-blue-950/15">
         {/* Grids and glows */}
         <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-blue-500/10 rounded-full blur-[130px] pointer-events-none" />
@@ -143,7 +143,7 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto space-y-5">
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] text-foreground">
               Building AI-Powered <br />
-              <span className="bg-gradient-to-r from-primary via-cyan-300 to-indigo-400 bg-clip-text text-transparent">
+              <span className="text-gradient">
                 Enterprise Software
               </span> That Scales.
             </h1>
@@ -157,13 +157,13 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-4.5">
             <Link
               href="/book-consultation"
-              className="inline-flex items-center justify-center px-6.5 py-3 rounded-xl bg-primary hover:bg-primary/90 text-white text-sm font-semibold transition-all shadow-md shadow-primary/20"
+              className="btn-primary"
             >
               Book a Consultation
             </Link>
             <Link
               href="#roadmap"
-              className="inline-flex items-center justify-center px-6.5 py-3 rounded-xl border border-border bg-card/60 hover:bg-muted text-foreground text-sm font-semibold transition-all"
+              className="btn-outline"
             >
               Explore Our Products
             </Link>
@@ -178,10 +178,10 @@ export default function HomePage() {
                 { label: 'Services Offered', value: '13+', sub: 'Custom software services' },
                 { label: 'In Development', value: '2+', sub: 'DhruvaOS & more' },
               ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-5 text-center flex flex-col gap-1">
+                <div key={stat.label} className="rounded-2xl border border-border/60 bg-card shadow-sm dark:bg-card/40 backdrop-blur-sm p-5 text-center flex flex-col gap-1">
                   <span className="font-heading text-3xl font-extrabold text-foreground">{stat.value}</span>
                   <span className="text-xs font-semibold text-primary">{stat.label}</span>
-                  <span className="text-[10px] text-muted-foreground">{stat.sub}</span>
+                  <span className="text-xs text-muted-foreground">{stat.sub}</span>
                 </div>
               ))}
             </div>
@@ -207,58 +207,58 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 max-w-4xl mx-auto">
             {/* Client 1 */}
-            <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6 flex flex-col gap-3">
+            <div className="rounded-2xl border border-amber-500/20 bg-card hover:bg-amber-500/[0.02] shadow-sm dark:bg-amber-500/5 p-6 flex flex-col gap-3 card-hover">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 border border-amber-500/20 text-amber-400 font-bold text-sm font-mono">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/20 text-amber-700 dark:text-amber-400 font-bold text-sm font-mono">
                   LP
                 </div>
                 <div>
                   <h3 className="font-heading text-sm font-bold text-foreground">Lifeasia Pharma</h3>
-                  <span className="text-[10px] font-medium text-amber-400 uppercase tracking-wide">Pharmaceutical</span>
+                  <span className="text-xs font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-wide">Pharmaceutical</span>
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Corporate website and digital presence for a pharmaceutical company involved in product development, branding, and healthcare distribution.
               </p>
-              <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-amber-400">
+              <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
                 ⏳ Delivering This Month
               </span>
             </div>
 
             {/* Client 2 */}
-            <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-6 flex flex-col gap-3">
+            <div className="rounded-2xl border border-blue-500/20 bg-card hover:bg-blue-500/[0.02] shadow-sm dark:bg-blue-500/5 p-6 flex flex-col gap-3 card-hover">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 border border-blue-500/20 text-blue-400 font-bold text-sm font-mono">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 dark:bg-blue-500/15 border border-blue-500/20 text-blue-700 dark:text-blue-400 font-bold text-sm font-mono">
                   KD
                 </div>
                 <div>
                   <h3 className="font-heading text-sm font-bold text-foreground">K.D. Singh Public School</h3>
-                  <span className="text-[10px] font-medium text-blue-400 uppercase tracking-wide">Education · Gorakhpur</span>
+                  <span className="text-xs font-semibold text-blue-700 dark:text-blue-400 uppercase tracking-wide">Education · Gorakhpur</span>
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Custom school management platform covering institutional operations, student data, and parent communication workflows.
               </p>
-              <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-amber-400">
+              <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
                 ⏳ Delivering This Month
               </span>
             </div>
 
             {/* Client 3 */}
-            <div className="rounded-2xl border border-violet-500/20 bg-violet-500/5 p-6 flex flex-col gap-3">
+            <div className="rounded-2xl border border-violet-500/20 bg-card hover:bg-violet-500/[0.02] shadow-sm dark:bg-violet-500/5 p-6 flex flex-col gap-3 card-hover">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/15 border border-violet-500/20 text-violet-400 font-bold text-sm font-mono">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/10 dark:bg-violet-500/15 border border-violet-500/20 text-violet-700 dark:text-violet-400 font-bold text-sm font-mono">
                   NM
                 </div>
                 <div>
                   <h3 className="font-heading text-sm font-bold text-foreground">New Model Convent School</h3>
-                  <span className="text-[10px] font-medium text-violet-400 uppercase tracking-wide">Education · Ghazipur</span>
+                  <span className="text-xs font-semibold text-violet-700 dark:text-violet-400 uppercase tracking-wide">Education · Ghazipur</span>
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Digital school management system for admissions, attendance, fee collection, and parent engagement.
               </p>
-              <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-amber-400">
+              <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
                 ⏳ Delivering This Month
               </span>
             </div>
@@ -291,54 +291,54 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Pillar 1: Enterprise Software */}
-            <div className="rounded-2xl border border-border bg-card/20 p-6 flex flex-col justify-between hover:border-primary/30 transition-all duration-300 group">
+            <div className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/20 p-6 flex flex-col justify-between hover:border-blue-500/30 transition-all duration-300 group card-hover">
               <div className="space-y-4">
-                <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-all">
-                  <Laptop className="h-5 w-5" />
+                <div className="h-10 w-10 rounded-xl bg-blue-500/10 dark:bg-blue-500/15 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 transition-all">
+                  <Laptop className="h-5 w-5 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300" />
                 </div>
                 <h3 className="text-base font-heading font-bold text-foreground">Enterprise Software</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Engineered for mission-critical operations. We design custom web systems, microservices architectures, and business automation pipelines.
                 </p>
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {['Web platforms', 'Cloud-native', 'System modernization', 'Microservices', 'API development'].map((pt) => (
-                    <span key={pt} className="text-[9px] bg-muted/60 border border-border px-2 py-0.5 rounded text-muted-foreground">{pt}</span>
+                    <span key={pt} className="text-xs bg-muted/60 border border-border px-2 py-0.5 rounded text-muted-foreground">{pt}</span>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Pillar 2: Product Engineering */}
-            <div className="rounded-2xl border border-border bg-card/20 p-6 flex flex-col justify-between hover:border-primary/30 transition-all duration-300 group">
+            <div className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/20 p-6 flex flex-col justify-between hover:border-violet-500/30 transition-all duration-300 group card-hover">
               <div className="space-y-4">
-                <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-all">
-                  <Cpu className="h-5 w-5" />
+                <div className="h-10 w-10 rounded-xl bg-violet-500/10 dark:bg-violet-500/15 border border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400 transition-all">
+                  <Cpu className="h-5 w-5 group-hover:rotate-90 transition-transform duration-500" />
                 </div>
                 <h3 className="text-base font-heading font-bold text-foreground">Product Engineering</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   We conceptualize and build proprietary SaaS software products tailored to digitize industries, starting with academic organizations.
                 </p>
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {['DhruvaOS', 'Healthcare Platforms', 'Pharmacy systems', 'Retail roadmaps'].map((pt) => (
-                    <span key={pt} className="text-[9px] bg-muted/60 border border-border px-2 py-0.5 rounded text-muted-foreground">{pt}</span>
+                    <span key={pt} className="text-xs bg-muted/60 border border-border px-2 py-0.5 rounded text-muted-foreground">{pt}</span>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* Pillar 3: Technology Consulting */}
-            <div className="rounded-2xl border border-border bg-card/20 p-6 flex flex-col justify-between hover:border-primary/30 transition-all duration-300 group">
+            <div className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/20 p-6 flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group card-hover">
               <div className="space-y-4">
-                <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-all">
-                  <Sliders className="h-5 w-5" />
+                <div className="h-10 w-10 rounded-xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 transition-all">
+                  <Sliders className="h-5 w-5 group-hover:translate-x-0.5 transition-transform duration-300" />
                 </div>
                 <h3 className="text-base font-heading font-bold text-foreground">Technology Consulting</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   High-level consulting to steer technical roadmaps. We optimize databases, advise on Cloud DevOps setups, and construct AI strategies.
                 </p>
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {['Architecture strategy', 'DevOps audit', 'Performance tuning', 'AI strategies'].map((pt) => (
-                    <span key={pt} className="text-[9px] bg-muted/60 border border-border px-2 py-0.5 rounded text-muted-foreground">{pt}</span>
+                    <span key={pt} className="text-xs bg-muted/60 border border-border px-2 py-0.5 rounded text-muted-foreground">{pt}</span>
                   ))}
                 </div>
               </div>
@@ -353,90 +353,51 @@ export default function HomePage() {
       <Section className="py-20 bg-muted/10 relative">
         <Container className="space-y-12">
           
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center bg-purple-500/5 border border-purple-500/10 rounded-3xl p-8 sm:p-10 relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center bg-purple-500/[0.03] dark:bg-purple-500/5 border border-purple-500/10 rounded-3xl p-8 sm:p-10 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-bl-full blur-2xl pointer-events-none" />
 
             <div className="lg:col-span-3 space-y-6">
               
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-purple-500/25 bg-purple-500/10 text-purple-300">
-                <Zap className="h-3.5 w-3.5 animate-pulse text-purple-400" />
-                <span className="text-[10px] font-bold uppercase tracking-wider">Featured Product — Launching Soon</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-purple-500/25 bg-purple-500/10 text-purple-700 dark:text-purple-300">
+                <Zap className="h-3.5 w-3.5 animate-pulse text-purple-700 dark:text-purple-400" />
+                <span className="text-xs font-bold uppercase tracking-wider">Featured Product — Launching Soon</span>
               </div>
 
               <div className="space-y-2">
                 <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">DhruvaOS</h3>
-                <p className="text-sm font-semibold text-purple-300">AI-Powered Education Operating System</p>
+                <p className="text-sm font-semibold text-purple-700 dark:text-purple-300">AI-Powered Education Operating System</p>
               </div>
 
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 A complete digital operating platform built for schools, colleges, universities, coaching institutes, and educational organizations. Replaces legacy ERP systems with unified, AI-native academic and billing workflows.
               </p>
 
               <div className="flex items-center gap-4.5">
                 <Link
                   href="/products/dhruvaos"
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-300 hover:text-purple-450 transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-700 hover:text-purple-800 dark:text-purple-300 dark:hover:text-purple-400 transition-colors group"
                 >
                   Learn More About DhruvaOS
-                  <ArrowRight className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               </div>
 
             </div>
 
-            {/* Simulated mini dashboard visual */}
-            <div className="lg:col-span-2 rounded-2xl border border-white/10 bg-[#0d1117] text-white p-5 space-y-4 shadow-2xl relative overflow-hidden font-sans">
-              {/* Window chrome header */}
-              <div className="flex items-center justify-between border-b border-white/5 pb-2">
-                <div className="flex items-center gap-1.5">
-                  <div className="flex gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  </div>
-                  <span className="text-[9px] font-mono text-muted-foreground ml-1">DhruvaOS Admin Portal</span>
+            {/* Core features info board */}
+            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { title: 'Unified Registry', desc: 'Unified student directories, class logs, and staff archives.', icon: '👥' },
+                { title: 'Automated Invoices', desc: 'Intelligent fee alerts and automated payment notifications.', icon: '💳' },
+                { title: 'Academic Analytics', desc: 'AI-driven reporting on grading curves and attendance trends.', icon: '📈' },
+                { title: 'Connected Portal', desc: 'Instant parent notifications and homework logging.', icon: '💬' },
+              ].map((feat) => (
+                <div key={feat.title} className="rounded-2xl border border-border dark:border-white/10 bg-card p-4 space-y-1.5 shadow-sm hover:scale-[1.02] transition-transform duration-200">
+                  <span className="text-lg block">{feat.icon}</span>
+                  <h4 className="text-xs font-bold text-foreground">{feat.title}</h4>
+                  <p className="text-[10px] text-muted-foreground leading-relaxed">{feat.desc}</p>
                 </div>
-                <span className="text-[9px] text-blue-400 font-bold uppercase tracking-wider">Mock UI</span>
-              </div>
-
-              {/* Greeting */}
-              <div className="rounded-xl bg-gradient-to-r from-[#0f2044] to-[#0f1923] border border-blue-500/20 p-3 space-y-1">
-                <span className="text-[7px] text-blue-400 font-bold tracking-widest uppercase">SATURDAY, 11 JULY 2026</span>
-                <h4 className="text-xs font-extrabold text-white">Good evening, Admin 👋</h4>
-              </div>
-
-              {/* Mini Stats Grid */}
-              <div className="grid grid-cols-2 gap-2.5">
-                <div className="rounded-lg border border-white/10 bg-[#141c27] p-2.5 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">👥</span>
-                    <span className="text-[8px] font-bold text-emerald-400">+12%</span>
-                  </div>
-                  <div>
-                    <span className="text-[6px] text-muted-foreground uppercase block font-bold tracking-wide">Students</span>
-                    <span className="text-xs font-extrabold text-white">1,248</span>
-                  </div>
-                </div>
-
-                <div className="rounded-lg border border-white/10 bg-[#141c27] p-2.5 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">💳</span>
-                    <span className="text-[8px] font-bold text-rose-400">-8%</span>
-                  </div>
-                  <div>
-                    <span className="text-[6px] text-muted-foreground uppercase block font-bold tracking-wide">Fees</span>
-                    <span className="text-xs font-extrabold text-white">₹4.2L</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* AI Recommendation Alert */}
-              <div className="rounded-lg border border-purple-500/20 bg-purple-500/5 p-2.5 text-[8px] text-purple-300 flex items-start gap-2">
-                <Bot className="h-3.5 w-3.5 text-purple-400 shrink-0" />
-                <span>
-                  <strong>AI Alert</strong>: Attendance trigger recommended for standard 10-B due to consecutive absences.
-                </span>
-              </div>
+              ))}
             </div>
 
           </div>
@@ -465,11 +426,11 @@ export default function HomePage() {
             {roadmapProducts.map((p) => (
               <div
                 key={p.title}
-                className="rounded-2xl border border-border bg-card/25 p-5 flex flex-col justify-between hover:border-primary/20 transition-all duration-300 group"
+                className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/25 p-5 flex flex-col justify-between hover:border-primary/20 hover:shadow-md transition-all duration-300 group card-hover"
               >
                 <div className="space-y-3.5">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-wider bg-primary/5 px-2 py-0.5 rounded border border-primary/10">
+                    <span className="text-xs font-bold text-primary uppercase tracking-wider bg-primary/5 px-2 py-0.5 rounded border border-primary/10">
                       {p.type}
                     </span>
                     <span className={`px-2 py-0.5 rounded border font-mono ${p.color}`}>
@@ -480,7 +441,7 @@ export default function HomePage() {
                   <h3 className="text-base font-heading font-bold text-foreground">
                     {p.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {p.desc}
                   </p>
                 </div>
@@ -489,10 +450,10 @@ export default function HomePage() {
                   <div className="pt-4 mt-4 border-t border-border/40 flex justify-end">
                     <Link
                       href="/products/dhruvaos"
-                      className="text-[10px] font-bold uppercase tracking-wider text-purple-305 hover:text-purple-400 flex items-center gap-1 transition-colors"
+                      className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-400 flex items-center gap-1 transition-colors group hover:text-purple-900 dark:hover:text-purple-300"
                     >
                       View Workspace
-                      <ArrowRight className="h-3 w-3" />
+                      <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-1" />
                     </Link>
                   </div>
                 )}
@@ -526,15 +487,15 @@ export default function HomePage() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-border bg-card/20 p-5 hover:border-primary/20 hover:bg-card/50 transition-all duration-300 group"
+                  className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/20 p-5 hover:border-primary/20 hover:bg-card/50 transition-all duration-300 group card-hover"
                 >
-                  <div className="h-9 w-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-transform mb-4">
-                    <IconComp className="h-4.5 w-4.5" />
+                  <div className="h-9 w-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 mb-4">
+                    <IconComp className="h-4.5 w-4.5 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300" />
                   </div>
                   <h3 className="text-sm font-heading font-bold text-foreground mb-1.5">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -562,7 +523,7 @@ export default function HomePage() {
             {whyChoose.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-border bg-card/25 p-5 flex flex-col justify-between hover:border-primary/15 transition-all duration-200"
+                className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/25 p-5 flex flex-col justify-between hover:border-primary/15 transition-all duration-200 card-hover"
               >
                 <div className="space-y-2">
                   <div className="h-6 w-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
@@ -571,7 +532,7 @@ export default function HomePage() {
                   <h3 className="text-xs font-heading font-bold text-foreground uppercase tracking-wider">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -620,13 +581,13 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
             {techStack.map((stack) => (
-              <div key={stack.category} className="rounded-2xl border border-border bg-card/20 p-5 space-y-4">
+              <div key={stack.category} className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/20 p-5 space-y-4 card-hover">
                 <h3 className="text-xs font-heading font-bold text-primary uppercase tracking-widest border-b border-border/40 pb-2">
                   {stack.category}
                 </h3>
                 <ul className="space-y-2">
                   {stack.items.map((tech) => (
-                    <li key={tech} className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <li key={tech} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <div className="h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />
                       <span>{tech}</span>
                     </li>
@@ -656,13 +617,13 @@ export default function HomePage() {
             {engagements.map((eng) => (
               <div
                 key={eng.model}
-                className="rounded-2xl border border-border bg-card/25 p-5 flex flex-col justify-between hover:border-primary/20 transition-all duration-350"
+                className="rounded-2xl border border-border bg-card shadow-sm dark:bg-card/25 p-5 flex flex-col justify-between hover:border-primary/20 transition-all duration-350 card-hover"
               >
                 <div className="space-y-2">
                   <h3 className="text-xs font-heading font-bold text-foreground uppercase tracking-wider">
                     {eng.model}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {eng.desc}
                   </p>
                 </div>
@@ -674,7 +635,7 @@ export default function HomePage() {
       </Section>
 
       {/* ─── Company Vision ──────────────────────────────────────────────────────── */}
-      <Section className="py-20">
+      <Section className="py-14 md:py-16">
         <Container className="max-w-4xl mx-auto text-center space-y-6">
           <div className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/15 text-primary border border-primary/20">
             <Globe className="h-5 w-5" />
@@ -694,7 +655,7 @@ export default function HomePage() {
       </Section>
 
       {/* ─── Rebranded Final CTA Section ────────────────────────────────────────── */}
-      <Section className="relative py-24 overflow-hidden bg-gradient-to-t from-blue-950/20 via-background to-background border-t border-border/40">
+      <Section className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-t from-blue-500/10 via-background to-background dark:from-blue-950/20 border-t border-border/40">
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-cyan-500/2 to-indigo-500/5 pointer-events-none" />
         
         <Container className="relative z-10 text-center space-y-8 max-w-3xl">
@@ -711,19 +672,19 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-4.5 pt-4">
             <Link
               href="/book-consultation"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary/95 text-white text-sm font-semibold transition-all shadow-md shadow-primary/10"
+              className="btn-primary"
             >
               Book Consultation
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-border bg-card hover:bg-muted text-foreground text-sm font-semibold transition-all"
+              className="btn-outline"
             >
               Start Your Project
             </Link>
             <Link
               href="/products/dhruvaos"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-muted/40 hover:bg-muted/65 text-muted-foreground hover:text-white text-sm font-semibold transition-all"
+              className="btn-ghost"
             >
               Explore DhruvaOS
             </Link>

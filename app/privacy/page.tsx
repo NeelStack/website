@@ -7,7 +7,7 @@ import { SITE_CONFIG } from '@/constants/site'
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'Privacy Policy for NeelStack Technologies — how we collect, use, and protect your personal information.',
+    'Privacy Policy for NeelStack — how we collect, use, and protect your personal information.',
 }
 
 const LAST_UPDATED = 'July 3, 2026'
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">1. Introduction</h2>
               <p>
-                NeelStack Technologies Pvt. Ltd. (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your personal information. This Privacy Policy explains what data we collect, how we use it, and your rights when you visit{' '}
+                NeelStack Technologies Private Limited (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your personal information. This Privacy Policy explains what data we collect, how we use it, and your rights when you visit{' '}
                 <a href={SITE_CONFIG.url} className="text-primary hover:underline">{SITE_CONFIG.url}</a> or interact with our services.
               </p>
               <p className="mt-3">
@@ -158,7 +158,7 @@ export default function PrivacyPolicyPage() {
                 <div className="pt-2">
                   <p className="font-medium text-foreground">Grievance Officer (DPDP Act Compliance):</p>
                   <p>Attn: Privacy Compliance Officer</p>
-                  <p>Email: <a href="mailto:grievance@neelstack.com" className="text-primary hover:underline">grievance@neelstack.com</a></p>
+                  <p>Email: <a href="mailto:contact@neelstack.com" className="text-primary hover:underline">contact@neelstack.com</a></p>
                   <p>Response Time: We aim to acknowledge and resolve all valid statutory grievances within 30 days of receipt.</p>
                 </div>
                 <div className="pt-2">
