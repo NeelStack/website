@@ -8,7 +8,7 @@ import { BLOG_POSTS } from '@/constants/blog'
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Engineering insights, product updates, and technology deep dives from the NeelStack Technologies team.',
+    'Engineering insights, product updates, and technology deep dives from the NeelStack team.',
 }
 
 const CATEGORIES = [

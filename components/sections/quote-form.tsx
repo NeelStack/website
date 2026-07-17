@@ -136,16 +136,16 @@ export function QuoteForm() {
             </div>
             <div>
               <label htmlFor="q-email" className="block text-sm font-medium text-foreground mb-1.5">
-                Work Email <span aria-hidden="true" className="text-destructive">*</span>
+                Email Address <span aria-hidden="true" className="text-destructive">*</span>
               </label>
               <input id="q-email" name="email" type="email" required autoComplete="email"
-                placeholder="you@company.com"
+                placeholder="you@domain.com"
                 className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="q-company" className="block text-sm font-medium text-foreground mb-1.5">
-                  Company
+                  Company / Organization / Institution
                 </label>
                 <input id="q-company" name="company" type="text" autoComplete="organization"
                   className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />

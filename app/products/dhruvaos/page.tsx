@@ -4,7 +4,6 @@ import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
-import { DhruvaDashboard } from './dhruva-dashboard'
 import {
   School,
   Sparkles,
@@ -59,7 +58,7 @@ export const metadata: Metadata = {
     'College Management Software',
     'University Administration System',
     'AI Education Platform',
-    'NeelStack Technologies',
+    'NeelStack',
     'DhruvaOS'
   ],
   alternates: {
@@ -153,7 +152,7 @@ export default function DhruvaOSPage() {
     { question: 'Can it run on our own server?', answer: 'Yes. Our Self-Hosted model allows you to deploy the entire EdOS on your institution\'s internal servers, ensuring absolute data control.' },
     { question: 'Do you support custom domains?', answer: 'Yes. With our White-Label model, you can map portals to your own domain names (e.g. portal.yourschool.edu) and run native apps under your own developer accounts.' },
     { question: 'Do you provide mobile apps?', answer: 'Yes. We deploy native apps for Parents, Teachers, Students, Administrators, and Drivers on both the Apple App Store and Google Play Store.' },
-    { question: 'Can we migrate from our existing ERP?', answer: 'Yes. NeelStack Technologies provides end-to-end data migration. Our engineering team securely transfers student directories, billing archives, and grading cards from your legacy software.' },
+    { question: 'Can we migrate from our existing ERP?', answer: 'Yes. NeelStack provides end-to-end data migration. Our engineering team securely transfers student directories, billing archives, and grading cards from your legacy software.' },
     { question: 'How secure is our data?', answer: 'We employ bank-grade AES-256 encryption at rest, HTTPS/TLS 1.3 in transit, automated backups, role-based access gates, and isolated databases depending on your cloud model.' }
   ]
 
@@ -222,12 +221,6 @@ export default function DhruvaOSPage() {
             </div>
           </div>
 
-          {/* The Dashboard Mockup Element */}
-          <div className="pt-6 max-w-5xl mx-auto">
-            <div className="p-1 rounded-3xl border border-border bg-card/40 shadow-2xl relative">
-              <DhruvaDashboard />
-            </div>
-          </div>
 
         </Container>
       </section>
@@ -573,23 +566,12 @@ export default function DhruvaOSPage() {
 
       {/* ─── Mobile Apps Support ─────────────────────────────────────────────────── */}
       <Section className="py-16 bg-muted/10">
-        <Container className="space-y-8 text-center">
-          <div className="max-w-2xl mx-auto space-y-3">
-            <h2 className="text-2xl font-heading font-bold text-foreground">Native Mobile Platforms</h2>
-            <p className="text-xs text-muted-foreground">
-              Providing dedicated interfaces on iOS & Android for all institutional roles.
+        <Container className="space-y-4 text-center max-w-xl mx-auto">
+          <div className="space-y-2">
+            <h2 className="text-xl font-heading font-bold text-foreground">Unified Mobile App</h2>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              A single native application on iOS & Android dynamically adaptive to all roles — providing tailored views for Parents, Teachers, Students, and Administrators.
             </p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {['Parent App', 'Teacher App', 'Student App', 'Admin App', 'Management App', 'Driver App'].map((app) => (
-              <span
-                key={app}
-                className="px-3.5 py-1.5 rounded-xl border border-border bg-card text-xs font-semibold text-muted-foreground"
-              >
-                {app}
-              </span>
-            ))}
           </div>
         </Container>
       </Section>
@@ -667,7 +649,7 @@ export default function DhruvaOSPage() {
               Why Institutional Directors Select DhruvaOS
             </h2>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              Engineering parameters set by NeelStack Technologies for enterprise safety.
+              Engineering parameters set by NeelStack for enterprise safety.
             </p>
           </div>
 

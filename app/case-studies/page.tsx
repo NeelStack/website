@@ -9,7 +9,7 @@ import { CTASection } from '@/components/ui/cta-section'
 export const metadata: Metadata = {
   title: 'Case Studies',
   description:
-    'Deep dives into how NeelStack Technologies has helped clients solve complex challenges with custom software, AI solutions, and ERP systems.',
+    'Deep dives into how NeelStack has helped clients solve complex challenges with custom software, AI solutions, and ERP systems.',
 }
 
 const CASE_STUDIES = [

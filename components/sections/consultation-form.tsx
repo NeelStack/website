@@ -104,10 +104,10 @@ export function ConsultationForm() {
 
         <div>
           <label htmlFor="c-email" className="block text-sm font-medium text-foreground mb-1.5">
-            Work Email <span aria-hidden="true" className="text-destructive">*</span>
+            Email Address <span aria-hidden="true" className="text-destructive">*</span>
           </label>
           <input id="c-email" name="email" type="email" required autoComplete="email"
-            placeholder="you@company.com"
+            placeholder="you@domain.com"
             className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
         </div>
 

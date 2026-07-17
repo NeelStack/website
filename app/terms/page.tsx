@@ -7,7 +7,7 @@ import { SITE_CONFIG } from '@/constants/site'
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
-    'Terms of Service for NeelStack Technologies — the rules and conditions governing use of our website and services.',
+    'Terms of Service for NeelStack — the rules and conditions governing use of our website and services.',
 }
 
 const LAST_UPDATED = 'July 3, 2026'
@@ -31,21 +31,21 @@ export default function TermsOfServicePage() {
               <p>
                 By accessing or using the website at{' '}
                 <a href={SITE_CONFIG.url} className="text-primary hover:underline">{SITE_CONFIG.url}</a>{' '}
-                or any services offered by NeelStack Technologies Pvt. Ltd. (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;), you agree to be bound by these Terms of Service. If you do not agree, please do not use our website or services.
+                or any services offered by NeelStack Technologies Private Limited (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;), you agree to be bound by these Terms of Service. If you do not agree, please do not use our website or services.
               </p>
             </div>
 
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">2. Services</h2>
               <p>
-                NeelStack Technologies provides custom software development, AI solutions, SaaS products, ERP systems, cloud engineering, and related technology services (&quot;Services&quot;). The specific scope, deliverables, and terms for any engagement are defined in separate written agreements, project proposals, or statements of work (&quot;SOW&quot;) between NeelStack and the client.
+                NeelStack provides custom software development, AI solutions, SaaS products, ERP systems, cloud engineering, and related technology services (&quot;Services&quot;). The specific scope, deliverables, and terms for any engagement are defined in separate written agreements, project proposals, or statements of work (&quot;SOW&quot;) between NeelStack and the client.
               </p>
             </div>
 
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">3. Intellectual Property</h2>
               <p>
-                All content on this website, including text, graphics, logos, and code, is the property of NeelStack Technologies and is protected by applicable intellectual property laws.
+                All content on this website, including text, graphics, logos, and code, is the property of NeelStack and is protected by applicable intellectual property laws.
               </p>
               <p className="mt-3">
                 For client engagements, intellectual property ownership is governed by the specific agreement or SOW. Unless otherwise agreed in writing, source code and deliverables created for a client are transferred to the client upon full payment.
@@ -66,21 +66,21 @@ export default function TermsOfServicePage() {
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">5. Disclaimer of Warranties</h2>
               <p>
-                This website and its content are provided &quot;as is&quot; without any warranties, express or implied. NeelStack Technologies does not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.
+                This website and its content are provided &quot;as is&quot; without any warranties, express or implied. NeelStack does not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.
               </p>
             </div>
 
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">6. Limitation of Liability</h2>
               <p>
-                To the fullest extent permitted by applicable law, NeelStack Technologies shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the website or our services, even if we have been advised of the possibility of such damages.
+                To the fullest extent permitted by applicable law, NeelStack shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the website or our services, even if we have been advised of the possibility of such damages.
               </p>
             </div>
 
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">7. Third-Party Links</h2>
               <p>
-                Our website may contain links to third-party websites. These links are provided for convenience only. NeelStack Technologies has no control over the content of those sites and accepts no responsibility for them.
+                Our website may contain links to third-party websites. These links are provided for convenience only. NeelStack has no control over the content of those sites and accepts no responsibility for them.
               </p>
             </div>
 

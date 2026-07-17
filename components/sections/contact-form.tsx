@@ -129,7 +129,7 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
-            Work Email <span aria-hidden="true" className="text-destructive">*</span>
+            Email Address <span aria-hidden="true" className="text-destructive">*</span>
           </label>
           <input
             id="email"
@@ -137,21 +137,21 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            placeholder="rajesh@company.com"
+            placeholder="rajesh@domain.com"
             className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
           />
         </div>
 
         <div>
           <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1.5">
-            Company / Organization
+            Company / Organization / Institution
           </label>
           <input
             id="company"
             name="company"
             type="text"
             autoComplete="organization"
-            placeholder="Acme Corp"
+            placeholder="e.g. Acme Corp or School Name"
             className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
           />
         </div>

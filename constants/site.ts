@@ -1,9 +1,10 @@
 export const SITE_CONFIG = {
-  name: 'NeelStack Technologies',
+  name: 'NeelStack',
   shortName: 'NeelStack',
+  fullName: 'NeelStack Technologies Private Limited',
   tagline: 'Building the Future of Enterprise Software',
   description:
-    'NeelStack Technologies builds enterprise software, AI solutions, SaaS products, ERP systems, and custom applications for startups, SMBs, enterprises, healthcare, government, and organizations worldwide.',
+    'NeelStack builds enterprise software, AI solutions, SaaS products, ERP systems, and custom applications for startups, SMBs, enterprises, healthcare, government, and organizations worldwide.',
   url: 'https://neelstack.com',
   email: {
     general: 'contact@neelstack.com',
@@ -21,10 +22,10 @@ export const SITE_CONFIG = {
   },
   social: {
     twitter: 'https://x.com/neelstack',
-    linkedin: 'https://linkedin.com/company/neelstack',
+    linkedin: 'https://www.linkedin.com/company/neelstack',
     github: 'https://github.com/neelstack',
-    youtube: 'https://youtube.com/@neelstack',
-    instagram: 'https://instagram.com/neelstack',
+    youtube: 'https://www.youtube.com/@NeelStack',
+    instagram: 'https://www.instagram.com/_neelstack/',
   },
 } as const
 

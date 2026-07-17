@@ -7,7 +7,7 @@ import { SITE_CONFIG } from '@/constants/site'
 export const metadata: Metadata = {
   title: 'Refund and Cancellation Policy',
   description:
-    'Refund and cancellation policy for NeelStack Technologies — terms governing service cancellations, consultations, and product refunds.',
+    'Refund and cancellation policy for NeelStack — terms governing service cancellations, consultations, and product refunds.',
 }
 
 const LAST_UPDATED = 'July 4, 2026'
@@ -28,7 +28,7 @@ export default function RefundPolicyPage() {
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">1. Scope of Policy</h2>
               <p>
-                This Refund and Cancellation Policy governs the services, customized software development projects, technical consultations, and software-as-a-service (SaaS) subscriptions provided by NeelStack Technologies Pvt. Ltd. (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;).
+                This Refund and Cancellation Policy governs the services, customized software development projects, technical consultations, and software-as-a-service (SaaS) subscriptions provided by NeelStack Technologies Private Limited (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;).
               </p>
             </div>
 

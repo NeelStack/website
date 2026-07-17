@@ -8,7 +8,7 @@ import { ConsultationForm } from '@/components/sections/consultation-form'
 export const metadata: Metadata = {
   title: 'Book a Consultation',
   description:
-    'Schedule a free 30-minute consultation with the NeelStack Technologies team. Discuss your project, get expert advice, and explore how we can help.',
+    'Schedule a free 30-minute consultation with the NeelStack team. Discuss your project, get expert advice, and explore how we can help.',
 }
 
 const CONSULTATION_BENEFITS = [

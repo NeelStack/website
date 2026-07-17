@@ -113,7 +113,7 @@ export function HeroSection() {
 
           {/* ── Subheading ── */}
           <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-xl text-pretty">
-            NeelStack Technologies designs and delivers enterprise software, AI solutions, SaaS
+            NeelStack designs and delivers enterprise software, AI solutions, SaaS
             products, ERP systems, and mobile &amp; web applications — engineered for scale.
           </p>
 

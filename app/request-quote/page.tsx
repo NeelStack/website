@@ -7,7 +7,7 @@ import { QuoteForm } from '@/components/sections/quote-form'
 export const metadata: Metadata = {
   title: 'Request a Quote',
   description:
-    'Get a free, no-obligation project estimate from NeelStack Technologies. Fill out our brief and we will respond within 3–5 business days.',
+    'Get a free, no-obligation project estimate from NeelStack. Fill out our brief and we will respond within 3–5 business days.',
 }
 
 const PROJECT_TYPES = [
