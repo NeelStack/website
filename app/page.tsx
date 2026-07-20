@@ -56,6 +56,7 @@ export default function HomePage() {
   
   // Roadmap items
   const roadmapProducts = [
+    { title: 'ToolVines', type: 'Productivity Platform', desc: 'Browser-based productivity platform providing PDF, image, video, and document utility tools.', status: 'Live & Deployed', color: 'border-blue-500/25 bg-blue-500/5 text-blue-700 dark:text-blue-400 text-xs' },
     { title: 'DhruvaOS', type: 'Education Platform', desc: 'AI-Powered Education Operating System for schools, colleges, and academic trusts.', status: 'Launching Soon', color: 'border-amber-500/25 bg-amber-500/5 text-amber-700 dark:text-amber-400 text-xs' },
     { title: 'HealthOS', type: 'Healthcare Platform', desc: 'Clinical workflow automation, patient charts, and AI medical assistants.', status: 'Research & Planning', color: 'border-purple-500/25 bg-purple-500/5 text-purple-700 dark:text-purple-400 text-xs' },
     { title: 'PharmaOS', type: 'Pharmacy Platform', desc: 'Inventory trackers, drug interactions databases, and smart sales workflows.', status: 'Concept Validation', color: 'border-cyan-500/25 bg-cyan-500/5 text-cyan-700 dark:text-cyan-400 text-xs' },
@@ -173,17 +174,41 @@ export default function HomePage() {
           <div className="pt-10 max-w-3xl mx-auto">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { label: 'Clients Served', value: '6+', sub: 'Across education & pharma' },
-                { label: 'Live Products', value: '1', sub: 'ToolVines — live now' },
-                { label: 'Services Offered', value: '13+', sub: 'Custom software services' },
-                { label: 'In Development', value: '2+', sub: 'DhruvaOS & more' },
-              ].map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-border/60 bg-card shadow-sm dark:bg-card/40 backdrop-blur-sm p-5 text-center flex flex-col gap-1">
-                  <span className="font-heading text-3xl font-extrabold text-foreground">{stat.value}</span>
-                  <span className="text-xs font-semibold text-primary">{stat.label}</span>
-                  <span className="text-xs text-muted-foreground">{stat.sub}</span>
-                </div>
-              ))}
+                { label: 'Clients Served', value: '6+', sub: 'Across education & pharma', icon: HeartHandshake, color: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20' },
+                { label: 'Live Products', value: '1', sub: 'ToolVines — live now', icon: Sparkles, color: 'text-blue-500 bg-blue-500/10 border-blue-500/20', isLive: true },
+                { label: 'Services Offered', value: '13+', sub: 'Custom software services', icon: Laptop, color: 'text-violet-500 bg-violet-500/10 border-violet-500/20' },
+                { label: 'In Development', value: '2+', sub: 'DhruvaOS & more', icon: Boxes, color: 'text-amber-500 bg-amber-500/10 border-amber-500/20', isDev: true },
+              ].map((stat) => {
+                const Icon = stat.icon
+                return (
+                  <div key={stat.label} className="group relative rounded-2xl border border-border bg-card/50 hover:bg-card shadow-sm dark:bg-card/25 backdrop-blur-sm p-5 flex flex-col gap-3 card-hover hover:-translate-y-1 hover:border-primary/30 transition-all duration-300">
+                    <div className="flex items-center justify-between">
+                      <span className="font-heading text-3xl font-extrabold text-foreground tracking-tight">{stat.value}</span>
+                      <span className={`flex h-8 w-8 items-center justify-center rounded-lg border ${stat.color}`}>
+                        <Icon className="h-4 w-4" />
+                      </span>
+                    </div>
+                    <div className="text-left">
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-xs font-bold text-foreground">{stat.label}</span>
+                        {stat.isLive && (
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                          </span>
+                        )}
+                        {stat.isDev && (
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500"></span>
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[10px] text-muted-foreground mt-0.5 leading-tight">{stat.sub}</p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
 
@@ -221,7 +246,7 @@ export default function HomePage() {
                 Corporate website and digital presence for a pharmaceutical company involved in product development, branding, and healthcare distribution.
               </p>
               <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
-                ⏳ Delivering This Month
+                ⏳ Delivering Soon
               </span>
             </div>
 
@@ -240,7 +265,7 @@ export default function HomePage() {
                 Custom school management platform covering institutional operations, student data, and parent communication workflows.
               </p>
               <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
-                ⏳ Delivering This Month
+                ⏳ Delivering Soon
               </span>
             </div>
 
@@ -259,7 +284,7 @@ export default function HomePage() {
                 Digital school management system for admissions, attendance, fee collection, and parent engagement.
               </p>
               <span className="inline-flex w-fit items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-700 dark:text-amber-400">
-                ⏳ Delivering This Month
+                ⏳ Delivering Soon
               </span>
             </div>
           </div>
@@ -446,6 +471,17 @@ export default function HomePage() {
                   </p>
                 </div>
 
+                {p.title === 'ToolVines' && (
+                  <div className="pt-4 mt-4 border-t border-border/40 flex justify-end">
+                    <Link
+                      href="/products/toolvines"
+                      className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 flex items-center gap-1 transition-colors group hover:text-blue-900 dark:hover:text-blue-300"
+                    >
+                      View Product
+                      <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                )}
                 {p.title === 'DhruvaOS' && (
                   <div className="pt-4 mt-4 border-t border-border/40 flex justify-end">
                     <Link

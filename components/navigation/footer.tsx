@@ -170,7 +170,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-border py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground text-center md:text-left">
-            &copy; {currentYear} NeelStack Technologies Private Limited. All rights reserved.
+            &copy; {currentYear} NeelStack Solutions Private Limited. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link

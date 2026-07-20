@@ -31,7 +31,7 @@ export default function TermsOfServicePage() {
               <p>
                 By accessing or using the website at{' '}
                 <a href={SITE_CONFIG.url} className="text-primary hover:underline">{SITE_CONFIG.url}</a>{' '}
-                or any services offered by NeelStack Technologies Private Limited (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;), you agree to be bound by these Terms of Service. If you do not agree, please do not use our website or services.
+                or any services offered by NeelStack Solutions Private Limited (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;), you agree to be bound by these Terms of Service. If you do not agree, please do not use our website or services.
               </p>
             </div>
 

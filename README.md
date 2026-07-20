@@ -1,4 +1,4 @@
-# NeelStack Technologies — Corporate Website
+# NeelStack Solutions — Corporate Website
 
 Official marketing site and client portal for NeelStack. Built on Next.js (App Router), React, and Tailwind CSS. Representing our identity as an early-stage, transparent, AI-first software company based in India.
 

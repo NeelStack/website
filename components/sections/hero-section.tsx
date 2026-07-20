@@ -119,7 +119,7 @@ export function HeroSection() {
 
           {/* ── CTAs ── */}
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-1">
-            <Button asChild size="lg" className="gap-2 glow-cta px-7">
+            <Button asChild variant="gradient" size="lg" className="gap-2 glow-cta px-7">
               <Link href="/request-quote">
                 Get a Free Quote
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />

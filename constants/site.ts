@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: 'NeelStack',
   shortName: 'NeelStack',
-  fullName: 'NeelStack Technologies Private Limited',
+  fullName: 'NeelStack Solutions Private Limited',
   tagline: 'Building the Future of Enterprise Software',
   description:
     'NeelStack builds enterprise software, AI solutions, SaaS products, ERP systems, and custom applications for startups, SMBs, enterprises, healthcare, government, and organizations worldwide.',
