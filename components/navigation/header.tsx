@@ -246,7 +246,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           <Button asChild variant="outline" className="w-full">
             <Link href="/contact" onClick={onClose}>Contact Us</Link>
           </Button>
-          <Button asChild className="w-full">
+          <Button asChild variant="gradient" className="w-full">
             <Link href="/request-quote" onClick={onClose}>Get a Quote</Link>
           </Button>
         </div>
@@ -357,7 +357,7 @@ export function Header() {
             >
               Contact
             </Link>
-            <Button asChild size="sm" className="glow-cta">
+            <Button asChild variant="gradient" size="sm" className="glow-cta">
               <Link href="/request-quote">Get a Quote</Link>
             </Button>
           </div>

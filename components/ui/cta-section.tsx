@@ -72,7 +72,7 @@ export function CTASection({
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="gap-2 px-8 glow-cta">
+              <Button asChild variant="gradient" size="lg" className="gap-2 px-8 glow-cta">
                 <Link href={primaryHref}>
                   {primaryLabel}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

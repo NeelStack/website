@@ -78,9 +78,9 @@ const WHY_NEELSTACK = [
 
 const JOURNEY = [
   { status: 'live', name: 'ToolVines', detail: 'Browser-based utility platform providing PDF, image, video, annotation and document tools with AI-powered features — built for individuals, professionals, and businesses who need fast, no-install browser utilities.', label: 'Live (2026)' },
-  { status: 'launching', name: 'Lifeasia Pharma Website', detail: 'Corporate website for Lifeasia Pharma — a pharmaceutical company that develops, brands, markets, and distributes healthcare products while partnering with certified third-party manufacturers for product development.', label: 'Delivering This Month' },
-  { status: 'launching', name: 'K.D. Singh Public School', detail: 'Custom school management and digital presence solution for K.D. Singh Public School, Gorakhpur — covering institutional operations, student management, and communication workflows.', label: 'Delivering This Month' },
-  { status: 'launching', name: 'New Model Convent School', detail: 'Digital platform and school management system for New Model Convent School, Ghazipur — streamlining admissions, attendance, fee management, and parent communication.', label: 'Delivering This Month' },
+  { status: 'launching', name: 'Lifeasia Pharma Website', detail: 'Corporate website for Lifeasia Pharma — a pharmaceutical company that develops, brands, markets, and distributes healthcare products while partnering with certified third-party manufacturers for product development.', label: 'Delivering Soon' },
+  { status: 'launching', name: 'K.D. Singh Public School', detail: 'Custom school management and digital presence solution for K.D. Singh Public School, Gorakhpur — covering institutional operations, student management, and communication workflows.', label: 'Delivering Soon' },
+  { status: 'launching', name: 'New Model Convent School', detail: 'Digital platform and school management system for New Model Convent School, Ghazipur — streamlining admissions, attendance, fee management, and parent communication.', label: 'Delivering Soon' },
   { status: 'launching', name: 'DhruvaOS', detail: 'AI-powered School Management & Education Operating System. Covers admissions, attendance, fee collection, timetables, teacher tools, parent communication, and AI-driven institutional analytics for schools, colleges, and coaching institutes.', label: 'Launching Soon' },
   { status: 'dev', name: 'NaukariMitra', detail: 'AI-powered government job preparation platform providing exam guidance, mock tests, previous papers, study resources and personalized learning assistance.', label: 'In Development' },
   { status: 'dev', name: 'SarkariMitra', detail: 'AI-powered citizen assistance platform helping people discover government schemes, benefits, public services, eligibility criteria, required documents and application guidance through conversational AI.', label: 'In Development' },
@@ -129,9 +129,9 @@ const LEADERSHIP = [
   },
   {
     name: 'Neelam Chaurasiya',
-    role: 'HR Manager',
-    bio: 'Handles human resources, team coordination, and people operations to support NeelStack\'s growing team.',
-    category: 'hr',
+    role: 'Co-founder & Business Operations',
+    bio: 'Co-directs corporate strategy, business operations, and organizational planning to drive NeelStack\'s growth and product delivery.',
+    category: 'leadership',
     // github: 'https://github.com/your-username',
     // linkedin: 'https://linkedin.com/in/your-username',
   },
@@ -265,7 +265,7 @@ export default function AboutPage() {
                       person.category === 'hr' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' :
                       'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                     }`}>
-                      {person.category === 'leadership' ? 'Founder' : person.category === 'engineering' ? 'Engineering' : person.category === 'hr' ? 'HR' : 'Business'}
+                      {person.category === 'leadership' ? 'Leadership' : person.category === 'engineering' ? 'Engineering' : person.category === 'hr' ? 'HR' : 'Business'}
                     </div>
                     <h3 className="font-heading text-base font-bold text-foreground">{person.name}</h3>
                     <p className="text-xs font-semibold text-primary uppercase tracking-wide mt-1">

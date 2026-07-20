@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">1. Introduction</h2>
               <p>
-                NeelStack Technologies Private Limited (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your personal information. This Privacy Policy explains what data we collect, how we use it, and your rights when you visit{' '}
+                NeelStack Solutions Private Limited (&quot;NeelStack&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your personal information. This Privacy Policy explains what data we collect, how we use it, and your rights when you visit{' '}
                 <a href={SITE_CONFIG.url} className="text-primary hover:underline">{SITE_CONFIG.url}</a> or interact with our services.
               </p>
               <p className="mt-3">
