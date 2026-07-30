@@ -5,58 +5,30 @@ import { Container } from '@/components/ui/container'
 import { QuoteForm } from '@/components/sections/quote-form'
 
 export const metadata: Metadata = {
-  title: 'Request a Quote',
+  title: 'Request a Quote — Project Estimate & Proposal',
   description:
-    'Get a free, no-obligation project estimate from NeelStack. Fill out our brief and we will respond within 3–5 business days.',
+    'Get a free, no-obligation custom software estimate from NeelStack. Base currency USD ($) with automatic local currency conversion (₹ INR, € EUR, £ GBP, AED). We respond within 1 business day.',
+  alternates: {
+    canonical: '/request-quote',
+  },
 }
-
-const PROJECT_TYPES = [
-  'Custom Software Development',
-  'AI / Machine Learning Integration',
-  'ERP System',
-  'SaaS Platform',
-  'Mobile Application',
-  'Web Application',
-  'Cloud Infrastructure',
-  'API Development',
-  'UI/UX Design',
-  'Software Modernization',
-  'Consulting / Strategy',
-  'Other',
-]
-
-const BUDGET_RANGES = [
-  'Under ₹5 Lakhs',
-  '₹5 – ₹15 Lakhs',
-  '₹15 – ₹50 Lakhs',
-  '₹50 Lakhs – ₹1 Crore',
-  'Above ₹1 Crore',
-  'Not sure yet',
-]
-
-const TIMELINES = [
-  'ASAP (1–4 weeks)',
-  '1–3 months',
-  '3–6 months',
-  '6–12 months',
-  'Ongoing / Long-term',
-  'Flexible',
-]
 
 export default function RequestQuotePage() {
   return (
     <MarketingLayout>
       <PageHero
-        badge="Get a quote"
+        badge="Custom Software & AI Estimates"
         title="Tell Us About Your Project"
-        description="Fill out the brief below and our team will review your requirements and send a detailed proposal within 3–5 business days. No commitment required."
+        description="Submit your project brief below. Our technical architects will evaluate your scope, architecture, and timeline, and deliver a detailed proposal within 1 business day."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Request a Quote' }]}
       />
 
       <section className="py-16" aria-labelledby="quote-form-heading">
         <Container>
-          <div className="max-w-2xl mx-auto">
-            <h2 id="quote-form-heading" className="sr-only">Project inquiry form</h2>
+          <div className="max-w-3xl mx-auto">
+            <h2 id="quote-form-heading" className="sr-only">
+              Project inquiry form
+            </h2>
             <QuoteForm />
           </div>
         </Container>

@@ -1,24 +1,19 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { CopyEmailButton } from '@/components/ui/copy-email-button'
-import { CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react'
+import { CheckCircle2, AlertCircle, RefreshCw, DollarSign } from 'lucide-react'
+import { useCurrency } from '@/components/providers/currency-provider'
 
 const PROJECT_TYPES = [
   'Custom Software Development',
   'AI / Machine Learning Integration',
-  'Product Design & Strategy',
-  'Technical Partnership Request',
-  'General Partnership Inquiry',
-  'Other Inquiries',
-]
-
-const BUDGET_RANGES = [
-  'Less than $5,000',
-  '$5,000 - $15,000',
-  '$15,000 - $35,000',
-  '$35,000+',
+  'Web Application & SaaS Engineering',
+  'Mobile Application Development',
+  'Website Performance & UX Audit',
+  'Technical Strategy & Architecture',
+  'Other',
 ]
 
 const TIMELINES = [
@@ -32,6 +27,14 @@ export function QuoteForm() {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const { config } = useCurrency()
+
+  const budgetOptions = [
+    { value: 'under-100', label: config.formatOptions.under100 },
+    { value: '100-1000', label: config.formatOptions.range100To1000 },
+    { value: '1000-5000', label: config.formatOptions.range1000To5000 },
+    { value: '5000-plus', label: config.formatOptions.above5000 },
+  ]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -44,7 +47,7 @@ export function QuoteForm() {
     const email = formData.get('email') as string
     const company = formData.get('company') as string
     const projectType = formData.get('project-type') as string
-    const budget = formData.get('budget') as string
+    const budgetValue = formData.get('budget') as string
     const timeline = formData.get('timeline') as string
     const description = formData.get('description') as string
 
@@ -53,6 +56,11 @@ export function QuoteForm() {
       setSubmitting(false)
       return
     }
+
+    const selectedOption = budgetOptions.find((b) => b.value === budgetValue)
+    const budgetLabel = selectedOption
+      ? `${selectedOption.label} (${config.code})`
+      : budgetValue
 
     try {
       const response = await fetch('/api/contact', {
@@ -64,7 +72,8 @@ export function QuoteForm() {
           email,
           company,
           projectType,
-          budget,
+          budget: budgetLabel,
+          currency: config.code,
           timeline,
           description,
         }),
@@ -91,7 +100,7 @@ export function QuoteForm() {
         </div>
         <h3 className="font-heading text-lg font-semibold text-foreground">Quote Request Received!</h3>
         <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-          Thank you for request. We have received your project details. Our solutions architect will review the requirements and respond within 3–5 business days with a detailed proposal.
+          Thank you for your request. Our senior engineering team will review your requirements and respond within 1 business day with a detailed architecture proposal and estimate.
         </p>
         <div className="pt-2">
           <Button type="button" variant="outline" size="sm" onClick={() => setSuccess(false)}>
@@ -103,7 +112,12 @@ export function QuoteForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+    <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 md:p-10 shadow-lg">
+      <div className="pb-6 mb-6 border-b border-border/60">
+        <h3 className="font-heading text-lg font-bold text-foreground">Get a Custom Project Estimate</h3>
+        <p className="text-xs text-muted-foreground mt-0.5">Fill out your project brief for a response within 1 business day.</p>
+      </div>
+
       {error && (
         <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-4 mb-6 flex items-start gap-3">
           <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
@@ -161,12 +175,12 @@ export function QuoteForm() {
           </div>
         </fieldset>
 
-        <hr className="border-border" aria-hidden="true" />
+        <hr className="border-border/60" aria-hidden="true" />
 
         {/* Project details */}
         <fieldset>
           <legend className="font-heading text-base font-semibold text-foreground mb-4">
-            Project Details
+            Project & Budget Brief
           </legend>
           <div className="space-y-4">
             <div>
@@ -179,16 +193,23 @@ export function QuoteForm() {
                 {PROJECT_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
+
+            {/* Task 1 & 2 — Dynamic Currency converted budget options */}
             <div>
               <label htmlFor="q-budget" className="block text-sm font-medium text-foreground mb-1.5">
                 Estimated Budget
               </label>
               <select id="q-budget" name="budget"
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
-                <option value="">Select budget range</option>
-                {BUDGET_RANGES.map((b) => <option key={b} value={b}>{b}</option>)}
+                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring font-medium">
+                <option value="">Select estimated budget</option>
+                {budgetOptions.map((b) => (
+                  <option key={b.value} value={b.value}>
+                    {b.label}
+                  </option>
+                ))}
               </select>
             </div>
+
             <div>
               <label htmlFor="q-timeline" className="block text-sm font-medium text-foreground mb-1.5">
                 Expected Timeline
@@ -199,25 +220,32 @@ export function QuoteForm() {
                 {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
+
             <div>
               <label htmlFor="q-description" className="block text-sm font-medium text-foreground mb-1.5">
                 Project Description <span aria-hidden="true" className="text-destructive">*</span>
               </label>
-              <textarea id="q-description" name="description" required rows={6}
-                placeholder="Describe your project, the problem you are solving, and any specific requirements or constraints..."
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none animate-none" />
+              <textarea id="q-description" name="description" required rows={5}
+                placeholder="Describe your project goals, required features, key deliverables, and constraints..."
+                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
             </div>
           </div>
         </fieldset>
 
-        <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+        {/* SLA Guarantee callout */}
+        <div className="flex items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-xs sm:text-sm text-emerald-400 font-medium">
+          <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span>Guarantee: We review every proposal brief and respond within 1 business day.</span>
+        </div>
+
+        <Button type="submit" size="lg" variant="gradient" className="w-full glow-cta" disabled={submitting}>
           {submitting ? (
             <>
               <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-              Submitting...
+              Submitting Proposal Brief...
             </>
           ) : (
-            'Submit Request'
+            'Submit Quote Request'
           )}
         </Button>
 
@@ -227,7 +255,7 @@ export function QuoteForm() {
         </p>
 
         <p className="text-xs text-muted-foreground text-center mt-3">
-          We will review your request and respond within 3–5 business days. Using webmail? Click to <CopyEmailButton />.
+          Prefer email directly? <CopyEmailButton />.
         </p>
       </form>
     </div>

@@ -15,9 +15,9 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Careers',
+  title: 'Careers at NeelStack — Join Our Engineering Team',
   description:
-    'Build with NeelStack. Although we are not actively hiring today, we are always looking to connect with high-agency engineers and designers.',
+    'Build with NeelStack. Although we are not actively hiring today, we are always looking to connect with high-agency engineers and designers who build with ownership and velocity.',
 }
 
 const VALUES_BUILDERS = [
