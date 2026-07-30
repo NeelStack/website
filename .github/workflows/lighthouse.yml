@@ -30,8 +30,11 @@ jobs:
       - name: Run Lighthouse CI Audit
         uses: treosh/lighthouse-ci-action@v11
         with:
+          serverBaseUrl: ''
+          serverToken: ''
           urls: |
             http://localhost:3000/
             http://localhost:3000/services
             http://localhost:3000/products
           budgetPath: ./lighthouse-budget.json
+          command: pnpm run start
