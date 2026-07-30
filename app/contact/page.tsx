@@ -9,9 +9,9 @@ import { SITE_CONFIG } from '@/constants/site'
 import { ContactForm } from '@/components/sections/contact-form'
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact NeelStack — Start Your Custom Software Project',
   description:
-    'Get in touch with NeelStack. Reach us for custom software builds, AI integration inquiries, or general partnership questions.',
+    'Get in touch with NeelStack. Reach us for custom software builds, AI agent development, SaaS engineering, or general partnership inquiries. We respond within 1 business day.',
 }
 
 interface ContactLine {

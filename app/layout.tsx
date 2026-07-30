@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site-url'
+import { JsonLd } from '@/components/seo/json-ld'
+import { CurrencyProvider } from '@/components/providers/currency-provider'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,14 +48,13 @@ export const metadata: Metadata = {
   authors: [{ name: 'NeelStack', url: 'https://neelstack.com' }],
   creator: 'NeelStack',
   publisher: 'NeelStack',
-  // SEO fix: canonical link — resolves "Canonical link not found" audit warning
   alternates: {
-    canonical: 'https://neelstack.com',
+    canonical: getSiteUrl(),
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://neelstack.com',
+    url: getSiteUrl(),
     siteName: 'NeelStack',
     title: 'NeelStack | Enterprise AI & Software Solutions',
     description:
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'NeelStack',
+        alt: 'NeelStack — Enterprise AI & Software Solutions',
       },
     ],
   },
@@ -117,8 +118,61 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const t = localStorage.getItem('theme');
+                if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                } else if (t === 'light') {
+                  document.documentElement.classList.remove('dark');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="font-sans antialiased min-h-screen" suppressHydrationWarning>
-        {children}
+        {/* Skip-to-content: WCAG 2.4.1 — visible only on keyboard focus */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-xl focus:bg-primary focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
+        {/* Organization JSON-LD Structured Data */}
+        <JsonLd
+          data={{
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'NeelStack Solutions Private Limited',
+            url: getSiteUrl(),
+            logo: `${getSiteUrl()}/icon.svg`,
+            description:
+              'NeelStack designs, develops, and delivers enterprise software, AI solutions, SaaS products, and custom applications.',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Gorakhpur',
+              addressRegion: 'Uttar Pradesh',
+              addressCountry: 'IN',
+            },
+            sameAs: [
+              'https://x.com/neelstack',
+              'https://linkedin.com/company/neelstack',
+              'https://github.com/neelstack',
+            ],
+            contactPoint: {
+              '@type': 'ContactPoint',
+              email: 'contact@neelstack.com',
+              contactType: 'customer service',
+            },
+          }}
+        />
+        <CurrencyProvider>
+          {children}
+        </CurrencyProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

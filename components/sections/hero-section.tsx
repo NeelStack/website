@@ -1,26 +1,31 @@
+'use client'
+
 import Link from 'next/link'
-import { ArrowRight, ExternalLink, Play, Zap } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Zap, ShieldCheck, Clock, Cpu, Sparkles, Building, Briefcase, GraduationCap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
-import { SITE_CONFIG } from '@/constants/site'
+import { useCurrency } from '@/components/providers/currency-provider'
 
 const trustedBy = [
-  'Startups',
-  'Healthcare Orgs',
-  'Gov Agencies',
-  'Universities',
-  'Enterprises',
-  'Pharma Companies',
+  { name: 'Startups', color: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+  { name: 'Healthcare Orgs', color: 'text-rose-600 dark:text-rose-400 bg-rose-500/10 border-rose-500/20' },
+  { name: 'Gov Agencies', color: 'text-amber-600 dark:text-amber-400 bg-amber-500/10 border-amber-500/20' },
+  { name: 'Universities', color: 'text-blue-600 dark:text-blue-400 bg-blue-500/10 border-blue-500/20' },
+  { name: 'Enterprises', color: 'text-violet-600 dark:text-violet-400 bg-violet-500/10 border-violet-500/20' },
+  { name: 'Pharma Companies', color: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border-cyan-500/20' },
 ]
 
 export function HeroSection() {
+  const { config } = useCurrency()
+
   return (
     <section
-      className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-36"
+      className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32"
       aria-label="Hero section"
     >
       {/* ── Background grid ── */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40" aria-hidden="true" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-15" aria-hidden="true" />
 
       {/* ── Mesh gradient backdrop ── */}
       <div className="absolute inset-0 bg-mesh-gradient" aria-hidden="true" />
@@ -30,98 +35,46 @@ export function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background: [
-            'radial-gradient(ellipse 80% 55% at 50% -5%, #3b82f628 0%, transparent 60%)',
-            'radial-gradient(ellipse 45% 35% at 75% 8%, #06b6d416 0%, transparent 55%)',
+            'radial-gradient(ellipse 80% 55% at 50% -5%, rgba(59, 130, 246, 0.22) 0%, transparent 60%)',
+            'radial-gradient(ellipse 45% 35% at 75% 8%, rgba(6, 182, 212, 0.16) 0%, transparent 55%)',
           ].join(', '),
         }}
         aria-hidden="true"
       />
 
-      {/* ── Floating decorative orbs (CSS only) ── */}
-      <div
-        className="absolute top-24 left-[8%] w-56 h-56 rounded-full animate-float-slow pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, #3b82f60f 0%, transparent 70%)',
-          filter: 'blur(32px)',
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-40 right-[5%] w-72 h-72 rounded-full animate-float-delayed pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, #06b6d40c 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-10 left-[30%] w-64 h-64 rounded-full animate-float pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, #8b5cf60a 0%, transparent 70%)',
-          filter: 'blur(36px)',
-        }}
-        aria-hidden="true"
-      />
-
-      {/* ── Secondary teal ambient orb ── */}
-      <div
-        className="absolute bottom-0 right-0 w-[640px] h-[420px] pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 65% 55% at 80% 100%, #06b6d40e 0%, transparent 70%)',
-        }}
-        aria-hidden="true"
-      />
+      {/* Floating Aurora Orbs */}
+      <div className="absolute top-20 left-[5%] w-72 h-72 rounded-full aurora-orb-blue pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-36 right-[6%] w-80 h-80 rounded-full aurora-orb-violet pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-20 left-[25%] w-96 h-96 rounded-full aurora-orb-cyan pointer-events-none" aria-hidden="true" />
 
       <Container className="relative z-10">
-        <div className="flex flex-col items-center text-center gap-7 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center text-center gap-7 max-w-5xl mx-auto">
 
-          {/* ── ToolVines announcement bar ── */}
-          <Link
-            href="https://toolvines.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2.5 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-4 py-2 text-sm font-medium text-emerald-300 hover:border-emerald-400/50 hover:bg-emerald-500/12 transition-all duration-300 animate-float"
-            aria-label="ToolVines is now live"
-          >
-            <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
-            <span>
-              <span className="font-semibold">ToolVines is live</span>
-              {' '}— our first product, deployed & growing
-            </span>
-            <ExternalLink className="h-3.5 w-3.5 opacity-70 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
-          </Link>
-
-          {/* ── Pre-heading badge ── */}
-          <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary shadow-[0_0_20px_oklch(0.62_0.22_258/18%)]">
+          {/* Pre-heading badge */}
+          <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/35 bg-primary/10 px-4 py-1.5 text-xs sm:text-sm font-semibold text-primary shadow-[0_0_20px_rgba(70,166,252,0.15)]">
             <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
             </span>
-            Ambitious AI Software Startup
+            Enterprise Software &amp; AI Engineering
           </span>
 
-          {/* ── Main heading with stagger ── */}
-          <h1 className="font-heading text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl text-balance">
-            Building the{' '}
-            <span className="text-gradient-brand">Future</span>
-            {' '}of{' '}
-            <span className="text-gradient">Enterprise Software</span>
+          {/* Main Display Headline */}
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-extrabold tracking-tight text-foreground text-balance leading-[1.08]">
+            We Build <span className="text-gradient-brand">Websites</span>,{' '}
+            <span className="text-gradient-fashion">Mobile Apps</span>,{' '}
+            <span className="text-gradient">AI Solutions</span> &amp; Custom Software
           </h1>
 
-          {/* ── Subheading ── */}
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground md:text-xl text-pretty">
-            NeelStack designs and delivers enterprise software, AI solutions, SaaS
-            products, ERP systems, and mobile &amp; web applications — engineered for scale.
+          <p className="max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground text-pretty">
+            From startups to enterprise platforms, we design, develop, and scale high-performance digital products using AI, modern engineering, and cloud technologies.
           </p>
 
-          {/* ── CTAs ── */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-1">
-            <Button asChild variant="gradient" size="lg" className="gap-2 glow-cta px-7">
-              <Link href="/request-quote">
-                Get a Free Quote
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
+            <Button asChild variant="gradient" size="lg" className="glow-cta px-8 text-base">
+              <Link href="/book-consultation">
+                Get Free Consultation
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
@@ -129,38 +82,91 @@ export function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="gap-2 hover:border-primary/40 hover:text-primary transition-colors"
+              className="gap-2 border-amber-500/40 hover:border-amber-400 hover:bg-amber-500/10 text-amber-600 dark:text-amber-400 transition-colors text-base font-semibold"
             >
-              <Link href="/portfolio">
-                <Play className="h-4 w-4" aria-hidden="true" />
-                View Our Work
+              <Link href="/request-quote">
+                Get Website Audit @ {config.auditPriceFormatted}
+                <Zap className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </div>
 
-          {/* ── DhruvaOS beta notice ── */}
-          <Link
-            href="/products/dhruvaos"
-            className="group inline-flex items-center gap-2 rounded-full border border-amber-500/25 bg-amber-500/8 px-4 py-1.5 text-xs font-medium text-amber-300 hover:border-amber-400/40 hover:bg-amber-500/12 transition-all duration-300"
+          {/* Modernized DhruvaOS Ticket Card */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="w-full max-w-xl rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-500/10 to-rose-500/10 p-4 shadow-[0_4px_24px_rgba(245,158,11,0.08)] backdrop-blur-sm relative overflow-hidden"
           >
-            <Zap className="h-3.5 w-3.5 animate-pulse" aria-hidden="true" />
-            <span>DhruvaOS — AI-Powered Education Operating System Beta drops <strong>July 15</strong></span>
-            <ArrowRight className="h-3 w-3 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" aria-hidden="true" />
-          </Link>
-
-          {/* ── Trusted by ── */}
-          <div className="mt-6 flex flex-col items-center gap-4 w-full">
-            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              Serving industries across
+            <div className="flex items-center justify-between gap-3 text-left">
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500" />
+                </span>
+                <span className="text-xs sm:text-sm font-bold text-foreground">
+                  DhruvaOS Beta Launch — <span className="text-amber-500">August 15</span>
+                </span>
+              </div>
+              <Link
+                href="/products/dhruvaos"
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-500 hover:text-amber-400 transition-colors shrink-0"
+              >
+                Explore EdOS
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+            <p className="text-[11px] text-muted-foreground text-left mt-1">
+              AI-Powered operating system managing admissions, fee records, student data, and parent communications.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-2.5">
-              {trustedBy.map((item, i) => (
+          </motion.div>
+
+          {/* Modernized Proof & Engineering Guarantee Micro-Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl mt-4 pt-6 border-t border-border/40">
+            {/* Guarantee 1 */}
+            <div className="flex items-center gap-3 p-3 rounded-xl border border-blue-500/20 bg-blue-500/5 dark:bg-blue-950/10 text-left">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-500">
+                <ShieldCheck className="h-4.5 w-4.5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-foreground leading-snug">Enterprise Security</h4>
+                <p className="text-[10px] text-muted-foreground leading-tight">Built-in role auth &amp; data encryption</p>
+              </div>
+            </div>
+
+            {/* Guarantee 2 */}
+            <div className="flex items-center gap-3 p-3 rounded-xl border border-violet-500/20 bg-violet-500/5 dark:bg-violet-950/10 text-left">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-violet-500/10 border border-violet-500/20 text-violet-500">
+                <Clock className="h-4.5 w-4.5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-foreground leading-snug">24-Hour SLA Brief</h4>
+                <p className="text-[10px] text-muted-foreground leading-tight">Prompt technical assessment response</p>
+              </div>
+            </div>
+
+            {/* Guarantee 3 */}
+            <div className="flex items-center gap-3 p-3 rounded-xl border border-rose-500/20 bg-rose-500/5 dark:bg-rose-950/10 text-left">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-500">
+                <Cpu className="h-4.5 w-4.5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-foreground leading-snug">AI-Native Engine</h4>
+                <p className="text-[10px] text-muted-foreground leading-tight">RAG vector pipelines &amp; agents</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Colorful Badges for Trusted Industries */}
+          <div className="mt-4 flex flex-col items-center gap-3 w-full">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground/80">
+              Trusted solutions across
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-2 max-w-2xl">
+              {trustedBy.map((item) => (
                 <span
-                  key={item}
-                  className="rounded-full border border-border bg-muted/60 px-4 py-1.5 text-sm font-medium text-muted-foreground hover:border-primary/40 hover:text-foreground hover:bg-primary/5 transition-all duration-200 cursor-default backdrop-blur-sm"
-                  style={{ animationDelay: `${i * 80}ms` }}
+                  key={item.name}
+                  className={`rounded-full border px-3.5 py-1.5 text-xs font-bold transition-all duration-200 cursor-default hover:scale-105 ${item.color}`}
                 >
-                  {item}
+                  {item.name}
                 </span>
               ))}
             </div>

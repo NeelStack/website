@@ -12,7 +12,7 @@ export const PRODUCT_META: Record<string, { deployedLabel?: string; betaDate?: s
     deployedLabel: 'Live & Deployed',
   },
   dhruvaos: {
-    betaDate: 'July 15, 2026',
+    betaDate: 'August 15, 2026',
   },
 }
 

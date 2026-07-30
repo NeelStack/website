@@ -4,6 +4,7 @@ import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
+import { JsonLd } from '@/components/seo/json-ld'
 import {
   School,
   Sparkles,
@@ -155,9 +156,30 @@ export default function DhruvaOSPage() {
     { question: 'Can we migrate from our existing ERP?', answer: 'Yes. NeelStack provides end-to-end data migration. Our engineering team securely transfers student directories, billing archives, and grading cards from your legacy software.' },
     { question: 'How secure is our data?', answer: 'We employ bank-grade AES-256 encryption at rest, HTTPS/TLS 1.3 in transit, automated backups, role-based access gates, and isolated databases depending on your cloud model.' }
   ]
-
   return (
     <MarketingLayout>
+      {/* Task 4.4 — SoftwareApplication JSON-LD */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'DhruvaOS',
+          operatingSystem: 'Web, iOS, Android',
+          applicationCategory: 'EducationalApplication',
+          description:
+            'Unified AI-powered operating system for schools, colleges, and universities managing admissions, academics, fee invoices, analytics, and parent communications.',
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'INR',
+          },
+          provider: {
+            '@type': 'Organization',
+            name: 'NeelStack',
+            url: 'https://neelstack.com',
+          },
+        }}
+      />
       
       {/* ─── Hero Section ────────────────────────────────────────────────────────── */}
       <section className="relative pt-24 pb-20 overflow-hidden bg-gradient-to-b from-purple-950/20 via-background to-background">

@@ -13,7 +13,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: 'July 2, 2026',
     readTime: '12 min read',
     href: '/blog/building-scalable-multitenant-saas-applications',
-    featured: true,
+    featured: false,
     content: `Building software for a single client is straightforward. Building software that serves thousands of distinct business tenants—each requiring absolute data isolation, customized branding, tailored feature sets, and high performance—is an entirely different challenge. 
 
 In this article, we'll dive deep into the architecture decisions, database patterns, and Next.js constructs we follow when building production-grade multi-tenant platforms.
@@ -350,5 +350,216 @@ We offer our clients ongoing support agreements that schedule dedicated monthly 
 Avoiding software cost surprises requires open communication and disciplined engineering choices. By establishing clear plans, writing clean systems, and budgeting for long-term health, we deliver enterprise-grade builds on time and on target.
 
 *Interested in starting a transparent custom software project? Speak with us at contact@neelstack.com.*`
+  },
+  {
+    id: '7',
+    slug: 'announcing-toolvines-browser-based-privacy-first-utility-platform',
+    title: 'Announcing ToolVines: Why We Built a Free, Privacy-First Browser Utility Suite',
+    excerpt:
+      'Introducing ToolVines — NeelStack\'s browser-native productivity suite featuring PDF, image, developer, and AI tools built with zero server-side data retention.',
+    category: 'Product Development',
+    tags: ['ToolVines', 'Product Launch', 'Privacy', 'AI', 'Next.js'],
+    author: { name: 'Shyam Chaurasiya', role: 'Founder & Engineering Lead' },
+    publishedAt: 'July 22, 2026',
+    readTime: '7 min read',
+    href: '/blog/announcing-toolvines-browser-based-privacy-first-utility-platform',
+    featured: true,
+    content: `Every digital professional, developer, designer, and student relies on web utilities daily: compressing an image for a presentation, converting a PDF contract, reformatting a JSON payload, or resizing a passport photo. 
+
+Yet, for over a decade, using online utilities meant accepting a frustrating compromise: **intrusive advertisements, strict paywalls after two uses, slow processing speeds, and serious privacy risks** caused by uploading sensitive personal documents to remote third-party servers.
+
+Today, we are excited to launch **[ToolVines](https://toolvines.com)** — NeelStack's flagship browser-based utility platform engineered to solve these exact problems.
+
+---
+
+### The Problem with Legacy Online Utilities
+
+When you upload a confidential PDF agreement or personal identification document to a generic online tool, you are handing your unencrypted data to an unknown server infrastructure. Many legacy utility platforms store uploaded files on remote storage buckets for hours or days, creating unacceptable compliance and privacy vulnerabilities.
+
+Furthermore, traditional platforms force users through multi-page redirect loops, forced countdown timers, and paywalled restrictions for basic workflows like image resizing or PDF compression.
+
+At **NeelStack**, we believed there was a far better way to build digital tools for the modern web.
+
+---
+
+### Enter ToolVines: Privacy-First, Zero-Server Processing
+
+**[ToolVines](https://toolvines.com)** is engineered on a **privacy-first, browser-native architecture**. 
+
+Instead of uploading your images, documents, and code snippets to external servers, ToolVines performs file processing directly inside your browser using **HTML5 Canvas, WebAssembly (WASM), and Web Workers**.
+
+#### Key Benefits of Browser-Native Execution:
+1. **Absolute Data Privacy:** Your files never leave your device. Memory buffers are allocated directly inside your browser tab and garbage-collected immediately upon completion.
+2. **Lightning Speed:** Because file data is processed locally without network upload latency, operations complete in milliseconds — even on slow connections.
+3. **No File Limits or Storage Paywalls:** Convert, compress, and edit unlimited files without artificial rate limits or hidden subscription gates.
+
+---
+
+### What's Inside ToolVines?
+
+ToolVines consolidates dozens of essential everyday workflows into one clean, fast, and unified dashboard:
+
+- **🖼️ Image Utilities:** High-performance JPEG/PNG/WebP compression, passport photo resizers, background tools, and format converters.
+- **📄 PDF Utilities:** Merge, split, compress, unlock, and convert PDF documents directly in browser memory.
+- **👨‍💻 Developer & Data Tools:** Code formatters (JSON, SQL, HTML/CSS), Base64 encoders/decoders, Regex testers, hash generators, and JWT inspectors.
+- **🤖 AI-Powered Workflows:** Next-generation AI content summaries, document extractors, and prompt refiners powered by low-latency Gemini and Groq LLM pipelines.
+- **🧮 Smart Calculators & Converters:** Financial, unit, date, and business calculators built with instant reactive updates.
+
+---
+
+### Built with Modern Engineering Principles
+
+ToolVines reflects NeelStack's core engineering philosophy: high performance, minimal dependencies, and clean architecture.
+
+- **Stack:** Built on Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS v4.
+- **Performance:** Optimized to achieve 100/100 scores across Google Core Web Vitals (LCP, CLS, INP).
+- **SEO & Discoverability:** Over 100+ dedicated intent-based landing pages engineered for instant search discovery.
+
+---
+
+### What's Next for ToolVines?
+
+The launch of ToolVines is just the beginning. Our engineering roadmap includes:
+- Expanded offline PWA (Progressive Web App) capability for zero-connectivity workflows.
+- Advanced batch processing engines for multi-gigabyte document sets.
+- Deeper AI assistant integrations for automated workflow generation.
+
+Explore the platform today at **[https://toolvines.com](https://toolvines.com)**. We would love to hear your feedback as we continue expanding the toolkit!
+
+*Have questions or feature suggestions for ToolVines? Connect with our product team at contact@neelstack.com.*`
+  },
+  {
+    id: '8',
+    slug: 'architecting-toolvines-client-side-utility-engine-nextjs-16',
+    title: 'Architecting ToolVines: Next.js 16, Client-Side WebAssembly, and AI Pipelines',
+    excerpt:
+      'A deep technical breakdown of how we architected ToolVines — browser-native WebAssembly processing, zero memory leaks, dynamic Next.js 16 routes, and hybrid AI streaming.',
+    category: 'System Design',
+    tags: ['Next.js', 'WebAssembly', 'Architecture', 'TypeScript', 'Performance'],
+    author: { name: 'Shyam Chaurasiya', role: 'Founder & Engineering Lead' },
+    publishedAt: 'July 22, 2026',
+    readTime: '11 min read',
+    href: '/blog/architecting-toolvines-client-side-utility-engine-nextjs-16',
+    content: `When building **[ToolVines](https://toolvines.com)**, our goal was simple yet ambitious: build a web utility suite that processes files instantaneously without ever transmitting sensitive user data to a backend server.
+
+Building a browser-native utility engine that handles heavy image rendering, PDF manipulation, and AI streaming across desktop and mobile browsers presented several complex architectural challenges.
+
+In this deep dive, we break down the engineering decisions, performance optimizations, and code patterns behind ToolVines.
+
+---
+
+### 1. Browser-Native Execution Engine (WASM + HTML5 Canvas)
+
+Traditional file processing sites upload files to a server endpoint running ImageMagick or Ghostscript. In ToolVines, we shifted 95% of processing logic directly into the client browser.
+
+#### Image Processing Pipeline
+For image compression, resizing, and format conversion (JPEG/PNG/WebP/AVIF), we utilize HTML5 \`OffscreenCanvas\` paired with browser-native image encoders:
+
+\`\`\`typescript
+export async function compressImage(
+  file: File,
+  quality: number = 0.8,
+  maxWidth: number = 1920
+): Promise<Blob> {
+  const imageBitmap = await createImageBitmap(file);
+  const scale = Math.min(1, maxWidth / imageBitmap.width);
+  const width = Math.round(imageBitmap.width * scale);
+  const height = Math.round(imageBitmap.height * scale);
+
+  const canvas = new OffscreenCanvas(width, height);
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Canvas context unavailable');
+
+  ctx.drawImage(imageBitmap, 0, 0, width, height);
+  
+  // Clean up bitmap memory immediately
+  imageBitmap.close();
+
+  return await canvas.convertToBlob({
+    type: 'image/webp',
+    quality: quality
+  });
+}
+\`\`\`
+
+#### Preventing Browser Garbage Collection Spikes
+When users process 50+ images in sequence, retaining uncompressed canvas memory causes memory leaks and tab crashes. We enforce strict lifecycle management:
+1. Explicitly calling \`imageBitmap.close()\` immediately after canvas drawing.
+2. Revoking object URLs (\`URL.revokeObjectURL(url)\`) after blob downloads complete.
+3. Executing heavy manipulations inside disposable Web Workers so worker memory clears cleanly on termination.
+
+---
+
+### 2. Next.js 16 App Router & Programmatic Intent Routing
+
+ToolVines features over 100 dedicated tool landing pages (e.g., \`/tools/image-compressor\`, \`/compress-jpg-to-50kb\`, \`/resize-passport-photo\`). 
+
+To prevent code duplication across hundreds of routes, we engineered a **manifest-driven intent routing system**:
+
+\`\`\`
+src/
+├── config/
+│   └── tools-catalog.ts       # Central tool specifications & parameters
+├── app/
+│   ├── (tools)/
+│   │   ├── [category]/
+│   │   │   └── page.tsx       # Dynamic category aggregation
+│   │   └── [toolId]/
+│   │       └── page.tsx       # Single generic renderer mapping manifests
+\`\`\`
+
+Every tool route maps back to a single unified React component shell (\`<ToolExecutor />\`) that dynamically loads the required renderer hook (e.g. \`useImageTool()\`, \`usePdfTool()\`). This reduces client bundle size by over 45% while preserving static rendering for SEO.
+
+---
+
+### 3. Hybrid Low-Latency AI Streaming
+
+While image and document tools execute locally, AI-assisted workflows (document summaries, smart prompt polish, data extraction) require LLMs.
+
+We built a hybrid fallback AI provider using **Google Gemini 1.5 Flash** and **Groq (Llama 3)** with Upstash Redis rate limiting:
+
+\`\`\`typescript
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
+export async function POST(req: Request) {
+  const { prompt, fileContext } = await req.json();
+
+  // Edge rate limiting check via Upstash Redis
+  const { success } = await ratelimit.limit(req.headers.get('x-forwarded-for') ?? 'anon');
+  if (!success) {
+    return new Response('Rate limit exceeded', { status: 429 });
+  }
+
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+  const result = await model.generateContentStream([prompt, fileContext]);
+  
+  // Stream response tokens directly to client
+  return new Response(result.stream);
+}
+\`\`\`
+
+This hybrid strategy guarantees Sub-500ms Time-To-First-Token (TTFT) while remaining completely resilient to upstream API outages.
+
+---
+
+### 4. Core Web Vitals & Lighthouse 100/100 Strategy
+
+To ensure instant loading times on mobile networks, we implemented strict optimization rules:
+- **Zero Heavy Font Libraries:** Using system font stacks and OKLCH CSS variables for lightweight rendering.
+- **Dynamic Imports:** Heavy client utilities (e.g. PDF parsing engines, JSZip) are lazy-loaded only when the user clicks an action button.
+- **Static Metadata Generation:** Pre-rendering structured JSON-LD data and OpenGraph tags for every route at build time using \`generateMetadata()\`.
+
+---
+
+### Conclusion
+
+By combining modern browser primitives (WASM, OffscreenCanvas, Web Workers) with Next.js 16 App Router, ToolVines proves that web utility applications can be blazingly fast, free, and 100% respectful of user privacy.
+
+Try out **ToolVines** today at **[https://toolvines.com](https://toolvines.com)** and explore the future of browser-native web software.
+
+*Interested in custom WebAssembly software or Next.js architecture consulting? Contact our engineering team at contact@neelstack.com.*`
   }
 ]
+

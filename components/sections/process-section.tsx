@@ -58,24 +58,24 @@ const PROCESS_STEPS: ProcessStep[] = [
 export function ProcessSection() {
   return (
     <Section id="process" className="bg-card">
-      <Container>
+      <Container className="space-y-12">
         <SectionHeader
-          badge="How we work"
+          badge="How We Work"
           title="Our Development Process"
           description="We follow a proven, structured process that delivers predictable outcomes — on time, on scope, and on budget."
         />
 
-        <div className="grid grid-cols-1 gap-0 md:grid-cols-2 lg:grid-cols-3">
-          {PROCESS_STEPS.map((step, idx) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROCESS_STEPS.map((step) => {
             const Icon = step.icon
             return (
               <div
                 key={step.step}
-                className="relative flex flex-col gap-4 rounded-2xl p-8 border border-border card-hover hover:border-primary/30 hover:bg-muted/20 overflow-hidden"
+                className="group relative flex flex-col gap-4 rounded-2xl p-8 border border-border bg-background card-hover hover:border-primary/40 overflow-hidden shadow-sm"
               >
-                {/* Large decorative background step number */}
+                {/* Large decorative background step number - custom color gradient */}
                 <span
-                  className="absolute top-4 right-5 font-heading font-black text-7xl text-primary/8 select-none leading-none"
+                  className="absolute top-4 right-5 font-heading font-black text-6xl text-primary/10 select-none leading-none group-hover:scale-105 transition-transform"
                   aria-hidden="true"
                 >
                   {step.step.toString().padStart(2, '0')}
@@ -83,18 +83,18 @@ export function ProcessSection() {
 
                 {/* Icon + step number row */}
                 <div className="flex items-center gap-3 relative z-10">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 group-hover:shadow-[0_0_16px_oklch(0.62_0.22_258/20%)] transition-shadow duration-300">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 group-hover:shadow-[0_0_16px_rgba(59,130,246,0.15)] transition-all duration-300">
                     <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
                   </div>
-                  <span className="text-xs font-bold text-muted-foreground/50 tabular-nums">
+                  <span className="text-xs font-bold text-muted-foreground/75 uppercase tracking-wider">
                     Step {step.step.toString().padStart(2, '0')}
                   </span>
                 </div>
 
-                <h3 className="font-heading text-base font-semibold text-foreground relative z-10">
+                <h3 className="font-heading text-base font-bold text-foreground relative z-10 group-hover:text-primary transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
+                <p className="text-xs text-muted-foreground leading-relaxed relative z-10">
                   {step.description}
                 </p>
               </div>

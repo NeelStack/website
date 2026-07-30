@@ -17,23 +17,23 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
       <Link
         href={service.href}
         className={cn(
-          'group flex items-start gap-4 rounded-xl border border-border bg-card p-5',
-          'hover:border-primary/30 hover:bg-primary/5 transition-all duration-200',
+          'group flex items-start gap-4 rounded-2xl border border-border/80 bg-card p-5 shadow-sm',
+          'hover:border-primary/50 hover:bg-primary/5 hover:shadow-md transition-all duration-300',
           className
         )}
         aria-label={`${service.name} service`}
       >
         <span
           className={cn(
-            'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
+            'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border/60 shadow-inner',
             service.bgColor
           )}
           aria-hidden="true"
         >
-          <Icon className={cn('h-5 w-5', service.color)} />
+          <Icon className={cn('h-5.5 w-5.5', service.color)} />
         </span>
         <div className="min-w-0">
-          <h3 className="text-sm font-semibold text-foreground mb-1">{service.name}</h3>
+          <h3 className="text-sm font-bold text-foreground mb-1 group-hover:text-primary transition-colors">{service.name}</h3>
           <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
             {service.description}
           </p>
@@ -46,14 +46,14 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
     return (
       <div
         className={cn(
-          'group flex gap-5 rounded-2xl border border-border bg-card p-6',
-          'hover:border-primary/30 transition-all duration-300',
+          'group flex gap-5 rounded-2xl border border-border/80 bg-card p-6 shadow-md',
+          'hover:border-primary/50 hover:shadow-lg transition-all duration-300',
           className
         )}
       >
         <span
           className={cn(
-            'flex h-12 w-12 shrink-0 items-center justify-center rounded-xl',
+            'flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border/60',
             service.bgColor
           )}
           aria-hidden="true"
@@ -61,7 +61,7 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
           <Icon className={cn('h-6 w-6', service.color)} />
         </span>
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
+          <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">
             {service.category}
           </p>
           <h3 className="font-heading text-base font-bold text-foreground mb-2">{service.name}</h3>
@@ -70,7 +70,7 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
             {service.highlights.map((h) => (
               <span
                 key={h}
-                className="rounded-md border border-border bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+                className="rounded-md border border-border bg-muted/60 px-2.5 py-0.5 text-xs font-medium text-foreground"
               >
                 {h}
               </span>
@@ -79,7 +79,7 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
         </div>
         <Link
           href={service.href}
-          className="shrink-0 self-start text-muted-foreground hover:text-foreground transition-colors"
+          className="shrink-0 self-start text-muted-foreground hover:text-primary transition-colors"
           aria-label={`Learn more about ${service.name}`}
         >
           <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -91,22 +91,28 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
   return (
     <div
       className={cn(
-        'group flex flex-col rounded-2xl border border-border bg-card p-6',
-        'card-hover hover:border-primary/30',
+        'group flex flex-col rounded-2xl border border-border/80 bg-card p-6 shadow-md',
+        'card-hover hover:border-primary/50 hover:shadow-xl relative overflow-hidden',
         className
       )}
     >
+      {/* Radiant ambient glow overlay on hover */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none group-hover:bg-primary/15 transition-all duration-500" />
+
       <span
-        className={cn('flex h-12 w-12 items-center justify-center rounded-xl mb-4 group-hover:shadow-[0_0_16px_oklch(0.62_0.22_258/20%)] transition-shadow duration-300', service.bgColor)}
+        className={cn(
+          'flex h-12 w-12 items-center justify-center rounded-xl mb-4 border border-border/60 group-hover:scale-105 transition-all duration-300',
+          service.bgColor
+        )}
         aria-hidden="true"
       >
         <Icon className={cn('h-6 w-6', service.color)} />
       </span>
 
-      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">
+      <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">
         {service.category}
       </p>
-      <h3 className="font-heading text-lg font-bold text-foreground mb-3">{service.name}</h3>
+      <h3 className="font-heading text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{service.name}</h3>
       <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-5">
         {service.description}
       </p>
@@ -115,7 +121,7 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
         {service.highlights.map((h) => (
           <span
             key={h}
-            className="rounded-md border border-border bg-muted px-2 py-0.5 text-xs text-muted-foreground hover:border-primary/20 hover:bg-primary/5 hover:text-primary/80 transition-colors duration-200"
+            className="rounded-md border border-border/80 bg-muted/60 px-2.5 py-0.5 text-xs font-medium text-foreground hover:border-primary/30 hover:bg-primary/10 hover:text-primary transition-colors duration-200"
           >
             {h}
           </span>
@@ -125,7 +131,7 @@ export function ServiceCard({ service, className, variant = 'default' }: Service
       <Link
         href={service.href}
         className={cn(
-          'inline-flex items-center gap-1.5 text-sm font-medium',
+          'inline-flex items-center gap-1.5 text-sm font-bold',
           service.color,
           'hover:gap-2.5 transition-all duration-200'
         )}

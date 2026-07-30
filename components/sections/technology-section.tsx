@@ -1,53 +1,171 @@
-import { Container } from '@/components/ui/container'
-import { Section, SectionHeader } from '@/components/ui/section'
-import { TechCategoryBlock } from '@/components/ui/tech-badge'
+'use client'
 
-const TECH_STACK = [
+import { useState } from 'react'
+import { Container } from '@/components/ui/container'
+import { Section } from '@/components/ui/section'
+import { Laptop, Server, Database, Cloud, Bot, Wrench, CheckCircle2, Sparkles } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+const TECH_CATEGORIES = [
   {
-    title: 'Frontend',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React Native', 'Flutter'],
+    id: 'frontend',
+    title: 'Frontend & Mobile',
+    icon: Laptop,
+    badge: 'Sub-Second Web & Apps',
+    color: 'text-blue-600 dark:text-blue-400',
+    bgColor: 'bg-blue-500/10 border-blue-500/25',
+    items: [
+      { name: 'Next.js 16', desc: 'App Router & Turbopack SSR' },
+      { name: 'TypeScript', desc: 'Strict end-to-end type safety' },
+      { name: 'React 19', desc: 'Server Components & Concurrent UI' },
+      { name: 'Tailwind CSS v4', desc: 'Utility-first OKLCH design system' },
+      { name: 'React Native', desc: 'Native iOS & Android compilation' },
+      { name: 'Flutter', desc: 'High-fps cross-platform mobile apps' },
+    ],
   },
   {
-    title: 'Backend',
-    technologies: ['Node.js', 'Python', 'Go', 'Java', 'NestJS', 'FastAPI', 'Django'],
+    id: 'backend',
+    title: 'Backend & Microservices',
+    icon: Server,
+    badge: 'High-Throughput APIs',
+    color: 'text-cyan-600 dark:text-cyan-400',
+    bgColor: 'bg-cyan-500/10 border-cyan-500/25',
+    items: [
+      { name: 'Python FastAPI', desc: 'Asynchronous sub-millisecond REST APIs' },
+      { name: 'Node.js / Express', desc: 'Event-driven real-time services' },
+      { name: 'Go (Golang)', desc: 'Ultra-fast low-latency backend microservices' },
+      { name: 'NestJS', desc: 'Enterprise-structured TypeScript backend' },
+      { name: 'GraphQL & REST', desc: 'Flexible API query & mutation architecture' },
+      { name: 'gRPC', desc: 'High-performance inter-service communication' },
+    ],
   },
   {
-    title: 'Databases',
-    technologies: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL', 'Supabase', 'Firebase'],
-  },
-  {
-    title: 'Cloud & DevOps',
-    technologies: ['AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'],
-  },
-  {
+    id: 'ai',
     title: 'AI & Machine Learning',
-    technologies: ['OpenAI', 'LangChain', 'HuggingFace', 'TensorFlow', 'PyTorch', 'Vertex AI'],
+    icon: Bot,
+    badge: 'Cognitive LLM Pipelines',
+    color: 'text-rose-600 dark:text-rose-400',
+    bgColor: 'bg-rose-500/10 border-rose-500/25',
+    items: [
+      { name: 'OpenAI GPT-4o', desc: 'Multimodal generative AI reasoning' },
+      { name: 'LangChain / LlamaIndex', desc: 'RAG vector retrieval & agent orchestration' },
+      { name: 'Pinecone / Qdrant', desc: 'High-speed vector embedding databases' },
+      { name: 'PyTorch & HuggingFace', desc: 'Custom model fine-tuning & NLP' },
+      { name: 'Anthropic Claude 3.5', desc: 'Complex reasoning & code generation' },
+      { name: 'Local Ollama LLMs', desc: 'Privacy-focused self-hosted AI models' },
+    ],
   },
   {
-    title: 'Tools & Platforms',
-    technologies: ['Vercel', 'Stripe', 'Twilio', 'Supabase', 'Figma', 'Linear', 'Sentry'],
+    id: 'databases',
+    title: 'Databases & Storage',
+    icon: Database,
+    badge: 'ACID & Vector Storage',
+    color: 'text-violet-600 dark:text-violet-400',
+    bgColor: 'bg-violet-500/10 border-violet-500/25',
+    items: [
+      { name: 'PostgreSQL', desc: 'Enterprise relational & pgvector storage' },
+      { name: 'Redis', desc: 'In-memory caching & pub/sub messaging' },
+      { name: 'MongoDB', desc: 'Scalable document database pipelines' },
+      { name: 'Supabase', desc: 'Realtime PostgreSQL with instant auth' },
+      { name: 'Pinecone', desc: 'Managed cloud vector search DB' },
+      { name: 'Amazon Aurora', desc: 'Autoscaling multi-region relational DB' },
+    ],
+  },
+  {
+    id: 'cloud',
+    title: 'Cloud & DevOps',
+    icon: Cloud,
+    badge: 'Zero-Downtime CI/CD',
+    color: 'text-amber-600 dark:text-amber-400',
+    bgColor: 'bg-amber-500/10 border-amber-500/25',
+    items: [
+      { name: 'AWS & Vercel', desc: 'Global edge deployment & serverless' },
+      { name: 'Docker & Kubernetes', desc: 'Containerization & pod orchestration' },
+      { name: 'Terraform', desc: 'Infrastructure as Code (IaC) automation' },
+      { name: 'GitHub Actions', desc: 'Automated testing & deployment CI/CD' },
+      { name: 'Cloudflare', desc: 'DDoS mitigation & edge CDN caching' },
+      { name: 'Datadog & Sentry', desc: 'Real-time telemetry & crash monitoring' },
+    ],
   },
 ]
 
 export function TechnologySection() {
-  return (
-    <Section id="technologies">
-      <Container>
-        <SectionHeader
-          badge="Our tech stack"
-          title="Modern Technology, Proven Reliability"
-          description="We use best-in-class tools and frameworks to build performant, scalable, and maintainable software that stands the test of time."
-        />
+  const [activeTab, setActiveTab] = useState('frontend')
+  const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {TECH_STACK.map((category) => (
-            <TechCategoryBlock
-              key={category.title}
-              title={category.title}
-              technologies={category.technologies}
-              className="rounded-2xl border border-border bg-card p-6"
-            />
-          ))}
+  return (
+    <Section id="technologies" className="py-20 relative overflow-hidden bg-surface">
+      <Container className="space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25">
+            Engineering Stack
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground tracking-tight">
+            Modern Technology, Proven Reliability
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Click across our core technology domains to explore our battle-tested engineering stack.
+          </p>
+        </div>
+
+        {/* Tab Switcher Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl border border-border bg-card max-w-3xl mx-auto shadow-sm">
+          {TECH_CATEGORIES.map((cat) => {
+            const Icon = cat.icon
+            const isActive = activeTab === cat.id
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveTab(cat.id)}
+                className={cn(
+                  'flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer',
+                  isActive
+                    ? 'bg-primary text-primary-foreground shadow-md scale-105'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
+                )}
+              >
+                <Icon className="h-4 w-4" />
+                <span>{cat.title}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Active Tech Stack Grid */}
+        <div className="rounded-3xl border border-border/80 bg-card p-6 md:p-8 shadow-lg relative overflow-hidden">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-border/60 pb-6 mb-6">
+            <div className="flex items-center gap-3">
+              <div className={`flex h-12 w-12 items-center justify-center rounded-xl border ${currentCategory.bgColor} ${currentCategory.color}`}>
+                <currentCategory.icon className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="font-heading text-xl font-bold text-foreground">{currentCategory.title}</h3>
+                <span className={`text-xs font-semibold uppercase tracking-wider ${currentCategory.color}`}>
+                  {currentCategory.badge}
+                </span>
+              </div>
+            </div>
+            <span className="text-xs text-muted-foreground bg-muted px-3 py-1.5 rounded-full font-mono">
+              6 Core Frameworks Active
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {currentCategory.items.map((tech) => (
+              <div
+                key={tech.name}
+                className="group p-4 rounded-xl border border-border/60 bg-surface/50 hover:bg-surface hover:border-primary/30 transition-all duration-200 card-hover flex flex-col justify-between gap-2"
+              >
+                <div className="flex items-center justify-between">
+                  <h4 className="font-heading text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                    {tech.name}
+                  </h4>
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">{tech.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
     </Section>

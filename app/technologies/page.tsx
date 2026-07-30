@@ -6,9 +6,9 @@ import { TechCategoryBlock } from '@/components/ui/tech-badge'
 import { CTASection } from '@/components/ui/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Technologies',
+  title: 'Technology Stack — Tools & Frameworks We Build With',
   description:
-    'Explore the modern technology stack NeelStack uses to build enterprise software, AI solutions, SaaS products, and mobile applications.',
+    'Explore the modern technology stack NeelStack uses to build enterprise software, AI solutions, SaaS products, and mobile applications — React, Next.js, Python, FastAPI, AWS, and more.',
 }
 
 const TECH_STACK_FULL = [

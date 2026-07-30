@@ -71,8 +71,7 @@ function FooterLogo() {
         <defs>
           <linearGradient id="ftr-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#46A6FC" />
-            <stop offset="50%" stopColor="#7C3AED" />
-            <stop offset="100%" stopColor="#F58D28" />
+            <stop offset="100%" stopColor="#7C3AED" />
           </linearGradient>
           <filter id="ftr-glow" x="-30%" y="-30%" width="160%" height="160%">
             <feDropShadow dx="0" dy="0" stdDeviation="2.5" floodColor="#7C3AED" floodOpacity="0.35" />
@@ -123,7 +122,7 @@ export function Footer() {
 
   return (
     <footer
-      className="border-t border-border bg-muted/20 relative"
+      className="border-t border-border bg-surface relative"
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -131,7 +130,7 @@ export function Footer() {
       <div
         className="absolute top-0 inset-x-0 h-px"
         style={{
-          background: 'linear-gradient(90deg, transparent 0%, oklch(0.62 0.22 258 / 50%) 30%, oklch(0.72 0.16 198 / 50%) 70%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(70,166,252,0.4) 30%, rgba(124,58,237,0.4) 70%, transparent 100%)',
         }}
         aria-hidden="true"
       />
@@ -164,7 +163,7 @@ export function Footer() {
           <FooterColumn title="Products" links={FOOTER_NAV.products} />
           <FooterColumn title="Services" links={FOOTER_NAV.services} />
           <FooterColumn title="Company" links={FOOTER_NAV.company} />
-          <FooterColumn title="Resources" links={FOOTER_NAV.resources} />
+          <FooterColumn title="Industries" links={FOOTER_NAV.industries} />
         </div>
 
         {/* Bottom bar */}

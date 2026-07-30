@@ -30,6 +30,7 @@ export function ContactForm() {
     const email = formData.get('email') as string
     const company = formData.get('company') as string
     const inquiryType = formData.get('inquiry-type') as string
+    const budget = formData.get('budget') as string
     const message = formData.get('message') as string
 
     if (!firstName || !lastName || !email || !inquiryType || !message) {
@@ -48,6 +49,7 @@ export function ContactForm() {
           email,
           company,
           service: inquiryType,
+          budget,
           message,
         }),
       })
@@ -176,6 +178,23 @@ export function ContactForm() {
         </div>
 
         <div>
+          <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-1.5">
+            Estimated Budget Range
+          </label>
+          <select
+            id="budget"
+            name="budget"
+            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+          >
+            <option value="">Select budget range (optional)</option>
+            <option value="under-10k">Under $10,000 / ₹8,00,000</option>
+            <option value="10k-50k">$10,000 – $50,000 / ₹8L – ₹40L</option>
+            <option value="50k-200k">$50,000 – $200,000 / ₹40L – ₹1.5Cr</option>
+            <option value="200k-plus">$200,000+ / ₹1.5Cr+</option>
+          </select>
+        </div>
+
+        <div>
           <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">
             Message <span aria-hidden="true" className="text-destructive">*</span>
           </label>
@@ -184,9 +203,15 @@ export function ContactForm() {
             name="message"
             required
             rows={5}
-            placeholder="Tell us about your project, timeline, and budget..."
+            placeholder="Tell us about your project, scope, timeline, and goals..."
             className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow resize-none"
           />
+        </div>
+
+        {/* Response SLA Callout Banner */}
+        <div className="flex items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+          <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span>Guarantee: Our senior technical team responds within 1 business day.</span>
         </div>
 
         <Button type="submit" size="lg" className="w-full" disabled={submitting}>
@@ -206,7 +231,7 @@ export function ContactForm() {
         </p>
 
         <p className="text-xs text-muted-foreground text-center mt-3">
-          We respond within 1 business day. Using webmail? Click to <CopyEmailButton />.
+          Prefer email directly? <CopyEmailButton />.
         </p>
       </form>
     </div>

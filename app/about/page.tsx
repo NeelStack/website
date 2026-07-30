@@ -39,9 +39,9 @@ import { CTASection } from '@/components/ui/cta-section'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'About NeelStack — AI-First Software Engineering Company',
   description:
-    'Learn about NeelStack — our mission, our values, our engineering principles, and our journey building the future of AI-powered software.',
+    'Learn about NeelStack — an AI-first software engineering company based in Gorakhpur, India. Discover our mission, engineering values, principles, and the journey building enterprise-grade software and AI systems.',
 }
 
 const VALUES = [
@@ -168,6 +168,14 @@ export default function AboutPage() {
                 exact same code formatting, strict TypeScript rules, and optimized deployment pipelines to client systems 
                 as we do to our own codebases.
               </p>
+
+              {/* Founding Story & Location Context */}
+              <div className="mt-8 p-6 rounded-2xl border border-primary/20 bg-primary/5 space-y-3">
+                <h3 className="font-heading text-lg font-bold text-foreground">Our Story & Location</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Founded in <strong className="text-foreground">Gorakhpur, Uttar Pradesh, India</strong>, NeelStack was established to prove that enterprise-grade AI software and product architecture can be built from anywhere when driven by technical discipline, high agency, and strong engineering fundamentals.
+                </p>
+              </div>
             </div>
 
             {/* Why NeelStack grid */}
