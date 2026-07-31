@@ -1,4 +1,4 @@
-﻿import { Container } from '@/components/ui/container'
+import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
 import { SafeEmailLink } from '@/components/ui/copy-email-button'
@@ -8,7 +8,7 @@ const HOME_FAQ: FAQItem[] = [
   {
     question: 'What types of projects does NeelStack take on?',
     answer:
-      'We work on a wide range of projects â€” from custom software development and AI integrations to full ERP systems and SaaS platforms. Whether you are a startup building your first product or an enterprise modernizing legacy systems, we can help.',
+      'We work on a wide range of projects — from custom software development and AI integrations to full ERP systems and SaaS platforms. Whether you are a startup building your first product or an enterprise modernizing legacy systems, we can help.',
   },
   {
     question: 'How long does it take to build a typical project?',

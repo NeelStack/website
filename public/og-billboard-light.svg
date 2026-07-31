@@ -1,86 +1,52 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Crisp Light Surface Background -->
-  <rect width="1200" height="630" fill="#FAFBFF"/>
-  
-  <!-- Subtle Ambient Radial Glow -->
-  <circle cx="600" cy="0" r="500" fill="url(#og-light-glow)" opacity="0.4"/>
-  <circle cx="1000" cy="500" r="450" fill="url(#og-light-glow-secondary)" opacity="0.3"/>
-  
-  <!-- Subtle 4K Engineering Grid Line Texture -->
-  <path d="M 0 96 L 1200 96 M 0 192 L 1200 192 M 0 288 L 1200 288 M 0 384 L 1200 384 M 0 480 L 1200 480 M 0 576 L 1200 576 M 96 0 L 96 630 M 192 0 L 192 630 M 288 0 L 288 630 M 384 0 L 384 630 M 480 0 L 480 630 M 576 0 L 576 630 M 672 0 L 672 630 M 768 0 L 768 630 M 864 0 L 864 630 M 960 0 L 960 630 M 1056 0 L 1056 630 M 1152 0 L 1152 630" stroke="#0F172A" stroke-opacity="0.05" stroke-width="1.5"/>
-  
-  <!-- Top Pre-heading Badge -->
-  <rect x="420" y="56" width="360" height="38" rx="19" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.25"/>
-  <circle cx="442" cy="75" r="4" fill="#2563EB"/>
-  <text x="456" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13" font-weight="800" fill="#1D4ED8" letter-spacing="2">ENTERPRISE AI &amp; SOFTWARE PLATFORMS</text>
-  
-  <!-- Centered Logo Group -->
-  <g transform="translate(360, 130)">
-    <!-- Code-Stack Prism Emblem (Light Theme) -->
-    <g transform="scale(3.2)">
-      <rect x="7" y="6" width="7" height="28" rx="2.5" fill="#0F172A"/>
-      <rect x="26" y="6" width="7" height="28" rx="2.5" fill="#0F172A"/>
-      <path d="M 7 12 L 14 6 L 21 16 L 33 28 L 26 34 L 17 22 Z" fill="url(#prism-grad-og-light)"/>
-      <circle cx="10.5" cy="9.5" r="2" fill="#FFFFFF"/>
-      <circle cx="21" cy="16" r="1.5" fill="#38BDF8"/>
-      <circle cx="29.5" cy="30.5" r="2" fill="#FFFFFF"/>
-    </g>
-    
-    <!-- Brand Name Text -->
-    <text x="145" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Plus Jakarta Sans', sans-serif" font-size="88" font-weight="900" letter-spacing="-3">
-      <tspan fill="#0F172A">Neel</tspan><tspan fill="#2563EB">Stack</tspan>
-    </text>
-  </g>
-  
-  <!-- Main Tagline -->
-  <text x="600" y="325" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Plus Jakarta Sans', sans-serif" font-size="36" font-weight="800" fill="#0F172A" letter-spacing="-0.5">
-    AI-Native Enterprise Software &amp; Product Engineering
-  </text>
-  
-  <!-- Sub-Tagline -->
-  <text x="600" y="375" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="22" font-weight="500" fill="#475569">
-    Scaling Intelligent SaaS Platforms, ERP Systems &amp; Custom AI Agents
-  </text>
-  
-  <!-- Capability Badges -->
-  <g transform="translate(230, 445)">
-    <rect x="0" y="0" width="160" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
-    <text x="80" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">AI Agents</text>
-    
-    <rect x="176" y="0" width="180" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
-    <text x="266" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">DhruvaOS Suite</text>
-    
-    <rect x="372" y="0" width="200" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
-    <text x="472" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">Cloud Architecture</text>
-    
-    <rect x="588" y="0" width="160" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
-    <text x="668" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">Custom SaaS</text>
-  </g>
-  
-  <!-- Bottom Accent Gradient Line -->
-  <rect x="0" y="622" width="1200" height="8" fill="url(#bottom-accent-light)"/>
-  
   <defs>
-    <radialGradient id="og-light-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 0) scale(500)">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
-    </radialGradient>
-    
-    <radialGradient id="og-light-glow-secondary" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 500) scale(450)">
-      <stop offset="0%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
-    </radialGradient>
-    
-    <linearGradient id="prism-grad-og-light" x1="7" y1="6" x2="33" y2="34" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="50%" stop-color="#2563EB"/>
-      <stop offset="100%" stop-color="#7C3AED"/>
+    <linearGradient id="ogb-bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0c1329"/>
+      <stop offset="100%" stop-color="#070b14"/>
     </linearGradient>
-    
-    <linearGradient id="bottom-accent-light" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="50%" stop-color="#2563EB"/>
-      <stop offset="100%" stop-color="#7C3AED"/>
+    <linearGradient id="ogb-unified-grad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#c084fc"/>
     </linearGradient>
+    <filter id="ogb-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#ogb-bg)"/>
+  <rect width="1200" height="630" fill="none" stroke="rgba(56,189,248,0.2)" stroke-width="2"/>
+
+  <!-- Grid overlay -->
+  <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <path d="M200 0V630M400 0V630M600 0V630M800 0V630M1000 0V630" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+  <!-- Glow background -->
+  <circle cx="600" cy="240" r="280" fill="rgba(37,99,235,0.12)" filter="url(#ogb-glow)"/>
+
+  <!-- Logo Container Group -->
+  <g transform="translate(420, 160)">
+    <!-- Pure Geometric N Logo Mark -->
+    <g transform="scale(3)">
+      <path d="M 6 6 H 15.5 L 28.5 24.5 V 6 H 34 V 34 H 24.5 L 11.5 15.5 V 34 H 6 V 6 Z" fill="#ffffff"/>
+      <path d="M 9.5 31.5 V 9.5 L 30.5 30.5 V 8.5" stroke="url(#ogb-unified-grad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#ogb-glow)"/>
+    </g>
+
+    <!-- Typography -->
+    <text x="145" y="72" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="64" font-weight="900" letter-spacing="-0.04em" fill="#ffffff">Neel<tspan fill="#38bdf8">Stack</tspan></text>
+  </g>
+
+  <!-- Main Headline Tagline -->
+  <text x="600" y="380" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.02em" fill="#f8fafc">AI-Native Enterprise Software &amp; Product Engineering</text>
+  <text x="600" y="425" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#94a3b8">Scaling Intelligent SaaS Platforms, ERP Systems &amp; Custom AI Agents</text>
+
+  <!-- Footer Tag -->
+  <rect x="460" y="480" width="280" height="42" rx="21" fill="rgba(56,189,248,0.1)" stroke="rgba(56,189,248,0.3)" stroke-width="1"/>
+  <circle cx="484" cy="501" r="5" fill="#38bdf8"/>
+  <text x="500" y="506" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="0.12em" fill="#38bdf8">HTTPS://NEELSTACK.COM</text>
 </svg>
