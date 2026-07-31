@@ -486,7 +486,6 @@ export function Header() {
       window.removeEventListener('keydown', handleKeyDown)
     }
   // Empty deps: register once on mount, use refs to read latest state
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Memoized with useCallback so NavDropdown's useEffect([isOpen, onClose])

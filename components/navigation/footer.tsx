@@ -105,7 +105,7 @@ export function Footer() {
             Ready to Build Something Exceptional?
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
-            Let's Engineer Your Next Product
+            Let&apos;s Engineer Your Next Product
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
             Partner with senior software architects to design, build, and launch software people love using.
