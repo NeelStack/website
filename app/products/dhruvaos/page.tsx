@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { Container } from '@/components/ui/container'
@@ -158,7 +158,7 @@ export default function DhruvaOSPage() {
   ]
   return (
     <MarketingLayout>
-      {/* Task 4.4 — SoftwareApplication JSON-LD */}
+      {/* Task 4.4 â€” SoftwareApplication JSON-LD */}
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -181,18 +181,18 @@ export default function DhruvaOSPage() {
         }}
       />
       
-      {/* ─── Hero Section ────────────────────────────────────────────────────────── */}
-      <section className="relative pt-24 pb-20 overflow-hidden bg-gradient-to-b from-purple-950/20 via-background to-background">
+      {/* â”€â”€â”€ Hero Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <section className="relative pt-24 pb-20 overflow-hidden bg-transparent">
         {/* Glow Effects */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
 
         <Container className="relative z-10 text-center space-y-12">
           
           {/* Top Tagline Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-purple-500/20 bg-purple-500/5 backdrop-blur-sm">
-            <Sparkles className="h-3.5 w-3.5 text-purple-400" />
-            <span className="text-xs font-semibold text-purple-300">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
+            <Sparkles className="h-3.5 w-3.5 text-primary" />
+            <span className="text-xs font-semibold text-primary/80">
               India&apos;s Modern AI-Powered EdOS
             </span>
           </div>
@@ -201,7 +201,7 @@ export default function DhruvaOSPage() {
           <div className="max-w-4xl mx-auto space-y-6">
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-foreground">
               AI-Powered Education <br />
-              <span className="bg-gradient-to-r from-purple-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-cyan-300 to-violet-400 bg-clip-text text-transparent">
                 Operating System
               </span>
             </h1>
@@ -215,7 +215,7 @@ export default function DhruvaOSPage() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-primary/10 hover:shadow-primary/20"
             >
               Book Demo
             </Link>
@@ -228,7 +228,7 @@ export default function DhruvaOSPage() {
           </div>
 
           {/* Animated Statistics Banner */}
-          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-6 border-y border-border/40 bg-card/25 backdrop-blur-sm rounded-2xl px-6">
+          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-6 border-y border-border/40 bg-card/60 backdrop-blur-sm backdrop-blur-sm rounded-2xl px-6">
             <div className="text-center">
               <span className="font-mono text-xl sm:text-2xl font-bold text-foreground">99.9%</span>
               <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Uptime SLA</p>
@@ -247,8 +247,8 @@ export default function DhruvaOSPage() {
         </Container>
       </section>
 
-      {/* ─── Trusted By Section ─────────────────────────────────────────────────── */}
-      <Section className="border-y border-border/40 bg-muted/10 py-10">
+      {/* â”€â”€â”€ Trusted By Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="border-y border-border/40 bg-card/40 backdrop-blur-sm py-10">
         <Container>
           <div className="text-center space-y-4">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -268,23 +268,23 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Orchestrate Your Academy — Grid Section ────────────────────────────── */}
-      <Section className="py-20 bg-card/5 border-y border-border/40">
+      {/* â”€â”€â”€ Orchestrate Your Academy â€” Grid Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-20 bg-card/60 backdrop-blur-sm border-y border-border/40">
         <Container className="max-w-5xl mx-auto text-center space-y-12">
           
           <div className="max-w-3xl mx-auto space-y-4">
-            <span className="inline-flex text-xs font-bold text-purple-400 uppercase tracking-widest bg-purple-500/10 px-3 py-1 rounded-full">
+            <span className="inline-flex text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
               Admin Console
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground leading-tight">
               Orchestrate Your Academy with{' '}
-              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
                 Digital Infrastructure
               </span>{' '}
               for Every Workflow
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              DhruvaOS gives school administrators a unified command center — one place to monitor attendance, manage fees, run payroll, track staff, and view AI-driven institutional health in real time.
+              DhruvaOS gives school administrators a unified command center â€” one place to monitor attendance, manage fees, run payroll, track staff, and view AI-driven institutional health in real time.
             </p>
           </div>
 
@@ -315,9 +315,9 @@ export default function DhruvaOSPage() {
                 desc: 'Smart predictive models automatically highlight dropout patterns, fee default risks, and attendance declines.',
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-card/20 p-5 space-y-2 hover:border-purple-500/20 transition-colors">
+              <div key={item.title} className="rounded-xl border border-border bg-card/60 backdrop-blur-sm p-5 space-y-2 hover:border-primary/20 transition-colors">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-purple-500/15 border border-purple-500/25 text-purple-400">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 border border-primary/25 text-primary">
                     <CheckCircle2 className="h-3 w-3" />
                   </span>
                   <h3 className="text-sm font-heading font-bold text-foreground">
@@ -334,7 +334,7 @@ export default function DhruvaOSPage() {
           <div className="pt-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white text-sm font-semibold transition-all shadow-lg shadow-purple-500/20"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all shadow-lg shadow-primary/20"
             >
               Book a Live Demo <ArrowRight className="h-4 w-4" />
             </Link>
@@ -343,13 +343,13 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Everything Your Institution Needs Grid ────────────────────────────── */}
-      <Section className="py-20 bg-card/10">
+      {/* â”€â”€â”€ Everything Your Institution Needs Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-20 bg-card/60 backdrop-blur-sm">
 
         <Container className="space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs font-bold text-purple-400 uppercase tracking-widest bg-purple-500/10 px-3 py-1 rounded-full">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
               Unified Architecture
             </span>
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -367,9 +367,9 @@ export default function DhruvaOSPage() {
               return (
                 <div
                   key={feat.label}
-                  className="rounded-2xl border border-border bg-card/30 p-5 hover:border-purple-500/30 hover:bg-card/60 transition-all duration-300 group"
+                  className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 group"
                 >
-                  <div className="h-9 w-9 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-105 transition-transform mb-4">
+                  <div className="h-9 w-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-transform mb-4">
                     <IconComp className="h-4.5 w-4.5" />
                   </div>
                   <h3 className="text-sm font-heading font-bold text-foreground mb-1">
@@ -386,15 +386,15 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── AI Everywhere ──────────────────────────────────────────────────────── */}
-      <Section className="py-20 bg-muted/10 relative">
+      {/* â”€â”€â”€ AI Everywhere â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-20 bg-card/40 backdrop-blur-sm relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[110px] pointer-events-none" />
 
         <Container className="space-y-12 relative z-10">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-xs font-bold text-purple-400 uppercase tracking-widest bg-purple-500/10 px-3 py-1 rounded-full flex items-center gap-1.5 w-fit mx-auto">
-              <Bot className="h-3.5 w-3.5 text-purple-400 animate-pulse" />
+            <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full flex items-center gap-1.5 w-fit mx-auto">
+              <Bot className="h-3.5 w-3.5 text-primary animate-pulse" />
               AI-Native Integrations
             </span>
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -410,10 +410,10 @@ export default function DhruvaOSPage() {
             {aiModules.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-purple-500/15 bg-purple-500/2 p-5 hover:border-purple-450 hover:bg-purple-500/5 transition-all duration-300 relative overflow-hidden"
+                className="rounded-2xl border border-primary/15 bg-primary/[0.02] p-5 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 h-10 w-10 bg-purple-500/5 rounded-bl-3xl flex items-center justify-center">
-                  <Sparkles className="h-3.5 w-3.5 text-purple-400" />
+                <div className="absolute top-0 right-0 h-10 w-10 bg-primary/5 rounded-bl-3xl flex items-center justify-center">
+                  <Sparkles className="h-3.5 w-3.5 text-primary" />
                 </div>
                 <h3 className="text-xs font-heading font-bold text-foreground uppercase tracking-wider mb-2">
                   {item.title}
@@ -428,7 +428,7 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Platform For Everyone (Personas) ────────────────────────────────────── */}
+      {/* â”€â”€â”€ Platform For Everyone (Personas) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Section className="py-20">
         <Container className="space-y-12">
           
@@ -445,9 +445,9 @@ export default function DhruvaOSPage() {
             {personas.map((per) => (
               <div
                 key={per.role}
-                className="rounded-2xl border border-border bg-card/20 p-5 hover:border-purple-500/25 transition-all duration-200"
+                className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 hover:border-primary/25 transition-all duration-200"
               >
-                <h3 className="text-sm font-heading font-bold text-purple-400 mb-2">
+                <h3 className="text-sm font-heading font-bold text-primary mb-2">
                   For {per.role}
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -460,8 +460,8 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Connected Lifecycle Chart ───────────────────────────────────────────── */}
-      <Section className="py-20 bg-card/15 border-y border-border/40 relative">
+      {/* â”€â”€â”€ Connected Lifecycle Chart â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-20 bg-card/60 backdrop-blur-sm border-y border-border/40 relative">
         <Container className="space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -487,7 +487,7 @@ export default function DhruvaOSPage() {
               'Alumni'
             ].map((node, idx) => (
               <div key={node} className="flex items-center gap-2.5">
-                <div className="px-3.5 py-2.5 rounded-xl border border-purple-500/20 bg-purple-500/5 text-xs font-semibold text-purple-300 hover:border-purple-500/40 transition-colors">
+                <div className="px-3.5 py-2.5 rounded-xl border border-primary/20 bg-primary/5 text-xs font-semibold text-primary/80 hover:border-primary/40 transition-colors">
                   {node}
                 </div>
                 {idx < 8 && (
@@ -500,13 +500,13 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Parent & Teacher Specialized Experiences ────────────────────────────── */}
-      <Section className="py-20 bg-muted/10 relative">
+      {/* â”€â”€â”€ Parent & Teacher Specialized Experiences â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-20 bg-card/40 backdrop-blur-sm relative">
         <Container className="grid grid-cols-1 md:grid-cols-2 gap-12">
           
           {/* Parent App Specs */}
           <div className="space-y-6">
-            <div className="h-10 w-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+            <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
               <Smartphone className="h-5 w-5" />
             </div>
             <h3 className="text-xl font-heading font-bold text-foreground">
@@ -518,7 +518,7 @@ export default function DhruvaOSPage() {
             <ul className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
               {['Tuition Gateway', 'Attendance Streak', 'Digital Diary Feed', 'Live GPS Tracking', 'PTM Chats', 'Grade Reports'].map((item) => (
                 <li key={item} className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-purple-400 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -527,7 +527,7 @@ export default function DhruvaOSPage() {
 
           {/* Teacher Console Specs */}
           <div className="space-y-6">
-            <div className="h-10 w-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+            <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
               <Sliders className="h-5 w-5" />
             </div>
             <h3 className="text-xl font-heading font-bold text-foreground">
@@ -539,7 +539,7 @@ export default function DhruvaOSPage() {
             <ul className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
               {['AI Lesson Planners', 'Roll Call Registers', 'AI Exam Generators', 'Auto grading remarks', 'Direct PTM Chats', 'Homework Trackers'].map((item) => (
                 <li key={item} className="flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-purple-400 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -549,7 +549,7 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Deployment Models ───────────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ Deployment Models â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Section className="py-20">
         <Container className="space-y-12">
           
@@ -566,10 +566,10 @@ export default function DhruvaOSPage() {
             {deployments.map((dep) => (
               <div
                 key={dep.model}
-                className="rounded-2xl border border-border bg-card/25 p-5 flex flex-col justify-between hover:border-purple-500/20 transition-all duration-300 relative overflow-hidden"
+                className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 flex flex-col justify-between hover:border-primary/20 transition-all duration-300 relative overflow-hidden"
               >
                 <div className="space-y-3">
-                  <span className="text-[9px] uppercase font-bold text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2 py-0.5 rounded-full inline-block">
+                  <span className="text-[9px] uppercase font-bold text-primary/80 bg-primary/10 border border-primary/15 px-2 py-0.5 rounded-full inline-block">
                     {dep.tag}
                   </span>
                   <h3 className="text-sm font-heading font-bold text-foreground">
@@ -586,19 +586,19 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Mobile Apps Support ─────────────────────────────────────────────────── */}
-      <Section className="py-16 bg-muted/10">
+      {/* â”€â”€â”€ Mobile Apps Support â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-16 bg-card/40 backdrop-blur-sm">
         <Container className="space-y-4 text-center max-w-xl mx-auto">
           <div className="space-y-2">
             <h2 className="text-xl font-heading font-bold text-foreground">Unified Mobile App</h2>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              A single native application on iOS & Android dynamically adaptive to all roles — providing tailored views for Parents, Teachers, Students, and Administrators.
+              A single native application on iOS & Android dynamically adaptive to all roles â€” providing tailored views for Parents, Teachers, Students, and Administrators.
             </p>
           </div>
         </Container>
       </Section>
 
-      {/* ─── Security & Compliance ──────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ Security & Compliance â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Section className="py-20">
         <Container className="space-y-12">
           
@@ -620,8 +620,8 @@ export default function DhruvaOSPage() {
             ].map((item) => {
               const IconComp = item.icon
               return (
-                <div key={item.title} className="rounded-2xl border border-border bg-card/10 p-5 space-y-3">
-                  <div className="h-9 w-9 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                <div key={item.title} className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 space-y-3">
+                  <div className="h-9 w-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
                     <IconComp className="h-4.5 w-4.5" />
                   </div>
                   <h3 className="text-xs font-heading font-bold text-foreground uppercase tracking-wider">{item.title}</h3>
@@ -634,8 +634,8 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Integrations Panel ──────────────────────────────────────────────────── */}
-      <Section className="py-20 bg-muted/10 relative">
+      {/* â”€â”€â”€ Integrations Panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-20 bg-card/40 backdrop-blur-sm relative">
         <Container className="space-y-12">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -651,7 +651,7 @@ export default function DhruvaOSPage() {
             {integrations.map((integ) => (
               <div
                 key={integ.title}
-                className="rounded-2xl border border-border bg-card/25 p-5 hover:border-purple-500/20 transition-all"
+                className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 hover:border-primary/20 transition-all"
               >
                 <h3 className="text-sm font-heading font-bold text-foreground mb-1.5">{integ.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{integ.desc}</p>
@@ -662,7 +662,7 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Why DhruvaOS / Pricing ──────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ Why DhruvaOS / Pricing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Section className="py-20">
         <Container className="space-y-12">
           
@@ -678,36 +678,36 @@ export default function DhruvaOSPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Why Card 1 */}
-            <div className="rounded-2xl border border-border bg-card/20 p-6 space-y-3">
-              <h4 className="text-sm font-heading font-bold text-purple-400">AI Native & Modern</h4>
+            <div className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 space-y-3">
+              <h4 className="text-sm font-heading font-bold text-primary">AI Native & Modern</h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Rather than retrofitting AI onto decades-old legacy codebases, DhruvaOS is architected from day one to utilize generative LLM structures for lesson structuring, scheduling, and risk evaluations.
               </p>
             </div>
 
             {/* Why Card 2 */}
-            <div className="rounded-2xl border border-border bg-card/20 p-6 space-y-3">
-              <h4 className="text-sm font-heading font-bold text-purple-400">API First Ecosystem</h4>
+            <div className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 space-y-3">
+              <h4 className="text-sm font-heading font-bold text-primary">API First Ecosystem</h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Connect external systems seamlessly. Our REST APIs allow your IT engineers to access database tables and trigger scripts safely, keeping operations open.
               </p>
             </div>
 
             {/* Why Card 3 (Pricing Hook) */}
-            <div className="rounded-2xl border border-purple-500/20 bg-purple-500/5 p-6 flex flex-col justify-between space-y-4">
+            <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 flex flex-col justify-between space-y-4">
               <div className="space-y-2">
-                <span className="text-[9px] uppercase font-bold text-purple-300 bg-purple-500/10 border border-purple-500/15 px-2.5 py-0.5 rounded-full inline-block">
+                <span className="text-[9px] uppercase font-bold text-primary/80 bg-primary/10 border border-primary/15 px-2.5 py-0.5 rounded-full inline-block">
                   Pricing Models
                 </span>
                 <h4 className="text-base font-heading font-bold text-foreground">Pilot Partner Rates</h4>
-                <p className="text-xs text-purple-300 leading-relaxed">
+                <p className="text-xs text-primary/80 leading-relaxed">
                   Enterprise Pricing is currently custom-quoted. Reach out to secure early Pilot School rates.
                 </p>
               </div>
 
               <Link
                 href="/contact"
-                className="w-full text-center py-2.5 rounded-xl bg-purple-500 text-white font-semibold text-xs uppercase tracking-wider hover:bg-purple-650 transition-all shadow"
+                className="w-full text-center py-2.5 rounded-xl bg-primary text-white font-semibold text-xs uppercase tracking-wider hover:bg-primary-hover transition-all shadow"
               >
                 Request Custom Quote
               </Link>
@@ -718,8 +718,8 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── FAQ Accordion Section ──────────────────────────────────────────────── */}
-      <Section className="py-20 bg-muted/10 border-t border-border/40">
+      {/* â”€â”€â”€ FAQ Accordion Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="py-20 bg-card/40 backdrop-blur-sm border-t border-border/40">
         <Container className="max-w-4xl mx-auto space-y-8">
           
           <div className="text-center space-y-3">
@@ -736,8 +736,8 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* ─── Final CTA ───────────────────────────────────────────────────────────── */}
-      <Section className="relative py-24 overflow-hidden bg-gradient-to-t from-purple-950/20 via-background to-background border-t border-border/40">
+      {/* â”€â”€â”€ Final CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <Section className="relative py-24 overflow-hidden bg-transparent border-t border-border/40">
         <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-cyan-500/2 to-indigo-500/5 pointer-events-none" />
         
         <Container className="relative z-10 text-center space-y-8 max-w-3xl">
@@ -754,7 +754,7 @@ export default function DhruvaOSPage() {
           <div className="flex flex-wrap items-center justify-center gap-4.5 pt-4">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white text-sm font-semibold transition-all shadow-md shadow-purple-500/10"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all shadow-md shadow-primary/10"
             >
               Book a Demo
             </Link>
@@ -778,3 +778,5 @@ export default function DhruvaOSPage() {
     </MarketingLayout>
   )
 }
+
+

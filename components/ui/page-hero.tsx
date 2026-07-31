@@ -30,8 +30,8 @@ export function PageHero({
       )}
       aria-labelledby="page-hero-heading"
     >
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-40" aria-hidden="true" />
+      {/* Semi-transparent tint — global AnimatedBackground shows through */}
+      <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" aria-hidden="true" />
       <div
         className="absolute inset-0"
         style={{

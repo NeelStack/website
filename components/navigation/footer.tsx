@@ -1,8 +1,14 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { FOOTER_NAV } from '@/constants/navigation'
 import { SITE_CONFIG } from '@/constants/site'
+import { Button } from '@/components/ui/button'
+import { NeelStackLogo } from '@/components/ui/logo'
 
-// ─── SVG social icons (lucide-react v1 removed branded icons) ─────────────────
+// ─── SVG social icons ──────────────────────────────────────────
 
 function IconX({ className }: { className?: string }) {
   return (
@@ -53,42 +59,7 @@ const socialLinks = [
 ]
 
 function FooterLogo() {
-  return (
-    <Link
-      href="/"
-      className="flex items-center gap-2.5 group"
-      aria-label="NeelStack — Home"
-    >
-      <svg
-        width="30"
-        height="30"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        className="shrink-0 transition-transform duration-300 group-hover:scale-105"
-      >
-        <defs>
-          <linearGradient id="ftr-bg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#46A6FC" />
-            <stop offset="100%" stopColor="#7C3AED" />
-          </linearGradient>
-          <filter id="ftr-glow" x="-30%" y="-30%" width="160%" height="160%">
-            <feDropShadow dx="0" dy="0" stdDeviation="2.5" floodColor="#7C3AED" floodOpacity="0.35" />
-          </filter>
-        </defs>
-        <rect width="32" height="32" rx="8" fill="url(#ftr-bg)" filter="url(#ftr-glow)" />
-        <path
-          d="M8 24V8h3.2L19.2 19.6V8H22.8V24h-3.2L11.6 12.4V24H8Z"
-          fill="white"
-        />
-      </svg>
-      <span className="font-heading font-bold text-base tracking-tight leading-none">
-        <span className="text-gradient-brand">Neel</span>
-        <span className="text-foreground">Stack</span>
-      </span>
-    </Link>
-  )
+  return <NeelStackLogo size="md" showTagline={true} />
 }
 
 interface FooterColumnProps {
@@ -126,14 +97,36 @@ export function Footer() {
       role="contentinfo"
       aria-label="Site footer"
     >
-      {/* Brand gradient top edge */}
-      <div
-        className="absolute top-0 inset-x-0 h-px"
-        style={{
-          background: 'linear-gradient(90deg, transparent 0%, rgba(70,166,252,0.4) 30%, rgba(124,58,237,0.4) 70%, transparent 100%)',
-        }}
-        aria-hidden="true"
-      />
+      {/* Pre-footer CTA banner */}
+      <div className="border-b border-border/80 bg-gradient-to-r from-card via-background to-card py-16 px-4 text-center relative overflow-hidden">
+        <div className="max-w-4xl mx-auto space-y-6 relative z-10">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold text-primary">
+            <Sparkles className="h-3.5 w-3.5" />
+            Ready to Build Something Exceptional?
+          </span>
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
+            Let&apos;s Engineer Your Next Product
+          </h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            Partner with senior software architects to design, build, and launch software people love using.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <motion.div whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
+              <Button asChild variant="gradient" size="lg" className="glow-cta px-8 text-base">
+                <Link href="/request-quote">
+                  Start Your Project <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </motion.div>
+            <motion.div whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/book-consultation">Book Technical Call</Link>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
         <div className="py-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6">

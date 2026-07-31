@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
@@ -9,7 +9,7 @@ export function BlogPreviewSection() {
   const previewPosts = BLOG_POSTS.slice(0, 3)
 
   return (
-    <Section id="blog">
+    <Section id="blog" className="bg-card/60 backdrop-blur-sm py-24 border-t border-border/60">
       <Container>
         <SectionHeader
           badge="From our blog"
@@ -36,3 +36,4 @@ export function BlogPreviewSection() {
     </Section>
   )
 }
+

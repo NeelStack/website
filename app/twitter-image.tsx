@@ -87,12 +87,12 @@ export default async function Image() {
           >
             <rect x="7" y="6" width="7" height="28" rx="2.5" fill="#FFFFFF" />
             <rect x="26" y="6" width="7" height="28" rx="2.5" fill="#FFFFFF" />
-            <path d="M 7 12 L 14 6 L 21 16 L 33 28 L 26 34 L 17 22 Z" fill="url(#code-stack-og)" />
+            <path d="M 7 12 L 14 6 L 21 16 L 33 28 L 26 34 L 17 22 Z" fill="url(#code-stack-tw)" />
             <circle cx="10.5" cy="9.5" r="2" fill="#020617" />
             <circle cx="21" cy="16" r="1.5" fill="#38BDF8" />
             <circle cx="29.5" cy="30.5" r="2" fill="#020617" />
             <defs>
-              <linearGradient id="code-stack-og" x1="7" y1="6" x2="33" y2="34" gradientUnits="userSpaceOnUse">
+              <linearGradient id="code-stack-tw" x1="7" y1="6" x2="33" y2="34" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stopColor="#38BDF8" />
                 <stop offset="50%" stopColor="#8B5CF6" />
                 <stop offset="100%" stopColor="#C084FC" />

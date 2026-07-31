@@ -1,0 +1,20 @@
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="6" width="7" height="28" rx="2.5" fill="#FFFFFF"/>
+  <rect x="23" y="6" width="7" height="28" rx="2.5" fill="#FFFFFF"/>
+  
+  <path d="M 4 12 L 11 6 L 18 16 L 30 28 L 23 34 L 14 22 Z" fill="url(#code-stack-full-dark)" />
+  
+  <circle cx="7.5" cy="9.5" r="2" fill="#020617" />
+  <circle cx="18" cy="16" r="1.5" fill="#38BDF8" />
+  <circle cx="26.5" cy="30.5" r="2" fill="#020617" />
+  
+  <text x="40" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="22" fill="#FFFFFF" letter-spacing="-0.03em">NeelStack</text>
+  
+  <defs>
+    <linearGradient id="code-stack-full-dark" x1="4" y1="6" x2="30" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#38BDF8" />
+      <stop offset="50%" stopColor="#8B5CF6" />
+      <stop offset="100%" stopColor="#C084FC" />
+    </linearGradient>
+  </defs>
+</svg>

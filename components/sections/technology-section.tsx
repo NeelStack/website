@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
-import { Laptop, Server, Database, Cloud, Bot, Wrench, CheckCircle2, Sparkles } from 'lucide-react'
+import { Laptop, Server, Database, Cloud, Bot, CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const TECH_CATEGORIES = [
@@ -47,12 +48,12 @@ const TECH_CATEGORIES = [
     color: 'text-rose-600 dark:text-rose-400',
     bgColor: 'bg-rose-500/10 border-rose-500/25',
     items: [
-      { name: 'OpenAI GPT-4o', desc: 'Multimodal generative AI reasoning' },
-      { name: 'LangChain / LlamaIndex', desc: 'RAG vector retrieval & agent orchestration' },
-      { name: 'Pinecone / Qdrant', desc: 'High-speed vector embedding databases' },
+      { name: 'Generative LLM Models', desc: 'Multimodal AI reasoning & text generation' },
+      { name: 'LangChain & LlamaIndex', desc: 'RAG vector retrieval & agent orchestration' },
+      { name: 'Pinecone & Qdrant', desc: 'High-speed vector embedding databases' },
       { name: 'PyTorch & HuggingFace', desc: 'Custom model fine-tuning & NLP' },
-      { name: 'Anthropic Claude 3.5', desc: 'Complex reasoning & code generation' },
-      { name: 'Local Ollama LLMs', desc: 'Privacy-focused self-hosted AI models' },
+      { name: 'Frontier Reasoning Engines', desc: 'Complex reasoning, code generation & analytical AI' },
+      { name: 'Local Ollama & Open Models', desc: 'Privacy-focused self-hosted AI models' },
     ],
   },
   {
@@ -94,22 +95,48 @@ export function TechnologySection() {
   const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
 
   return (
-    <Section id="technologies" className="py-20 relative overflow-hidden bg-surface">
-      <Container className="space-y-12">
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25">
-            Engineering Stack
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground tracking-tight">
-            Modern Technology, Proven Reliability
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Click across our core technology domains to explore our battle-tested engineering stack.
-          </p>
-        </div>
+    <Section id="technologies" className="py-24 relative overflow-hidden bg-card/60 backdrop-blur-sm">
+      {/* Subtle dark mesh backdrop */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 100%, rgba(59,130,246,0.05), transparent)' }}
+        aria-hidden="true"
+      />
+      <Container className="space-y-12 relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+          className="text-center max-w-2xl mx-auto space-y-4"
+        >
+          <motion.span
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
+            className="inline-block text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25"
+          >
+            Battle-Tested Engineering Stack
+          </motion.span>
+          <motion.h2
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
+            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight"
+          >
+            Modern Tech Ecosystem
+          </motion.h2>
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
+            className="text-sm sm:text-base text-muted-foreground"
+          >
+            We build with battle-tested open-source frameworks, edge cloud infrastructure, and modern AI tools.
+          </motion.p>
+          <motion.div
+            variants={{ hidden: { scaleX: 0, opacity: 0 }, visible: { scaleX: 1, opacity: 1, transition: { duration: 0.7, delay: 0.2, ease: [0.22,1,0.36,1] } } }}
+            style={{ originX: 0.5 }}
+            className="mx-auto h-px w-32 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
+          />
+        </motion.div>
 
-        {/* Tab Switcher Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl border border-border bg-card max-w-3xl mx-auto shadow-sm">
+        {/* Tab Switcher â€” with active tab glow */}
+        <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl border border-border bg-background max-w-3xl mx-auto shadow-md">
           {TECH_CATEGORIES.map((cat) => {
             const Icon = cat.icon
             const isActive = activeTab === cat.id
@@ -118,24 +145,33 @@ export function TechnologySection() {
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
                 className={cn(
-                  'flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer',
+                  'relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer',
                   isActive
-                    ? 'bg-primary text-primary-foreground shadow-md scale-105'
+                    ? 'text-primary-foreground shadow-lg'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
                 )}
               >
-                <Icon className="h-4 w-4" />
-                <span>{cat.title}</span>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabBg"
+                    className="absolute inset-0 bg-primary rounded-xl shadow-[0_0_20px_rgba(70,166,252,0.4)]"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-2">
+                  <Icon className="h-4 w-4" />
+                  <span>{cat.title}</span>
+                </span>
               </button>
             )
           })}
         </div>
 
-        {/* Active Tech Stack Grid */}
-        <div className="rounded-3xl border border-border/80 bg-card p-6 md:p-8 shadow-lg relative overflow-hidden">
+        {/* Active Tech Stack Grid with AnimatePresence */}
+        <div className="rounded-3xl border border-border/80 bg-card p-6 md:p-8 shadow-xl relative overflow-hidden">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-border/60 pb-6 mb-6">
             <div className="flex items-center gap-3">
-              <div className={`flex h-12 w-12 items-center justify-center rounded-xl border ${currentCategory.bgColor} ${currentCategory.color}`}>
+              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${currentCategory.bgColor} ${currentCategory.color}`}>
                 <currentCategory.icon className="h-6 w-6" />
               </div>
               <div>
@@ -146,28 +182,38 @@ export function TechnologySection() {
               </div>
             </div>
             <span className="text-xs text-muted-foreground bg-muted px-3 py-1.5 rounded-full font-mono">
-              6 Core Frameworks Active
+              6 Enterprise Core Frameworks
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {currentCategory.items.map((tech) => (
-              <div
-                key={tech.name}
-                className="group p-4 rounded-xl border border-border/60 bg-surface/50 hover:bg-surface hover:border-primary/30 transition-all duration-200 card-hover flex flex-col justify-between gap-2"
-              >
-                <div className="flex items-center justify-between">
-                  <h4 className="font-heading text-sm font-bold text-foreground group-hover:text-primary transition-colors">
-                    {tech.name}
-                  </h4>
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
+              {currentCategory.items.map((tech) => (
+                <div
+                  key={tech.name}
+                  className="group p-4 rounded-2xl border border-border/60 bg-surface/50 hover:bg-surface hover:border-primary/30 transition-all duration-200 card-hover flex flex-col justify-between gap-2"
+                >
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-heading text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                      {tech.name}
+                    </h4>
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{tech.desc}</p>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{tech.desc}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </Container>
     </Section>
   )
 }
+

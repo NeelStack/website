@@ -1,0 +1,86 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Crisp Light Surface Background -->
+  <rect width="1200" height="630" fill="#FAFBFF"/>
+  
+  <!-- Subtle Ambient Radial Glow -->
+  <circle cx="600" cy="0" r="500" fill="url(#og-light-glow)" opacity="0.4"/>
+  <circle cx="1000" cy="500" r="450" fill="url(#og-light-glow-secondary)" opacity="0.3"/>
+  
+  <!-- Subtle 4K Engineering Grid Line Texture -->
+  <path d="M 0 96 L 1200 96 M 0 192 L 1200 192 M 0 288 L 1200 288 M 0 384 L 1200 384 M 0 480 L 1200 480 M 0 576 L 1200 576 M 96 0 L 96 630 M 192 0 L 192 630 M 288 0 L 288 630 M 384 0 L 384 630 M 480 0 L 480 630 M 576 0 L 576 630 M 672 0 L 672 630 M 768 0 L 768 630 M 864 0 L 864 630 M 960 0 L 960 630 M 1056 0 L 1056 630 M 1152 0 L 1152 630" stroke="#0F172A" stroke-opacity="0.05" stroke-width="1.5"/>
+  
+  <!-- Top Pre-heading Badge -->
+  <rect x="420" y="56" width="360" height="38" rx="19" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-opacity="0.25"/>
+  <circle cx="442" cy="75" r="4" fill="#2563EB"/>
+  <text x="456" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="13" font-weight="800" fill="#1D4ED8" letter-spacing="2">ENTERPRISE AI &amp; SOFTWARE PLATFORMS</text>
+  
+  <!-- Centered Logo Group -->
+  <g transform="translate(360, 130)">
+    <!-- Code-Stack Prism Emblem (Light Theme) -->
+    <g transform="scale(3.2)">
+      <rect x="7" y="6" width="7" height="28" rx="2.5" fill="#0F172A"/>
+      <rect x="26" y="6" width="7" height="28" rx="2.5" fill="#0F172A"/>
+      <path d="M 7 12 L 14 6 L 21 16 L 33 28 L 26 34 L 17 22 Z" fill="url(#prism-grad-og-light)"/>
+      <circle cx="10.5" cy="9.5" r="2" fill="#FFFFFF"/>
+      <circle cx="21" cy="16" r="1.5" fill="#38BDF8"/>
+      <circle cx="29.5" cy="30.5" r="2" fill="#FFFFFF"/>
+    </g>
+    
+    <!-- Brand Name Text -->
+    <text x="145" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Plus Jakarta Sans', sans-serif" font-size="88" font-weight="900" letter-spacing="-3">
+      <tspan fill="#0F172A">Neel</tspan><tspan fill="#2563EB">Stack</tspan>
+    </text>
+  </g>
+  
+  <!-- Main Tagline -->
+  <text x="600" y="325" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Plus Jakarta Sans', sans-serif" font-size="36" font-weight="800" fill="#0F172A" letter-spacing="-0.5">
+    AI-Native Enterprise Software &amp; Product Engineering
+  </text>
+  
+  <!-- Sub-Tagline -->
+  <text x="600" y="375" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="22" font-weight="500" fill="#475569">
+    Scaling Intelligent SaaS Platforms, ERP Systems &amp; Custom AI Agents
+  </text>
+  
+  <!-- Capability Badges -->
+  <g transform="translate(230, 445)">
+    <rect x="0" y="0" width="160" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
+    <text x="80" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">AI Agents</text>
+    
+    <rect x="176" y="0" width="180" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
+    <text x="266" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">DhruvaOS Suite</text>
+    
+    <rect x="372" y="0" width="200" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
+    <text x="472" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">Cloud Architecture</text>
+    
+    <rect x="588" y="0" width="160" height="42" rx="21" fill="#0F172A" fill-opacity="0.05" stroke="#0F172A" stroke-opacity="0.1"/>
+    <text x="668" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="15" font-weight="700" fill="#0F172A">Custom SaaS</text>
+  </g>
+  
+  <!-- Bottom Accent Gradient Line -->
+  <rect x="0" y="622" width="1200" height="8" fill="url(#bottom-accent-light)"/>
+  
+  <defs>
+    <radialGradient id="og-light-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 0) scale(500)">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    
+    <radialGradient id="og-light-glow-secondary" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 500) scale(450)">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    
+    <linearGradient id="prism-grad-og-light" x1="7" y1="6" x2="33" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    
+    <linearGradient id="bottom-accent-light" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+</svg>

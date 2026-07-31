@@ -34,10 +34,10 @@ export const MAIN_NAV: NavMenu[] = [
       {
         label: 'Website Development',
         items: [
-          { label: 'Corporate & Business Websites', href: '/services/enterprise-web', description: 'High-speed, conversion-focused company websites', icon: Globe },
-          { label: 'Ecommerce & D2C Storefronts', href: '/services/enterprise-web', description: 'Custom online stores with sub-second checkout', icon: ShoppingBag },
-          { label: 'Next.js 16 Web Applications', href: '/services/enterprise-web', description: 'Modern web apps built for performance & scale', icon: Terminal },
-          { label: 'Custom CMS & Landing Pages', href: '/services/enterprise-web', description: 'Easy content management & marketing pages', icon: FileText },
+          { label: 'Corporate & Business Websites', href: '/services/web-applications', description: 'High-speed, conversion-focused company websites', icon: Globe },
+          { label: 'Ecommerce & D2C Storefronts', href: '/services/web-applications', description: 'Custom online stores with sub-second checkout', icon: ShoppingBag },
+          { label: 'Next.js 16 Web Applications', href: '/services/web-applications', description: 'Modern web apps built for performance & scale', icon: Terminal },
+          { label: 'Custom CMS & Landing Pages', href: '/services/web-applications', description: 'Easy content management & marketing pages', icon: FileText },
         ],
       },
       {
@@ -127,7 +127,7 @@ export const FOOTER_NAV = {
     { label: 'All Products', href: '/products' },
   ],
   services: [
-    { label: 'Website Development', href: '/services/enterprise-web' },
+    { label: 'Website Development', href: '/services/web-applications' },
     { label: 'Mobile App Development', href: '/services/mobile-development' },
     { label: 'Custom Software & ERP/CRM', href: '/services/custom-software' },
     { label: 'AI Solutions & Agents', href: '/services/ai-development' },

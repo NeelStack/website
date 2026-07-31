@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk, Geist_Mono } from 'next/font/google'
+import { Inter, Plus_Jakarta_Sans, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site-url'
 import { JsonLd } from '@/components/seo/json-ld'
@@ -12,9 +12,9 @@ const inter = Inter({
   display: 'swap',
 })
 
-const spaceGrotesk = Space_Grotesk({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-jakarta',
   display: 'swap',
 })
 
@@ -114,7 +114,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable} bg-background`}
+      className={`${inter.variable} ${jakarta.variable} ${geistMono.variable} bg-background dark`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -124,10 +124,10 @@ export default function RootLayout({
             __html: `
               try {
                 const t = localStorage.getItem('theme');
-                if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                } else if (t === 'light') {
+                if (t === 'light') {
                   document.documentElement.classList.remove('dark');
+                } else {
+                  document.documentElement.classList.add('dark');
                 }
               } catch (e) {}
             `,

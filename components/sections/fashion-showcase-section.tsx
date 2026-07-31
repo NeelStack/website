@@ -56,18 +56,24 @@ const cardVariants = {
 export function FashionShowcaseSection() {
   return (
     <Section className="py-20 relative overflow-hidden bg-gradient-to-b from-background via-surface to-background">
-      {/* Ambient gradient glow backdrop */}
+      {/* Ambient gradient glow backdrop (tightened by 1/3) */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[140px] pointer-events-none opacity-40 dark:opacity-20"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[260px] rounded-full blur-[90px] pointer-events-none opacity-40 dark:opacity-20"
         style={{
           background:
-            'radial-gradient(circle, rgba(225, 29, 72, 0.25) 0%, rgba(192, 38, 211, 0.2) 50%, transparent 70%)',
+            'radial-gradient(circle, rgba(225, 29, 72, 0.22) 0%, rgba(192, 38, 211, 0.18) 50%, transparent 70%)',
         }}
         aria-hidden="true"
       />
 
       <Container className="relative z-10 space-y-12">
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-rose-600 dark:text-rose-400 bg-rose-500/10 px-3.5 py-1.5 rounded-full border border-rose-500/25">
             <Shirt className="h-3.5 w-3.5" />
             D2C Fashion &amp; Apparel Engineering
@@ -78,7 +84,7 @@ export function FashionShowcaseSection() {
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
             We build high-converting ecommerce platforms, AI try-on tools, and viral social commerce integrations for modern apparel, luxury design, and apparel brands.
           </p>
-        </div>
+        </motion.div>
 
         {/* Staggered Framer Motion Grid */}
         <motion.div
@@ -116,22 +122,28 @@ export function FashionShowcaseSection() {
         </motion.div>
 
         {/* Fashion Lead CTA Banner */}
-        <div className="rounded-3xl border border-rose-500/30 bg-gradient-to-r from-rose-500/10 via-purple-500/10 to-violet-500/10 p-8 text-center space-y-5 max-w-4xl mx-auto shadow-lg backdrop-blur-sm">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-3xl border border-rose-500/30 bg-gradient-to-r from-rose-500/10 via-purple-500/10 to-violet-500/10 p-8 text-center space-y-5 max-w-4xl mx-auto shadow-lg backdrop-blur-sm"
+        >
           <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-foreground">
-            Building a Fashion or Clothing Brand?
+            Building a Fashion, Luxury, or Apparel D2C Brand?
           </h3>
-          <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            Get an interactive 3D storefront prototype and custom AI size engine audit built specifically for your apparel catalog.
+          <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto">
+            Get an instant custom storefront audit &amp; AI try-on roadmap tailored for high-volume apparel brands.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 pt-2">
-            <Button asChild variant="gradient" size="lg" className="glow-cta gap-2 px-8">
-              <Link href="/request-quote?industry=fashion-d2c">
-                Consult Fashion Engineers
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          <div className="pt-2 flex justify-center">
+            <Button asChild variant="gradient" size="lg" className="rounded-full px-8 shadow-md">
+              <Link href="/request-quote" className="flex items-center gap-2">
+                <span>Request Fashion Tech Blueprint</span>
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </Section>
   )

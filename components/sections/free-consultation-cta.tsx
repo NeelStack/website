@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { Button } from '@/components/ui/button'
@@ -18,7 +19,13 @@ export function FreeConsultationCTA() {
   return (
     <Section className="py-20 bg-gradient-to-br from-emerald-950/20 via-background to-blue-950/20 border-t border-border/40">
       <Container className="max-w-5xl">
-        <div className="rounded-3xl border border-emerald-500/30 bg-card/90 p-8 sm:p-12 shadow-2xl backdrop-blur-sm space-y-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 24 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-3xl border border-emerald-500/30 bg-card/90 p-8 sm:p-12 shadow-2xl backdrop-blur-sm space-y-10"
+        >
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="h-3.5 w-3.5" />
@@ -60,7 +67,7 @@ export function FreeConsultationCTA() {
               <Link href="/request-quote">Get a Project Quote</Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </Section>
   )
