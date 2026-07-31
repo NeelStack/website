@@ -4,6 +4,7 @@ import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
+import { Breadcrumb } from '@/components/navigation/breadcrumb'
 import { JsonLd } from '@/components/seo/json-ld'
 import {
   School,
@@ -189,6 +190,11 @@ export default function DhruvaOSPage() {
 
         <Container className="relative z-10 text-center space-y-12">
           
+          {/* Breadcrumbs */}
+          <div className="flex justify-center">
+            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Products', href: '/products' }, { label: 'DhruvaOS' }]} />
+          </div>
+
           {/* Top Tagline Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5 text-primary" />

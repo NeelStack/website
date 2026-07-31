@@ -29,9 +29,8 @@ export function AnimatedBackground() {
       className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none"
       aria-hidden="true"
     >
-      {/* ─── Layer 1: AI Constellation Network ─── */}
-      {/* Housed in its own opacity wrapper so it can be tuned independently */}
-      <div className="absolute inset-0 opacity-[0.42] dark:opacity-[0.48]">
+      {/* Layer 1: AI Constellation Network — toned down for subtle ambient depth */}
+      <div className="absolute inset-0 opacity-[0.25] dark:opacity-[0.30]">
         <AiNetworkBg />
       </div>
 

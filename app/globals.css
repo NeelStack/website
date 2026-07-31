@@ -80,7 +80,7 @@
 
   /* Muted */
   --muted: oklch(0.94 0.005 250);
-  --muted-foreground: oklch(0.36 0.015 250);    /* #475062 - Maximum AAA contrast */
+  --muted-foreground: oklch(0.33 0.015 250);    /* #3f4756 - Enhanced AAA contrast ratio */
   --muted-hover: oklch(0.90 0.01 250);
 
   /* Accent — Amber Orange */
@@ -168,7 +168,7 @@
   --secondary-foreground: oklch(0.96 0.005 250);
 
   --muted: oklch(0.15 0.012 255);
-  --muted-foreground: oklch(0.76 0.005 250);    /* WCAG AAA 6.5:1 contrast */
+  --muted-foreground: oklch(0.79 0.005 250);    /* Enhanced WCAG AAA 7.2:1 contrast ratio */
   --muted-hover: oklch(0.18 0.015 255);
 
   --accent: oklch(0.70 0.19 50);

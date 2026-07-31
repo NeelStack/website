@@ -116,7 +116,7 @@ export function AiNetworkBg() {
             x2={e.x2} y2={e.y2}
             strokeWidth="0.22"
             strokeDasharray="1.2 2.8"
-            className="stroke-primary/30 dark:stroke-cyan-400/25"
+            className="stroke-primary/20 dark:stroke-cyan-400/18"
             filter="url(#ai-edge-glow)"
           />
         ))}
