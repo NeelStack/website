@@ -1,11 +1,7 @@
-import {
-  CheckCircle,
-  Code2,
-  FileSearch,
-  Lightbulb,
-  Rocket,
-  Users,
-} from 'lucide-react'
+﻿'use client'
+
+import { motion } from 'framer-motion'
+import { CheckCircle, Code2, FileSearch, Lightbulb, Rocket, Users } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import type { ProcessStep } from '@/types'
@@ -27,81 +23,128 @@ const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     step: 3,
-    title: 'UI/UX Design',
+    title: 'UI/UX & Design System',
     description:
-      'We create wireframes, prototypes, and pixel-perfect designs that are intuitive, accessible, and aligned with your brand identity.',
+      'We create wireframes, interactive prototypes, and pixel-perfect design systems in Figma that are intuitive, accessible, and aligned with your brand.',
     icon: Users,
   },
   {
     step: 4,
-    title: 'Agile Development',
+    title: 'Agile Engineering',
     description:
-      'Our engineers build in sprints, delivering working software incrementally. You get full visibility through regular demos and code reviews.',
+      'Our senior engineers build in sprints using Next.js, FastAPI, and Docker â€” delivering working software incrementally with continuous integration.',
     icon: Code2,
   },
   {
     step: 5,
-    title: 'QA & Testing',
+    title: 'QA & Automated Testing',
     description:
-      'Every release goes through rigorous automated and manual testing — unit, integration, performance, security, and accessibility testing.',
+      'Every release undergoes unit, integration, security, and accessibility (WCAG AA) testing to maintain rock-solid software quality.',
     icon: CheckCircle,
   },
   {
     step: 6,
     title: 'Deployment & Support',
     description:
-      'We deploy to production with zero-downtime strategies, set up monitoring, and provide ongoing support and maintenance to keep your system healthy.',
+      'We deploy to production using zero-downtime edge strategies, configure telemetry monitoring, and provide 24/7 SLA maintenance.',
     icon: Rocket,
   },
 ]
 
 export function ProcessSection() {
   return (
-    <Section id="process" className="bg-card">
-      <Container className="space-y-12">
-        <SectionHeader
-          badge="How We Work"
-          title="Our Development Process"
-          description="We follow a proven, structured process that delivers predictable outcomes — on time, on scope, and on budget."
-        />
+    <Section id="process" className="bg-background/60 backdrop-blur-sm relative overflow-hidden py-24">
+      {/* Ambient top glow (tightened by 1/3) */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(124,58,237,0.07), transparent)' }}
+        aria-hidden="true"
+      />
+      <Container className="space-y-16 relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+          className="text-center max-w-2xl mx-auto space-y-4"
+        >
+          <motion.span
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
+            className="inline-block text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25"
+          >
+            Engineering Methodology
+          </motion.span>
+          <motion.h2
+            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
+            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight"
+          >
+            Our 6-Step Product Process
+          </motion.h2>
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
+            className="text-sm sm:text-base text-muted-foreground"
+          >
+            A structured engineering pipeline that delivers predictable, world-class digital products on time and on scope.
+          </motion.p>
+          <motion.div
+            variants={{ hidden: { scaleX: 0, opacity: 0 }, visible: { scaleX: 1, opacity: 1, transition: { duration: 0.7, delay: 0.2, ease: [0.22,1,0.36,1] } } }}
+            style={{ originX: 0.5 }}
+            className="mx-auto h-px w-32 bg-gradient-to-r from-transparent via-violet-400/60 to-transparent"
+          />
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PROCESS_STEPS.map((step) => {
+        {/* Cards grid â€” larger gaps for breathing room */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } } }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 relative"
+        >
+          {PROCESS_STEPS.map((step, idx) => {
             const Icon = step.icon
             return (
-              <div
+              <motion.div
                 key={step.step}
-                className="group relative flex flex-col gap-4 rounded-2xl p-8 border border-border bg-background card-hover hover:border-primary/40 overflow-hidden shadow-sm"
+                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
+                className="group relative flex flex-col justify-between gap-6 rounded-3xl p-9 border border-border/80 bg-card card-hover hover:border-primary/40 overflow-hidden shadow-md"
               >
-                {/* Large decorative background step number - custom color gradient */}
+                {/* Large background step number */}
                 <span
-                  className="absolute top-4 right-5 font-heading font-black text-6xl text-primary/10 select-none leading-none group-hover:scale-105 transition-transform"
+                  className="absolute top-3 right-5 font-heading font-black text-7xl text-primary/8 select-none leading-none group-hover:text-primary/15 group-hover:scale-110 transition-all duration-300"
                   aria-hidden="true"
                 >
-                  {step.step.toString().padStart(2, '0')}
+                  0{step.step}
                 </span>
 
-                {/* Icon + step number row */}
-                <div className="flex items-center gap-3 relative z-10">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 group-hover:shadow-[0_0_16px_rgba(59,130,246,0.15)] transition-all duration-300">
-                    <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                <div className="space-y-4 relative z-10">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 border border-primary/25 text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_24px_rgba(70,166,252,0.4)] transition-all duration-300">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <span className="text-xs font-extrabold text-muted-foreground uppercase tracking-widest bg-muted px-2.5 py-1 rounded-full border border-border">
+                      Phase 0{step.step}
+                    </span>
                   </div>
-                  <span className="text-xs font-bold text-muted-foreground/75 uppercase tracking-wider">
-                    Step {step.step.toString().padStart(2, '0')}
-                  </span>
+
+                  <h3 className="font-heading text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
 
-                <h3 className="font-heading text-base font-bold text-foreground relative z-10 group-hover:text-primary transition-colors">
-                  {step.title}
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed relative z-10">
-                  {step.description}
-                </p>
-              </div>
+                <div className="pt-3 border-t border-border/40 flex items-center justify-between text-[11px] font-bold text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span>Deliverable ready</span>
+                  <span className="text-primary font-mono">Step 0{step.step}/06</span>
+                </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
       </Container>
     </Section>
   )
 }
+

@@ -117,7 +117,7 @@ export function FreelancingSection() {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.08 })
 
   return (
-    <Section id="hire-developer" className="bg-background relative overflow-hidden">
+    <Section id="hire-developer" className="bg-background/60 backdrop-blur-sm relative overflow-hidden">
       {/* Violet mesh background accent */}
       <div className="absolute inset-0 bg-mesh-gradient opacity-60 pointer-events-none" aria-hidden="true" />
       <div
@@ -269,3 +269,4 @@ export function FreelancingSection() {
     </Section>
   )
 }
+

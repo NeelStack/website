@@ -13,7 +13,7 @@ export function PricingCard({ plan, className }: PricingCardProps) {
   return (
     <div
       className={cn(
-        'relative flex flex-col rounded-2xl border bg-card p-8 transition-shadow duration-300',
+        'relative flex flex-col rounded-2xl border bg-card p-8 card-ai-hover transition-all duration-300',
         plan.isPopular
           ? 'border-primary shadow-lg shadow-primary/10'
           : 'border-border hover:border-border/80 hover:shadow-md',

@@ -1,4 +1,4 @@
-import { Container } from '@/components/ui/container'
+﻿import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
 import { SafeEmailLink } from '@/components/ui/copy-email-button'
@@ -8,12 +8,12 @@ const HOME_FAQ: FAQItem[] = [
   {
     question: 'What types of projects does NeelStack take on?',
     answer:
-      'We work on a wide range of projects — from custom software development and AI integrations to full ERP systems and SaaS platforms. Whether you are a startup building your first product or an enterprise modernizing legacy systems, we can help.',
+      'We work on a wide range of projects â€” from custom software development and AI integrations to full ERP systems and SaaS platforms. Whether you are a startup building your first product or an enterprise modernizing legacy systems, we can help.',
   },
   {
     question: 'How long does it take to build a typical project?',
     answer:
-      'It depends on the scope. A simple web application or MVP can take 6–10 weeks. A complex ERP system or SaaS platform typically takes 4–9 months. We provide a detailed timeline after the discovery phase.',
+      'It depends on the scope. A simple web application or MVP can take 6â€“10 weeks. A complex ERP system or SaaS platform typically takes 4â€“9 months. We provide a detailed timeline after the discovery phase.',
   },
   {
     question: 'Do you work with international clients?',
@@ -39,7 +39,7 @@ const HOME_FAQ: FAQItem[] = [
 
 export function FAQSection() {
   return (
-    <Section id="faq" className="bg-card">
+    <Section id="faq" className="bg-card/60 backdrop-blur-sm">
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left: Header */}
@@ -68,3 +68,4 @@ export function FAQSection() {
     </Section>
   )
 }
+

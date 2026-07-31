@@ -148,7 +148,7 @@ export default function AboutPage() {
       />
 
       {/* Corporate Philosophy */}
-      <Section className="bg-card">
+      <Section className="bg-card/60 backdrop-blur-sm">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 items-center">
             <div>
@@ -183,7 +183,7 @@ export default function AboutPage() {
               {WHY_NEELSTACK.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-border bg-background p-5"
+                  className="rounded-2xl border border-border bg-background/60 backdrop-blur-sm p-5"
                 >
                   <h3 className="font-heading text-sm font-bold text-foreground mb-1.5">{item.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
@@ -214,7 +214,7 @@ export default function AboutPage() {
               {JOURNEY.map((item) => (
                 <div
                   key={item.name}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-border bg-card p-6"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6"
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-2.5 mb-1">
@@ -313,7 +313,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Engineering Principles */}
-      <Section className="bg-card border-t border-border">
+      <Section className="bg-card/60 backdrop-blur-sm border-t border-border">
         <Container>
           <div className="text-center mb-12">
             <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
@@ -328,7 +328,7 @@ export default function AboutPage() {
             {PRINCIPLES.map((principle) => (
               <div
                 key={principle.title}
-                className="flex flex-col gap-2 rounded-2xl border border-border bg-background p-6"
+                className="flex flex-col gap-2 rounded-2xl border border-border bg-background/60 backdrop-blur-sm p-6"
               >
                 <h3 className="font-heading text-base font-bold text-foreground">{principle.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{principle.description}</p>
@@ -356,7 +356,7 @@ export default function AboutPage() {
               return (
                 <div
                   key={value.title}
-                  className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 hover:border-primary/20 transition-colors"
+                  className="flex flex-col gap-4 rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 hover:border-primary/20 card-ai-hover transition-colors"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
                     <Icon className="h-5 w-5 text-primary" aria-hidden="true" />

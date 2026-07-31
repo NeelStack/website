@@ -28,9 +28,9 @@ export const CURRENCY_CONFIGS: Record<CurrencyCode, CurrencyConfig> = {
     code: 'USD',
     name: 'USD ($)',
     symbol: '$',
-    auditPriceFormatted: '$6',
-    auditPrice: '$6',
-    auditPriceNumber: 6,
+    auditPriceFormatted: '$10',
+    auditPrice: '$10',
+    auditPriceNumber: 10,
     consultationText: 'Free 20-Min Architecture Brief',
     formatOptions: {
       under100: 'Under $1,000',
