@@ -14,6 +14,7 @@ import { BlogPreviewSection } from '@/components/sections/blog-preview-section'
 import { WebsiteAnalysisLeadMagnet } from '@/components/sections/website-analysis-lead-magnet'
 import { FreeConsultationCTA } from '@/components/sections/free-consultation-cta'
 import { getSiteUrl } from '@/lib/site-url'
+import { Laptop, Smartphone, Sparkles, Bot, Cloud, Sliders, Shield, Users, Layers } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'NeelStack | Enterprise AI & Product Engineering Company',
