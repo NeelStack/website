@@ -114,7 +114,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} ${geistMono.variable} bg-background`}
+      className={`${inter.variable} ${jakarta.variable} ${geistMono.variable} bg-background dark`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -124,10 +124,10 @@ export default function RootLayout({
             __html: `
               try {
                 const t = localStorage.getItem('theme');
-                if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                } else if (t === 'light') {
+                if (t === 'light') {
                   document.documentElement.classList.remove('dark');
+                } else {
+                  document.documentElement.classList.add('dark');
                 }
               } catch (e) {}
             `,
