@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -48,12 +48,12 @@ const TECH_CATEGORIES = [
     color: 'text-rose-600 dark:text-rose-400',
     bgColor: 'bg-rose-500/10 border-rose-500/25',
     items: [
-      { name: 'OpenAI GPT-4o', desc: 'Multimodal generative AI reasoning' },
-      { name: 'LangChain / LlamaIndex', desc: 'RAG vector retrieval & agent orchestration' },
-      { name: 'Pinecone / Qdrant', desc: 'High-speed vector embedding databases' },
+      { name: 'Generative LLM Models', desc: 'Multimodal AI reasoning & text generation' },
+      { name: 'LangChain & LlamaIndex', desc: 'RAG vector retrieval & agent orchestration' },
+      { name: 'Pinecone & Qdrant', desc: 'High-speed vector embedding databases' },
       { name: 'PyTorch & HuggingFace', desc: 'Custom model fine-tuning & NLP' },
-      { name: 'Anthropic Claude 3.5', desc: 'Complex reasoning & code generation' },
-      { name: 'Local Ollama LLMs', desc: 'Privacy-focused self-hosted AI models' },
+      { name: 'Frontier Reasoning Engines', desc: 'Complex reasoning, code generation & analytical AI' },
+      { name: 'Local Ollama & Open Models', desc: 'Privacy-focused self-hosted AI models' },
     ],
   },
   {

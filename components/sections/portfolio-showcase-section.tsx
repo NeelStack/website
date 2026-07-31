@@ -176,7 +176,7 @@ export function PortfolioShowcaseSection() {
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">React 19</span>
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">PostgreSQL</span>
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Redis</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Claude RAG</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Vector RAG Engine</span>
               </div>
             </div>
 

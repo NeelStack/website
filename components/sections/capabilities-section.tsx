@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import Link from 'next/link'
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
@@ -27,7 +27,7 @@ const CAPABILITIES = [
     color: 'text-rose-500 dark:text-rose-400',
     bgColor: 'bg-rose-500/10 border-rose-500/25',
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(244,63,94,0.2)]',
-    tags: ['Vector RAG', 'Claude 3.5 & GPT-4o', 'LangChain'],
+    tags: ['Vector RAG', 'Frontier LLMs & RAG', 'LangChain'],
   },
   {
     id: 'web-apps',
