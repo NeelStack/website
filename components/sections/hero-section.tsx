@@ -50,7 +50,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-32 min-h-[92vh] flex items-center justify-center"
+      className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24 min-h-[88vh] flex items-center justify-center"
       aria-label="Hero section"
     >
       {/* ── Hero-local ambient overlays (complement global AnimatedBackground) ── */}
@@ -96,7 +96,7 @@ export function HeroSection() {
           {/* ── Main Display Headline ── */}
           <motion.h1
             variants={itemVariants}
-            className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-[4.8rem] font-extrabold tracking-tight text-foreground text-balance leading-[1.06]"
+            className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-[4.1rem] font-extrabold tracking-tight text-foreground text-balance leading-[1.08]"
           >
             {/* Line 1 */}
             <span className="block">

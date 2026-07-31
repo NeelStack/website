@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: 'NeelStack | Enterprise AI & Software Solutions',
     description:
       'Building enterprise software, AI solutions, SaaS products, and custom applications for organizations worldwide.',
-    images: ['/opengraph-image'],
+    images: ['/twitter-image'],
   },
   icons: {
     icon: { url: '/icon.svg', type: 'image/svg+xml' },
@@ -114,7 +114,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} ${geistMono.variable} bg-background dark`}
+      className={`${inter.variable} ${jakarta.variable} ${geistMono.variable} bg-background`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -124,10 +124,10 @@ export default function RootLayout({
             __html: `
               try {
                 const t = localStorage.getItem('theme');
-                if (t === 'light') {
-                  document.documentElement.classList.remove('dark');
-                } else {
+                if (t === 'dark') {
                   document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
                 }
               } catch (e) {}
             `,

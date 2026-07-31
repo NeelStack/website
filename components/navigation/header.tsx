@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { NeelStackLogo } from '@/components/ui/logo'
 
-// ─── Nav Dropdown ─────────────────────────────────────────────────────────────
+// ─── Nav Dropdown Component ───────────────────────────────────────────────────
 
 function NavDropdown({
   menu,
@@ -32,14 +32,18 @@ function NavDropdown({
   const isActive = allItems.some((item) => pathname.startsWith(item.href) && item.href !== '/')
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
     onOpen()
   }
 
   const handleMouseLeave = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
     timeoutRef.current = setTimeout(() => {
       onClose()
-    }, 250)
+    }, 180)
   }
 
   useEffect(() => {
@@ -66,49 +70,50 @@ function NavDropdown({
       <button
         onClick={() => (isOpen ? onClose() : onOpen())}
         className={cn(
-          'relative flex cursor-pointer items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold transition-all duration-200 select-none outline-none',
+          'relative flex cursor-pointer items-center gap-1.5 px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-300 select-none outline-none z-10',
           isOpen
-            ? 'text-foreground bg-primary/10 border border-primary/30 shadow-[0_0_15px_rgba(70,166,252,0.15)]'
+            ? 'text-primary bg-primary/10 border border-primary/30 shadow-[0_0_20px_rgba(56,189,248,0.2)]'
             : isActive
-            ? 'text-primary bg-primary/5 font-extrabold'
-            : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
+              ? 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border border-cyan-500/20'
+              : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-500/10'
         )}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
         <span>{menu.label}</span>
         <ChevronDown
-          className={cn('h-3.5 w-3.5 transition-transform duration-250', isOpen && 'rotate-180 text-primary')}
+          className={cn('h-3.5 w-3.5 transition-transform duration-300', isOpen && 'rotate-180 text-primary')}
           aria-hidden="true"
         />
 
-        {/* Active Route Dot Indicator */}
+        {/* Active Route Glow Point */}
         {isActive && !isOpen && (
-          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary shadow-[0_0_8px_var(--color-primary)]" />
+          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]" />
         )}
       </button>
 
+      {/* Mega Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             role="menu"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: 10, scale: 0.97 }}
+            initial={{ opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6, scale: 0.97 }}
+            exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ type: 'spring', stiffness: 450, damping: 28 }}
             className={cn(
-              'absolute top-full mt-2.5 z-50 rounded-2xl border border-border/80 bg-card/95 backdrop-blur-2xl shadow-2xl shadow-black/40 overflow-hidden before:absolute before:-top-4 before:inset-x-0 before:h-5 before:content-[\'\']',
-              hasGroups ? 'w-[880px] -translate-x-1/4' : 'w-76 left-0'
+              'absolute top-full mt-2.5 z-50 rounded-2xl border border-border/80 bg-card/95 backdrop-blur-2xl shadow-2xl shadow-black/30 overflow-hidden before:absolute before:-top-6 before:inset-x-0 before:h-8 before:content-[\'\']',
+              hasGroups ? 'w-[640px] -translate-x-1/4' : 'w-76 left-0'
             )}
           >
             {hasGroups ? (
-              <div className="grid grid-cols-3 gap-2 p-5 bg-gradient-to-b from-card via-card to-background/60">
+              <div className="grid grid-cols-2 gap-4 p-5 bg-gradient-to-b from-card via-card to-background/60">
                 {menu.groups!.map((group) => (
                   <div key={group.label} className="p-2 flex flex-col justify-start">
-                    <p className="px-2 mb-2.5 text-[11px] font-extrabold tracking-wider text-primary uppercase border-b border-border/40 pb-2 flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                    <p className="px-2 mb-3 text-[11px] font-black tracking-wider text-cyan-600 dark:text-cyan-400 uppercase border-b border-border/40 pb-2 flex items-center gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]" />
                       {group.label}
                     </p>
                     <div className="space-y-1">
@@ -120,15 +125,15 @@ function NavDropdown({
                             href={item.href}
                             role="menuitem"
                             onClick={onClose}
-                            className="group flex items-start gap-2.5 rounded-xl px-2.5 py-2 hover:bg-primary/10 transition-all duration-200"
+                            className="group flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all duration-200"
                           >
                             {ItemIcon && (
-                              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
-                                <ItemIcon className="h-3.5 w-3.5" />
+                              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-200 shadow-sm">
+                                <ItemIcon className="h-4 w-4" />
                               </div>
                             )}
                             <div className="flex flex-col">
-                              <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
+                              <span className="text-xs font-bold text-foreground group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                                 {item.label}
                               </span>
                               {item.description && (
@@ -145,28 +150,28 @@ function NavDropdown({
                 ))}
               </div>
             ) : (
-              <div className="p-2.5 space-y-1 bg-gradient-to-b from-card to-background/60">
+              <div className="p-3 space-y-1 bg-gradient-to-b from-card to-background/60">
                 {menu.items!.map((item) => {
                   const ItemIcon = item.icon
                   return (
                     <Link
-                      key={item.href}
+                      key={item.href + item.label}
                       href={item.href}
                       role="menuitem"
                       onClick={onClose}
-                      className="group flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-primary/10 transition-all duration-200"
+                      className="group flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all duration-200"
                     >
                       {ItemIcon && (
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-200">
                           <ItemIcon className="h-4 w-4" />
                         </div>
                       )}
-                      <div className="flex flex-col min-w-0">
-                        <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors">
+                      <div className="flex flex-col">
+                        <span className="text-xs font-bold text-foreground group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                           {item.label}
                         </span>
                         {item.description && (
-                          <span className="text-[10px] text-muted-foreground truncate">
+                          <span className="text-[10px] text-muted-foreground mt-0.5">
                             {item.description}
                           </span>
                         )}
@@ -183,221 +188,154 @@ function NavDropdown({
   )
 }
 
-// ─── AI Talk Modal ────────────────────────────────────────────────────────────
-
-const AI_CAPABILITIES = [
-  {
-    icon: Bot,
-    label: 'Autonomous Agents',
-    desc: 'Custom multi-agent pipelines that automate support, data ops, and complex business workflows 24/7.',
-    color: 'text-blue-500',
-    bg: 'bg-blue-500/10 border-blue-500/20',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]',
-  },
-  {
-    icon: Cpu,
-    label: 'Vector RAG Engines',
-    desc: 'Semantic search across your private documents and records — accurate, fast, and fully on your infra.',
-    color: 'text-violet-500',
-    bg: 'bg-violet-500/10 border-violet-500/20',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(139,92,246,0.25)]',
-  },
-  {
-    icon: Zap,
-    label: 'AI Copilots & Chat',
-    desc: 'Frontier LLM assistants embedded natively into your web and mobile product — context-aware and on-brand.',
-    color: 'text-rose-500',
-    bg: 'bg-rose-500/10 border-rose-500/20',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(244,63,94,0.25)]',
-  },
-  {
-    icon: Shield,
-    label: 'Private Deployment',
-    desc: 'Self-hosted models on your own cloud with zero external data egress — enterprise-grade and compliant.',
-    color: 'text-emerald-500',
-    bg: 'bg-emerald-500/10 border-emerald-500/20',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]',
-  },
-]
+// ─── Centered Talk AI Capability Modal ───────────────────────────────────────
 
 function AiExplorationDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  // Close on Escape
-  useEffect(() => {
-    if (!isOpen) return
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [isOpen, onClose])
+  if (!isOpen) return null
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        {/* Backdrop */}
         <motion.div
-          className="fixed inset-0 z-[60] flex items-center justify-center p-4"
-          aria-modal="true"
-          aria-label="AI services overview"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          onClick={onClose}
+          className="absolute inset-0 bg-slate-950/70 backdrop-blur-md"
+        />
+
+        {/* Centered Modal Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94, y: 16 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.94, y: 16 }}
+          transition={{ type: 'spring', stiffness: 450, damping: 30 }}
+          className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-cyan-500/30 bg-card/95 p-6 sm:p-8 shadow-2xl shadow-cyan-500/10 backdrop-blur-2xl z-10"
         >
-          {/* Backdrop */}
-          <motion.div
-            className="absolute inset-0 bg-background/70 backdrop-blur-xl"
-            onClick={onClose}
-            aria-hidden="true"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          />
-
-          {/* Modal panel */}
-          <motion.div
-            className="relative w-full max-w-2xl rounded-3xl border border-border/80 bg-card/95 backdrop-blur-2xl shadow-[0_32px_80px_rgba(0,0,0,0.4)] overflow-hidden"
-            initial={{ opacity: 0, scale: 0.94, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 12 }}
-            transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-          >
-            {/* Header gradient accent */}
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-24 rounded-full bg-cyan-400/10 blur-[48px] pointer-events-none" />
-
-            {/* Top bar */}
-            <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-border/60">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-[0_0_16px_rgba(6,182,212,0.5)]">
-                  <Sparkles className="h-4 w-4 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs font-extrabold text-foreground tracking-tight">NeelStack AI Lab</p>
-                  <p className="text-[10px] text-muted-foreground">AI solutions built for your business</p>
-                </div>
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-border/50 pb-5">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                <Sparkles className="h-6 w-6 animate-pulse" />
               </div>
-              <button
-                onClick={onClose}
-                className="cursor-pointer rounded-xl p-2 text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-colors"
-                aria-label="Close"
-              >
-                <X className="h-4.5 w-4.5" />
-              </button>
-            </div>
-
-            <div className="px-6 py-5 space-y-5">
-              {/* Headline */}
-              <div className="space-y-1.5">
-                <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-foreground leading-tight">
-                  What can AI do for{' '}
-                  <span className="text-gradient-brand">your business?</span>
-                </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  We build production-grade AI — not demos. Deployed fast, integrated deeply, priced for businesses of every size.
-                </p>
-              </div>
-
-              {/* Capabilities 2×2 grid */}
-              <div className="grid grid-cols-2 gap-3">
-                {AI_CAPABILITIES.map((cap) => {
-                  const Icon = cap.icon
-                  return (
-                    <div
-                      key={cap.label}
-                      className={`group rounded-2xl border bg-card/60 p-4 space-y-2 transition-all duration-300 hover:bg-card/90 ${cap.glow} ${cap.bg}`}
-                    >
-                      <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${cap.bg} border`}>
-                        <Icon className={`h-4 w-4 ${cap.color}`} />
-                      </div>
-                      <h3 className="text-xs font-extrabold text-foreground">{cap.label}</h3>
-                      <p className="text-[11px] text-muted-foreground leading-relaxed">{cap.desc}</p>
-                    </div>
-                  )
-                })}
-              </div>
-
-              {/* Stats bar */}
-              <div className="grid grid-cols-3 gap-3 rounded-2xl border border-border/60 bg-muted/30 p-3.5">
-                {[
-                  { stat: '40+', label: 'AI Projects Delivered' },
-                  { stat: '8×', label: 'Faster than in-house' },
-                  { stat: '0 leaks', label: 'Data ever exposed' },
-                ].map(({ stat, label }) => (
-                  <div key={label} className="text-center">
-                    <p className="font-heading text-base font-extrabold text-foreground">{stat}</p>
-                    <p className="text-[10px] text-muted-foreground mt-0.5 leading-snug">{label}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
-                <Button asChild variant="gradient" className="flex-1 gap-2 glow-cta text-sm" size="lg">
-                  <Link href="/book-consultation" onClick={onClose}>
-                    Talk to Our AI Team
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="flex-1 text-xs" size="lg">
-                  <Link href="/services/ai-development" onClick={onClose}>
-                    Explore AI Services
-                  </Link>
-                </Button>
+              <div>
+                <h3 className="text-xl font-heading font-black text-foreground">NeelStack AI Architecture</h3>
+                <p className="text-xs text-muted-foreground mt-0.5">Explore our enterprise artificial intelligence capabilities</p>
               </div>
             </div>
-          </motion.div>
+            <button
+              onClick={onClose}
+              className="rounded-full p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Capabilities Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6">
+            <div className="p-4 rounded-2xl border border-border/60 bg-muted/30 hover:border-cyan-500/30 transition-all group">
+              <div className="flex items-center gap-3 mb-2">
+                <Bot className="h-5 w-5 text-cyan-500 group-hover:scale-110 transition-transform" />
+                <h4 className="text-sm font-bold text-foreground">Autonomous AI Agents</h4>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Self-reasoning agentic workflows that automate complex multi-step operations &amp; enterprise tasks.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl border border-border/60 bg-muted/30 hover:border-cyan-500/30 transition-all group">
+              <div className="flex items-center gap-3 mb-2">
+                <Cpu className="h-5 w-5 text-violet-500 group-hover:scale-110 transition-transform" />
+                <h4 className="text-sm font-bold text-foreground">Vector RAG Search</h4>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Sub-second semantic knowledge search over millions of internal enterprise documents.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl border border-border/60 bg-muted/30 hover:border-cyan-500/30 transition-all group">
+              <div className="flex items-center gap-3 mb-2">
+                <Zap className="h-5 w-5 text-amber-500 group-hover:scale-110 transition-transform" />
+                <h4 className="text-sm font-bold text-foreground">Custom Fine-Tuned LLMs</h4>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Domain-adapted open-source models trained on your proprietary data with strict privacy guarantees.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl border border-border/60 bg-muted/30 hover:border-cyan-500/30 transition-all group">
+              <div className="flex items-center gap-3 mb-2">
+                <Shield className="h-5 w-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+                <h4 className="text-sm font-bold text-foreground">Zero Data Leak Guarantee</h4>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Private cloud hosting with SOC2 &amp; HIPAA readiness — your corporate data never leaves your VPC.
+              </p>
+            </div>
+          </div>
+
+          {/* Modal Footer CTA */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border/50 pt-5">
+            <span className="text-xs text-muted-foreground">Ready to integrate AI into your enterprise products?</span>
+            <Button asChild variant="gradient" size="sm" onClick={onClose} className="w-full sm:w-auto glow-cta">
+              <Link href="/book-consultation">
+                Book AI Consultation
+                <ArrowRight className="h-4 w-4 ml-1.5" />
+              </Link>
+            </Button>
+          </div>
         </motion.div>
-      )}
+      </div>
     </AnimatePresence>
   )
 }
 
-// ─── Mobile Menu ──────────────────────────────────────────────────────────────
+// ─── Mobile Drawer Menu ───────────────────────────────────────────────────────
 
 function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 lg:hidden overflow-hidden" aria-live="polite">
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-md" onClick={onClose} aria-hidden="true" />
-      <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-card border-l border-border overflow-y-auto">
-        <div className="flex items-center justify-between p-4 border-b border-border">
-          <NeelStackLogo size="sm" showTagline={false} onClick={onClose} />
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <button
-              onClick={onClose}
-              className="cursor-pointer rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-              aria-label="Close menu"
-            >
-              <X className="h-5 w-5" aria-hidden="true" />
+    <div className="fixed inset-0 z-50 lg:hidden">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 bg-slate-950/60 backdrop-blur-md"
+      />
+      <motion.div
+        initial={{ x: '100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '100%' }}
+        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+        className="fixed inset-y-0 right-0 w-full max-w-xs bg-card p-6 shadow-2xl border-l border-border flex flex-col justify-between"
+      >
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-border pb-4">
+            <NeelStackLogo size="sm" />
+            <button onClick={onClose} className="p-2 text-muted-foreground hover:text-foreground">
+              <X className="h-5 w-5" />
             </button>
           </div>
+
+          <nav className="space-y-2">
+            {MAIN_NAV.map((menu) => (
+              <MobileNavGroup key={menu.label} label={menu.label} items={menu.items ?? menu.groups?.flatMap((g) => g.items) ?? []} onClose={onClose} />
+            ))}
+          </nav>
         </div>
 
-        <nav className="p-4 space-y-1">
-          {MAIN_NAV.map((menu) => (
-            <div key={menu.label}>
-              {menu.items ? (
-                <MobileNavGroup label={menu.label} items={menu.items} onClose={onClose} />
-              ) : (
-                <MobileNavGroup
-                  label={menu.label}
-                  items={menu.groups?.flatMap((g) => g.items) ?? []}
-                  onClose={onClose}
-                />
-              )}
-            </div>
-          ))}
-        </nav>
-
-        <div className="p-4 border-t border-border space-y-3">
+        <div className="border-t border-border pt-4 space-y-3">
           <Button asChild variant="outline" className="w-full">
             <Link href="/contact" onClick={onClose}>Contact Us</Link>
           </Button>
-          <Button asChild variant="gradient" className="w-full">
-            <Link href="/request-quote" onClick={onClose}>Get a Quote</Link>
+          <Button asChild variant="gradient" className="w-full glow-cta">
+            <Link href="/request-quote" onClick={onClose}>Get Started</Link>
           </Button>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
@@ -416,7 +354,7 @@ function MobileNavGroup({
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-2.5 px-3 text-sm font-bold text-foreground rounded-lg hover:bg-muted transition-colors"
+        className="w-full flex items-center justify-between py-2.5 px-3 text-sm font-bold text-foreground rounded-xl hover:bg-muted transition-colors"
       >
         <span>{label}</span>
         <ChevronDown className={cn('h-4 w-4 transition-transform', open && 'rotate-180 text-primary')} />
@@ -439,7 +377,7 @@ function MobileNavGroup({
   )
 }
 
-// ─── Header Container ─────────────────────────────────────────────────────────
+// ─── Header Container Component ───────────────────────────────────────────────
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -449,21 +387,17 @@ export function Header() {
   const pathname = usePathname()
   const scrollStartRef = useRef<number | null>(null)
 
-  // Auto-close open menu on route change
   useEffect(() => {
     setOpenMenu(null)
     setMobileOpen(false)
   }, [pathname])
 
-  // Stable ref for openMenu — lets scroll handler read latest value without re-registering
   const openMenuRef = useRef<string | null>(null)
   openMenuRef.current = openMenu
 
-  // Scroll & ESC — registered ONCE, reads refs so no dependency array churn
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
-      // Only close if user scrolled >100px from where the menu was opened
       if (scrollStartRef.current !== null && openMenuRef.current !== null) {
         if (Math.abs(window.scrollY - scrollStartRef.current) > 100) {
           setOpenMenu(null)
@@ -485,11 +419,8 @@ export function Header() {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('keydown', handleKeyDown)
     }
-  // Empty deps: register once on mount, use refs to read latest state
   }, [])
 
-  // Memoized with useCallback so NavDropdown's useEffect([isOpen, onClose])
-  // does NOT re-fire on every parent render — eliminates listener thrash lag
   const handleOpen = useCallback((label: string) => {
     scrollStartRef.current = window.scrollY
     setOpenMenu(label)
@@ -506,8 +437,8 @@ export function Header() {
         className={cn(
           'fixed inset-x-0 top-0 z-30 transition-all duration-300',
           scrolled
-            ? 'bg-background/80 dark:bg-card/85 backdrop-blur-xl border-b border-border/60 shadow-xl shadow-black/5 py-3'
-            : 'bg-transparent border-b border-border/20 py-4.5'
+            ? 'bg-background/85 dark:bg-card/90 backdrop-blur-2xl border-b border-border/60 shadow-xl shadow-black/10 py-3'
+            : 'bg-background/40 dark:bg-card/40 backdrop-blur-md border-b border-border/20 py-4'
         )}
         role="banner"
       >
@@ -515,8 +446,8 @@ export function Header() {
           {/* Brand Logo - Fixed size for zero layout jump */}
           <NeelStackLogo size="md" />
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+          {/* Desktop Navigation — Floating Glass Control Island */}
+          <nav className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-slate-500/5 dark:bg-slate-400/10 backdrop-blur-md px-2.5 py-1 shadow-inner" aria-label="Main navigation">
             {MAIN_NAV.map((menu) => (
               <NavDropdown
                 key={menu.label}
@@ -529,8 +460,8 @@ export function Header() {
           </nav>
 
           {/* Desktop Right Action Cluster */}
-          <div className="hidden lg:flex items-center gap-2.5">
-            {/* Techugo-Outperform AI Trigger Badge */}
+          <div className="hidden lg:flex items-center gap-3">
+            {/* Talk AI Trigger Badge */}
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setAiDrawerOpen(true)}
@@ -545,7 +476,7 @@ export function Header() {
 
             {/* Primary CTA */}
             <motion.div whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
-              <Button asChild variant="gradient" size="sm" className="glow-cta rounded-full px-4 text-xs font-bold">
+              <Button asChild variant="gradient" size="sm" className="glow-cta rounded-full px-5 text-xs font-extrabold">
                 <Link href="/request-quote">Get Started</Link>
               </Button>
             </motion.div>
@@ -555,13 +486,13 @@ export function Header() {
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setAiDrawerOpen(true)}
-              className="inline-flex items-center gap-1 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-2.5 py-1 text-[11px] font-extrabold text-cyan-500"
+              className="inline-flex items-center gap-1 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3 py-1 text-[11px] font-extrabold text-cyan-500"
             >
               <Sparkles className="h-3 w-3" />
               AI
             </button>
             <button
-              className="cursor-pointer rounded-lg p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="cursor-pointer rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileOpen}

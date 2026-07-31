@@ -135,7 +135,7 @@ export function TechnologySection() {
           />
         </motion.div>
 
-        {/* Tab Switcher â€” with active tab glow */}
+        {/* Tab Switcher — with active tab glow */}
         <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl border border-border bg-background max-w-3xl mx-auto shadow-md">
           {TECH_CATEGORIES.map((cat) => {
             const Icon = cat.icon

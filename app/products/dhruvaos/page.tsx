@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { Container } from '@/components/ui/container'
@@ -159,7 +159,7 @@ export default function DhruvaOSPage() {
   ]
   return (
     <MarketingLayout>
-      {/* Task 4.4 â€” SoftwareApplication JSON-LD */}
+      {/* Task 4.4 — SoftwareApplication JSON-LD */}
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -274,7 +274,7 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Orchestrate Your Academy â€” Grid Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* â”€â”€â”€ Orchestrate Your Academy — Grid Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Section className="py-20 bg-card/60 backdrop-blur-sm border-y border-border/40">
         <Container className="max-w-5xl mx-auto text-center space-y-12">
           
@@ -290,7 +290,7 @@ export default function DhruvaOSPage() {
               for Every Workflow
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              DhruvaOS gives school administrators a unified command center â€” one place to monitor attendance, manage fees, run payroll, track staff, and view AI-driven institutional health in real time.
+              DhruvaOS gives school administrators a unified command center — one place to monitor attendance, manage fees, run payroll, track staff, and view AI-driven institutional health in real time.
             </p>
           </div>
 
@@ -598,7 +598,7 @@ export default function DhruvaOSPage() {
           <div className="space-y-2">
             <h2 className="text-xl font-heading font-bold text-foreground">Unified Mobile App</h2>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              A single native application on iOS & Android dynamically adaptive to all roles â€” providing tailored views for Parents, Teachers, Students, and Administrators.
+              A single native application on iOS & Android dynamically adaptive to all roles — providing tailored views for Parents, Teachers, Students, and Administrators.
             </p>
           </div>
         </Container>

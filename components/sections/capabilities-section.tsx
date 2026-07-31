@@ -155,7 +155,7 @@ export function CapabilitiesSection() {
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-violet-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
 
       <Container className="space-y-12 relative z-10">
-        {/* Section header â€” staggered entrance */}
+        {/* Section header — staggered entrance */}
         <motion.div
           initial="hidden"
           whileInView="visible"

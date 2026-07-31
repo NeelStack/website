@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
@@ -35,7 +35,7 @@ export function ProductsSection({
         <SectionHeader
           badge="Our products"
           title="Proprietary Products Built for Scale"
-          description="We don't just build software for clients â€” we build our own products to solve real-world problems and prove our technology in production."
+          description="We don't just build software for clients — we build our own products to solve real-world problems and prove our technology in production."
         />
 
         {isGrouped ? (

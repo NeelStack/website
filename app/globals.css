@@ -507,18 +507,18 @@
     box-shadow: 0 0 28px rgba(70, 166, 252, 0.5), 0 8px 36px rgba(139, 92, 246, 0.25);
   }
 
-  /* Standardized Card Hover — Enterprise ease-out lift */
+  /* Standardized Card Hover — Ultra-crisp Linear/Stripe ease-out lift */
   .card-hover {
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
   }
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
-    border-color: rgba(59, 130, 246, 0.35);
+    box-shadow: 0 20px 40px -8px rgba(15, 23, 42, 0.10), 0 4px 14px rgba(15, 23, 42, 0.04);
+    border-color: rgba(59, 130, 246, 0.40);
   }
   .dark .card-hover:hover {
-    box-shadow: 0 16px 36px rgba(70, 166, 252, 0.12), 0 4px 16px rgba(0, 0, 0, 0.5);
-    border-color: rgba(70, 166, 252, 0.35);
+    box-shadow: 0 20px 42px rgba(70, 166, 252, 0.15), 0 4px 18px rgba(0, 0, 0, 0.6);
+    border-color: rgba(70, 166, 252, 0.40);
   }
 
   /* Scroll animation classes */

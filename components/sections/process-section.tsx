@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { motion } from 'framer-motion'
 import { CheckCircle, Code2, FileSearch, Lightbulb, Rocket, Users } from 'lucide-react'
@@ -32,7 +32,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     step: 4,
     title: 'Agile Engineering',
     description:
-      'Our senior engineers build in sprints using Next.js, FastAPI, and Docker â€” delivering working software incrementally with continuous integration.',
+      'Our senior engineers build in sprints using Next.js, FastAPI, and Docker — delivering working software incrementally with continuous integration.',
     icon: Code2,
   },
   {
@@ -93,7 +93,7 @@ export function ProcessSection() {
           />
         </motion.div>
 
-        {/* Cards grid â€” larger gaps for breathing room */}
+        {/* Cards grid — larger gaps for breathing room */}
         <motion.div
           initial="hidden"
           whileInView="visible"
