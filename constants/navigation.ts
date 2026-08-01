@@ -92,7 +92,7 @@ export const MAIN_NAV: NavMenu[] = [
     label: 'Company',
     items: [
       { label: 'About NeelStack', href: '/about', description: 'Our engineering philosophy & executive team', icon: Info },
-      { label: 'Featured Work & Case Studies', href: '/case-studies', description: 'Verified client transformations & metrics', icon: Briefcase },
+      { label: 'Case Studies (Coming Soon)', href: '/case-studies', description: 'Upcoming client engineering transformations', icon: Briefcase },
       { label: 'Engineering Careers', href: '/careers', description: 'Join our senior engineering & AI teams', icon: Rocket },
     ],
   },
@@ -121,8 +121,8 @@ export const FOOTER_NAV = {
   ],
   company: [
     { label: 'About NeelStack', href: '/about' },
-    { label: 'Case Studies & Client Work', href: '/case-studies' },
-    { label: 'Whitepapers & Research', href: '/whitepapers' },
+    { label: 'Case Studies (Coming Soon)', href: '/case-studies' },
+    { label: 'Whitepapers & Research (Coming Soon)', href: '/whitepapers' },
     { label: 'Engineering Blog', href: '/blog' },
     { label: 'Careers (Hiring)', href: '/careers' },
     { label: 'Contact Us', href: '/contact' },
