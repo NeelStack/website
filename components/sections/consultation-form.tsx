@@ -71,6 +71,9 @@ export function ConsultationForm() {
     )
   }
 
+  const inputStyle =
+    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background [&:not(:placeholder-shown)]:border-cyan-500/40 [&:not(:placeholder-shown)]:bg-cyan-500/[0.04] [&:not(:placeholder-shown)]:font-semibold shadow-sm'
+
   return (
     <div className="rounded-2xl border border-border bg-card p-8">
       <h3 className="font-heading text-xl font-semibold text-foreground mb-6">
@@ -90,15 +93,29 @@ export function ConsultationForm() {
             <label htmlFor="c-first-name" className="block text-sm font-medium text-foreground mb-1.5">
               First Name <span aria-hidden="true" className="text-destructive">*</span>
             </label>
-            <input id="c-first-name" name="first-name" type="text" required autoComplete="given-name"
-              className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+            <input
+              id="c-first-name"
+              name="first-name"
+              type="text"
+              required
+              autoComplete="given-name"
+              placeholder="e.g. Priya"
+              className={inputStyle}
+            />
           </div>
           <div>
             <label htmlFor="c-last-name" className="block text-sm font-medium text-foreground mb-1.5">
               Last Name <span aria-hidden="true" className="text-destructive">*</span>
             </label>
-            <input id="c-last-name" name="last-name" type="text" required autoComplete="family-name"
-              className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+            <input
+              id="c-last-name"
+              name="last-name"
+              type="text"
+              required
+              autoComplete="family-name"
+              placeholder="e.g. Patel"
+              className={inputStyle}
+            />
           </div>
         </div>
 
@@ -106,18 +123,29 @@ export function ConsultationForm() {
           <label htmlFor="c-email" className="block text-sm font-medium text-foreground mb-1.5">
             Email Address <span aria-hidden="true" className="text-destructive">*</span>
           </label>
-          <input id="c-email" name="email" type="email" required autoComplete="email"
-            placeholder="you@domain.com"
-            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+          <input
+            id="c-email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="e.g. priya@domain.com"
+            className={inputStyle}
+          />
         </div>
 
         <div>
           <label htmlFor="c-topic" className="block text-sm font-medium text-foreground mb-1.5">
             What would you like to discuss? <span aria-hidden="true" className="text-destructive">*</span>
           </label>
-          <textarea id="c-topic" name="topic" required rows={4}
-            placeholder="Brief description of your project or questions..."
-            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
+          <textarea
+            id="c-topic"
+            name="topic"
+            required
+            rows={4}
+            placeholder="e.g. Brief description of your project requirements or questions..."
+            className={`${inputStyle} resize-none`}
+          />
         </div>
 
         {/* Preferred time note */}

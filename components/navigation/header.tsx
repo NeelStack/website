@@ -315,9 +315,12 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         <div className="space-y-6">
           <div className="flex items-center justify-between border-b border-border pb-4">
             <NeelStackLogo size="sm" />
-            <button onClick={onClose} className="p-2 text-muted-foreground hover:text-foreground">
-              <X className="h-5 w-5" />
-            </button>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <button onClick={onClose} className="p-2 text-muted-foreground hover:text-foreground">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
           </div>
 
           <nav className="space-y-2">
@@ -484,13 +487,15 @@ export function Header() {
 
           {/* Mobile Actions */}
           <div className="flex items-center gap-2 lg:hidden">
-            <button
+            <motion.button
+              whileTap={{ scale: 0.95 }}
               onClick={() => setAiDrawerOpen(true)}
-              className="inline-flex items-center gap-1 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3 py-1 text-[11px] font-extrabold text-cyan-500"
+              className="inline-flex items-center gap-1 rounded-full border border-cyan-500/35 bg-cyan-500/10 px-3 py-1 text-[11px] font-extrabold text-cyan-600 dark:text-cyan-400"
             >
-              <Sparkles className="h-3 w-3" />
+              <Sparkles className="h-3 w-3 animate-pulse text-cyan-400" />
               AI
-            </button>
+            </motion.button>
+            <ThemeToggle />
             <button
               className="cursor-pointer rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               onClick={() => setMobileOpen(true)}

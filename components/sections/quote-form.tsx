@@ -29,12 +29,14 @@ export function QuoteForm() {
   const [error, setError] = useState<string | null>(null)
   const { config } = useCurrency()
 
-  const budgetOptions = [
-    { value: 'under-100', label: config.formatOptions.under100 },
-    { value: '100-1000', label: config.formatOptions.range100To1000 },
-    { value: '1000-5000', label: config.formatOptions.range1000To5000 },
-    { value: '5000-plus', label: config.formatOptions.above5000 },
-  ]
+  const budgetOptions = config.budgetRanges
+    ? config.budgetRanges.map((b) => ({ value: b.id, label: b.label }))
+    : [
+        { value: 'under-1000', label: config.formatOptions.under100 },
+        { value: '1000-5000', label: config.formatOptions.range100To1000 },
+        { value: '5000-15000', label: config.formatOptions.range1000To5000 },
+        { value: '15000-plus', label: config.formatOptions.above5000 },
+      ]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -92,6 +94,11 @@ export function QuoteForm() {
     }
   }
 
+  const inputStyle =
+    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background [&:not(:placeholder-shown)]:border-cyan-500/40 [&:not(:placeholder-shown)]:bg-cyan-500/[0.04] [&:not(:placeholder-shown)]:font-semibold shadow-sm'
+  const selectStyle =
+    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background cursor-pointer shadow-sm font-medium'
+
   if (success) {
     return (
       <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center space-y-4">
@@ -137,39 +144,71 @@ export function QuoteForm() {
                 <label htmlFor="q-first-name" className="block text-sm font-medium text-foreground mb-1.5">
                   First Name <span aria-hidden="true" className="text-destructive">*</span>
                 </label>
-                <input id="q-first-name" name="first-name" type="text" required autoComplete="given-name"
-                  className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+                <input
+                  id="q-first-name"
+                  name="first-name"
+                  type="text"
+                  required
+                  autoComplete="given-name"
+                  placeholder="e.g. John"
+                  className={inputStyle}
+                />
               </div>
               <div>
                 <label htmlFor="q-last-name" className="block text-sm font-medium text-foreground mb-1.5">
                   Last Name <span aria-hidden="true" className="text-destructive">*</span>
                 </label>
-                <input id="q-last-name" name="last-name" type="text" required autoComplete="family-name"
-                  className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+                <input
+                  id="q-last-name"
+                  name="last-name"
+                  type="text"
+                  required
+                  autoComplete="family-name"
+                  placeholder="e.g. Doe"
+                  className={inputStyle}
+                />
               </div>
             </div>
             <div>
               <label htmlFor="q-email" className="block text-sm font-medium text-foreground mb-1.5">
                 Email Address <span aria-hidden="true" className="text-destructive">*</span>
               </label>
-              <input id="q-email" name="email" type="email" required autoComplete="email"
-                placeholder="you@domain.com"
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+              <input
+                id="q-email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                placeholder="e.g. john@company.com"
+                className={inputStyle}
+              />
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="q-company" className="block text-sm font-medium text-foreground mb-1.5">
                   Company / Organization / Institution
                 </label>
-                <input id="q-company" name="company" type="text" autoComplete="organization"
-                  className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+                <input
+                  id="q-company"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  placeholder="e.g. Acme Tech Solutions"
+                  className={inputStyle}
+                />
               </div>
               <div>
                 <label htmlFor="q-phone" className="block text-sm font-medium text-foreground mb-1.5">
                   Phone
                 </label>
-                <input id="q-phone" name="phone" type="tel" autoComplete="tel"
-                  className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+                <input
+                  id="q-phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="e.g. +1 (555) 019-2834"
+                  className={inputStyle}
+                />
               </div>
             </div>
           </div>
@@ -180,27 +219,25 @@ export function QuoteForm() {
         {/* Project details */}
         <fieldset>
           <legend className="font-heading text-base font-semibold text-foreground mb-4">
-            Project & Budget Brief
+            Project &amp; Budget Brief
           </legend>
           <div className="space-y-4">
             <div>
               <label htmlFor="q-type" className="block text-sm font-medium text-foreground mb-1.5">
                 Project Type <span aria-hidden="true" className="text-destructive">*</span>
               </label>
-              <select id="q-type" name="project-type" required
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+              <select id="q-type" name="project-type" required className={selectStyle}>
                 <option value="">Select project type</option>
                 {PROJECT_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
 
-            {/* Task 1 & 2 — Dynamic Currency converted budget options */}
+            {/* Dynamic Currency converted budget options from JSON */}
             <div>
               <label htmlFor="q-budget" className="block text-sm font-medium text-foreground mb-1.5">
-                Estimated Budget
+                Estimated Budget ({config.code})
               </label>
-              <select id="q-budget" name="budget"
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring font-medium">
+              <select id="q-budget" name="budget" className={selectStyle}>
                 <option value="">Select estimated budget</option>
                 {budgetOptions.map((b) => (
                   <option key={b.value} value={b.value}>
@@ -214,8 +251,7 @@ export function QuoteForm() {
               <label htmlFor="q-timeline" className="block text-sm font-medium text-foreground mb-1.5">
                 Expected Timeline
               </label>
-              <select id="q-timeline" name="timeline"
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+              <select id="q-timeline" name="timeline" className={selectStyle}>
                 <option value="">Select timeline</option>
                 {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
@@ -225,9 +261,14 @@ export function QuoteForm() {
               <label htmlFor="q-description" className="block text-sm font-medium text-foreground mb-1.5">
                 Project Description <span aria-hidden="true" className="text-destructive">*</span>
               </label>
-              <textarea id="q-description" name="description" required rows={5}
-                placeholder="Describe your project goals, required features, key deliverables, and constraints..."
-                className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
+              <textarea
+                id="q-description"
+                name="description"
+                required
+                rows={5}
+                placeholder="e.g. We need an AI-powered SaaS web application with custom real-time data pipelines..."
+                className={`${inputStyle} resize-none`}
+              />
             </div>
           </div>
         </fieldset>

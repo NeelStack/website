@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CopyEmailButton } from '@/components/ui/copy-email-button'
 import { CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react'
+import { useCurrency } from '@/components/providers/currency-provider'
 
 const INQUIRY_TYPES = [
   'Custom Software Development',
@@ -18,6 +19,17 @@ export function ContactForm() {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  const { config } = useCurrency()
+
+  const budgetOptions = config.budgetRanges
+    ? config.budgetRanges.map((b) => ({ value: b.id, label: b.label }))
+    : [
+        { value: 'under-1000', label: config.formatOptions.under100 },
+        { value: '1000-5000', label: config.formatOptions.range100To1000 },
+        { value: '5000-15000', label: config.formatOptions.range1000To5000 },
+        { value: '15000-plus', label: config.formatOptions.above5000 },
+      ]
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -67,6 +79,11 @@ export function ContactForm() {
     }
   }
 
+  const inputStyle =
+    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background [&:not(:placeholder-shown)]:border-cyan-500/40 [&:not(:placeholder-shown)]:bg-cyan-500/[0.04] [&:not(:placeholder-shown)]:font-semibold shadow-sm'
+  const selectStyle =
+    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background cursor-pointer shadow-sm font-medium'
+
   if (success) {
     return (
       <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center space-y-4">
@@ -109,8 +126,8 @@ export function ContactForm() {
               type="text"
               required
               autoComplete="given-name"
-              placeholder="Rajesh"
-              className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+              placeholder="e.g. Rajesh"
+              className={inputStyle}
             />
           </div>
           <div>
@@ -123,8 +140,8 @@ export function ContactForm() {
               type="text"
               required
               autoComplete="family-name"
-              placeholder="Sharma"
-              className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+              placeholder="e.g. Sharma"
+              className={inputStyle}
             />
           </div>
         </div>
@@ -139,8 +156,8 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            placeholder="rajesh@domain.com"
-            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+            placeholder="e.g. rajesh@domain.com"
+            className={inputStyle}
           />
         </div>
 
@@ -153,8 +170,8 @@ export function ContactForm() {
             name="company"
             type="text"
             autoComplete="organization"
-            placeholder="e.g. Acme Corp or School Name"
-            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+            placeholder="e.g. Acme Tech Solutions"
+            className={inputStyle}
           />
         </div>
 
@@ -166,7 +183,7 @@ export function ContactForm() {
             id="inquiry-type"
             name="inquiry-type"
             required
-            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+            className={selectStyle}
           >
             <option value="">Select an inquiry type</option>
             {INQUIRY_TYPES.map((type) => (
@@ -179,18 +196,19 @@ export function ContactForm() {
 
         <div>
           <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-1.5">
-            Estimated Budget Range
+            Estimated Budget Range ({config.code})
           </label>
           <select
             id="budget"
             name="budget"
-            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+            className={selectStyle}
           >
             <option value="">Select budget range (optional)</option>
-            <option value="under-10k">Under $10,000 / ₹8,00,000</option>
-            <option value="10k-50k">$10,000 – $50,000 / ₹8L – ₹40L</option>
-            <option value="50k-200k">$50,000 – $200,000 / ₹40L – ₹1.5Cr</option>
-            <option value="200k-plus">$200,000+ / ₹1.5Cr+</option>
+            {budgetOptions.map((b) => (
+              <option key={b.value} value={b.value}>
+                {b.label}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -203,8 +221,8 @@ export function ContactForm() {
             name="message"
             required
             rows={5}
-            placeholder="Tell us about your project, scope, timeline, and goals..."
-            className="w-full rounded-lg border border-input bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow resize-none"
+            placeholder="e.g. Tell us about your project, target audience, timeline, and goals..."
+            className={`${inputStyle} resize-none`}
           />
         </div>
 
