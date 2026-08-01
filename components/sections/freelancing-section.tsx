@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import Link from 'next/link'
 import {
@@ -15,13 +15,21 @@ import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { Button } from '@/components/ui/button'
 import { useInView } from '@/lib/use-in-view'
+import { useCurrency } from '@/components/providers/currency-provider'
+import { CurrencyCode } from '@/lib/currency'
+
+const CURRENCY_RATES: Record<CurrencyCode, Record<string, string>> = {
+  USD: { starter: '$15', pro: '$35', expert: '$55', elite: '$75' },
+  INR: { starter: '₹499', pro: '₹1,499', expert: '₹2,499', elite: '₹3,999' },
+  EUR: { starter: '€15', pro: '€35', expert: '€55', elite: '€75' },
+  GBP: { starter: '£15', pro: '£30', expert: '£45', elite: '£60' },
+}
 
 const RATE_TIERS = [
   {
     id: 'starter',
     label: 'Starter',
     role: 'Junior Full-Stack Dev',
-    rate: '$15',
     unit: '/hr',
     description: 'Great for MVPs, landing pages, simple web apps, and short-term tasks.',
     icon: Code2,
@@ -44,7 +52,6 @@ const RATE_TIERS = [
     id: 'pro',
     label: 'Pro',
     role: 'Senior Full-Stack Dev',
-    rate: '$35',
     unit: '/hr',
     description: 'Production-grade apps, complex business logic, and scalable architectures.',
     icon: Layers,
@@ -67,7 +74,6 @@ const RATE_TIERS = [
     id: 'expert',
     label: 'Expert',
     role: 'AI / ML Engineer',
-    rate: '$55',
     unit: '/hr',
     description: 'LLM integrations, RAG pipelines, AI agents, and intelligent workflow automation.',
     icon: Brain,
@@ -90,7 +96,6 @@ const RATE_TIERS = [
     id: 'elite',
     label: 'Elite',
     role: 'Tech Lead / Architect',
-    rate: '$75',
     unit: '/hr',
     description: 'End-to-end solution design, CTO-as-a-service, and enterprise modernization.',
     icon: Cpu,
@@ -115,6 +120,8 @@ const staggerClasses = ['stagger-1', 'stagger-2', 'stagger-3', 'stagger-4'] as c
 
 export function FreelancingSection() {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.08 })
+  const { currency } = useCurrency()
+  const currentRates = CURRENCY_RATES[currency] ?? CURRENCY_RATES.USD
 
   return (
     <Section id="hire-developer" className="bg-background/60 backdrop-blur-sm relative overflow-hidden">
@@ -207,7 +214,7 @@ export function FreelancingSection() {
                 <div className="relative z-10 mb-3">
                   <div className="flex items-baseline gap-1">
                     <span className={cn('font-heading text-4xl font-extrabold', tier.accentColor)}>
-                      {tier.rate}
+                      {currentRates[tier.id] ?? '$15'}
                     </span>
                     <span className="text-muted-foreground text-sm font-medium">{tier.unit}</span>
                   </div>

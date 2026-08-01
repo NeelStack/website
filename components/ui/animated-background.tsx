@@ -25,7 +25,7 @@ export function AnimatedBackground() {
       aria-hidden="true"
     >
       {/* ─── Layer 1: 3D Spatial AI Constellation Architecture ─── */}
-      <div className="absolute inset-0 opacity-[0.28] dark:opacity-[0.32]">
+      <div className="absolute inset-0 opacity-45 dark:opacity-55">
         <AiNetworkBg />
       </div>
 
