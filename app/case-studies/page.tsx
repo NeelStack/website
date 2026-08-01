@@ -1,50 +1,49 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Clock, ShieldCheck, Mail } from 'lucide-react'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
+import { Section, SectionHeader } from '@/components/ui/section'
+import { Button } from '@/components/ui/button'
 import { CTASection } from '@/components/ui/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Case Studies',
+  title: 'Case Studies (Coming Soon) — NeelStack',
   description:
-    'Deep dives into how NeelStack has helped clients solve complex challenges with custom software, AI solutions, and ERP systems.',
+    'Deep dives into how NeelStack builds custom software, AI solutions, and enterprise platforms. Case studies currently in preparation.',
+  alternates: {
+    canonical: '/case-studies',
+  },
 }
 
-const CASE_STUDIES = [
+const UPCOMING_CASE_STUDIES = [
   {
-    id: 'sarkarimitra-govt',
-    title: 'Simplifying Public Schemes Discovery via Conversational AI',
-    client: 'Government Agency Partner (Anonymized)',
-    industry: 'Government',
-    challenge:
-      'Citizens struggling to identify eligibility criteria and document checklists for public benefits, leading to dense helpline queues.',
-    result: 'Over 10,000 queries answered dynamically with zero search latency',
-    tags: ['AI Integration', 'Public Sector', 'Search Engine'],
-    href: '/contact',
+    id: 'govt-conversational-ai',
+    title: 'Public Scheme Discovery & Conversational AI Integration',
+    category: 'Gov-Tech & AI',
+    status: 'In Documentation',
+    summary:
+      'Detailed breakdown of intent classification, vector document search, and low-latency multilingual voice/text chat architectures for public sector portals.',
+    tags: ['Conversational AI', 'Vector RAG', 'Gov-Tech'],
   },
   {
-    id: 'hospital-management-case',
-    title: 'Unified Patient Records & Operational Workflow System',
-    client: 'Healthcare Organization (India)',
-    industry: 'Healthcare',
-    challenge:
-      'Fragmented, siloed patient records and billing systems causing long check-in queues and data access gaps for medical staff.',
-    result: '50% reduction in queue processing time and error-free patient handoffs',
-    tags: ['Healthcare IT', 'Database Design', 'Workflows'],
-    href: '/contact',
+    id: 'healthcare-workflow-erp',
+    title: 'Hospital Workflow Digitization & Unified Patient Records',
+    category: 'Healthcare & Systems',
+    status: 'In Review',
+    summary:
+      'Architectural review of microservices database synchronization, HIPAA-compliant audit logs, and real-time patient queue management.',
+    tags: ['Healthcare IT', 'Database Architecture', 'Microservices'],
   },
   {
-    id: 'saas-platform',
-    title: 'Rapid MVP Development for a B2B SaaS Platform',
-    client: 'Technology Startup',
-    industry: 'Technology',
-    challenge:
-      'A validated product idea with no in-house engineering team — needed a market-ready MVP built fast without compromising quality.',
-    result: 'Production-ready MVP launched within agreed timeline',
-    tags: ['SaaS', 'Startup', 'MVP'],
-    href: '/contact',
+    id: 'b2b-saas-mvp-engineering',
+    title: 'Rapid Production-Grade B2B SaaS MVP Architecture',
+    category: 'SaaS & Enterprise',
+    status: 'In Documentation',
+    summary:
+      'Engineering blueprints for multi-tenant isolation, automated CI/CD deployment pipelines, and Stripe/Razorpay billing integration.',
+    tags: ['SaaS Architecture', 'Multi-Tenancy', 'Next.js 16'],
   },
 ]
 
@@ -52,75 +51,105 @@ export default function CaseStudiesPage() {
   return (
     <MarketingLayout>
       <PageHero
-        badge="Case studies"
-        title="Real Problems. Real Results."
-        description="Detailed accounts of how we partnered with clients to solve complex technical challenges and deliver measurable business outcomes."
+        badge="Case Studies — Coming Soon"
+        title="Real Engineering. Verified Results."
+        description="We are currently compiling comprehensive technical case studies from our client engagements. Full architecture breakdowns and performance metrics will be published here soon."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Case Studies' }]}
       />
 
-      <section className="py-16" aria-labelledby="case-studies-heading">
+      <Section>
         <Container>
-          <h2 id="case-studies-heading" className="sr-only">Case studies</h2>
+          <div className="mx-auto max-w-3xl rounded-2xl border border-primary/25 bg-primary/[0.03] p-8 md:p-10 text-center space-y-5 mb-16">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
+              <Clock className="h-3.5 w-3.5" />
+              <span>Full Write-ups Launching Soon</span>
+            </div>
+
+            <h2 className="font-heading text-2xl font-bold text-foreground md:text-3xl">
+              Strict Confidentiality & Verification
+            </h2>
+
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              At NeelStack, we respect client NDA agreements. Every published case study undergoes thorough technical verification and client review prior to release.
+            </p>
+
+            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild size="lg" className="gap-2">
+                <Link href="/contact">
+                  <Mail className="h-4 w-4" />
+                  Request Client References & Demos
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="/portfolio">Explore Live Product Portfolio</Link>
+              </Button>
+            </div>
+          </div>
+
+          <SectionHeader
+            badge="Upcoming Releases"
+            title="Case Studies In Preparation"
+            description="Preview the technical write-ups currently being authored by our engineering team."
+          />
+
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {CASE_STUDIES.map((cs) => (
-              <Link
+            {UPCOMING_CASE_STUDIES.map((cs) => (
+              <div
                 key={cs.id}
-                href={cs.href}
-                className="group flex flex-col gap-5 rounded-2xl border border-border bg-card p-8 hover:border-primary/40 transition-all duration-200"
-                aria-label={cs.title}
+                className="flex flex-col justify-between gap-5 rounded-2xl border border-border bg-card p-6 md:p-8"
               >
-                {/* Industry tag */}
-                <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  {cs.industry}
-                </span>
-
-                {/* Title */}
-                <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors text-balance">
-                  {cs.title}
-                </h3>
-
-                {/* Challenge */}
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                  {cs.challenge}
-                </p>
-
-                {/* Result */}
-                <div className="rounded-xl bg-primary/10 border border-primary/20 px-4 py-3">
-                  <p className="text-sm font-semibold text-primary">{cs.result}</p>
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {cs.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground"
-                    >
-                      {tag}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                      {cs.category}
                     </span>
-                  ))}
+                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-medium text-amber-600 dark:text-amber-400">
+                      <Clock className="h-3 w-3" />
+                      {cs.status}
+                    </span>
+                  </div>
+
+                  <h3 className="font-heading text-lg font-bold text-foreground">
+                    {cs.title}
+                  </h3>
+
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {cs.summary}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {cs.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-border bg-muted px-2.5 py-0.5 text-[11px] text-muted-foreground"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* CTA arrow */}
-                <div className="flex items-center gap-1.5 text-sm font-medium text-primary">
-                  Discuss similar builds
-                  <ArrowRight
-                    className="h-4 w-4 group-hover:translate-x-1 transition-transform"
-                    aria-hidden="true"
-                  />
+                <div className="pt-4 border-t border-border/40">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+                  >
+                    Inquire about this architecture
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </Container>
-      </section>
+      </Section>
 
       <CTASection
-        title="Ready to write your own success story?"
-        description="Let's talk about your project and how NeelStack can help you achieve measurable results."
-        primaryLabel="Get Started"
-        primaryHref="/request-quote"
-        secondaryLabel="View Portfolio"
+        title="Planning a custom software or AI build?"
+        description="Speak directly with our senior engineering architects about your requirements."
+        primaryLabel="Schedule Engineering Consultation"
+        primaryHref="/contact"
+        secondaryLabel="View Live Portfolio"
         secondaryHref="/portfolio"
       />
     </MarketingLayout>
