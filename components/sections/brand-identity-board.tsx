@@ -16,7 +16,7 @@ export function BrandIdentityBoard() {
           Brand Identity &amp; Logo Variation Grid
         </h2>
         <p className="text-xs text-slate-400 max-w-xl mx-auto">
-          Solid Geometric "N" Mark in Electric Blue-to-Violet Gradient, Dark Mode, Light Mode, Pure Monochrome, and 16×16 Favicon.
+          Solid Geometric &quot;N&quot; Mark in Electric Blue-to-Violet Gradient, Dark Mode, Light Mode, Pure Monochrome, and 16×16 Favicon.
         </p>
       </div>
 
