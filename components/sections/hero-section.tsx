@@ -244,7 +244,7 @@ export function HeroSection() {
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               className="relative z-10 w-full max-w-[440px] flex justify-center py-4"
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-cyan-500/15 blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-violet-500/12 blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
               <Image
                 src="/images/illustrations/hero_img_transparent.png"
                 alt="NeelStack Hero Illustration"
@@ -252,7 +252,7 @@ export function HeroSection() {
                 height={450}
                 className="w-full h-auto object-contain relative z-10 opacity-92 dark:brightness-105"
                 style={{
-                  filter: 'drop-shadow(0 24px 48px rgba(99,102,241,0.25)) drop-shadow(0 0 35px rgba(6,182,212,0.15))',
+                  filter: 'drop-shadow(0 16px 32px rgba(139,92,246,0.20)) drop-shadow(0 0 20px rgba(168,85,247,0.12))',
                 }}
                 priority
               />

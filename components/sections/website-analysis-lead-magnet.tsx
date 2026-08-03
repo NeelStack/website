@@ -31,10 +31,13 @@ export function WebsiteAnalysisLeadMagnet() {
   ]
 
   return (
-    <Section className="py-20 bg-gradient-to-br from-amber-500/10 to-blue-500/10 border-t border-border/40">
-      <Container>
-        <div className="rounded-3xl border border-amber-500/30 bg-black/10 p-8 sm:p-12 shadow-2xl backdrop-blur-xl max-w-5xl mx-auto space-y-10">
-          <div className="text-center space-y-4 max-w-3xl mx-auto">
+    <Section className="py-20 bg-background/50 border-t border-border/60">
+      <Container size="xl">
+        <div className="rounded-3xl border border-border/80 bg-card/80 p-8 sm:p-12 shadow-xl backdrop-blur-md w-full space-y-10 card-hover relative overflow-hidden">
+          {/* Subtle top subtle background ambient glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-amber-500/10 blur-[90px] rounded-full pointer-events-none" aria-hidden="true" />
+
+          <div className="text-center space-y-4 max-w-3xl mx-auto relative z-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="h-3.5 w-3.5" />
               <span>Low-Cost Entry Audit</span>
@@ -52,14 +55,14 @@ export function WebsiteAnalysisLeadMagnet() {
           </div>
 
           {/* Audit points grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
             {AUDIT_POINTS.map((pt) => {
               const Icon = pt.icon
               return (
-                <div key={pt.title} className="rounded-2xl border border-border/60 bg-black/10 backdrop-blur-md p-5 space-y-2 card-hover">
-                  <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/10 border border-amber-500/20">
-                      <Icon className="h-4 w-4" />
+                <div key={pt.title} className="rounded-2xl border border-border/80 bg-background/60 backdrop-blur-md p-6 space-y-3 transition-all duration-300 hover:border-amber-500/40 hover:bg-background/80 shadow-sm">
+                  <div className="flex items-center gap-3 text-amber-600 dark:text-amber-400">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/20 shrink-0">
+                      <Icon className="h-4.5 w-4.5" />
                     </div>
                     <h3 className="font-heading text-sm font-bold text-foreground">{pt.title}</h3>
                   </div>
@@ -69,7 +72,7 @@ export function WebsiteAnalysisLeadMagnet() {
             })}
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-6 pt-4 border-t border-border/60">
+          <div className="flex flex-wrap items-center justify-between gap-6 pt-6 border-t border-border/80 relative z-10">
             <div className="flex items-center gap-2 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
               <CheckCircle2 className="h-4 w-4 shrink-0" />
               <span>Delivered as an actionable PDF report within 48 hours</span>

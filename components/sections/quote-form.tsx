@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CopyEmailButton } from '@/components/ui/copy-email-button'
-import { CheckCircle2, AlertCircle, RefreshCw, DollarSign } from 'lucide-react'
+import { CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react'
 import { useCurrency } from '@/components/providers/currency-provider'
 
 const PROJECT_TYPES = [
@@ -38,23 +38,45 @@ export function QuoteForm() {
         { value: '15000-plus', label: config.formatOptions.above5000 },
       ]
 
+  const checkAutoClearError = (form: HTMLFormElement) => {
+    if (!error) return
+    const formData = new FormData(form)
+    const firstName = (formData.get('first-name') as string)?.trim()
+    const lastName = (formData.get('last-name') as string)?.trim()
+    const email = (formData.get('email') as string)?.trim()
+    const projectType = (formData.get('project-type') as string)?.trim()
+    const description = (formData.get('description') as string)?.trim()
+
+    if (firstName && lastName && email && projectType && description) {
+      setError(null)
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setSubmitting(true)
     setError(null)
 
-    const formData = new FormData(e.currentTarget)
-    const firstName = formData.get('first-name') as string
-    const lastName = formData.get('last-name') as string
-    const email = formData.get('email') as string
-    const company = formData.get('company') as string
-    const projectType = formData.get('project-type') as string
-    const budgetValue = formData.get('budget') as string
-    const timeline = formData.get('timeline') as string
-    const description = formData.get('description') as string
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const firstName = (formData.get('first-name') as string)?.trim()
+    const lastName = (formData.get('last-name') as string)?.trim()
+    const email = (formData.get('email') as string)?.trim()
+    const company = (formData.get('company') as string)?.trim()
+    const projectType = (formData.get('project-type') as string)?.trim()
+    const budgetValue = (formData.get('budget') as string)?.trim()
+    const timeline = (formData.get('timeline') as string)?.trim()
+    const description = (formData.get('description') as string)?.trim()
 
     if (!firstName || !lastName || !email || !projectType || !description) {
       setError('Please fill in all required fields.')
+      setSubmitting(false)
+      return
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address.')
       setSubmitting(false)
       return
     }
@@ -95,9 +117,9 @@ export function QuoteForm() {
   }
 
   const inputStyle =
-    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background [&:not(:placeholder-shown)]:border-cyan-500/40 [&:not(:placeholder-shown)]:bg-cyan-500/[0.04] [&:not(:placeholder-shown)]:font-semibold shadow-sm'
+    'w-full rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-card/90 shadow-sm hover:border-border'
   const selectStyle =
-    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background cursor-pointer shadow-sm font-medium'
+    'w-full rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card cursor-pointer shadow-sm font-medium hover:border-border'
 
   if (success) {
     return (
@@ -125,14 +147,12 @@ export function QuoteForm() {
         <p className="text-xs text-muted-foreground mt-0.5">Fill out your project brief for a response within 1 business day.</p>
       </div>
 
-      {error && (
-        <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-4 mb-6 flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
-          <p className="text-xs text-muted-foreground leading-relaxed">{error}</p>
-        </div>
-      )}
-
-      <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+      <form
+        className="space-y-6"
+        onSubmit={handleSubmit}
+        onChange={(e) => checkAutoClearError(e.currentTarget)}
+        noValidate
+      >
         {/* Contact details */}
         <fieldset>
           <legend className="font-heading text-base font-semibold text-foreground mb-4">
@@ -278,6 +298,14 @@ export function QuoteForm() {
           <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
           <span>Guarantee: We review every proposal brief and respond within 1 business day.</span>
         </div>
+
+        {/* Validation Error Banner directly above Submit button */}
+        {error && (
+          <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-3.5 flex items-center gap-3 text-destructive animate-in fade-in slide-in-from-bottom-2">
+            <AlertCircle className="h-4.5 w-4.5 shrink-0" />
+            <p className="text-xs font-semibold leading-normal">{error}</p>
+          </div>
+        )}
 
         <Button type="submit" size="lg" variant="gradient" className="w-full glow-cta" disabled={submitting}>
           {submitting ? (

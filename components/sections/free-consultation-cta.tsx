@@ -19,14 +19,14 @@ export function FreeConsultationCTA() {
 
   return (
 
-    <Section className="py-20 bg-transparent border-t border-border/40">
-      <Container className="max-w-6xl">
+    <Section className="py-20 bg-background/50 border-t border-border/60">
+      <Container size="xl">
         <motion.div
           initial={{ opacity: 0, scale: 0.97, y: 24 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-3xl border border-indigo-500/20 bg-black/20 shadow-2xl backdrop-blur-xl overflow-hidden"
+          className="rounded-3xl border border-border/80 bg-card/80 shadow-xl backdrop-blur-md overflow-hidden card-hover"
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-0">
 
@@ -52,7 +52,7 @@ export function FreeConsultationCTA() {
                 {BENEFIT_ITEMS.map((item) => {
                   const Icon = item.icon
                   return (
-                    <div key={item.title} className="rounded-2xl border border-border/30 bg-black/10 backdrop-blur-md p-5 space-y-2.5 card-hover">
+                    <div key={item.title} className="rounded-2xl border border-border/80 bg-background/60 backdrop-blur-md p-5 space-y-2.5 transition-all duration-300 hover:border-indigo-500/40 hover:bg-background/80 shadow-sm">
                       <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
                         <Icon className="h-4 w-4" aria-hidden="true" />
                       </div>
