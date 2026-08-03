@@ -35,16 +35,8 @@ export function LogoMark({
 
   return (
     <div className={cn('relative inline-flex items-center justify-center shrink-0 group/logo select-none p-1', className)}>
-      {/* Blue-to-Violet Ambient Glow */}
-      {variant === 'full' && (
-        <div
-          className="absolute inset-0 rounded-xl blur-lg opacity-30 group-hover/logo:opacity-75 group-hover/logo:blur-xl transition-all duration-300 pointer-events-none"
-          style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}
-          aria-hidden="true"
-        />
-      )}
-
       <svg
+
         width={dimensions.width}
         height={dimensions.height}
         viewBox="0 0 40 40"
