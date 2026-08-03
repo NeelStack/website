@@ -53,7 +53,7 @@ const PROCESS_STEPS: ProcessStep[] = [
 
 export function ProcessSection() {
   return (
-    <Section id="process" className="bg-background/60 backdrop-blur-sm relative overflow-hidden py-24">
+    <Section id="process" className="bg-transparent relative overflow-hidden py-24">
       {/* Ambient top glow (tightened by 1/3) */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"
@@ -107,7 +107,7 @@ export function ProcessSection() {
               <motion.div
                 key={step.step}
                 variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
-                className="group relative flex flex-col justify-between gap-6 rounded-3xl p-9 border border-border/80 bg-card card-hover hover:border-primary/40 overflow-hidden shadow-md"
+                className="group relative flex flex-col justify-between gap-6 rounded-3xl p-9 border border-border/80 bg-black/10 backdrop-blur-md card-hover hover:border-primary/40 overflow-hidden shadow-md"
               >
                 {/* Large background step number */}
                 <span

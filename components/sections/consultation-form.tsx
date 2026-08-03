@@ -10,19 +10,40 @@ export function ConsultationForm() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitting(true)
-    setError(null)
-
-    const formData = new FormData(e.currentTarget)
+  const checkAutoClearError = (form: HTMLFormElement) => {
+    if (!error) return
+    const formData = new FormData(form)
     const firstName = formData.get('first-name') as string
     const lastName = formData.get('last-name') as string
     const email = formData.get('email') as string
     const topic = formData.get('topic') as string
 
+    if (firstName?.trim() && lastName?.trim() && email?.trim() && topic?.trim()) {
+      setError(null)
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSubmitting(true)
+    setError(null)
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const firstName = (formData.get('first-name') as string)?.trim()
+    const lastName = (formData.get('last-name') as string)?.trim()
+    const email = (formData.get('email') as string)?.trim()
+    const topic = (formData.get('topic') as string)?.trim()
+
     if (!firstName || !lastName || !email || !topic) {
       setError('Please fill in all required fields.')
+      setSubmitting(false)
+      return
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address.')
       setSubmitting(false)
       return
     }
@@ -72,22 +93,20 @@ export function ConsultationForm() {
   }
 
   const inputStyle =
-    'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background [&:not(:placeholder-shown)]:border-cyan-500/40 [&:not(:placeholder-shown)]:bg-cyan-500/[0.04] [&:not(:placeholder-shown)]:font-semibold shadow-sm'
+    'w-full rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-card/90 shadow-sm hover:border-border'
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-8">
+    <div className="rounded-2xl border border-border bg-black/10 backdrop-blur-xl p-8">
       <h3 className="font-heading text-xl font-semibold text-foreground mb-6">
         Schedule Your Call
       </h3>
-      
-      {error && (
-        <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-4 mb-6 flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
-          <p className="text-xs text-muted-foreground leading-relaxed">{error}</p>
-        </div>
-      )}
 
-      <form className="space-y-5" onSubmit={handleSubmit} noValidate>
+      <form
+        className="space-y-5"
+        onSubmit={handleSubmit}
+        onChange={(e) => checkAutoClearError(e.currentTarget)}
+        noValidate
+      >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="c-first-name" className="block text-sm font-medium text-foreground mb-1.5">
@@ -156,6 +175,14 @@ export function ConsultationForm() {
             <span className="font-medium text-foreground">Mon – Sat, 9 AM – 7 PM IST</span>.
           </p>
         </div>
+
+        {/* Validation Error Banner directly above Submit button */}
+        {error && (
+          <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-3.5 flex items-center gap-3 text-destructive animate-in fade-in slide-in-from-bottom-2">
+            <AlertCircle className="h-4.5 w-4.5 shrink-0" />
+            <p className="text-xs font-semibold leading-normal">{error}</p>
+          </div>
+        )}
 
         <Button type="submit" size="lg" className="w-full" disabled={submitting}>
           {submitting ? (

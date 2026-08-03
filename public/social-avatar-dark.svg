@@ -1,28 +1,11 @@
 <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="sad-bg" x1="0" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0c1329"/>
-      <stop offset="100%" stop-color="#070b14"/>
+    <linearGradient id="ns-bv-grad-lg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
     </linearGradient>
-    <linearGradient id="sad-signal-grad" x1="40" y1="40" x2="360" y2="360" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="50%" stop-color="#60a5fa"/>
-      <stop offset="100%" stop-color="#c084fc"/>
-    </linearGradient>
-    <filter id="sad-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
-
-  <rect width="400" height="400" rx="90" fill="url(#sad-bg)"/>
-  <rect width="400" height="400" rx="90" fill="none" stroke="rgba(56,189,248,0.25)" stroke-width="4"/>
-
-  <g transform="translate(40, 40) scale(8)">
-    <path d="M 6 6 H 15.5 L 28.5 24.5 V 6 H 34 V 34 H 24.5 L 11.5 15.5 V 34 H 6 V 6 Z" fill="#ffffff"/>
-    <path d="M 9.5 31.5 V 9.5 L 30.5 30.5 V 8.5" stroke="url(#sad-signal-grad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#sad-glow)"/>
-  </g>
+  <rect width="400" height="400" rx="80" fill="#090D16"/>
+  <rect width="400" height="400" rx="80" fill="none" stroke="rgba(139,92,246,0.3)" stroke-width="4"/>
+  <path d="M 70 70 H 155 L 270 250 V 70 H 330 V 330 H 245 L 130 150 V 330 H 70 V 70 Z" fill="url(#ns-bv-grad-lg)"/>
 </svg>

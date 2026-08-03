@@ -31,6 +31,7 @@ function IconLinkedin({ className }: { className?: string }) {
     </svg>
   )
 }
+import Image from 'next/image'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
@@ -86,54 +87,55 @@ const JOURNEY = [
   { status: 'dev', name: 'SarkariMitra', detail: 'AI-powered citizen assistance platform helping people discover government schemes, benefits, public services, eligibility criteria, required documents and application guidance through conversational AI.', label: 'In Development' },
 ]
 
+const AVATAR_MAP: Record<string, string> = {
+  leadership: '/images/illustrations/avatar-leader.png',
+  'leadership-female': '/images/illustrations/avatar-cofounder-female.png',
+  engineering: '/images/illustrations/avatar-engineer.png',
+  business: '/images/illustrations/avatar-business.png',
+}
+
 const LEADERSHIP = [
+  {
+    name: 'Neelam Chaurasiya',
+    role: 'Co-founder & Business Operations',
+    bio: "Co-directs corporate strategy, business operations, and organizational planning to drive NeelStack's growth and product delivery.",
+    category: 'leadership',
+    avatarKey: 'leadership-female',
+  },
   {
     name: 'Shyam Chaurasiya',
     role: 'Founder & Engineering Lead',
     bio: 'Leads product architecture, technology strategy, and overall engineering direction across all NeelStack products and client projects.',
     category: 'leadership',
-    // github: 'https://github.com/shyamchaurasiya',
-    // linkedin: 'https://linkedin.com/in/shyamchaurasiya',
+    avatarKey: 'leadership',
   },
   {
     name: 'Shyam Singh',
     role: 'Senior Full Stack Developer',
     bio: 'Full stack engineer working across frontend and backend systems, building and shipping product features and client software.',
     category: 'engineering',
-    // github: 'https://github.com/your-username',
-    // linkedin: 'https://linkedin.com/in/your-username',
+    avatarKey: 'engineering',
   },
   {
     name: 'Rakesh Kushwaha',
     role: 'Senior Software Engineer',
     bio: 'Core engineering team member responsible for backend systems, database architecture, and platform infrastructure.',
     category: 'engineering',
-    // github: 'https://github.com/your-username',
-    // linkedin: 'https://linkedin.com/in/your-username',
+    avatarKey: 'engineering',
   },
   {
     name: 'Vishnu Chaurasiya',
     role: 'Senior Software Engineer',
     bio: 'Focuses on frontend engineering, UI/UX implementation, and building scalable client-side product interfaces.',
     category: 'engineering',
-    // github: 'https://github.com/your-username',
-    // linkedin: 'https://linkedin.com/in/your-username',
+    avatarKey: 'engineering',
   },
   {
     name: 'Pradeep Kumar Maurya',
     role: 'Business & Marketing',
     bio: 'Manages client relationships, business development, and go-to-market strategy for NeelStack products and services.',
     category: 'business',
-    // github: 'https://github.com/your-username',
-    // linkedin: 'https://linkedin.com/in/your-username',
-  },
-  {
-    name: 'Neelam Chaurasiya',
-    role: 'Co-founder & Business Operations',
-    bio: 'Co-directs corporate strategy, business operations, and organizational planning to drive NeelStack\'s growth and product delivery.',
-    category: 'leadership',
-    // github: 'https://github.com/your-username',
-    // linkedin: 'https://linkedin.com/in/your-username',
+    avatarKey: 'business',
   },
 ]
 
@@ -255,56 +257,44 @@ export default function AboutPage() {
             {LEADERSHIP.map((person) => (
               <div
                 key={person.name}
-                className={`rounded-2xl border bg-card p-6 flex flex-col justify-between ${
+                className={`rounded-2xl border bg-card overflow-hidden flex flex-col ${
                   person.category === 'leadership'
                     ? 'border-primary/30 ring-1 ring-primary/10'
                     : person.category === 'engineering'
                     ? 'border-blue-500/20 bg-blue-500/5'
-                    : person.category === 'hr'
-                    ? 'border-rose-500/20 bg-rose-500/5'
                     : 'border-emerald-500/20 bg-emerald-500/5'
                 }`}
               >
-                <div className="flex flex-col justify-between h-full">
-                  <div>
-                    <div className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider mb-3 ${
-                      person.category === 'leadership' ? 'bg-primary/10 text-primary border border-primary/20' :
-                      person.category === 'engineering' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' :
-                      person.category === 'hr' ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' :
-                      'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                    }`}>
-                      {person.category === 'leadership' ? 'Leadership' : person.category === 'engineering' ? 'Engineering' : person.category === 'hr' ? 'HR' : 'Business'}
-                    </div>
-                    <h3 className="font-heading text-base font-bold text-foreground">{person.name}</h3>
-                    <p className="text-xs font-semibold text-primary uppercase tracking-wide mt-1">
-                      {person.role}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                      {person.bio}
-                    </p>
+                {/* Avatar section */}
+                <div className={`relative flex items-end justify-center pt-8 pb-0 border-b border-border/40 ${
+                  person.category === 'leadership' ? 'bg-gradient-to-b from-primary/8 to-primary/3' :
+                  person.category === 'engineering' ? 'bg-gradient-to-b from-blue-500/8 to-blue-500/3' :
+                  'bg-gradient-to-b from-emerald-500/8 to-emerald-500/3'
+                }`}>
+                  <Image
+                    src={AVATAR_MAP[person.avatarKey]}
+                    alt={`${person.name} avatar`}
+                    width={140}
+                    height={140}
+                    className="h-36 w-auto object-contain object-bottom"
+                    style={{
+                      filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.12))',
+                    }}
+                  />
+                </div>
+
+                {/* Info section */}
+                <div className="p-5 flex flex-col gap-2">
+                  <div className={`inline-flex self-start items-center rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+                    person.category === 'leadership' ? 'bg-primary/10 text-primary border border-primary/20' :
+                    person.category === 'engineering' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' :
+                    'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                  }`}>
+                    {person.category === 'leadership' ? 'Leadership' : person.category === 'engineering' ? 'Engineering' : 'Business'}
                   </div>
-                  {/* Uncomment and define links in the LEADERSHIP array to show profiles
-                  <div className="mt-4 pt-3 border-t border-border/40 flex items-center gap-2">
-                    <Link
-                      href={person.github || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-200"
-                      aria-label={`${person.name}'s GitHub profile`}
-                    >
-                      <IconGithub className="h-4 w-4" />
-                    </Link>
-                    <Link
-                      href={person.linkedin || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-200"
-                      aria-label={`${person.name}'s LinkedIn profile`}
-                    >
-                      <IconLinkedin className="h-4 w-4" />
-                    </Link>
-                  </div>
-                  */}
+                  <h3 className="font-heading text-base font-bold text-foreground">{person.name}</h3>
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wide">{person.role}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{person.bio}</p>
                 </div>
               </div>
             ))}

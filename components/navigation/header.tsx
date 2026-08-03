@@ -11,6 +11,65 @@ import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { NeelStackLogo } from '@/components/ui/logo'
 
+// ─── Header Color Theme Configuration ─────────────────────────────────────────
+
+const HEADER_THEMES: Record<string, {
+  active: string
+  hoverText: string
+  hoverBg: string
+  border: string
+  activeDot: string
+  iconBg: string
+  iconText: string
+  text: string
+  accent: string
+}> = {
+  Services: {
+    active: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border-cyan-500/35 shadow-[0_0_15px_rgba(6,182,212,0.15)]',
+    hoverText: 'group-hover:text-cyan-600 dark:group-hover:text-cyan-400',
+    hoverBg: 'hover:bg-cyan-500/10 hover:border-cyan-500/20',
+    border: 'border-cyan-500/20',
+    activeDot: 'bg-cyan-400 shadow-[0_0_8px_#22d3ee]',
+    iconBg: 'bg-cyan-500/10 border-cyan-500/20',
+    iconText: 'text-cyan-500',
+    text: 'text-cyan-600 dark:text-cyan-400',
+    accent: 'text-cyan-600 dark:text-cyan-400 border-cyan-500/40 pb-2'
+  },
+  Products: {
+    active: 'text-violet-600 dark:text-violet-400 bg-violet-500/10 border-violet-500/35 shadow-[0_0_15px_rgba(139,92,246,0.15)]',
+    hoverText: 'group-hover:text-violet-600 dark:group-hover:text-violet-400',
+    hoverBg: 'hover:bg-violet-500/10 hover:border-violet-500/20',
+    border: 'border-violet-500/20',
+    activeDot: 'bg-violet-400 shadow-[0_0_8px_#a78bfa]',
+    iconBg: 'bg-violet-500/10 border-violet-500/20',
+    iconText: 'text-violet-500',
+    text: 'text-violet-600 dark:text-violet-400',
+    accent: 'text-violet-600 dark:text-violet-400 border-violet-500/40 pb-2'
+  },
+  Industries: {
+    active: 'text-rose-600 dark:text-rose-400 bg-rose-500/10 border-rose-500/35 shadow-[0_0_15px_rgba(244,63,94,0.15)]',
+    hoverText: 'group-hover:text-rose-600 dark:group-hover:text-rose-400',
+    hoverBg: 'hover:bg-rose-500/10 hover:border-rose-500/20',
+    border: 'border-rose-500/20',
+    activeDot: 'bg-rose-400 shadow-[0_0_8px_#fb7185]',
+    iconBg: 'bg-rose-500/10 border-rose-500/20',
+    iconText: 'text-rose-500',
+    text: 'text-rose-600 dark:text-rose-400',
+    accent: 'text-rose-600 dark:text-rose-400 border-rose-500/40 pb-2'
+  },
+  Company: {
+    active: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/35 shadow-[0_0_15px_rgba(16,185,129,0.15)]',
+    hoverText: 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400',
+    hoverBg: 'hover:bg-emerald-500/10 hover:border-emerald-500/20',
+    border: 'border-emerald-500/20',
+    activeDot: 'bg-emerald-400 shadow-[0_0_8px_#34d399]',
+    iconBg: 'bg-emerald-500/10 border-emerald-500/20',
+    iconText: 'text-emerald-500',
+    text: 'text-emerald-600 dark:text-emerald-400',
+    accent: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/40 pb-2'
+  }
+}
+
 // ─── Nav Dropdown Component ───────────────────────────────────────────────────
 
 function NavDropdown({
@@ -28,6 +87,8 @@ function NavDropdown({
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
 
+  const theme = HEADER_THEMES[menu.label] || HEADER_THEMES.Services
+
   const allItems = menu.items ?? menu.groups?.flatMap((g) => g.items) ?? []
   const isActive = allItems.some((item) => pathname.startsWith(item.href) && item.href !== '/')
 
@@ -37,6 +98,14 @@ function NavDropdown({
       timeoutRef.current = null
     }
     onOpen()
+  }
+
+  const handleMouseEnterLink = () => {
+    // Keeps active open menu from shutting down instantly
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
   }
 
   const handleMouseLeave = () => {
@@ -72,9 +141,9 @@ function NavDropdown({
         className={cn(
           'relative flex cursor-pointer items-center gap-1.5 px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-300 select-none outline-none z-10',
           isOpen
-            ? 'text-primary bg-primary/10 border border-primary/30 shadow-[0_0_20px_rgba(56,189,248,0.2)]'
+            ? theme.active
             : isActive
-              ? 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border border-cyan-500/20'
+              ? theme.active
               : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-500/10'
         )}
         aria-expanded={isOpen}
@@ -82,13 +151,13 @@ function NavDropdown({
       >
         <span>{menu.label}</span>
         <ChevronDown
-          className={cn('h-3.5 w-3.5 transition-transform duration-300', isOpen && 'rotate-180 text-primary')}
+          className={cn('h-3.5 w-3.5 transition-transform duration-300', isOpen && 'rotate-180', isOpen && theme.text)}
           aria-hidden="true"
         />
 
         {/* Active Route Glow Point */}
         {isActive && !isOpen && (
-          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]" />
+          <span className={cn('absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full', theme.activeDot)} />
         )}
       </button>
 
@@ -97,7 +166,7 @@ function NavDropdown({
         {isOpen && (
           <motion.div
             role="menu"
-            onMouseEnter={handleMouseEnter}
+            onMouseEnter={handleMouseEnterLink}
             onMouseLeave={handleMouseLeave}
             initial={{ opacity: 0, y: 12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -112,8 +181,8 @@ function NavDropdown({
               <div className="grid grid-cols-2 gap-4 p-5 bg-gradient-to-b from-card via-card to-background/60">
                 {menu.groups!.map((group) => (
                   <div key={group.label} className="p-2 flex flex-col justify-start">
-                    <p className="px-2 mb-3 text-[11px] font-black tracking-wider text-cyan-600 dark:text-cyan-400 uppercase border-b border-border/40 pb-2 flex items-center gap-1.5">
-                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#38bdf8]" />
+                    <p className={cn("px-2 mb-3 text-[11px] font-black tracking-wider uppercase border-b flex items-center gap-1.5", theme.accent)}>
+                      <span className={cn("h-1.5 w-1.5 rounded-full", theme.activeDot)} />
                       {group.label}
                     </p>
                     <div className="space-y-1">
@@ -125,15 +194,15 @@ function NavDropdown({
                             href={item.href}
                             role="menuitem"
                             onClick={onClose}
-                            className="group flex items-start gap-3 rounded-xl px-3 py-2.5 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all duration-200"
+                            className={cn("group flex items-start gap-3 rounded-xl px-3 py-2.5 border border-transparent transition-all duration-200", theme.hoverBg)}
                           >
                             {ItemIcon && (
-                              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-200 shadow-sm">
+                              <div className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all duration-200 shadow-sm", theme.iconBg, theme.iconText, "group-hover:bg-primary group-hover:text-white")}>
                                 <ItemIcon className="h-4 w-4" />
                               </div>
                             )}
                             <div className="flex flex-col">
-                              <span className="text-xs font-bold text-foreground group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                              <span className={cn("text-xs font-bold text-foreground transition-colors", theme.hoverText)}>
                                 {item.label}
                               </span>
                               {item.description && (
@@ -159,15 +228,15 @@ function NavDropdown({
                       href={item.href}
                       role="menuitem"
                       onClick={onClose}
-                      className="group flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all duration-200"
+                      className={cn("group flex items-center gap-3 rounded-xl px-3 py-2.5 border border-transparent transition-all duration-200", theme.hoverBg)}
                     >
                       {ItemIcon && (
-                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-200">
+                        <div className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all duration-200", theme.iconBg, theme.iconText, "group-hover:bg-primary group-hover:text-white")}>
                           <ItemIcon className="h-4 w-4" />
                         </div>
                       )}
                       <div className="flex flex-col">
-                        <span className="text-xs font-bold text-foreground group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        <span className={cn("text-xs font-bold text-foreground transition-colors", theme.hoverText)}>
                           {item.label}
                         </span>
                         {item.description && (
@@ -380,7 +449,67 @@ function MobileNavGroup({
   )
 }
 
+// ─── Desktop Navbar Component with Sliding Pill Animation ─────────────────────
+
+function DesktopNavbar({
+  openMenu,
+  handleOpen,
+  handleClose,
+}: {
+  openMenu: string | null
+  handleOpen: (label: string) => void
+  handleClose: () => void
+}) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
+  // Color-coded sliding pill properties
+  const pillClasses = [
+    'bg-cyan-500/10 dark:bg-cyan-400/12 border border-cyan-500/20',     // Services
+    'bg-violet-500/10 dark:bg-violet-400/12 border border-violet-500/20', // Products
+    'bg-rose-500/10 dark:bg-rose-400/12 border border-rose-500/20',     // Industries
+    'bg-emerald-500/10 dark:bg-emerald-400/12 border border-emerald-500/20' // Company
+  ]
+
+  return (
+    <nav
+      className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-slate-500/5 dark:bg-slate-400/10 backdrop-blur-md px-2.5 py-1 shadow-inner relative"
+      aria-label="Main navigation"
+      onMouseLeave={() => setHoveredIndex(null)}
+    >
+      {MAIN_NAV.map((menu, idx) => (
+        <div
+          key={menu.label}
+          onMouseEnter={() => setHoveredIndex(idx)}
+          className="relative"
+        >
+          <AnimatePresence>
+            {hoveredIndex === idx && (
+              <motion.div
+                layoutId="nav-hover-pill-bg"
+                className={cn("absolute inset-0 rounded-full z-0 pointer-events-none", pillClasses[idx] || pillClasses[0])}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+              />
+            )}
+          </AnimatePresence>
+          <div className="relative z-10">
+            <NavDropdown
+              menu={menu}
+              isOpen={openMenu === menu.label}
+              onOpen={() => handleOpen(menu.label)}
+              onClose={handleClose}
+            />
+          </div>
+        </div>
+      ))}
+    </nav>
+  )
+}
+
 // ─── Header Container Component ───────────────────────────────────────────────
+
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -450,17 +579,11 @@ export function Header() {
           <NeelStackLogo size="md" />
 
           {/* Desktop Navigation — Floating Glass Control Island */}
-          <nav className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-slate-500/5 dark:bg-slate-400/10 backdrop-blur-md px-2.5 py-1 shadow-inner" aria-label="Main navigation">
-            {MAIN_NAV.map((menu) => (
-              <NavDropdown
-                key={menu.label}
-                menu={menu}
-                isOpen={openMenu === menu.label}
-                onOpen={() => handleOpen(menu.label)}
-                onClose={handleClose}
-              />
-            ))}
-          </nav>
+          <DesktopNavbar
+            openMenu={openMenu}
+            handleOpen={handleOpen}
+            handleClose={handleClose}
+          />
 
           {/* Desktop Right Action Cluster */}
           <div className="hidden lg:flex items-center gap-3">

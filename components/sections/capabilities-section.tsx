@@ -108,7 +108,7 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group rounded-3xl border border-border/80 bg-card p-7 md:p-8 flex flex-col justify-between space-y-6 card-hover card-ai-hover relative overflow-hidden transition-all duration-300 ${item.glowColor}`}
+      className={`group rounded-3xl border border-border/80 bg-black/10 backdrop-blur-md p-7 md:p-8 flex flex-col justify-between space-y-6 card-hover card-ai-hover relative overflow-hidden transition-all duration-300 ${item.glowColor}`}
     >
       <div className="space-y-4 relative z-10">
         <div className="flex items-center justify-between">
@@ -130,7 +130,7 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
         {/* Feature Tags Row */}
         <div className="flex flex-wrap gap-1.5 pt-2">
           {item.tags.map((tag) => (
-            <span key={tag} className="text-[11px] font-semibold text-muted-foreground bg-surface px-2.5 py-1 rounded-lg border border-border/60">
+            <span key={tag} className="text-[11px] font-semibold text-muted-foreground bg-black/20 px-2.5 py-1 rounded-lg border border-border/60">
               {tag}
             </span>
           ))}
@@ -149,7 +149,7 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
 
 export function CapabilitiesSection() {
   return (
-    <section className="py-24 bg-background/60 backdrop-blur-sm relative overflow-hidden">
+    <section className="py-24 bg-transparent relative overflow-hidden">
       {/* Subtle ambient glows */}
       <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full bg-cyan-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-violet-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
