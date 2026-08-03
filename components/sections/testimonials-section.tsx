@@ -59,7 +59,7 @@ const TRUST_SIGNALS = [
 
 export function TestimonialsSection() {
   return (
-    <Section id="testimonials" className="bg-surface py-24 relative overflow-hidden">
+    <Section id="testimonials" className="bg-transparent py-24 relative overflow-hidden">
       {/* Ambient bottom glow (tightened by 1/3) */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"
@@ -114,7 +114,7 @@ export function TestimonialsSection() {
               <motion.div
                 key={signal.industry}
                 variants={{ hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
-                className={`group flex flex-col justify-between gap-5 rounded-3xl border border-border/80 bg-background p-7 card-hover hover:border-primary/30 relative overflow-hidden shadow-md ${isOffset ? 'sm:mt-8' : ''}`}
+                className={`group flex flex-col justify-between gap-5 rounded-3xl border border-border/80 bg-black/10 backdrop-blur-md p-7 card-hover hover:border-primary/30 relative overflow-hidden shadow-md ${isOffset ? 'sm:mt-8' : ''}`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

@@ -150,7 +150,7 @@ export function WhyUsSection() {
             {COMPARISON_POINTS.map((item, idx) => (
               <div
                 key={idx}
-                className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 rounded-2xl bg-card border border-border/60 items-center card-hover"
+                className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 rounded-2xl bg-gradient-to-r from-card to-background/50 dark:from-card dark:to-slate-900/30 border border-border/60 items-center card-hover"
               >
                 <div className="md:col-span-4 font-heading text-xs sm:text-sm font-bold text-foreground">
                   {item.feature}

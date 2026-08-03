@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/container'
@@ -7,7 +7,7 @@ import { INDUSTRIES } from '@/constants/industries'
 
 export function IndustryGridSection() {
   return (
-    <section className="py-24 bg-background/60 backdrop-blur-sm relative overflow-hidden">
+    <section className="py-24 bg-transparent relative overflow-hidden">
       {/* Ambient glow */}
       <div
         className="absolute bottom-0 right-0 w-[500px] h-[300px] pointer-events-none"

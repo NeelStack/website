@@ -53,6 +53,22 @@ export interface Product {
 // Services
 // ─────────────────────────────────────────────
 
+export interface ServiceTechGroup {
+  label: string
+  items: string[]
+}
+
+export interface ServiceProcessStep {
+  step: number
+  title: string
+  description: string
+}
+
+export interface ServiceFAQ {
+  question: string
+  answer: string
+}
+
 export interface Service {
   id: string
   name: string
@@ -63,6 +79,14 @@ export interface Service {
   href: string
   highlights: string[]
   category: string
+  /** Grouped technology stacks shown on the service detail page */
+  techStack?: ServiceTechGroup[]
+  /** 4-step delivery process specific to this service */
+  processSteps?: ServiceProcessStep[]
+  /** What the client receives on project completion */
+  deliverables?: string[]
+  /** Service-specific FAQs */
+  faqs?: ServiceFAQ[]
 }
 
 // ─────────────────────────────────────────────

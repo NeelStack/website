@@ -124,7 +124,7 @@ export function FreelancingSection() {
   const currentRates = CURRENCY_RATES[currency] ?? CURRENCY_RATES.USD
 
   return (
-    <Section id="hire-developer" className="bg-background/60 backdrop-blur-sm relative overflow-hidden">
+    <Section id="hire-developer" className="bg-transparent relative overflow-hidden">
       {/* Violet mesh background accent */}
       <div className="absolute inset-0 bg-mesh-gradient opacity-60 pointer-events-none" aria-hidden="true" />
       <div
@@ -152,7 +152,7 @@ export function FreelancingSection() {
               <div
                 key={tier.id}
                 className={cn(
-                  'group relative flex flex-col rounded-2xl border bg-card p-6 overflow-hidden transition-all duration-300 ease-out animate-in-view',
+                  'group relative flex flex-col rounded-2xl border bg-black/10 backdrop-blur-md p-6 overflow-hidden transition-all duration-300 ease-out animate-in-view',
                   tier.cardBorder,
                   'hover:-translate-y-1.5',
                   staggerClasses[idx],

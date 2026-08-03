@@ -119,7 +119,7 @@ export function QuoteForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 md:p-10 shadow-lg">
+    <div className="rounded-2xl border border-border bg-black/10 backdrop-blur-xl p-6 sm:p-8 md:p-10 shadow-lg">
       <div className="pb-6 mb-6 border-b border-border/60">
         <h3 className="font-heading text-lg font-bold text-foreground">Get a Custom Project Estimate</h3>
         <p className="text-xs text-muted-foreground mt-0.5">Fill out your project brief for a response within 1 business day.</p>

@@ -75,7 +75,7 @@ export function ConsultationForm() {
     'w-full rounded-xl border border-input/60 bg-muted/10 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background [&:not(:placeholder-shown)]:border-cyan-500/40 [&:not(:placeholder-shown)]:bg-cyan-500/[0.04] [&:not(:placeholder-shown)]:font-semibold shadow-sm'
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-8">
+    <div className="rounded-2xl border border-border bg-black/10 backdrop-blur-xl p-8">
       <h3 className="font-heading text-xl font-semibold text-foreground mb-6">
         Schedule Your Call
       </h3>

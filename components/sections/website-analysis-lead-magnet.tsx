@@ -31,9 +31,9 @@ export function WebsiteAnalysisLeadMagnet() {
   ]
 
   return (
-    <Section className="py-20 bg-gradient-to-br from-amber-500/5 via-background to-blue-500/5 border-t border-border/40">
+    <Section className="py-20 bg-gradient-to-br from-amber-500/10 to-blue-500/10 border-t border-border/40">
       <Container>
-        <div className="rounded-3xl border border-amber-500/30 bg-card/90 p-8 sm:p-12 shadow-2xl backdrop-blur-sm max-w-5xl mx-auto space-y-10">
+        <div className="rounded-3xl border border-amber-500/30 bg-black/10 p-8 sm:p-12 shadow-2xl backdrop-blur-xl max-w-5xl mx-auto space-y-10">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
               <Sparkles className="h-3.5 w-3.5" />
@@ -56,7 +56,7 @@ export function WebsiteAnalysisLeadMagnet() {
             {AUDIT_POINTS.map((pt) => {
               const Icon = pt.icon
               return (
-                <div key={pt.title} className="rounded-2xl border border-border bg-background p-5 space-y-2 card-hover">
+                <div key={pt.title} className="rounded-2xl border border-border/60 bg-black/10 backdrop-blur-md p-5 space-y-2 card-hover">
                   <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/10 border border-amber-500/20">
                       <Icon className="h-4 w-4" />

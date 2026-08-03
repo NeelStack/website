@@ -17,7 +17,7 @@ export function IndustryCard({ industry, className, variant = 'default' }: Indus
       <Link
         href={industry.href}
         className={cn(
-          'group flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3',
+          'group flex items-center gap-3 rounded-xl border border-border bg-black/10 backdrop-blur-md px-4 py-3',
           'hover:border-primary/40 hover:bg-primary/5 hover:-translate-y-0.5 transition-all duration-200 shadow-sm',
           className
         )}
@@ -44,7 +44,7 @@ export function IndustryCard({ industry, className, variant = 'default' }: Indus
   return (
     <div
       className={cn(
-        'group flex flex-col rounded-2xl border border-border bg-card p-6 relative overflow-hidden',
+        'group flex flex-col rounded-2xl border border-border bg-black/10 backdrop-blur-md p-6 relative overflow-hidden',
         'hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-md hover:shadow-lg',
         className
       )}

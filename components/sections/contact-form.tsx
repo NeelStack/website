@@ -104,7 +104,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
+    <div className="rounded-2xl border border-border bg-black/10 backdrop-blur-xl p-8 md:p-10">
       <h3 className="font-heading text-xl font-bold text-foreground mb-6">Send us a Message</h3>
       
       {error && (

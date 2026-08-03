@@ -21,35 +21,23 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #ffffff 0%, #f0f9ff 35%, #f5f3ff 70%, #eff6ff 100%)',
+          background: 'linear-gradient(135deg, #090d16 0%, #0c1329 50%, #060911 100%)',
           fontFamily: 'Inter',
           position: 'relative',
           padding: '48px',
         }}
       >
-        {/* Soft Multi-Color Radial Mesh Lighting */}
+        {/* Ambient Glow */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
             backgroundImage:
-              'radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.22) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.18) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.10) 0%, transparent 60%)',
+              'radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.25) 0%, transparent 50%)',
           }}
         />
 
-        {/* Subtle grid lines */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            opacity: 0.04,
-            backgroundImage:
-              'linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-
-        {/* Outer Glowing Border Frame Container */}
+        {/* Outer Frame Container */}
         <div
           style={{
             display: 'flex',
@@ -58,10 +46,10 @@ export default async function Image() {
             justifyContent: 'center',
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(255, 255, 255, 0.65)',
-            border: '1px solid rgba(203, 213, 225, 0.6)',
+            backgroundColor: 'rgba(15, 23, 42, 0.8)',
+            border: '1px solid rgba(139, 92, 246, 0.3)',
             borderRadius: '24px',
-            boxShadow: '0 20px 60px -15px rgba(15, 23, 42, 0.05)',
+            boxShadow: '0 20px 60px -15px rgba(0, 0, 0, 0.5)',
             padding: '36px',
             position: 'relative',
           }}
@@ -72,8 +60,8 @@ export default async function Image() {
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              backgroundColor: 'rgba(6, 182, 212, 0.10)',
-              border: '1px solid rgba(6, 182, 212, 0.35)',
+              backgroundColor: 'rgba(139, 92, 246, 0.15)',
+              border: '1px solid rgba(139, 92, 246, 0.35)',
               borderRadius: '9999px',
               padding: '8px 22px',
               marginBottom: '28px',
@@ -84,13 +72,13 @@ export default async function Image() {
                 width: '8px',
                 height: '8px',
                 borderRadius: '9999px',
-                backgroundColor: '#0284c7',
-                boxShadow: '0 0 10px rgba(2, 132, 199, 0.7)',
+                backgroundColor: '#8B5CF6',
+                boxShadow: '0 0 10px rgba(139, 92, 246, 0.8)',
               }}
             />
             <div
               style={{
-                color: '#0284c7',
+                color: '#A78BFA',
                 fontSize: '14px',
                 fontWeight: '800',
                 letterSpacing: '0.15em',
@@ -111,33 +99,23 @@ export default async function Image() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <linearGradient id="tw-unified-light" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#06b6d4" />
-                  <stop offset="50%" stopColor="#2563eb" />
-                  <stop offset="100%" stopColor="#7c3aed" />
+                <linearGradient id="tw-bv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#3B82F6" />
+                  <stop offset="100%" stopColor="#8B5CF6" />
                 </linearGradient>
               </defs>
 
               {/* Main Solid Geometric N Silhouette */}
               <path
-                d="M 6 6 H 15.5 L 28.5 24.5 V 6 H 34 V 34 H 24.5 L 11.5 15.5 V 34 H 6 V 6 Z"
-                fill="#0F172A"
-              />
-
-              {/* Embedded Continuous Accent Signal Channel */}
-              <path
-                d="M 9.5 31.5 V 9.5 L 30.5 30.5 V 8.5"
-                stroke="url(#tw-unified-light)"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                d="M 6 6 H 14.5 L 27 25 V 6 H 34.5 V 34 H 26 L 13.5 15 V 34 H 6 V 6 Z"
+                fill="url(#tw-bv-grad)"
               />
             </svg>
 
-            {/* Logo Text: Neel in Dark Slate, Stack in Cyan */}
+            {/* Logo Text: Neel in White, Stack in Violet Gradient */}
             <div style={{ display: 'flex', fontSize: '80px', fontWeight: '900', letterSpacing: '-0.04em' }}>
-              <span style={{ color: '#0F172A' }}>Neel</span>
-              <span style={{ color: '#0284c7' }}>Stack</span>
+              <span style={{ color: '#FFFFFF' }}>Neel</span>
+              <span style={{ color: '#8B5CF6' }}>Stack</span>
             </div>
           </div>
 
@@ -147,7 +125,7 @@ export default async function Image() {
               display: 'flex',
               fontSize: '34px',
               fontWeight: '800',
-              color: '#0F172A',
+              color: '#FFFFFF',
               letterSpacing: '-0.02em',
               textAlign: 'center',
               maxWidth: '880px',
@@ -163,7 +141,7 @@ export default async function Image() {
               display: 'flex',
               fontSize: '20px',
               fontWeight: '500',
-              color: '#475569',
+              color: '#94A3B8',
               textAlign: 'center',
               marginBottom: '32px',
             }}
@@ -177,12 +155,11 @@ export default async function Image() {
               <div
                 key={item}
                 style={{
-                  backgroundColor: '#ffffff',
-                  border: '1px solid rgba(203, 213, 225, 0.8)',
-                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
+                  backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                  border: '1px solid rgba(139, 92, 246, 0.4)',
                   borderRadius: '9999px',
                   padding: '8px 20px',
-                  color: '#1E293B',
+                  color: '#E2E8F0',
                   fontSize: '14px',
                   fontWeight: '700',
                 }}
@@ -201,7 +178,7 @@ export default async function Image() {
             left: 0,
             right: 0,
             height: '8px',
-            background: 'linear-gradient(90deg, #06b6d4 0%, #2563eb 50%, #7c3aed 100%)',
+            background: 'linear-gradient(90deg, #3B82F6 0%, #8B5CF6 100%)',
           }}
         />
       </div>
@@ -211,3 +188,4 @@ export default async function Image() {
     }
   )
 }
+
