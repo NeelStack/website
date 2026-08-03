@@ -144,6 +144,8 @@ export function Footer() {
                   key={href}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-primary/5 hover:scale-110 hover:shadow-sm transition-all duration-200 ease-out"
                 >
                   <Icon className="h-4 w-4" />
