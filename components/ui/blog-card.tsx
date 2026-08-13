@@ -41,7 +41,7 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
     return (
       <article
         className={cn(
-          'group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md hover:shadow-lg',
+          'group relative overflow-hidden rounded-2xl border border-border bg-card shadow-md hover:shadow-lg card-hover',
           'hover:border-primary/40 transition-all duration-300',
           className
         )}
@@ -100,7 +100,7 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
   return (
     <article
       className={cn(
-        'group flex flex-col rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-md',
+        'group flex flex-col rounded-2xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-md card-hover',
         'hover:border-primary/40 transition-all duration-300',
         className
       )}

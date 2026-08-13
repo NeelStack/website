@@ -91,7 +91,7 @@ const TECH_CATEGORIES = [
 ]
 
 export function TechnologySection() {
-  const [activeTab, setActiveTab] = useState('frontend')
+  const [activeTab, setActiveTab] = useState('ai')
   const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
 
   return (

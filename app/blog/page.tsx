@@ -1,14 +1,20 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
-import { BlogCard } from '@/components/ui/blog-card'
 import { Container } from '@/components/ui/container'
+import { BlogGrid } from '@/components/sections/blog-grid'
 import { BLOG_POSTS } from '@/constants/blog'
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Engineering Blog — NeelStack Insights',
   description:
     'Engineering insights, product updates, and technology deep dives from the NeelStack team.',
+  openGraph: {
+    title: 'Engineering Blog — NeelStack Insights',
+    description: 'Engineering insights, product updates, and technology deep dives from the NeelStack team.',
+    type: 'website',
+  },
 }
 
 const CATEGORIES = [
@@ -45,38 +51,9 @@ export default function BlogPage() {
         <Container>
           <h2 id="blog-posts-heading" className="sr-only">Blog posts</h2>
 
-          {/* Category filter */}
-          <div
-            className="mb-10 flex flex-wrap gap-2"
-            role="group"
-            aria-label="Filter posts by category"
-          >
-            {CATEGORIES.map((cat) => (
-              <span
-                key={cat}
-                className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:border-border/80 cursor-pointer transition-colors"
-              >
-                {cat}
-              </span>
-            ))}
-          </div>
-
-          {/* Featured post */}
-          {featuredPost && (
-            <div className="mb-12">
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
-                Featured
-              </p>
-              <BlogCard post={featuredPost} variant="featured" />
-            </div>
-          )}
-
-          {/* Regular posts grid */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {regularPosts.map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
-          </div>
+          <Suspense fallback={<div className="py-24 text-center text-muted-foreground">Loading posts...</div>}>
+            <BlogGrid posts={regularPosts} featuredPost={featuredPost} categories={CATEGORIES} />
+          </Suspense>
         </Container>
       </section>
     </MarketingLayout>

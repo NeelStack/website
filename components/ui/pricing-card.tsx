@@ -13,10 +13,10 @@ export function PricingCard({ plan, className }: PricingCardProps) {
   return (
     <div
       className={cn(
-        'relative flex flex-col rounded-2xl border bg-card p-8 card-ai-hover transition-all duration-300',
+        'relative flex flex-col rounded-2xl border bg-card p-8 card-standard card-hover transition-all duration-300',
         plan.isPopular
-          ? 'border-primary shadow-lg shadow-primary/10'
-          : 'border-border hover:border-border/80 hover:shadow-md',
+          ? 'border-primary ring-1 ring-primary/50 shadow-2xl shadow-primary/15 md:-translate-y-4 md:hover:-translate-y-6 z-10 bg-surface'
+          : 'border-border mt-0',
         className
       )}
     >

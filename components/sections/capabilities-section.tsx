@@ -17,6 +17,8 @@ const CAPABILITIES = [
     bgColor: 'bg-violet-500/10 border-violet-500/25',
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]',
     tags: ['Multi-Tenant RBAC', 'PostgreSQL', 'High Throughput'],
+    badge: 'Multi-Tenant',
+    spanClass: 'lg:col-span-2',
   },
   {
     id: 'ai-development',
@@ -28,6 +30,8 @@ const CAPABILITIES = [
     bgColor: 'bg-rose-500/10 border-rose-500/25',
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(244,63,94,0.2)]',
     tags: ['Vector RAG', 'Frontier LLMs & RAG', 'LangChain'],
+    badge: 'LLM RAG',
+    spanClass: 'lg:col-span-1',
   },
   {
     id: 'web-apps',
@@ -39,6 +43,8 @@ const CAPABILITIES = [
     bgColor: 'bg-blue-500/10 border-blue-500/25',
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]',
     tags: ['Next.js 16 SSR', 'Sub-Second Load', 'OKLCH Design'],
+    badge: 'SSR Next.js',
+    spanClass: 'lg:col-span-1',
   },
   {
     id: 'mobile-apps',
@@ -50,6 +56,8 @@ const CAPABILITIES = [
     bgColor: 'bg-cyan-500/10 border-cyan-500/25',
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(6,182,212,0.2)]',
     tags: ['60 FPS Motion', 'React Native', 'Offline-First'],
+    badge: '60 FPS Motion',
+    spanClass: 'lg:col-span-2',
   },
   {
     id: 'cloud-devops',
@@ -61,6 +69,8 @@ const CAPABILITIES = [
     bgColor: 'bg-amber-500/10 border-amber-500/25',
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(245,158,11,0.2)]',
     tags: ['Docker & K8s', 'AWS Edge', 'Terraform IaC'],
+    badge: 'Zero Downtime',
+    spanClass: 'lg:col-span-2',
   },
   {
     id: 'product-design',
@@ -72,6 +82,8 @@ const CAPABILITIES = [
     bgColor: 'bg-emerald-500/10 border-emerald-500/25',
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]',
     tags: ['Figma Systems', 'WCAG AA 95+', 'Micro-Interactions'],
+    badge: 'WCAG AA 95+',
+    spanClass: 'lg:col-span-1',
   },
 ]
 
@@ -108,7 +120,7 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group rounded-3xl border border-border/80 bg-black/10 backdrop-blur-md p-7 md:p-8 flex flex-col justify-between space-y-6 card-hover card-ai-hover relative overflow-hidden transition-all duration-300 ${item.glowColor}`}
+      className={`group rounded-[2rem] p-7 md:p-8 flex flex-col justify-between space-y-6 card-hover card-ai-hover relative overflow-hidden transition-all duration-300 ${item.glowColor} card-standard ${item.spanClass || ''}`}
     >
       <div className="space-y-4 relative z-10">
         <div className="flex items-center justify-between">
@@ -116,7 +128,7 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
             <Icon className="h-6 w-6" />
           </div>
           <span className="text-[10px] font-bold font-mono text-muted-foreground bg-muted px-2.5 py-1 rounded-full border border-border flex items-center gap-1">
-            <CheckCircle2 className="h-3 w-3 text-emerald-500" /> Battle-Tested
+            <CheckCircle2 className="h-3 w-3 text-emerald-500" /> {item.badge}
           </span>
         </div>
 
@@ -193,15 +205,15 @@ export function CapabilitiesSection() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {CAPABILITIES.map((item, idx) => (
             <CapabilityCard key={item.id} item={item} index={idx} />
           ))}
         </div>
 
         <div className="text-center pt-4">
-          <Button asChild variant="outline" size="lg">
-            <Link href="/services" className="gap-2">
+          <Button asChild size="lg" className="h-12 px-8 font-bold bg-gradient-to-r from-primary to-violet-600 hover:from-primary/95 hover:to-violet-600/95 text-white rounded-xl shadow-lg shadow-primary/20 border-0 transition-all duration-200 btn-shimmer glow-cta">
+            <Link href="/services" className="gap-2 flex items-center justify-center">
               Explore All Services &amp; Capabilities <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>

@@ -1,10 +1,32 @@
 <svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="neelstack-bv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6" />
-      <stop offset="100%" stop-color="#8B5CF6" />
+    <linearGradient id="neelstack-brand-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B72FE" />
+      <stop offset="100%" stop-color="#2EC7F2" />
     </linearGradient>
   </defs>
-  <path d="M 6 6 H 14.5 L 27 25 V 6 H 34.5 V 34 H 26 L 13.5 15 V 34 H 6 V 6 Z" fill="url(#neelstack-bv-grad)"/>
-  <text x="48" y="28" font-family="Inter, sans-serif" font-weight="900" font-size="24" fill="#0F172A">Neel<tspan fill="url(#neelstack-bv-grad)">Stack</tspan></text>
+  
+  <!-- Logo Mark (Hexagon Monogram) -->
+  <g transform="translate(4, 4) scale(0.32)">
+    <path
+      d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
+      fill="none"
+      stroke="url(#neelstack-brand-grad)"
+      stroke-width="5.8"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+    <path
+      d="M39,68 V32 L65.5,62 V31 L67,28.4"
+      fill="none"
+      stroke="url(#neelstack-brand-grad)"
+      stroke-width="8"
+      stroke-linejoin="round"
+      stroke-linecap="butt"
+    />
+  </g>
+
+  <!-- Wordmark -->
+  <text x="44" y="27" font-family="Geist, sans-serif" font-weight="600" font-size="20" letter-spacing="-0.03em" fill="#000000">Neel<tspan fill="url(#neelstack-brand-grad)">Stack</tspan></text>
 </svg>
+

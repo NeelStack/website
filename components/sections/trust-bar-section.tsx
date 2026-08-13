@@ -13,7 +13,7 @@ const PILLARS = [
     color: 'text-cyan-500 dark:text-cyan-400',
     bgColor: 'bg-cyan-500/10 border-cyan-500/25',
     glowColor: 'hover:border-cyan-500/40 hover:shadow-[0_0_28px_rgba(6,182,212,0.2)]',
-    badge: 'AI First',
+    badge: '8ms latency',
   },
   {
     title: 'Cloud-Native Scale',
@@ -33,7 +33,7 @@ const PILLARS = [
     color: 'text-emerald-500 dark:text-emerald-400',
     bgColor: 'bg-emerald-500/10 border-emerald-500/25',
     glowColor: 'hover:border-emerald-500/40 hover:shadow-[0_0_28px_rgba(16,185,129,0.2)]',
-    badge: 'Secure by Design',
+    badge: 'Encrypted by default',
   },
   {
     title: 'Product Craftsmanship',
@@ -43,7 +43,7 @@ const PILLARS = [
     color: 'text-rose-500 dark:text-rose-400',
     bgColor: 'bg-rose-500/10 border-rose-500/25',
     glowColor: 'hover:border-rose-500/40 hover:shadow-[0_0_28px_rgba(244,63,94,0.2)]',
-    badge: 'Design System',
+    badge: 'WCAG AA 95+',
   },
 ]
 
@@ -75,7 +75,7 @@ export function TrustBarSection() {
           className="text-center mb-8"
         >
           <span className="text-[10px] font-bold text-muted-foreground/70 uppercase tracking-[0.2em]">
-            Engineering Architecture
+            Why 50+ Projects Trust NeelStack
           </span>
         </motion.div>
 
@@ -89,7 +89,7 @@ export function TrustBarSection() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.55, delay: idx * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                className={`group flex flex-col gap-3.5 p-5 rounded-2xl bg-surface/50 border border-border/60 transition-all duration-300 cursor-default ${item.glowColor} relative overflow-hidden`}
+                className={`group flex flex-col gap-3.5 p-5 rounded-2xl bg-card border border-border/70 transition-all duration-300 cursor-default ${item.glowColor} relative overflow-hidden`}
               >
                 {/* Card inner ambient glow on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"

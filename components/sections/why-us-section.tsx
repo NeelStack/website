@@ -4,21 +4,6 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/container'
 import { Bot, Cloud, Cpu, Layers, Lock, Gauge, Search, Sparkles, Zap, ShieldCheck, Check, X } from 'lucide-react'
 
-const PILL_ROW_1 = [
-  { icon: Bot, label: 'AI-First LLM Architecture', color: 'text-cyan-400 border-cyan-500/30 bg-cyan-500/10' },
-  { icon: Gauge, label: '60 FPS Motion & Physics', color: 'text-violet-400 border-violet-500/30 bg-violet-500/10' },
-  { icon: Cloud, label: 'Cloud Native Serverless', color: 'text-blue-400 border-blue-500/30 bg-blue-500/10' },
-  { icon: Lock, label: 'Role Auth & Encryption', color: 'text-amber-400 border-amber-500/30 bg-amber-500/10' },
-  { icon: Search, label: 'Sub-Second Core Web Vitals', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10' },
-]
-
-const PILL_ROW_2 = [
-  { icon: Sparkles, label: 'Figma to Code Precision', color: 'text-rose-400 border-rose-500/30 bg-rose-500/10' },
-  { icon: Cpu, label: 'Custom RAG Vector Search', color: 'text-purple-400 border-purple-500/30 bg-purple-500/10' },
-  { icon: ShieldCheck, label: 'Zero Dummy Code Guarantee', color: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10' },
-  { icon: Layers, label: 'OKLCH Design Tokens', color: 'text-cyan-400 border-cyan-500/30 bg-cyan-500/10' },
-  { icon: Zap, label: 'Dedicated Senior Engineers', color: 'text-blue-400 border-blue-500/30 bg-blue-500/10' },
-]
 
 const COMPARISON_POINTS = [
   {
@@ -50,7 +35,7 @@ const COMPARISON_POINTS = [
 
 export function WhyUsSection() {
   return (
-    <section className="py-24 relative overflow-hidden bg-card/60 backdrop-blur-sm border-y border-border/80">
+    <section className="py-24 relative overflow-hidden bg-transparent border-t border-border/50">
       {/* Ambient glow (tightened by 1/3) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(245,158,11,0.08), transparent)' }}
@@ -90,44 +75,6 @@ export function WhyUsSection() {
           </motion.p>
         </motion.div>
 
-        {/* Dual Marquee Container with edge fade masks + pause-on-hover */}
-        <div className="space-y-4 py-2">
-          {/* Row 1 - Left Marquee */}
-          <div className="marquee-track">
-            <div className="flex gap-4 w-max animate-marquee-left">
-              {[...PILL_ROW_1, ...PILL_ROW_1, ...PILL_ROW_1].map((pill, idx) => {
-                const Icon = pill.icon
-                return (
-                  <div
-                    key={`row1-${idx}`}
-                    className={`flex items-center gap-2.5 px-5 py-3 rounded-full border text-xs sm:text-sm font-bold shadow-sm shrink-0 cursor-default ${pill.color}`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span>{pill.label}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Row 2 - Right Marquee */}
-          <div className="marquee-track">
-            <div className="flex gap-4 w-max animate-marquee-right">
-              {[...PILL_ROW_2, ...PILL_ROW_2, ...PILL_ROW_2].map((pill, idx) => {
-                const Icon = pill.icon
-                return (
-                  <div
-                    key={`row2-${idx}`}
-                    className={`flex items-center gap-2.5 px-5 py-3 rounded-full border text-xs sm:text-sm font-bold shadow-sm shrink-0 cursor-default ${pill.color}`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    <span>{pill.label}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
 
         {/* Engineering Comparison Matrix */}
         <motion.div
@@ -146,6 +93,17 @@ export function WhyUsSection() {
             </h3>
           </div>
 
+          {/* Column Headers (Desktop Only) */}
+          <div className="hidden md:grid grid-cols-12 gap-4 px-4 pb-2 text-[10px] font-bold uppercase tracking-widest">
+            <div className="col-span-4"></div>
+            <div className="col-span-4 flex items-start">
+              <span className="bg-rose-500/10 text-rose-600 dark:text-rose-400 px-3 py-1 rounded-lg border border-rose-500/20">Standard Vendor</span>
+            </div>
+            <div className="col-span-4 flex items-start">
+              <span className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-3 py-1 rounded-lg border border-emerald-500/20">NeelStack Engineering</span>
+            </div>
+          </div>
+
           <div className="space-y-4">
             {COMPARISON_POINTS.map((item, idx) => (
               <div
@@ -156,13 +114,13 @@ export function WhyUsSection() {
                   {item.feature}
                 </div>
 
-                <div className="md:col-span-4 flex items-center gap-2 text-xs text-muted-foreground bg-rose-500/5 p-2.5 rounded-xl border border-rose-500/15">
-                  <X className="h-4 w-4 text-rose-500 shrink-0" />
+                <div className="md:col-span-4 flex items-center gap-2.5 text-xs text-muted-foreground bg-rose-500/5 p-3 rounded-xl border border-rose-500/15">
+                  <X className="h-5 w-5 text-rose-500 shrink-0" />
                   <span>{item.standard}</span>
                 </div>
 
-                <div className="md:col-span-4 flex items-center gap-2 text-xs font-semibold text-foreground bg-emerald-500/10 p-2.5 rounded-xl border border-emerald-500/25">
-                  <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                <div className="md:col-span-4 flex items-center gap-2.5 text-xs font-semibold text-foreground bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/25">
+                  <Check className="h-5 w-5 text-emerald-500 shrink-0" />
                   <span>{item.neelstack}</span>
                 </div>
               </div>

@@ -152,13 +152,13 @@
 
   --background: oklch(0.07 0.015 255);          /* #070b14 midnight */
   --surface: oklch(0.10 0.018 255);             /* #0c1220 surface layer */
-  --foreground: oklch(0.96 0.005 250);          /* #f0f4ff off-white */
+  --foreground: oklch(0.88 0.005 250);          /* #e2e8f0 muted off-white for less eye strain */
 
   --card: oklch(0.11 0.018 255);                /* #0f1628 dark card */
-  --card-foreground: oklch(0.96 0.005 250);
+  --card-foreground: oklch(0.88 0.005 250);
 
   --popover: oklch(0.11 0.018 255);
-  --popover-foreground: oklch(0.96 0.005 250);
+  --popover-foreground: oklch(0.88 0.005 250);
 
   --primary: oklch(0.70 0.17 250);              /* #46A6FC */
   --primary-foreground: oklch(0.98 0 0);
@@ -216,10 +216,19 @@
   html {
     @apply font-sans scroll-smooth;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tighter;
+  }
 
   body {
     @apply bg-background text-foreground antialiased relative;
-    /* Keep base color but section overlays must be semi-transparent to let AnimatedBackground show through */
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11"; /* Geometric stylistic sets for Inter/Geist */
+  }
+
+  .dark body {
+    background: linear-gradient(to bottom, #070B14 0%, #0B1220 100%);
+    background-attachment: fixed;
   }
 
   /* Enterprise Subtle Background Grain Noise (2.5% opacity) */
@@ -521,6 +530,11 @@
     border-color: rgba(70, 166, 252, 0.40);
   }
 
+  /* Standardized Card Background */
+  .card-standard {
+    @apply bg-card/70 dark:bg-black/10 backdrop-blur-md border border-border/70;
+  }
+
   /* Scroll animation classes */
   .animate-in-view {
     opacity: 0;
@@ -582,6 +596,16 @@
 @keyframes marquee-right {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0%); }
+}
+
+@keyframes wave-flow {
+  0%   { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-wave { 
+  stroke-dasharray: 200; 
+  animation: wave-flow 3s linear infinite; 
 }
 
 .marquee-track {
@@ -711,12 +735,75 @@
   margin-bottom: 1.5rem;
 }
 
-/* ── Illustration utility animations ── */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+/* Aurora Glow Breathing Animation */
+@keyframes aurora-breath {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+.aurora-blur-container {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  right: -10%;
+  bottom: -10%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.aurora-bubble-1 {
+  background-color: var(--primary, #1D4ED8);
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  animation: aurora-breath 15s ease-in-out infinite;
+}
+
+.aurora-bubble-2 {
+  background-color: var(--accent, #10b981);
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+  animation: aurora-breath 18s ease-in-out infinite alternate;
+}
+
+/* Glassmorphism Accents */
+.nds-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .nds-glass {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

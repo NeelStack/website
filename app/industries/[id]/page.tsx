@@ -5,6 +5,8 @@ import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
+import { TrustBarSection } from '@/components/sections/trust-bar-section'
+import { BlogPreviewSection } from '@/components/sections/blog-preview-section'
 import { CTASection } from '@/components/ui/cta-section'
 import { CheckCircle2 } from 'lucide-react'
 
@@ -23,6 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
+  if (!INDUSTRIES || INDUSTRIES.length === 0) return []
   return INDUSTRIES.map((i) => ({ id: i.id }))
 }
 
@@ -39,7 +42,7 @@ export default async function IndustryDetailPage({ params }: PageProps) {
   return (
     <MarketingLayout>
       <PageHero
-        badge="Industries"
+        badge="Industry Solution"
         title={industry.name}
         description={industry.description}
         breadcrumbs={[
@@ -48,6 +51,8 @@ export default async function IndustryDetailPage({ params }: PageProps) {
           { label: industry.name },
         ]}
       />
+
+      <TrustBarSection />
 
       <Section>
         <Container>
@@ -92,6 +97,8 @@ export default async function IndustryDetailPage({ params }: PageProps) {
           </div>
         </Container>
       </Section>
+
+      <BlogPreviewSection />
 
       <CTASection
         title={`Looking for customized ${industry.name.toLowerCase()} software?`}

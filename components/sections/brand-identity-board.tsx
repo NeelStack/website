@@ -11,12 +11,12 @@ export function BrandIdentityBoard() {
     <div className="w-full max-w-6xl mx-auto p-6 md:p-10 space-y-10 bg-slate-950/90 rounded-3xl border border-border/40 shadow-2xl backdrop-blur-2xl text-white">
       {/* Header Title */}
       <div className="text-center space-y-2 border-b border-border/40 pb-6">
-        <span className="text-xs font-bold uppercase tracking-widest text-violet-400">NeelStack Master System</span>
+        <span className="text-xs font-bold uppercase tracking-widest text-blue-400">NeelStack Master System</span>
         <h2 className="text-2xl md:text-3xl font-black font-heading tracking-tight text-white">
           Brand Identity &amp; Logo Variation Grid
         </h2>
         <p className="text-xs text-slate-400 max-w-xl mx-auto">
-          Solid Geometric &quot;N&quot; Mark in Electric Blue-to-Violet Gradient, Dark Mode, Light Mode, Pure Monochrome, and 16×16 Favicon.
+          Point-Up Hexagon Monogram in Primary Blue to Accent Cyan Gradient, Dark Mode, Light Mode, Pure Monochrome, and 16×16 Favicon.
         </p>
       </div>
 
@@ -25,17 +25,17 @@ export function BrandIdentityBoard() {
         
         {/* Variant 1: Primary Full Color (Dark Container) */}
         <div className="bg-slate-900/90 rounded-2xl p-6 border border-border/50 flex flex-col justify-between space-y-6">
-          <div className="flex justify-between items-center text-[10px] font-mono text-violet-400">
+          <div className="flex justify-between items-center text-[10px] font-mono text-blue-400">
             <span>Primary Brand Logo</span>
             <span>Full Gradient</span>
           </div>
 
-          <div className="p-6 rounded-xl bg-slate-950 border border-violet-500/20 flex items-center justify-center min-h-[120px]">
+          <div className="p-6 rounded-xl bg-slate-950 border border-blue-500/20 flex items-center justify-center min-h-[120px]">
             <NeelStackLogo size="md" variant="full" />
           </div>
 
           <span className="text-xs text-slate-400 text-center">
-            Electric Blue (#3B82F6) to Vivid Violet (#8B5CF6)
+            Primary Blue (#3B72FE) to Accent Cyan (#2EC7F2)
           </span>
         </div>
 
@@ -117,7 +117,7 @@ export function BrandIdentityBoard() {
 
         {/* Variant 6: Favicon & App Icon Mockup */}
         <div className="bg-slate-900/90 rounded-2xl p-6 border border-border/50 flex flex-col justify-between space-y-6">
-          <div className="flex justify-between items-center text-[10px] font-mono text-violet-400">
+          <div className="flex justify-between items-center text-[10px] font-mono text-blue-400">
             <span>Favicon &amp; App Icon</span>
             <span>16×16 px</span>
           </div>
@@ -132,7 +132,7 @@ export function BrandIdentityBoard() {
 
             <div className="text-center space-y-1.5">
               <span className="text-[10px] text-slate-400 font-mono block">App Icon</span>
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-900 to-black p-2 flex items-center justify-center border border-violet-500/30 shadow-lg mx-auto">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-900 to-black p-2 flex items-center justify-center border border-blue-500/30 shadow-lg mx-auto">
                 <LogoMark size="sm" variant="full" />
               </div>
             </div>

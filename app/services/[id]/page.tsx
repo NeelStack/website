@@ -7,6 +7,9 @@ import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
+import { TrustBarSection } from '@/components/sections/trust-bar-section'
+import { CapabilitiesSection } from '@/components/sections/capabilities-section'
+import { BlogPreviewSection } from '@/components/sections/blog-preview-section'
 import { JsonLd } from '@/components/seo/json-ld'
 import {
   CheckCircle2,
@@ -34,6 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
+  if (!SERVICES || SERVICES.length === 0) return []
   return SERVICES.map((s) => ({ id: s.id }))
 }
 
@@ -106,6 +110,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           { label: service.name },
         ]}
       />
+
+      <TrustBarSection />
 
       {/* ── Section 1: Overview + Highlights ── */}
       <Section>
@@ -376,6 +382,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           </div>
         </Container>
       </Section>
+
+      <CapabilitiesSection />
+      
+      <BlogPreviewSection />
 
       <CTASection
         title={`Ready to start your ${service.name.toLowerCase()} project?`}
