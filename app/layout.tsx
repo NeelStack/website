@@ -1,10 +1,12 @@
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 import type { Metadata, Viewport } from 'next'
-import { Inter, Plus_Jakarta_Sans, Geist_Mono } from 'next/font/google'
+import { Inter, Plus_Jakarta_Sans, Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site-url'
 import { JsonLd } from '@/components/seo/json-ld'
 import { CurrencyProvider } from '@/components/providers/currency-provider'
+
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,6 +17,12 @@ const inter = Inter({
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-jakarta',
+  display: 'swap',
+})
+
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
   display: 'swap',
 })
 
@@ -77,11 +85,6 @@ export const metadata: Metadata = {
       'Building enterprise software, AI solutions, SaaS products, and custom applications for organizations worldwide.',
     images: ['/twitter-image'],
   },
-  icons: {
-    icon: { url: '/icon.svg', type: 'image/svg+xml' },
-    shortcut: '/icon.svg',
-    apple: { url: '/icon.svg', type: 'image/svg+xml' },
-  },
   robots: {
     index: true,
     follow: true,
@@ -91,6 +94,11 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
+    },
+  },
+  verification: {
+    other: {
+      'msvalidate.01': '1DF5012D21BE5D63AD02D85C003C479D',
     },
   },
 }
@@ -114,11 +122,25 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} ${geistMono.variable} bg-background`}
+      className={`${inter.variable} ${jakarta.variable} ${geist.variable} ${geistMono.variable} bg-background`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4LKMDMPC3J"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4LKMDMPC3J');
+          `}
+        </Script>
+
         <script
           dangerouslySetInnerHTML={{
             __html: `

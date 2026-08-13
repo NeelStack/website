@@ -14,6 +14,7 @@ const TRUST_SIGNALS = [
     color: 'text-rose-500 dark:text-rose-400',
     bg: 'bg-rose-500/10 border-rose-500/25',
     icon: Heart,
+    href: '/industries/healthcare',
   },
   {
     industry: 'Government & Public Sector',
@@ -22,6 +23,7 @@ const TRUST_SIGNALS = [
     color: 'text-amber-500 dark:text-amber-400',
     bg: 'bg-amber-500/10 border-amber-500/25',
     icon: Building2,
+    href: '/industries/government',
   },
   {
     industry: 'EdTech & Academics',
@@ -30,6 +32,7 @@ const TRUST_SIGNALS = [
     color: 'text-blue-500 dark:text-blue-400',
     bg: 'bg-blue-500/10 border-blue-500/25',
     icon: GraduationCap,
+    href: '/industries/education',
   },
   {
     industry: 'Startups & SaaS Platforms',
@@ -38,6 +41,7 @@ const TRUST_SIGNALS = [
     color: 'text-violet-500 dark:text-violet-400',
     bg: 'bg-violet-500/10 border-violet-500/25',
     icon: Layers,
+    href: '/industries/startups',
   },
   {
     industry: 'D2C Fashion & Retail',
@@ -46,6 +50,7 @@ const TRUST_SIGNALS = [
     color: 'text-emerald-500 dark:text-emerald-400',
     bg: 'bg-emerald-500/10 border-emerald-500/25',
     icon: ShoppingBag,
+    href: '/industries/fashion-d2c',
   },
   {
     industry: 'Global Enterprises',
@@ -54,6 +59,7 @@ const TRUST_SIGNALS = [
     color: 'text-cyan-500 dark:text-cyan-400',
     bg: 'bg-cyan-500/10 border-cyan-500/25',
     icon: Users,
+    href: '/industries/retail',
   },
 ]
 
@@ -78,13 +84,13 @@ export function TestimonialsSection() {
             variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
             className="inline-block text-xs font-bold text-cyan-500 dark:text-cyan-400 uppercase tracking-widest bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/25"
           >
-            Domain Proven Execution
+            Sector Expertise
           </motion.span>
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
             className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight"
           >
-            Trusted Across Critical Industries
+            Industries We Serve
           </motion.h2>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
@@ -136,12 +142,9 @@ export function TestimonialsSection() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-border/40 flex items-center justify-between text-xs font-bold text-muted-foreground group-hover:text-foreground transition-colors">
-                  <span className="flex items-center gap-1.5 text-emerald-500">
-                    <CheckCircle2 className="h-3.5 w-3.5" /> Battle-Tested
-                  </span>
-                  <Link href="/case-studies" className="text-primary hover:underline">
-                    View Impact →
+                <div className="pt-3 border-t border-border/40 flex items-center justify-end text-xs font-bold text-muted-foreground group-hover:text-foreground transition-colors">
+                  <Link href={signal.href} className="text-primary hover:underline flex items-center gap-1">
+                    Explore Solutions <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>
               </motion.div>
@@ -151,10 +154,10 @@ export function TestimonialsSection() {
 
         <div className="flex justify-center pt-4">
           <Link
-            href="/case-studies"
+            href="/industries"
             className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:gap-3 transition-all duration-200"
           >
-            Explore Case Studies &amp; Client Projects
+            Explore All Industries
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>

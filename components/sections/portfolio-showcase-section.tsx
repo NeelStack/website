@@ -191,33 +191,6 @@ export function PortfolioShowcaseSection() {
             </div>
           </motion.div>
         </div>
-
-        {/* Full-width Client Work Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="rounded-3xl border border-border/80 bg-surface p-8 md:p-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 card-hover shadow-lg"
-        >
-          <div className="space-y-2 text-center md:text-left">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/25">
-              Custom Engineering Deliveries
-            </span>
-            <h3 className="font-heading text-2xl md:text-3xl font-extrabold text-foreground">
-              Enterprise Client Systems &amp; Case Studies
-            </h3>
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl">
-              Explore how we built mission-critical Healthcare EHR portals, Government E-Governance platforms, and D2C Fashion E-Commerce storefronts with sub-second page loads.
-            </p>
-          </div>
-
-          <Button asChild variant="gradient" size="lg" className="shrink-0 gap-2 glow-cta">
-            <Link href="/case-studies">
-              View All Case Studies <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </motion.div>
       </Container>
     </section>
   )

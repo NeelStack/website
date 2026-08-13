@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'NeelStack - Enterprise AI & Product Engineering Company'
+export const alt = 'NeelStack - AI-Native Product Engineering'
 export const size = {
   width: 1200,
   height: 630,
@@ -21,7 +21,7 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: 'linear-gradient(135deg, #090d16 0%, #0c1329 50%, #060911 100%)',
+          background: 'linear-gradient(135deg, #070b14 0%, #0b1220 50%, #04070d 100%)',
           fontFamily: 'Inter',
           position: 'relative',
           padding: '48px',
@@ -33,7 +33,7 @@ export default async function Image() {
             position: 'absolute',
             inset: 0,
             backgroundImage:
-              'radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.25) 0%, transparent 50%)',
+              'radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.2) 0%, transparent 50%)',
           }}
         />
 
@@ -46,10 +46,10 @@ export default async function Image() {
             justifyContent: 'center',
             width: '100%',
             height: '100%',
-            backgroundColor: 'rgba(15, 23, 42, 0.8)',
-            border: '1px solid rgba(139, 92, 246, 0.3)',
+            backgroundColor: 'rgba(11, 18, 32, 0.85)',
+            border: '1px solid rgba(37, 99, 235, 0.35)',
             borderRadius: '24px',
-            boxShadow: '0 20px 60px -15px rgba(0, 0, 0, 0.5)',
+            boxShadow: '0 20px 60px -15px rgba(0, 0, 0, 0.6)',
             padding: '36px',
             position: 'relative',
           }}
@@ -60,8 +60,8 @@ export default async function Image() {
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
-              backgroundColor: 'rgba(139, 92, 246, 0.15)',
-              border: '1px solid rgba(139, 92, 246, 0.35)',
+              backgroundColor: 'rgba(37, 99, 235, 0.12)',
+              border: '1px solid rgba(37, 99, 235, 0.3)',
               borderRadius: '9999px',
               padding: '8px 22px',
               marginBottom: '28px',
@@ -72,19 +72,19 @@ export default async function Image() {
                 width: '8px',
                 height: '8px',
                 borderRadius: '9999px',
-                backgroundColor: '#8B5CF6',
-                boxShadow: '0 0 10px rgba(139, 92, 246, 0.8)',
+                backgroundColor: '#2563EB',
+                boxShadow: '0 0 10px rgba(37, 99, 235, 0.8)',
               }}
             />
             <div
               style={{
-                color: '#A78BFA',
+                color: '#60A5FA',
                 fontSize: '14px',
                 fontWeight: '800',
                 letterSpacing: '0.15em',
               }}
             >
-              ENTERPRISE AI &amp; SOFTWARE PLATFORMS
+              AI-NATIVE PRODUCT ENGINEERING
             </div>
           </div>
 
@@ -94,28 +94,42 @@ export default async function Image() {
             <svg
               width="100"
               height="100"
-              viewBox="0 0 40 40"
+              viewBox="0 0 100 100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <linearGradient id="tw-bv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#3B82F6" />
-                  <stop offset="100%" stopColor="#8B5CF6" />
+                <linearGradient id="tw-brand-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3B72FE" />
+                  <stop offset="100%" stopColor="#2EC7F2" />
                 </linearGradient>
               </defs>
 
-              {/* Main Solid Geometric N Silhouette */}
+              {/* Outer Hexagon Outline */}
               <path
-                d="M 6 6 H 14.5 L 27 25 V 6 H 34.5 V 34 H 26 L 13.5 15 V 34 H 6 V 6 Z"
-                fill="url(#tw-bv-grad)"
+                d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
+                fill="none"
+                stroke="url(#tw-brand-grad)"
+                strokeWidth="5.8"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              />
+
+              {/* Inner Geometric N with Flat linecaps, Fluid Corner & Subliminal Slanted Cap */}
+              <path
+                d="M39,68 V32 L65.5,62 V31 L67,28.4"
+                fill="none"
+                stroke="url(#tw-brand-grad)"
+                strokeWidth="8"
+                strokeLinecap="butt"
+                strokeLinejoin="round"
               />
             </svg>
 
-            {/* Logo Text: Neel in White, Stack in Violet Gradient */}
+            {/* Logo Text: Neel in White, Stack in Cyan Gradient */}
             <div style={{ display: 'flex', fontSize: '80px', fontWeight: '900', letterSpacing: '-0.04em' }}>
               <span style={{ color: '#FFFFFF' }}>Neel</span>
-              <span style={{ color: '#8B5CF6' }}>Stack</span>
+              <span style={{ color: '#2EC7F2' }}>Stack</span>
             </div>
           </div>
 
@@ -123,7 +137,7 @@ export default async function Image() {
           <div
             style={{
               display: 'flex',
-              fontSize: '34px',
+              fontSize: '44px',
               fontWeight: '800',
               color: '#FFFFFF',
               letterSpacing: '-0.02em',
@@ -132,7 +146,7 @@ export default async function Image() {
               marginBottom: '12px',
             }}
           >
-            AI-Native Enterprise Software &amp; Product Engineering
+            AI-Native Product Engineering
           </div>
 
           {/* Sub-Tagline */}
@@ -146,17 +160,17 @@ export default async function Image() {
               marginBottom: '32px',
             }}
           >
-            Scaling Intelligent SaaS Platforms, ERP Systems &amp; Custom AI Agents
+            Scaling Intelligent SaaS Platforms, Cloud Systems &amp; Custom AI Agents
           </div>
 
           {/* Capability Badges Row */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            {['AI Agents', 'DhruvaOS Suite', 'Cloud Architecture', 'Custom SaaS'].map((item) => (
+            {['AI Agents', 'Dev Tools', 'Cloud Architecture', 'Custom SaaS'].map((item) => (
               <div
                 key={item}
                 style={{
                   backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                  border: '1px solid rgba(139, 92, 246, 0.4)',
+                  border: '1px solid rgba(0, 212, 255, 0.4)',
                   borderRadius: '9999px',
                   padding: '8px 20px',
                   color: '#E2E8F0',
@@ -178,7 +192,7 @@ export default async function Image() {
             left: 0,
             right: 0,
             height: '8px',
-            background: 'linear-gradient(90deg, #3B82F6 0%, #8B5CF6 100%)',
+            background: 'linear-gradient(90deg, #3B72FE 0%, #2EC7F2 100%)',
           }}
         />
       </div>

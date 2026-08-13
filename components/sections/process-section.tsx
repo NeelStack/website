@@ -101,6 +101,9 @@ export function ProcessSection() {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } } }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 relative"
         >
+          {/* Connector lines (Desktop Only) */}
+          <div className="hidden lg:block absolute top-[22%] left-12 w-[calc(100%-6rem)] h-px border-t border-dashed border-primary/25 z-0 pointer-events-none" aria-hidden="true" />
+          <div className="hidden lg:block absolute top-[72%] left-12 w-[calc(100%-6rem)] h-px border-t border-dashed border-primary/25 z-0 pointer-events-none" aria-hidden="true" />
           {PROCESS_STEPS.map((step, idx) => {
             const Icon = step.icon
             return (
@@ -119,7 +122,7 @@ export function ProcessSection() {
 
                 <div className="space-y-4 relative z-10">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 border border-primary/25 text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_24px_rgba(70,166,252,0.4)] transition-all duration-300">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 border border-primary/25 text-primary group-hover:bg-primary/15 group-hover:border-primary/60 group-hover:text-primary group-hover:shadow-[0_0_24px_rgba(70,166,252,0.4)] transition-all duration-300">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <span className="text-xs font-extrabold text-muted-foreground uppercase tracking-widest bg-muted px-2.5 py-1 rounded-full border border-border">

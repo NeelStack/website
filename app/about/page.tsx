@@ -37,6 +37,7 @@ import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
+import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -149,8 +150,10 @@ export default function AboutPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 
+      <TrustBarSection />
+
       {/* Corporate Philosophy */}
-      <Section className="bg-card/60 backdrop-blur-sm">
+      <Section className="bg-card/60 backdrop-blur-sm border-t border-border/60">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 items-center">
             <div>
@@ -284,17 +287,19 @@ export default function AboutPage() {
                 </div>
 
                 {/* Info section */}
-                <div className="p-5 flex flex-col gap-2">
-                  <div className={`inline-flex self-start items-center rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+                <div className="p-6 flex flex-col gap-3">
+                  <div className={`inline-flex self-start items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${
                     person.category === 'leadership' ? 'bg-primary/10 text-primary border border-primary/20' :
                     person.category === 'engineering' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' :
                     'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                   }`}>
                     {person.category === 'leadership' ? 'Leadership' : person.category === 'engineering' ? 'Engineering' : 'Business'}
                   </div>
-                  <h3 className="font-heading text-base font-bold text-foreground">{person.name}</h3>
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wide">{person.role}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{person.bio}</p>
+                  <div>
+                    <h3 className="font-heading text-xl font-black text-foreground tracking-tight">{person.name}</h3>
+                    <p className="text-xs font-bold text-primary uppercase tracking-widest mt-1">{person.role}</p>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed pt-2 border-t border-border/40">{person.bio}</p>
                 </div>
               </div>
             ))}

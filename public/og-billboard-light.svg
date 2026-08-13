@@ -1,43 +1,59 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="ogb-bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="100%" stop-color="#070b14"/>
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="100%" stop-color="#0b1220"/>
     </linearGradient>
-    <linearGradient id="ogb-bv-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
+    <linearGradient id="ogb-brand-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B72FE"/>
+      <stop offset="100%" stop-color="#2EC7F2"/>
     </linearGradient>
   </defs>
 
   {/* Background */}
   <rect width="1200" height="630" fill="url(#ogb-bg)"/>
-  <rect width="1200" height="630" fill="none" stroke="rgba(139,92,246,0.2)" stroke-width="2"/>
+  <rect width="1200" height="630" fill="none" stroke="rgba(37,99,235,0.2)" stroke-width="2"/>
 
   {/* Grid overlay */}
   <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
   <path d="M200 0V630M400 0V630M600 0V630M800 0V630M1000 0V630" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
 
   {/* Glow background */}
-  <circle cx="600" cy="240" r="280" fill="rgba(139,92,246,0.15)"/>
+  <circle cx="600" cy="240" r="280" fill="rgba(0,212,255,0.12)"/>
 
   {/* Logo Container Group */}
   <g transform="translate(420, 160)">
-    {/* Pure Geometric N Logo Mark */}
-    <g transform="scale(3)">
-      <path d="M 6 6 H 14.5 L 27 25 V 6 H 34.5 V 34 H 26 L 13.5 15 V 34 H 6 V 6 Z" fill="url(#ogb-bv-grad)"/>
+    {/* Monogram Logo Mark */}
+    <g transform="scale(1.2)">
+      <path
+        d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
+        fill="none"
+        stroke="url(#ogb-brand-grad)"
+        stroke-width="5.8"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      />
+      <path
+        d="M39,68 V32 L65.5,62 V31 L67,28.4"
+        fill="none"
+        stroke="url(#ogb-brand-grad)"
+        stroke-width="8"
+        stroke-linejoin="round"
+        stroke-linecap="butt"
+      />
     </g>
 
     {/* Typography */}
-    <text x="145" y="72" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="64" font-weight="900" letter-spacing="-0.04em" fill="#ffffff">Neel<tspan fill="#8B5CF6">Stack</tspan></text>
+    <text x="145" y="78" font-family="Geist, sans-serif" font-size="64" font-weight="600" letter-spacing="-0.04em" fill="#ffffff">Neel<tspan fill="#2EC7F2">Stack</tspan></text>
   </g>
 
   {/* Main Headline Tagline */}
-  <text x="600" y="380" text-anchor="middle" font-family="Plus Jakarta Sans, Inter, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.02em" fill="#f8fafc">AI-Native Enterprise Software &amp; Product Engineering</text>
-  <text x="600" y="425" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#94a3b8">Scaling Intelligent SaaS Platforms, ERP Systems &amp; Custom AI Agents</text>
+  <text x="600" y="380" text-anchor="middle" font-family="Geist, sans-serif" font-size="36" font-weight="800" letter-spacing="-0.02em" fill="#f8fafc">AI-Native Product Engineering</text>
+  <text x="600" y="425" text-anchor="middle" font-family="Geist, sans-serif" font-size="20" font-weight="500" fill="#94a3b8">Scaling Intelligent SaaS Platforms, Cloud Systems &amp; Custom AI Agents</text>
 
   {/* Footer Tag */}
-  <rect x="460" y="480" width="280" height="42" rx="21" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
-  <circle cx="484" cy="501" r="5" fill="#8B5CF6"/>
-  <text x="500" y="506" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="0.12em" fill="#8B5CF6">HTTPS://NEELSTACK.COM</text>
+  <rect x="460" y="480" width="280" height="42" rx="21" fill="rgba(37,99,235,0.1)" stroke="rgba(37,99,235,0.3)" stroke-width="1"/>
+  <circle cx="484" cy="501" r="5" fill="#2EC7F2"/>
+  <text x="500" y="506" font-family="Geist, sans-serif" font-size="14" font-weight="700" letter-spacing="0.12em" fill="#2EC7F2">HTTPS://NEELSTACK.COM</text>
 </svg>
+

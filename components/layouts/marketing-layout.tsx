@@ -4,6 +4,7 @@ import { MouseSpotlight } from '@/components/ui/mouse-spotlight'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { FloatingConversionWidget } from '@/components/ui/floating-conversion-widget'
 import { SmoothScrollProvider } from '@/components/providers/smooth-scroll-provider'
+import { CookieConsent } from '@/components/ui/cookie-consent'
 import { cn } from '@/lib/utils'
 
 interface MarketingLayoutProps {
@@ -30,6 +31,7 @@ export function MarketingLayout({ children, className }: MarketingLayoutProps) {
         </main>
         <Footer />
         <FloatingConversionWidget />
+        <CookieConsent />
       </div>
     </SmoothScrollProvider>
   )

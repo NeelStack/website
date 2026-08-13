@@ -59,7 +59,9 @@ export default function CaseStudiesPage() {
 
       <Section>
         <Container>
-          <div className="mx-auto max-w-3xl rounded-2xl border border-primary/25 bg-primary/[0.03] p-8 md:p-10 text-center space-y-5 mb-16">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-primary/25 bg-primary/[0.03] p-8 md:p-10 text-center space-y-5 mb-16 relative overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-primary/10 blur-3xl rounded-full" aria-hidden="true" />
+            <div className="relative z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
               <Clock className="h-3.5 w-3.5" />
               <span>Full Write-ups Launching Soon</span>
@@ -84,6 +86,7 @@ export default function CaseStudiesPage() {
                 <Link href="/portfolio">Explore Live Product Portfolio</Link>
               </Button>
             </div>
+            </div>
           </div>
 
           <SectionHeader
@@ -96,7 +99,7 @@ export default function CaseStudiesPage() {
             {UPCOMING_CASE_STUDIES.map((cs) => (
               <div
                 key={cs.id}
-                className="flex flex-col justify-between gap-5 rounded-2xl border border-border bg-card p-6 md:p-8"
+                className="flex flex-col justify-between gap-5 rounded-2xl border border-border bg-card p-6 md:p-8 card-hover"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

@@ -161,11 +161,11 @@ export function Footer() {
           <FooterColumn title="Industries" links={FOOTER_NAV.industries} />
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-border py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground text-center md:text-left">
-            &copy; {currentYear} NeelStack Solutions Private Limited. All rights reserved.
-          </p>
+          <div className="text-xs text-muted-foreground text-center md:text-left space-y-1">
+            <p>&copy; {currentYear} NeelStack Solutions Private Limited. All rights reserved.</p>
+            <p>GSTIN: 09AALCN9356Q1ZA</p>
+          </div>
           <div className="flex items-center gap-4">
             <Link
               href="/privacy"

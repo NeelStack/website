@@ -85,7 +85,9 @@ export const MAIN_NAV: NavMenu[] = [
       { label: 'Fashion, Apparel & D2C', href: '/industries/fashion-d2c', icon: ShoppingBag },
       { label: 'Education & EdTech', href: '/industries/education', icon: GraduationCap },
       { label: 'Healthcare & Pharma', href: '/industries/healthcare', icon: HeartPulse },
-      { label: 'Enterprise & Finance', href: '/industries/enterprise', icon: Landmark },
+      { label: 'Government & Public Sector', href: '/industries/government', icon: Landmark },
+      { label: 'Startups & SaaS', href: '/industries/startups', icon: Rocket },
+      { label: 'Retail & Digital Commerce', href: '/industries/retail', icon: ShoppingBag },
     ],
   },
   {
@@ -116,8 +118,11 @@ export const FOOTER_NAV = {
   industries: [
     { label: 'Fashion, Apparel & D2C', href: '/industries/fashion-d2c' },
     { label: 'Education & EdTech', href: '/industries/education' },
-    { label: 'Healthcare & Systems', href: '/industries/healthcare' },
-    { label: 'Enterprise & SaaS', href: '/industries/enterprise' },
+    { label: 'Healthcare & Pharma', href: '/industries/healthcare' },
+    { label: 'Government & Public Sector', href: '/industries/government' },
+    { label: 'Startups & SaaS', href: '/industries/startups' },
+    { label: 'Retail & Commerce', href: '/industries/retail' },
+    { label: 'Pharmaceutical Systems', href: '/industries/pharmaceutical' },
   ],
   company: [
     { label: 'About NeelStack', href: '/about' },
