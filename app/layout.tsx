@@ -85,11 +85,6 @@ export const metadata: Metadata = {
       'Building enterprise software, AI solutions, SaaS products, and custom applications for organizations worldwide.',
     images: ['/twitter-image'],
   },
-  icons: {
-    icon: { url: '/icon.svg', type: 'image/svg+xml' },
-    shortcut: '/icon.svg',
-    apple: { url: '/icon.svg', type: 'image/svg+xml' },
-  },
   robots: {
     index: true,
     follow: true,
