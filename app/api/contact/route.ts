@@ -35,6 +35,10 @@ export async function POST(req: Request) {
     // 2. Fetch API key and handle fallback mocked response if empty
     const apiKey = process.env.RESEND_API_KEY
     if (!apiKey) {
+      if (process.env.NODE_ENV === 'production') {
+        console.error('CRITICAL: RESEND_API_KEY is missing in production. Form submissions will fail.')
+        return NextResponse.json({ error: 'Server misconfiguration. Please try again later.' }, { status: 500 })
+      }
       console.warn('RESEND_API_KEY is not defined. Email notification mocked in development.')
       return NextResponse.json({ success: true, mocked: true })
     }
