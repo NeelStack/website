@@ -46,7 +46,7 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
           className
         )}
       >
-        <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-card to-accent/10">
+        <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-primary/15 via-card to-accent/15 dark:from-primary/10 dark:to-accent/10">
           <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern opacity-40">
             <span
               className="text-4xl font-heading font-black text-foreground/5 select-none"
@@ -106,7 +106,7 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
       )}
     >
       {/* Decorative header gradient with abstract file layout */}
-      <div className="relative h-44 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-card to-accent/10 flex items-center justify-center border-b border-border/40">
+      <div className="relative h-44 w-full overflow-hidden bg-gradient-to-br from-primary/15 via-card to-accent/15 dark:from-primary/10 dark:to-accent/10 flex items-center justify-center border-b border-border/40">
         <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden="true" />
         <div className="absolute top-4 left-4">
           <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-full border border-primary/20">

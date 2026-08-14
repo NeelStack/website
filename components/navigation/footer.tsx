@@ -98,7 +98,7 @@ export function Footer() {
       aria-label="Site footer"
     >
       {/* Pre-footer CTA banner */}
-      <div className="border-b border-border/80 bg-gradient-to-r from-card via-background to-card py-16 px-4 text-center relative overflow-hidden">
+      <div className="border-b border-border/80 bg-gradient-to-r from-card via-background to-card dark:from-surface dark:via-background dark:to-surface py-16 px-4 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto space-y-6 relative z-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold text-primary">
             <Sparkles className="h-3.5 w-3.5" />
@@ -146,7 +146,7 @@ export function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-primary/5 hover:scale-110 hover:shadow-sm transition-all duration-200 ease-out"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border/60 dark:border-border text-muted-foreground hover:text-primary hover:border-primary/40 hover:bg-primary/5 hover:scale-110 hover:shadow-sm transition-all duration-200 ease-out"
                 >
                   <Icon className="h-4 w-4" />
                 </Link>

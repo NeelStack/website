@@ -42,7 +42,7 @@ const ROADMAP_ITEMS = [
   {
     title: 'DhruvaOS',
     category: 'Education Operating System',
-    status: 'Beta Launch — August 15',
+    status: 'Beta Launch — August 31',
     statusBadge: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
     icon: Zap,
     desc: 'Unified AI-powered operating platform for schools, colleges, and universities covering admissions, academics, fee invoices, and parent communication.',

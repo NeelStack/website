@@ -34,7 +34,7 @@ export function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-50 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-3 rounded-2xl border border-border/60 bg-card/90 p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 animate-in slide-in-from-bottom-8 fade-in sm:bottom-6 sm:right-6"
+      className="fixed bottom-4 right-4 z-50 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-3 rounded-2xl border border-border/60 bg-card/95 dark:bg-card/90 p-4 shadow-2xl shadow-black/10 dark:shadow-black/40 backdrop-blur-xl transition-all duration-300 animate-in slide-in-from-bottom-8 fade-in sm:bottom-6 sm:right-6"
       role="dialog"
       aria-label="Cookie consent"
     >
@@ -45,7 +45,7 @@ export function CookieConsent() {
         </div>
         <button
           onClick={handleRejectAll}
-          className="text-muted-foreground hover:text-foreground transition-colors p-0.5"
+          className="text-muted-foreground hover:text-foreground hover:bg-muted/80 rounded-md transition-colors p-0.5"
           aria-label="Decline and close"
         >
           <X className="h-4 w-4" />

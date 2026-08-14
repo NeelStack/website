@@ -187,7 +187,7 @@ export function PortfolioShowcaseSection() {
               >
                 Explore DhruvaOS <ArrowRight className="h-4 w-4" />
               </Link>
-              <span className="text-xs text-amber-500 font-mono font-bold">Beta: August 15</span>
+              <span className="text-xs text-amber-500 font-mono font-bold">Beta: August 31</span>
             </div>
           </motion.div>
         </div>

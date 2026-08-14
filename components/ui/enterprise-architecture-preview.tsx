@@ -13,6 +13,7 @@ const PILLARS = [
     icon: Cpu,
     color: 'from-blue-500/20 to-cyan-500/20 text-cyan-400 border-cyan-500/30',
     dotColor: 'bg-cyan-400',
+    shadowColor: 'shadow-[0_0_20px_rgba(6,182,212,0.2)]',
     description: 'Autonomous AI agents, vector database indexing, and semantic search routing tuned for enterprise accuracy.',
     details: ['Multi-LLM Routing (OpenAI, Anthropic, Llama)', 'Pinecone / Qdrant Vector Store Integration', 'Role-Gated Knowledge Graph Ingestion'],
   },
@@ -25,6 +26,7 @@ const PILLARS = [
     icon: Server,
     color: 'from-purple-500/20 to-indigo-500/20 text-purple-400 border-purple-500/30',
     dotColor: 'bg-purple-400',
+    shadowColor: 'shadow-[0_0_20px_rgba(168,85,247,0.2)]',
     description: 'Multi-tenant database isolation, Redis edge caching, and serverless background worker queues.',
     details: ['PostgreSQL Multi-Tenant Schema', 'Redis Distributed Caching Layer', 'Automated CI/CD Pipeline & Edge Delivery'],
   },
@@ -37,6 +39,7 @@ const PILLARS = [
     icon: ShieldCheck,
     color: 'from-emerald-500/20 to-teal-500/20 text-emerald-400 border-emerald-500/30',
     dotColor: 'bg-emerald-400',
+    shadowColor: 'shadow-[0_0_20px_rgba(16,185,129,0.2)]',
     description: 'Fine-grained role-based access control, cryptographic field encryption, and immutable audit logs.',
     details: ['OAuth2 / SAML Single Sign-On (SSO)', 'Field-Level Cryptographic Encryption', 'Real-Time Intrusion & Anomaly Auditing'],
   },
@@ -49,6 +52,7 @@ const PILLARS = [
     icon: Zap,
     color: 'from-amber-500/20 to-orange-500/20 text-amber-400 border-amber-500/30',
     dotColor: 'bg-amber-400',
+    shadowColor: 'shadow-[0_0_20px_rgba(245,158,11,0.2)]',
     description: 'Self-healing Kubernetes clusters, automated failover DNS, and zero-downtime rolling deployments.',
     details: ['Multi-Cloud Failover (AWS / GCP / Vercel)', 'Global CDN Edge Content Caching', 'Automated Automated Backup & Recovery'],
   },
@@ -96,8 +100,8 @@ export function EnterpriseArchitecturePreview() {
               onClick={() => setActiveTab(p.id)}
               className={`flex flex-col items-start p-3.5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
                 isActive
-                  ? 'border-primary bg-primary/10 shadow-[0_0_20px_rgba(70,166,252,0.2)]'
-                  : 'border-border/60 bg-background/50 hover:bg-muted/60 hover:border-border'
+                  ? `border-primary bg-primary/10 ${p.shadowColor}`
+                  : 'border-border/60 bg-background/50 hover:bg-muted/40 hover:border-border'
               }`}
             >
               <div className="flex items-center justify-between w-full mb-2">

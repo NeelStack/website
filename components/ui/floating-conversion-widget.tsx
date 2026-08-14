@@ -20,7 +20,7 @@ export function FloatingConversionWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 15, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-            className="w-80 rounded-2xl border border-border bg-card p-5 shadow-2xl space-y-4 relative backdrop-blur-md"
+            className="w-80 rounded-2xl border border-border bg-card/95 dark:bg-card/95 p-5 shadow-2xl space-y-4 relative backdrop-blur-md"
           >
             <div className="flex items-center justify-between border-b border-border/60 pb-3">
               <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary uppercase tracking-wide">
@@ -44,7 +44,7 @@ export function FloatingConversionWidget() {
               {/* Direct Email Consultation */}
               <a
                 href="mailto:contact@neelstack.com?subject=Technical%20Consultation%20Inquiry"
-                className="flex items-center justify-between p-3 rounded-xl border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 font-semibold text-xs transition-colors"
+                className="flex items-center justify-between p-3 rounded-xl border border-blue-500/40 dark:border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 font-semibold text-xs transition-colors shadow-sm dark:shadow-none"
               >
                 <span className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
@@ -57,7 +57,7 @@ export function FloatingConversionWidget() {
               <Link
                 href="/request-quote"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-between p-3 rounded-xl border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 font-semibold text-xs transition-colors"
+                className="flex items-center justify-between p-3 rounded-xl border border-amber-500/40 dark:border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 font-semibold text-xs transition-colors shadow-sm dark:shadow-none"
               >
                 <span className="flex items-center gap-2">
                   <Zap className="h-4 w-4" />
@@ -70,7 +70,7 @@ export function FloatingConversionWidget() {
               <Link
                 href="/book-consultation"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-between p-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-semibold text-xs transition-colors"
+                className="flex items-center justify-between p-3 rounded-xl border border-emerald-500/40 dark:border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-semibold text-xs transition-colors shadow-sm dark:shadow-none"
               >
                 <span className="flex items-center gap-2">
                   <PhoneCall className="h-4 w-4" />

@@ -110,7 +110,7 @@ export function ProcessSection() {
               <motion.div
                 key={step.step}
                 variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
-                className="group relative flex flex-col justify-between gap-6 rounded-3xl p-9 border border-border/80 bg-black/10 backdrop-blur-md card-hover hover:border-primary/40 overflow-hidden shadow-md"
+                className="group relative flex flex-col justify-between gap-6 rounded-3xl p-9 border border-border/80 bg-card/70 dark:bg-black/10 backdrop-blur-md card-hover hover:border-primary/40 overflow-hidden shadow-md"
               >
                 {/* Large background step number */}
                 <span

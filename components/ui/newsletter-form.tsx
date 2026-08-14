@@ -53,7 +53,7 @@ export function NewsletterForm({ className }: { className?: string }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="e.g. alex@company.com"
-            className="flex-1 min-w-0 rounded-xl border border-input/60 bg-muted/10 px-3.5 py-2 text-xs text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:border-cyan-500/60 focus:bg-background [&:not(:placeholder-shown)]:border-cyan-500/40 [&:not(:placeholder-shown)]:bg-cyan-500/[0.04] [&:not(:placeholder-shown)]:font-semibold shadow-sm"
+            className="flex-1 min-w-0 rounded-xl border border-input/60 bg-muted/10 px-3.5 py-2 text-xs text-foreground placeholder:text-muted-foreground/35 placeholder:italic transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary focus:bg-background [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-primary/[0.04] shadow-sm"
           />
           <Button type="submit" size="sm" disabled={status === 'loading'} className="shrink-0">
             {status === 'loading' ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : 'Subscribe'}

@@ -144,7 +144,7 @@ function NavDropdown({
             ? theme.active
             : isActive
               ? theme.active
-              : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-500/10'
+              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
         )}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -271,7 +271,7 @@ function AiExplorationDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-slate-950/70 backdrop-blur-md"
+          className="absolute inset-0 bg-surface-overlay backdrop-blur-md"
         />
 
         {/* Centered Modal Card */}
@@ -372,14 +372,14 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 bg-slate-950/60 backdrop-blur-md"
+        className="fixed inset-0 bg-surface-overlay backdrop-blur-md"
       />
       <motion.div
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-        className="fixed inset-y-0 right-0 w-full max-w-xs bg-card p-6 shadow-2xl border-l border-border flex flex-col justify-between"
+        className="fixed inset-y-0 right-0 w-full max-w-xs bg-card p-6 shadow-2xl border-l border-border dark:border-border/60 flex flex-col justify-between"
       >
         <div className="space-y-6">
           <div className="flex items-center justify-between border-b border-border pb-4">
@@ -472,7 +472,7 @@ function DesktopNavbar({
 
   return (
     <nav
-      className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-slate-500/5 dark:bg-slate-400/10 backdrop-blur-md px-2.5 py-1 shadow-inner relative"
+      className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 dark:bg-muted/30 backdrop-blur-md px-2.5 py-1 shadow-inner relative"
       aria-label="Main navigation"
       onMouseLeave={() => setHoveredIndex(null)}
     >

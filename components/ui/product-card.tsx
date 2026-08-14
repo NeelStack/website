@@ -111,7 +111,7 @@ export function ProductCard({ product, className, variant = 'default' }: Product
           {isBeta && meta?.betaDate && (
             <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/8 px-2 py-0.5 text-[10px] font-semibold text-amber-400">
               <Zap className="h-2.5 w-2.5" aria-hidden="true" />
-              August 15 Beta
+              August 31 Beta
             </span>
           )}
           {/* School project label */}

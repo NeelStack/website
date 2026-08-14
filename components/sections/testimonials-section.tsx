@@ -120,7 +120,7 @@ export function TestimonialsSection() {
               <motion.div
                 key={signal.industry}
                 variants={{ hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
-                className={`group flex flex-col justify-between gap-5 rounded-3xl border border-border/80 bg-black/10 backdrop-blur-md p-7 card-hover hover:border-primary/30 relative overflow-hidden shadow-md ${isOffset ? 'sm:mt-8' : ''}`}
+                className={`group flex flex-col justify-between gap-5 rounded-3xl border border-border/80 bg-card/70 dark:bg-black/10 backdrop-blur-md p-7 card-hover hover:border-primary/30 relative overflow-hidden shadow-md ${isOffset ? 'sm:mt-8' : ''}`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
