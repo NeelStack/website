@@ -75,7 +75,7 @@ export function TrustBarSection() {
           className="text-center mb-8"
         >
           <span className="text-[10px] font-bold text-muted-foreground/70 uppercase tracking-[0.2em]">
-            Why 50+ Projects Trust NeelStack
+            Enterprise-Grade Engineering Standards
           </span>
         </motion.div>
 

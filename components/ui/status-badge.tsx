@@ -14,7 +14,7 @@ const statusConfig = {
     pingDot: true,
   },
   beta: {
-    label: 'Beta · Jul 15',
+    label: 'Beta · Aug 31',
     className: 'border-amber-500/40 bg-amber-500/12 text-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.15)]',
     dot: 'bg-amber-400',
     pingDot: true,

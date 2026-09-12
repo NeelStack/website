@@ -15,11 +15,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/book-consultation',
-          '/request-quote',
           '/api/',
-          // SEO fix: block Cloudflare CDN utility paths from being crawled
-          // (these return 4xx and were flagged in the SEO audit)
           '/cdn-cgi/',
         ],
       },

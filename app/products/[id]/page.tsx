@@ -20,8 +20,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const product = PRODUCTS.find((p) => p.id === resolvedParams.id)
   if (!product) return { title: 'Product Not Found' }
   return {
-    title: `${product.name} | Details & Roadmap`,
+    title: `${product.name} — Enterprise Software Product | NeelStack India`,
     description: product.description,
+    alternates: {
+      canonical: `/products/${product.id}`,
+    },
   }
 }
 

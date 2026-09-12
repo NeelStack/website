@@ -13,145 +13,73 @@ import { NeelStackLogo } from '@/components/ui/logo'
 
 // ─── Header Color Theme Configuration ─────────────────────────────────────────
 
-const HEADER_THEMES: Record<string, {
-  active: string
-  hoverText: string
-  hoverBg: string
-  border: string
-  activeDot: string
-  iconBg: string
-  iconText: string
-  text: string
-  accent: string
-}> = {
-  Services: {
-    active: 'text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 border-cyan-500/35 shadow-[0_0_15px_rgba(6,182,212,0.15)]',
-    hoverText: 'group-hover:text-cyan-600 dark:group-hover:text-cyan-400',
-    hoverBg: 'hover:bg-cyan-500/10 hover:border-cyan-500/20',
-    border: 'border-cyan-500/20',
-    activeDot: 'bg-cyan-400 shadow-[0_0_8px_#22d3ee]',
-    iconBg: 'bg-cyan-500/10 border-cyan-500/20',
-    iconText: 'text-cyan-500',
-    text: 'text-cyan-600 dark:text-cyan-400',
-    accent: 'text-cyan-600 dark:text-cyan-400 border-cyan-500/40 pb-2'
-  },
-  Products: {
-    active: 'text-violet-600 dark:text-violet-400 bg-violet-500/10 border-violet-500/35 shadow-[0_0_15px_rgba(139,92,246,0.15)]',
-    hoverText: 'group-hover:text-violet-600 dark:group-hover:text-violet-400',
-    hoverBg: 'hover:bg-violet-500/10 hover:border-violet-500/20',
-    border: 'border-violet-500/20',
-    activeDot: 'bg-violet-400 shadow-[0_0_8px_#a78bfa]',
-    iconBg: 'bg-violet-500/10 border-violet-500/20',
-    iconText: 'text-violet-500',
-    text: 'text-violet-600 dark:text-violet-400',
-    accent: 'text-violet-600 dark:text-violet-400 border-violet-500/40 pb-2'
-  },
-  Industries: {
-    active: 'text-rose-600 dark:text-rose-400 bg-rose-500/10 border-rose-500/35 shadow-[0_0_15px_rgba(244,63,94,0.15)]',
-    hoverText: 'group-hover:text-rose-600 dark:group-hover:text-rose-400',
-    hoverBg: 'hover:bg-rose-500/10 hover:border-rose-500/20',
-    border: 'border-rose-500/20',
-    activeDot: 'bg-rose-400 shadow-[0_0_8px_#fb7185]',
-    iconBg: 'bg-rose-500/10 border-rose-500/20',
-    iconText: 'text-rose-500',
-    text: 'text-rose-600 dark:text-rose-400',
-    accent: 'text-rose-600 dark:text-rose-400 border-rose-500/40 pb-2'
-  },
-  Company: {
-    active: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/35 shadow-[0_0_15px_rgba(16,185,129,0.15)]',
-    hoverText: 'group-hover:text-emerald-600 dark:group-hover:text-emerald-400',
-    hoverBg: 'hover:bg-emerald-500/10 hover:border-emerald-500/20',
-    border: 'border-emerald-500/20',
-    activeDot: 'bg-emerald-400 shadow-[0_0_8px_#34d399]',
-    iconBg: 'bg-emerald-500/10 border-emerald-500/20',
-    iconText: 'text-emerald-500',
-    text: 'text-emerald-600 dark:text-emerald-400',
-    accent: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/40 pb-2'
-  }
+const UNIFIED_THEME = {
+  active: 'text-blue-600 dark:text-cyan-400 bg-blue-500/10 dark:bg-cyan-500/10 border-blue-500/30 dark:border-cyan-500/30 shadow-[0_0_15px_rgba(59,130,246,0.15)]',
+  hoverText: 'group-hover:text-blue-600 dark:group-hover:text-cyan-400',
+  hoverBg: 'hover:bg-blue-500/[0.08] dark:hover:bg-cyan-500/[0.08] hover:border-blue-500/20 dark:hover:border-cyan-500/20',
+  border: 'border-blue-500/20 dark:border-cyan-500/20',
+  activeDot: 'bg-cyan-400 shadow-[0_0_8px_#22d3ee]',
+  iconBg: 'bg-blue-500/10 dark:bg-cyan-500/10 border-blue-500/20 dark:border-cyan-500/20',
+  iconText: 'text-blue-600 dark:text-cyan-400',
+  text: 'text-blue-600 dark:text-cyan-400',
+  accent: 'text-blue-600 dark:text-cyan-400 border-blue-500/40 dark:border-cyan-500/40 pb-2'
 }
 
-// ─── Nav Dropdown Component ───────────────────────────────────────────────────
+const HEADER_THEMES: Record<string, typeof UNIFIED_THEME> = {
+  Services: UNIFIED_THEME,
+  Products: UNIFIED_THEME,
+  Industries: UNIFIED_THEME,
+  Company: UNIFIED_THEME,
+}
+
+// ─── Desktop Nav Item Component ───────────────────────────────────────────────
+
+interface NavDropdownProps {
+  menu: (typeof MAIN_NAV)[0]
+  isOpen: boolean
+  onMouseEnter: () => void
+  onMouseLeave: () => void
+  onToggle: () => void
+  onClose: () => void
+}
 
 function NavDropdown({
   menu,
   isOpen,
-  onOpen,
+  onMouseEnter,
+  onMouseLeave,
+  onToggle,
   onClose,
-}: {
-  menu: (typeof MAIN_NAV)[0]
-  isOpen: boolean
-  onOpen: () => void
-  onClose: () => void
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+}: NavDropdownProps) {
   const pathname = usePathname()
-
   const theme = HEADER_THEMES[menu.label] || HEADER_THEMES.Services
 
   const allItems = menu.items ?? menu.groups?.flatMap((g) => g.items) ?? []
   const isActive = allItems.some((item) => pathname.startsWith(item.href) && item.href !== '/')
-
-  const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-      timeoutRef.current = null
-    }
-    onOpen()
-  }
-
-  const handleMouseEnterLink = () => {
-    // Keeps active open menu from shutting down instantly
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-      timeoutRef.current = null
-    }
-  }
-
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current)
-    timeoutRef.current = setTimeout(() => {
-      onClose()
-    }, 180)
-  }
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        onClose()
-      }
-    }
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [isOpen, onClose])
-
   const hasGroups = !!menu.groups
 
   return (
     <div
-      ref={ref}
       className="relative"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <button
-        onClick={() => (isOpen ? onClose() : onOpen())}
+        onClick={onToggle}
         className={cn(
-          'relative flex cursor-pointer items-center gap-1.5 px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-300 select-none outline-none z-10',
+          'relative flex cursor-pointer items-center gap-1.5 px-4 py-2 rounded-full text-xs font-extrabold transition-all duration-200 select-none outline-none z-10',
           isOpen
             ? theme.active
             : isActive
               ? theme.active
-              : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-500/10'
+              : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
         )}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
         <span>{menu.label}</span>
         <ChevronDown
-          className={cn('h-3.5 w-3.5 transition-transform duration-300', isOpen && 'rotate-180', isOpen && theme.text)}
+          className={cn('h-3.5 w-3.5 transition-transform duration-200', isOpen && 'rotate-180', isOpen && theme.text)}
           aria-hidden="true"
         />
 
@@ -161,20 +89,20 @@ function NavDropdown({
         )}
       </button>
 
-      {/* Mega Dropdown Menu */}
+      {/* Mega Dropdown Menu with Generous Hover Bridge */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             role="menu"
-            onMouseEnter={handleMouseEnterLink}
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: 12, scale: 0.96 }}
+            initial={{ opacity: 0, y: 8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 8, scale: 0.96 }}
-            transition={{ type: 'spring', stiffness: 450, damping: 28 }}
+            exit={{ opacity: 0, y: 6, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
             className={cn(
-              'absolute top-full mt-2.5 z-50 rounded-2xl border border-border/80 bg-card/95 backdrop-blur-2xl shadow-2xl shadow-black/30 overflow-hidden before:absolute before:-top-6 before:inset-x-0 before:h-8 before:content-[\'\']',
-              hasGroups ? 'w-[640px] -translate-x-1/4' : 'w-76 left-0'
+              'absolute top-full mt-2 z-50 rounded-2xl border border-border/80 bg-card/95 backdrop-blur-2xl shadow-2xl shadow-black/30 overflow-hidden',
+              // Invisible hover bridge that connects the button to the menu so cursor never falls out
+              'before:absolute before:-top-4 before:inset-x-0 before:h-5 before:bg-transparent before:content-[\'\']',
+              hasGroups ? 'w-[640px] -translate-x-1/4' : 'w-80 left-0'
             )}
           >
             {hasGroups ? (
@@ -271,7 +199,7 @@ function AiExplorationDrawer({ isOpen, onClose }: { isOpen: boolean; onClose: ()
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-slate-950/70 backdrop-blur-md"
+          className="absolute inset-0 bg-surface-overlay backdrop-blur-md"
         />
 
         {/* Centered Modal Card */}
@@ -372,14 +300,14 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 bg-slate-950/60 backdrop-blur-md"
+        className="fixed inset-0 bg-surface-overlay backdrop-blur-md"
       />
       <motion.div
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-        className="fixed inset-y-0 right-0 w-full max-w-xs bg-card p-6 shadow-2xl border-l border-border flex flex-col justify-between"
+        className="fixed inset-y-0 right-0 w-full max-w-xs bg-card p-6 shadow-2xl border-l border-border dark:border-border/60 flex flex-col justify-between"
       >
         <div className="space-y-6">
           <div className="flex items-center justify-between border-b border-border pb-4">
@@ -449,44 +377,72 @@ function MobileNavGroup({
   )
 }
 
-// ─── Desktop Navbar Component with Sliding Pill Animation ─────────────────────
+// ─── Desktop Navbar Component with Unified Centralized Debounce ────────────────
 
 function DesktopNavbar({
   openMenu,
-  handleOpen,
-  handleClose,
+  onOpenMenu,
+  onCloseMenu,
 }: {
   openMenu: string | null
-  handleOpen: (label: string) => void
-  handleClose: () => void
+  onOpenMenu: (label: string) => void
+  onCloseMenu: () => void
 }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Color-coded sliding pill properties
-  const pillClasses = [
-    'bg-cyan-500/10 dark:bg-cyan-400/12 border border-cyan-500/20',     // Services
-    'bg-violet-500/10 dark:bg-violet-400/12 border border-violet-500/20', // Products
-    'bg-rose-500/10 dark:bg-rose-400/12 border border-rose-500/20',     // Industries
-    'bg-emerald-500/10 dark:bg-emerald-400/12 border border-emerald-500/20' // Company
-  ]
+  // Clear pending timeout safely
+  const cancelClose = useCallback(() => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }, [])
+
+  // Schedule close with safe 220ms grace buffer for mouse traversal
+  const scheduleClose = useCallback(() => {
+    cancelClose()
+    closeTimeoutRef.current = setTimeout(() => {
+      onCloseMenu()
+      setHoveredIndex(null)
+    }, 220)
+  }, [cancelClose, onCloseMenu])
+
+  const handleItemEnter = useCallback((label: string, idx: number) => {
+    cancelClose()
+    setHoveredIndex(idx)
+    onOpenMenu(label)
+  }, [cancelClose, onOpenMenu])
+
+  const handleToggle = useCallback((label: string) => {
+    cancelClose()
+    if (openMenu === label) {
+      onCloseMenu()
+    } else {
+      onOpenMenu(label)
+    }
+  }, [cancelClose, openMenu, onCloseMenu, onOpenMenu])
+
+  // Unified brand sliding pill property
+  const pillClass = 'bg-blue-500/10 dark:bg-cyan-500/10 border border-blue-500/20 dark:border-cyan-500/20 shadow-sm'
 
   return (
     <nav
-      className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-slate-500/5 dark:bg-slate-400/10 backdrop-blur-md px-2.5 py-1 shadow-inner relative"
+      className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 dark:bg-muted/30 backdrop-blur-md px-2.5 py-1 shadow-inner relative"
       aria-label="Main navigation"
-      onMouseLeave={() => setHoveredIndex(null)}
+      onMouseEnter={cancelClose}
+      onMouseLeave={scheduleClose}
     >
       {MAIN_NAV.map((menu, idx) => (
         <div
           key={menu.label}
-          onMouseEnter={() => setHoveredIndex(idx)}
           className="relative"
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.div
                 layoutId="nav-hover-pill-bg"
-                className={cn("absolute inset-0 rounded-full z-0 pointer-events-none", pillClasses[idx] || pillClasses[0])}
+                className={cn("absolute inset-0 rounded-full z-0 pointer-events-none", pillClass)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -498,8 +454,13 @@ function DesktopNavbar({
             <NavDropdown
               menu={menu}
               isOpen={openMenu === menu.label}
-              onOpen={() => handleOpen(menu.label)}
-              onClose={handleClose}
+              onMouseEnter={() => handleItemEnter(menu.label, idx)}
+              onMouseLeave={scheduleClose}
+              onToggle={() => handleToggle(menu.label)}
+              onClose={() => {
+                cancelClose()
+                onCloseMenu()
+              }}
             />
           </div>
         </div>
@@ -510,38 +471,30 @@ function DesktopNavbar({
 
 // ─── Header Container Component ───────────────────────────────────────────────
 
-
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [aiDrawerOpen, setAiDrawerOpen] = useState(false)
   const pathname = usePathname()
-  const scrollStartRef = useRef<number | null>(null)
 
+  // Close menus on page route changes
   useEffect(() => {
     setOpenMenu(null)
     setMobileOpen(false)
   }, [pathname])
 
-  const openMenuRef = useRef<string | null>(null)
-  openMenuRef.current = openMenu
-
+  // Track scroll position for header glassmorphic density
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
-      if (scrollStartRef.current !== null && openMenuRef.current !== null) {
-        if (Math.abs(window.scrollY - scrollStartRef.current) > 100) {
-          setOpenMenu(null)
-          scrollStartRef.current = null
-        }
-      }
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpenMenu(null)
         setMobileOpen(false)
+        setAiDrawerOpen(false)
       }
     }
 
@@ -553,24 +506,14 @@ export function Header() {
     }
   }, [])
 
-  const handleOpen = useCallback((label: string) => {
-    scrollStartRef.current = window.scrollY
-    setOpenMenu(label)
-  }, [])
-
-  const handleClose = useCallback(() => {
-    scrollStartRef.current = null
-    setOpenMenu(null)
-  }, [])
-
   return (
     <>
       <header
         className={cn(
           'fixed inset-x-0 top-0 z-30 transition-all duration-300',
           scrolled
-            ? 'bg-background/85 dark:bg-card/90 backdrop-blur-2xl border-b border-border/60 shadow-xl shadow-black/10 py-3'
-            : 'bg-background/40 dark:bg-card/40 backdrop-blur-md border-b border-border/20 py-4'
+            ? 'bg-background/90 dark:bg-card/95 backdrop-blur-2xl border-b border-border/70 shadow-xl shadow-black/10 py-3'
+            : 'bg-background/45 dark:bg-card/50 backdrop-blur-md border-b border-border/25 py-4'
         )}
         role="banner"
       >
@@ -581,8 +524,8 @@ export function Header() {
           {/* Desktop Navigation — Floating Glass Control Island */}
           <DesktopNavbar
             openMenu={openMenu}
-            handleOpen={handleOpen}
-            handleClose={handleClose}
+            onOpenMenu={(label) => setOpenMenu(label)}
+            onCloseMenu={() => setOpenMenu(null)}
           />
 
           {/* Desktop Right Action Cluster */}

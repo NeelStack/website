@@ -4,94 +4,110 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
-import { Laptop, Server, Database, Cloud, Bot, CheckCircle2 } from 'lucide-react'
+import { Laptop, Server, Cloud, Bot, Network, ShieldCheck, CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const TECH_CATEGORIES = [
   {
+    id: 'agentic-ai',
+    title: 'Agentic AI & MCP',
+    icon: Bot,
+    badge: 'Autonomous Multi-Agent Runtimes',
+    color: 'text-rose-600 dark:text-rose-400',
+    bgColor: 'bg-rose-500/10 border-rose-500/25',
+    items: [
+      { name: 'LangGraph & Multi-Agent Graphs', desc: 'Deterministic cyclic state machines, human-in-the-loop & persistence checkpoints' },
+      { name: 'Model Context Protocol (MCP)', desc: 'Anthropic MCP SDK, custom enterprise database & tool servers' },
+      { name: 'PydanticAI & Agent Frameworks', desc: 'Type-safe production agent runtimes with validated tool schemas' },
+      { name: 'Frontier Foundation LLMs', desc: 'Anthropic Claude 3.5 Sonnet, Google Gemini 1.5/2.0 Pro, GPT-4o, Llama 3.3' },
+      { name: 'Multi-Agent Swarms', desc: 'Microsoft AutoGen, CrewAI & collaborative multi-agent task execution' },
+      { name: 'Air-Gapped & Local Inference', desc: 'vLLM, Ollama & high-throughput self-hosted open-weights models' },
+    ],
+  },
+  {
+    id: 'rag-memory',
+    title: 'GraphRAG & Memory',
+    icon: Network,
+    badge: 'Cognitive Retrieval & Neural State',
+    color: 'text-violet-600 dark:text-violet-400',
+    bgColor: 'bg-violet-500/10 border-violet-500/25',
+    items: [
+      { name: 'Microsoft GraphRAG', desc: 'Knowledge-graph accelerated retrieval over unstructured enterprise corpora' },
+      { name: 'DSPy Compiled Pipelines', desc: 'Self-optimizing algorithmic prompt synthesis & structured reasoning pipelines' },
+      { name: 'Mem0 & Letta (MemGPT)', desc: 'Stateful episodic, semantic, and hierarchical agent memory architectures' },
+      { name: 'LlamaIndex & Haystack 2.0', desc: 'High-accuracy document ingestion, hybrid semantic chunking & reranking' },
+      { name: 'Qdrant & pgvector', desc: 'Rust-based vector search & PostgreSQL HNSW high-dimensional indexing' },
+      { name: 'Voyage AI & BGE-M3', desc: 'State-of-the-art dense embedding models with contextual reranker layers' },
+    ],
+  },
+  {
+    id: 'ai-security',
+    title: 'Security & Observability',
+    icon: ShieldCheck,
+    badge: 'Enterprise Guardrails & Telemetry',
+    color: 'text-emerald-600 dark:text-emerald-400',
+    bgColor: 'bg-emerald-500/10 border-emerald-500/25',
+    items: [
+      { name: 'NVIDIA NeMo Guardrails', desc: 'Programmable dialogue safety rails, topical containment & jailbreak mitigation' },
+      { name: 'Langfuse & LangSmith', desc: 'Distributed LLM tracing, latency profiling, cost tracking & session replay' },
+      { name: 'Microsoft Presidio', desc: 'Automated enterprise PII detection, redaction & compliance data masking' },
+      { name: 'Promptfoo Red-Teaming', desc: 'Automated LLM vulnerability red-teaming & CI/CD evaluation test harnesses' },
+      { name: 'Guardrails AI & Lakera', desc: 'Real-time hallucination prevention & prompt injection defense shields' },
+      { name: 'OpenTelemetry AI Spans', desc: 'Standardized vendor-agnostic distributed telemetry across agent microservices' },
+    ],
+  },
+  {
     id: 'frontend',
-    title: 'Frontend & Mobile',
+    title: 'Frontend & WASM',
     icon: Laptop,
-    badge: 'Sub-Second Web & Apps',
+    badge: 'Sub-Second Next.js & WebAssembly',
     color: 'text-blue-600 dark:text-blue-400',
     bgColor: 'bg-blue-500/10 border-blue-500/25',
     items: [
-      { name: 'Next.js 16', desc: 'App Router & Turbopack SSR' },
-      { name: 'TypeScript', desc: 'Strict end-to-end type safety' },
-      { name: 'React 19', desc: 'Server Components & Concurrent UI' },
-      { name: 'Tailwind CSS v4', desc: 'Utility-first OKLCH design system' },
-      { name: 'React Native', desc: 'Native iOS & Android compilation' },
-      { name: 'Flutter', desc: 'High-fps cross-platform mobile apps' },
+      { name: 'Next.js 16 App Router', desc: 'Turbopack, Server Actions & edge streaming SSR architectures' },
+      { name: 'React 19 & Concurrent UI', desc: 'React Compiler, Server Components & optimistic state mutations' },
+      { name: 'Rust & WebAssembly (WASM)', desc: 'Zero-latency client-side compute powering ToolVines utility suite' },
+      { name: 'TypeScript 5.5+', desc: 'Strict end-to-end static type safety across distributed API surfaces' },
+      { name: 'Tailwind CSS v4', desc: 'Modern OKLCH color engine & lightning-fast atomic compilation' },
+      { name: 'React Native & Flutter', desc: '60 FPS cross-platform native iOS & Android applications' },
     ],
   },
   {
     id: 'backend',
     title: 'Backend & Microservices',
     icon: Server,
-    badge: 'High-Throughput APIs',
+    badge: 'High-Throughput Go & FastAPI',
     color: 'text-cyan-600 dark:text-cyan-400',
     bgColor: 'bg-cyan-500/10 border-cyan-500/25',
     items: [
-      { name: 'Python FastAPI', desc: 'Asynchronous sub-millisecond REST APIs' },
-      { name: 'Node.js / Express', desc: 'Event-driven real-time services' },
-      { name: 'Go (Golang)', desc: 'Ultra-fast low-latency backend microservices' },
-      { name: 'NestJS', desc: 'Enterprise-structured TypeScript backend' },
-      { name: 'GraphQL & REST', desc: 'Flexible API query & mutation architecture' },
-      { name: 'gRPC', desc: 'High-performance inter-service communication' },
-    ],
-  },
-  {
-    id: 'ai',
-    title: 'AI & Machine Learning',
-    icon: Bot,
-    badge: 'Cognitive LLM Pipelines',
-    color: 'text-rose-600 dark:text-rose-400',
-    bgColor: 'bg-rose-500/10 border-rose-500/25',
-    items: [
-      { name: 'Generative LLM Models', desc: 'Multimodal AI reasoning & text generation' },
-      { name: 'LangChain & LlamaIndex', desc: 'RAG vector retrieval & agent orchestration' },
-      { name: 'Pinecone & Qdrant', desc: 'High-speed vector embedding databases' },
-      { name: 'PyTorch & HuggingFace', desc: 'Custom model fine-tuning & NLP' },
-      { name: 'Frontier Reasoning Engines', desc: 'Complex reasoning, code generation & analytical AI' },
-      { name: 'Local Ollama & Open Models', desc: 'Privacy-focused self-hosted AI models' },
-    ],
-  },
-  {
-    id: 'databases',
-    title: 'Databases & Storage',
-    icon: Database,
-    badge: 'ACID & Vector Storage',
-    color: 'text-violet-600 dark:text-violet-400',
-    bgColor: 'bg-violet-500/10 border-violet-500/25',
-    items: [
-      { name: 'PostgreSQL', desc: 'Enterprise relational & pgvector storage' },
-      { name: 'Redis', desc: 'In-memory caching & pub/sub messaging' },
-      { name: 'MongoDB', desc: 'Scalable document database pipelines' },
-      { name: 'Supabase', desc: 'Realtime PostgreSQL with instant auth' },
-      { name: 'Pinecone', desc: 'Managed cloud vector search DB' },
-      { name: 'Amazon Aurora', desc: 'Autoscaling multi-region relational DB' },
+      { name: 'Python FastAPI', desc: 'Asynchronous sub-millisecond REST APIs with Pydantic v2 validation' },
+      { name: 'Go (Golang) Services', desc: 'Ultra-low-latency concurrency & minimal memory footprint microservices' },
+      { name: 'Rust Systems Services', desc: 'Memory-safe, zero-cost abstractions for compute-intensive workloads' },
+      { name: 'NestJS & Node.js', desc: 'Enterprise-structured modular TypeScript microservices architecture' },
+      { name: 'gRPC & Protocol Buffers', desc: 'High-performance binary inter-service streaming & low-overhead RPCs' },
+      { name: 'PostgreSQL 16 & Redis 7', desc: 'Enterprise ACID relational storage, in-memory caching & pub/sub' },
     ],
   },
   {
     id: 'cloud',
-    title: 'Cloud & DevOps',
+    title: 'Cloud, Edge & DevOps',
     icon: Cloud,
-    badge: 'Zero-Downtime CI/CD',
+    badge: 'Zero-Downtime Infrastructure',
     color: 'text-amber-600 dark:text-amber-400',
     bgColor: 'bg-amber-500/10 border-amber-500/25',
     items: [
-      { name: 'AWS & Vercel', desc: 'Global edge deployment & serverless' },
-      { name: 'Docker & Kubernetes', desc: 'Containerization & pod orchestration' },
-      { name: 'Terraform', desc: 'Infrastructure as Code (IaC) automation' },
-      { name: 'GitHub Actions', desc: 'Automated testing & deployment CI/CD' },
-      { name: 'Cloudflare', desc: 'DDoS mitigation & edge CDN caching' },
-      { name: 'Datadog & Sentry', desc: 'Real-time telemetry & crash monitoring' },
+      { name: 'AWS & Vercel Edge', desc: 'Multi-region global distribution, serverless lambdas & edge caching' },
+      { name: 'Docker & Kubernetes', desc: 'Containerization, pod autoscaling & zero-downtime rolling deploys' },
+      { name: 'Terraform & OpenTofu', desc: 'Declarative Infrastructure-as-Code for reproducible cloud topologies' },
+      { name: 'GitHub Actions CI/CD', desc: 'Automated test suites, security scans & production pipelines' },
+      { name: 'Cloudflare Workers & WAF', desc: 'Global edge computing, anti-DDoS & edge security rules' },
+      { name: 'Datadog & Sentry', desc: 'Enterprise APM telemetry, distributed traces & real-time alerting' },
     ],
   },
 ]
 
 export function TechnologySection() {
-  const [activeTab, setActiveTab] = useState('ai')
+  const [activeTab, setActiveTab] = useState('agentic-ai')
   const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
 
   return (
@@ -114,19 +130,19 @@ export function TechnologySection() {
             variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
             className="inline-block text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25"
           >
-            Battle-Tested Engineering Stack
+            Frontier AI & Enterprise Stack
           </motion.span>
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
             className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight"
           >
-            Modern Tech Ecosystem
+            Next-Generation Tech Ecosystem
           </motion.h2>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
             className="text-sm sm:text-base text-muted-foreground"
           >
-            We build with battle-tested open-source frameworks, edge cloud infrastructure, and modern AI tools.
+            We architect autonomous multi-agent systems, Model Context Protocol (MCP) integrations, GraphRAG neural memory, and high-concurrency distributed backends.
           </motion.p>
           <motion.div
             variants={{ hidden: { scaleX: 0, opacity: 0 }, visible: { scaleX: 1, opacity: 1, transition: { duration: 0.7, delay: 0.2, ease: [0.22,1,0.36,1] } } }}

@@ -18,7 +18,7 @@ interface FAQItemProps {
 
 function FAQItemRow({ item, isOpen, onToggle }: FAQItemProps) {
   return (
-    <div className={cn('border-b border-border last:border-0 transition-colors duration-200', isOpen && 'bg-primary/3')}>
+    <div className={cn('border-b border-border last:border-0 transition-colors duration-200', isOpen && 'bg-primary/[0.04] dark:bg-primary/[0.06]')}>
       <button
         className={cn(
           'flex w-full cursor-pointer items-center justify-between py-5 text-left gap-4',

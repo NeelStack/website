@@ -15,7 +15,7 @@ export function PricingCard({ plan, className }: PricingCardProps) {
       className={cn(
         'relative flex flex-col rounded-2xl border bg-card p-8 card-standard card-hover transition-all duration-300',
         plan.isPopular
-          ? 'border-primary ring-1 ring-primary/50 shadow-2xl shadow-primary/15 md:-translate-y-4 md:hover:-translate-y-6 z-10 bg-surface'
+          ? 'border-primary ring-1 ring-primary/60 shadow-2xl shadow-primary/20 dark:shadow-primary/25 md:-translate-y-4 md:hover:-translate-y-6 z-10 bg-surface'
           : 'border-border mt-0',
         className
       )}
@@ -23,7 +23,7 @@ export function PricingCard({ plan, className }: PricingCardProps) {
       {/* Popular badge */}
       {plan.isPopular && (
         <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-          <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+          <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-[0_0_12px_oklch(0.62_0.22_258/15%)]">
             Most Popular
           </span>
         </div>

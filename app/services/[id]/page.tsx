@@ -28,9 +28,15 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
   const service = SERVICES.find((s) => s.id === resolvedParams.id)
-  if (!service) return { title: 'Service Not Found' }
+  if (!service) {
+    return {
+      title: 'Service Not Found | NeelStack',
+      robots: { index: false },
+      alternates: { canonical: null },
+    }
+  }
   return {
-    title: `${service.name} — Professional ${service.category} Services | NeelStack`,
+    title: `${service.name} — Professional ${service.category} Services | NeelStack India`,
     description: `NeelStack delivers expert ${service.name.toLowerCase()} services. ${service.description}`,
     alternates: { canonical: `/services/${resolvedParams.id}` },
   }

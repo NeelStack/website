@@ -1,12 +1,9 @@
-'use client'
-
 import Link from 'next/link'
-import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion'
-import { useRef } from 'react'
-import { ArrowRight, Globe, Smartphone, Bot, Wrench } from 'lucide-react'
+import { ArrowRight, Globe, Smartphone, Bot, Wrench, ShieldCheck, Zap, Lock, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { AiNetworkBg } from '@/components/ui/ai-network-bg'
+import { HeroSpotlight } from '@/components/ui/hero-spotlight'
 
 const services = [
   { icon: Globe, label: 'Websites' },
@@ -15,50 +12,18 @@ const services = [
   { icon: Wrench, label: 'Custom Software' },
 ]
 
+const ENTERPRISE_METRICS = [
+  { icon: ShieldCheck, label: 'Cloud-Native Architecture', desc: 'High-availability global edge' },
+  { icon: Zap, label: '<250ms Agent Execution', desc: 'Optimized inference pipelines' },
+  { icon: Lock, label: '100% VPC Data Residency', desc: 'Zero data leakage guarantee' },
+  { icon: CheckCircle2, label: 'DPIIT & MCA Certified', desc: 'Govt of India recognized' },
+]
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  // Cursor Spotlight coordinates
-  const mouseSectionX = useMotionValue(0)
-  const mouseSectionY = useMotionValue(0)
-  const spotlightX = useSpring(mouseSectionX, { stiffness: 100, damping: 25 })
-  const spotlightY = useSpring(mouseSectionY, { stiffness: 100, damping: 25 })
-  const spotlightGradient = useMotionTemplate`radial-gradient(circle 450px at ${spotlightX}px ${spotlightY}px, rgba(59, 114, 254, 0.16) 0%, transparent 80%)`
-
-  function handleSectionMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
-    if (!sectionRef.current) return
-    const rect = sectionRef.current.getBoundingClientRect()
-    mouseSectionX.set(event.clientX - rect.left)
-    mouseSectionY.set(event.clientY - rect.top)
-  }
-
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const } },
-  }
-
   return (
-    <section
-      ref={sectionRef}
-      onMouseMove={handleSectionMouseMove}
-      className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20 lg:min-h-[88vh] flex flex-col justify-center bg-background"
-      aria-label="Hero section"
-    >
+    <HeroSpotlight>
       {/* AI Network Background Layer */}
       <AiNetworkBg />
-
-      {/* Dynamic Cursor Spotlight Layer */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-65 z-0"
-        style={{ background: spotlightGradient }}
-        aria-hidden="true"
-      />
 
       {/* Grid Overlay */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.25] dark:opacity-[0.35] pointer-events-none z-0" aria-hidden="true" />
@@ -68,102 +33,99 @@ export function HeroSection() {
 
       <Container className="relative z-10 w-full max-w-5xl mx-auto">
         {/* Main Centered Layout */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-6 text-center items-center"
-        >
-          {/* Pre-heading badge */}
-          <motion.span
-            variants={itemVariants}
-            className="relative inline-flex items-center gap-2 rounded-full border border-cyan-500/35 bg-cyan-500/8 px-4 py-1.5 text-xs sm:text-sm font-semibold text-cyan-600 dark:text-cyan-400 shadow-[0_0_22px_rgba(6,182,212,0.15)] hover:border-cyan-400/60 transition-all duration-300 backdrop-blur-sm"
-          >
-            <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
-            </span>
-            AI-Native Product Engineering · Senior Engineers Only
-          </motion.span>
+        <div className="flex flex-col gap-6 text-center items-center">
+          {/* Top Announcement Pill */}
+          <div>
+            <Link
+              href="/products/dhruvaos"
+              className="group inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/15 px-4 py-1.5 text-xs font-semibold text-blue-600 dark:text-cyan-400 transition-all duration-200 backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+            >
+              <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+              <span>Introducing <strong>DhruvaOS</strong> — AI-Native Cloud ERP for Institutions</span>
+              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform text-cyan-500" />
+            </Link>
+          </div>
 
           {/* Main Title — Single clean gradient */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-extrabold tracking-tighter text-foreground text-balance leading-[1.08] lg:leading-[1.05]"
-          >
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.85rem] font-extrabold tracking-tighter text-foreground text-balance leading-[1.08] lg:leading-[1.04]">
             We Build{' '}
             <span className="text-gradient-brand">Websites, Apps,</span>
             <br />
             <span className="text-gradient-brand">AI Agents</span>{' '}
             <span className="text-foreground">&amp; Custom Software</span>
-          </motion.h1>
+          </h1>
 
           {/* Subtitle */}
-          <motion.p
-            variants={itemVariants}
-            className="max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground text-balance font-sans mt-2"
-          >
+          <p className="max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground text-balance font-sans mt-2">
             We engineer high-performance digital platforms for clients — and ship{' '}
             <span className="text-foreground font-semibold">our own AI-powered SaaS products</span>.
-            From intelligent{' '}
+            From autonomous{' '}
             <span className="text-foreground font-semibold">AI agents</span> to{' '}
-            <span className="text-foreground font-semibold">cloud architectures</span>, we deliver with premium speed.
-          </motion.p>
+            <span className="text-foreground font-semibold">mission-critical cloud architectures</span>, we deliver with velocity.
+          </p>
 
           {/* Service Pills */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-2 mt-4"
-          >
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-2">
             {services.map(({ icon: Icon, label }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/40 shadow-sm backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-foreground/80 tracking-wide hover:border-primary/35 transition-colors duration-200"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/50 shadow-sm backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-foreground/85 tracking-wide hover:border-blue-500/40 transition-colors duration-200"
               >
-                <Icon className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+                <Icon className="h-3.5 w-3.5 text-blue-500" aria-hidden="true" />
                 {label}
               </span>
             ))}
-          </motion.div>
+          </div>
 
           {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 w-full sm:w-auto">
-            <motion.div
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-              className="w-full sm:w-auto"
-            >
-              <Button asChild size="lg" className="w-full sm:w-auto h-13 px-8 text-sm sm:text-base font-bold bg-gradient-to-r from-primary to-violet-600 hover:from-primary/95 hover:to-violet-600/95 text-white rounded-xl shadow-lg shadow-primary/20 border-0 flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 btn-shimmer">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 w-full sm:w-auto">
+            <div className="w-full sm:w-auto transition-transform duration-200 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98]">
+              <Button asChild size="lg" className="w-full sm:w-auto h-13 px-8 text-sm sm:text-base font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white rounded-xl shadow-lg shadow-blue-500/25 border-0 flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 btn-shimmer">
                 <Link href="/book-consultation" className="flex items-center gap-2">
                   Start Your Project
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-              className="w-full sm:w-auto"
-            >
+            </div>
+            <div className="w-full sm:w-auto transition-transform duration-200 hover:scale-[1.02] hover:-translate-y-0.5 active:scale-[0.98]">
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto h-13 px-8 text-sm sm:text-base font-bold border-2 border-border hover:border-primary/50 hover:bg-primary/5 text-foreground/80 hover:text-foreground rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer"
+                className="w-full sm:w-auto h-13 px-8 text-sm sm:text-base font-bold border border-border hover:border-blue-500/50 hover:bg-blue-500/5 text-foreground/85 hover:text-foreground rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer"
               >
                 <Link href="/portfolio" className="flex items-center gap-2">
                   View Our Work
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
 
-
+          {/* Integrated Defensible Enterprise Metrics Strip */}
+          <div className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-12 pt-8 border-t border-border/50">
+            {ENTERPRISE_METRICS.map((metric) => {
+              const Icon = metric.icon
+              return (
+                <div
+                  key={metric.label}
+                  className="flex flex-col items-center justify-center p-3 rounded-xl border border-border/60 bg-card/30 dark:bg-white/[0.02] backdrop-blur-sm transition-colors hover:border-blue-500/30"
+                >
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <Icon className="h-3.5 w-3.5 text-cyan-500" />
+                    <span className="text-xs font-bold text-foreground tracking-tight">
+                      {metric.label}
+                    </span>
+                  </div>
+                  <span className="text-[11px] text-muted-foreground text-center">
+                    {metric.desc}
+                  </span>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </Container>
-    </section>
+    </HeroSpotlight>
   )
 }

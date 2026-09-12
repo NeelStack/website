@@ -10,20 +10,20 @@
     </linearGradient>
   </defs>
 
-  {/* Background */}
+  <!-- Background -->
   <rect width="1200" height="630" fill="url(#ogb-bg)"/>
   <rect width="1200" height="630" fill="none" stroke="rgba(37,99,235,0.2)" stroke-width="2"/>
 
-  {/* Grid overlay */}
+  <!-- Grid overlay -->
   <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
   <path d="M200 0V630M400 0V630M600 0V630M800 0V630M1000 0V630" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
 
-  {/* Glow background */}
+  <!-- Glow background -->
   <circle cx="600" cy="240" r="280" fill="rgba(0,212,255,0.12)"/>
 
-  {/* Logo Container Group */}
+  <!-- Logo Container Group -->
   <g transform="translate(420, 160)">
-    {/* Monogram Logo Mark */}
+    <!-- Monogram Logo Mark -->
     <g transform="scale(1.2)">
       <path
         d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"

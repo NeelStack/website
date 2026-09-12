@@ -52,7 +52,7 @@ export function PageHero({
         <div className={cn(centered && 'text-center')}>
           {/* Badge */}
           {badge && (
-            <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5 shadow-[0_0_12px_oklch(0.62_0.22_258/12%)]">
+            <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5 shadow-[0_0_12px_oklch(0.62_0.22_258/15%)] dark:shadow-[0_0_16px_oklch(0.62_0.22_258/20%)]">
               <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />

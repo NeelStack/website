@@ -8,9 +8,12 @@ import { CTASection } from '@/components/ui/cta-section'
 import type { PricingPlan, FAQItem } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: 'Pricing — Transparent Software Engineering Plans | NeelStack India',
   description:
-    'Transparent, flexible pricing for every stage of your business. Choose from Starter, Professional, or Enterprise plans — or request a custom quote.',
+    'Transparent, flexible engineering pricing for every stage of your business. Choose from Starter, Professional, or Enterprise plans — or request a custom quote from NeelStack India.',
+  alternates: {
+    canonical: '/pricing',
+  },
 }
 
 const PRICING_PLANS: PricingPlan[] = [

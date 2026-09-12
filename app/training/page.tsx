@@ -18,7 +18,7 @@ import { Button } from '@/components/ui/button'
 import { CTASection } from '@/components/ui/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Training & Internship Programs — NeelStack',
+  title: 'Training & Internship Programs | NeelStack India',
   description:
     'Industrial training, corporate workshops, faculty development programs, and hands-on engineering internships in AI, web architecture, and cloud systems.',
   alternates: {
@@ -69,10 +69,10 @@ const PROGRAMS = [
 ]
 
 const TECH_TRACKS = [
-  { name: 'AI & Agentic Systems', desc: 'LLMs, LangChain, RAG pipelines, Vector Databases' },
-  { name: 'Full-Stack Web Architecture', desc: 'Next.js 16, React, TypeScript, Tailwind CSS' },
-  { name: 'Backend & API Engineering', desc: 'Python, FastAPI, Node.js, PostgreSQL, Redis' },
-  { name: 'Cloud Infrastructure & DevOps', desc: 'Docker, Kubernetes, AWS, Vercel, CI/CD' },
+  { name: 'Agentic AI, MCP & GraphRAG', desc: 'LangGraph, PydanticAI, Model Context Protocol (MCP), NeMo Guardrails, Qdrant' },
+  { name: 'Full-Stack Web & WebAssembly', desc: 'Next.js 16 App Router, React 19, TypeScript 5.5+, Rust WASM, Tailwind v4' },
+  { name: 'Backend & Distributed Systems', desc: 'Python FastAPI, Go (Golang), gRPC, PostgreSQL 16, Redis 7' },
+  { name: 'Cloud Infrastructure & DevOps', desc: 'Docker, Kubernetes, AWS, Vercel Edge, Terraform, GitHub Actions' },
 ]
 
 export default function TrainingPage() {

@@ -6,6 +6,7 @@ import { Section } from '@/components/ui/section'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
 import { Breadcrumb } from '@/components/navigation/breadcrumb'
 import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 import {
   School,
   Sparkles,
@@ -50,7 +51,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'DhruvaOS | AI-Powered Education Operating System (EdOS)',
+  title: 'DhruvaOS | AI-Powered Education Operating System (EdOS) | NeelStack India',
   description:
     'Digitally transform schools, colleges, universities, and educational trusts with DhruvaOS. The modern, enterprise-grade AI-powered operating system for all administrative, academic, financial, and AI workflows.',
   keywords: [
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     'DhruvaOS'
   ],
   alternates: {
-    canonical: 'https://neelstack.com/products/dhruvaos'
+    canonical: '/products/dhruvaos'
   }
 }
 
@@ -199,7 +200,7 @@ export default function DhruvaOSPage() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5 text-primary" />
             <span className="text-xs font-semibold text-primary/80">
-              India&apos;s Modern AI-Powered EdOS
+              India&apos;s Modern AI-Powered EdOS &middot; Demo Launch: September 30, 2026
             </span>
           </div>
 
@@ -252,6 +253,43 @@ export default function DhruvaOSPage() {
 
         </Container>
       </section>
+
+      {/* ——— System Architecture & Foundation ————————————————————————— */}
+      <Section className="py-16 bg-card/40 backdrop-blur-sm border-y border-border/40">
+        <Container className="space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
+              Foundation Architecture
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
+              Enterprise-Grade Platform Topology
+            </h2>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              Built as a unified Turborepo monorepo orchestrating 6 frontend clients, 3 async backend microservices, and 13 shared libraries.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+            {[
+              { title: 'Web Portal', tech: 'Next.js 16 + React 19', desc: 'Institutional admin console and student/teacher portals.' },
+              { title: 'Admin Control Plane', tech: 'Vite + React 19', desc: 'Platform super-admin dashboard for global tenant oversight.' },
+              { title: 'Desktop Client', tech: 'Tauri 2.0 + React 19', desc: 'Cross-platform desktop application for offline-capable usage.' },
+              { title: 'Mobile App (PWA)', tech: 'Capacitor 7 + Yjs Sync', desc: 'Offline-first mobile client with real-time collaborative sync.' },
+              { title: 'Core API', tech: 'Python 3.13 FastAPI', desc: 'Multi-tenant data, finances, background provisioning, and academic logic.' },
+              { title: 'AI Gateway', tech: 'FastAPI + pgvector RAG', desc: 'Semantic retrieval, SSE streaming, Gemini/OpenAI/Ollama model support.' },
+              { title: 'Licensing API', tech: 'FastAPI + Razorpay/Stripe', desc: 'Subscription billing, GST e-invoicing, and quota enforcement.' },
+              { title: 'Database Vault', tech: 'PostgreSQL 16 + pgvector', desc: 'Schema-per-tenant isolation with automated Alembic migrations.' },
+              { title: 'Identity & Auth', tech: 'Zitadel OIDC/SAML', desc: 'Dynamic JWKS verification, WebAuthn FIDO2 passkeys, and RBAC.' },
+            ].map((item) => (
+              <div key={item.title} className="rounded-xl border border-border bg-card/60 backdrop-blur-sm p-4 space-y-1.5 hover:border-primary/20 transition-colors">
+                <h3 className="text-xs font-heading font-bold text-foreground">{item.title}</h3>
+                <p className="text-[10px] font-mono text-primary/70">{item.tech}</p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       {/* â”€â”€â”€ Trusted By Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Section className="border-y border-border/40 bg-card/40 backdrop-blur-sm py-10">

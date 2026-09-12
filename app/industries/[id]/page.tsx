@@ -17,10 +17,19 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
   const industry = INDUSTRIES.find((i) => i.id === resolvedParams.id)
-  if (!industry) return { title: 'Industry Not Found' }
+  if (!industry) {
+    return {
+      title: 'Industry Not Found',
+      robots: { index: false },
+      alternates: { canonical: null },
+    }
+  }
   return {
-    title: `${industry.name} Solutions`,
+    title: `${industry.name} Software & AI Solutions | NeelStack India`,
     description: industry.description,
+    alternates: {
+      canonical: `/industries/${industry.id}`,
+    },
   }
 }
 

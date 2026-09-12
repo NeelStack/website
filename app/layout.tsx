@@ -35,29 +35,33 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: 'NeelStack – AI, Cloud & Enterprise Software',
+    default: 'NeelStack — Best Software Development & Enterprise AI Company in India',
     template: '%s | NeelStack',
   },
   description:
-    'NeelStack builds enterprise software, AI solutions, SaaS products, ERP systems, and custom applications for startups, SMBs, enterprises, healthcare, government, and organizations worldwide.',
+    'NeelStack is a premier enterprise AI and custom software engineering company based in Gorakhpur, UP, India. We build autonomous agentic AI, enterprise chatbots, custom ERPs, SaaS platforms, and modern cloud applications for businesses worldwide.',
   keywords: [
-    'enterprise software',
-    'AI development',
-    'SaaS products',
-    'ERP systems',
-    'custom software development',
-    'cloud solutions',
-    'web applications',
-    'mobile apps',
-    'NeelStack',
-    'software company India',
-    'hire developer hourly',
+    'best software development company in India',
+    'software development company in Gorakhpur',
+    'AI development company India',
+    'build AI chatbot India',
+    'agentic AI company Gorakhpur UP',
+    'custom software company Uttar Pradesh',
+    'enterprise software development company India',
+    'hire AI developers India',
+    'Model Context Protocol MCP developers',
+    'LangGraph multi-agent engineering',
+    'custom ERP software development India',
+    'Next.js 16 app development company',
+    'SaaS product engineering firm',
+    'best IT company in Gorakhpur',
+    'NeelStack Solutions Private Limited',
   ],
-  authors: [{ name: 'NeelStack', url: 'https://neelstack.com' }],
+  authors: [{ name: 'NeelStack', url: getSiteUrl() }],
   creator: 'NeelStack',
   publisher: 'NeelStack',
   alternates: {
-    canonical: getSiteUrl(),
+    canonical: '/',
   },
   openGraph: {
     type: 'website',
@@ -97,9 +101,26 @@ export const metadata: Metadata = {
     },
   },
   verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    yandex: '677af401490644ff',
     other: {
       'msvalidate.01': '1DF5012D21BE5D63AD02D85C003C479D',
     },
+  },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
 }
 
@@ -127,20 +148,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-4LKMDMPC3J"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-4LKMDMPC3J');
-          `}
-        </Script>
-
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -157,6 +164,20 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased min-h-screen" suppressHydrationWarning>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4LKMDMPC3J"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4LKMDMPC3J');
+          `}
+        </Script>
+
         {/* Skip-to-content: WCAG 2.4.1 — visible only on keyboard focus */}
         <a
           href="#main-content"
@@ -164,31 +185,104 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        {/* Organization JSON-LD Structured Data */}
+        {/* Organization & ProfessionalService JSON-LD Structured Data */}
         <JsonLd
           data={{
             '@context': 'https://schema.org',
-            '@type': 'Organization',
+            '@type': ['Organization', 'ProfessionalService'],
             name: 'NeelStack Solutions Private Limited',
+            alternateName: ['NeelStack', 'NeelStack AI', 'NeelStack Technologies'],
             url: getSiteUrl(),
             logo: `${getSiteUrl()}/icon.svg`,
+            image: `${getSiteUrl()}/opengraph-image`,
             description:
-              'NeelStack designs, develops, and delivers enterprise software, AI solutions, SaaS products, and custom applications.',
+              'NeelStack is a premier enterprise software development and Agentic AI company based in Gorakhpur, Uttar Pradesh, India. We engineer autonomous multi-agent systems, AI chatbots, custom ERPs, and high-performance cloud applications for businesses worldwide.',
             address: {
               '@type': 'PostalAddress',
+              streetAddress: 'Gorakhpur',
               addressLocality: 'Gorakhpur',
               addressRegion: 'Uttar Pradesh',
+              postalCode: '273001',
               addressCountry: 'IN',
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 26.7606,
+              longitude: 83.3732,
+            },
+            areaServed: [
+              { '@type': 'Country', name: 'India' },
+              { '@type': 'State', name: 'Uttar Pradesh' },
+              { '@type': 'City', name: 'Gorakhpur' },
+              { '@type': 'Country', name: 'United States' },
+              { '@type': 'Country', name: 'United Kingdom' },
+              { '@type': 'Country', name: 'United Arab Emirates' },
+              { '@type': 'AdministrativeArea', name: 'Worldwide' },
+            ],
+            priceRange: '$$',
+            knowsAbout: [
+              'Agentic AI Development',
+              'AI Chatbots & Cognitive Assistants',
+              'Model Context Protocol (MCP)',
+              'LangGraph Multi-Agent Workflows',
+              'Microsoft GraphRAG & Vector Search',
+              'Custom Enterprise ERP Systems',
+              'Next.js 16 Web Application Engineering',
+              'Rust WebAssembly Development',
+              'Python FastAPI Microservices',
+              'PostgreSQL Schema-per-Tenant Architecture',
+            ],
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Enterprise Software & AI Engineering Services',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Autonomous AI Agents & Enterprise Chatbots',
+                    description: 'Custom multi-agent workflows, Model Context Protocol tools, and cognitive search engines.',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Custom Enterprise Software & ERP Development',
+                    description: 'Schema-isolated multi-tenant ERP, supply chain, and CRM platforms with automated compliance.',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Modern Web & WebAssembly Engineering',
+                    description: 'Sub-second Next.js 16 web applications and client-side Rust WASM tools.',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'Service',
+                    name: 'Cross-Platform Mobile Application Development',
+                    description: '60 FPS React Native and Flutter mobile applications for iOS and Android.',
+                  },
+                },
+              ],
             },
             sameAs: [
               'https://x.com/neelstack',
               'https://linkedin.com/company/neelstack',
               'https://github.com/neelstack',
+              'https://www.youtube.com/@NeelStack',
+              'https://www.instagram.com/_neelstack/',
             ],
             contactPoint: {
               '@type': 'ContactPoint',
               email: 'contact@neelstack.com',
               contactType: 'customer service',
+              areaServed: 'Worldwide',
+              availableLanguage: ['English', 'Hindi'],
             },
           }}
         />

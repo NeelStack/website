@@ -9,14 +9,14 @@ import { CategoryFilter } from '@/components/ui/category-filter'
 import { SERVICES, SERVICE_CATEGORIES } from '@/constants/services'
 
 export const metadata: Metadata = {
-  title: 'Software Engineering & AI Development Services',
+  title: 'Software Engineering & AI Development Services | NeelStack India',
   description:
     'NeelStack provides end-to-end technology services: AI agent development, custom web applications, enterprise software, API backends, cloud infrastructure, and technology consulting.',
   alternates: {
     canonical: '/services',
   },
   openGraph: {
-    title: 'Software Engineering & AI Services — NeelStack',
+    title: 'Software Engineering & AI Services | NeelStack India',
     description:
       'End-to-end technology services: AI development, web applications, custom software, DevOps, database design, and technology consulting.',
   },

@@ -28,13 +28,13 @@ export const MAIN_NAV: NavMenu[] = [
           {
             label: 'AI Solutions & Autonomous Agents',
             href: '/services/ai-development',
-            description: '24/7 AI chatbots, workflow agents & vector RAG search',
+            description: 'Multi-agent LangGraph, Model Context Protocol (MCP) & GraphRAG',
             icon: Bot,
           },
           {
             label: 'Website & Web Application Engineering',
             href: '/services/web-applications',
-            description: 'High-speed Next.js corporate sites & D2C storefronts',
+            description: 'Sub-second Next.js 16 SSR & WebAssembly (WASM) platforms',
             icon: Globe,
           },
           {
@@ -94,7 +94,8 @@ export const MAIN_NAV: NavMenu[] = [
     label: 'Company',
     items: [
       { label: 'About NeelStack', href: '/about', description: 'Our engineering philosophy & executive team', icon: Info },
-      { label: 'Case Studies (Coming Soon)', href: '/case-studies', description: 'Upcoming client engineering transformations', icon: Briefcase },
+      { label: 'Case Studies', href: '/case-studies', description: 'Client engineering transformations', icon: Briefcase },
+      { label: 'Security & Compliance', href: '/security', description: 'Enterprise trust & data protection', icon: Info },
       { label: 'Engineering Careers', href: '/careers', description: 'Join our senior engineering & AI teams', icon: Rocket },
     ],
   },
@@ -126,8 +127,9 @@ export const FOOTER_NAV = {
   ],
   company: [
     { label: 'About NeelStack', href: '/about' },
-    { label: 'Case Studies (Coming Soon)', href: '/case-studies' },
-    { label: 'Whitepapers & Research (Coming Soon)', href: '/whitepapers' },
+    { label: 'Case Studies', href: '/case-studies' },
+    { label: 'Whitepapers & Research', href: '/whitepapers' },
+    { label: 'Security & Compliance', href: '/security' },
     { label: 'Engineering Blog', href: '/blog' },
     { label: 'Careers (Hiring)', href: '/careers' },
     { label: 'Contact Us', href: '/contact' },

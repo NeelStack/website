@@ -12,7 +12,7 @@ export const PRODUCT_META: Record<string, { deployedLabel?: string; betaDate?: s
     deployedLabel: 'Live & Deployed',
   },
   dhruvaos: {
-    betaDate: 'August 15, 2026',
+    betaDate: 'September 30, 2026',
   },
 }
 
@@ -88,10 +88,10 @@ export const PRODUCTS: Product[] = [
     bgColor: 'bg-purple-500/10',
     href: '/products/dhruvaos',
     features: [
-      { label: 'Admissions & Fee Management' },
-      { label: 'LMS & AI-Powered Learning' },
-      { label: 'Institutional Analytics & HR' },
-      { label: 'Parent, Teacher & Student Portals' },
+      { label: 'Schema-per-Tenant Multi-Tenant Isolation' },
+      { label: 'AI RAG Copilot with pgvector & SSE Streaming' },
+      { label: 'Admissions, Fee Management & GST E-Invoicing' },
+      { label: 'Parent, Teacher & Student Portals (Web, Mobile, Desktop)' },
     ],
     category: 'Education Operating System (EdOS)',
   },

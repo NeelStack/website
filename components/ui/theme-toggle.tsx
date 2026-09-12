@@ -39,14 +39,14 @@ export function ThemeToggle({ className }: { className?: string }) {
       className={cn(
         'relative flex items-center justify-between w-14 h-7.5 rounded-full p-1 border transition-colors duration-300 cursor-pointer select-none outline-none shrink-0 shadow-inner',
         isDark
-          ? 'bg-slate-900 border-slate-700/80 shadow-black/40'
-          : 'bg-slate-100 border-slate-300/80 shadow-slate-300/50',
+          ? 'bg-card dark:bg-muted border-border shadow-black/40'
+          : 'bg-muted border-border shadow-sm',
         className
       )}
     >
       {/* Track Background Icons */}
-      <Sun className={cn('h-3.5 w-3.5 ml-0.5 transition-colors duration-300 z-0', isDark ? 'text-slate-600' : 'text-amber-500 font-bold')} />
-      <Moon className={cn('h-3.5 w-3.5 mr-0.5 transition-colors duration-300 z-0', isDark ? 'text-cyan-400 font-bold' : 'text-slate-400')} />
+      <Sun className={cn('h-3.5 w-3.5 ml-0.5 transition-colors duration-300 z-0', isDark ? 'text-muted-foreground' : 'text-accent font-bold')} />
+      <Moon className={cn('h-3.5 w-3.5 mr-0.5 transition-colors duration-300 z-0', isDark ? 'text-primary font-bold' : 'text-muted-foreground')} />
 
       {/* Sliding Thumb Knob */}
       <motion.div
@@ -61,14 +61,14 @@ export function ThemeToggle({ className }: { className?: string }) {
         className={cn(
           'absolute top-0.75 left-0.75 h-5.5 w-5.5 rounded-full flex items-center justify-center shadow-md z-10 pointer-events-none',
           isDark
-            ? 'bg-gradient-to-tr from-cyan-500 to-blue-600 shadow-cyan-500/30'
-            : 'bg-white shadow-slate-400/40 border border-slate-200'
+            ? 'bg-gradient-to-tr from-primary to-violet-500 shadow-primary/30'
+            : 'bg-card shadow-sm border border-border'
         )}
       >
         {isDark ? (
           <Moon className="h-3 w-3 text-white" />
         ) : (
-          <Sun className="h-3 w-3 text-amber-500" />
+          <Sun className="h-3 w-3 text-accent" />
         )}
       </motion.div>
     </button>

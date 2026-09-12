@@ -7,9 +7,12 @@ import { CTASection } from '@/components/ui/cta-section'
 import { INDUSTRIES } from '@/constants/industries'
 
 export const metadata: Metadata = {
-  title: 'Industries',
+  title: 'Industries We Serve — Enterprise Software Solutions | NeelStack India',
   description:
-    'NeelStack serves education, healthcare, government, pharma, retail, manufacturing, finance, logistics, real estate, hospitality, and startups.',
+    'NeelStack engineers specialized enterprise software and AI solutions for education, healthcare, government, pharma, retail, manufacturing, finance, logistics, real estate, and startups worldwide.',
+  alternates: {
+    canonical: '/industries',
+  },
 }
 
 export default function IndustriesPage() {

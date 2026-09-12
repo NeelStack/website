@@ -102,9 +102,9 @@ export function ContactForm() {
   }
 
   const inputStyle =
-    'w-full rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-card/90 shadow-sm hover:border-border'
+    'w-full rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary focus:bg-card [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-card/90 shadow-sm hover:border-border'
   const selectStyle =
-    'w-full rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card cursor-pointer shadow-sm font-medium hover:border-border'
+    'w-full appearance-none rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary focus:bg-card cursor-pointer shadow-sm font-medium hover:border-border'
 
   if (success) {
     return (
@@ -126,7 +126,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-black/10 backdrop-blur-xl p-8 md:p-10">
+    <div className="rounded-2xl border border-border bg-card/70 dark:bg-black/10 backdrop-blur-xl p-8 md:p-10">
       <h3 className="font-heading text-xl font-bold text-foreground mb-6">Send us a Message</h3>
 
       <form

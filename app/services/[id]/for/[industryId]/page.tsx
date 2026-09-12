@@ -20,10 +20,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const service = SERVICES.find((s) => s.id === id)
   const industry = INDUSTRIES.find((i) => i.id === industryId)
 
-  if (!service || !industry) return { title: 'Solution Not Found' }
+  if (!service || !industry) {
+    return {
+      title: 'Solution Not Found | NeelStack',
+      robots: { index: false },
+      alternates: { canonical: null },
+    }
+  }
 
   return {
-    title: `${service.name} for ${industry.name} — NeelStack`,
+    title: `${service.name} for ${industry.name} — Enterprise Solutions | NeelStack India`,
     description: `Tailored ${service.name.toLowerCase()} software solutions engineered for ${industry.name}. Modular, secure, and scalable architectures designed for sector workflows.`,
     alternates: {
       canonical: `/services/${id}/for/${industryId}`,

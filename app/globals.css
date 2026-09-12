@@ -41,6 +41,16 @@
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
 
+  --color-surface-glass: var(--surface-glass);
+  --color-surface-glass-border: var(--surface-glass-border);
+  --color-surface-overlay: var(--surface-overlay);
+  --color-input-placeholder: var(--input-placeholder);
+  --color-focus-ring: var(--focus-ring-color);
+  --color-violet: var(--violet);
+  --color-violet-foreground: var(--violet-foreground);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-raised: var(--surface-raised);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -106,6 +116,9 @@
   /* Surface elevation */
   --surface-elevated: oklch(0.97 0.005 250);
   --surface-raised: oklch(1 0 0);
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --surface-glass-border: rgba(255, 255, 255, 0.3);
+  --surface-overlay: oklch(0.13 0.02 250 / 70%);
 
   /* Destructive */
   --destructive: oklch(0.55 0.22 25);
@@ -113,7 +126,9 @@
   /* Borders & inputs */
   --border: oklch(0.89 0.005 250);
   --input: oklch(0.91 0 0);
+  --input-placeholder: oklch(0.33 0.015 250 / 50%);
   --ring: oklch(0.52 0.24 255 / 40%);
+  --focus-ring-color: oklch(0.52 0.24 255 / 30%);
 
   /* Border radius — Modern 0.625rem base */
   --radius: 0.625rem;
@@ -126,14 +141,14 @@
   --glow-emerald: rgba(52,211,153,0.18);
 
   /* Gradient button stops */
-  --btn-gradient-start: oklch(0.52 0.24 255);
-  --btn-gradient-end: oklch(0.65 0.25 290);
-  --btn-gradient-hover-start: oklch(0.46 0.22 255);
-  --btn-gradient-hover-end: oklch(0.58 0.23 290);
+  --btn-gradient-start: #2563eb;
+  --btn-gradient-end: #0284c7;
+  --btn-gradient-hover-start: #1d4ed8;
+  --btn-gradient-hover-end: #0369a1;
 
   /* Text gradient stops */
-  --text-gradient-start: oklch(0.52 0.24 255);
-  --text-gradient-end: oklch(0.65 0.25 290);
+  --text-gradient-start: #1d4ed8;
+  --text-gradient-end: #0284c7;
 
   /* Sidebar */
   --sidebar: oklch(0.95 0.005 250);
@@ -177,11 +192,23 @@
   --brand: oklch(0.70 0.17 250);
   --brand-foreground: oklch(0.98 0 0);
 
+  --violet: oklch(0.70 0.22 290);
+  --violet-foreground: oklch(0.98 0 0);
+
+  /* Surface elevation */
+  --surface-elevated: oklch(0.11 0.018 255);
+  --surface-raised: oklch(0.13 0.020 255);
+  --surface-glass: rgba(15, 23, 42, 0.65);
+  --surface-glass-border: rgba(255, 255, 255, 0.08);
+  --surface-overlay: oklch(0.07 0.015 255 / 70%);
+
   --destructive: oklch(0.65 0.22 25);
 
   --border: oklch(1 0 0 / 7%);
   --input: oklch(1 0 0 / 9%);
+  --input-placeholder: oklch(0.79 0.005 250 / 35%);
   --ring: oklch(0.70 0.17 250 / 40%);
+  --focus-ring-color: oklch(0.70 0.17 250 / 30%);
 
   --glow-blue: rgba(70,166,252,0.22);
   --glow-teal: rgba(6,182,212,0.16);
@@ -190,13 +217,13 @@
   --glow-emerald: rgba(52,211,153,0.16);
 
   /* Gradient button stops */
-  --btn-gradient-start: oklch(0.70 0.17 250);
-  --btn-gradient-end: oklch(0.65 0.25 290);
-  --btn-gradient-hover-start: oklch(0.74 0.16 250);
-  --btn-gradient-hover-end: oklch(0.70 0.22 290);
+  --btn-gradient-start: #2563eb;
+  --btn-gradient-end: #0284c7;
+  --btn-gradient-hover-start: #1d4ed8;
+  --btn-gradient-hover-end: #0369a1;
 
-  --text-gradient-start: oklch(0.96 0.005 250);
-  --text-gradient-end: oklch(0.70 0.17 250);
+  --text-gradient-start: #ffffff;
+  --text-gradient-end: #38bdf8;
 
   --sidebar: oklch(0.11 0.018 255);
   --sidebar-foreground: oklch(0.96 0.005 250);
@@ -215,10 +242,6 @@
 
   html {
     @apply font-sans scroll-smooth;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tighter;
   }
 
   body {
@@ -242,6 +265,10 @@
     opacity: 0.25;
     pointer-events: none;
     z-index: 1;
+  }
+
+  .dark body::before {
+    opacity: 0.12;
   }
 
   /* Universal AI Card Hover Grid Spotlight */
@@ -394,15 +421,15 @@
     background-clip: text;
   }
 
-  /* Brand gradient: Vibrant Indigo → Violet in Light, Electric Blue → Violet in Dark */
+  /* Brand gradient: Vibrant Sapphire Blue → Luminous Cyan */
   .text-gradient-brand {
-    background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #1d4ed8 0%, #06b6d4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .dark .text-gradient-brand {
-    background: linear-gradient(135deg, #46A6FC 0%, #a855f7 100%);
+    background: linear-gradient(135deg, #38bdf8 0%, #2ec7f2 50%, #60a5fa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -437,10 +464,10 @@
   }
 
   .bg-brand-gradient {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
   }
   .dark .bg-brand-gradient {
-    background: linear-gradient(135deg, #46A6FC 0%, #7C3AED 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
   }
 
   /* Interactive gradient button */
@@ -484,18 +511,18 @@
     background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   }
 
-  /* Mesh gradient for backdrop depth */
+  /* Mesh gradient for backdrop depth — Pure Sapphire & Radiant Cyan */
   .bg-mesh-gradient {
     background:
-      radial-gradient(ellipse 65% 45% at 20% 15%, rgba(37, 99, 235, 0.08) 0%, transparent 65%),
-      radial-gradient(ellipse 55% 45% at 85% 75%, rgba(245, 158, 11, 0.06) 0%, transparent 65%),
-      radial-gradient(ellipse 45% 35% at 55% 10%, rgba(124, 58, 237, 0.06) 0%, transparent 55%);
+      radial-gradient(ellipse 65% 45% at 25% 15%, rgba(59, 114, 254, 0.08) 0%, transparent 65%),
+      radial-gradient(ellipse 55% 45% at 80% 75%, rgba(46, 199, 242, 0.07) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 35% at 50% 10%, rgba(37, 99, 235, 0.06) 0%, transparent 55%);
   }
   .dark .bg-mesh-gradient {
     background:
-      radial-gradient(ellipse 60% 40% at 20% 20%, rgba(70, 166, 252, 0.14) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(245, 141, 40, 0.10) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 30% at 60% 10%, rgba(139, 92, 246, 0.10) 0%, transparent 50%);
+      radial-gradient(ellipse 65% 45% at 20% 15%, rgba(59, 114, 254, 0.16) 0%, transparent 65%),
+      radial-gradient(ellipse 55% 45% at 85% 80%, rgba(46, 199, 242, 0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 45% 35% at 50% 10%, rgba(37, 99, 235, 0.12) 0%, transparent 55%);
   }
 
   /* Glow effects */
@@ -780,17 +807,10 @@
 
 /* Glassmorphism Accents */
 .nds-glass {
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--surface-glass);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.dark .nds-glass {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--surface-glass-border);
 }
 
 @keyframes marquee {
