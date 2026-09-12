@@ -19,7 +19,7 @@ import { Section, SectionHeader } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Public Product Roadmap — NeelStack',
+  title: 'Public Product Roadmap — Software & AI Platforms | NeelStack India',
   description:
     'Explore NeelStack’s active and upcoming product roadmap: ToolVines (live), DhruvaOS (beta), NaukariMitra, SarkariMitra, and enterprise AI automation platforms.',
   alternates: {
@@ -42,7 +42,7 @@ const ROADMAP_ITEMS = [
   {
     title: 'DhruvaOS',
     category: 'Education Operating System',
-    status: 'Beta Launch — August 31',
+    status: 'Demo Launch — September 30',
     statusBadge: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
     icon: Zap,
     desc: 'Unified AI-powered operating platform for schools, colleges, and universities covering admissions, academics, fee invoices, and parent communication.',
@@ -80,7 +80,7 @@ const ROADMAP_ITEMS = [
     icon: HeartPulse,
     desc: 'Clinical workflow automation, electronic patient records, appointment scheduling, and pharmacy inventory synchronization.',
     features: ['Clinical EHR management', 'Pharmacy inventory integration', 'Patient engagement SMS/WhatsApp'],
-    link: '#',
+    link: '/contact',
     isExternal: false,
   },
   {
@@ -91,7 +91,7 @@ const ROADMAP_ITEMS = [
     icon: Boxes,
     desc: 'Custom multi-agent orchestration engine for enterprises, triggering database actions, parsing compliance contracts, and automating ticket resolution.',
     features: ['Multi-agent workflow triggers', 'Semantic vector indexing', 'Enterprise compliance logs'],
-    link: '#',
+    link: '/contact',
     isExternal: false,
   },
 ]

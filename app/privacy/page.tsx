@@ -5,9 +5,12 @@ import { Container } from '@/components/ui/container'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy | NeelStack India',
   description:
-    'Privacy Policy for NeelStack — how we collect, use, and protect your personal information.',
+    'Privacy Policy for NeelStack Solutions Private Limited — how we collect, use, and protect your personal information.',
+  alternates: {
+    canonical: '/privacy',
+  },
 }
 
 const LAST_UPDATED = 'July 3, 2026'

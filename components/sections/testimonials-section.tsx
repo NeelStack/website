@@ -11,8 +11,6 @@ const TRUST_SIGNALS = [
     industry: 'Healthcare & Pharma',
     metric: 'Sub-Second Records',
     description: 'Hospital EHR platforms, telemedicine portals, and HIPAA-compliant patient management systems.',
-    color: 'text-rose-500 dark:text-rose-400',
-    bg: 'bg-rose-500/10 border-rose-500/25',
     icon: Heart,
     href: '/industries/healthcare',
   },
@@ -20,8 +18,6 @@ const TRUST_SIGNALS = [
     industry: 'Government & Public Sector',
     metric: 'High-Concurrency Systems',
     description: 'Scalable recruitment portals and e-governance platforms serving millions of concurrent applicant requests.',
-    color: 'text-amber-500 dark:text-amber-400',
-    bg: 'bg-amber-500/10 border-amber-500/25',
     icon: Building2,
     href: '/industries/government',
   },
@@ -29,8 +25,6 @@ const TRUST_SIGNALS = [
     industry: 'EdTech & Academics',
     metric: 'Unified Education OS',
     description: 'Comprehensive school ERPs, online examination platforms, and automated parent communication networks.',
-    color: 'text-blue-500 dark:text-blue-400',
-    bg: 'bg-blue-500/10 border-blue-500/25',
     icon: GraduationCap,
     href: '/industries/education',
   },
@@ -38,8 +32,6 @@ const TRUST_SIGNALS = [
     industry: 'Startups & SaaS Platforms',
     metric: 'MVP to Scale',
     description: 'Zero-to-one SaaS architecture, AI agent integration, and cloud-native serverless deployment pipelines.',
-    color: 'text-violet-500 dark:text-violet-400',
-    bg: 'bg-violet-500/10 border-violet-500/25',
     icon: Layers,
     href: '/industries/startups',
   },
@@ -47,8 +39,6 @@ const TRUST_SIGNALS = [
     industry: 'D2C Fashion & Retail',
     metric: 'Sub-Second Storefronts',
     description: 'Headless Next.js e-commerce storefronts with 60 FPS page transitions and real-time inventory sync.',
-    color: 'text-emerald-500 dark:text-emerald-400',
-    bg: 'bg-emerald-500/10 border-emerald-500/25',
     icon: ShoppingBag,
     href: '/industries/fashion-d2c',
   },
@@ -56,8 +46,6 @@ const TRUST_SIGNALS = [
     industry: 'Global Enterprises',
     metric: 'Custom Workflow ERP',
     description: 'Integrated CRM portals, automated invoicing pipelines, and internal business decision systems.',
-    color: 'text-cyan-500 dark:text-cyan-400',
-    bg: 'bg-cyan-500/10 border-cyan-500/25',
     icon: Users,
     href: '/industries/retail',
   },
@@ -120,20 +108,20 @@ export function TestimonialsSection() {
               <motion.div
                 key={signal.industry}
                 variants={{ hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
-                className={`group flex flex-col justify-between gap-5 rounded-3xl border border-border/80 bg-card/70 dark:bg-black/10 backdrop-blur-md p-7 card-hover hover:border-primary/30 relative overflow-hidden shadow-md ${isOffset ? 'sm:mt-8' : ''}`}
+                className={`group flex flex-col justify-between gap-5 rounded-3xl border border-border/70 bg-card/70 dark:bg-white/[0.02] backdrop-blur-md p-7 card-hover hover:border-blue-500/40 dark:hover:border-cyan-500/30 relative overflow-hidden shadow-md transition-all duration-300 ${isOffset ? 'sm:mt-8' : ''}`}
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${signal.bg} group-hover:scale-110 transition-transform`}>
-                      <Icon className={`h-5 w-5 ${signal.color}`} aria-hidden="true" />
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-blue-600 dark:border-cyan-500/20 dark:bg-cyan-500/10 dark:text-cyan-400 group-hover:scale-110 transition-transform">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span className="text-[11px] font-bold font-mono text-muted-foreground bg-muted px-2.5 py-1 rounded-full border border-border">
+                    <span className="text-[11px] font-bold font-mono text-muted-foreground bg-muted/60 px-2.5 py-1 rounded-full border border-border/70">
                       {signal.metric}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className={`font-heading text-base font-bold ${signal.color}`}>
+                    <h3 className="font-heading text-base font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
                       {signal.industry}
                     </h3>
                     <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">

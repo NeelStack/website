@@ -7,9 +7,12 @@ import { Container } from '@/components/ui/container'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Support Center',
+  title: 'Support Center — Technical Assistance | NeelStack India',
   description:
-    'Get help from the NeelStack support team. Find answers, access documentation, or contact us directly.',
+    'Get prompt technical help, documentation, and enterprise SLAs from the NeelStack support engineering team in India.',
+  alternates: {
+    canonical: '/support',
+  },
 }
 
 const SUPPORT_OPTIONS = [

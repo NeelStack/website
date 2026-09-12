@@ -5,9 +5,9 @@ import { Container } from '@/components/ui/container'
 import { QuoteForm } from '@/components/sections/quote-form'
 
 export const metadata: Metadata = {
-  title: 'Request a Quote — Project Estimate & Proposal',
+  title: 'Request a Quote — Project Estimate & Proposal | NeelStack India',
   description:
-    'Get a free, no-obligation custom software estimate from NeelStack. Base currency USD ($) with automatic local currency conversion (₹ INR, € EUR, £ GBP, AED). We respond within 1 business day.',
+    'Get a free, no-obligation custom software estimate from NeelStack India. Base currency USD ($) with automatic local currency conversion (₹ INR, € EUR, £ GBP, AED). We respond within 1 business day.',
   alternates: {
     canonical: '/request-quote',
   },

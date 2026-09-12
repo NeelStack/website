@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { HeroSection } from '@/components/sections/hero-section'
-import { TrustMarquee } from '@/components/sections/trust-marquee'
+import { AccreditationBadges } from '@/components/ui/accreditation-badges'
 import { CapabilitiesSection } from '@/components/sections/capabilities-section'
 import { TechnologySection } from '@/components/sections/technology-section'
 import { PortfolioShowcaseSection } from '@/components/sections/portfolio-showcase-section'
@@ -10,21 +10,26 @@ import { FreeConsultationCTA } from '@/components/sections/free-consultation-cta
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'NeelStack | Enterprise AI & Product Engineering Company',
+  title: 'NeelStack | Best Software Development Company in India — Agentic AI & Custom Software',
   description:
-    'NeelStack designs, engineers, and scales intelligent software platforms, enterprise SaaS, and custom AI solutions that scale businesses.',
+    'NeelStack is a premier enterprise software development and Agentic AI company in India. We engineer autonomous AI agents, enterprise chatbots, custom ERPs, and high-performance cloud platforms for organizations worldwide.',
   keywords: [
-    'Enterprise Software',
-    'AI Native Product Engineering',
-    'Custom Software Development',
-    'SaaS Engineering',
-    'Cloud-Native Architectures',
+    'best software development company in India',
+    'AI development company India',
+    'build AI chatbot India',
+    'agentic AI company India',
+    'enterprise software development company India',
+    'custom ERP software India',
+    'hire AI developers India',
+    'Model Context Protocol MCP developers',
+    'LangGraph multi-agent engineering',
+    'software development company Gorakhpur UP',
     'NeelStack',
     'DhruvaOS',
     'ToolVines',
   ],
   alternates: {
-    canonical: getSiteUrl(),
+    canonical: '/',
   },
 }
 
@@ -32,11 +37,11 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <MarketingLayout>
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section with Interactive System Terminal */}
       <HeroSection />
 
-      {/* 2. Trust Validation */}
-      <TrustMarquee />
+      {/* 2. Official Government of India Accreditations */}
+      <AccreditationBadges />
 
       {/* 3. Core Capabilities (Bento Grid) */}
       <CapabilitiesSection />

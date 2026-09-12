@@ -5,9 +5,12 @@ import { Container } from '@/components/ui/container'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
+  title: 'Terms of Service | NeelStack India',
   description:
-    'Terms of Service for NeelStack — the rules and conditions governing use of our website and services.',
+    'Terms of Service for NeelStack Solutions Private Limited — the rules and conditions governing use of our website and services.',
+  alternates: {
+    canonical: '/terms',
+  },
 }
 
 const LAST_UPDATED = 'July 3, 2026'

@@ -7,18 +7,22 @@ import { BlogGrid } from '@/components/sections/blog-grid'
 import { BLOG_POSTS } from '@/constants/blog'
 
 export const metadata: Metadata = {
-  title: 'Engineering Blog — NeelStack Insights',
+  title: 'Engineering Blog — Enterprise AI & Software Insights | NeelStack India',
   description:
-    'Engineering insights, product updates, and technology deep dives from the NeelStack team.',
+    'Engineering insights, frontier AI research, product updates, and software engineering deep dives from the NeelStack team in India.',
+  alternates: {
+    canonical: '/blog',
+  },
   openGraph: {
-    title: 'Engineering Blog — NeelStack Insights',
-    description: 'Engineering insights, product updates, and technology deep dives from the NeelStack team.',
+    title: 'Engineering Blog — Enterprise AI & Software Insights | NeelStack India',
+    description: 'Engineering insights, frontier AI research, product updates, and software engineering deep dives from the NeelStack team in India.',
     type: 'website',
   },
 }
 
 const CATEGORIES = [
   'All',
+  'Industry Insights',
   'Artificial Intelligence',
   'Software Engineering',
   'System Design',

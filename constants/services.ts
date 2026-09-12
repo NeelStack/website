@@ -31,20 +31,28 @@ export const SERVICES: Service[] = [
     category: 'AI',
     techStack: [
       {
-        label: 'AI Models & Providers',
-        items: ['OpenAI GPT-4o', 'Anthropic Claude', 'Google Gemini', 'Meta Llama 3', 'Mistral AI', 'Cohere'],
+        label: 'Frontier Foundation LLMs',
+        items: ['Anthropic Claude 3.5 Sonnet', 'Google Gemini 1.5/2.0 Pro', 'OpenAI GPT-4o', 'Meta Llama 3.3', 'Mistral Large', 'Cohere Command-R+'],
       },
       {
-        label: 'LLM Frameworks',
-        items: ['LangChain', 'LlamaIndex', 'LangGraph', 'AutoGen', 'CrewAI', 'Haystack'],
+        label: 'Agentic AI & MCP Protocol',
+        items: ['LangGraph', 'Model Context Protocol (MCP)', 'PydanticAI', 'Microsoft AutoGen', 'CrewAI', 'DSPy Pipelines'],
       },
       {
-        label: 'Vector Databases & RAG',
-        items: ['Pinecone', 'Weaviate', 'Chroma', 'pgvector', 'Qdrant', 'Redis Vector'],
+        label: 'GraphRAG & Neural Memory',
+        items: ['Microsoft GraphRAG', 'Mem0', 'Letta (MemGPT)', 'LlamaIndex', 'Haystack 2.0', 'Zep'],
       },
       {
-        label: 'Backend & Deployment',
-        items: ['FastAPI', 'Python 3.12', 'AWS Bedrock', 'Azure OpenAI', 'GCP Vertex AI'],
+        label: 'AI Security & Observability',
+        items: ['NVIDIA NeMo Guardrails', 'Langfuse', 'Microsoft Presidio (PII)', 'LangSmith', 'Promptfoo Red-Teaming', 'Lakera Guard'],
+      },
+      {
+        label: 'Vector DBs & Embeddings',
+        items: ['Qdrant', 'pgvector (PostgreSQL)', 'Pinecone', 'Milvus', 'Voyage AI', 'BAAI BGE-M3'],
+      },
+      {
+        label: 'Backend & Inference Runtime',
+        items: ['FastAPI (Python 3.12)', 'vLLM', 'Ollama (Air-Gapped)', 'AWS Bedrock', 'GCP Vertex AI'],
       },
     ],
     processSteps: [
@@ -115,19 +123,19 @@ export const SERVICES: Service[] = [
     techStack: [
       {
         label: 'Frontend Frameworks',
-        items: ['Next.js 15', 'React 19', 'TypeScript 5', 'Vite', 'Astro'],
+        items: ['Next.js 16 (Turbopack)', 'React 19', 'TypeScript 5.5+', 'Rust WebAssembly (WASM)', 'Vite'],
       },
       {
-        label: 'Styling & UI',
-        items: ['Tailwind CSS', 'shadcn/ui', 'Radix UI', 'Framer Motion', 'CSS Modules'],
+        label: 'Styling & Design System',
+        items: ['Tailwind CSS v4 (OKLCH)', 'shadcn/ui', 'Radix UI', 'Framer Motion', 'Lucide Icons'],
       },
       {
         label: 'State & Data Fetching',
-        items: ['Zustand', 'TanStack Query', 'SWR', 'Jotai', 'React Hook Form'],
+        items: ['TanStack Query v5', 'Zustand', 'Server Actions', 'SWR', 'React Hook Form'],
       },
       {
         label: 'Testing & Quality',
-        items: ['Vitest', 'Playwright', 'Storybook', 'ESLint', 'Lighthouse CI'],
+        items: ['Vitest', 'Playwright', 'Storybook', 'Lighthouse CI', 'ESLint 9'],
       },
     ],
     processSteps: [

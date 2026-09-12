@@ -5,9 +5,12 @@ import { Container } from '@/components/ui/container'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Refund and Cancellation Policy',
+  title: 'Refund and Cancellation Policy | NeelStack India',
   description:
-    'Refund and cancellation policy for NeelStack — terms governing service cancellations, consultations, and product refunds.',
+    'Refund and cancellation policy for NeelStack Solutions Private Limited — terms governing service cancellations, consultations, and product refunds.',
+  alternates: {
+    canonical: '/refund-policy',
+  },
 }
 
 const LAST_UPDATED = 'July 4, 2026'

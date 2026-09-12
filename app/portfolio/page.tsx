@@ -7,9 +7,12 @@ import { CTASection } from '@/components/ui/cta-section'
 import type { Project } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
+  title: 'Portfolio — Enterprise AI & Software Systems | NeelStack India',
   description:
-    'Explore NeelStack project portfolio — live products, client work, and ongoing builds across healthcare, government, education, and enterprise.',
+    'Explore NeelStack project portfolio — live products, enterprise client solutions, and autonomous AI systems built in India for global organizations.',
+  alternates: {
+    canonical: '/portfolio',
+  },
 }
 
 const PORTFOLIO_PROJECTS: Project[] = [

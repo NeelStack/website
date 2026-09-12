@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/container'
 import { ConsultationForm } from '@/components/sections/consultation-form'
 
 export const metadata: Metadata = {
-  title: 'Get Your First Consultation Call FREE! — 20-Min Strategy Session',
+  title: 'Get Your First Consultation Call FREE! — Strategy Session | NeelStack India',
   description:
     'Schedule a 100% free 20-minute strategy call with NeelStack technical leads. Understand requirements, discuss project goals, and explore the ideal architecture solution.',
   alternates: {

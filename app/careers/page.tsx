@@ -15,9 +15,12 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Careers at NeelStack — Join Our Engineering Team',
+  title: 'Careers — Join Our Software & AI Engineering Team | NeelStack India',
   description:
-    'Build with NeelStack. Although we are not actively hiring today, we are always looking to connect with high-agency engineers and designers who build with ownership and velocity.',
+    'Build with NeelStack India. Although we are not actively hiring today, we are always looking to connect with high-agency engineers and designers who build with ownership and velocity.',
+  alternates: {
+    canonical: '/careers',
+  },
 }
 
 const VALUES_BUILDERS = [
@@ -71,7 +74,7 @@ export default function CareersPage() {
             
             <div className="flex justify-center gap-4">
               <Button asChild size="lg">
-                <Link href="mailto:contact@neelstack.com?subject=Talent Registry: High-Agency Builder Application">
+                <Link href="mailto:careers@neelstack.com?subject=Talent Registry: High-Agency Builder Application">
                   Join Our Talent Pool
                 </Link>
               </Button>
@@ -129,7 +132,7 @@ export default function CareersPage() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <span className="text-sm font-mono text-primary">
-                contact@neelstack.com
+                careers@neelstack.com
               </span>
             </div>
           </div>

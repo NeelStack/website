@@ -7,11 +7,16 @@ import { Container } from '@/components/ui/container'
 import { SafeEmailLink } from '@/components/ui/copy-email-button'
 import { SITE_CONFIG } from '@/constants/site'
 import { ContactForm } from '@/components/sections/contact-form'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Contact NeelStack — Start Your Custom Software Project',
+  title: 'Contact NeelStack — Enterprise Software & AI Development Company in India',
   description:
-    'Get in touch with NeelStack. Reach us for custom software builds, AI agent development, SaaS engineering, or general partnership inquiries. We respond within 1 business day.',
+    'Connect with NeelStack Solutions in India. Inquire about custom enterprise software, AI chatbot development, agentic workflows, or hire dedicated software engineers. Response within 1 business day.',
+  alternates: {
+    canonical: '/contact',
+  },
 }
 
 interface ContactLine {
@@ -66,6 +71,36 @@ const INQUIRY_TYPES = [
 export default function ContactPage() {
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: 'NeelStack Solutions Private Limited',
+          image: `${getSiteUrl()}/opengraph-image`,
+          url: `${getSiteUrl()}/contact`,
+          email: 'contact@neelstack.com',
+          priceRange: '$$',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Gorakhpur',
+            addressLocality: 'Gorakhpur',
+            addressRegion: 'Uttar Pradesh',
+            postalCode: '273001',
+            addressCountry: 'IN',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 26.7606,
+            longitude: 83.3732,
+          },
+          areaServed: [
+            { '@type': 'City', name: 'Gorakhpur' },
+            { '@type': 'State', name: 'Uttar Pradesh' },
+            { '@type': 'Country', name: 'India' },
+            { '@type': 'AdministrativeArea', name: 'Worldwide' },
+          ],
+        }}
+      />
       <PageHero
         badge="Get in touch"
         title="Let's Build Something Together"

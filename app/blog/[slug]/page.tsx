@@ -9,6 +9,7 @@ import { Tag } from '@/components/ui/status-badge'
 import { BlogCard } from '@/components/ui/blog-card'
 import { BlogShare } from '@/components/ui/blog-share'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
 import { BLOG_POSTS } from '@/constants/blog'
 import { getSiteUrl } from '@/lib/site-url'
 
@@ -27,14 +28,41 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
       title: 'Article Not Found | NeelStack',
       robots: { index: false },
+      alternates: { canonical: null },
     }
   }
+
+  const postUrl = `${getSiteUrl()}/blog/${post.slug}`
 
   return {
     title: `${post.title} | NeelStack Blog`,
     description: post.excerpt,
+    keywords: post.tags,
     alternates: {
       canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: `${post.title} | NeelStack`,
+      description: post.excerpt,
+      type: 'article',
+      url: postUrl,
+      publishedTime: post.publishedAt,
+      authors: [post.author.name],
+      tags: post.tags,
+      images: [
+        {
+          url: '/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: ['/twitter-image'],
     },
   }
 }
@@ -237,6 +265,36 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
   return (
     <MarketingLayout className="pt-24 pb-16">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: post.title,
+          description: post.excerpt,
+          url: `${getSiteUrl()}/blog/${post.slug}`,
+          datePublished: post.publishedAt,
+          author: {
+            '@type': 'Person',
+            name: post.author.name,
+            jobTitle: post.author.role,
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'NeelStack Solutions Private Limited',
+            url: getSiteUrl(),
+            logo: {
+              '@type': 'ImageObject',
+              url: `${getSiteUrl()}/icon.svg`,
+            },
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `${getSiteUrl()}/blog/${post.slug}`,
+          },
+          keywords: post.tags.join(', '),
+          articleSection: post.category,
+        }}
+      />
       {/* Article Container */}
       <Container size="md" className="max-w-4xl">
         {/* Breadcrumb Navigation */}

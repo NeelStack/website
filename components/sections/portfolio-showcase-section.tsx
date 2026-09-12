@@ -141,7 +141,7 @@ export function PortfolioShowcaseSection() {
                   Education OS (EdOS)
                 </span>
                 <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/25">
-                  Beta Launching Soon
+                  Demo Launch: Sept 30, 2026
                 </span>
               </div>
 
@@ -173,10 +173,10 @@ export function PortfolioShowcaseSection() {
               </div>
 
               <div className="flex flex-wrap gap-2 pt-2">
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">React 19</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">PostgreSQL</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Redis</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Vector RAG Engine</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Next.js 16</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">FastAPI</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">PostgreSQL 16</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">pgvector RAG</span>
               </div>
             </div>
 
@@ -187,7 +187,7 @@ export function PortfolioShowcaseSection() {
               >
                 Explore DhruvaOS <ArrowRight className="h-4 w-4" />
               </Link>
-              <span className="text-xs text-amber-500 font-mono font-bold">Beta: August 31</span>
+              <span className="text-xs text-amber-500 font-mono font-bold">Demo: September 30</span>
             </div>
           </motion.div>
         </div>

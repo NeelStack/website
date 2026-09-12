@@ -38,12 +38,16 @@ import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
+import { AccreditationBadges } from '@/components/ui/accreditation-badges'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About NeelStack — AI-First Software Engineering Company',
+  title: 'About NeelStack — Enterprise AI & Software Development Company in India',
   description:
-    'Learn about NeelStack — an AI-first software engineering company based in Gorakhpur, India. Discover our mission, engineering values, principles, and the journey building enterprise-grade software and AI systems.',
+    'Learn about NeelStack — an AI-first software engineering and product company in India. Discover our mission, engineering values, principles, and the journey building enterprise-grade software and AI systems.',
+  alternates: {
+    canonical: '/about',
+  },
 }
 
 const VALUES = [
@@ -70,8 +74,8 @@ const PRINCIPLES = [
 ]
 
 const WHY_NEELSTACK = [
-  { title: 'AI-first Approach', description: 'We integrate intelligent agent layers and retrieval pipelines natively into custom business systems.' },
-  { title: 'Modern Stack', description: 'We leverage Next.js App Router, FastAPI, Tailwind CSS, PostgreSQL, and Docker for speed and security.' },
+  { title: 'Frontier AI-First Architecture', description: 'We architect autonomous multi-agent runtimes, Model Context Protocol (MCP) integrations, and GraphRAG memory pipelines natively into enterprise systems.' },
+  { title: 'Modern AI & Cloud Stack', description: 'We leverage Next.js 16 App Router, FastAPI, LangGraph, Qdrant vector databases, Rust WebAssembly, and Docker for speed, intelligence, and data security.' },
   { title: 'Transparent Communication', description: 'We build in public and provide clients with absolute clarity regarding system scope and progress.' },
   { title: 'Product Mindset', description: 'We build our own SaaS platforms, meaning we understand the challenges of hosting, scaling, and conversion optimization firsthand.' },
   { title: 'Long-term Partnerships', description: 'We run as a technology partner, consulting on technical roadmaps and product strategies over many years.' },
@@ -83,7 +87,7 @@ const JOURNEY = [
   { status: 'launching', name: 'Lifeasia Pharma Website', detail: 'Corporate website for Lifeasia Pharma — a pharmaceutical company that develops, brands, markets, and distributes healthcare products while partnering with certified third-party manufacturers for product development.', label: 'Delivering Soon' },
   { status: 'launching', name: 'K.D. Singh Public School', detail: 'Custom school management and digital presence solution for K.D. Singh Public School, Gorakhpur — covering institutional operations, student management, and communication workflows.', label: 'Delivering Soon' },
   { status: 'launching', name: 'New Model Convent School', detail: 'Digital platform and school management system for New Model Convent School, Ghazipur — streamlining admissions, attendance, fee management, and parent communication.', label: 'Delivering Soon' },
-  { status: 'launching', name: 'DhruvaOS', detail: 'AI-powered School Management & Education Operating System. Covers admissions, attendance, fee collection, timetables, teacher tools, parent communication, and AI-driven institutional analytics for schools, colleges, and coaching institutes.', label: 'Launching Soon' },
+  { status: 'launching', name: 'DhruvaOS', detail: 'AI-powered School Management & Education Operating System. Covers admissions, attendance, fee collection, timetables, teacher tools, parent communication, and AI-driven institutional analytics for schools, colleges, and coaching institutes.', label: 'Demo Launch: Sept 30, 2026' },
   { status: 'dev', name: 'NaukariMitra', detail: 'AI-powered government job preparation platform providing exam guidance, mock tests, previous papers, study resources and personalized learning assistance.', label: 'In Development' },
   { status: 'dev', name: 'SarkariMitra', detail: 'AI-powered citizen assistance platform helping people discover government schemes, benefits, public services, eligibility criteria, required documents and application guidance through conversational AI.', label: 'In Development' },
 ]
@@ -151,6 +155,7 @@ export default function AboutPage() {
       />
 
       <TrustBarSection />
+      <AccreditationBadges />
 
       {/* Corporate Philosophy */}
       <Section className="bg-card/60 backdrop-blur-sm border-t border-border/60">

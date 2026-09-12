@@ -16,7 +16,7 @@ import { Section, SectionHeader } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 
 export const metadata: Metadata = {
-  title: 'Security & Compliance Posture — NeelStack',
+  title: 'Security & Compliance Posture | NeelStack India',
   description:
     'NeelStack security architecture, encryption standards, data privacy commitments, role-based access control policies, and compliance roadmap.',
   alternates: {
@@ -29,44 +29,45 @@ const SECURITY_PILLARS = [
     icon: Lock,
     title: 'Data Encryption',
     description:
-      'All data in transit is encrypted using TLS 1.3. Persistent database layers and backups use AES-256 encryption at rest.',
+      'All data in transit is encrypted using TLS 1.3. Persistent database layers use AES-256 Fernet encryption at rest. Backups are encrypted and mirrored to AWS S3 Object Lock with WORM immutability.',
   },
   {
     icon: Key,
     title: 'Identity & Access Control',
     description:
-      'Granular Role-Based Access Control (RBAC) matrices, Multi-Factor Authentication (MFA), and session token revocation protocols.',
+      'Dynamic Zitadel OIDC/SAML JWKS verification, FIDO2 WebAuthn passkey support, granular Role-Based Access Control (RBAC), Multi-Factor Authentication (MFA), and session token revocation protocols.',
   },
   {
     icon: Server,
-    title: 'Cloud & Infrastructure Security',
+    title: 'Multi-Tenant Data Isolation',
     description:
-      'Hosted on edge networks with automated DDoS protection, isolated VPC subnets, and container environment hardening.',
+      'PostgreSQL 16 schema-per-tenant isolation ensures no institutional data crosses boundaries. Row-Level Security (RLS) policies enforce strict IDOR prevention across all API endpoints.',
   },
   {
     icon: Eye,
     title: 'Audit Logging & Monitoring',
     description:
-      'Real-time anomaly detection, centralized audit logging, automated dependency vulnerability alerts via Dependabot & Sentry.',
+      'Write-Once-Read-Many (WORM) compliant immutable audit trails with dual-mirroring. Real-time anomaly detection, centralized logging, and automated dependency vulnerability scanning.',
   },
   {
     icon: FileCheck,
     title: 'Code Security & Static Analysis',
     description:
-      'Pre-commit static code analysis, automated SAST scans in CI/CD pipelines, and zero-trust parameter validation.',
+      'Pre-commit static code analysis, automated SAST scans in CI/CD pipelines, Gitleaks secret scanning, and zero-trust parameter validation across all microservices.',
   },
   {
     icon: ShieldAlert,
     title: 'Vulnerability Disclosure Policy',
     description:
-      'Responsible disclosure program allowing security researchers to report vulnerabilities directly to security@neelstack.com.',
+      'Responsible disclosure program allowing security researchers to report vulnerabilities directly to security@neelstack.com. Redis sliding-window rate limiting mitigates brute force attacks.',
   },
 ]
 
 const COMPLIANCE_ROADMAP = [
   { name: 'SOC 2 Type II Compliance', status: 'In Preparation Roadmap', desc: 'Targeting formal SOC 2 Type II audit readiness for core SaaS products.' },
   { name: 'ISO/IEC 27001 Alignment', status: 'Policy Aligned', desc: 'Internal security procedures designed in alignment with ISO 27001 frameworks.' },
-  { name: 'India DPDPA 2023 & GDPR Compliance', status: 'Compliant', desc: 'Full adherence to data minimization, privacy rights, and local data residency guidelines.' },
+  { name: 'India DPDPA 2023 (Section 9)', status: 'Compliant', desc: 'Full adherence to data minimization, consent logging, privacy rights, and local data residency under the Digital Personal Data Protection Act 2023.' },
+  { name: 'EU GDPR Article 28 & FERPA/COPPA', status: 'Compliant', desc: 'Data sovereignty controls, Right to Erasure, data portability, and strict child data protection for education platforms.' },
 ]
 
 export default function SecurityPage() {

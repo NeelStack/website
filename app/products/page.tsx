@@ -7,9 +7,12 @@ import { CTASection } from '@/components/ui/cta-section'
 import { PRODUCTS, LIVE_PRODUCTS, UPCOMING_PRODUCTS } from '@/constants/products'
 
 export const metadata: Metadata = {
-  title: 'Our Products — ToolVines, DhruvaOS & More',
+  title: 'Proprietary Software Products — DhruvaOS, ToolVines | NeelStack India',
   description:
-    'Explore NeelStack’s proprietary software products — ToolVines (live), DhruvaOS AI Education OS (beta), NaukariMitra, and SarkariMitra in active development.',
+    'Explore NeelStack’s proprietary software products — ToolVines browser-native tools, DhruvaOS AI Education OS, NaukariMitra, and SarkariMitra in active development.',
+  alternates: {
+    canonical: '/products',
+  },
 }
 
 export default function ProductsPage() {

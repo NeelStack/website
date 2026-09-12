@@ -163,8 +163,16 @@ export function Footer() {
 
         <div className="border-t border-border py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-xs text-muted-foreground text-center md:text-left space-y-1">
-            <p>&copy; {currentYear} NeelStack Solutions Private Limited. All rights reserved.</p>
-            <p>GSTIN: 09AALCN9356Q1ZA</p>
+            <p>&copy; {currentYear} {SITE_CONFIG.fullName}. All rights reserved.</p>
+            <p className="font-mono text-[11px] text-muted-foreground/80 flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-0.5">
+              <span>CIN: {SITE_CONFIG.accreditations.cin}</span>
+              <span>·</span>
+              <span>GSTIN: {SITE_CONFIG.accreditations.gstin}</span>
+              <span>·</span>
+              <span>DPIIT: {SITE_CONFIG.accreditations.startupIndia}</span>
+              <span>·</span>
+              <span>MSME: {SITE_CONFIG.accreditations.msme}</span>
+            </p>
           </div>
           <div className="flex items-center gap-4">
             <Link
