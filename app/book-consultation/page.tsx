@@ -32,7 +32,7 @@ export default function BookConsultationPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Free Consultation' }]}
       />
 
-      <section className="py-16" aria-labelledby="consultation-section-heading">
+      <section className="pt-4 pb-16 md:pt-6 md:pb-20" aria-labelledby="consultation-section-heading">
         <Container>
           <h2 id="consultation-section-heading" className="sr-only">Book free consultation</h2>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-start">

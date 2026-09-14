@@ -221,7 +221,7 @@ export default function DhruvaOSPage() {
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact?subject=DhruvaOS%20Pilot%20Partnership"
+              href="/contact?product=dhruvaos#contact-form"
               className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-primary/10 hover:shadow-primary/20"
             >
               Join Pilot Program
@@ -753,7 +753,7 @@ export default function DhruvaOSPage() {
               </div>
 
               <Link
-                href="/contact"
+                href="/contact?product=dhruvaos#contact-form"
                 className="w-full text-center py-2.5 rounded-xl bg-primary text-white font-semibold text-xs uppercase tracking-wider hover:bg-primary-hover transition-all shadow"
               >
                 Request Custom Quote
@@ -800,7 +800,7 @@ export default function DhruvaOSPage() {
 
           <div className="flex flex-wrap items-center justify-center gap-4.5 pt-4">
             <Link
-              href="/contact"
+              href="/contact?product=dhruvaos#contact-form"
               className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all shadow-md shadow-primary/10"
             >
               Book a Demo
@@ -812,7 +812,7 @@ export default function DhruvaOSPage() {
               Become a Pilot Partner
             </Link>
             <Link
-              href="/contact?subject=DhruvaOS%20Sales"
+              href="/contact?product=dhruvaos#contact-form"
               className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-muted/40 hover:bg-muted/60 text-muted-foreground hover:text-white text-sm font-semibold transition-all"
             >
               Contact Sales

@@ -11,8 +11,7 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   useEffect(() => {
     setMounted(true)
-    const darkState = document.documentElement.classList.contains('dark')
-    setIsDark(darkState)
+    setIsDark(document.documentElement.classList.contains('dark'))
   }, [])
 
   const toggleTheme = () => {
@@ -20,9 +19,11 @@ export function ThemeToggle({ className }: { className?: string }) {
     setIsDark(nextDark)
     if (nextDark) {
       document.documentElement.classList.add('dark')
+      document.documentElement.classList.remove('light')
       localStorage.setItem('theme', 'dark')
     } else {
       document.documentElement.classList.remove('dark')
+      document.documentElement.classList.add('light')
       localStorage.setItem('theme', 'light')
     }
   }
@@ -35,7 +36,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     <button
       onClick={toggleTheme}
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-      title={isDark ? 'Light mode active' : 'Dark mode active'}
+      title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       className={cn(
         'relative flex items-center justify-between w-14 h-7.5 rounded-full p-1 border transition-colors duration-300 cursor-pointer select-none outline-none shrink-0 shadow-inner',
         isDark

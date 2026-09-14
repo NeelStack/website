@@ -111,7 +111,7 @@ export function TechnologySection() {
   const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
 
   return (
-    <Section id="technologies" className="py-24 relative overflow-hidden bg-transparent">
+    <Section id="technologies" className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-transparent">
       {/* Subtle dark mesh backdrop */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -151,8 +151,8 @@ export function TechnologySection() {
           />
         </motion.div>
 
-        {/* Tab Switcher — with active tab glow */}
-        <div className="flex flex-wrap justify-center gap-2 p-1.5 rounded-2xl border border-border bg-black/10 backdrop-blur-md max-w-3xl mx-auto shadow-md">
+        {/* Tab Switcher — Centered and balanced */}
+        <div className="flex flex-wrap justify-center gap-2 p-2 rounded-2xl border border-border bg-card dark:bg-[#0b1329] max-w-4xl mx-auto shadow-md">
           {TECH_CATEGORIES.map((cat) => {
             const Icon = cat.icon
             const isActive = activeTab === cat.id
@@ -184,7 +184,7 @@ export function TechnologySection() {
         </div>
 
         {/* Active Tech Stack Grid with AnimatePresence */}
-        <div className="rounded-3xl border border-border/80 bg-black/10 backdrop-blur-md p-6 md:p-8 shadow-xl relative overflow-hidden">
+        <div className="rounded-3xl border border-border bg-card dark:bg-[#0b1329] p-6 md:p-8 shadow-xl relative overflow-hidden">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-border/60 pb-6 mb-6">
             <div className="flex items-center gap-3">
               <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${currentCategory.bgColor} ${currentCategory.color}`}>
@@ -197,9 +197,6 @@ export function TechnologySection() {
                 </span>
               </div>
             </div>
-            <span className="text-xs text-muted-foreground bg-muted px-3 py-1.5 rounded-full font-mono">
-              6 Enterprise Core Frameworks
-            </span>
           </div>
 
           <AnimatePresence mode="wait">
@@ -214,7 +211,7 @@ export function TechnologySection() {
               {currentCategory.items.map((tech) => (
                 <div
                   key={tech.name}
-                  className="group p-4 rounded-2xl border border-border/60 bg-black/5 hover:bg-surface hover:border-primary/30 transition-all duration-200 card-hover flex flex-col justify-between gap-2"
+                  className="group p-4 rounded-2xl border border-border/70 bg-muted/40 dark:bg-white/[0.03] hover:border-primary/40 hover:bg-card dark:hover:bg-white/[0.06] transition-all duration-200 shadow-2xs hover:shadow-md hover:-translate-y-0.5 flex flex-col justify-between gap-2"
                 >
                   <div className="flex items-center justify-between">
                     <h4 className="font-heading text-sm font-bold text-foreground group-hover:text-primary transition-colors">

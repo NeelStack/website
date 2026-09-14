@@ -27,13 +27,13 @@ export const metadata: Metadata = {
 const WHITEPAPERS = [
   {
     id: 'ai-company-operating-system',
-    title: 'The AI Company Operating System: A Strategic Whitepaper for Building a Billion-Dollar Technology Company',
+    title: 'The AI Company Operating System: A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises',
     category: 'Strategic Whitepaper & AI Architecture',
     status: 'Official Charter · Available Online',
     readUrl: '/whitepapers/ai-company-operating-system',
     description:
-      'The foundational blueprint for NeelStack Solutions: deploying a coordinated AI executive workforce (AI CEO, CTO, CFO, COO, CRO, CMO), Company Brain persistent memory, and the 4-level agent authority model alongside human founders.',
-    topics: ['AI Executive Workforce', 'Company Brain Memory', '4-Tier Authority Model', 'Three-Engine Strategy (Services, DhruvaOS, ToolVines)', 'Billion-Dollar Commercial Stages'],
+      'The foundational architectural blueprint for NeelStack Solutions: deploying a coordinated AI executive workforce (AI CEO, CTO, CFO, COO, CRO, CMO), Company Brain persistent memory, and the 4-level agent authority model alongside human founders.',
+    topics: ['AI Executive Workforce', 'Company Brain Memory', '4-Tier Authority Model', 'Three-Engine Strategy (Services, DhruvaOS, ToolVines)', 'Enterprise Scaling Stages'],
   },
   {
     id: 'enterprise-ai-architecture-2026',

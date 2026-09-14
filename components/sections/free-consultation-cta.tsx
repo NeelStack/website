@@ -45,7 +45,7 @@ const STATS = [
 
 export function FreeConsultationCTA() {
   return (
-    <Section className="py-32 relative z-10 border-t border-border/50">
+    <Section className="py-12 sm:py-20 md:py-32 relative z-10 border-t border-border/50">
       <Container size="lg">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 30 }}

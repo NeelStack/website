@@ -34,7 +34,7 @@ export default function ProductsPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
       />
 
-      <section className="py-16" aria-labelledby={isGrouped ? 'products-heading' : 'live-products-heading'}>
+      <section className="pt-4 pb-16 md:pt-6 md:pb-20" aria-labelledby={isGrouped ? 'products-heading' : 'live-products-heading'}>
         <Container>
           {isGrouped ? (
             <div className="mb-16">
@@ -44,7 +44,7 @@ export default function ProductsPage() {
               >
                 Active Product Portfolio
               </h2>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {displayProducts.map((product) => (
                   <ProductCard key={product.id} product={product} variant="detailed" />
                 ))}
@@ -98,6 +98,7 @@ export default function ProductsPage() {
                 { title: 'Business Automation', desc: 'Custom triggers, API connectors & webhook data processing pipelines.' },
                 { title: 'AI Platforms', desc: 'Custom LLM agents, dynamic chat panels & retrieval pipelines.' },
                 { title: 'Enterprise Software', desc: 'Database index speed tools, migration modules & sync setups.' },
+                { title: 'Autonomous Agent Networks', desc: 'Decentralized agent orchestration, Model Context Protocol & workflow loops.' },
               ].map((item) => (
                 <div
                   key={item.title}

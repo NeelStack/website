@@ -80,7 +80,7 @@ const ROADMAP_ITEMS = [
     icon: Building,
     desc: 'Planned public services and citizen guidance platform designed to help users discover and navigate government schemes and public documentation.',
     features: ['Scheme discovery assistant', 'Eligibility verification logic', 'Document requirement checklists'],
-    link: '/products/sarakarimitra',
+    link: '/products/sarkarimitra',
     isExternal: false,
   },
 ]

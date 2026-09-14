@@ -134,10 +134,10 @@ export function Footer() {
           <div className="lg:col-span-2">
             <FooterLogo />
             <p className="mt-2 text-xs font-bold text-primary tracking-wide">
-              Software Products • AI Systems • Product Engineering
+              Global Software Products • AI Systems • Enterprise Engineering
             </p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              NeelStack Solutions builds software products, AI-powered systems and digital platforms for businesses and organizations.
+              NeelStack Solutions designs, builds and deploys software products, autonomous AI systems and digital platforms for clients in the US, UK, UAE, Europe &amp; India.
             </p>
             <p className="mt-2 text-xs font-mono text-foreground">
               <a href="mailto:contact@neelstack.com" className="hover:text-primary transition-colors">

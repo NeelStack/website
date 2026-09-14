@@ -50,7 +50,7 @@ const OS_CAPABILITIES = [
 
 export function AiStrategySection() {
   return (
-    <section id="ai-strategy" className="py-24 relative overflow-hidden bg-surface border-t border-border/60">
+    <section id="ai-strategy" className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-surface border-t border-border/60">
       {/* Ambient background glow */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[350px] pointer-events-none"
@@ -185,21 +185,21 @@ export function AiStrategySection() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-5 p-6 sm:p-7 rounded-3xl border border-border bg-card/60 backdrop-blur-md max-w-3xl mx-auto shadow-xl">
             <div className="text-left space-y-1">
               <h4 className="font-heading text-sm sm:text-base font-bold text-foreground">
-                Read the Strategic Whitepaper
+                Deploy Autonomous AI Agents in Your Business
               </h4>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Explore our full 42-section charter on the AI Company Operating System, Company Brain, and 4-tier authority model.
+                Consult with our engineering team on multi-agent architectures, enterprise MCP integrations, and proprietary knowledge retrieval.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full sm:w-auto">
-              <Button asChild size="sm" variant="outline" className="w-full sm:w-auto font-bold border-violet-500/30 text-violet-500 dark:text-violet-400 hover:bg-violet-500/10">
-                <Link href="/whitepapers/ai-company-operating-system" className="gap-1.5 flex items-center justify-center">
-                  <FileText className="h-3.5 w-3.5" /> Read Whitepaper
+              <Button asChild size="sm" className="w-full sm:w-auto glow-cta font-bold">
+                <Link href="/book-consultation" className="gap-1.5 flex items-center justify-center">
+                  Book AI Consultation <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </Button>
-              <Button asChild size="sm" className="w-full sm:w-auto glow-cta font-bold">
+              <Button asChild size="sm" variant="outline" className="w-full sm:w-auto font-bold border-violet-500/30 text-foreground hover:bg-violet-500/10">
                 <Link href="/contact" className="gap-1.5 flex items-center justify-center">
-                  Talk to NeelStack <ArrowRight className="h-3.5 w-3.5" />
+                  Talk to NeelStack
                 </Link>
               </Button>
             </div>

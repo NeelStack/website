@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { CopyEmailButton } from '@/components/ui/copy-email-button'
 import { CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react'
@@ -9,6 +9,30 @@ export function ConsultationForm() {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const firstInputRef = useRef<HTMLInputElement>(null)
+  const formContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Smooth auto-scroll to form on arrival
+    const timer = setTimeout(() => {
+      if (formContainerRef.current) {
+        const headerOffset = 90
+        const elementPosition = formContainerRef.current.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        })
+
+        setTimeout(() => {
+          firstInputRef.current?.focus({ preventScroll: true })
+        }, 450)
+      }
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   const checkAutoClearError = (form: HTMLFormElement) => {
     if (!error) return
@@ -33,6 +57,7 @@ export function ConsultationForm() {
     const firstName = (formData.get('first-name') as string)?.trim()
     const lastName = (formData.get('last-name') as string)?.trim()
     const email = (formData.get('email') as string)?.trim()
+    const phone = (formData.get('phone') as string)?.trim()
     const topic = (formData.get('topic') as string)?.trim()
 
     if (!firstName || !lastName || !email || !topic) {
@@ -56,6 +81,7 @@ export function ConsultationForm() {
           type: 'consultation',
           name: `${firstName} ${lastName}`,
           email,
+          phone,
           topic,
         }),
       })
@@ -93,12 +119,19 @@ export function ConsultationForm() {
   }
 
   const inputStyle =
-    'w-full rounded-xl border border-border/80 bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-card/90 shadow-sm hover:border-border'
+    'w-full rounded-xl border border-border bg-card/90 dark:bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-card shadow-sm hover:border-primary/30'
 
   return (
-    <div className="rounded-2xl border border-border bg-black/10 backdrop-blur-xl p-8">
-      <h3 className="font-heading text-xl font-semibold text-foreground mb-6">
-        Schedule Your Call
+    <div
+      ref={formContainerRef}
+      id="consultation-form"
+      className="scroll-mt-28 relative overflow-hidden rounded-3xl border border-border bg-card dark:bg-[#0b1329] p-6 sm:p-8 md:p-10 shadow-xl transition-all duration-300"
+    >
+      {/* Subtle emerald/cyan top accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400" />
+
+      <h3 className="font-heading text-xl font-bold text-foreground mb-6">
+        Schedule Your Free Call
       </h3>
 
       <form
@@ -113,6 +146,7 @@ export function ConsultationForm() {
               First Name <span aria-hidden="true" className="text-destructive">*</span>
             </label>
             <input
+              ref={firstInputRef}
               id="c-first-name"
               name="first-name"
               type="text"
@@ -138,19 +172,34 @@ export function ConsultationForm() {
           </div>
         </div>
 
-        <div>
-          <label htmlFor="c-email" className="block text-sm font-medium text-foreground mb-1.5">
-            Email Address <span aria-hidden="true" className="text-destructive">*</span>
-          </label>
-          <input
-            id="c-email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="e.g. priya@domain.com"
-            className={inputStyle}
-          />
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div>
+            <label htmlFor="c-email" className="block text-sm font-medium text-foreground mb-1.5">
+              Email Address <span aria-hidden="true" className="text-destructive">*</span>
+            </label>
+            <input
+              id="c-email"
+              name="email"
+              type="email"
+              required
+              autoComplete="email"
+              placeholder="e.g. priya@domain.com"
+              className={inputStyle}
+            />
+          </div>
+          <div>
+            <label htmlFor="c-phone" className="block text-sm font-medium text-foreground mb-1.5">
+              Phone / WhatsApp <span className="text-xs text-muted-foreground font-normal">(optional)</span>
+            </label>
+            <input
+              id="c-phone"
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              placeholder="e.g. +91 98765 43210"
+              className={inputStyle}
+            />
+          </div>
         </div>
 
         <div>

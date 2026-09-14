@@ -31,9 +31,9 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'The AI Company Operating System — Strategic Whitepaper | NeelStack India',
+  title: 'The AI Company Operating System — Strategic Architectural Charter | NeelStack India',
   description:
-    'A Strategic Whitepaper for Building a Billion-Dollar Technology Company. Architectural framework for deploying AI executive workforces (AI CEO, CTO, CFO, COO) alongside human founders.',
+    'A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises. Architectural framework for deploying AI executive workforces (AI CEO, CTO, CFO, COO) alongside human founders.',
   keywords: [
     'AI Company Operating System',
     'AI CEO',
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
     canonical: '/whitepapers/ai-company-operating-system',
   },
   openGraph: {
-    title: 'The AI Company Operating System — Strategic Whitepaper | NeelStack Solutions',
+    title: 'The AI Company Operating System — Strategic Architectural Charter | NeelStack Solutions',
     description:
-      'A Strategic Whitepaper for Building a Billion-Dollar Technology Company. Authored by Founder & Legal CEO Shyam Chaurasiya with Strategic AI Operating Partner.',
+      'A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises. Authored by Founder & Legal CEO Shyam Chaurasiya with Strategic AI Operating Partner.',
     type: 'article',
     url: `${getSiteUrl()}/whitepapers/ai-company-operating-system`,
   },
@@ -65,7 +65,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
         data={{
           '@context': 'https://schema.org',
           '@type': 'TechArticle',
-          headline: 'The AI Company Operating System — A Strategic Whitepaper for Building a Billion-Dollar Technology Company',
+          headline: 'The AI Company Operating System — A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises',
           description:
             'Architectural and strategic whitepaper on deploying an AI executive workforce, Company Brain, and 4-tier agent authority model.',
           author: [
@@ -124,7 +124,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               The AI Company Operating System
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground font-medium">
-              A Strategic Whitepaper for Building a Billion-Dollar Technology Company
+              A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises
             </p>
 
             {/* Entity & Leadership Metadata Card */}
@@ -480,7 +480,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
                   Build the Company That Builds Companies
                 </h3>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  The billion-dollar journey does not start with $1 billion. It starts with ₹1 of real revenue. Then first customer. Then first 10 customers. Then first ₹1 Crore.
+                  Enduring, high-scale enterprise value does not begin with speculative forecasts. It begins with real economic utility and customer trust from Day 1. First customer. Then first 10 customers. Then disciplined operational compounding across global markets.
                 </p>
                 <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono font-bold text-foreground">
                   <span>Human vision.</span>

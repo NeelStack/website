@@ -29,7 +29,7 @@ export function HeroSpotlight({ children, className = '' }: HeroSpotlightProps) 
     <section
       ref={sectionRef}
       onMouseMove={handleSectionMouseMove}
-      className={`relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28 lg:min-h-[85vh] flex flex-col justify-center bg-background ${className}`}
+      className={`relative overflow-hidden pt-24 pb-10 sm:pt-28 sm:pb-16 md:pt-40 md:pb-28 lg:min-h-[85vh] flex flex-col justify-center bg-transparent ${className}`}
       aria-label="Hero section"
     >
       {/* Dynamic Cursor Spotlight Layer */}

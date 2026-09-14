@@ -9,9 +9,9 @@ export function TechBadge({ name, className }: TechBadgeProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full border border-border bg-muted',
-        'px-3 py-1.5 text-xs font-medium text-muted-foreground',
-        'hover:border-primary/30 hover:bg-primary/10 hover:text-primary transition-all duration-200 cursor-default',
+        'inline-flex items-center rounded-full border border-border/70 bg-card/80 dark:bg-card/40 backdrop-blur-xs',
+        'px-3 py-1.5 text-xs font-medium text-foreground/85 dark:text-slate-200',
+        'hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-foreground dark:hover:text-white hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-200 cursor-default',
         className
       )}
     >
