@@ -12,7 +12,7 @@ const STATS = [
   {
     value: '20',
     unit: 'min',
-    label: 'Free Strategy Call',
+    label: 'Technical Discussion',
     icon: Clock,
     color: 'text-indigo-400',
     bg: 'bg-indigo-500/10 border-indigo-500/25',
@@ -20,15 +20,15 @@ const STATS = [
   {
     value: '₹0',
     unit: '',
-    label: 'Zero Cost & No Commitment',
+    label: 'Free & No Obligation',
     icon: CheckCircle2,
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/10 border-emerald-500/25',
   },
   {
-    value: '48h',
+    value: '<24h',
     unit: '',
-    label: 'Custom Proposal Turnaround',
+    label: 'Email Response SLA',
     icon: Zap,
     color: 'text-amber-400',
     bg: 'bg-amber-500/10 border-amber-500/25',
@@ -36,7 +36,7 @@ const STATS = [
   {
     value: '100%',
     unit: '',
-    label: 'Senior Engineering Leads',
+    label: 'Direct Engineer Access',
     icon: ShieldCheck,
     color: 'text-violet-400',
     bg: 'bg-violet-500/10 border-violet-500/25',
@@ -68,18 +68,18 @@ export function FreeConsultationCTA() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
               </span>
-              No Obligation · 100% Free
+              Direct Engineering Consultation
             </div>
 
             <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight leading-tight mb-6 max-w-3xl">
-              Ready to scale? Book your <br />
+              Have a software, AI or product idea? <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-rose-400">
-                Engineering Strategy Call
+                Talk to NeelStack
               </span>
             </h2>
 
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-12">
-              Bypass the sales pitch. Sit down directly with our senior software architects to review your technical specs, discuss timelines, and map out a custom execution plan.
+              Sit down directly with our engineering team to review your technical requirements, explore architecture options, and map out a clean execution plan.
             </p>
 
             {/* The 4 Core Stats as Floating Tiles */}
@@ -110,11 +110,11 @@ export function FreeConsultationCTA() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative z-20"
+              className="relative z-20 flex flex-col sm:flex-row items-center gap-4"
             >
               <Button asChild size="xl" className="h-16 px-10 text-lg font-extrabold bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white rounded-2xl shadow-2xl shadow-indigo-500/25 border border-indigo-400/20 glow-cta group transition-all duration-300">
-                <Link href="/book-consultation" className="flex items-center gap-3">
-                  Book Free 20-Min Call
+                <Link href="/contact" className="flex items-center gap-3">
+                  Talk to NeelStack
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </Link>
               </Button>

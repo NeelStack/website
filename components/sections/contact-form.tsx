@@ -4,14 +4,13 @@ import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CopyEmailButton } from '@/components/ui/copy-email-button'
 import { CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react'
-import { useCurrency } from '@/components/providers/currency-provider'
 
-const INQUIRY_TYPES = [
-  'Custom Software Development',
-  'AI / Intelligent Systems Integration',
-  'Product Design & Strategy',
-  'Technical Partnership Request',
-  'General Partnership Inquiry',
+const WHAT_DO_YOU_NEED_OPTIONS = [
+  'Explore NeelStack Products (ToolVines, DhruvaOS, etc.)',
+  'AI Systems & Autonomous Agent Architecture',
+  'Software Development & Product Engineering',
+  'Platform Architecture & Modern Web Applications',
+  'Technical Partnership or Collaboration',
   'Other Inquiries',
 ]
 
@@ -20,27 +19,15 @@ export function ContactForm() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const { config } = useCurrency()
-
-  const budgetOptions = config.budgetRanges
-    ? config.budgetRanges.map((b) => ({ value: b.id, label: b.label }))
-    : [
-        { value: 'under-1000', label: config.formatOptions.under100 },
-        { value: '1000-5000', label: config.formatOptions.range100To1000 },
-        { value: '5000-15000', label: config.formatOptions.range1000To5000 },
-        { value: '15000-plus', label: config.formatOptions.above5000 },
-      ]
-
   const checkAutoClearError = (form: HTMLFormElement) => {
     if (!error) return
     const formData = new FormData(form)
-    const firstName = (formData.get('first-name') as string)?.trim()
-    const lastName = (formData.get('last-name') as string)?.trim()
+    const name = (formData.get('name') as string)?.trim()
     const email = (formData.get('email') as string)?.trim()
-    const inquiryType = (formData.get('inquiry-type') as string)?.trim()
+    const need = (formData.get('need') as string)?.trim()
     const message = (formData.get('message') as string)?.trim()
 
-    if (firstName && lastName && email && inquiryType && message) {
+    if (name && email && need && message) {
       setError(null)
     }
   }
@@ -52,16 +39,15 @@ export function ContactForm() {
 
     const form = e.currentTarget
     const formData = new FormData(form)
-    const firstName = (formData.get('first-name') as string)?.trim()
-    const lastName = (formData.get('last-name') as string)?.trim()
-    const email = (formData.get('email') as string)?.trim()
+    const name = (formData.get('name') as string)?.trim()
     const company = (formData.get('company') as string)?.trim()
-    const inquiryType = (formData.get('inquiry-type') as string)?.trim()
-    const budget = (formData.get('budget') as string)?.trim()
+    const email = (formData.get('email') as string)?.trim()
+    const phone = (formData.get('phone') as string)?.trim()
+    const need = (formData.get('need') as string)?.trim()
     const message = (formData.get('message') as string)?.trim()
 
-    if (!firstName || !lastName || !email || !inquiryType || !message) {
-      setError('Please fill in all required fields.')
+    if (!name || !email || !need || !message) {
+      setError('Please fill in all required fields (Name, Work Email, What do you need, Message).')
       setSubmitting(false)
       return
     }
@@ -79,23 +65,23 @@ export function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'general',
-          name: `${firstName} ${lastName}`,
+          name,
           email,
-          company,
-          service: inquiryType,
-          budget,
+          company: company || 'Not provided',
+          phone: phone || 'Not provided',
+          service: need,
           message,
         }),
       })
 
       if (!response.ok) {
-        throw new Error('Failed to send email.')
+        throw new Error('Failed to send inquiry.')
       }
 
       setSuccess(true)
     } catch (err) {
       console.error(err)
-      setError('Failed to submit via API. You can still email us directly at contact@neelstack.com.')
+      setError('Failed to submit via form. Please email us directly at contact@neelstack.com.')
     } finally {
       setSubmitting(false)
     }
@@ -114,7 +100,7 @@ export function ContactForm() {
         </div>
         <h3 className="font-heading text-lg font-semibold text-foreground">Message Received!</h3>
         <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-          Thank you for reaching out. We have logged your inquiry and will review the details. Our engineering lead will get back to you within 1 business day.
+          Thank you for reaching out. We have logged your inquiry and our team will review the details and get back to you within 1 business day.
         </p>
         <div className="pt-2">
           <Button type="button" variant="outline" size="sm" onClick={() => setSuccess(false)}>
@@ -127,7 +113,7 @@ export function ContactForm() {
 
   return (
     <div className="rounded-2xl border border-border bg-card/70 dark:bg-black/10 backdrop-blur-xl p-8 md:p-10">
-      <h3 className="font-heading text-xl font-bold text-foreground mb-6">Send us a Message</h3>
+      <h3 className="font-heading text-xl font-bold text-foreground mb-6">Send Us a Message</h3>
 
       <form
         className="space-y-5"
@@ -138,96 +124,78 @@ export function ContactForm() {
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="first-name" className="block text-sm font-medium text-foreground mb-1.5">
-              First Name <span aria-hidden="true" className="text-destructive">*</span>
+            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">
+              Name <span aria-hidden="true" className="text-destructive">*</span>
             </label>
             <input
-              id="first-name"
-              name="first-name"
+              id="name"
+              name="name"
               type="text"
               required
-              autoComplete="given-name"
-              placeholder="e.g. Rajesh"
+              autoComplete="name"
+              placeholder="e.g. Shyam Chaurasiya"
               className={inputStyle}
             />
           </div>
           <div>
-            <label htmlFor="last-name" className="block text-sm font-medium text-foreground mb-1.5">
-              Last Name <span aria-hidden="true" className="text-destructive">*</span>
+            <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1.5">
+              Company / Organization
             </label>
             <input
-              id="last-name"
-              name="last-name"
+              id="company"
+              name="company"
               type="text"
+              autoComplete="organization"
+              placeholder="e.g. Acme Tech or School Name"
+              className={inputStyle}
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
+              Work Email <span aria-hidden="true" className="text-destructive">*</span>
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
               required
-              autoComplete="family-name"
-              placeholder="e.g. Sharma"
+              autoComplete="email"
+              placeholder="e.g. name@company.com"
+              className={inputStyle}
+            />
+          </div>
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1.5">
+              Phone Number <span className="text-xs text-muted-foreground font-normal">(optional)</span>
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              placeholder="e.g. +91 98765 43210"
               className={inputStyle}
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
-            Email Address <span aria-hidden="true" className="text-destructive">*</span>
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="e.g. rajesh@domain.com"
-            className={inputStyle}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="company" className="block text-sm font-medium text-foreground mb-1.5">
-            Company / Organization / Institution
-          </label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            autoComplete="organization"
-            placeholder="e.g. Acme Tech Solutions"
-            className={inputStyle}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="inquiry-type" className="block text-sm font-medium text-foreground mb-1.5">
-            What can we help you with? <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="need" className="block text-sm font-medium text-foreground mb-1.5">
+            What do you need? <span aria-hidden="true" className="text-destructive">*</span>
           </label>
           <select
-            id="inquiry-type"
-            name="inquiry-type"
+            id="need"
+            name="need"
             required
             className={selectStyle}
           >
-            <option value="">Select an inquiry type</option>
-            {INQUIRY_TYPES.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-1.5">
-            Estimated Budget Range ({config.code})
-          </label>
-          <select
-            id="budget"
-            name="budget"
-            className={selectStyle}
-          >
-            <option value="">Select budget range (optional)</option>
-            {budgetOptions.map((b) => (
-              <option key={b.value} value={b.value}>
-                {b.label}
+            <option value="">Select an option</option>
+            {WHAT_DO_YOU_NEED_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
               </option>
             ))}
           </select>
@@ -242,15 +210,15 @@ export function ContactForm() {
             name="message"
             required
             rows={5}
-            placeholder="e.g. Tell us about your project, target audience, timeline, and goals..."
+            placeholder="Tell us about your requirements, project scope, ideas, or questions..."
             className={`${inputStyle} resize-none`}
           />
         </div>
 
         {/* Response SLA Callout Banner */}
-        <div className="flex items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 font-medium">
-          <CheckCircle2 className="h-4 w-4 shrink-0" aria-hidden="true" />
-          <span>Guarantee: Our senior technical team responds within 1 business day.</span>
+        <div className="flex items-center gap-3 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-xs sm:text-sm text-foreground font-medium">
+          <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+          <span>We respond to all verified inquiries within 1 business day.</span>
         </div>
 
         {/* Validation Error Banner directly above Submit button */}
@@ -268,7 +236,7 @@ export function ContactForm() {
               Sending...
             </>
           ) : (
-            'Send Message'
+            'Talk to NeelStack'
           )}
         </Button>
 
@@ -284,3 +252,4 @@ export function ContactForm() {
     </div>
   )
 }
+

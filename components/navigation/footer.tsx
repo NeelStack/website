@@ -102,25 +102,25 @@ export function Footer() {
         <div className="max-w-4xl mx-auto space-y-6 relative z-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold text-primary">
             <Sparkles className="h-3.5 w-3.5" />
-            Ready to Build Something Exceptional?
+            Building the Software &amp; AI Systems of Tomorrow
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
-            Let&apos;s Engineer Your Next Product
+            Have a Software, AI or Product Idea?
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Partner with senior software architects to design, build, and launch software people love using.
+            Talk to our engineering team. We design, build, and deploy software products, AI systems, and digital platforms.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <motion.div whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
               <Button asChild variant="gradient" size="lg" className="glow-cta px-8 text-base">
-                <Link href="/request-quote">
-                  Start Your Project <ArrowRight className="h-4 w-4" />
+                <Link href="/contact">
+                  Talk to NeelStack <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
             </motion.div>
             <motion.div whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
               <Button asChild variant="outline" size="lg">
-                <Link href="/book-consultation">Book Technical Call</Link>
+                <Link href="/products">Explore Products</Link>
               </Button>
             </motion.div>
           </div>
@@ -133,8 +133,16 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <FooterLogo />
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Building proprietary AI and SaaS products while partnering with businesses to design, develop and scale modern software solutions.
+            <p className="mt-2 text-xs font-bold text-primary tracking-wide">
+              Software Products • AI Systems • Product Engineering
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
+              NeelStack Solutions builds software products, AI-powered systems and digital platforms for businesses and organizations.
+            </p>
+            <p className="mt-2 text-xs font-mono text-foreground">
+              <a href="mailto:contact@neelstack.com" className="hover:text-primary transition-colors">
+                contact@neelstack.com
+              </a>
             </p>
 
             {/* Social links */}
@@ -158,7 +166,6 @@ export function Footer() {
           <FooterColumn title="Products" links={FOOTER_NAV.products} />
           <FooterColumn title="Services" links={FOOTER_NAV.services} />
           <FooterColumn title="Company" links={FOOTER_NAV.company} />
-          <FooterColumn title="Industries" links={FOOTER_NAV.industries} />
         </div>
 
         <div className="border-t border-border py-6 flex flex-col md:flex-row items-center justify-between gap-4">

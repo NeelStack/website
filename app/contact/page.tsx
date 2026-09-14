@@ -1,6 +1,6 @@
 import type React from 'react'
 import type { Metadata } from 'next'
-import { Clock, Mail, MapPin, Globe } from 'lucide-react'
+import { Clock, Mail, Globe, ShieldCheck } from 'lucide-react'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
@@ -11,9 +11,9 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Contact NeelStack — Enterprise Software & AI Development Company in India',
+  title: 'Contact NeelStack Solutions | Talk to Our Team',
   description:
-    'Connect with NeelStack Solutions in India. Inquire about custom enterprise software, AI chatbot development, agentic workflows, or hire dedicated software engineers. Response within 1 business day.',
+    'Have a software, AI or product idea? Connect with NeelStack Solutions. Inquire about products, system integrations, or technology exploration.',
   alternates: {
     canonical: '/contact',
   },
@@ -34,38 +34,34 @@ interface ContactCard {
 const CONTACT_CARDS: ContactCard[] = [
   {
     icon: Mail,
-    title: 'Email',
+    title: 'Official Contact Email',
     lines: [
-      // Note: no href here — rendered via SafeEmailLink to avoid Cloudflare email obfuscation
-      { label: 'General & Inquiry', value: SITE_CONFIG.email.general },
+      { label: 'Public Inquiries & Communication', value: SITE_CONFIG.email.general },
     ],
   },
   {
     icon: Globe,
-    title: 'Distributed Operations',
+    title: 'Company & Operations',
     lines: [
-      { label: 'Core Base', value: 'Gorakhpur, Uttar Pradesh, India' },
-      { label: 'Delivery Model', value: 'Remote-first, serving clients worldwide' },
+      { label: 'Registered Location', value: 'Gorakhpur, Uttar Pradesh, India' },
+      { label: 'Workforce Model', value: 'Remote-first product & engineering team' },
     ],
   },
   {
     icon: Clock,
-    title: 'Timezone Synchronization',
+    title: 'Response SLA',
     lines: [
-      { label: 'India', value: 'Active IST (Indian Standard Time)' },
-      { label: 'Global Coverage', value: 'Developer handoffs align to support EST & CET' },
+      { label: 'Operating Timezone', value: 'Indian Standard Time (IST)' },
+      { label: 'Communication Standard', value: 'Founder & engineering response within 1 business day' },
     ],
   },
-]
-
-const INQUIRY_TYPES = [
-  'AI Application Development / Agents',
-  'Modern Web Applications (Next.js / React)',
-  'Custom Software & SaaS Product Dev',
-  'Workflow & Business Automation',
-  'REST API & Backend Engineering',
-  'Technology Consulting & System Audit',
-  'Other',
+  {
+    icon: ShieldCheck,
+    title: 'Data & Communication Privacy',
+    lines: [
+      { label: 'Privacy Standard', value: 'All inquiries and project details are held strictly confidential' },
+    ],
+  },
 ]
 
 export default function ContactPage() {
@@ -74,37 +70,24 @@ export default function ContactPage() {
       <JsonLd
         data={{
           '@context': 'https://schema.org',
-          '@type': 'LocalBusiness',
-          name: 'NeelStack Solutions Private Limited',
+          '@type': 'Organization',
+          name: SITE_CONFIG.legalName,
           image: `${getSiteUrl()}/opengraph-image`,
           url: `${getSiteUrl()}/contact`,
           email: 'contact@neelstack.com',
-          priceRange: '$$',
           address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Gorakhpur',
             addressLocality: 'Gorakhpur',
             addressRegion: 'Uttar Pradesh',
-            postalCode: '273001',
+            postalCode: '273406',
             addressCountry: 'IN',
           },
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: 26.7606,
-            longitude: 83.3732,
-          },
-          areaServed: [
-            { '@type': 'City', name: 'Gorakhpur' },
-            { '@type': 'State', name: 'Uttar Pradesh' },
-            { '@type': 'Country', name: 'India' },
-            { '@type': 'AdministrativeArea', name: 'Worldwide' },
-          ],
         }}
       />
       <PageHero
-        badge="Get in touch"
-        title="Let's Build Something Together"
-        description="Whether you have a product in mind, want to design a custom application, or have questions about our stack — we are here to help. We respond within one business day."
+        badge="Contact NeelStack"
+        title="Have a Software, AI or Product Idea? Talk to Our Team."
+        description="Whether you are interested in our products, exploring software architectures, or looking to collaborate — we'd love to hear from you."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />
 
@@ -144,8 +127,6 @@ export default function ContactPage() {
                             )}
                             <dd>
                               {line.value.includes('@') ? (
-                                // Use SafeEmailLink for email addresses to prevent
-                                // Cloudflare email obfuscation from creating 4xx cdn-cgi links
                                 <SafeEmailLink
                                   user={line.value.split('@')[0]}
                                   domain={line.value.split('@')[1]}
@@ -169,3 +150,4 @@ export default function ContactPage() {
     </MarketingLayout>
   )
 }
+

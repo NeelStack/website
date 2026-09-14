@@ -74,16 +74,18 @@ export async function POST(req: Request) {
     if (type === 'general') {
       const cleanService = escapeHtml(body.service) || 'General Inquiries'
       const cleanCompany = escapeHtml(body.company) || 'Not specified'
+      const cleanPhone = escapeHtml(body.phone) || 'Not provided'
       const cleanMessage = escapeHtml(body.message)
 
-      subject = `NeelStack Contact: General Inquiry from ${cleanName}`
+      subject = `NeelStack Contact: Inquiry from ${cleanName}`
       htmlContent = `
         <div style="font-family: sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eaeaea; border-radius: 10px;">
           <h2 style="border-bottom: 1px solid #eaeaea; padding-bottom: 10px; color: #000;">New Contact Inquiry</h2>
           <p><strong>Name:</strong> ${cleanName}</p>
           <p><strong>Email:</strong> ${cleanEmail}</p>
           <p><strong>Company:</strong> ${cleanCompany}</p>
-          <p><strong>Interested Service:</strong> ${cleanService}</p>
+          <p><strong>Phone:</strong> ${cleanPhone}</p>
+          <p><strong>Topic / Need:</strong> ${cleanService}</p>
           <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 15px;">
             <p style="margin: 0;"><strong>Message:</strong></p>
             <p style="margin: 5px 0 0 0; white-space: pre-wrap; line-height: 1.5;">${cleanMessage}</p>

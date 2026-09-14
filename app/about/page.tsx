@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import {
   Code,
   Compass,
   Cpu,
   Layers,
-  CheckCircle2,
   Hourglass,
-  Layout,
   Lock,
   LineChart,
   Terminal,
@@ -14,23 +13,12 @@ import {
   Heart,
   Shield,
   Lightbulb,
+  Sparkles,
+  Bot,
+  Brain,
+  Rocket,
+  ArrowRight,
 } from 'lucide-react'
-
-function IconGithub({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-    </svg>
-  )
-}
-
-function IconLinkedin({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-    </svg>
-  )
-}
 import Image from 'next/image'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -39,108 +27,102 @@ import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import { AccreditationBadges } from '@/components/ui/accreditation-badges'
-import Link from 'next/link'
+import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'About NeelStack — Enterprise AI & Software Development Company in India',
+  title: 'About NeelStack Solutions | Software Products & AI Systems',
   description:
-    'Learn about NeelStack — an AI-first software engineering and product company in India. Discover our mission, engineering values, principles, and the journey building enterprise-grade software and AI systems.',
+    'Learn about NeelStack Solutions — a software products and AI systems company incorporated in India in August 2026. Discover our vision, engineering principles, and product roadmap.',
   alternates: {
     canonical: '/about',
   },
 }
 
 const VALUES = [
-  { icon: Code, title: 'Engineering Excellence', description: 'We hold ourselves to the highest standards. Clean code, scalable architecture, and maintainability are non-negotiable.' },
-  { icon: Compass, title: 'Transparency', description: 'We are honest about where we are today and where we are going. Transparency with our clients and users builds lasting trust.' },
-  { icon: Hourglass, title: 'Long-term Thinking', description: 'We design software to scale and grow for the next 10+ years. We do not compromise on technical debt for short-term gain.' },
-  { icon: Cpu, title: 'AI-first Innovation', description: 'We actively design systems that harness artificial intelligence to simplify workflows and solve real-world problems.' },
-  { icon: Heart, title: 'Customer Success', description: 'Our custom software delivery focus is centered on driving tangible business outcomes and building partnerships.' },
-  { icon: Lightbulb, title: 'Continuous Learning', description: 'We invest heavily in refining our stack, testing new architectures, and adopting superior developer tools.' },
-  { icon: Shield, title: 'Security by Design', description: 'Data protection and secure boundaries are coded directly into our system architectures from day one.' },
-  { icon: Terminal, title: 'Developer Experience', description: 'We care deeply about clean environments, fast rebuild times, and tools that make software engineering a pleasure.' },
-  { icon: Activity, title: 'Performance by Default', description: 'We construct low-latency systems. Optimization is integrated into our core development cycles, not treated as an afterthought.' },
-  { icon: Layers, title: 'Scalable Architecture', description: 'Modular designs, structured database schemas, and decoupled workflows ensure our platforms adapt on-demand.' },
+  { icon: Code, title: 'Engineering Excellence', description: 'We hold ourselves to the highest standards. Clean code, deterministic architecture, and maintainability are fundamental.' },
+  { icon: Compass, title: 'Honesty & Transparency', description: 'We are direct about where our products are today and where we are going. Transparency with our users builds enduring trust.' },
+  { icon: Hourglass, title: 'Long-term Thinking', description: 'We design software systems built to endure and evolve. We do not take shortcuts that compromise long-term architecture.' },
+  { icon: Cpu, title: 'AI-First Innovation', description: 'We build systems that leverage artificial intelligence and autonomous agent workflows to simplify complex business operations.' },
+  { icon: Shield, title: 'Security & Privacy by Design', description: 'Zero-retention data policies and strict security boundaries are engineered into our product architectures from day one.' },
+  { icon: Terminal, title: 'Developer Craftsmanship', description: 'We maintain strict type systems, modular codebases, and robust automated build verification across all repositories.' },
+  { icon: Activity, title: 'Performance by Default', description: 'Sub-second interactions, client-side WebAssembly compute, and low-latency architectures are our default baseline.' },
+  { icon: Layers, title: 'Modular Architecture', description: 'Composable services, structured relational schemas, and decoupled agent protocols ensure our platforms scale smoothly.' },
+  { icon: Lightbulb, title: 'Continuous R&D', description: 'We invest aggressively into frontier AI capabilities, autonomous multi-agent coordination, and Model Context Protocol (MCP) tooling.' },
 ]
 
 const PRINCIPLES = [
-  { title: 'Build for Maintainability', description: 'Write readable, self-documenting code. Future developers should understand the architecture instantly.' },
-  { title: 'Simplicity Over Complexity', description: 'Avoid unnecessary abstractions. Build the simplest system that solves the problem robustly.' },
-  { title: 'Value-driven AI Integration', description: 'Only deploy AI models where they create measurable value, rather than following temporary hype cycles.' },
-  { title: 'Performance & Security Default', description: 'Every query, interface transition, and route is designed for fast loads and strict data isolation by default.' },
-  { title: 'Automation Over Repetition', description: 'If a workflow is performed more than twice, automate it. We script deployments, integration checks, and releases.' },
-  { title: 'Build Reusable Systems', description: 'Form modular components and utilities. Reusable packages ensure velocity and reliability across all builds.' },
-  { title: 'Continuous Improvement', description: 'Regularly audit, profile, and refactor existing architectures to eliminate bottlenecks.' },
+  { title: 'Build for Maintainability', description: 'Write readable, self-documenting code. Any engineer should be able to reason through the system architecture immediately.' },
+  { title: 'Simplicity Over Complexity', description: 'Avoid unnecessary abstractions. Engineer the cleanest, most reliable architecture that solves the problem decisively.' },
+  { title: 'Value-Driven AI Integration', description: 'Deploy AI agents and models where they create genuine utility and intelligence, not superficial hype.' },
+  { title: 'Privacy & Security First', description: 'Protect user and organization data through client-side processing, localized compute, and strict tenant boundaries.' },
+  { title: 'Automate Relentlessly', description: 'Script and automate testing, build validation, and deployments to maintain high velocity and zero regressions.' },
+  { title: 'Modular & Extensible', description: 'Build reusable packages, composable tools, and standardized protocols across every product layer.' },
 ]
 
 const WHY_NEELSTACK = [
-  { title: 'Frontier AI-First Architecture', description: 'We architect autonomous multi-agent runtimes, Model Context Protocol (MCP) integrations, and GraphRAG memory pipelines natively into enterprise systems.' },
-  { title: 'Modern AI & Cloud Stack', description: 'We leverage Next.js 16 App Router, FastAPI, LangGraph, Qdrant vector databases, Rust WebAssembly, and Docker for speed, intelligence, and data security.' },
-  { title: 'Transparent Communication', description: 'We build in public and provide clients with absolute clarity regarding system scope and progress.' },
-  { title: 'Product Mindset', description: 'We build our own SaaS platforms, meaning we understand the challenges of hosting, scaling, and conversion optimization firsthand.' },
-  { title: 'Long-term Partnerships', description: 'We run as a technology partner, consulting on technical roadmaps and product strategies over many years.' },
-  { title: 'Clean Engineering', description: 'No shortcut codes, no ignored type checks. We enforce strict TypeScript and automated verification pipelines.' },
+  { title: 'Frontier AI & Agentic Runtimes', description: 'We research and build autonomous multi-agent systems, Model Context Protocol (MCP) integrations, and contextual company intelligence.' },
+  { title: 'Modern Engineering Stack', description: 'We build with Next.js App Router, TypeScript, Python FastAPI, WebAssembly, Docker, and PostgreSQL for speed, resilience, and reliability.' },
+  { title: 'Product Discipline', description: 'We build and operate our own software products, giving us firsthand insight into real-world performance, usability, and scale.' },
+  { title: 'Clear Product Roadmap', description: 'We focus our engineering on high-impact products across productivity, education operations, and enterprise AI orchestration.' },
 ]
 
 const JOURNEY = [
-  { status: 'live', name: 'ToolVines', detail: 'Browser-based utility platform providing PDF, image, video, annotation and document tools with AI-powered features — built for individuals, professionals, and businesses who need fast, no-install browser utilities.', label: 'Live (2026)' },
-  { status: 'launching', name: 'Lifeasia Pharma Website', detail: 'Corporate website for Lifeasia Pharma — a pharmaceutical company that develops, brands, markets, and distributes healthcare products while partnering with certified third-party manufacturers for product development.', label: 'Delivering Soon' },
-  { status: 'launching', name: 'K.D. Singh Public School', detail: 'Custom school management and digital presence solution for K.D. Singh Public School, Gorakhpur — covering institutional operations, student management, and communication workflows.', label: 'Delivering Soon' },
-  { status: 'launching', name: 'New Model Convent School', detail: 'Digital platform and school management system for New Model Convent School, Ghazipur — streamlining admissions, attendance, fee management, and parent communication.', label: 'Delivering Soon' },
-  { status: 'launching', name: 'DhruvaOS', detail: 'AI-powered School Management & Education Operating System. Covers admissions, attendance, fee collection, timetables, teacher tools, parent communication, and AI-driven institutional analytics for schools, colleges, and coaching institutes.', label: 'Demo Launch: Sept 30, 2026' },
-  { status: 'dev', name: 'NaukariMitra', detail: 'AI-powered government job preparation platform providing exam guidance, mock tests, previous papers, study resources and personalized learning assistance.', label: 'In Development' },
-  { status: 'dev', name: 'SarkariMitra', detail: 'AI-powered citizen assistance platform helping people discover government schemes, benefits, public services, eligibility criteria, required documents and application guidance through conversational AI.', label: 'In Development' },
+  {
+    name: 'ToolVines (toolvines.com)',
+    status: 'live',
+    label: 'Live Product',
+    detail: 'Browser-based productivity platform providing fast PDF, image, document, and AI tools with zero server-side file retention and client-side WebAssembly processing.',
+  },
+  {
+    name: 'DhruvaOS (dhruvaos.com · Launching 2 October 2026)',
+    status: 'launching',
+    label: 'Ready for Launch — Launching 2 October 2026',
+    detail: "NeelStack's unified school operating system, ready for launch and currently onboarding early pilot institutions. Features school onboarding, admin setup, CMS, official school website, mobile app, desktop app, institutional management, and intelligent AI workflows.",
+  },
+  {
+    name: 'AI Workforce Platform / AI Company OS',
+    status: 'dev',
+    label: 'Research & Product Direction',
+    detail: 'An AI-powered company operating layer exploring specialized autonomous agents (Executive, Engineering, Operations, Strategy) for organizational intelligence and workflow automation.',
+  },
+  {
+    name: 'NaukariMitra (naukarimitra.in)',
+    status: 'planned',
+    label: 'Planned Product',
+    detail: 'Planned career exploration and competitive exam preparation platform with guided learning workflows and structured resources.',
+  },
+  {
+    name: 'SarakariMitra (sarakarimitra.org)',
+    status: 'planned',
+    label: 'Planned Product',
+    detail: 'Planned public services and citizen guidance platform designed to help users discover and navigate government schemes and public documentation.',
+  },
 ]
-
-const AVATAR_MAP: Record<string, string> = {
-  leadership: '/images/illustrations/avatar-leader.png',
-  'leadership-female': '/images/illustrations/avatar-cofounder-female.png',
-  engineering: '/images/illustrations/avatar-engineer.png',
-  business: '/images/illustrations/avatar-business.png',
-}
 
 const LEADERSHIP = [
   {
+    name: 'Shyam Chaurasiya',
+    role: 'Founder & Legal CEO',
+    badge: 'Founder & Legal CEO',
+    bio: 'Founder, legal CEO, and ultimate accountable decision-maker directing technology architecture, company vision, and product execution across all NeelStack platforms.',
+    category: 'leadership',
+    avatarKey: '/images/illustrations/avatar-leader.png',
+  },
+  {
     name: 'Neelam Chaurasiya',
     role: 'Co-founder & Business Operations',
-    bio: "Co-directs corporate strategy, business operations, and organizational planning to drive NeelStack's growth and product delivery.",
+    badge: 'Co-founder',
+    bio: 'Oversees company operations, organizational planning, and corporate strategy to guide NeelStack through its foundational growth and commercialization.',
     category: 'leadership',
-    avatarKey: 'leadership-female',
+    avatarKey: '/images/illustrations/avatar-cofounder-female.png',
   },
   {
-    name: 'Shyam Chaurasiya',
-    role: 'Founder & Engineering Lead',
-    bio: 'Leads product architecture, technology strategy, and overall engineering direction across all NeelStack products and client projects.',
-    category: 'leadership',
-    avatarKey: 'leadership',
-  },
-  {
-    name: 'Shyam Singh',
-    role: 'Senior Full Stack Developer',
-    bio: 'Full stack engineer working across frontend and backend systems, building and shipping product features and client software.',
-    category: 'engineering',
-    avatarKey: 'engineering',
-  },
-  {
-    name: 'Rakesh Kushwaha',
-    role: 'Senior Software Engineer',
-    bio: 'Core engineering team member responsible for backend systems, database architecture, and platform infrastructure.',
-    category: 'engineering',
-    avatarKey: 'engineering',
-  },
-  {
-    name: 'Vishnu Chaurasiya',
-    role: 'Senior Software Engineer',
-    bio: 'Focuses on frontend engineering, UI/UX implementation, and building scalable client-side product interfaces.',
-    category: 'engineering',
-    avatarKey: 'engineering',
-  },
-  {
-    name: 'Pradeep Kumar Maurya',
-    role: 'Business & Marketing',
-    bio: 'Manages client relationships, business development, and go-to-market strategy for NeelStack products and services.',
-    category: 'business',
-    avatarKey: 'business',
+    name: 'NeelStack AI CEO',
+    role: 'Strategic AI Operating Partner',
+    badge: 'AI Executive Partner',
+    bio: 'Executive agentic intelligence partner supporting strategic analysis, multi-agent workforce coordination, bottleneck identification, and operational simulations alongside the human founder.',
+    category: 'ai-leadership',
+    avatarKey: '/images/illustrations/avatar-leader.png',
   },
 ]
 
@@ -148,42 +130,53 @@ export default function AboutPage() {
   return (
     <MarketingLayout>
       <PageHero
-        badge="About NeelStack"
-        title="Engineering Software That Delivers Real Business Value"
-        description="NeelStack is a software engineering company based in India. We build custom software for clients across education, healthcare, and enterprise sectors — while developing our own AI-powered SaaS products."
+        badge="About NeelStack Solutions"
+        title="Building the Software and AI Systems of Tomorrow"
+        description="NeelStack Solutions Private Limited is a technology company incorporated in India in August 2026, building software products, AI-powered systems, and modern digital platforms."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 
       <TrustBarSection />
       <AccreditationBadges />
 
-      {/* Corporate Philosophy */}
+      {/* Corporate Philosophy & Vision */}
       <Section className="bg-card/60 backdrop-blur-sm border-t border-border/60">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 items-center">
-            <div>
-              <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
-                Our Mission
-              </span>
-              <h2 className="font-heading text-3xl font-extrabold text-foreground md:text-4xl text-balance">
-                Building proprietary SaaS platforms while engineering custom client solutions
-              </h2>
-              <p className="mt-5 text-base text-muted-foreground leading-relaxed">
-                NeelStack is a focused, engineering-first software company. We believe in the power of simplicity, 
-                high-agency execution, and transparent communication. We build our own proprietary AI products 
-                while partnering with startups, SMBs, and healthcare/education providers globally to deliver custom builds.
-              </p>
-              <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-                Rather than operating as a legacy outsourcing shop, we act as a modern product lab. We apply the 
-                exact same code formatting, strict TypeScript rules, and optimized deployment pipelines to client systems 
-                as we do to our own codebases.
-              </p>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 items-start">
+            <div className="space-y-6">
+              <div>
+                <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+                  Our Mission &amp; Vision
+                </span>
+                <h2 className="font-heading text-3xl font-extrabold text-foreground md:text-4xl tracking-tight text-balance">
+                  Empowering organizations with intelligent software and autonomous systems
+                </h2>
+              </div>
+              
+              <div className="p-6 rounded-2xl border border-primary/20 bg-primary/5 space-y-3">
+                <h3 className="font-heading text-base font-bold text-primary uppercase tracking-wider">Our Vision</h3>
+                <p className="text-base text-foreground leading-relaxed font-medium">
+                  &ldquo;Build technology that allows organizations and founders to operate with greater intelligence, automation and speed.&rdquo;
+                </p>
+              </div>
 
-              {/* Founding Story & Location Context */}
-              <div className="mt-8 p-6 rounded-2xl border border-primary/20 bg-primary/5 space-y-3">
-                <h3 className="font-heading text-lg font-bold text-foreground">Our Story & Location</h3>
+              <div className="p-6 rounded-2xl border border-border/70 bg-card/80 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-heading text-base font-bold text-foreground uppercase tracking-wider">Long-Term Vision</h3>
+                  <Link href="/whitepapers/ai-company-operating-system" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                    Whitepaper <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Founded in <strong className="text-foreground">Gorakhpur, Uttar Pradesh, India</strong>, NeelStack was established to prove that enterprise-grade AI software and product architecture can be built from anywhere when driven by technical discipline, high agency, and strong engineering fundamentals.
+                  NeelStack aims to build the <strong>AI Company Operating System</strong> — an intelligent executive workforce platform (AI CEO, CTO, CFO, COO) that coordinates organizational intelligence, persistent institutional memory, and workflow execution alongside human founders.
+                </p>
+              </div>
+
+              {/* Founding Story & Location */}
+              <div className="p-6 rounded-2xl border border-border/70 bg-card/40 space-y-3">
+                <h3 className="font-heading text-sm font-bold text-foreground uppercase tracking-wider">Company Background</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary engines: <strong className="text-foreground">NeelStack Services</strong> (cash flow &amp; enterprise engineering), <strong className="text-foreground">DhruvaOS</strong> (School Operating System SaaS), and <strong className="text-foreground">ToolVines</strong> (browser utilities &amp; traffic platform).
                 </p>
               </div>
             </div>
@@ -193,9 +186,9 @@ export default function AboutPage() {
               {WHY_NEELSTACK.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-border bg-background/60 backdrop-blur-sm p-5"
+                  className="rounded-2xl border border-border bg-background/60 backdrop-blur-sm p-5 space-y-2 hover:border-primary/30 transition-colors"
                 >
-                  <h3 className="font-heading text-sm font-bold text-foreground mb-1.5">{item.title}</h3>
+                  <h3 className="font-heading text-sm font-bold text-foreground">{item.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
               ))}
@@ -204,40 +197,41 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Our Journey timeline */}
+      {/* Product Roadmap & Journey */}
       <Section>
         <Container>
           <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
-              Transparent Progress
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+              Product Roadmap
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
-              Our Journey & Current Progress
+              Our Products &amp; Current Progress
             </h2>
             <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-              We believe in showing exactly what we are building today without exaggerations or fake timelines.
+              A transparent view of our live software, upcoming launches, and research initiatives.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="space-y-6">
+            <div className="space-y-4">
               {JOURNEY.map((item) => (
                 <div
                   key={item.name}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 hover:border-primary/30 transition-colors"
                 >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2.5 mb-1">
-                      <h3 className="font-heading text-lg font-bold text-foreground">{item.name}</h3>
-                      <span className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-2xs font-medium ${
+                  <div className="flex-1 space-y-1.5">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <h3 className="font-heading text-base font-bold text-foreground">{item.name}</h3>
+                      <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${
                         item.status === 'live' ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400' :
                         item.status === 'launching' ? 'border-amber-500/30 bg-amber-500/10 text-amber-400' :
-                        'border-blue-500/30 bg-blue-500/10 text-blue-400'
+                        item.status === 'dev' ? 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400' :
+                        'border-violet-500/30 bg-violet-500/10 text-violet-400'
                       }`}>
                         {item.label}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground">{item.detail}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{item.detail}</p>
                   </div>
                 </div>
               ))}
@@ -246,68 +240,59 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Team Section */}
+      {/* Leadership Section */}
       <Section className="border-t border-border">
         <Container>
           <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
-              Our Team
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+              Company Leadership
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
-              The People Behind NeelStack
+              Founders &amp; Leadership
             </h2>
             <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-              A focused team of engineers and business professionals building software that lasts.
+              Guiding NeelStack with technical discipline, long-term vision, and focused execution.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {LEADERSHIP.map((person) => (
-              <div
-                key={person.name}
-                className={`rounded-2xl border bg-card overflow-hidden flex flex-col ${
-                  person.category === 'leadership'
-                    ? 'border-primary/30 ring-1 ring-primary/10'
-                    : person.category === 'engineering'
-                    ? 'border-blue-500/20 bg-blue-500/5'
-                    : 'border-emerald-500/20 bg-emerald-500/5'
-                }`}
-              >
-                {/* Avatar section */}
-                <div className={`relative flex items-end justify-center pt-8 pb-0 border-b border-border/40 ${
-                  person.category === 'leadership' ? 'bg-gradient-to-b from-primary/8 to-primary/3' :
-                  person.category === 'engineering' ? 'bg-gradient-to-b from-blue-500/8 to-blue-500/3' :
-                  'bg-gradient-to-b from-emerald-500/8 to-emerald-500/3'
-                }`}>
-                  <Image
-                    src={AVATAR_MAP[person.avatarKey]}
-                    alt={`${person.name} avatar`}
-                    width={140}
-                    height={140}
-                    className="h-36 w-auto object-contain object-bottom"
-                    style={{
-                      filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.12))',
-                    }}
-                  />
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {LEADERSHIP.map((person) => {
+              const isAi = person.category === 'ai-leadership'
+              return (
+                <div
+                  key={person.name}
+                  className={`rounded-3xl border ${isAi ? 'border-cyan-500/30 bg-gradient-to-b from-card to-cyan-950/10' : 'border-primary/20 bg-card'} overflow-hidden flex flex-col shadow-lg transition-all duration-300 hover:shadow-xl`}
+                >
+                  {/* Avatar section */}
+                  <div className={`relative flex items-end justify-center pt-8 pb-0 border-b border-border/40 ${isAi ? 'bg-gradient-to-b from-cyan-500/15 to-transparent' : 'bg-gradient-to-b from-primary/10 to-transparent'}`}>
+                    <Image
+                      src={person.avatarKey}
+                      alt={`${person.name} portrait`}
+                      width={160}
+                      height={160}
+                      className="h-40 w-auto object-contain object-bottom"
+                      style={{
+                        filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.15))',
+                      }}
+                    />
+                  </div>
 
-                {/* Info section */}
-                <div className="p-6 flex flex-col gap-3">
-                  <div className={`inline-flex self-start items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${
-                    person.category === 'leadership' ? 'bg-primary/10 text-primary border border-primary/20' :
-                    person.category === 'engineering' ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20' :
-                    'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                  }`}>
-                    {person.category === 'leadership' ? 'Leadership' : person.category === 'engineering' ? 'Engineering' : 'Business'}
+                  {/* Info section */}
+                  <div className="p-6 md:p-7 flex flex-col gap-3 flex-1 justify-between">
+                    <div className="space-y-3">
+                      <div className={`inline-flex self-start items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${isAi ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/25' : 'bg-primary/10 text-primary border border-primary/20'}`}>
+                        {person.badge || 'Leadership'}
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground tracking-tight">{person.name}</h3>
+                        <p className={`text-xs font-bold uppercase tracking-widest mt-1 ${isAi ? 'text-cyan-600 dark:text-cyan-400' : 'text-primary'}`}>{person.role}</p>
+                      </div>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-3 border-t border-border/40">{person.bio}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-heading text-xl font-black text-foreground tracking-tight">{person.name}</h3>
-                    <p className="text-xs font-bold text-primary uppercase tracking-widest mt-1">{person.role}</p>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed pt-2 border-t border-border/40">{person.bio}</p>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </Container>
       </Section>
@@ -316,7 +301,7 @@ export default function AboutPage() {
       <Section className="bg-card/60 backdrop-blur-sm border-t border-border">
         <Container>
           <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
               How We Build
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
@@ -342,8 +327,8 @@ export default function AboutPage() {
       <Section>
         <Container>
           <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
-              Core Pillars
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+              Core Values
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
               What We Stand For
@@ -378,3 +363,4 @@ export default function AboutPage() {
     </MarketingLayout>
   )
 }
+

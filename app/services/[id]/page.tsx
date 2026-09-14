@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { SERVICES } from '@/constants/services'
+import { getSiteUrl } from '@/lib/site-url'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
@@ -100,7 +101,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           provider: {
             '@type': 'Organization',
             name: 'NeelStack',
-            url: 'https://neelstack.com',
+            url: getSiteUrl(),
           },
           description: service.description,
         }}

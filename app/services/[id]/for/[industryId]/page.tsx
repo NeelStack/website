@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { SERVICES } from '@/constants/services'
+import { getSiteUrl } from '@/lib/site-url'
 import { INDUSTRIES } from '@/constants/industries'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -72,7 +73,7 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
           provider: {
             '@type': 'Organization',
             name: 'NeelStack',
-            url: 'https://neelstack.com',
+            url: getSiteUrl(),
           },
           description: `Custom ${service.name.toLowerCase()} solutions designed specifically for ${industry.name}.`,
         }}

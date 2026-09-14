@@ -178,7 +178,7 @@ export default function DhruvaOSPage() {
           provider: {
             '@type': 'Organization',
             name: 'NeelStack',
-            url: 'https://neelstack.com',
+            url: getSiteUrl(),
           },
         }}
       />
@@ -197,56 +197,59 @@ export default function DhruvaOSPage() {
           </div>
 
           {/* Top Tagline Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
-            <span className="text-xs font-semibold text-primary/80">
-              India&apos;s Modern AI-Powered EdOS &middot; Demo Launch: September 30, 2026
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-sm">
+            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-semibold text-emerald-400">
+              Ready for Launch &middot; Pilot School Onboarding Open
             </span>
           </div>
 
           {/* Heading Pitch */}
           <div className="max-w-4xl mx-auto space-y-6">
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-foreground">
-              AI-Powered Education <br />
+              DhruvaOS &mdash; School <br />
               <span className="bg-gradient-to-r from-primary via-cyan-300 to-violet-400 bg-clip-text text-transparent">
                 Operating System
               </span>
             </h1>
             
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Digitally transform schools, colleges, universities, and educational institutions with one unified platform for administration, academics, communication, finance, analytics, and AI-powered learning.
+              DhruvaOS is NeelStack&apos;s unified school operating system, ready for launch and currently onboarding early pilot institutions. A complete digital infrastructure designed for school onboarding, admin setup, CMS, official website, mobile and desktop apps, institutional management, and intelligent AI workflows.
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact"
+              href="/contact?subject=DhruvaOS%20Pilot%20Partnership"
               className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-primary/10 hover:shadow-primary/20"
             >
-              Book Demo
+              Join Pilot Program
             </Link>
             <Link
               href="/book-consultation"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-border bg-muted/40 hover:bg-muted/60 text-foreground hover:text-white text-sm font-semibold transition-all duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-border bg-muted/40 hover:bg-muted/60 text-foreground text-sm font-semibold transition-all duration-200"
             >
-              Become a Pilot School
+              Book Architecture Walkthrough
             </Link>
           </div>
+          <p className="text-xs font-mono text-muted-foreground/80">
+            Dedicated portal <span className="text-primary font-semibold">dhruvaos.com</span> launching 2 October 2026
+          </p>
 
-          {/* Animated Statistics Banner */}
-          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-6 border-y border-border/40 bg-card/60 backdrop-blur-sm backdrop-blur-sm rounded-2xl px-6">
+          {/* Product Overview Cards */}
+          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-6 border-y border-border/40 bg-card/60 backdrop-blur-sm rounded-2xl px-6">
             <div className="text-center">
-              <span className="font-mono text-xl sm:text-2xl font-bold text-foreground">99.9%</span>
-              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Uptime SLA</p>
+              <span className="font-mono text-base sm:text-lg font-bold text-foreground">2 Oct 2026</span>
+              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Demo Launch</p>
             </div>
             <div className="text-center border-x border-border/40">
-              <span className="font-mono text-xl sm:text-2xl font-bold text-foreground">10x</span>
-              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Workload Velocity</p>
+              <span className="font-mono text-base sm:text-lg font-bold text-foreground">9 Core Pillars</span>
+              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Unified System</p>
             </div>
             <div className="text-center">
-              <span className="font-mono text-xl sm:text-2xl font-bold text-foreground">100%</span>
-              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Data Sovereignty</p>
+              <span className="font-mono text-base sm:text-lg font-bold text-foreground">Multi-Tenant</span>
+              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Data Isolation</p>
             </div>
           </div>
 

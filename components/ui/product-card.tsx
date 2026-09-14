@@ -104,20 +104,14 @@ export function ProductCard({ product, className, variant = 'default' }: Product
           {isDeployed && meta?.deployedLabel && (
             <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/8 px-2 py-0.5 text-[10px] font-semibold text-emerald-400">
               <Rocket className="h-2.5 w-2.5" aria-hidden="true" />
-              Deployed
+              {meta.deployedLabel}
             </span>
           )}
-          {/* Beta date badge */}
-          {isBeta && meta?.betaDate && (
+          {/* Target launch badge */}
+          {meta?.targetLaunch && (
             <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/30 bg-amber-500/8 px-2 py-0.5 text-[10px] font-semibold text-amber-400">
               <Zap className="h-2.5 w-2.5" aria-hidden="true" />
-              August 31 Beta
-            </span>
-          )}
-          {/* School project label */}
-          {meta?.isSchoolProject && (
-            <span className="inline-flex items-center rounded-full border border-purple-500/25 bg-purple-500/8 px-2 py-0.5 text-[10px] font-medium text-purple-400">
-              School Project
+              {meta.targetLaunch}
             </span>
           )}
         </div>

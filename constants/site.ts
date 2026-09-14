@@ -2,22 +2,22 @@ export const SITE_CONFIG = {
   name: 'NeelStack',
   shortName: 'NeelStack',
   fullName: 'NeelStack Solutions Private Limited',
-  tagline: 'Building the Future of Enterprise Software',
+  legalName: 'NeelStack Solutions Private Limited',
+  tagline: 'Building the Software and AI Systems of Tomorrow',
   description:
-    'NeelStack builds enterprise software, AI solutions, SaaS products, ERP systems, and custom applications for startups, SMBs, enterprises, healthcare, government, and organizations worldwide.',
+    'NeelStack Solutions builds software products, AI-powered systems and digital platforms for businesses and organizations.',
   url: 'https://neelstack.com',
   email: {
     general: 'contact@neelstack.com',
     support: 'contact@neelstack.com',
     sales: 'contact@neelstack.com',
-    careers: 'careers@neelstack.com',
+    careers: 'contact@neelstack.com',
   },
   address: {
-    line1: 'Remote-first Operations',
-    line2: 'Based in India',
+    line1: 'Based in India',
     city: 'Gorakhpur',
     state: 'Uttar Pradesh',
-    pincode: '273001',
+    postalCode: '273406',
     country: 'India',
   },
   social: {
@@ -27,12 +27,18 @@ export const SITE_CONFIG = {
     youtube: 'https://www.youtube.com/@NeelStack',
     instagram: 'https://www.instagram.com/_neelstack/',
   },
+  incorporation: {
+    date: '31 August 2026',
+    monthYear: 'August 2026',
+    country: 'India',
+    text: 'Incorporated in India in August 2026.',
+  },
   accreditations: {
     gstin: '09AALCN9356Q1ZA',
     msme: 'UDYAM-UP-32-0131171',
     startupIndia: 'DIPP278202 (Recognized)',
-    cin: 'U62013UP2026PTC217277',
-    mca: 'CIN: U62013UP2026PTC217277',
+    cin: 'U62011UP2026PTC250857',
+    mca: 'CIN: U62011UP2026PTC250857',
   },
 } as const
 

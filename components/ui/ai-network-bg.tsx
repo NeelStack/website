@@ -8,10 +8,15 @@ interface Node {
   z: number // Depth: 0 (closest) to 1 (furthest)
   vx: number
   vy: number
+  ox: number // Origin anchor for organic drift
+  oy: number
+  driftAngle: number
+  driftSpeed: number
   baseRadius: number
   color: string
   pulse: number
   pulseSpeed: number
+  isHub: boolean
 }
 
 interface Signal {
@@ -38,7 +43,7 @@ export function AiNetworkBg() {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const ctx = canvas.getContext('2d', { alpha: true }) // Optimize for transparency
+    const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
 
     let animationFrameId: number
@@ -48,10 +53,8 @@ export function AiNetworkBg() {
     let height = (canvas.height = window.innerHeight * dpr)
     ctx.scale(dpr, dpr)
 
-    // Accessibility check
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    // Resize management (Debounced to prevent garbage collection spikes)
     let resizeTimeout: NodeJS.Timeout
     const handleResize = () => {
       clearTimeout(resizeTimeout)
@@ -59,39 +62,40 @@ export function AiNetworkBg() {
         if (!canvas) return
         width = canvas.width = window.innerWidth * dpr
         height = canvas.height = window.innerHeight * dpr
-        ctx.setTransform(1, 0, 0, 1, 0, 0) // Reset transform
+        ctx.setTransform(1, 0, 0, 1, 0, 0)
         ctx.scale(dpr, dpr)
-        // We do NOT re-init the network, we just let nodes flow into the new bounds
-      }, 250)
+      }, 200)
     }
 
     window.addEventListener('resize', handleResize)
 
-    // Vibrant neon brand colors
-    const COLORS = [
-      'rgba(56, 189, 248, 0.65)',  // Cyan
-      'rgba(96, 165, 250, 0.65)',  // Blue
-      'rgba(192, 132, 252, 0.65)', // Violet
-      'rgba(52, 211, 153, 0.65)',  // Emerald
+    // Curated brand neural palette
+    const COLORS_DARK = [
+      'rgba(56, 189, 248, 0.75)',  // Electric Cyan
+      'rgba(99, 102, 241, 0.75)',  // Indigo
+      'rgba(168, 85, 247, 0.75)',  // Violet
+      'rgba(52, 211, 153, 0.75)',  // Emerald
+    ]
+
+    const COLORS_LIGHT = [
+      'rgba(2, 132, 199, 0.65)',   // Ocean Blue
+      'rgba(79, 70, 229, 0.65)',   // Royal Indigo
+      'rgba(147, 51, 234, 0.65)',  // Purple
+      'rgba(5, 150, 105, 0.65)',   // Emerald
     ]
 
     const LINE_COLORS = {
-      dark: 'rgba(56, 189, 248, 0.15)',
-      light: 'rgba(2, 132, 199, 0.15)',
+      dark: 'rgba(56, 189, 248, 0.14)',
+      light: 'rgba(2, 132, 199, 0.12)',
     }
 
-    const SIGNAL_COLORS = [
-      '#38bdf8', // Cyan
-      '#60a5fa', // Blue
-      '#c084fc', // Violet
-      '#34d399', // Emerald
-    ]
+    const SIGNAL_COLORS = ['#38bdf8', '#818cf8', '#c084fc', '#34d399']
 
     let nodes: Node[] = []
     let signals: Signal[] = []
     let nodePulses: NodePulse[] = []
-    const maxNodes = 80 // Slightly increased for 3D density
-    const connectionDist = 160 // Connection distance in pixels
+    const maxNodes = 75
+    const connectionDist = 165
     let mouseX = -9999
     let mouseY = -9999
 
@@ -101,40 +105,44 @@ export function AiNetworkBg() {
       nodePulses = []
       const w = window.innerWidth
       const h = window.innerHeight
-      const speedMultiplier = prefersReducedMotion ? 0.05 : 1
+      const speedMult = prefersReducedMotion ? 0.05 : 1
 
       for (let i = 0; i < maxNodes; i++) {
         let x = Math.random() * w
         let y = Math.random() * h
 
-        // Clear center zone for title text legibility
+        // Soft exclusion zone around center heading
         const cx = w / 2
         const cy = h / 2
         const distFromCenter = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2)
-        if (distFromCenter < 200) {
+        if (distFromCenter < 190) {
           const angle = Math.random() * Math.PI * 2
-          const radius = 200 + Math.random() * 100
+          const radius = 190 + Math.random() * 110
           x = cx + Math.cos(angle) * radius
           y = cy + Math.sin(angle) * radius
         }
 
-        const z = Math.random() // 0 to 1
+        const z = Math.random() // Depth from 0 (front) to 1 (back)
+        const isHub = i % 12 === 0 && z < 0.45 // 5-6 major cluster gateway hubs
 
         nodes.push({
           x,
           y,
           z,
-          // Deeper nodes move slower (parallax)
-          vx: (Math.random() - 0.5) * 0.3 * (1 - z * 0.6) * speedMultiplier, 
-          vy: (Math.random() - 0.5) * 0.3 * (1 - z * 0.6) * speedMultiplier,
-          baseRadius: Math.random() * 1.5 + 2.0,
-          color: COLORS[i % COLORS.length],
+          ox: x,
+          oy: y,
+          vx: (Math.random() - 0.5) * 0.28 * (1 - z * 0.5) * speedMult,
+          vy: (Math.random() - 0.5) * 0.28 * (1 - z * 0.5) * speedMult,
+          driftAngle: Math.random() * Math.PI * 2,
+          driftSpeed: (0.003 + Math.random() * 0.005) * speedMult,
+          baseRadius: isHub ? Math.random() * 1.5 + 3.2 : Math.random() * 1.2 + 1.8,
+          color: COLORS_DARK[i % COLORS_DARK.length],
           pulse: Math.random() * Math.PI * 2,
-          pulseSpeed: (0.01 + Math.random() * 0.02) * speedMultiplier,
+          pulseSpeed: (0.015 + Math.random() * 0.02) * speedMult,
+          isHub,
         })
       }
-      
-      // Sort nodes back-to-front so closer nodes render on top
+
       nodes.sort((a, b) => b.z - a.z)
     }
 
@@ -153,40 +161,45 @@ export function AiNetworkBg() {
 
     initNetwork()
 
-    // Render loop
-    const render = () => {
+    let lastTime = performance.now()
+
+    const render = (time: number) => {
+      const dt = Math.min((time - lastTime) / 16.666, 2.0)
+      lastTime = time
+
       const w = window.innerWidth
       const h = window.innerHeight
       ctx.clearRect(0, 0, w, h)
 
       const isDark = document.documentElement.classList.contains('dark')
       const lineColor = isDark ? LINE_COLORS.dark : LINE_COLORS.light
-      // Performance optimization: disable shadowBlur on low-end or dynamically, 
-      // but we will keep a very low blur for closer nodes to maintain the 10/10 look.
+      const palette = isDark ? COLORS_DARK : COLORS_LIGHT
 
-      // 1. Update Nodes & Physics
-      nodes.forEach((node) => {
-        node.x += node.vx
-        node.y += node.vy
+      // 1. Update Nodes with gentle drift + mouse interaction
+      nodes.forEach((node, idx) => {
+        node.color = palette[idx % palette.length]
+        node.driftAngle += node.driftSpeed * dt
 
-        // Wrap edges with a slight margin so they don't pop abruptly
-        const margin = 50
+        // Organic sinusoidal wave offset
+        node.x += (node.vx + Math.cos(node.driftAngle) * 0.15) * dt
+        node.y += (node.vy + Math.sin(node.driftAngle) * 0.15) * dt
+
+        // Soft border wrap
+        const margin = 60
         if (node.x < -margin) node.x = w + margin
         if (node.x > w + margin) node.x = -margin
         if (node.y < -margin) node.y = h + margin
         if (node.y > h + margin) node.y = -margin
 
-        // Mouse Repulsion (only affects closer nodes strongly)
+        // Interactive mouse interaction (repulsion & subtle magnet)
         if (mouseX > 0 && mouseY > 0) {
           const dx = node.x - mouseX
           const dy = node.y - mouseY
           const dist = Math.sqrt(dx * dx + dy * dy)
-          
-          // Influence radius varies by depth (closer nodes dodge more)
-          const influence = 180 * (1 - node.z * 0.5) 
-          
-          if (dist < influence) {
-            const force = (1 - dist / influence) * 0.4 * (1 - node.z)
+          const influence = 170 * (1 - node.z * 0.4)
+
+          if (dist < influence && dist > 1) {
+            const force = (1 - dist / influence) * 0.35 * (1 - node.z) * dt
             const angle = Math.atan2(dy, dx)
             node.x += Math.cos(angle) * force
             node.y += Math.sin(angle) * force
@@ -194,85 +207,112 @@ export function AiNetworkBg() {
         }
       })
 
-      // 2. Draw Connections (O(N^2) but constrained)
+      // 2. Draw Connections
       const activeConnections: { from: number; to: number; dist: number; avgZ: number }[] = []
 
       for (let i = 0; i < nodes.length; i++) {
         const n1 = nodes[i]
         for (let j = i + 1; j < nodes.length; j++) {
           const n2 = nodes[j]
-          
-          // Only connect nodes that are reasonably close in Z-space (depth)
-          // This creates distinct "layers" of networks rather than a messy spaghetti ball
+
           const zDist = Math.abs(n1.z - n2.z)
-          if (zDist > 0.3) continue 
+          if (zDist > 0.32) continue
 
           const dx = n1.x - n2.x
           const dy = n1.y - n2.y
-          
-          // Fast distance check squared to avoid Math.sqrt if out of range
-          if (dx * dx + dy * dy > connectionDist * connectionDist) continue
-          
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          
+          const distSq = dx * dx + dy * dy
+
+          if (distSq > connectionDist * connectionDist) continue
+
+          const dist = Math.sqrt(distSq)
           const avgZ = (n1.z + n2.z) / 2
           activeConnections.push({ from: i, to: j, dist, avgZ })
 
-          const alphaMultiplier = (1.0 - dist / connectionDist) * (1 - avgZ * 0.7)
-          
+          const alphaMultiplier = (1.0 - dist / connectionDist) * (1 - avgZ * 0.65)
+
           ctx.beginPath()
           ctx.moveTo(n1.x, n1.y)
           ctx.lineTo(n2.x, n2.y)
           ctx.strokeStyle = lineColor
           ctx.globalAlpha = alphaMultiplier
-          ctx.lineWidth = 1.0 + (1 - avgZ) * 0.5 // Closer lines are thicker
+          ctx.lineWidth = 0.9 + (1 - avgZ) * 0.5
           ctx.stroke()
         }
       }
-      ctx.globalAlpha = 1.0 // Reset
 
-      // 3. Draw Nodes (Pre-sorted back to front)
+      // Draw active cursor thread to closest nodes
+      if (mouseX > 0 && mouseY > 0) {
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i]
+          if (n.z > 0.4) continue
+          const dx = n.x - mouseX
+          const dy = n.y - mouseY
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < 130) {
+            ctx.beginPath()
+            ctx.moveTo(mouseX, mouseY)
+            ctx.lineTo(n.x, n.y)
+            ctx.strokeStyle = isDark ? 'rgba(56, 189, 248, 0.22)' : 'rgba(2, 132, 199, 0.18)'
+            ctx.globalAlpha = (1 - dist / 130) * (1 - n.z)
+            ctx.lineWidth = 1.1
+            ctx.stroke()
+          }
+        }
+      }
+
+      ctx.globalAlpha = 1.0
+
+      // 3. Draw Nodes (with Gateway Hub concentric rings)
       nodes.forEach((node) => {
-        node.pulse += node.pulseSpeed
-        const scale = 1 - node.z * 0.6 // Furthest nodes are 40% size
-        const currentRadius = (node.baseRadius + Math.sin(node.pulse) * 0.5) * scale
+        node.pulse += node.pulseSpeed * dt
+        const scale = 1 - node.z * 0.55
+        const currentRadius = (node.baseRadius + Math.sin(node.pulse) * 0.4) * scale
+
+        // Outer concentric glow ring on cluster hub nodes
+        if (node.isHub) {
+          const hubGlow = (node.baseRadius * 2.6 + Math.sin(node.pulse * 1.5) * 2) * scale
+          ctx.beginPath()
+          ctx.arc(node.x, node.y, hubGlow, 0, Math.PI * 2)
+          ctx.strokeStyle = node.color
+          ctx.globalAlpha = 0.25 * (1 - node.z)
+          ctx.lineWidth = 1
+          ctx.stroke()
+        }
 
         ctx.beginPath()
         ctx.arc(node.x, node.y, currentRadius, 0, Math.PI * 2)
         ctx.fillStyle = node.color
-        
-        // Depth-based opacity and glow
-        const alpha = 1 - node.z * 0.7
-        ctx.globalAlpha = alpha
-        
-        if (isDark && node.z < 0.4) {
-          ctx.shadowBlur = 8 * (1 - node.z) // Only closer nodes get expensive blur
+        ctx.globalAlpha = 1 - node.z * 0.65
+
+        if (isDark && node.z < 0.35) {
+          ctx.shadowBlur = 9 * (1 - node.z)
           ctx.shadowColor = node.color
         } else {
           ctx.shadowBlur = 0
         }
-        
+
         ctx.fill()
       })
+
       ctx.shadowBlur = 0
       ctx.globalAlpha = 1.0
 
-      // 4. Spawn Neural Pulses
-      if (signals.length < 40 && activeConnections.length > 0 && Math.random() < 0.25) {
+      // 4. Neural Signal Packets
+      if (signals.length < 35 && activeConnections.length > 0 && Math.random() < 0.22) {
         const conn = activeConnections[Math.floor(Math.random() * activeConnections.length)]
         signals.push({
           fromIndex: conn.from,
           toIndex: conn.to,
           progress: 0,
-          speed: (0.015 + Math.random() * 0.02) * (prefersReducedMotion ? 0.2 : 1),
+          speed: (0.016 + Math.random() * 0.02) * (prefersReducedMotion ? 0.2 : 1),
           color: SIGNAL_COLORS[Math.floor(Math.random() * SIGNAL_COLORS.length)],
         })
       }
 
-      // 5. Update and Draw Signals
+      // 5. Update & Draw Signals
       for (let i = signals.length - 1; i >= 0; i--) {
         const sig = signals[i]
-        sig.progress += sig.speed
+        sig.progress += sig.speed * dt
 
         const nFrom = nodes[sig.fromIndex]
         const nTo = nodes[sig.toIndex]
@@ -284,8 +324,8 @@ export function AiNetworkBg() {
               y: nTo.y,
               z: nTo.z,
               radius: 1.5,
-              maxRadius: (24 + Math.random() * 10) * (1 - nTo.z * 0.5),
-              alpha: 0.8 * (1 - nTo.z * 0.5),
+              maxRadius: (22 + Math.random() * 10) * (1 - nTo.z * 0.45),
+              alpha: 0.75 * (1 - nTo.z * 0.45),
               color: sig.color,
             })
           }
@@ -297,19 +337,19 @@ export function AiNetworkBg() {
           const currentX = nFrom.x + (nTo.x - nFrom.x) * sig.progress
           const currentY = nFrom.y + (nTo.y - nFrom.y) * sig.progress
           const currentZ = nFrom.z + (nTo.z - nFrom.z) * sig.progress
-          
-          const scale = 1 - currentZ * 0.6
-          
+
+          const scale = 1 - currentZ * 0.55
+
           ctx.beginPath()
-          ctx.arc(currentX, currentY, 2.0 * scale, 0, Math.PI * 2)
+          ctx.arc(currentX, currentY, 2.2 * scale, 0, Math.PI * 2)
           ctx.fillStyle = sig.color
-          ctx.globalAlpha = 1 - currentZ * 0.5
-          
+          ctx.globalAlpha = 1 - currentZ * 0.45
+
           if (isDark && currentZ < 0.4) {
             ctx.shadowBlur = 8
             ctx.shadowColor = sig.color
           }
-          
+
           ctx.fill()
           ctx.shadowBlur = 0
           ctx.globalAlpha = 1.0
@@ -319,10 +359,10 @@ export function AiNetworkBg() {
       // 6. Draw Pulse Waves
       for (let i = nodePulses.length - 1; i >= 0; i--) {
         const pulse = nodePulses[i]
-        pulse.radius += 0.8 * (1 - pulse.z * 0.5) // Further pulses expand slower
-        pulse.alpha -= 0.025
-        
-        if (pulse.radius > pulse.maxRadius) pulse.alpha -= 0.05 // Fade out fast at edge
+        pulse.radius += 0.85 * (1 - pulse.z * 0.5) * dt
+        pulse.alpha -= 0.024 * dt
+
+        if (pulse.radius > pulse.maxRadius) pulse.alpha -= 0.05 * dt
 
         if (pulse.alpha <= 0) {
           nodePulses.splice(i, 1)
@@ -332,7 +372,7 @@ export function AiNetworkBg() {
         ctx.beginPath()
         ctx.arc(pulse.x, pulse.y, pulse.radius, 0, Math.PI * 2)
         ctx.strokeStyle = pulse.color
-        ctx.globalAlpha = pulse.alpha
+        ctx.globalAlpha = Math.max(0, pulse.alpha)
         ctx.lineWidth = 1.2 * (1 - pulse.z * 0.5)
         ctx.stroke()
         ctx.globalAlpha = 1.0
@@ -341,7 +381,7 @@ export function AiNetworkBg() {
       animationFrameId = requestAnimationFrame(render)
     }
 
-    render()
+    animationFrameId = requestAnimationFrame(render)
 
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -356,7 +396,7 @@ export function AiNetworkBg() {
     <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
       <canvas
         ref={canvasRef}
-        className="w-full h-full block opacity-95 dark:opacity-50 mix-blend-screen"
+        className="w-full h-full block opacity-95 dark:opacity-75"
       />
     </div>
   )

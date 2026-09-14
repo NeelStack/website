@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { getSiteUrl } from '@/lib/site-url'
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -9,6 +10,6 @@ export async function GET(request: Request) {
     status: 'success',
     whitepaperId: id,
     message: `Thank you for your interest in NeelStack's technical whitepaper (${id}).`,
-    downloadUrl: `https://neelstack.com/resources/whitepapers/${id}.pdf`,
+    downloadUrl: `${getSiteUrl()}/resources/whitepapers/${id}.pdf`,
   })
 }

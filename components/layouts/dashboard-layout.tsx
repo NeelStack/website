@@ -1,5 +1,5 @@
 /**
- * Dashboard Layout — placeholder for future authenticated portal.
+ * Dashboard Layout — reserved for future authenticated portal.
  * Provides a sidebar + main content structure ready for expansion.
  */
 import { cn } from '@/lib/utils'
