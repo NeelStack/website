@@ -42,6 +42,11 @@ These rules apply to all AI agents working on this repository. They are derived 
 
 ## 6. Git Branch Workflow & Conflict Prevention ("Fix It For Always")
 
+- **STRICT RULE — NEVER COMMIT OR PUSH (USER ONLY):**
+  - AI agents must **NEVER** run `git commit` or `git push` autonomously under any circumstance.
+  - The agent's responsibility is strictly limited to code changes, local linting, testing, and builds (`pnpm run ci-check`).
+  - Staging, committing, and remote pushes must be performed exclusively by the USER.
+
 - **The Problem (Squash-Merge Divergence):**
   When GitHub PRs from `dev` to `main` are merged using **"Squash and Merge"**, GitHub creates a synthetic commit on `main` that does not exist in `dev`'s commit history.
   Continuing feature development on `dev` causes Git to compare against a stale common ancestor, resulting in false merge conflicts across 20+ files on subsequent PRs.
@@ -51,14 +56,16 @@ These rules apply to all AI agents working on this repository. They are derived 
   2. **Post-Merge Ancestry Sync (Run immediately after every PR merge):**
      ```bash
      pnpm run sync:main
-     git push origin dev
+     # Push is performed by the user:
+     # git push origin dev
      ```
      This runs `git fetch origin && git merge -s ours origin/main`. It establishes `origin/main`'s latest commit as a parent of `dev` without altering working files, ensuring subsequent PRs merge with **zero conflicts**.
   3. **Clean Reset Option (When switching fresh):**
      ```bash
      git checkout main && git pull origin main
      git checkout -B dev main
-     git push origin dev --force-with-lease
+     # Force push is performed by the user:
+     # git push origin dev --force-with-lease
      ```
   4. **No Conflict Markers in Code:** Never commit `<<<<<<< HEAD`, `=======`, or `>>>>>>>`. Always inspect with `git status` and test build before pushing.
 

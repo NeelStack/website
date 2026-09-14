@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, Bot, Cloud, Laptop, Sliders, Smartphone, Sparkles, CheckCircle2 } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Button } from '@/components/ui/button'
@@ -18,7 +18,6 @@ const CAPABILITIES = [
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]',
     tags: ['Multi-Tenant RBAC', 'PostgreSQL', 'High Throughput'],
     badge: 'Multi-Tenant',
-    spanClass: 'lg:col-span-2',
   },
   {
     id: 'ai-development',
@@ -31,7 +30,6 @@ const CAPABILITIES = [
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(6,182,212,0.2)]',
     tags: ['LangGraph Agents', 'Model Context Protocol (MCP)', 'GraphRAG & Mem0'],
     badge: 'Agentic AI & MCP',
-    spanClass: 'lg:col-span-1',
   },
   {
     id: 'web-apps',
@@ -44,7 +42,6 @@ const CAPABILITIES = [
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]',
     tags: ['Next.js 16 SSR', 'Rust WebAssembly', 'Sub-Second Edge'],
     badge: 'Next.js 16 & WASM',
-    spanClass: 'lg:col-span-1',
   },
   {
     id: 'mobile-apps',
@@ -57,7 +54,6 @@ const CAPABILITIES = [
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(6,182,212,0.2)]',
     tags: ['60 FPS Motion', 'React Native', 'Offline-First'],
     badge: '60 FPS Motion',
-    spanClass: 'lg:col-span-2',
   },
   {
     id: 'cloud-devops',
@@ -70,7 +66,6 @@ const CAPABILITIES = [
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]',
     tags: ['Docker & K8s', 'AWS Edge', 'Terraform IaC'],
     badge: 'Zero Downtime',
-    spanClass: 'lg:col-span-2',
   },
   {
     id: 'product-design',
@@ -83,44 +78,19 @@ const CAPABILITIES = [
     glowColor: 'group-hover:shadow-[0_0_30px_rgba(6,182,212,0.2)]',
     tags: ['Figma Systems', 'WCAG AA 95+', 'Micro-Interactions'],
     badge: 'WCAG AA 95+',
-    spanClass: 'lg:col-span-1',
   },
 ]
 
 function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index: number }) {
   const Icon = item.icon
 
-  // Mouse tilt effect
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [4, -4]), { stiffness: 300, damping: 22 })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-4, 4]), { stiffness: 300, damping: 22 })
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const width = rect.width
-    const height = rect.height
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
-    x.set(mouseX / width - 0.5)
-    y.set(mouseY / height - 0.5)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={`group rounded-[2rem] p-7 md:p-8 flex flex-col justify-between space-y-6 card-hover card-ai-hover relative overflow-hidden transition-all duration-300 ${item.glowColor} card-standard ${item.spanClass || ''}`}
+      transition={{ duration: 0.5, delay: index * 0.07 }}
+      className={`group rounded-[2rem] p-7 md:p-8 flex flex-col justify-between space-y-6 bg-card dark:bg-[#0b1329] border border-border/80 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden ${item.glowColor}`}
     >
       <div className="space-y-4 relative z-10">
         <div className="flex items-center justify-between">
@@ -142,7 +112,10 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
         {/* Feature Tags Row */}
         <div className="flex flex-wrap gap-1.5 pt-2">
           {item.tags.map((tag) => (
-            <span key={tag} className="text-[11px] font-semibold text-muted-foreground bg-black/20 px-2.5 py-1 rounded-lg border border-border/60">
+            <span
+              key={tag}
+              className="text-[11px] font-medium text-slate-700 dark:text-slate-300 bg-slate-100/90 hover:bg-slate-200/80 dark:bg-white/[0.05] dark:hover:bg-white/[0.08] px-2.5 py-1 rounded-lg border border-slate-200/80 dark:border-white/10 transition-colors shadow-2xs"
+            >
               {tag}
             </span>
           ))}
@@ -161,12 +134,12 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
 
 export function CapabilitiesSection() {
   return (
-    <section className="py-24 bg-transparent relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-24 bg-transparent relative overflow-hidden">
       {/* Subtle ambient glows */}
       <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full bg-cyan-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-violet-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
 
-      <Container className="space-y-12 relative z-10">
+      <Container className="space-y-8 sm:space-y-12 relative z-10">
         {/* Section header — staggered entrance */}
         <motion.div
           initial="hidden"

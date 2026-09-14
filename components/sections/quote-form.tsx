@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { CopyEmailButton } from '@/components/ui/copy-email-button'
 import { CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react'
@@ -28,6 +28,30 @@ export function QuoteForm() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const { config } = useCurrency()
+  const firstInputRef = useRef<HTMLInputElement>(null)
+  const formContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Smooth auto-scroll to form on arrival
+    const timer = setTimeout(() => {
+      if (formContainerRef.current) {
+        const headerOffset = 90
+        const elementPosition = formContainerRef.current.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        })
+
+        setTimeout(() => {
+          firstInputRef.current?.focus({ preventScroll: true })
+        }, 450)
+      }
+    }, 300)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   const budgetOptions = config.budgetRanges
     ? config.budgetRanges.map((b) => ({ value: b.id, label: b.label }))
@@ -141,7 +165,14 @@ export function QuoteForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-border bg-black/10 backdrop-blur-xl p-6 sm:p-8 md:p-10 shadow-lg">
+    <div
+      ref={formContainerRef}
+      id="quote-form"
+      className="scroll-mt-28 relative overflow-hidden rounded-3xl border border-border bg-card dark:bg-[#0b1329] p-6 sm:p-8 md:p-10 shadow-xl transition-all duration-300"
+    >
+      {/* Subtle violet/cyan ambient accent top bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-cyan-400" />
+
       <div className="pb-6 mb-6 border-b border-border/60">
         <h3 className="font-heading text-lg font-bold text-foreground">Get a Custom Project Estimate</h3>
         <p className="text-xs text-muted-foreground mt-0.5">Fill out your project brief for a response within 1 business day.</p>
@@ -165,6 +196,7 @@ export function QuoteForm() {
                   First Name <span aria-hidden="true" className="text-destructive">*</span>
                 </label>
                 <input
+                  ref={firstInputRef}
                   id="q-first-name"
                   name="first-name"
                   type="text"
@@ -247,8 +279,8 @@ export function QuoteForm() {
                 Project Type <span aria-hidden="true" className="text-destructive">*</span>
               </label>
               <select id="q-type" name="project-type" required className={selectStyle}>
-                <option value="">Select project type</option>
-                {PROJECT_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+                <option value="" className="bg-card text-foreground dark:bg-[#0c1220] dark:text-slate-100 py-2">Select project type</option>
+                {PROJECT_TYPES.map((t) => <option key={t} value={t} className="bg-card text-foreground dark:bg-[#0c1220] dark:text-slate-100 py-2">{t}</option>)}
               </select>
             </div>
 
@@ -258,9 +290,9 @@ export function QuoteForm() {
                 Estimated Budget ({config.code})
               </label>
               <select id="q-budget" name="budget" className={selectStyle}>
-                <option value="">Select estimated budget</option>
+                <option value="" className="bg-card text-foreground dark:bg-[#0c1220] dark:text-slate-100 py-2">Select estimated budget</option>
                 {budgetOptions.map((b) => (
-                  <option key={b.value} value={b.value}>
+                  <option key={b.value} value={b.value} className="bg-card text-foreground dark:bg-[#0c1220] dark:text-slate-100 py-2">
                     {b.label}
                   </option>
                 ))}
@@ -272,8 +304,8 @@ export function QuoteForm() {
                 Expected Timeline
               </label>
               <select id="q-timeline" name="timeline" className={selectStyle}>
-                <option value="">Select timeline</option>
-                {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
+                <option value="" className="bg-card text-foreground dark:bg-[#0c1220] dark:text-slate-100 py-2">Select timeline</option>
+                {TIMELINES.map((t) => <option key={t} value={t} className="bg-card text-foreground dark:bg-[#0c1220] dark:text-slate-100 py-2">{t}</option>)}
               </select>
             </div>
 

@@ -74,7 +74,7 @@ export function FloatingConversionWidget() {
   }, [isOpen])
 
   return (
-    <div ref={widgetRef} className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 select-none">
+    <div ref={widgetRef} className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-3 select-none">
       {/* Expanded Popover */}
       <AnimatePresence>
         {isOpen && (
@@ -83,7 +83,7 @@ export function FloatingConversionWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.92 }}
             transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-            className="w-[340px] rounded-2xl border border-border/80 bg-card/98 dark:bg-card/98 backdrop-blur-xl shadow-2xl shadow-black/10 dark:shadow-black/30 overflow-hidden"
+            className="w-[calc(100vw-2rem)] sm:w-[340px] max-w-[340px] rounded-2xl border border-border/80 bg-card/98 dark:bg-card/98 backdrop-blur-xl shadow-2xl shadow-black/10 dark:shadow-black/30 overflow-hidden"
           >
             {/* Header */}
             <div className="px-5 pt-5 pb-4 border-b border-border/60 bg-gradient-to-b from-primary/[0.04] to-transparent">

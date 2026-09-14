@@ -17,13 +17,24 @@ export default function RequestQuotePage() {
   return (
     <MarketingLayout>
       <PageHero
-        badge="Custom Software & AI Estimates"
+        badge="Global Software & AI Proposals • USD ($), EUR (€), GBP (£), AED, INR (₹)"
         title="Tell Us About Your Project"
-        description="Submit your project brief below. Our technical architects will evaluate your scope, architecture, and timeline, and deliver a detailed proposal within 1 business day."
+        description="Submit your project brief below. Our senior architects evaluate scope, architecture, and timeline for enterprise clients across the US, UK, UAE, Europe, and India — delivering a detailed proposal within 1 business day."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Request a Quote' }]}
       />
 
-      <section className="py-16" aria-labelledby="quote-form-heading">
+      {/* Quick Jump Action on Mobile / Small Screens */}
+      <div className="flex justify-center -mt-6 mb-8 lg:hidden">
+        <a
+          href="#quote-form"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-violet-500/40 bg-card/80 dark:bg-card/40 backdrop-blur-md text-xs font-semibold text-foreground hover:border-violet-500 hover:text-violet-400 transition-all shadow-sm"
+        >
+          <span>Fill Quote Brief Below</span>
+          <span className="text-violet-400 font-bold">↓</span>
+        </a>
+      </div>
+
+      <section id="form" className="pt-2 pb-16 md:pt-4 md:pb-20 scroll-mt-24" aria-labelledby="quote-form-heading">
         <Container>
           <div className="max-w-3xl mx-auto">
             <h2 id="quote-form-heading" className="sr-only">

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 
 export function PortfolioShowcaseSection() {
   return (
-    <section className="py-24 relative overflow-hidden bg-surface">
+    <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-surface">
       {/* Centered glow spotlight behind heading */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"

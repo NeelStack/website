@@ -25,7 +25,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        'relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-20',
+        'relative overflow-hidden pt-24 pb-8 sm:pt-28 sm:pb-10 md:pt-32 md:pb-12',
         className
       )}
       aria-labelledby="page-hero-heading"
@@ -36,7 +36,7 @@ export function PageHero({
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 70% 50% at 50% 0%, oklch(0.62 0.22 258 / 10%) 0%, transparent 70%)',
+            'radial-gradient(ellipse 75% 55% at 50% 0%, rgba(59,130,246,0.12) 0%, rgba(139,92,246,0.08) 45%, transparent 75%)',
         }}
         aria-hidden="true"
       />

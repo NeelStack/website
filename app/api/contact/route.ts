@@ -12,6 +12,199 @@ function escapeHtml(str: string | null | undefined): string {
     .replace(/'/g, '&#039;')
 }
 
+interface TemplateField {
+  label: string
+  value: string
+  isLink?: 'email' | 'tel'
+  highlight?: boolean
+}
+
+function renderBrandedEmail({
+  badge,
+  badgeBg,
+  badgeText,
+  badgeBorder,
+  headline,
+  subheadline,
+  fields,
+  messageHeading,
+  messageContent,
+  replyEmail,
+  replyName,
+  subject,
+  sourceIp,
+}: {
+  badge: string
+  badgeBg: string
+  badgeText: string
+  badgeBorder: string
+  headline: string
+  subheadline: string
+  fields: TemplateField[]
+  messageHeading: string
+  messageContent?: string
+  replyEmail: string
+  replyName: string
+  subject: string
+  sourceIp: string
+}): string {
+  const now = new Date()
+  const formattedIst = now.toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    dateStyle: 'full',
+    timeStyle: 'medium',
+  })
+
+  const fieldsHtml = fields
+    .map((f, i) => {
+      let valHtml = escapeHtml(f.value)
+      if (f.isLink === 'email') {
+        valHtml = `<a href="mailto:${valHtml}" style="color: #2563eb; text-decoration: none; font-weight: 600;">${valHtml}</a>`
+      } else if (f.isLink === 'tel') {
+        valHtml = `<a href="tel:${valHtml.replace(/\s+/g, '')}" style="color: #2563eb; text-decoration: none; font-weight: 600;">${valHtml}</a>`
+      } else if (f.highlight) {
+        valHtml = `<span style="font-weight: 700; color: #0f172a;">${valHtml}</span>`
+      }
+
+      const bg = i % 2 === 0 ? '#ffffff' : '#f8fafc'
+      return `
+        <tr style="background-color: ${bg};">
+          <td style="padding: 10px 14px; font-size: 13px; color: #64748b; font-weight: 600; width: 38%; border-bottom: 1px solid #f1f5f9;">${escapeHtml(f.label)}</td>
+          <td style="padding: 10px 14px; font-size: 13px; color: #1e293b; border-bottom: 1px solid #f1f5f9;">${valHtml}</td>
+        </tr>
+      `
+    })
+    .join('')
+
+  const replyMailto = `mailto:${replyEmail}?subject=${encodeURIComponent(`Re: ${subject}`)}`
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${escapeHtml(headline)}</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f1f5f9; padding: 30px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 620px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08); border: 1px solid #e2e8f0;">
+          
+          <!-- 1. Header Banner -->
+          <tr>
+            <td style="background-color: #070b14; padding: 28px 32px; text-align: left;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td>
+                    <span style="display: inline-block; font-size: 20px; font-weight: 900; color: #ffffff; letter-spacing: -0.02em;">
+                      Neel<span style="color: #38bdf8;">Stack</span>
+                    </span>
+                    <span style="font-size: 11px; color: #94a3b8; margin-left: 8px; font-weight: 500;">
+                      Software Products &amp; AI Systems
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top: 16px;">
+                    <span style="display: inline-block; background-color: ${badgeBg}; color: ${badgeText}; border: 1px solid ${badgeBorder}; padding: 4px 12px; border-radius: 9999px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">
+                      ${escapeHtml(badge)}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top: 10px;">
+                    <h1 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 800; line-height: 1.3;">
+                      ${escapeHtml(headline)}
+                    </h1>
+                    <p style="margin: 4px 0 0 0; color: #94a3b8; font-size: 13px;">
+                      ${escapeHtml(subheadline)}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- 2. Structured Data Table -->
+          <tr>
+            <td style="padding: 24px 32px 16px 32px;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+                ${fieldsHtml}
+              </table>
+            </td>
+          </tr>
+
+          ${
+            messageContent
+              ? `
+          <!-- 3. Message / Project Scope Card -->
+          <tr>
+            <td style="padding: 0 32px 24px 32px;">
+              <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #2563eb; border-radius: 8px; padding: 16px 20px;">
+                <p style="margin: 0 0 8px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b;">
+                  ${escapeHtml(messageHeading)}
+                </p>
+                <div style="font-size: 14px; line-height: 1.6; color: #1e293b; white-space: pre-wrap; font-family: inherit;">${escapeHtml(messageContent)}</div>
+              </div>
+            </td>
+          </tr>
+          `
+              : ''
+          }
+
+          <!-- 4. Quick Action Button -->
+          <tr>
+            <td style="padding: 0 32px 28px 32px; text-align: left;">
+              <table role="presentation" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="border-radius: 8px; background-color: #2563eb;">
+                    <a href="${replyMailto}" target="_blank" style="display: inline-block; padding: 12px 24px; font-size: 13px; font-weight: 700; color: #ffffff; text-decoration: none; border-radius: 8px; font-family: inherit;">
+                      Reply to ${escapeHtml(replyName)} &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- 5. Metadata Strip -->
+          <tr>
+            <td style="padding: 16px 32px; background-color: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="font-size: 11px; color: #64748b; line-height: 1.6;">
+                    <strong>Submission Time:</strong> ${formattedIst} (IST)<br>
+                    <strong>Source IP:</strong> ${escapeHtml(sourceIp)} &bull; <strong>Response SLA:</strong> Within 1 Business Day
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- 6. Legal & Entity Footer -->
+          <tr>
+            <td style="padding: 24px 32px; text-align: center; background-color: #ffffff;">
+              <p style="margin: 0; font-size: 11px; font-weight: 700; color: #334155;">
+                NeelStack Solutions Private Limited
+              </p>
+              <p style="margin: 4px 0 0 0; font-size: 10px; color: #64748b; line-height: 1.5;">
+                CIN: U62011UP2026PTC250857 &bull; GSTIN: 09AALCN9356Q1ZA &bull; DPIIT: DIPP278202 &bull; MSME: UDYAM-UP-32-0131171<br>
+                Official Channel: <a href="mailto:contact@neelstack.com" style="color: #64748b; text-decoration: underline;">contact@neelstack.com</a> &bull; Gorakhpur, UP, India
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `.trim()
+}
+
 export async function POST(req: Request) {
   try {
     // 1. Guard against oversized payloads (16KB max)
@@ -24,21 +217,22 @@ export async function POST(req: Request) {
     }
 
     // 2. Extract IP address from headers
-    const ip = req.headers.get('cf-connecting-ip') || 
-               req.headers.get('x-forwarded-for')?.split(',')[0] || 
-               '127.0.0.1'
+    const ip =
+      req.headers.get('cf-connecting-ip') ||
+      req.headers.get('x-forwarded-for')?.split(',')[0] ||
+      '127.0.0.1'
 
     // Rate limit: Max 5 submissions per 60 seconds per IP
     const limiter = rateLimit(ip, { limit: 5, windowMs: 60 * 1000 })
     if (!limiter.success) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again in a minute.' },
-        { 
+        {
           status: 429,
           headers: {
             'X-RateLimit-Limit': limiter.limit.toString(),
             'X-RateLimit-Remaining': limiter.remaining.toString(),
-          }
+          },
         }
       )
     }
@@ -64,84 +258,141 @@ export async function POST(req: Request) {
 
     const resend = new Resend(apiKey)
 
-    // 5. Generate sanitized HTML template email bodies based on form types
+    // 5. Generate high-fidelity branded email bodies based on form type
     let subject = ''
     let htmlContent = ''
 
-    const cleanName = escapeHtml(name)
-    const cleanEmail = escapeHtml(email)
+    const cleanName = String(name).trim()
+    const cleanEmail = String(email).trim()
 
     if (type === 'general') {
-      const cleanService = escapeHtml(body.service) || 'General Inquiries'
-      const cleanCompany = escapeHtml(body.company) || 'Not specified'
-      const cleanPhone = escapeHtml(body.phone) || 'Not provided'
-      const cleanMessage = escapeHtml(body.message)
+      const cleanService = body.service || 'General Software / AI Inquiry'
+      const cleanCompany = body.company || 'Not specified'
+      const cleanPhone = body.phone || 'Not provided'
+      const cleanMessage = body.message || ''
 
-      subject = `NeelStack Contact: Inquiry from ${cleanName}`
-      htmlContent = `
-        <div style="font-family: sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eaeaea; border-radius: 10px;">
-          <h2 style="border-bottom: 1px solid #eaeaea; padding-bottom: 10px; color: #000;">New Contact Inquiry</h2>
-          <p><strong>Name:</strong> ${cleanName}</p>
-          <p><strong>Email:</strong> ${cleanEmail}</p>
-          <p><strong>Company:</strong> ${cleanCompany}</p>
-          <p><strong>Phone:</strong> ${cleanPhone}</p>
-          <p><strong>Topic / Need:</strong> ${cleanService}</p>
-          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 15px;">
-            <p style="margin: 0;"><strong>Message:</strong></p>
-            <p style="margin: 5px 0 0 0; white-space: pre-wrap; line-height: 1.5;">${cleanMessage}</p>
-          </div>
-        </div>
-      `
+      subject = `NeelStack Inquiry: ${cleanName} (${cleanCompany !== 'Not specified' ? cleanCompany : cleanService})`
+      htmlContent = renderBrandedEmail({
+        badge: 'General Software & AI Inquiry',
+        badgeBg: 'rgba(59, 130, 246, 0.15)',
+        badgeText: '#60a5fa',
+        badgeBorder: 'rgba(59, 130, 246, 0.35)',
+        headline: `New Inquiry from ${cleanName}`,
+        subheadline: `Client inquiry received via neelstack.com/contact`,
+        fields: [
+          { label: 'Contact Name', value: cleanName, highlight: true },
+          { label: 'Official Email', value: cleanEmail, isLink: 'email' },
+          { label: 'Company / Org', value: cleanCompany },
+          { label: 'Phone / WhatsApp', value: cleanPhone, isLink: cleanPhone !== 'Not provided' ? 'tel' : undefined },
+          { label: 'Service / Requirement', value: cleanService, highlight: true },
+        ],
+        messageHeading: 'Client Inquiry Details',
+        messageContent: cleanMessage,
+        replyEmail: cleanEmail,
+        replyName: cleanName,
+        subject,
+        sourceIp: ip,
+      })
     } else if (type === 'quote') {
-      const cleanProjectType = escapeHtml(body.projectType) || 'Not specified'
-      const cleanBudget = escapeHtml(body.budget) || 'Not specified'
-      const cleanTimeline = escapeHtml(body.timeline) || 'Not specified'
-      const cleanDescription = escapeHtml(body.description)
-      const cleanCompany = escapeHtml(body.company) || 'Not specified'
-      const cleanPhone = escapeHtml(body.phone) || 'Not specified'
+      const cleanProjectType = body.projectType || 'Custom Software Development'
+      const cleanBudget = body.budget || 'Not specified'
+      const cleanTimeline = body.timeline || 'Not specified'
+      const cleanDescription = body.description || ''
+      const cleanCompany = body.company || 'Not specified'
+      const cleanPhone = body.phone || 'Not specified'
 
-      subject = `NeelStack RFQ: Quote Request from ${cleanName}`
-      htmlContent = `
-        <div style="font-family: sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eaeaea; border-radius: 10px;">
-          <h2 style="border-bottom: 1px solid #eaeaea; padding-bottom: 10px; color: #000;">New Request for Quote</h2>
-          <p><strong>Name:</strong> ${cleanName}</p>
-          <p><strong>Email:</strong> ${cleanEmail}</p>
-          <p><strong>Company:</strong> ${cleanCompany}</p>
-          <p><strong>Phone:</strong> ${cleanPhone}</p>
-          <p><strong>Project Type:</strong> ${cleanProjectType}</p>
-          <p><strong>Budget Range:</strong> ${cleanBudget}</p>
-          <p><strong>Timeline:</strong> ${cleanTimeline}</p>
-          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 15px;">
-            <p style="margin: 0;"><strong>Project Scope:</strong></p>
-            <p style="margin: 5px 0 0 0; white-space: pre-wrap; line-height: 1.5;">${cleanDescription}</p>
-          </div>
-        </div>
-      `
+      subject = `NeelStack RFQ: ${cleanProjectType} — ${cleanName} (${cleanBudget})`
+      htmlContent = renderBrandedEmail({
+        badge: 'Custom Software & AI Estimate (RFQ)',
+        badgeBg: 'rgba(139, 92, 246, 0.15)',
+        badgeText: '#c084fc',
+        badgeBorder: 'rgba(139, 92, 246, 0.35)',
+        headline: `Quote Request: ${cleanProjectType}`,
+        subheadline: `Project proposal request submitted via neelstack.com/request-quote`,
+        fields: [
+          { label: 'Lead Name', value: cleanName, highlight: true },
+          { label: 'Email Address', value: cleanEmail, isLink: 'email' },
+          { label: 'Company Name', value: cleanCompany },
+          { label: 'Phone / WhatsApp', value: cleanPhone, isLink: cleanPhone !== 'Not specified' ? 'tel' : undefined },
+          { label: 'Project Scope', value: cleanProjectType, highlight: true },
+          { label: 'Budget Estimate', value: cleanBudget, highlight: true },
+          { label: 'Target Timeline', value: cleanTimeline },
+        ],
+        messageHeading: 'Project Scope & Requirements Brief',
+        messageContent: cleanDescription,
+        replyEmail: cleanEmail,
+        replyName: cleanName,
+        subject,
+        sourceIp: ip,
+      })
     } else if (type === 'consultation') {
-      const cleanTopic = escapeHtml(body.topic)
+      const cleanTopic = body.topic || ''
+      const cleanPhone = body.phone || 'Not provided'
+
       subject = `NeelStack Consultation: Call Request from ${cleanName}`
-      htmlContent = `
-        <div style="font-family: sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eaeaea; border-radius: 10px;">
-          <h2 style="border-bottom: 1px solid #eaeaea; padding-bottom: 10px; color: #000;">New Consultation Request</h2>
-          <p><strong>Name:</strong> ${cleanName}</p>
-          <p><strong>Email:</strong> ${cleanEmail}</p>
-          <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; margin-top: 15px;">
-            <p style="margin: 0;"><strong>Inquiry Topic:</strong></p>
-            <p style="margin: 5px 0 0 0; white-space: pre-wrap; line-height: 1.5;">${cleanTopic}</p>
-          </div>
-          <p style="font-size: 12px; color: #666; margin-top: 20px;">
-            Reminder: Confirm time slot (Mon – Sat, 9 AM – 7 PM IST) within 1 business day.
-          </p>
-        </div>
-      `
+      htmlContent = renderBrandedEmail({
+        badge: '100% Free Strategy Session',
+        badgeBg: 'rgba(16, 185, 129, 0.15)',
+        badgeText: '#34d399',
+        badgeBorder: 'rgba(16, 185, 129, 0.35)',
+        headline: `Strategy Session: ${cleanName}`,
+        subheadline: `20-minute architecture discussion booked via neelstack.com/book-consultation`,
+        fields: [
+          { label: 'Full Name', value: cleanName, highlight: true },
+          { label: 'Email Address', value: cleanEmail, isLink: 'email' },
+          { label: 'Phone / WhatsApp', value: cleanPhone, isLink: cleanPhone !== 'Not provided' ? 'tel' : undefined },
+          { label: 'Session Type', value: '20-Min Free Engineering Call (Google Meet / Zoom)' },
+          { label: 'Time Window', value: 'Mon – Sat, 9 AM – 7 PM IST' },
+        ],
+        messageHeading: 'Discussion Topic / Architecture Question',
+        messageContent: cleanTopic,
+        replyEmail: cleanEmail,
+        replyName: cleanName,
+        subject,
+        sourceIp: ip,
+      })
+    } else if (type === 'dhruvaos') {
+      const cleanInstitution = body.institutionName || 'Educational Institution'
+      const cleanRole = body.role || 'Institution Leader'
+      const cleanInstitutionType = body.institutionType || 'K-12 School'
+      const cleanStudentStrength = body.studentStrength || '500 – 1,500 Students'
+      const cleanPriorityModule = body.priorityModule || 'Full Unified School Operating System'
+      const cleanPhone = body.phone || 'Not provided'
+      const cleanMessage = body.message || ''
+
+      subject = `DhruvaOS Pilot Lead: ${cleanInstitution} (${cleanName}, ${cleanRole})`
+      htmlContent = renderBrandedEmail({
+        badge: '✦ DhruvaOS Institutional Pilot Program',
+        badgeBg: 'rgba(16, 185, 129, 0.15)',
+        badgeText: '#34d399',
+        badgeBorder: 'rgba(16, 185, 129, 0.35)',
+        headline: `New Institutional Pilot Application`,
+        subheadline: `School onboarding inquiry submitted for DhruvaOS`,
+        fields: [
+          { label: 'Institution Name', value: cleanInstitution, highlight: true },
+          { label: 'Leader / Contact', value: `${cleanName} (${cleanRole})`, highlight: true },
+          { label: 'Official Email', value: cleanEmail, isLink: 'email' },
+          { label: 'Phone / WhatsApp', value: cleanPhone, isLink: cleanPhone !== 'Not provided' ? 'tel' : undefined },
+          { label: 'Institution Type', value: cleanInstitutionType },
+          { label: 'Student Strength', value: cleanStudentStrength, highlight: true },
+          { label: 'Priority Focus Module', value: cleanPriorityModule, highlight: true },
+        ],
+        messageHeading: 'Campus Setup, Software & Migration Requirements',
+        messageContent: cleanMessage,
+        replyEmail: cleanEmail,
+        replyName: cleanName,
+        subject,
+        sourceIp: ip,
+      })
     } else {
       return NextResponse.json({ error: 'Invalid form type specified' }, { status: 400 })
     }
 
-    // 6. Dispatch email via Resend
+    // 6. Dispatch email via Resend with crucial reply_to header
     await resend.emails.send({
-      from: process.env.CONTACT_SENDER_EMAIL || 'NeelStack Forms <onboarding@resend.dev>',
+      from: process.env.CONTACT_SENDER_EMAIL || 'NeelStack Notifications <onboarding@resend.dev>',
       to: process.env.CONTACT_RECEIVER_EMAIL || 'contact@neelstack.com',
+      reply_to: cleanEmail,
       subject: subject,
       html: htmlContent,
     })

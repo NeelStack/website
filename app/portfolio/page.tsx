@@ -61,14 +61,14 @@ const PORTFOLIO_PROJECTS: Project[] = [
     year: '2026',
   },
   {
-    id: 'sarakarimitra',
-    name: 'SarakariMitra',
+    id: 'sarkarimitra',
+    name: 'SarkariMitra',
     description:
       'Planned public services and citizen guidance platform designed to help users discover and navigate government schemes and public documentation.',
     status: 'in-progress',
     category: 'Public Services (Planned)',
     tags: ['Next.js', 'Conversational AI', 'Public Services'],
-    href: '/products/sarakarimitra',
+    href: '/products/sarkarimitra',
     year: '2026',
   },
 ]

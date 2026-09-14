@@ -35,7 +35,7 @@ const COMPARISON_POINTS = [
 
 export function WhyUsSection() {
   return (
-    <section className="py-24 relative overflow-hidden bg-transparent border-t border-border/50">
+    <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-transparent border-t border-border/50">
       {/* Ambient glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"

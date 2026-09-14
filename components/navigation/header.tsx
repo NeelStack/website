@@ -324,10 +324,7 @@ function MobileMenu({
     }
   }, [isOpen])
 
-  // Close on route change
-  useEffect(() => {
-    onClose()
-  }, [pathname, onClose])
+  // (Menu closes on route changes via Header's centralized pathname listener)
 
   if (!isOpen) return null
 
@@ -741,6 +738,10 @@ export function Header() {
     }
   }, [])
 
+  const handleCloseMobile = useCallback(() => {
+    setMobileOpen(false)
+  }, [])
+
   return (
     <>
       <header
@@ -752,7 +753,7 @@ export function Header() {
         )}
         role="banner"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 flex items-center justify-between relative">
           {/* Brand Logo - Fixed size for zero layout jump */}
           <NeelStackLogo size="md" />
 
@@ -765,15 +766,27 @@ export function Header() {
 
           {/* Desktop Right Action Cluster */}
           <div className="hidden lg:flex items-center gap-2.5">
-            {/* Talk AI Trigger Badge */}
+            {/* Talk AI Trigger Badge — Luxury Interactive Capsule */}
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setAiDrawerOpen(true)}
-              className="group inline-flex items-center gap-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/10 hover:bg-cyan-500/20 px-3.5 py-1.5 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:border-cyan-400/50 transition-all duration-200 cursor-pointer"
+              className="group relative inline-flex items-center gap-2 rounded-full border border-cyan-500/30 dark:border-cyan-400/30 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-violet-500/10 hover:from-cyan-500/20 hover:via-blue-500/20 hover:to-violet-500/20 px-3.5 py-1.5 text-xs font-semibold shadow-[0_0_15px_rgba(6,182,212,0.12)] hover:shadow-[0_0_22px_rgba(6,182,212,0.28)] hover:border-cyan-400/60 backdrop-blur-md transition-all duration-200 cursor-pointer overflow-hidden"
+              title="Explore NeelStack AI Architecture & Multi-Agent Systems"
             >
-              <Sparkles className="h-3.5 w-3.5 text-cyan-500 group-hover:rotate-12 transition-transform duration-200" />
-              <span>✦ TALK AI</span>
+              {/* Live AI Status Pulse */}
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
+              </span>
+
+              {/* Icon */}
+              <Sparkles className="h-3.5 w-3.5 text-cyan-500 dark:text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
+
+              {/* Gradient Text */}
+              <span className="font-bold tracking-wide bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 dark:from-cyan-300 dark:via-blue-300 dark:to-violet-300 bg-clip-text text-transparent">
+                Talk AI
+              </span>
             </motion.button>
 
             {/* Theme Toggle */}
@@ -788,18 +801,23 @@ export function Header() {
           </div>
 
           {/* Mobile Actions */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
             <motion.button
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.94 }}
               onClick={() => setAiDrawerOpen(true)}
-              className="inline-flex items-center gap-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 text-[11px] font-semibold text-cyan-600 dark:text-cyan-400"
+              className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/35 bg-gradient-to-r from-cyan-500/15 via-blue-500/15 to-violet-500/15 px-2.5 py-1 text-xs font-bold text-cyan-600 dark:text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.18)]"
+              title="Open NeelStack AI Systems"
             >
-              <Sparkles className="h-3 w-3 animate-pulse text-cyan-400" />
-              AI
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-500" />
+              </span>
+              <Sparkles className="h-3 w-3 text-cyan-500 dark:text-cyan-400" />
+              <span>AI</span>
             </motion.button>
             <ThemeToggle />
             <button
-              className="cursor-pointer rounded-full p-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="h-9 w-9 flex items-center justify-center rounded-xl bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground active:scale-95 transition-all cursor-pointer"
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileOpen}
@@ -814,7 +832,7 @@ export function Header() {
         {mobileOpen && (
           <MobileMenu
             isOpen={mobileOpen}
-            onClose={() => setMobileOpen(false)}
+            onClose={handleCloseMobile}
             onOpenAiDrawer={() => {
               setMobileOpen(false)
               setAiDrawerOpen(true)

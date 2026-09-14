@@ -9,16 +9,24 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_0_20px_oklch(0.62_0.22_258/25%)] [a]:hover:bg-primary/80',
-        gradient: 'bg-gradient-button btn-shimmer text-white shadow-md shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300',
+        default:
+          'bg-primary text-primary-foreground border border-white/20 dark:border-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_16px_rgba(37,99,235,0.25)] hover:bg-primary/90 hover:shadow-[0_0_24px_rgba(59,130,246,0.35)] active:scale-[0.98] transition-all duration-200 [a]:hover:bg-primary/80',
+        gradient:
+          'bg-gradient-button btn-shimmer text-white border border-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_4px_20px_rgba(37,99,235,0.3)] hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(139,92,246,0.35)] active:scale-[0.98] transition-all duration-300',
         outline:
-          'border-border bg-background hover:bg-muted hover:text-foreground hover:border-primary/30 aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
+          'border border-border/80 dark:border-white/15 bg-background/70 dark:bg-card/40 backdrop-blur-md text-foreground hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:shadow-[0_0_20px_rgba(59,130,246,0.18)] aria-expanded:bg-muted active:scale-[0.98] transition-all duration-200',
+        'outline-primary':
+          'border border-primary/50 text-primary bg-transparent hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_22px_rgba(59,130,246,0.25)] active:scale-[0.98] transition-all duration-200',
+        'outline-violet':
+          'border border-violet-500/50 text-violet-500 dark:text-violet-400 bg-transparent hover:bg-violet-500/10 hover:border-violet-400 hover:shadow-[0_0_22px_rgba(139,92,246,0.25)] active:scale-[0.98] transition-all duration-200',
+        'outline-red':
+          'border border-destructive/50 text-destructive bg-transparent hover:bg-destructive/10 hover:border-destructive hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98] transition-all duration-200',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
+          'bg-secondary text-secondary-foreground border border-border/60 hover:bg-secondary/80 hover:border-border active:scale-[0.98] transition-all duration-200 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
         ghost:
-          'hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50',
+          'hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 transition-all duration-150',
         destructive:
-          'bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40',
+          'bg-destructive/10 text-destructive border border-destructive/30 hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40',
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {

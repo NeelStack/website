@@ -123,11 +123,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  colorScheme: 'dark light',
-  themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#070b14' },
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-  ],
+  colorScheme: 'dark',
+  themeColor: '#070b14',
 }
 
 export default function RootLayout({
@@ -138,7 +135,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} ${geist.variable} ${geistMono.variable} bg-background`}
+      className={`${inter.variable} ${jakarta.variable} ${geist.variable} ${geistMono.variable} bg-background text-foreground light`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -150,15 +147,19 @@ export default function RootLayout({
                 const t = localStorage.getItem('theme');
                 if (t === 'dark') {
                   document.documentElement.classList.add('dark');
+                  document.documentElement.classList.remove('light');
                 } else {
+                  document.documentElement.classList.add('light');
                   document.documentElement.classList.remove('dark');
                 }
-              } catch (e) {}
+              } catch (e) {
+                document.documentElement.classList.add('light');
+              }
             `,
           }}
         />
       </head>
-      <body className="font-sans antialiased min-h-screen" suppressHydrationWarning>
+      <body className="font-sans antialiased min-h-screen bg-background text-foreground" suppressHydrationWarning>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-4LKMDMPC3J"
