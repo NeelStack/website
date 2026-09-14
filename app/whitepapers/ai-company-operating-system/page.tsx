@@ -313,7 +313,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </p>
               
               <div className="p-5 rounded-2xl border border-border bg-card/90 space-y-3 not-prose my-6 font-mono text-xs">
-                <p className="text-primary font-bold uppercase tracking-wider">// Simulated Boardroom Deliberation</p>
+                <p className="text-primary font-bold uppercase tracking-wider">{"// Simulated Boardroom Deliberation"}</p>
                 <div className="space-y-2 text-muted-foreground">
                   <p><strong className="text-foreground">AI CTO:</strong> Technically feasible in 21 days with current Turborepo architecture.</p>
                   <p><strong className="text-foreground">AI CRO:</strong> Five enterprise pipeline accounts have explicitly requested this feature.</p>
