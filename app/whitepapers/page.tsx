@@ -26,6 +26,16 @@ export const metadata: Metadata = {
 
 const WHITEPAPERS = [
   {
+    id: 'ai-company-operating-system',
+    title: 'The AI Company Operating System: A Strategic Whitepaper for Building a Billion-Dollar Technology Company',
+    category: 'Strategic Whitepaper & AI Architecture',
+    status: 'Official Charter · Available Online',
+    readUrl: '/whitepapers/ai-company-operating-system',
+    description:
+      'The foundational blueprint for NeelStack Solutions: deploying a coordinated AI executive workforce (AI CEO, CTO, CFO, COO, CRO, CMO), Company Brain persistent memory, and the 4-level agent authority model alongside human founders.',
+    topics: ['AI Executive Workforce', 'Company Brain Memory', '4-Tier Authority Model', 'Three-Engine Strategy (Services, DhruvaOS, ToolVines)', 'Billion-Dollar Commercial Stages'],
+  },
+  {
     id: 'enterprise-ai-architecture-2026',
     title: 'Building LLM-Powered Enterprise Applications: Architecture Guide 2026',
     category: 'AI & Systems Architecture',
@@ -42,7 +52,7 @@ const WHITEPAPERS = [
     status: 'Available Online',
     readUrl: '/blog/architecting-dhruvaos-foundation-schema-per-tenant-postgresql',
     description:
-      'How DhruvaOS digitizes administrative workflows, eliminates database row locks with schema-per-tenant isolation, and introduces predictive analytics ahead of the Sept 30 Demo Launch.',
+      'How DhruvaOS digitizes administrative workflows, eliminates database row locks with schema-per-tenant isolation, and introduces predictive analytics ahead of the October 2 Demo Launch.',
     topics: ['EdOS Architecture Blueprint', 'PostgreSQL Schema Isolation', 'AI RAG Gateway', 'GST e-Invoicing Adapter'],
   },
   {

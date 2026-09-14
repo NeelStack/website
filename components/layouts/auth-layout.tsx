@@ -1,5 +1,5 @@
 /**
- * Auth Layout — placeholder for future authentication flows.
+ * Auth Layout — reserved for future authentication flows.
  * Centers the auth form with a branded panel on larger screens.
  */
 import Link from 'next/link'

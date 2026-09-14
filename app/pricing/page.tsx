@@ -108,9 +108,9 @@ export default function PricingPage() {
   return (
     <MarketingLayout>
       <PageHero
-        badge="Pricing"
-        title="Transparent Pricing for Every Scale"
-        description="No hidden fees. No surprises. We work with your budget to deliver exceptional software — whether you're a startup or a Fortune 500 enterprise."
+        badge="Pricing & Engagements"
+        title="Transparent Pricing for Every Project"
+        description="No hidden fees. No surprises. We work with your scope and goals to engineer reliable software and intelligent systems."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]}
       />
 

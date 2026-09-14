@@ -28,7 +28,7 @@ export interface NavMenu {
 // Products
 // ─────────────────────────────────────────────
 
-export type ProductStatus = 'live' | 'beta' | 'coming-soon' | 'in-development'
+export type ProductStatus = 'live' | 'beta' | 'coming-soon' | 'in-development' | 'planned'
 
 export interface ProductFeature {
   label: string

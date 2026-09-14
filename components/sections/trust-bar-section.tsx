@@ -13,7 +13,7 @@ const PILLARS = [
     color: 'text-cyan-500 dark:text-cyan-400',
     bgColor: 'bg-cyan-500/10 border-cyan-500/25',
     glowColor: 'hover:border-cyan-500/40 hover:shadow-[0_0_28px_rgba(6,182,212,0.2)]',
-    badge: '8ms latency',
+    badge: 'Low Latency',
   },
   {
     title: 'Cloud-Native Scale',
@@ -43,7 +43,7 @@ const PILLARS = [
     color: 'text-rose-500 dark:text-rose-400',
     bgColor: 'bg-rose-500/10 border-rose-500/25',
     glowColor: 'hover:border-rose-500/40 hover:shadow-[0_0_28px_rgba(244,63,94,0.2)]',
-    badge: 'WCAG AA 95+',
+    badge: 'WCAG AA',
   },
 ]
 

@@ -74,8 +74,8 @@ export default function CareersPage() {
             
             <div className="flex justify-center gap-4">
               <Button asChild size="lg">
-                <Link href="mailto:careers@neelstack.com?subject=Talent Registry: High-Agency Builder Application">
-                  Join Our Talent Pool
+                <Link href="mailto:contact@neelstack.com?subject=NeelStack: Talent & Engineering Inquiries">
+                  Connect With Us
                 </Link>
               </Button>
             </div>
@@ -127,12 +127,12 @@ export default function CareersPage() {
               How to reach out
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6">
-              When you write to us, skip the generic cover letter. Tell us what you&apos;re building, 
-              share your GitHub profile, and describe the most complex technical challenge you have solved.
+              When you write to us, tell us what you&apos;re building, 
+              share your GitHub profile, and describe interesting technical challenges you enjoy solving.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <span className="text-sm font-mono text-primary">
-                careers@neelstack.com
+              <span className="text-sm font-mono text-primary font-semibold">
+                contact@neelstack.com
               </span>
             </div>
           </div>

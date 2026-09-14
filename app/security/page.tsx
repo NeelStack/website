@@ -59,7 +59,7 @@ const SECURITY_PILLARS = [
     icon: ShieldAlert,
     title: 'Vulnerability Disclosure Policy',
     description:
-      'Responsible disclosure program allowing security researchers to report vulnerabilities directly to security@neelstack.com. Redis sliding-window rate limiting mitigates brute force attacks.',
+      'Responsible disclosure program allowing security researchers to report vulnerabilities directly to contact@neelstack.com. Redis sliding-window rate limiting mitigates brute force attacks.',
   },
 ]
 

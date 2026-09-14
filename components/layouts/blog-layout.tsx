@@ -40,7 +40,7 @@ export function BlogLayout({ children, sidebar, className }: BlogLayoutProps) {
 }
 
 /**
- * DocLayout — placeholder for future documentation pages
+ * DocLayout — reserved for future documentation pages.
  */
 export function DocLayout({ children, sidebar, className }: BlogLayoutProps) {
   return (

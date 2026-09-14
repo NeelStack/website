@@ -32,19 +32,19 @@ export function PortfolioShowcaseSection() {
             variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
             className="inline-block text-xs font-bold text-violet-500 dark:text-violet-400 uppercase tracking-widest bg-violet-500/10 px-3 py-1 rounded-full border border-violet-500/25"
           >
-            Portfolio &amp; Product Engineering
+            Product Portfolio
           </motion.span>
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
             className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight"
           >
-            Featured SaaS Products &amp; Deliveries
+            Featured Software Products
           </motion.h2>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
             className="text-sm sm:text-base text-muted-foreground"
           >
-            We engineer our own live SaaS products while delivering custom enterprise platforms for clients worldwide.
+            Explore the software products and platforms designed, built, and developed by NeelStack.
           </motion.p>
           <motion.div
             variants={{ hidden: { scaleX: 0, opacity: 0 }, visible: { scaleX: 1, opacity: 1, transition: { duration: 0.7, delay: 0.2, ease: [0.22,1,0.36,1] } } }}
@@ -54,7 +54,7 @@ export function PortfolioShowcaseSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* ToolVines — Teal/Cyan/Blue identity */}
+          {/* ToolVines — Live Product */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -69,7 +69,7 @@ export function PortfolioShowcaseSection() {
                 </span>
                 <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/25 flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Live &amp; Deployed
+                  Live Product
                 </span>
               </div>
 
@@ -96,11 +96,11 @@ export function PortfolioShowcaseSection() {
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
                   <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span>Document Tools — Text Converters, Formatters &amp; Annotation</span>
+                  <span>Document Tools — Text Converters &amp; Format Utilities</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
                   <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span>AI Tools — Document Search, OCR &amp; Smart Summarizer</span>
+                  <span>AI Utilities — Local OCR &amp; Document Summarization</span>
                 </div>
               </div>
 
@@ -108,7 +108,7 @@ export function PortfolioShowcaseSection() {
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">PDF Tools</span>
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Image Tools</span>
                 <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Document Tools</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">AI Tools</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">AI Utilities</span>
               </div>
             </div>
 
@@ -127,67 +127,72 @@ export function PortfolioShowcaseSection() {
             </div>
           </motion.div>
 
-          {/* DhruvaOS — Amber/Rose identity */}
+          {/* DhruvaOS — In Development / Upcoming */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="group rounded-3xl border border-amber-500/30 bg-gradient-to-b from-card to-amber-950/10 p-7 md:p-8 flex flex-col justify-between space-y-6 card-hover relative overflow-hidden shadow-2xl"
+            className="group rounded-3xl border border-purple-500/30 bg-gradient-to-b from-card to-purple-950/10 p-7 md:p-8 flex flex-col justify-between space-y-6 card-hover relative overflow-hidden shadow-2xl"
           >
             <div className="space-y-5 relative z-10">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/25">
-                  Education OS (EdOS)
+                <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/25">
+                  School Operating System
                 </span>
-                <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/25">
-                  Demo Launch: Sept 30, 2026
+                <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/25 flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Ready for Launch · Pilots Open
                 </span>
               </div>
 
               <div>
-                <h3 className="font-heading text-3xl font-extrabold text-foreground group-hover:text-amber-400 transition-colors">
+                <h3 className="font-heading text-3xl font-extrabold text-foreground group-hover:text-purple-400 transition-colors">
                   DhruvaOS
                 </h3>
-                <p className="text-xs font-mono text-amber-500 mt-1">Unified EdTech Operating System</p>
+                <p className="text-xs font-mono text-purple-500 mt-1">dhruvaos.com · Launching 2 October 2026</p>
               </div>
 
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Unified AI-powered operating system for schools and colleges — managing admissions, academics, fee invoices, analytics, and parent communications.
+                DhruvaOS is NeelStack&apos;s unified school operating system, ready for launch and currently onboarding early pilot schools and educational institutions. Built to provide a unified platform for administration, academic management, and modern digital workflows.
               </p>
 
-              {/* Authentic Feature Highlights */}
+              {/* Core Capabilities */}
               <div className="space-y-2 pt-1 border-t border-border/40">
                 <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0" />
-                  <span>Automated Student Admissions &amp; Academic Record Management</span>
+                  <CheckCircle2 className="h-4 w-4 text-purple-400 shrink-0" />
+                  <span>School Onboarding &amp; Institutional Setup</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0" />
-                  <span>Fee Invoicing, Online Payment Gateways &amp; Ledger Audit</span>
+                  <CheckCircle2 className="h-4 w-4 text-purple-400 shrink-0" />
+                  <span>School Administration, CMS &amp; Official Website</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
-                  <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0" />
-                  <span>AI Parent Assistant &amp; WhatsApp Notification Gateway</span>
+                  <CheckCircle2 className="h-4 w-4 text-purple-400 shrink-0" />
+                  <span>Mobile &amp; Desktop Applications</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-semibold text-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-purple-400 shrink-0" />
+                  <span>Planned AI-Agent Capabilities</span>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-2">
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Next.js 16</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">FastAPI</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">PostgreSQL 16</span>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">pgvector RAG</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">School Admin</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">School CMS</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">Mobile Apps</span>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-surface border border-border">AI Capabilities</span>
               </div>
             </div>
 
             <div className="pt-6 border-t border-border/40 flex items-center justify-between relative z-10">
               <Link
                 href="/products/dhruvaos"
-                className="inline-flex items-center gap-2 text-sm font-bold text-amber-600 dark:text-amber-400 hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-bold text-purple-600 dark:text-purple-400 hover:underline"
               >
                 Explore DhruvaOS <ArrowRight className="h-4 w-4" />
               </Link>
-              <span className="text-xs text-amber-500 font-mono font-bold">Demo: September 30</span>
+              <span className="text-xs text-emerald-500 font-mono font-bold">Launch: 2 October 2026</span>
             </div>
           </motion.div>
         </div>

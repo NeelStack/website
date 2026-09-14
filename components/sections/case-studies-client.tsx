@@ -41,12 +41,12 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     id: 'dhruvaos-agentic-ai-operations',
     title: 'Agentic AI in DhruvaOS: Autonomous Goal-Driven Enterprise Workflows & AST Tool Calling',
-    subtitle: 'State-graph cognitive multi-agent orchestration replacing manual administrative form-filling ahead of September 30 Demo Launch.',
+    subtitle: 'State-graph cognitive multi-agent orchestration replacing manual administrative form-filling ahead of October 2 Demo Launch.',
     systemProfile: 'DhruvaOS Autonomous Cognitive Engine (Proprietary SaaS)',
     industry: 'Enterprise AI & Autonomous Operations',
     category: 'ai',
     categoryLabel: 'Agentic AI & AGI',
-    timeframe: 'In Production · Demo Launch Sept 30, 2026',
+    timeframe: 'In Production · Demo Launch October 2, 2026',
     blogUrl: '/blog/agentic-ai-in-dhruvaos-autonomous-enterprise-erp-agi',
     blogReadTime: '14 min read',
     metrics: [
@@ -76,7 +76,7 @@ const CASE_STUDIES: CaseStudy[] = [
     industry: 'Enterprise Cloud ERP',
     category: 'erp',
     categoryLabel: 'Enterprise ERP',
-    timeframe: 'Foundation v2.6 · Demo Launch Sept 30, 2026',
+    timeframe: 'Foundation v2.6 · Demo Launch October 2, 2026',
     blogUrl: '/blog/architecting-dhruvaos-foundation-schema-per-tenant-postgresql',
     blogReadTime: '13 min read',
     metrics: [
