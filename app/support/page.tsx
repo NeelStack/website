@@ -4,6 +4,7 @@ import { BookOpen, Mail, MessageCircle, Phone } from 'lucide-react'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
+import { Button } from '@/components/ui/button'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
@@ -63,7 +64,7 @@ export default function SupportPage() {
               return (
                 <div
                   key={option.title}
-                  className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-6"
+                  className="flex flex-col gap-4 rounded-2xl border-2 border-border bg-card p-6 tactile-card-3d hover:border-primary/50"
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
@@ -81,19 +82,18 @@ export default function SupportPage() {
                   <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                     {option.description}
                   </p>
-                  <Link
-                    href={option.action.href}
-                    className="text-sm font-medium text-primary hover:underline"
-                  >
-                    {option.action.label}
-                  </Link>
+                  <Button asChild variant="3d-secondary" size="sm" className="w-full rounded-xl font-bold mt-2">
+                    <Link href={option.action.href}>
+                      {option.action.label}
+                    </Link>
+                  </Button>
                 </div>
               )
             })}
           </div>
 
           {/* SLA info */}
-          <div className="mt-12 rounded-2xl border border-border bg-card p-8 text-center">
+          <div className="mt-12 rounded-2xl border-2 border-border bg-card p-8 text-center tactile-card-3d">
             <h2 className="font-heading text-xl font-semibold text-foreground mb-3">
               Enterprise SLA
             </h2>
@@ -102,12 +102,13 @@ export default function SupportPage() {
               response times of under 1 hour, and a dedicated Slack channel. Contact sales to learn
               more about enterprise support plans.
             </p>
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex items-center text-sm font-medium text-primary hover:underline"
-            >
-              Contact Sales
-            </Link>
+            <div className="mt-6 flex justify-center">
+              <Button asChild variant="3d-yellow" size="lg" className="rounded-xl font-bold">
+                <Link href="/contact">
+                  Contact Enterprise Sales
+                </Link>
+              </Button>
+            </div>
           </div>
         </Container>
       </section>

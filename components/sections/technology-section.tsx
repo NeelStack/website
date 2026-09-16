@@ -111,7 +111,7 @@ export function TechnologySection() {
   const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
 
   return (
-    <Section id="technologies" className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-transparent">
+    <Section id="technologies" className="py-12 sm:py-14 md:py-16 relative overflow-hidden bg-transparent">
       {/* Subtle dark mesh backdrop */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -151,8 +151,8 @@ export function TechnologySection() {
           />
         </motion.div>
 
-        {/* Tab Switcher — Centered and balanced */}
-        <div className="flex flex-wrap justify-center gap-2 p-2 rounded-2xl border border-border bg-card dark:bg-[#0b1329] max-w-4xl mx-auto shadow-md">
+        {/* Tab Switcher — Centered, 3D tactile pills */}
+        <div className="flex flex-wrap justify-center gap-2 p-2 rounded-2xl border-2 border-border/80 bg-card dark:bg-[#0b1329] max-w-4xl mx-auto shadow-md tactile-card-3d">
           {TECH_CATEGORIES.map((cat) => {
             const Icon = cat.icon
             const isActive = activeTab === cat.id
@@ -161,16 +161,16 @@ export function TechnologySection() {
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
                 className={cn(
-                  'relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer',
+                  'relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-150 cursor-pointer font-heading',
                   isActive
-                    ? 'text-primary-foreground shadow-lg'
+                    ? 'text-primary-foreground shadow-md'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
                 )}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeTabBg"
-                    className="absolute inset-0 bg-primary rounded-xl shadow-[0_0_20px_rgba(70,166,252,0.4)]"
+                    className="absolute inset-0 bg-primary rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.4)]"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -184,15 +184,15 @@ export function TechnologySection() {
         </div>
 
         {/* Active Tech Stack Grid with AnimatePresence */}
-        <div className="rounded-3xl border border-border bg-card dark:bg-[#0b1329] p-6 md:p-8 shadow-xl relative overflow-hidden">
+        <div className="rounded-3xl border-2 border-border/90 bg-card dark:bg-[#0b1329] p-6 md:p-8 shadow-xl tactile-card-3d relative overflow-hidden">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-border/60 pb-6 mb-6">
             <div className="flex items-center gap-3">
-              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${currentCategory.bgColor} ${currentCategory.color}`}>
+              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border-2 ${currentCategory.bgColor} ${currentCategory.color} shadow-sm`}>
                 <currentCategory.icon className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="font-heading text-xl font-bold text-foreground">{currentCategory.title}</h3>
-                <span className={`text-xs font-semibold uppercase tracking-wider ${currentCategory.color}`}>
+                <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-foreground">{currentCategory.title}</h3>
+                <span className={`text-xs font-mono font-bold uppercase tracking-wider ${currentCategory.color}`}>
                   {currentCategory.badge}
                 </span>
               </div>
@@ -211,13 +211,13 @@ export function TechnologySection() {
               {currentCategory.items.map((tech) => (
                 <div
                   key={tech.name}
-                  className="group p-4 rounded-2xl border border-border/70 bg-muted/40 dark:bg-white/[0.03] hover:border-primary/40 hover:bg-card dark:hover:bg-white/[0.06] transition-all duration-200 shadow-2xs hover:shadow-md hover:-translate-y-0.5 flex flex-col justify-between gap-2"
+                  className="group p-4 rounded-2xl border-2 border-border/70 bg-card dark:bg-white/[0.02] hover:border-primary/60 hover:bg-card transition-all duration-150 shadow-2xs tactile-card-3d flex flex-col justify-between gap-2"
                 >
                   <div className="flex items-center justify-between">
-                    <h4 className="font-heading text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                    <h4 className="font-heading text-sm font-extrabold text-foreground group-hover:text-primary transition-colors">
                       {tech.name}
                     </h4>
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 opacity-80 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed">{tech.desc}</p>
                 </div>

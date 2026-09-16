@@ -59,7 +59,7 @@ export function BlogPreviewSection() {
         </div>
 
         <div className="mt-14 flex justify-center">
-          <Button asChild variant="outline" size="lg" className="rounded-xl">
+          <Button asChild variant="3d-secondary" size="lg" className="rounded-xl font-bold">
             <Link href="/blog" className="gap-2 group">
               Read all articles
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />

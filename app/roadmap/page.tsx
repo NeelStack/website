@@ -34,8 +34,8 @@ const ROADMAP_ITEMS = [
     status: 'Live & Deployed',
     statusBadge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
     icon: FileText,
-    desc: 'Browser-based productivity platform providing fast PDF, image, document, and AI tools with zero server-side file retention and client-side WebAssembly compute.',
-    features: ['PDF annotation & editing tools', 'Client-side WASM conversion engines', 'Zero server-side file retention'],
+    desc: 'Browser-based productivity platform providing fast PDF, image, document, and developer tools with zero server-side file retention and client-side WebAssembly compute.',
+    features: ['320+ Client-side WebAssembly tools', 'Zero server-side file retention', '100% in-browser private compute'],
     link: 'https://toolvines.com',
     isExternal: true,
   },
@@ -57,8 +57,8 @@ const ROADMAP_ITEMS = [
     statusBadge: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
     icon: Boxes,
     desc: 'An AI-powered company operating layer exploring specialized autonomous agents (AI CEO, CTO, CFO, Operations, Sales) for organizational intelligence and workflow automation.',
-    features: ['Specialized autonomous agent matrix', 'Model Context Protocol (MCP) tooling', 'Hierarchical company memory & decision support'],
-    link: '/#ai-strategy',
+    features: ['11 Specialized autonomous agent squads', 'Model Context Protocol (MCP) tooling', 'Hierarchical company memory & decision support'],
+    link: '/products/ai-company-os',
     isExternal: false,
   },
   {
@@ -109,7 +109,7 @@ export default function RoadmapPage() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between space-y-5 card-hover"
+                  className="rounded-2xl border-2 border-border bg-card p-6 flex flex-col justify-between space-y-5 tactile-card-3d hover:border-primary/50"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">

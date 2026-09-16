@@ -1,16 +1,24 @@
 import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import type { Metadata, Viewport } from 'next'
-import { Inter, Plus_Jakarta_Sans, Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Plus_Jakarta_Sans, Space_Grotesk, Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { getSiteUrl } from '@/lib/site-url'
 import { JsonLd } from '@/components/seo/json-ld'
 import { CurrencyProvider } from '@/components/providers/currency-provider'
+import { MouseSpotlight } from '@/components/effects/mouse-spotlight'
+import { PageProgressLoader } from '@/components/ui/page-progress-loader'
 
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
   display: 'swap',
 })
 
@@ -135,7 +143,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} ${geist.variable} ${geistMono.variable} bg-background text-foreground light`}
+      className={`${inter.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${geist.variable} ${geistMono.variable} bg-background text-foreground light`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -279,6 +287,8 @@ export default function RootLayout({
           }}
         />
         <CurrencyProvider>
+          <PageProgressLoader />
+          <MouseSpotlight />
           {children}
         </CurrencyProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

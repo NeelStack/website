@@ -10,6 +10,7 @@ export interface NavItem {
   description?: string
   icon?: LucideIcon
   badge?: string
+  isExternal?: boolean
 }
 
 export interface NavGroup {
@@ -20,6 +21,8 @@ export interface NavGroup {
 export interface NavMenu {
   label: string
   href?: string
+  badge?: string
+  isExternal?: boolean
   groups?: NavGroup[]
   items?: NavItem[]
 }

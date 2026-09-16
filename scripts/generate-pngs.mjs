@@ -38,23 +38,31 @@ async function run() {
       <g transform="translate(25, 25) scale(1.3)">
         <defs>
           <linearGradient id="apple-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#3B72FE" />
-            <stop offset="100%" stop-color="#2EC7F2" />
+            <stop offset="0%" stop-color="#3B82F6" />
+            <stop offset="100%" stop-color="#8B5CF6" />
           </linearGradient>
         </defs>
         <path
-          d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
+          d="M15.36,70 L15.36,30 L50,10 L84.64,30"
           fill="none"
-          stroke="url(#apple-grad)"
+          stroke="#3B82F6"
           stroke-width="5.8"
           stroke-linejoin="round"
           stroke-linecap="round"
         />
         <path
-          d="M39,68 V32 L65.5,62 V31 L67,28.4"
+          d="M84.64,30 L84.64,70 L50,90 L15.36,70"
+          fill="none"
+          stroke="#8B5CF6"
+          stroke-width="5.8"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+        <path
+          d="M38,67 V33 L62,67 V33"
           fill="none"
           stroke="url(#apple-grad)"
-          stroke-width="8"
+          stroke-width="7"
           stroke-linejoin="round"
           stroke-linecap="butt"
         />

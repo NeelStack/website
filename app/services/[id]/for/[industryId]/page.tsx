@@ -9,8 +9,10 @@ import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
+import { TrustBarSection } from '@/components/sections/trust-bar-section'
+import { CapabilitiesSection } from '@/components/sections/capabilities-section'
 import { JsonLd } from '@/components/seo/json-ld'
-import { CheckCircle2, Shield } from 'lucide-react'
+import { CheckCircle2, Shield, ArrowRight, Lock, Server, Sparkles, Layers } from 'lucide-react'
 
 interface PageProps {
   params: Promise<{ id: string; industryId: string }>
@@ -34,6 +36,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `Tailored ${service.name.toLowerCase()} software solutions engineered for ${industry.name}. Modular, secure, and scalable architectures designed for sector workflows.`,
     alternates: {
       canonical: `/services/${id}/for/${industryId}`,
+    },
+    openGraph: {
+      title: `${service.name} for ${industry.name} | NeelStack`,
+      description: `Custom ${service.name.toLowerCase()} solutions designed specifically for ${industry.name}.`,
     },
   }
 }
@@ -59,10 +65,11 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
 
   const ServiceIcon = service.icon
   const IndustryIcon = industry.icon
+  const siteUrl = getSiteUrl()
 
   return (
     <MarketingLayout>
-      {/* Programmatic SEO JSON-LD */}
+      {/* ── Programmatic SEO JSON-LD ── */}
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -73,9 +80,42 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
           provider: {
             '@type': 'Organization',
             name: 'NeelStack',
-            url: getSiteUrl(),
+            url: siteUrl,
           },
           description: `Custom ${service.name.toLowerCase()} solutions designed specifically for ${industry.name}.`,
+          url: `${siteUrl}/services/${service.id}/for/${industry.id}`,
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: siteUrl,
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Services',
+              item: `${siteUrl}/services`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: service.name,
+              item: `${siteUrl}/services/${service.id}`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              name: `For ${industry.name}`,
+              item: `${siteUrl}/services/${service.id}/for/${industry.id}`,
+            },
+          ],
         }}
       />
 
@@ -91,10 +131,12 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
         ]}
       />
 
-      {/* Main Content Section */}
+      <TrustBarSection />
+
+      {/* ── Section 1: Domain Adaptation ── */}
       <Section>
         <Container>
-          <div className="max-w-4xl mx-auto space-y-12">
+          <div className="max-w-5xl mx-auto space-y-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -110,7 +152,10 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
                   Sector-Specific Architecture
                 </h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  We adapt our core {service.name.toLowerCase()} framework to address the exact operational workflows, regulatory security controls, and integration requirements of {industry.name.toLowerCase()}.
+                  We adapt our core {service.name.toLowerCase()} framework to address the exact operational workflows, regulatory security controls, and data protection requirements of {industry.name.toLowerCase()}.
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Whether complying with data privacy mandates, handling high-concurrency peak traffic, or integrating legacy backend systems, our team ensures production-grade execution with zero vendor lock-in.
                 </p>
               </div>
 
@@ -121,7 +166,7 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
                 </h3>
                 <ul className="space-y-2.5">
                   {industry.solutions.map((sol) => (
-                    <li key={sol} className="flex items-start gap-2 text-xs text-muted-foreground">
+                    <li key={sol} className="flex items-start gap-2.5 text-xs text-muted-foreground leading-relaxed">
                       <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span>{sol}</span>
                     </li>
@@ -132,7 +177,7 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
 
             {/* Service Highlights */}
             <div className="pt-8 border-t border-border/40 space-y-6">
-              <h2 className="font-heading text-xl font-bold text-foreground">Capabilities Included</h2>
+              <h2 className="font-heading text-xl font-bold text-foreground">Core Capabilities Included</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {service.highlights.map((item) => (
                   <div key={item} className="p-4 rounded-xl border border-border bg-card flex items-center gap-3">
@@ -142,13 +187,48 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
                 ))}
               </div>
             </div>
+
+            {/* Enterprise Guarantees for this vertical */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-4">
+              <div className="rounded-xl border border-border bg-card p-4 space-y-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400">
+                  <Lock className="h-4 w-4" />
+                </div>
+                <h4 className="text-xs font-bold text-foreground">Sector Compliance</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  Configured to adhere to {industry.name.split(' ')[0]} privacy standards and audit logging requirements.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-card p-4 space-y-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400">
+                  <Server className="h-4 w-4" />
+                </div>
+                <h4 className="text-xs font-bold text-foreground">High Availability</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  99.9% uptime SLA with automated container failover and database clustering.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-card p-4 space-y-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-500/10 text-purple-400">
+                  <Sparkles className="h-4 w-4" />
+                </div>
+                <h4 className="text-xs font-bold text-foreground">Full IP Ownership</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  100% source code handover with complete architecture documentation and runbooks.
+                </p>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
 
+      <CapabilitiesSection />
+
       <CTASection
         title={`Ready to build a ${service.name.toLowerCase()} solution for your ${industry.name.toLowerCase()} organization?`}
-        description="Schedule a technical discovery call with our engineering team."
+        description="Schedule a technical discovery call to explore architecture blueprints, timeline estimates, and customized deliverables."
         primaryLabel="Schedule Consultation"
         primaryHref="/contact"
       />

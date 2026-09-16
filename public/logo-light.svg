@@ -1,32 +1,41 @@
-<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="220" height="40" viewBox="0 0 220 40" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="neelstack-brand-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3B72FE" />
-      <stop offset="100%" stop-color="#2EC7F2" />
+    <linearGradient id="neelstack-dual-grad-light" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#7C3AED" />
     </linearGradient>
   </defs>
   
-  <!-- Logo Mark (Hexagon Monogram) -->
+  <!-- Logo Mark (Hexagon Monogram in 2 Symmetrical Halves) -->
   <g transform="translate(4, 4) scale(0.32)">
     <path
-      d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
+      d="M15.36,70 L15.36,30 L50,10 L84.64,30"
       fill="none"
-      stroke="url(#neelstack-brand-grad)"
+      stroke="#2563EB"
       stroke-width="5.8"
       stroke-linejoin="round"
       stroke-linecap="round"
     />
     <path
-      d="M39,68 V32 L65.5,62 V31 L67,28.4"
+      d="M84.64,30 L84.64,70 L50,90 L15.36,70"
       fill="none"
-      stroke="url(#neelstack-brand-grad)"
-      stroke-width="8"
+      stroke="#7C3AED"
+      stroke-width="5.8"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+    <path
+      d="M38,67 V33 L62,67 V33"
+      fill="none"
+      stroke="url(#neelstack-dual-grad-light)"
+      stroke-width="7"
       stroke-linejoin="round"
       stroke-linecap="butt"
     />
   </g>
 
-  <!-- Wordmark -->
-  <text x="44" y="27" font-family="Geist, sans-serif" font-weight="600" font-size="20" letter-spacing="-0.03em" fill="#000000">Neel<tspan fill="url(#neelstack-brand-grad)">Stack</tspan></text>
+  <!-- Symmetrical Wordmark: N (Blue) + ee (Violet Core) + l (Blue) + Stack (Slate-950) -->
+  <text x="44" y="27" font-family="Geist, Inter, system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" letter-spacing="-0.035em">
+    <tspan fill="#2563EB">N</tspan><tspan fill="#7C3AED">ee</tspan><tspan fill="#2563EB">l</tspan><tspan fill="#0F172A" dx="1">Stack</tspan>
+  </text>
 </svg>
-

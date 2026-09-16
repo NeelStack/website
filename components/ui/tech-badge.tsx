@@ -28,7 +28,7 @@ interface TechCategoryBlockProps {
 
 export function TechCategoryBlock({ title, technologies, className }: TechCategoryBlockProps) {
   return (
-    <div className={cn('group space-y-3 card-hover hover:border-primary/30', className)}>
+    <div className={cn('group space-y-3 rounded-2xl border-2 border-border bg-card p-6 tactile-card-3d hover:border-primary/50', className)}>
       <h3 className="text-xs font-semibold uppercase tracking-widest text-gradient-brand">
         {title}
       </h3>

@@ -1,29 +1,31 @@
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { HeroSection } from '@/components/sections/hero-section'
-import { AccreditationBadges } from '@/components/ui/accreditation-badges'
-import { WhatWeAreBuildingSection } from '@/components/sections/what-we-are-building-section'
+import { TelemetryProofBar } from '@/components/sections/telemetry-proof-bar'
+import { ThreeEnginesBento } from '@/components/sections/three-engines-bento'
+import { ArchitecturalProcessTrack } from '@/components/sections/architectural-process-track'
 import { AiStrategySection } from '@/components/sections/ai-strategy-section'
-import { PortfolioShowcaseSection } from '@/components/sections/portfolio-showcase-section'
 import { CapabilitiesSection } from '@/components/sections/capabilities-section'
 import { TechnologySection } from '@/components/sections/technology-section'
+import { CorporateGovernanceCard } from '@/components/sections/corporate-governance-card'
 import { WhyUsSection } from '@/components/sections/why-us-section'
 import { FreeConsultationCTA } from '@/components/sections/free-consultation-cta'
 
 export const metadata: Metadata = {
-  title: 'NeelStack Solutions | Software Products & AI Systems',
+  title: 'NeelStack Solutions | Frontier Multi-Agent Intelligence & Enterprise Systems',
   description:
-    'NeelStack Solutions builds software products, AI systems and digital platforms, including ToolVines and DhruvaOS.',
+    'Architecting autonomous systems and scalable software for the AI-native era. Powering the Three Engines: NeelStack Services, DhruvaOS, and ToolVines.',
   keywords: [
     'NeelStack Solutions',
-    'Software products India',
-    'AI systems company',
-    'Agentic AI',
+    'Frontier AI engineering',
+    'Multi-agent intelligence',
+    'Agentic AI India',
     'ToolVines',
     'DhruvaOS school operating system',
     'AI Company OS',
     'Enterprise software development',
-    'Digital platforms India',
+    'Model Context Protocol',
+    'LangGraph multi-agent workflows',
   ],
   alternates: {
     canonical: '/',
@@ -33,20 +35,20 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <MarketingLayout>
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section: Frontier AI Engineering */}
       <HeroSection />
 
-      {/* 2. Official Government of India Accreditations */}
-      <AccreditationBadges />
+      {/* 2. High-Trust Metrics & Telemetry Bar */}
+      <TelemetryProofBar />
 
-      {/* 3. What We Are Building: Core Pillars */}
-      <WhatWeAreBuildingSection />
+      {/* 3. The Three Engines Tactile Bento Grid */}
+      <ThreeEnginesBento />
 
-      {/* 4. AI Agent Strategy & Autonomous Workforce Platform */}
+      {/* 4. Architectural Process Track ("How We Build") */}
+      <ArchitecturalProcessTrack />
+
+      {/* 5. AI Agent Strategy & Autonomous Workforce Platform */}
       <AiStrategySection />
-
-      {/* 5. Featured Products & Systems Portfolio */}
-      <PortfolioShowcaseSection />
 
       {/* 6. Core Engineering & Technical Capabilities */}
       <CapabilitiesSection />
@@ -54,12 +56,14 @@ export default function HomePage() {
       {/* 7. Frontier Technology Stack */}
       <TechnologySection />
 
-      {/* 8. Why NeelStack & Company Vision */}
+      {/* 8. Corporate Governance & Transparency Card */}
+      <CorporateGovernanceCard />
+
+      {/* 9. Why NeelStack & Engineering Discipline */}
       <WhyUsSection />
 
-      {/* 9. Contact / Talk to NeelStack CTA */}
+      {/* 10. Contact / Request Architecture Proposal CTA */}
       <FreeConsultationCTA />
     </MarketingLayout>
   )
 }
-

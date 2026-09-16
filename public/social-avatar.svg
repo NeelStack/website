@@ -1,8 +1,8 @@
 <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="neelstack-brand-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3B72FE" />
-      <stop offset="100%" stop-color="#2EC7F2" />
+    <linearGradient id="neelstack-dual-grad-avatar" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#8B5CF6" />
     </linearGradient>
   </defs>
   
@@ -12,21 +12,28 @@
   <!-- Logo Mark centered -->
   <g transform="translate(18, 18) scale(0.64)">
     <path
-      d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
+      d="M15.36,70 L15.36,30 L50,10 L84.64,30"
       fill="none"
-      stroke="url(#neelstack-brand-grad)"
+      stroke="#3B82F6"
       stroke-width="5.8"
       stroke-linejoin="round"
       stroke-linecap="round"
     />
     <path
-      d="M39,68 V32 L65.5,62 V31 L67,28.4"
+      d="M84.64,30 L84.64,70 L50,90 L15.36,70"
       fill="none"
-      stroke="url(#neelstack-brand-grad)"
-      stroke-width="8"
+      stroke="#8B5CF6"
+      stroke-width="5.8"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+    <path
+      d="M38,67 V33 L62,67 V33"
+      fill="none"
+      stroke="url(#neelstack-dual-grad-avatar)"
+      stroke-width="7"
       stroke-linejoin="round"
       stroke-linecap="butt"
     />
   </g>
 </svg>
-

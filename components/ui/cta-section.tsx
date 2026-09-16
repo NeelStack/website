@@ -72,14 +72,14 @@ export function CTASection({
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild variant="gradient" size="lg" className="gap-2 px-8 glow-cta">
-                <Link href={primaryHref}>
+              <Button asChild variant="3d-yellow" size="lg" className="h-12 px-8 text-sm sm:text-base rounded-xl gap-2">
+                <Link href={primaryHref} className="flex items-center gap-2">
                   {primaryLabel}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="gap-2 px-8">
-                <Link href={secondaryHref}>
+              <Button asChild variant="3d-secondary" size="lg" className="h-12 px-8 text-sm sm:text-base rounded-xl gap-2">
+                <Link href={secondaryHref} className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" aria-hidden="true" />
                   {secondaryLabel}
                 </Link>

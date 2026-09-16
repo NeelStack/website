@@ -3,48 +3,61 @@
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, Zap, X, PhoneCall, Sparkles, ArrowRight, MessageSquareCode } from 'lucide-react'
+import { Mail, Zap, X, PhoneCall, Sparkles, ArrowRight, Bot } from 'lucide-react'
 import { useCurrency } from '@/components/providers/currency-provider'
 
 const ACTIONS = [
   {
-    id: 'email',
-    icon: Mail,
-    label: 'Email Our Engineering Team',
-    subtitle: 'Direct response within 1 business day',
-    href: 'mailto:contact@neelstack.com?subject=Technical%20Consultation%20Inquiry',
-    external: true,
-    color: 'blue',
-    borderClass: 'border-blue-500/30',
-    bgClass: 'bg-blue-500/8 hover:bg-blue-500/15',
-    textClass: 'text-blue-600 dark:text-blue-400',
-    iconBg: 'bg-blue-500/15',
+    id: 'consult',
+    icon: Sparkles,
+    label: 'Ask AI Copilot & Architecture Team',
+    subtitle: 'Get instant system scoping & tech stack advisory',
+    href: '/book-consultation',
+    external: false,
+    color: 'cyan',
+    borderClass: 'border-cyan-500/40 dark:border-cyan-400/40',
+    bgClass: 'bg-cyan-500/10 hover:bg-cyan-500/20',
+    textClass: 'text-cyan-600 dark:text-cyan-300',
+    iconBg: 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-300',
   },
   {
     id: 'audit',
     icon: Zap,
     label: null, // set dynamically
-    subtitle: 'Performance, SEO & architecture review',
+    subtitle: 'Performance, SEO & multi-tenant security review',
     href: '/request-quote',
     external: false,
-    color: 'amber',
-    borderClass: 'border-amber-500/30',
-    bgClass: 'bg-amber-500/8 hover:bg-amber-500/15',
-    textClass: 'text-amber-600 dark:text-amber-400',
-    iconBg: 'bg-amber-500/15',
+    color: 'violet',
+    borderClass: 'border-violet-500/40 dark:border-violet-400/40',
+    bgClass: 'bg-violet-500/10 hover:bg-violet-500/20',
+    textClass: 'text-violet-600 dark:text-violet-300',
+    iconBg: 'bg-violet-500/20 text-violet-600 dark:text-violet-300',
   },
   {
     id: 'call',
     icon: PhoneCall,
-    label: 'Book a 20-Min Architecture Call',
-    subtitle: 'Free — no obligation, direct with engineers',
+    label: 'Book 20-Min Architecture Discovery',
+    subtitle: 'Free — talk directly with engineering leadership',
     href: '/book-consultation',
     external: false,
     color: 'emerald',
-    borderClass: 'border-emerald-500/30',
-    bgClass: 'bg-emerald-500/8 hover:bg-emerald-500/15',
-    textClass: 'text-emerald-600 dark:text-emerald-400',
-    iconBg: 'bg-emerald-500/15',
+    borderClass: 'border-emerald-500/40 dark:border-emerald-400/40',
+    bgClass: 'bg-emerald-500/10 hover:bg-emerald-500/20',
+    textClass: 'text-emerald-600 dark:text-emerald-300',
+    iconBg: 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300',
+  },
+  {
+    id: 'email',
+    icon: Mail,
+    label: 'Direct Engineering Desk',
+    subtitle: 'Response in <24h with NDA privacy guarantee',
+    href: 'mailto:contact@neelstack.com?subject=Enterprise%20AI%20and%20Software%20Inquiry',
+    external: true,
+    color: 'blue',
+    borderClass: 'border-blue-500/40 dark:border-blue-400/40',
+    bgClass: 'bg-blue-500/10 hover:bg-blue-500/20',
+    textClass: 'text-blue-600 dark:text-blue-300',
+    iconBg: 'bg-blue-500/20 text-blue-600 dark:text-blue-300',
   },
 ]
 
@@ -75,54 +88,57 @@ export function FloatingConversionWidget() {
 
   return (
     <div ref={widgetRef} className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-3 select-none">
-      {/* Expanded Popover */}
+      {/* Expanded 3D Tactile Popover */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.92 }}
+            initial={{ opacity: 0, y: 24, scale: 0.92 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.92 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-            className="w-[calc(100vw-2rem)] sm:w-[340px] max-w-[340px] rounded-2xl border border-border/80 bg-card/98 dark:bg-card/98 backdrop-blur-xl shadow-2xl shadow-black/10 dark:shadow-black/30 overflow-hidden"
+            exit={{ opacity: 0, y: 24, scale: 0.92 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+            className="w-[calc(100vw-2rem)] sm:w-[360px] max-w-[360px] rounded-2xl tactile-card-3d bg-card/95 dark:bg-slate-950/95 backdrop-blur-2xl overflow-hidden"
           >
-            {/* Header */}
-            <div className="px-5 pt-5 pb-4 border-b border-border/60 bg-gradient-to-b from-primary/[0.04] to-transparent">
+            {/* 3D Header with Live AI Status */}
+            <div className="px-5 pt-4 pb-3 border-b-2 border-border/80 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-violet-500/10">
               <div className="flex items-start justify-between">
-                <div className="space-y-1.5">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-primary uppercase tracking-[0.15em]">
-                    <Sparkles className="h-3 w-3" />
-                    Quick Connect
-                  </span>
-                  <p className="text-sm font-semibold text-foreground leading-snug">
-                    How can we help you?
-                  </p>
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-cyan-500/40 bg-cyan-500/15 text-[10px] font-mono font-bold text-cyan-600 dark:text-cyan-300">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
+                    </span>
+                    <span>AI COPILOT ONLINE</span>
+                  </div>
+                  <h3 className="text-sm font-extrabold text-foreground font-heading">
+                    NeelStack Architecture Desk
+                  </h3>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="cursor-pointer flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-colors -mt-0.5 -mr-1"
-                  aria-label="Close quick connect menu"
+                  className="cursor-pointer flex h-7 w-7 items-center justify-center rounded-lg border border-border/70 text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-all -mt-0.5 -mr-1 tactile-card-3d"
+                  aria-label="Close copilot desk"
                 >
                   <X className="h-4 w-4" />
                 </button>
               </div>
             </div>
 
-            {/* Actions */}
-            <div className="p-3 space-y-1.5">
+            {/* Actions List with 3D Tactile Cards */}
+            <div className="p-3 space-y-2">
               {ACTIONS.map((action, idx) => {
                 const Icon = action.icon
                 const label = action.id === 'audit'
-                  ? `${config.auditPriceFormatted} Full Website Audit`
+                  ? `${config.auditPriceFormatted} Full Architecture Audit`
                   : action.label
 
                 const content = (
                   <motion.div
                     initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 + idx * 0.06, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className={`group flex items-center gap-3 p-3 rounded-xl border ${action.borderClass} ${action.bgClass} transition-all duration-200 cursor-pointer`}
+                    transition={{ delay: 0.04 + idx * 0.05, duration: 0.25 }}
+                    className={`group flex items-center gap-3 p-3 rounded-xl border-2 ${action.borderClass} ${action.bgClass} transition-all duration-150 cursor-pointer tactile-card-3d`}
                   >
-                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${action.iconBg} ${action.textClass}`}>
+                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border ${action.iconBg} shadow-sm group-hover:scale-105 transition-transform`}>
                       <Icon className="h-4 w-4" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -133,7 +149,7 @@ export function FloatingConversionWidget() {
                         {action.subtitle}
                       </p>
                     </div>
-                    <ArrowRight className={`h-3.5 w-3.5 shrink-0 ${action.textClass} opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200`} />
+                    <ArrowRight className={`h-3.5 w-3.5 shrink-0 ${action.textClass} opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-150`} />
                   </motion.div>
                 )
 
@@ -150,56 +166,55 @@ export function FloatingConversionWidget() {
             </div>
 
             {/* Footer */}
-            <div className="px-5 py-3 border-t border-border/50 bg-muted/20">
-              <p className="text-[10px] text-muted-foreground/70 text-center">
-                <span className="font-mono font-semibold text-foreground/60">contact@neelstack.com</span>
-                {' · '}Mon–Sat, 9 AM – 7 PM IST
+            <div className="px-5 py-2.5 border-t-2 border-border/70 bg-muted/30">
+              <p className="text-[10px] text-muted-foreground text-center font-mono">
+                <span className="font-semibold text-foreground/80">contact@neelstack.com</span>
+                {' · '}Direct Engineer SLA
               </p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating Trigger Button */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.92 }}
+      {/* 3D Floating Copilot Trigger Button */}
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 text-white shadow-2xl shadow-indigo-500/25 transition-shadow duration-300 hover:shadow-indigo-500/40"
-        aria-label="Open quick connect menu"
+        className="group relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-2xl tactile-copilot-3d text-white select-none outline-none"
+        aria-label="Open AI Copilot and Engineering desk"
         aria-expanded={isOpen}
       >
-        {/* Pulse indicator */}
-        <span className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white dark:border-card" />
+        {/* Live Radar Pulse Indicator */}
+        <span className="absolute -top-1 -right-1 flex h-4 w-4">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-80" />
+          <span className="relative inline-flex rounded-full h-4 w-4 bg-cyan-500 border-2 border-black" />
         </span>
 
+        {/* Morphing Icon */}
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.span
               key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
+              initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.15 }}
             >
               <X className="h-6 w-6" />
             </motion.span>
           ) : (
             <motion.span
-              key="open"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
+              key="copilot-icon"
+              initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.15 }}
+              className="flex items-center justify-center"
             >
-              <MessageSquareCode className="h-6 w-6" />
+              <Bot className="h-7 w-7 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-200" />
             </motion.span>
           )}
         </AnimatePresence>
-      </motion.button>
+      </button>
     </div>
   )
 }
-

@@ -41,6 +41,12 @@ const nextConfig = {
         destination: '/:path*',
         permanent: true,
       },
+      // Redirect legacy /team route to unified About & Leadership page
+      {
+        source: '/team',
+        destination: '/about#leadership',
+        permanent: true,
+      },
     ]
   },
 

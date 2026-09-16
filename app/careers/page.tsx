@@ -73,7 +73,7 @@ export default function CareersPage() {
             </p>
             
             <div className="flex justify-center gap-4">
-              <Button asChild size="lg">
+              <Button asChild variant="3d-yellow" size="lg" className="rounded-xl font-bold">
                 <Link href="mailto:contact@neelstack.com?subject=NeelStack: Talent & Engineering Inquiries">
                   Connect With Us
                 </Link>
@@ -101,7 +101,7 @@ export default function CareersPage() {
               return (
                 <div
                   key={value.title}
-                  className="flex flex-col gap-4 rounded-2xl border border-border bg-background p-6"
+                  className="flex flex-col gap-4 rounded-2xl border-2 border-border bg-background p-6 tactile-card-3d hover:border-primary/50"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
                     <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
@@ -122,7 +122,7 @@ export default function CareersPage() {
       {/* Open invite call */}
       <Section>
         <Container>
-          <div className="rounded-3xl border border-border bg-gradient-to-r from-primary/5 via-transparent to-accent/5 p-8 md:p-12 text-center max-w-4xl mx-auto">
+          <div className="rounded-3xl border-2 border-border bg-gradient-to-r from-primary/5 via-transparent to-accent/5 p-8 md:p-12 text-center max-w-4xl mx-auto tactile-card-3d">
             <h2 className="font-heading text-2xl font-bold text-foreground mb-4">
               How to reach out
             </h2>

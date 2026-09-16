@@ -67,7 +67,7 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
   }
 
   return (
-    <div className={cn('divide-y divide-border rounded-2xl border border-border bg-card px-6', className)}>
+    <div className={cn('divide-y divide-border rounded-2xl border-2 border-border bg-card px-6 tactile-card-3d', className)}>
       {items.map((item, idx) => (
         <FAQItemRow
           key={idx}

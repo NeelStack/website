@@ -100,7 +100,7 @@ export default function TrainingPage() {
               return (
                 <div
                   key={prog.title}
-                  className="flex flex-col justify-between rounded-2xl border border-border bg-card p-6 md:p-8 card-hover"
+                  className="flex flex-col justify-between rounded-2xl border-2 border-border bg-card p-6 md:p-8 tactile-card-3d hover:border-primary/50"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -135,7 +135,7 @@ export default function TrainingPage() {
                   </div>
 
                   <div className="pt-6 mt-6 border-t border-border/40">
-                    <Button asChild variant="outline" size="sm" className="w-full">
+                    <Button asChild variant="3d-secondary" size="sm" className="w-full rounded-xl font-bold">
                       <Link href="/contact?inquiry=training">Inquire About {prog.title}</Link>
                     </Button>
                   </div>
@@ -159,7 +159,7 @@ export default function TrainingPage() {
             {TECH_TRACKS.map((track) => (
               <div
                 key={track.name}
-                className="rounded-2xl border border-border bg-card p-6 space-y-2 card-hover"
+                className="rounded-2xl border-2 border-border bg-card p-6 space-y-2 tactile-card-3d hover:border-primary/50"
               >
                 <div className="h-2 w-10 rounded-full bg-primary/60 mb-3" />
                 <h3 className="font-heading text-base font-bold text-foreground">{track.name}</h3>

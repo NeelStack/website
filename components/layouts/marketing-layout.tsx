@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 interface MarketingLayoutProps {
   children: React.ReactNode
   className?: string
+  showPreFooterCta?: boolean
 }
 
 /**
@@ -19,7 +20,7 @@ interface MarketingLayoutProps {
  * Includes smooth scroll, custom cursor, animated background, sticky header,
  * interactive mouse spotlight, floating conversion widget, and footer.
  */
-export function MarketingLayout({ children, className }: MarketingLayoutProps) {
+export function MarketingLayout({ children, className, showPreFooterCta = false }: MarketingLayoutProps) {
   return (
     <SmoothScrollProvider>
       <div className="flex min-h-screen flex-col relative z-[1]">
@@ -29,10 +30,11 @@ export function MarketingLayout({ children, className }: MarketingLayoutProps) {
         <main className={cn('flex-1', className)} id="main-content">
           {children}
         </main>
-        <Footer />
+        <Footer showPreFooterCta={showPreFooterCta} />
         <FloatingConversionWidget />
         <CookieConsent />
       </div>
     </SmoothScrollProvider>
   )
 }
+
