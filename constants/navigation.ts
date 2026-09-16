@@ -10,13 +10,15 @@ import {
   GraduationCap,
   Map,
   Grid,
-  ShoppingBag,
-  HeartPulse,
-  Landmark,
   Rocket,
   Info,
   Briefcase,
-  FileText
+  FileText,
+  Shield,
+  Wrench,
+  Users,
+  Zap,
+  Building,
 } from 'lucide-react'
 
 export const MAIN_NAV: NavMenu[] = [
@@ -24,7 +26,7 @@ export const MAIN_NAV: NavMenu[] = [
     label: 'Services',
     groups: [
       {
-        label: 'Core Services',
+        label: 'Core Engineering',
         items: [
           {
             label: 'AI Engineering & Agents',
@@ -73,26 +75,114 @@ export const MAIN_NAV: NavMenu[] = [
   },
   {
     label: 'Products',
-    items: [
-      { label: 'ToolVines (Live)', href: '/products/toolvines', description: 'Browser productivity platform for PDF & image tools', icon: Sparkles },
-      { label: 'DhruvaOS (Ready for Launch)', href: '/products/dhruvaos', description: 'School operating system — pilot onboarding open', icon: GraduationCap },
-      { label: 'AI Workforce Platform', href: '/#ai-strategy', description: 'NeelStack AI-agent research and product direction', icon: Bot },
-      { label: 'NaukariMitra (Planned)', href: '/products/naukarimitra', description: 'AI-powered government exam companion', icon: Map },
-      { label: 'SarakariMitra (Planned)', href: '/products/sarkarimitra', description: 'AI citizen assistance platform', icon: Grid },
-      { label: 'All Products Overview', href: '/products', description: 'Explore our product portfolio & roadmap', icon: Grid },
+    groups: [
+      {
+        label: 'Flagship Platforms',
+        items: [
+          {
+            label: 'DhruvaOS (School OS)',
+            href: '/products/dhruvaos',
+            description: 'Unified school operating system — launching 2 October 2026',
+            icon: Zap,
+          },
+          {
+            label: 'ToolVines (Live Platform)',
+            href: 'https://toolvines.com',
+            description: '320+ client-side WebAssembly developer utilities',
+            icon: Wrench,
+            isExternal: true,
+          },
+          {
+            label: 'AI Company OS',
+            href: '/products/ai-company-os',
+            description: 'Autonomous multi-agent executive workforce platform',
+            icon: Bot,
+          },
+        ],
+      },
+      {
+        label: 'Ecosystem & Roadmap',
+        items: [
+          {
+            label: 'NaukariMitra (Planned)',
+            href: '/products/naukarimitra',
+            description: 'AI exam companion for Indian competitive aspirants',
+            icon: GraduationCap,
+          },
+          {
+            label: 'SarkariMitra (Planned)',
+            href: '/products/sarkarimitra',
+            description: 'Conversational citizen welfare & scheme discovery engine',
+            icon: Building,
+          },
+          {
+            label: 'All Products & Roadmap',
+            href: '/products',
+            description: 'Explore full 4-track software portfolio & milestones',
+            icon: Grid,
+          },
+        ],
+      },
     ],
   },
   {
     label: 'Company',
-    items: [
-      { label: 'About NeelStack', href: '/about', description: 'Our story, founder-led team & principles', icon: Info },
-      { label: 'Strategic Whitepaper', href: '/whitepapers/ai-company-operating-system', description: 'The AI Company Operating System charter', icon: FileText },
-      { label: 'AI Agent Strategy', href: '/#ai-strategy', description: 'Long-term AI Company OS vision', icon: Bot },
-      { label: 'Architecture & Blueprints', href: '/case-studies', description: 'Deep dives into our system designs', icon: Briefcase },
-      { label: 'Security & Compliance', href: '/security', description: 'Data protection & regulatory alignment', icon: Info },
-      { label: 'Careers (Talent Registry)', href: '/careers', description: 'Connect with our engineering team', icon: Rocket },
-      { label: 'Contact Us', href: '/contact', description: 'Talk to our team at contact@neelstack.com', icon: Info },
+    groups: [
+      {
+        label: 'About & Team',
+        items: [
+          {
+            label: 'About NeelStack',
+            href: '/about',
+            description: 'Company background, vision & engineering principles',
+            icon: Info,
+          },
+          {
+            label: 'Leadership & Team',
+            href: '/about#leadership',
+            description: 'Founders, software architects & AI executive partner',
+            icon: Users,
+          },
+          {
+            label: 'Careers (Talent Registry)',
+            href: '/careers',
+            description: 'Connect with our engineering lab & builders',
+            icon: Rocket,
+          },
+        ],
+      },
+      {
+        label: 'Architecture & Insights',
+        items: [
+          {
+            label: 'Strategic Whitepaper',
+            href: '/whitepapers/ai-company-operating-system',
+            description: 'AI Company Operating System architecture v1.0',
+            icon: FileText,
+          },
+          {
+            label: 'Architecture Case Studies',
+            href: '/case-studies',
+            description: 'Deep dives into our system designs & verifiable metrics',
+            icon: Briefcase,
+          },
+          {
+            label: 'Engineering Blog',
+            href: '/blog',
+            description: 'Technical articles, agent architectures & insights',
+            icon: FileText,
+          },
+        ],
+      },
     ],
+  },
+  {
+    label: 'Pricing',
+    href: '/pricing',
+  },
+  {
+    label: 'Contact',
+    href: '/contact',
   },
 ]
 
@@ -104,24 +194,31 @@ export const FOOTER_NAV = {
     { label: 'Custom Business Software', href: '/services/custom-software' },
     { label: 'Cloud Infrastructure & DevOps', href: '/services/devops-cloud' },
     { label: 'UI/UX & Product Design', href: '/services/ui-ux-design' },
+    { label: 'Pricing & Plans', href: '/pricing' },
   ],
   products: [
     { label: 'ToolVines (Live)', href: '/products/toolvines' },
     { label: 'DhruvaOS (Ready for Launch)', href: '/products/dhruvaos' },
-    { label: 'NaukariMitra (Planned)', href: '/products/naukarimitra' },
+    { label: 'NaukriMitra (Planned)', href: '/products/naukarimitra' },
     { label: 'SarakariMitra (Planned)', href: '/products/sarkarimitra' },
-    { label: 'AI Workforce Direction', href: '/#ai-strategy' },
+    { label: 'AI Workforce Platform', href: '/products/ai-company-os' },
     { label: 'Public Product Roadmap', href: '/roadmap' },
   ],
   company: [
     { label: 'About NeelStack', href: '/about' },
+    { label: 'Leadership & Team', href: '/about#leadership' },
     { label: 'Strategic Whitepaper', href: '/whitepapers/ai-company-operating-system' },
     { label: 'AI Agent Strategy', href: '/#ai-strategy' },
     { label: 'Architecture Blueprints', href: '/case-studies' },
     { label: 'Security & Compliance', href: '/security' },
     { label: 'Engineering Blog', href: '/blog' },
-    { label: 'Technical Whitepapers', href: '/whitepapers' },
     { label: 'Careers', href: '/careers' },
     { label: 'Contact Us', href: '/contact' },
+  ],
+  legal: [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Refund Policy', href: '/refund-policy' },
+    { label: 'Sitemap', href: '/sitemap.xml' },
   ],
 }

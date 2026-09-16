@@ -180,7 +180,7 @@ export function CaseStudiesClient() {
     <section className="py-16 md:py-24" aria-label="Case studies catalog">
       <Container className="space-y-12">
         {/* Executive Trust & Engineering Benchmark Bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl shadow-lg">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 sm:p-7 rounded-3xl border-2 border-border/80 bg-card/80 backdrop-blur-xl shadow-lg tactile-card-3d">
           <div className="space-y-1">
             <span className="text-2xl sm:text-3xl font-heading font-black text-primary">100% Valid</span>
             <p className="text-xs font-bold text-foreground">Defensible Systems</p>
@@ -209,10 +209,10 @@ export function CaseStudiesClient() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-extrabold font-heading transition-all duration-150 cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-primary text-primary-foreground shadow-md shadow-primary/20'
-                  : 'bg-muted/60 text-muted-foreground hover:text-foreground hover:bg-muted'
+                  ? 'bg-primary text-primary-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.4)]'
+                  : 'bg-muted/70 border border-border text-muted-foreground hover:text-foreground hover:bg-muted'
               }`}
             >
               {cat.label}
@@ -233,16 +233,16 @@ export function CaseStudiesClient() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.3 }}
-                  className="rounded-3xl border border-border/80 bg-card/80 dark:bg-card/40 p-6 sm:p-8 lg:p-10 shadow-xl backdrop-blur-xl card-hover relative overflow-hidden"
+                  className="rounded-3xl border-2 border-border/90 bg-card/90 dark:bg-card/40 p-6 sm:p-8 lg:p-10 shadow-xl backdrop-blur-xl tactile-card-3d relative overflow-hidden"
                 >
                   {/* Header Row */}
                   <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/50 pb-6">
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="text-xs font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+                        <span className="text-xs font-mono font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
                           {cs.categoryLabel}
                         </span>
-                        <span className="text-xs font-medium text-muted-foreground flex items-center gap-1">
+                        <span className="text-xs font-mono font-medium text-muted-foreground flex items-center gap-1">
                           <Clock className="h-3.5 w-3.5" />
                           {cs.timeframe}
                         </span>
@@ -257,18 +257,18 @@ export function CaseStudiesClient() {
 
                     <div className="text-right hidden sm:block">
                       <span className="text-xs font-mono text-muted-foreground/80 block">Engineering System</span>
-                      <span className="text-xs font-bold text-foreground">{cs.systemProfile}</span>
+                      <span className="text-xs font-bold text-foreground font-heading">{cs.systemProfile}</span>
                     </div>
                   </div>
 
                   {/* Quantified Metrics Grid */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6">
                     {cs.metrics.map((metric) => (
-                      <div key={metric.label} className="p-4 rounded-2xl bg-muted/40 border border-border/50 space-y-1">
+                      <div key={metric.label} className="p-4 rounded-2xl bg-muted/40 border-2 border-border/60 space-y-1 tactile-card-3d">
                         <div className="text-2xl sm:text-3xl font-heading font-black text-foreground">
                           {metric.value}
                         </div>
-                        <div className="text-xs font-bold text-primary">{metric.label}</div>
+                        <div className="text-xs font-bold text-primary font-heading">{metric.label}</div>
                         <div className="text-[11px] text-muted-foreground leading-snug">{metric.desc}</div>
                       </div>
                     ))}
@@ -276,15 +276,15 @@ export function CaseStudiesClient() {
 
                   {/* Core Architectural Narrative */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 pb-6 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                    <div className="space-y-2 p-5 rounded-2xl bg-muted/20 border border-border/40">
-                      <h3 className="font-bold text-foreground text-sm flex items-center gap-2">
+                    <div className="space-y-2 p-5 rounded-2xl bg-muted/20 border-2 border-border/40">
+                      <h3 className="font-heading font-bold text-foreground text-sm flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full bg-rose-500" />
                         The Core Engineering Challenge
                       </h3>
                       <p>{cs.challenge}</p>
                     </div>
-                    <div className="space-y-2 p-5 rounded-2xl bg-muted/20 border border-border/40">
-                      <h3 className="font-bold text-foreground text-sm flex items-center gap-2">
+                    <div className="space-y-2 p-5 rounded-2xl bg-muted/20 border-2 border-border/40">
+                      <h3 className="font-heading font-bold text-foreground text-sm flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full bg-emerald-500" />
                         The NeelStack Architectural Solution
                       </h3>
@@ -303,13 +303,13 @@ export function CaseStudiesClient() {
                         className="space-y-6 pt-4 border-t border-border/50"
                       >
                         <div className="space-y-3">
-                          <h4 className="text-sm font-bold text-foreground uppercase tracking-wider flex items-center gap-2">
+                          <h4 className="text-sm font-bold text-foreground uppercase tracking-wider flex items-center gap-2 font-heading">
                             <Layers className="h-4 w-4 text-primary" />
                             Key Architecture Components Deployed
                           </h4>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             {cs.architectureHighlights.map((item, i) => (
-                              <div key={i} className="flex items-start gap-2 text-xs text-muted-foreground p-3 rounded-xl bg-card border border-border/60">
+                              <div key={i} className="flex items-start gap-2 text-xs text-muted-foreground p-3 rounded-xl bg-card border-2 border-border/60 tactile-card-3d">
                                 <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
                                 <span>{item}</span>
                               </div>
@@ -318,7 +318,7 @@ export function CaseStudiesClient() {
                         </div>
 
                         <div className="space-y-3">
-                          <h4 className="text-sm font-bold text-foreground uppercase tracking-wider flex items-center gap-2">
+                          <h4 className="text-sm font-bold text-foreground uppercase tracking-wider flex items-center gap-2 font-heading">
                             <ShieldCheck className="h-4 w-4 text-emerald-500" />
                             Statutory &amp; Regulatory Compliance Enforced
                           </h4>
@@ -354,8 +354,8 @@ export function CaseStudiesClient() {
                       >
                         {isExpanded ? 'Collapse Blueprint' : 'View Blueprint'}
                       </button>
-                      <Button asChild size="sm" variant="gradient" className="glow-cta">
-                        <Link href={cs.blogUrl} className="flex items-center gap-1.5 text-xs font-bold">
+                      <Button asChild size="sm" variant="3d-yellow" className="font-extrabold rounded-xl">
+                        <Link href={cs.blogUrl} className="flex items-center gap-1.5 text-xs">
                           <BookOpen className="h-3.5 w-3.5" />
                           <span>Read Full Architecture Blog ({cs.blogReadTime})</span>
                           <ArrowRight className="h-3.5 w-3.5" />

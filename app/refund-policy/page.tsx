@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 }
 
-const LAST_UPDATED = 'July 4, 2026'
+const LAST_UPDATED = 'September 1, 2026'
 
 export default function RefundPolicyPage() {
   return (

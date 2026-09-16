@@ -79,7 +79,7 @@ export default function WhitepapersPage() {
 
       <Section>
         <Container>
-          <div className="mx-auto max-w-3xl rounded-3xl border border-primary/25 bg-card/60 backdrop-blur-xl p-8 md:p-10 text-center space-y-5 mb-16 shadow-xl">
+          <div className="mx-auto max-w-3xl rounded-3xl border-2 border-primary/30 bg-card/60 backdrop-blur-xl p-8 md:p-10 text-center space-y-5 mb-16 tactile-card-3d">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
               <CheckCircle2 className="h-3.5 w-3.5" />
               <span>Technical Briefings Live &amp; Published</span>
@@ -94,13 +94,13 @@ export default function WhitepapersPage() {
             </p>
 
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="gap-2 glow-cta">
+              <Button asChild variant="3d-yellow" size="lg" className="rounded-xl font-bold gap-2">
                 <Link href="/contact">
                   <Mail className="h-4 w-4" />
                   Request Full PDF Edition
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="3d-secondary" size="lg" className="rounded-xl font-bold">
                 <Link href="/blog">Browse All 12 Engineering Articles</Link>
               </Button>
             </div>
@@ -112,11 +112,11 @@ export default function WhitepapersPage() {
             description="Deep technical analysis and practical blueprints for CTOs, VPs of Engineering, and software leaders."
           />
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {WHITEPAPERS.map((paper) => (
               <div
                 key={paper.id}
-                className="rounded-3xl border border-border/80 bg-card/80 dark:bg-card/40 backdrop-blur-xl p-6 md:p-8 flex flex-col justify-between space-y-6 card-hover shadow-lg"
+                className="rounded-3xl border-2 border-border/80 bg-card/80 dark:bg-card/40 backdrop-blur-xl p-6 md:p-8 flex flex-col justify-between space-y-6 tactile-card-3d hover:border-primary/50"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -153,13 +153,13 @@ export default function WhitepapersPage() {
                 </div>
 
                 <div className="pt-6 border-t border-border/50 flex flex-col gap-2.5">
-                  <Button asChild variant="gradient" size="sm" className="w-full gap-2 text-xs glow-cta">
+                  <Button asChild variant="3d-yellow" size="sm" className="w-full gap-2 text-xs rounded-xl font-bold">
                     <Link href={paper.readUrl}>
                       <BookOpen className="h-3.5 w-3.5" />
                       Read Architecture Briefing
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="sm" className="w-full gap-2 text-xs">
+                  <Button asChild variant="3d-secondary" size="sm" className="w-full gap-2 text-xs rounded-xl font-bold">
                     <Link href="/contact">
                       <Mail className="h-3.5 w-3.5 text-muted-foreground" />
                       Request PDF Whitepaper

@@ -8,8 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "test": "node --test test/*.test.mjs",
     "type-check": "tsc --noEmit",
-    "ci-check": "pnpm run lint && pnpm exec tsc --noEmit && pnpm run build",
+    "ci-check": "pnpm run test && pnpm run lint && pnpm exec tsc --noEmit && pnpm run build",
     "sync:main": "git fetch origin && git merge -s ours origin/main"
   },
   "dependencies": {

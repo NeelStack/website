@@ -88,7 +88,7 @@ function FooterColumn({ title, links }: FooterColumnProps) {
   )
 }
 
-export function Footer() {
+export function Footer({ showPreFooterCta = false }: { showPreFooterCta?: boolean }) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -97,39 +97,40 @@ export function Footer() {
       role="contentinfo"
       aria-label="Site footer"
     >
-      {/* Pre-footer CTA banner */}
-      <div className="border-b border-border/80 bg-gradient-to-r from-card via-background to-card dark:from-surface dark:via-background dark:to-surface py-16 px-4 text-center relative overflow-hidden">
-        <div className="max-w-4xl mx-auto space-y-6 relative z-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold text-primary">
-            <Sparkles className="h-3.5 w-3.5" />
-            Building the Software &amp; AI Systems of Tomorrow
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
-            Have a Software, AI or Product Idea?
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Talk to our engineering team. We design, build, and deploy software products, AI systems, and digital platforms.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <motion.div whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
-              <Button asChild variant="gradient" size="lg" className="glow-cta px-8 text-base">
-                <Link href="/contact">
+      {/* Pre-footer CTA banner (Optional) */}
+      {showPreFooterCta && (
+        <div className="border-b border-border/80 bg-gradient-to-r from-card via-background to-card dark:from-surface dark:via-background dark:to-surface py-16 px-4 text-center relative overflow-hidden">
+          <div className="max-w-4xl mx-auto space-y-6 relative z-10">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold text-primary">
+              <Sparkles className="h-3.5 w-3.5" />
+              Building the Software &amp; AI Systems of Tomorrow
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
+              Have a Software, AI or Product Idea?
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed">
+              Talk to our engineering team. We design, build, and deploy software products, AI systems, and digital platforms.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <Button asChild variant="3d-yellow" size="lg" className="h-12 px-8 text-sm sm:text-base rounded-xl">
+                <Link href="/contact" className="flex items-center gap-2">
                   Talk to NeelStack <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-            </motion.div>
-            <motion.div whileTap={{ scale: 0.96 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/products">Explore Products</Link>
+              <Button asChild variant="3d-secondary" size="lg" className="h-12 px-8 text-sm sm:text-base rounded-xl">
+                <Link href="/products" className="flex items-center gap-2">
+                  Explore Products <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
-        <div className="py-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="py-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-7">
           {/* Brand column */}
           <div className="lg:col-span-2">
             <FooterLogo />
@@ -166,6 +167,7 @@ export function Footer() {
           <FooterColumn title="Products" links={FOOTER_NAV.products} />
           <FooterColumn title="Services" links={FOOTER_NAV.services} />
           <FooterColumn title="Company" links={FOOTER_NAV.company} />
+          <FooterColumn title="Legal" links={FOOTER_NAV.legal} />
         </div>
 
         <div className="border-t border-border py-6 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -186,19 +188,13 @@ export function Footer() {
               href="/privacy"
               className="text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
-              Privacy Policy
+              Privacy
             </Link>
             <Link
               href="/terms"
               className="text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
-              Terms of Service
-            </Link>
-            <Link
-              href="/refund-policy"
-              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Refund Policy
+              Terms
             </Link>
             <a
               href="/sitemap.xml"

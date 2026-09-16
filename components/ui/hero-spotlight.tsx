@@ -16,7 +16,7 @@ export function HeroSpotlight({ children, className = '' }: HeroSpotlightProps) 
   const mouseSectionY = useMotionValue(0)
   const spotlightX = useSpring(mouseSectionX, { stiffness: 100, damping: 25 })
   const spotlightY = useSpring(mouseSectionY, { stiffness: 100, damping: 25 })
-  const spotlightGradient = useMotionTemplate`radial-gradient(circle 500px at ${spotlightX}px ${spotlightY}px, rgba(59, 114, 254, 0.14) 0%, transparent 80%)`
+  const spotlightGradient = useMotionTemplate`radial-gradient(circle 420px at ${spotlightX}px ${spotlightY}px, rgba(59, 130, 246, 0.08) 0%, transparent 75%)`
 
   function handleSectionMouseMove(event: React.MouseEvent<HTMLElement, MouseEvent>) {
     if (!sectionRef.current) return
@@ -34,7 +34,7 @@ export function HeroSpotlight({ children, className = '' }: HeroSpotlightProps) 
     >
       {/* Dynamic Cursor Spotlight Layer */}
       <motion.div
-        className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-65 z-0"
+        className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-45 z-0"
         style={{ background: spotlightGradient }}
         aria-hidden="true"
       />

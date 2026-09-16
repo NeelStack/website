@@ -90,7 +90,7 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.07 }}
-      className={`group rounded-[2rem] p-7 md:p-8 flex flex-col justify-between space-y-6 bg-card dark:bg-[#0b1329] border border-border/80 shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden ${item.glowColor}`}
+      className={`group rounded-[2rem] p-7 md:p-8 flex flex-col justify-between space-y-6 bg-card dark:bg-[#0b1329] tactile-card-3d hover:border-primary/60 relative overflow-hidden ${item.glowColor}`}
     >
       <div className="space-y-4 relative z-10">
         <div className="flex items-center justify-between">
@@ -134,7 +134,7 @@ function CapabilityCard({ item, index }: { item: (typeof CAPABILITIES)[0]; index
 
 export function CapabilitiesSection() {
   return (
-    <section className="py-12 sm:py-16 md:py-24 bg-transparent relative overflow-hidden">
+    <section className="py-12 sm:py-14 md:py-16 bg-transparent relative overflow-hidden">
       {/* Subtle ambient glows */}
       <div className="absolute top-1/2 left-0 w-80 h-80 rounded-full bg-cyan-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-violet-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
@@ -185,7 +185,7 @@ export function CapabilitiesSection() {
         </div>
 
         <div className="text-center pt-4">
-          <Button asChild size="lg" className="h-12 px-8 font-bold bg-gradient-to-r from-primary to-violet-600 hover:from-primary/95 hover:to-violet-600/95 text-white rounded-xl shadow-lg shadow-primary/20 border-0 transition-all duration-200 btn-shimmer glow-cta">
+          <Button asChild variant="3d-primary" size="lg" className="h-12 px-8 font-extrabold rounded-xl">
             <Link href="/services" className="gap-2 flex items-center justify-center">
               Explore All Services &amp; Capabilities <ArrowRight className="h-4 w-4" />
             </Link>

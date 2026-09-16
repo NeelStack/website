@@ -50,7 +50,7 @@ const OS_CAPABILITIES = [
 
 export function AiStrategySection() {
   return (
-    <section id="ai-strategy" className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-surface border-t border-border/60">
+    <section id="ai-strategy" className="py-12 sm:py-14 md:py-16 relative overflow-hidden bg-surface border-t border-border/60">
       {/* Ambient background glow */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[350px] pointer-events-none"

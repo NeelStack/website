@@ -15,8 +15,8 @@ const statusConfig = {
   },
   beta: {
     label: 'In Development',
-    className: 'border-amber-500/40 bg-amber-500/12 text-amber-600 dark:text-amber-300 shadow-[0_0_10px_rgba(251,191,36,0.15)]',
-    dot: 'bg-amber-500',
+    className: 'border-violet-500/40 bg-violet-500/12 text-violet-600 dark:text-violet-300 shadow-[0_0_10px_rgba(139,92,246,0.15)]',
+    dot: 'bg-violet-500',
     pingDot: false,
   },
   'coming-soon': {

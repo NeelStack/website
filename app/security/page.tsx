@@ -95,7 +95,7 @@ export default function SecurityPage() {
               return (
                 <div
                   key={pillar.title}
-                  className="rounded-2xl border border-border bg-card p-6 space-y-3 card-hover"
+                  className="rounded-2xl border-2 border-border bg-card p-6 space-y-3 tactile-card-3d hover:border-primary/50"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">
                     <Icon className="h-5 w-5" />
@@ -118,9 +118,9 @@ export default function SecurityPage() {
             description="How we align with international regulatory frameworks and privacy legislation."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {COMPLIANCE_ROADMAP.map((item) => (
-              <div key={item.name} className="rounded-2xl border border-border bg-card p-6 space-y-3">
+              <div key={item.name} className="rounded-2xl border-2 border-border bg-card p-6 space-y-3 tactile-card-3d hover:border-primary/50">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold text-primary bg-primary/10 border border-primary/20">
                   <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
                   {item.status}

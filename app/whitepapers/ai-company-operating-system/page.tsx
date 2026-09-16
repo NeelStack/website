@@ -181,7 +181,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
           <div className="prose prose-slate dark:prose-invert max-w-none space-y-12">
             
             {/* Executive Summary */}
-            <section id="executive-summary" className="space-y-4">
+            <section id="executive-summary" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 Executive Summary
               </h2>
@@ -231,7 +231,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 1. The Thesis */}
-            <section id="the-thesis" className="space-y-4">
+            <section id="the-thesis" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 1. The Thesis
               </h2>
@@ -247,7 +247,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 2. The Vision: Executive Roles */}
-            <section id="the-vision" className="space-y-4">
+            <section id="the-vision" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 2. The Vision: The AI Executive Team
               </h2>
@@ -278,7 +278,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 5. The Company Brain */}
-            <section id="company-brain" className="space-y-4">
+            <section id="company-brain" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 5. The Company Brain: Persistent Institutional Memory
               </h2>
@@ -304,7 +304,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 7. The AI Boardroom */}
-            <section id="boardroom-mode" className="space-y-4">
+            <section id="boardroom-mode" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 7. The AI Boardroom &amp; Constructive Disagreement
               </h2>
@@ -329,7 +329,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 8-10. Meeting Execution Engine */}
-            <section id="meeting-execution" className="space-y-4">
+            <section id="meeting-execution" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 8–10. The Closed-Loop Meeting Execution Engine
               </h2>
@@ -347,7 +347,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 13. Agent Authority Model */}
-            <section id="authority-model" className="space-y-4">
+            <section id="authority-model" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 13. The 4-Level Agent Authority Model
               </h2>
@@ -371,7 +371,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 16. The Trust Layer */}
-            <section id="trust-layer" className="space-y-4">
+            <section id="trust-layer" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 16. The Trust Layer: Trust Is The Product
               </h2>
@@ -380,7 +380,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 not-prose my-6 text-center">
                 {['Identity & Role Verification', 'Granular Authorization', 'Cryptographic Audit Trail', 'Observability & Traceability', 'Deterministic Evaluation', 'Single-Click Rollback', 'Human Escalation Gates', 'Strict Tenant Isolation'].map((pillar) => (
-                  <div key={pillar} className="p-3 rounded-xl border border-border/70 bg-card/40 flex items-center justify-center text-xs font-semibold text-foreground">
+                  <div key={pillar} className="p-3.5 rounded-xl border border-border/70 bg-card/40 flex items-center justify-center text-xs font-semibold text-foreground">
                     {pillar}
                   </div>
                 ))}
@@ -388,7 +388,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 20 & 22. Strategy & Capital Allocation */}
-            <section id="three-engines" className="space-y-4">
+            <section id="three-engines" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 20–22. Capital Allocation &amp; The Three-Engine Strategy
               </h2>
@@ -418,7 +418,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 23. Road to $1B & 24. 5-Year Roadmap */}
-            <section id="five-year-roadmap" className="space-y-4">
+            <section id="five-year-roadmap" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 23–24. The 8 Stages of Commercialization (2026–2030+)
               </h2>
@@ -441,7 +441,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             </section>
 
             {/* 30. 15 Operating Principles */}
-            <section id="operating-principles" className="space-y-4">
+            <section id="operating-principles" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
                 30. NeelStack&apos;s 15 Operating Principles
               </h2>

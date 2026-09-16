@@ -12,11 +12,12 @@ interface LogoProps {
 }
 
 /**
- * ✦ The Pure Unbroken Solid "N" — NeelStack Signature Brand Mark
+ * ✦ The Pure Unbroken Solid "N" in Symmetrical Dual-Color 6-Hexagon — NeelStack Signature Brand Mark
  * 
- * - 100% Solid, continuous, unbroken, architectural geometric "N"
- * - Palette: Electric Blue (#3B82F6) -> Vivid Violet (#8B5CF6) Gradient
- * - Zero Clipping: Centered y=6..34 with 6px top/bottom safety padding
+ * - 6-sided Hexagon in 2 symmetrical 3-edge halves: Top Half (Royal Blue) + Bottom Half (Rich Violet)
+ * - Symmetrical Wordmark: N (Royal Blue) · ee (Rich Violet Core) · l (Royal Blue) · Stack (Black/White)
+ * - High-contrast palette tuned for both Dark (#070B14) and Light (#FAFBFF) modes
+ * - Brand Colors: Dark #3B82F6 + #8B5CF6 · Light #2563EB + #7C3AED
  */
 export function LogoMark({ 
   size = 'md', 
@@ -28,9 +29,9 @@ export function LogoMark({
   variant?: 'full' | 'monochrome' | 'dark' | 'light'
 }) {
   const dimensions = {
-    sm: { width: 32, height: 32 },
-    md: { width: 40, height: 40 },
-    lg: { width: 48, height: 48 },
+    sm: { width: 36, height: 36 },
+    md: { width: 44, height: 44 },
+    lg: { width: 54, height: 54 },
   }[size]
 
   return (
@@ -41,42 +42,89 @@ export function LogoMark({
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        shapeRendering="geometricPrecision"
         aria-hidden="true"
-        className="relative z-10 transition-transform duration-300 group-hover/logo:scale-[1.03] overflow-visible"
+        className="relative z-10 transition-transform duration-300 group-hover/logo:scale-[1.05] overflow-visible"
       >
         <defs>
-          <linearGradient id="neelstack-brand-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#3B72FE" />
-            <stop offset="100%" stopColor="#2EC7F2" />
+          {/* Dual-Color Harmonic Gradient (Dark Theme): Electric Blue -> Rich Violet */}
+          <linearGradient id="neelstack-dual-grad-dark" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#3B82F6" />
+            <stop offset="100%" stopColor="#8B5CF6" />
+          </linearGradient>
+
+          {/* Dual-Color Harmonic Gradient (Light Theme): Royal Sapphire -> Deep Violet */}
+          <linearGradient id="neelstack-dual-grad-light" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#2563EB" />
+            <stop offset="100%" stopColor="#7C3AED" />
           </linearGradient>
         </defs>
 
-        {/* Outer Hexagon Outline */}
-        <path
-          d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
-          fill="none"
-          stroke={variant === 'monochrome' ? 'currentColor' : 'url(#neelstack-brand-grad)'}
-          strokeWidth="5.8"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-          className={cn(
-            variant === 'full' && 'drop-shadow-[0_2px_8px_rgba(59,114,254,0.12)]',
-            variant === 'monochrome' && 'text-foreground'
-          )}
-        />
+        {variant === 'monochrome' ? (
+          /* Monochrome Full Hexagon */
+          <path
+            d="M50,10 L84.64,30 V70 L50,90 L15.36,70 V30 Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="5.8"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            className="text-foreground"
+          />
+        ) : (
+          /* 6-Sided Hexagon in 2 Symmetrical 3-Edge Halves */
+          <g>
+            {/* Top Half (3 symmetrical edges: Left Vertical + Roof Apex + Top-Right): Royal Blue */}
+            <path
+              d="M15.36,70 L15.36,30 L50,10 L84.64,30"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="5.8"
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              className="text-[#2563EB] dark:text-[#3B82F6] transition-colors duration-200"
+            />
 
-        {/* Inner Geometric N with Flat linecaps, Fluid Corner & Subliminal Slanted Cap */}
-        <path
-          d="M39,68 V32 L65.5,62 V31 L67,28.4"
-          fill="none"
-          stroke={variant === 'monochrome' ? 'currentColor' : 'url(#neelstack-brand-grad)'}
-          strokeWidth="8"
-          strokeLinecap="butt"
-          strokeLinejoin="round"
-          className={cn(
-            variant === 'monochrome' && 'text-foreground'
-          )}
-        />
+            {/* Bottom Half (3 symmetrical edges: Right Vertical + Base Apex + Bottom-Left): Rich Violet */}
+            <path
+              d="M84.64,30 L84.64,70 L50,90 L15.36,70"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="5.8"
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              className="text-[#7C3AED] dark:text-[#8B5CF6] transition-colors duration-200"
+            />
+          </g>
+        )}
+
+        {/* Inner Geometric N — Mathematically Centered at (50,50) */}
+        <g className="transition-opacity duration-300">
+          {/* Light Theme N */}
+          <path
+            d="M38,67 V33 L62,67 V33"
+            fill="none"
+            stroke={variant === 'monochrome' ? 'currentColor' : 'url(#neelstack-dual-grad-light)'}
+            strokeWidth="7"
+            strokeLinecap="butt"
+            strokeLinejoin="round"
+            className={cn(
+              variant === 'monochrome' ? 'text-foreground' : 'dark:hidden'
+            )}
+          />
+          {/* Dark Theme N */}
+          <path
+            d="M38,67 V33 L62,67 V33"
+            fill="none"
+            stroke={variant === 'monochrome' ? 'currentColor' : 'url(#neelstack-dual-grad-dark)'}
+            strokeWidth="7"
+            strokeLinecap="butt"
+            strokeLinejoin="round"
+            className={cn(
+              variant === 'monochrome' ? 'text-foreground' : 'hidden dark:inline'
+            )}
+          />
+        </g>
       </svg>
     </div>
   )
@@ -84,6 +132,8 @@ export function LogoMark({
 
 /**
  * Stylish NeelStack Wordmark Component
+ * Dual-Color Symmetrical System: N (Royal Blue) + ee (Rich Violet Core) + l (Royal Blue) + Stack (Black in Light / White in Dark)
+ * Brand Colors: Dark #3B82F6 + #8B5CF6 · Light #2563EB + #7C3AED
  */
 export function NeelStackLogo({ 
   className, 
@@ -93,41 +143,47 @@ export function NeelStackLogo({
   variant = 'full'
 }: LogoProps) {
   const textSize = {
-    sm: 'text-lg sm:text-xl',
-    md: 'text-xl sm:text-2xl',
-    lg: 'text-2xl sm:text-3xl',
+    sm: 'text-xl sm:text-[22px]',
+    md: 'text-2xl sm:text-[26px]',
+    lg: 'text-3xl sm:text-[34px]',
   }[size]
 
   return (
     <Link
       href="/"
       onClick={onClick}
-      className={cn('inline-flex items-center gap-3 group select-none shrink-0', className)}
+      className={cn('inline-flex items-center gap-2.5 sm:gap-3 group select-none shrink-0', className)}
       aria-label="NeelStack Solutions — Home"
     >
       <LogoMark size={size} variant={variant} />
 
       <div className="flex flex-col justify-center">
         <div className="flex items-center gap-2">
-          {/* Stylish Brand Wordmark */}
-          <span className={cn('font-sans font-semibold tracking-[-0.03em] leading-none', textSize)}>
+          {/* Stylish Symmetrical Brand Wordmark */}
+          <span className={cn('font-sans font-bold tracking-[-0.03em] leading-none', textSize)}>
             {variant === 'monochrome' ? (
               <span className="text-foreground">NeelStack</span>
             ) : (
-              <>
-                <span className="text-slate-900 dark:text-white transition-colors">Neel</span>
-                <span className="bg-gradient-to-r from-[#3B72FE] to-[#2EC7F2] bg-clip-text text-transparent">
+              <span className="inline-flex items-baseline font-black tracking-[-0.035em]">
+                {/* N - Royal / Electric Blue */}
+                <span className="text-[#2563EB] dark:text-[#3B82F6] transition-colors duration-200">N</span>
+                {/* ee - Rich Violet Core */}
+                <span className="text-[#7C3AED] dark:text-[#8B5CF6] transition-colors duration-200">ee</span>
+                {/* l - Royal / Electric Blue */}
+                <span className="text-[#2563EB] dark:text-[#3B82F6] transition-colors duration-200">l</span>
+                {/* Stack - Pure Black in Light / Pure White in Dark */}
+                <span className="text-slate-950 dark:text-white transition-colors duration-200 ml-[1px]">
                   Stack
                 </span>
-              </>
+              </span>
             )}
           </span>
 
           {/* AI-Native Executive Badge */}
-          <span className="hidden xl:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[9px] font-semibold text-blue-600 dark:text-blue-400 tracking-tight shrink-0">
+          <span className="hidden xl:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-[9px] font-bold text-violet-700 dark:text-violet-400 tracking-tight shrink-0">
             <span className="relative flex h-1.5 w-1.5 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-500" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-500" />
             </span>
             <span>AI-Native</span>
           </span>
@@ -142,6 +198,7 @@ export function NeelStackLogo({
     </Link>
   )
 }
+
 
 
 

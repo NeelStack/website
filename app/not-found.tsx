@@ -63,14 +63,14 @@ export default function NotFound() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button asChild variant="gradient" size="lg">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button asChild variant="3d-yellow" size="lg" className="rounded-xl font-bold">
               <Link href="/">
                 <Home className="mr-2 h-4 w-4" aria-hidden="true" />
                 Go to Homepage
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="3d-secondary" size="lg" className="rounded-xl font-bold">
               <Link href="/contact">
                 <MessageCircle className="mr-2 h-4 w-4" aria-hidden="true" />
                 Contact Support

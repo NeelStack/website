@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
+import Link from 'next/link'
 import { SERVICES } from '@/constants/services'
+import { INDUSTRIES } from '@/constants/industries'
 import { getSiteUrl } from '@/lib/site-url'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -20,6 +22,13 @@ import {
   Package,
   ChevronDown,
   ChevronUp,
+  Lock,
+  Server,
+  Zap,
+  Clock,
+  Sparkles,
+  Layers,
+  ArrowUpRight,
 } from 'lucide-react'
 
 interface PageProps {
@@ -38,8 +47,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   return {
     title: `${service.name} — Professional ${service.category} Services | NeelStack India`,
-    description: `NeelStack delivers expert ${service.name.toLowerCase()} services. ${service.description}`,
+    description: `NeelStack delivers enterprise ${service.name.toLowerCase()} services. ${service.description}`,
     alternates: { canonical: `/services/${resolvedParams.id}` },
+    openGraph: {
+      title: `${service.name} — Professional ${service.category} Services | NeelStack`,
+      description: service.description,
+    },
   }
 }
 
@@ -50,12 +63,17 @@ export async function generateStaticParams() {
 
 /* ── Illustration map: service id → image path ── */
 const SERVICE_ILLUSTRATIONS: Record<string, string> = {
-  'ai-development':       '/images/illustrations/service-ai.png',
-  'enterprise-web':       '/images/illustrations/service-web-dev.png',
-  'mobile-development':   '/images/illustrations/hero-developer.png',
-  'custom-software':      '/images/illustrations/service-web-dev.png',
-  'devops-cloud':         '/images/illustrations/service-ai.png',
-  'ui-ux-design':         '/images/illustrations/cta-advisor.png',
+  'ai-development':        '/images/illustrations/service-ai.png',
+  'web-applications':      '/images/illustrations/service-web-dev.png',
+  'mobile-development':    '/images/illustrations/hero-developer.png',
+  'custom-software':       '/images/illustrations/service-web-dev.png',
+  'workflow-automation':   '/images/illustrations/service-ai.png',
+  'enterprise-platforms':  '/images/illustrations/service-web-dev.png',
+  'api-development':       '/images/illustrations/service-ai.png',
+  'database-systems':      '/images/illustrations/service-ai.png',
+  'devops-cloud':          '/images/illustrations/service-ai.png',
+  'technology-consulting': '/images/illustrations/cta-advisor.png',
+  'ui-ux-design':          '/images/illustrations/cta-advisor.png',
 }
 
 /* ── Generic fallback FAQs used only if a service has no faqs ── */
@@ -88,10 +106,14 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const Icon = service.icon
   const faqs = service.faqs ?? FALLBACK_FAQS
   const illustrationSrc = SERVICE_ILLUSTRATIONS[resolvedParams.id] ?? '/images/illustrations/hero-developer.png'
+  const siteUrl = getSiteUrl()
+
+  // Related complementary services (exclude current)
+  const relatedServices = SERVICES.filter((s) => s.id !== service.id).slice(0, 3)
 
   return (
     <MarketingLayout>
-      {/* Structured Data */}
+      {/* ── Structured Data ── */}
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -101,9 +123,50 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           provider: {
             '@type': 'Organization',
             name: 'NeelStack',
-            url: getSiteUrl(),
+            url: siteUrl,
           },
           description: service.description,
+          url: `${siteUrl}/services/${service.id}`,
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: siteUrl,
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Services',
+              item: `${siteUrl}/services`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: service.name,
+              item: `${siteUrl}/services/${service.id}`,
+            },
+          ],
         }}
       />
 
@@ -135,13 +198,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
                   We engineer {service.name.toLowerCase()} solutions to be modular, performant, and
-                  secure — with clean architectures that grow alongside your operations without
+                  secure — with clean architectures that scale alongside your operations without
                   accumulating technical debt.
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed">
                   Every engagement includes full source code ownership, automated deployment
                   pipelines, continuous test coverage, and comprehensive runbook documentation so
-                  your team can operate and extend the system independently.
+                  your engineering team can operate and extend the system independently.
                 </p>
 
                 {/* Guarantee cards */}
@@ -151,7 +214,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     <div>
                       <h4 className="text-sm font-bold text-foreground">Security First</h4>
                       <p className="text-xs text-muted-foreground mt-0.5">
-                        Encrypted data layers, RBAC, and least-privilege design by default.
+                        Encrypted data layers, strict RBAC, and least-privilege design by default.
                       </p>
                     </div>
                   </div>
@@ -160,7 +223,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     <div>
                       <h4 className="text-sm font-bold text-foreground">Clean Code</h4>
                       <p className="text-xs text-muted-foreground mt-0.5">
-                        TypeScript strict mode, automated tests, and full documentation.
+                        TypeScript strict mode, automated CI checks, and comprehensive documentation.
                       </p>
                     </div>
                   </div>
@@ -201,13 +264,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   </ul>
 
                   <div className="mt-6 pt-5 border-t border-border">
-                    <a
-                      href="/contact"
+                    <Link
+                      href={`/request-quote?service=${service.id}`}
                       className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground hover:bg-primary/90 transition-colors"
                     >
                       Start a Project
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -233,7 +296,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 max-w-xl">
                   We select technologies based on your specific requirements — not trend-chasing.
-                  All listed technologies are actively used in production projects.
+                  All listed platforms are actively deployed in enterprise production environments.
                 </p>
               </div>
 
@@ -264,9 +327,74 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </section>
       )}
 
-      {/* ── Section 3: Delivery Process ── */}
+      {/* ── Section 3: Sector-Specific Industry Deployments ── */}
+      <Section aria-labelledby="industry-matrix-heading">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
+                  Domain Adaptation
+                </p>
+                <h2
+                  id="industry-matrix-heading"
+                  className="font-heading text-2xl font-bold text-foreground"
+                >
+                  Industry Solutions for {service.name}
+                </h2>
+                <p className="text-sm text-muted-foreground mt-2 max-w-xl">
+                  Explore how we customize our {service.name.toLowerCase()} architecture for specific sector regulations, workflows, and compliance standards.
+                </p>
+              </div>
+              <Link
+                href="/industries"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline self-start md:self-auto"
+              >
+                View all industries <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {INDUSTRIES.map((ind) => {
+                const IndIcon = ind.icon
+                return (
+                  <Link
+                    key={ind.id}
+                    href={`/services/${service.id}/for/${ind.id}`}
+                    className="group rounded-2xl border border-border bg-card p-5 transition-all duration-200 hover:border-primary/50 hover:shadow-md hover:-translate-y-0.5 flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">
+                          <IndIcon className="h-5 w-5" />
+                        </div>
+                        <span className="text-[11px] font-semibold text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                          Tailored Setup <ArrowUpRight className="h-3 w-3" />
+                        </span>
+                      </div>
+                      <h3 className="font-heading text-sm font-bold text-foreground group-hover:text-primary transition-colors">
+                        {ind.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
+                        {ind.description}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-border/40">
+                      <span className="text-xs font-medium text-primary">
+                        Explore {ind.name.split(' ')[0]} Architecture →
+                      </span>
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* ── Section 4: Delivery Process ── */}
       {service.processSteps && service.processSteps.length > 0 && (
-        <Section aria-labelledby="process-heading">
+        <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="process-heading">
           <Container>
             <div className="max-w-5xl mx-auto">
               <div className="mb-12">
@@ -279,6 +407,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 >
                   Our Delivery Process
                 </h2>
+                <p className="text-sm text-muted-foreground mt-2 max-w-xl">
+                  Transparent 4-phase agile delivery with continuous staging updates, demo sessions, and zero surprise handovers.
+                </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -305,15 +436,12 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
       )}
 
-      {/* ── Section 4: What You Get (Deliverables) ── */}
+      {/* ── Section 5: What You Get (Deliverables) ── */}
       {service.deliverables && service.deliverables.length > 0 && (
-        <section
-          className="py-16 bg-muted/30 border-y border-border/50"
-          aria-labelledby="deliverables-heading"
-        >
+        <Section aria-labelledby="deliverables-heading">
           <Container>
             <div className="max-w-5xl mx-auto">
               <div className="mb-10">
@@ -327,7 +455,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   What You Receive on Completion
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Every project delivers complete ownership — no vendor lock-in, no black boxes.
+                  Every engagement delivers complete source ownership — no proprietary lock-in, no hidden codebases.
                 </p>
               </div>
 
@@ -344,11 +472,201 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </div>
             </div>
           </Container>
-        </section>
+        </Section>
       )}
 
-      {/* ── Section 5: FAQs ── */}
-      <Section aria-labelledby="faq-heading">
+      {/* ── Section 6: Enterprise SLA & Governance Standards ── */}
+      <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="sla-heading">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-10">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
+                Enterprise Standards
+              </p>
+              <h2
+                id="sla-heading"
+                className="font-heading text-2xl font-bold text-foreground"
+              >
+                Service Level Guarantees & Governance
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2 max-w-xl">
+                Rigorous operational baselines engineered into every contract and deployment pipeline.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                  <Lock className="h-5 w-5" />
+                </div>
+                <h3 className="text-sm font-bold text-foreground">100% IP Ownership</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Full git history, architecture diagrams, and unrestricted commercial license transferred upon delivery.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                  <Server className="h-5 w-5" />
+                </div>
+                <h3 className="text-sm font-bold text-foreground">99.9% Uptime Architecture</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Multi-AZ container failover, database clustering, and automated health recovery checks.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                  <Shield className="h-5 w-5" />
+                </div>
+                <h3 className="text-sm font-bold text-foreground">SOC 2 & DPDP Baseline</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Encrypted data at rest (AES-256) and in transit (TLS 1.3), granular RBAC, and zero-trust perimeter.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                  <Clock className="h-5 w-5" />
+                </div>
+                <h3 className="text-sm font-bold text-foreground">Bi-Weekly Sprints</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Direct Slack/Teams engineer access, continuous staging previews, and transparent milestone burndowns.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Section 7: Engagement Models ── */}
+      <Section aria-labelledby="engagement-heading">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-12">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
+                Flexible Collaboration
+              </p>
+              <h2
+                id="engagement-heading"
+                className="font-heading text-2xl font-bold text-foreground"
+              >
+                Engagement Models for {service.name}
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2 max-w-xl">
+                Choose the collaboration structure that fits your project velocity, budget, and internal engineering capacity.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Model 1 */}
+              <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between space-y-4">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-400 mb-2">
+                    <Zap className="h-3.5 w-3.5" /> MVP Sprint
+                  </div>
+                  <h3 className="text-base font-bold text-foreground">Fixed-Scope Delivery</h3>
+                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Ideal for MVPs, proof-of-concept AI agents, or specific modular feature additions with defined scope.
+                  </p>
+                  <div className="mt-4 space-y-2 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>2–4 Weeks Delivery Turnaround</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>Fixed Milestones & Budget</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>100% Codebase Handover</span>
+                    </div>
+                  </div>
+                </div>
+                <Link
+                  href={`/request-quote?service=${service.id}&engagement=fixed-sprint`}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2 text-xs font-bold text-foreground hover:bg-muted transition-colors"
+                >
+                  Scope a Sprint →
+                </Link>
+              </div>
+
+              {/* Model 2 (Featured) */}
+              <div className="rounded-2xl border-2 border-primary/60 bg-card p-6 flex flex-col justify-between space-y-4 shadow-lg relative">
+                <div className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-0.5 text-[10px] font-bold text-primary-foreground tracking-wider uppercase">
+                  Most Popular
+                </div>
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-xs font-bold text-purple-400 mb-2">
+                    <Sparkles className="h-3.5 w-3.5" /> Dedicated Pod
+                  </div>
+                  <h3 className="text-base font-bold text-foreground">Embedded Engineering Pod</h3>
+                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Senior full-stack & AI engineers embedded directly in your team to scale product velocity continuously.
+                  </p>
+                  <div className="mt-4 space-y-2 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>Monthly Sprint Retainer</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>Direct Slack / Teams Integration</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>Flexible Scope & Rapid Pivoting</span>
+                    </div>
+                  </div>
+                </div>
+                <Link
+                  href={`/request-quote?service=${service.id}&engagement=dedicated-pod`}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-foreground hover:bg-primary/90 transition-colors"
+                >
+                  Book an Engineering Pod →
+                </Link>
+              </div>
+
+              {/* Model 3 */}
+              <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between space-y-4">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400 mb-2">
+                    <Layers className="h-3.5 w-3.5" /> Enterprise
+                  </div>
+                  <h3 className="text-base font-bold text-foreground">Modernization & Migration</h3>
+                  <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                    Enterprise strangler-fig re-architecture, microservices decomposition, and cloud infrastructure hardening.
+                  </p>
+                  <div className="mt-4 space-y-2 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>Multi-Milestone Roadmap</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>Zero-Downtime Cutover SLA</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                      <span>Security & Compliance Audits</span>
+                    </div>
+                  </div>
+                </div>
+                <Link
+                  href={`/contact?service=${service.id}&subject=Enterprise%20Modernization`}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2 text-xs font-bold text-foreground hover:bg-muted transition-colors"
+                >
+                  Discuss Enterprise Scale →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* ── Section 8: Frequently Asked Questions ── */}
+      <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="faq-heading">
         <Container>
           <div className="max-w-3xl mx-auto">
             <div className="mb-10">
@@ -361,6 +679,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               >
                 Frequently Asked Questions
               </h2>
+              <p className="text-sm text-muted-foreground mt-2">
+                Clear answers regarding architecture, ownership, costs, and timeline execution.
+              </p>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
@@ -388,6 +709,64 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             </div>
           </div>
         </Container>
+      </section>
+
+      {/* ── Section 9: Complementary Services ── */}
+      <Section aria-labelledby="related-services-heading">
+        <Container>
+          <div className="max-w-5xl mx-auto">
+            <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
+                  Ecosystem
+                </p>
+                <h2
+                  id="related-services-heading"
+                  className="font-heading text-2xl font-bold text-foreground"
+                >
+                  Complementary Engineering Services
+                </h2>
+              </div>
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+              >
+                Browse all 11 services <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {relatedServices.map((rel) => {
+                const RelIcon = rel.icon
+                return (
+                  <Link
+                    key={rel.id}
+                    href={`/services/${rel.id}`}
+                    className="group rounded-2xl border border-border bg-card p-5 transition-all duration-200 hover:border-primary/50 hover:shadow-md flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary mb-3">
+                        <RelIcon className="h-5 w-5" />
+                      </div>
+                      <span className="text-[10px] font-bold text-primary uppercase tracking-wider">
+                        {rel.category}
+                      </span>
+                      <h3 className="font-heading text-sm font-bold text-foreground mt-1 group-hover:text-primary transition-colors">
+                        {rel.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
+                        {rel.description}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-border/40 text-xs font-medium text-primary flex items-center gap-1">
+                      Learn more <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        </Container>
       </Section>
 
       <CapabilitiesSection />
@@ -396,9 +775,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
       <CTASection
         title={`Ready to start your ${service.name.toLowerCase()} project?`}
-        description="Share your requirements and we will put together a detailed proposal with architecture recommendations, timeline, and pricing."
+        description="Share your technical goals and we will put together a comprehensive proposal with architecture recommendations, timeline milestones, and pricing."
         primaryLabel="Start a Project"
-        primaryHref="/contact"
+        primaryHref={`/request-quote?service=${service.id}`}
       />
     </MarketingLayout>
   )

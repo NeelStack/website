@@ -353,7 +353,7 @@ export default function TechnologiesPage() {
               return (
                 <div
                   key={layer.step}
-                  className={`group relative rounded-3xl border border-border/80 bg-card/60 backdrop-blur-md p-6 sm:p-7 transition-all duration-300 hover:shadow-xl hover:bg-card/90 ${layer.borderAccent}`}
+                  className={`group relative rounded-3xl border-2 border-border/80 bg-card/60 backdrop-blur-md p-6 sm:p-7 tactile-card-3d transition-all duration-300 hover:bg-card/90 ${layer.borderAccent}`}
                 >
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex items-center gap-3">

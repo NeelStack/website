@@ -1,77 +1,127 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { CopyEmailButton } from '@/components/ui/copy-email-button'
 import { CheckCircle2, AlertCircle, RefreshCw } from 'lucide-react'
+import { validateConsultationForm, isValidEmail } from '@/lib/validation'
 
-export function ConsultationForm() {
+function ConsultationFormInner() {
+  const searchParams = useSearchParams()
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+
+  const [formDataState, setFormDataState] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    topic: '',
+  })
+
+  // Dynamically sync incoming query parameters with topic discussion
+  useEffect(() => {
+    const serviceParam = searchParams.get('service')?.toLowerCase()
+    const topicParam = searchParams.get('topic')
+    const subjectParam = searchParams.get('subject')
+
+    if (topicParam || subjectParam || serviceParam) {
+      setFormDataState((prev) => {
+        if (prev.topic) return prev
+
+        let initialTopic = topicParam || subjectParam || ''
+        if (!initialTopic && serviceParam) {
+          if (serviceParam.includes('ai') || serviceParam.includes('agent')) {
+            initialTopic = 'AI Application Development & Autonomous Agent Architecture Strategy'
+          } else if (serviceParam.includes('web') || serviceParam.includes('saas')) {
+            initialTopic = 'Modern Web Applications & Multi-Tenant SaaS System Architecture'
+          } else if (serviceParam.includes('custom') || serviceParam.includes('backend')) {
+            initialTopic = 'Custom Software Architecture & High-Throughput Backend Systems'
+          } else if (serviceParam.includes('performance') || serviceParam.includes('optimization')) {
+            initialTopic = 'Full-Stack Performance Optimization & UX Speed Audit'
+          } else {
+            initialTopic = `Enterprise Architecture Strategy Consultation (${serviceParam})`
+          }
+        }
+
+        return { ...prev, topic: initialTopic }
+      })
+    }
+  }, [searchParams])
+
+  const formRef = useRef<HTMLFormElement>(null)
   const firstInputRef = useRef<HTMLInputElement>(null)
   const formContainerRef = useRef<HTMLDivElement>(null)
+  const successCardRef = useRef<HTMLDivElement>(null)
+  const errorBannerRef = useRef<HTMLDivElement>(null)
 
+  // Auto-scroll to success message when submitted
   useEffect(() => {
-    // Smooth auto-scroll to form on arrival
-    const timer = setTimeout(() => {
-      if (formContainerRef.current) {
-        const headerOffset = 90
-        const elementPosition = formContainerRef.current.getBoundingClientRect().top
+    if (success && successCardRef.current) {
+      const timer = setTimeout(() => {
+        const headerOffset = 110
+        const elementPosition = successCardRef.current?.getBoundingClientRect().top ?? 0
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
         window.scrollTo({
           top: Math.max(0, offsetPosition),
           behavior: 'smooth',
         })
+        successCardRef.current?.focus({ preventScroll: true })
+      }, 60)
+      return () => clearTimeout(timer)
+    }
+  }, [success])
 
-        setTimeout(() => {
-          firstInputRef.current?.focus({ preventScroll: true })
-        }, 450)
+  // Auto-scroll to error banner or first invalid field
+  useEffect(() => {
+    if (error && errorBannerRef.current) {
+      errorBannerRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
+  }, [error])
+
+  const handleFieldChange = (field: string, value: string) => {
+    setFormDataState((prev) => ({ ...prev, [field]: value }))
+
+    if (fieldErrors[field]) {
+      const isFieldNowValid = field === 'email' ? isValidEmail(value) : value.trim().length > 0
+      if (isFieldNowValid) {
+        setFieldErrors((prev) => {
+          const next = { ...prev }
+          delete next[field]
+          if (Object.keys(next).length === 0) {
+            setError(null)
+          }
+          return next
+        })
       }
-    }, 300)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  const checkAutoClearError = (form: HTMLFormElement) => {
-    if (!error) return
-    const formData = new FormData(form)
-    const firstName = formData.get('first-name') as string
-    const lastName = formData.get('last-name') as string
-    const email = formData.get('email') as string
-    const topic = formData.get('topic') as string
-
-    if (firstName?.trim() && lastName?.trim() && email?.trim() && topic?.trim()) {
-      setError(null)
     }
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitting(true)
     setError(null)
 
-    const form = e.currentTarget
-    const formData = new FormData(form)
-    const firstName = (formData.get('first-name') as string)?.trim()
-    const lastName = (formData.get('last-name') as string)?.trim()
-    const email = (formData.get('email') as string)?.trim()
-    const phone = (formData.get('phone') as string)?.trim()
-    const topic = (formData.get('topic') as string)?.trim()
+    const validationResult = validateConsultationForm(formDataState)
 
-    if (!firstName || !lastName || !email || !topic) {
-      setError('Please fill in all required fields.')
-      setSubmitting(false)
+    if (!validationResult.isValid) {
+      setFieldErrors(validationResult.errors)
+      const firstErrorField = Object.keys(validationResult.errors)[0]
+      setError('Please fill in all mandatory fields highlighted below.')
+
+      const invalidElement = formRef.current?.querySelector<HTMLElement>(`[name="${firstErrorField === 'firstName' ? 'first-name' : firstErrorField === 'lastName' ? 'last-name' : firstErrorField}"]`)
+      if (invalidElement) {
+        invalidElement.focus({ preventScroll: false })
+        invalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
       return
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address.')
-      setSubmitting(false)
-      return
-    }
+    setSubmitting(true)
+    setFieldErrors({})
 
     try {
       const response = await fetch('/api/contact', {
@@ -79,47 +129,78 @@ export function ConsultationForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           type: 'consultation',
-          name: `${firstName} ${lastName}`,
-          email,
-          phone,
-          topic,
+          name: `${formDataState.firstName.trim()} ${formDataState.lastName.trim()}`,
+          email: formDataState.email.trim(),
+          phone: formDataState.phone.trim() || 'Not provided',
+          topic: formDataState.topic.trim(),
         }),
       })
 
+      const data = await response.json().catch(() => ({}))
+
       if (!response.ok) {
-        throw new Error('Failed to send email.')
+        throw new Error(data.error || 'Failed to submit consultation request.')
       }
 
       setSuccess(true)
-    } catch (err) {
+    } catch (err: any) {
       console.error(err)
-      setError('Failed to submit via API. You can still email us directly at contact@neelstack.com.')
+      setError(err?.message || 'Failed to submit via API. You can still email us directly at contact@neelstack.com.')
     } finally {
       setSubmitting(false)
     }
   }
 
+  const getInputClass = (fieldName: string) => {
+    const hasError = !!fieldErrors[fieldName]
+    return `w-full rounded-xl border ${
+      hasError
+        ? 'border-red-500/80 bg-red-500/[0.04] focus:ring-red-500/30 focus:border-red-500'
+        : 'border-border bg-card/90 focus:border-primary focus:ring-primary/25 [&:not(:placeholder-shown)]:border-primary/40'
+    } backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:bg-card shadow-sm hover:border-primary/30`
+  }
+
   if (success) {
     return (
-      <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center space-y-4">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20">
-          <CheckCircle2 className="h-6 w-6 text-emerald-400" />
+      <div
+        ref={successCardRef}
+        tabIndex={-1}
+        role="status"
+        aria-live="polite"
+        className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-8 text-center space-y-4 shadow-xl backdrop-blur-md outline-none animate-in fade-in zoom-in-95 duration-300"
+      >
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 border border-emerald-500/30">
+          <CheckCircle2 className="h-7 w-7 text-emerald-400" />
         </div>
-        <h3 className="font-heading text-lg font-semibold text-foreground">Consultation Requested!</h3>
+        <h3 className="font-heading text-xl font-bold text-foreground">Consultation Requested!</h3>
         <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
           Your request has been received. Our team will review the topic and reach out to you within 1 business day to confirm a time slot.
         </p>
         <div className="pt-2">
-          <Button type="button" variant="outline" size="sm" onClick={() => setSuccess(false)}>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              setSuccess(false)
+              setFormDataState({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                topic: '',
+              })
+              setTimeout(() => {
+                firstInputRef.current?.focus({ preventScroll: true })
+              }, 100)
+            }}
+          >
             Book another session
           </Button>
         </div>
       </div>
     )
   }
-
-  const inputStyle =
-    'w-full rounded-xl border border-border bg-card/90 dark:bg-card/70 backdrop-blur-sm px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary focus:bg-card [&:not(:placeholder-shown)]:border-primary/40 [&:not(:placeholder-shown)]:bg-card shadow-sm hover:border-primary/30'
 
   return (
     <div
@@ -135,57 +216,87 @@ export function ConsultationForm() {
       </h3>
 
       <form
+        ref={formRef}
         className="space-y-5"
         onSubmit={handleSubmit}
-        onChange={(e) => checkAutoClearError(e.currentTarget)}
         noValidate
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="c-first-name" className="block text-sm font-medium text-foreground mb-1.5">
-              First Name <span aria-hidden="true" className="text-destructive">*</span>
+              First Name <span aria-hidden="true" className="text-red-500 font-bold">*</span>
             </label>
             <input
               ref={firstInputRef}
               id="c-first-name"
-              name="first-name"
+              name="firstName"
               type="text"
               required
+              aria-required="true"
+              aria-invalid={!!fieldErrors.firstName}
+              value={formDataState.firstName}
+              onChange={(e) => handleFieldChange('firstName', e.target.value)}
               autoComplete="given-name"
               placeholder="e.g. Priya"
-              className={inputStyle}
+              className={getInputClass('firstName')}
             />
+            {fieldErrors.firstName && (
+              <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
+                <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                <span>{fieldErrors.firstName}</span>
+              </p>
+            )}
           </div>
           <div>
             <label htmlFor="c-last-name" className="block text-sm font-medium text-foreground mb-1.5">
-              Last Name <span aria-hidden="true" className="text-destructive">*</span>
+              Last Name <span aria-hidden="true" className="text-red-500 font-bold">*</span>
             </label>
             <input
               id="c-last-name"
-              name="last-name"
+              name="lastName"
               type="text"
               required
+              aria-required="true"
+              aria-invalid={!!fieldErrors.lastName}
+              value={formDataState.lastName}
+              onChange={(e) => handleFieldChange('lastName', e.target.value)}
               autoComplete="family-name"
               placeholder="e.g. Patel"
-              className={inputStyle}
+              className={getInputClass('lastName')}
             />
+            {fieldErrors.lastName && (
+              <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
+                <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                <span>{fieldErrors.lastName}</span>
+              </p>
+            )}
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div>
             <label htmlFor="c-email" className="block text-sm font-medium text-foreground mb-1.5">
-              Email Address <span aria-hidden="true" className="text-destructive">*</span>
+              Email Address <span aria-hidden="true" className="text-red-500 font-bold">*</span>
             </label>
             <input
               id="c-email"
               name="email"
               type="email"
               required
+              aria-required="true"
+              aria-invalid={!!fieldErrors.email}
+              value={formDataState.email}
+              onChange={(e) => handleFieldChange('email', e.target.value)}
               autoComplete="email"
               placeholder="e.g. priya@domain.com"
-              className={inputStyle}
+              className={getInputClass('email')}
             />
+            {fieldErrors.email && (
+              <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
+                <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                <span>{fieldErrors.email}</span>
+              </p>
+            )}
           </div>
           <div>
             <label htmlFor="c-phone" className="block text-sm font-medium text-foreground mb-1.5">
@@ -195,25 +306,37 @@ export function ConsultationForm() {
               id="c-phone"
               name="phone"
               type="tel"
+              value={formDataState.phone}
+              onChange={(e) => handleFieldChange('phone', e.target.value)}
               autoComplete="tel"
               placeholder="e.g. +91 98765 43210"
-              className={inputStyle}
+              className={getInputClass('phone')}
             />
           </div>
         </div>
 
         <div>
           <label htmlFor="c-topic" className="block text-sm font-medium text-foreground mb-1.5">
-            What would you like to discuss? <span aria-hidden="true" className="text-destructive">*</span>
+            What would you like to discuss? <span aria-hidden="true" className="text-red-500 font-bold">*</span>
           </label>
           <textarea
             id="c-topic"
             name="topic"
             required
+            aria-required="true"
+            aria-invalid={!!fieldErrors.topic}
+            value={formDataState.topic}
+            onChange={(e) => handleFieldChange('topic', e.target.value)}
             rows={4}
             placeholder="e.g. Brief description of your project requirements or questions..."
-            className={`${inputStyle} resize-none`}
+            className={`${getInputClass('topic')} resize-none`}
           />
+          {fieldErrors.topic && (
+            <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
+              <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+              <span>{fieldErrors.topic}</span>
+            </p>
+          )}
         </div>
 
         {/* Preferred time note */}
@@ -227,20 +350,25 @@ export function ConsultationForm() {
 
         {/* Validation Error Banner directly above Submit button */}
         {error && (
-          <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-3.5 flex items-center gap-3 text-destructive animate-in fade-in slide-in-from-bottom-2">
+          <div
+            ref={errorBannerRef}
+            tabIndex={-1}
+            role="alert"
+            className="rounded-xl border border-destructive/30 bg-destructive/10 p-3.5 flex items-center gap-3 text-destructive animate-in fade-in slide-in-from-bottom-2 outline-none"
+          >
             <AlertCircle className="h-4.5 w-4.5 shrink-0" />
             <p className="text-xs font-semibold leading-normal">{error}</p>
           </div>
         )}
 
-        <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+        <Button type="submit" variant="3d-yellow" size="lg" className="w-full h-12 rounded-xl text-sm font-extrabold" disabled={submitting}>
           {submitting ? (
             <>
               <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
               Requesting...
             </>
           ) : (
-            'Request Consultation'
+            'Request Free Consultation Call'
           )}
         </Button>
 
@@ -256,3 +384,12 @@ export function ConsultationForm() {
     </div>
   )
 }
+
+export function ConsultationForm() {
+  return (
+    <Suspense fallback={<div className="h-96 rounded-3xl border border-border bg-card/50 animate-pulse" />}>
+      <ConsultationFormInner />
+    </Suspense>
+  )
+}
+

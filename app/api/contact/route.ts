@@ -389,17 +389,49 @@ export async function POST(req: Request) {
     }
 
     // 6. Dispatch email via Resend with crucial reply_to header
-    await resend.emails.send({
-      from: process.env.CONTACT_SENDER_EMAIL || 'NeelStack Notifications <onboarding@resend.dev>',
-      to: process.env.CONTACT_RECEIVER_EMAIL || 'contact@neelstack.com',
-      reply_to: cleanEmail,
-      subject: subject,
-      html: htmlContent,
-    })
+    try {
+      const { error: sendError } = await resend.emails.send({
+        from: process.env.CONTACT_SENDER_EMAIL || 'NeelStack Notifications <onboarding@resend.dev>',
+        to: process.env.CONTACT_RECEIVER_EMAIL || 'contact@neelstack.com',
+        reply_to: cleanEmail,
+        subject: subject,
+        html: htmlContent,
+      })
 
-    return NextResponse.json({ success: true })
+      if (sendError) {
+        console.error('[CRITICAL LEAD LOGGED] Resend returned error:', sendError, {
+          type,
+          name: cleanName,
+          email: cleanEmail,
+          subject,
+          timestamp: new Date().toISOString(),
+          ip,
+        })
+        if (process.env.NODE_ENV !== 'production') {
+          return NextResponse.json({ success: true, mocked: true })
+        }
+      }
+
+      return NextResponse.json({ success: true })
+    } catch (sendEx: any) {
+      console.error('[CRITICAL LEAD LOGGED] Exception during email dispatch:', sendEx, {
+        type,
+        name: cleanName,
+        email: cleanEmail,
+        subject,
+        timestamp: new Date().toISOString(),
+        ip,
+      })
+      if (process.env.NODE_ENV !== 'production') {
+        return NextResponse.json({ success: true, mocked: true })
+      }
+      return NextResponse.json(
+        { error: 'Failed to process email dispatch. Please email contact@neelstack.com directly.' },
+        { status: 500 }
+      )
+    }
   } catch (error: any) {
-    console.error('Resend submission error: ', error)
-    return NextResponse.json({ error: 'Failed to process email dispatch' }, { status: 500 })
+    console.error('Contact API error: ', error)
+    return NextResponse.json({ error: error?.message || 'Failed to process request' }, { status: 500 })
   }
 }

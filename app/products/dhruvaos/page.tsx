@@ -7,6 +7,7 @@ import { FAQAccordion } from '@/components/ui/faq-accordion'
 import { Breadcrumb } from '@/components/navigation/breadcrumb'
 import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
+import { Button } from '@/components/ui/button'
 import {
   School,
   Sparkles,
@@ -220,25 +221,23 @@ export default function DhruvaOSPage() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/contact?product=dhruvaos#contact-form"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-primary/10 hover:shadow-primary/20"
-            >
-              Join Pilot Program
-            </Link>
-            <Link
-              href="/book-consultation"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-border bg-muted/40 hover:bg-muted/60 text-foreground text-sm font-semibold transition-all duration-200"
-            >
-              Book Architecture Walkthrough
-            </Link>
+            <Button asChild variant="3d-yellow" size="lg" className="rounded-xl font-bold">
+              <Link href="/contact?product=dhruvaos#contact-form">
+                Join Pilot Program
+              </Link>
+            </Button>
+            <Button asChild variant="3d-secondary" size="lg" className="rounded-xl font-bold">
+              <Link href="/book-consultation">
+                Book Architecture Walkthrough
+              </Link>
+            </Button>
           </div>
           <p className="text-xs font-mono text-muted-foreground/80">
             Dedicated portal <span className="text-primary font-semibold">dhruvaos.com</span> launching 2 October 2026
           </p>
 
           {/* Product Overview Cards */}
-          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-6 border-y border-border/40 bg-card/60 backdrop-blur-sm rounded-2xl px-6">
+          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-6 border-2 border-border/60 bg-card/60 backdrop-blur-sm rounded-2xl px-6 tactile-card-3d">
             <div className="text-center">
               <span className="font-mono text-base sm:text-lg font-bold text-foreground">2 Oct 2026</span>
               <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Demo Launch</p>
@@ -284,7 +283,7 @@ export default function DhruvaOSPage() {
               { title: 'Database Vault', tech: 'PostgreSQL 16 + pgvector', desc: 'Schema-per-tenant isolation with automated Alembic migrations.' },
               { title: 'Identity & Auth', tech: 'Zitadel OIDC/SAML', desc: 'Dynamic JWKS verification, WebAuthn FIDO2 passkeys, and RBAC.' },
             ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-card/60 backdrop-blur-sm p-4 space-y-1.5 hover:border-primary/20 transition-colors">
+              <div key={item.title} className="rounded-xl border-2 border-border bg-card/60 backdrop-blur-sm p-4 space-y-1.5 tactile-card-3d hover:border-primary/50 transition-colors">
                 <h3 className="text-xs font-heading font-bold text-foreground">{item.title}</h3>
                 <p className="text-[10px] font-mono text-primary/70">{item.tech}</p>
                 <p className="text-[11px] text-muted-foreground leading-relaxed">{item.desc}</p>
@@ -362,7 +361,7 @@ export default function DhruvaOSPage() {
                 desc: 'Smart predictive models automatically highlight dropout patterns, fee default risks, and attendance declines.',
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-card/60 backdrop-blur-sm p-5 space-y-2 hover:border-primary/20 transition-colors">
+              <div key={item.title} className="rounded-xl border-2 border-border bg-card/60 backdrop-blur-sm p-5 space-y-2 tactile-card-3d hover:border-primary/50 transition-colors">
                 <div className="flex items-center gap-2">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 border border-primary/25 text-primary">
                     <CheckCircle2 className="h-3 w-3" />
@@ -379,18 +378,17 @@ export default function DhruvaOSPage() {
           </div>
 
           <div className="pt-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all shadow-lg shadow-primary/20"
-            >
-              Book a Live Demo <ArrowRight className="h-4 w-4" />
-            </Link>
+            <Button asChild variant="3d-yellow" size="lg" className="rounded-xl font-bold">
+              <Link href="/contact">
+                Book a Live Demo <ArrowRight className="h-4 w-4 ml-1" />
+              </Link>
+            </Button>
           </div>
 
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Everything Your Institution Needs Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── Everything Your Institution Needs Grid ───────────────────────────────── */}
       <Section className="py-20 bg-card/60 backdrop-blur-sm">
 
         <Container className="space-y-12">
@@ -414,7 +412,7 @@ export default function DhruvaOSPage() {
               return (
                 <div
                   key={feat.label}
-                  className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 hover:border-primary/30 hover:bg-card/60 transition-all duration-300 group"
+                  className="rounded-2xl border-2 border-border bg-card/60 backdrop-blur-sm p-5 tactile-card-3d hover:border-primary/50 transition-all duration-300 group"
                 >
                   <div className="h-9 w-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-105 transition-transform mb-4">
                     <IconComp className="h-4.5 w-4.5" />
@@ -433,7 +431,7 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ AI Everywhere â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── AI Everywhere ────────────────────────────────────────────────────────── */}
       <Section className="py-20 bg-card/40 backdrop-blur-sm relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[110px] pointer-events-none" />
 
@@ -457,7 +455,7 @@ export default function DhruvaOSPage() {
             {aiModules.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-primary/15 bg-primary/[0.02] p-5 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 relative overflow-hidden"
+                className="rounded-2xl border-2 border-primary/20 bg-primary/[0.02] p-5 tactile-card-3d hover:border-primary/50 transition-all duration-300 relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 h-10 w-10 bg-primary/5 rounded-bl-3xl flex items-center justify-center">
                   <Sparkles className="h-3.5 w-3.5 text-primary" />
@@ -475,7 +473,7 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Platform For Everyone (Personas) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      {/* ─── Platform For Everyone (Personas) ─────────────────────────────────────── */}
       <Section className="py-20">
         <Container className="space-y-12">
           
@@ -492,7 +490,7 @@ export default function DhruvaOSPage() {
             {personas.map((per) => (
               <div
                 key={per.role}
-                className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 hover:border-primary/25 transition-all duration-200"
+                className="rounded-2xl border-2 border-border bg-card/60 backdrop-blur-sm p-5 tactile-card-3d hover:border-primary/50 transition-all duration-200"
               >
                 <h3 className="text-sm font-heading font-bold text-primary mb-2">
                   For {per.role}

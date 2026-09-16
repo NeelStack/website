@@ -189,8 +189,8 @@ export const SERVICES: Service[] = [
     description:
       'Tailored software solutions precisely engineered to match your business processes, target goals, and technical requirements.',
     icon: LayoutGrid,
-    color: 'text-amber-400',
-    bgColor: 'bg-amber-500/10',
+    color: 'text-indigo-400',
+    bgColor: 'bg-indigo-500/10',
     href: '/services/custom-software',
     highlights: [
       'SaaS Product Development',

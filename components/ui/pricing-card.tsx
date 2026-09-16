@@ -13,7 +13,7 @@ export function PricingCard({ plan, className }: PricingCardProps) {
   return (
     <div
       className={cn(
-        'relative flex flex-col rounded-2xl border bg-card p-8 card-standard card-hover transition-all duration-300',
+        'relative flex flex-col rounded-2xl border-2 bg-card p-8 tactile-card-3d transition-all duration-300',
         plan.isPopular
           ? 'border-primary ring-1 ring-primary/60 shadow-2xl shadow-primary/20 dark:shadow-primary/25 md:-translate-y-4 md:hover:-translate-y-6 z-10 bg-surface'
           : 'border-border mt-0',
@@ -56,8 +56,9 @@ export function PricingCard({ plan, className }: PricingCardProps) {
       {/* CTA */}
       <Button
         asChild
-        variant={plan.isPopular ? 'default' : 'outline'}
-        className="w-full mb-8"
+        variant={plan.isPopular ? '3d-yellow' : '3d-secondary'}
+        size="lg"
+        className="w-full mb-8 rounded-xl font-bold"
       >
         <Link href={plan.ctaHref}>{plan.ctaLabel}</Link>
       </Button>

@@ -21,6 +21,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
+import { LeadershipShowcase } from '@/components/sections/leadership-showcase'
 import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
@@ -28,6 +29,8 @@ import { CTASection } from '@/components/ui/cta-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
 import { AccreditationBadges } from '@/components/ui/accreditation-badges'
 import { SITE_CONFIG } from '@/constants/site'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
   title: 'About NeelStack Solutions | Software Products & AI Systems',
@@ -99,36 +102,62 @@ const JOURNEY = [
   },
 ]
 
-const LEADERSHIP = [
-  {
-    name: 'Shyam Chaurasiya',
-    role: 'Founder & Legal CEO',
-    badge: 'Founder & Legal CEO',
-    bio: 'Founder, legal CEO, and ultimate accountable decision-maker directing technology architecture, company vision, and product execution across all NeelStack platforms.',
-    category: 'leadership',
-    avatarKey: '/images/illustrations/avatar-leader.png',
-  },
-  {
-    name: 'Neelam Chaurasiya',
-    role: 'Co-founder & Business Operations',
-    badge: 'Co-founder',
-    bio: 'Oversees company operations, organizational planning, and corporate strategy to guide NeelStack through its foundational growth and commercialization.',
-    category: 'leadership',
-    avatarKey: '/images/illustrations/avatar-cofounder-female.png',
-  },
-  {
-    name: 'NeelStack AI CEO',
-    role: 'Strategic AI Operating Partner',
-    badge: 'AI Executive Partner',
-    bio: 'Executive agentic intelligence partner supporting strategic analysis, multi-agent workforce coordination, bottleneck identification, and operational simulations alongside the human founder.',
-    category: 'ai-leadership',
-    avatarKey: '/images/illustrations/avatar-leader.png',
-  },
-]
-
 export default function AboutPage() {
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'NeelStack Solutions Private Limited',
+          url: getSiteUrl(),
+          founder: [
+            {
+              '@type': 'Person',
+              name: 'Shyam Sundar Chaurasiya',
+              jobTitle: 'Founder & Engineering Lead (Legal CEO)',
+            },
+            {
+              '@type': 'Person',
+              name: 'Neelam Chaurasiya',
+              jobTitle: 'Co-Founder & Business Operations Lead',
+            },
+            {
+              '@type': 'Thing',
+              name: 'NeelStack AI CEO',
+              description: 'Strategic AI Operating Partner & Multi-Agent Intelligence Layer',
+            },
+          ],
+          employee: [
+            {
+              '@type': 'Person',
+              name: 'Pradeep Kumar Maurya',
+              jobTitle: 'Marketing Lead',
+            },
+            {
+              '@type': 'Person',
+              name: 'Aman Singh',
+              jobTitle: 'Senior Agentic AI & ML Developer',
+            },
+            {
+              '@type': 'Person',
+              name: 'Rakesh Kushwaha',
+              jobTitle: 'Senior Systems Architect & Infrastructure Lead',
+            },
+            {
+              '@type': 'Person',
+              name: 'Shyam Singh',
+              jobTitle: 'Senior Full-Stack Engineer & Frontend Lead',
+            },
+            {
+              '@type': 'Person',
+              name: 'Vishnu Chaurasiya',
+              jobTitle: 'Senior Full-Stack Developer',
+            },
+          ],
+        }}
+      />
+
       <PageHero
         badge="About NeelStack Solutions"
         title="Building the Software and AI Systems of Tomorrow"
@@ -153,14 +182,14 @@ export default function AboutPage() {
                 </h2>
               </div>
               
-              <div className="p-6 rounded-2xl border border-primary/20 bg-primary/5 space-y-3">
+              <div className="p-6 rounded-2xl border-2 border-primary/30 bg-primary/5 space-y-3 tactile-card-3d">
                 <h3 className="font-heading text-base font-bold text-primary uppercase tracking-wider">Our Vision</h3>
                 <p className="text-base text-foreground leading-relaxed font-medium">
                   &ldquo;Build technology that allows organizations and founders to operate with greater intelligence, automation and speed.&rdquo;
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl border border-border/70 bg-card/80 space-y-3">
+              <div className="p-6 rounded-2xl border-2 border-border/80 bg-card/80 space-y-3 tactile-card-3d">
                 <div className="flex items-center justify-between">
                   <h3 className="font-heading text-base font-bold text-foreground uppercase tracking-wider">Long-Term Vision</h3>
                   <Link href="/whitepapers/ai-company-operating-system" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
@@ -173,7 +202,7 @@ export default function AboutPage() {
               </div>
 
               {/* Founding Story & Location */}
-              <div className="p-6 rounded-2xl border border-border/70 bg-card/40 space-y-3">
+              <div className="p-6 rounded-2xl border-2 border-border/80 bg-card/40 space-y-3 tactile-card-3d">
                 <h3 className="font-heading text-sm font-bold text-foreground uppercase tracking-wider">Company Background</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary engines: <strong className="text-foreground">NeelStack Services</strong> (cash flow &amp; enterprise engineering), <strong className="text-foreground">DhruvaOS</strong> (School Operating System SaaS), and <strong className="text-foreground">ToolVines</strong> (browser utilities &amp; traffic platform).
@@ -186,7 +215,7 @@ export default function AboutPage() {
               {WHY_NEELSTACK.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border border-border bg-background/60 backdrop-blur-sm p-5 space-y-2 hover:border-primary/30 transition-colors"
+                  className="rounded-2xl border-2 border-border bg-background/60 backdrop-blur-sm p-5 space-y-2 tactile-card-3d hover:border-primary/50 transition-colors"
                 >
                   <h3 className="font-heading text-sm font-bold text-foreground">{item.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
@@ -217,7 +246,7 @@ export default function AboutPage() {
               {JOURNEY.map((item) => (
                 <div
                   key={item.name}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 hover:border-primary/30 transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border-2 border-border bg-card/60 backdrop-blur-sm p-6 tactile-card-3d hover:border-primary/50 transition-colors"
                 >
                   <div className="flex-1 space-y-1.5">
                     <div className="flex flex-wrap items-center gap-2.5">
@@ -240,62 +269,8 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Leadership Section */}
-      <Section className="border-t border-border">
-        <Container>
-          <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
-              Company Leadership
-            </span>
-            <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
-              Founders &amp; Leadership
-            </h2>
-            <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
-              Guiding NeelStack with technical discipline, long-term vision, and focused execution.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {LEADERSHIP.map((person) => {
-              const isAi = person.category === 'ai-leadership'
-              return (
-                <div
-                  key={person.name}
-                  className={`rounded-3xl border ${isAi ? 'border-cyan-500/30 bg-gradient-to-b from-card to-cyan-950/10' : 'border-primary/20 bg-card'} overflow-hidden flex flex-col shadow-lg transition-all duration-300 hover:shadow-xl`}
-                >
-                  {/* Avatar section */}
-                  <div className={`relative flex items-end justify-center pt-8 pb-0 border-b border-border/40 ${isAi ? 'bg-gradient-to-b from-cyan-500/15 to-transparent' : 'bg-gradient-to-b from-primary/10 to-transparent'}`}>
-                    <Image
-                      src={person.avatarKey}
-                      alt={`${person.name} portrait`}
-                      width={160}
-                      height={160}
-                      className="h-40 w-auto object-contain object-bottom"
-                      style={{
-                        filter: 'drop-shadow(0 6px 18px rgba(0,0,0,0.15))',
-                      }}
-                    />
-                  </div>
-
-                  {/* Info section */}
-                  <div className="p-6 md:p-7 flex flex-col gap-3 flex-1 justify-between">
-                    <div className="space-y-3">
-                      <div className={`inline-flex self-start items-center rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${isAi ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/25' : 'bg-primary/10 text-primary border border-primary/20'}`}>
-                        {person.badge || 'Leadership'}
-                      </div>
-                      <div>
-                        <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground tracking-tight">{person.name}</h3>
-                        <p className={`text-xs font-bold uppercase tracking-widest mt-1 ${isAi ? 'text-cyan-600 dark:text-cyan-400' : 'text-primary'}`}>{person.role}</p>
-                      </div>
-                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-3 border-t border-border/40">{person.bio}</p>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </Container>
-      </Section>
+      {/* Leadership Showcase Section */}
+      <LeadershipShowcase />
 
       {/* Engineering Principles */}
       <Section className="bg-card/60 backdrop-blur-sm border-t border-border">
@@ -313,7 +288,7 @@ export default function AboutPage() {
             {PRINCIPLES.map((principle) => (
               <div
                 key={principle.title}
-                className="flex flex-col gap-2 rounded-2xl border border-border bg-background/60 backdrop-blur-sm p-6"
+                className="flex flex-col gap-2 rounded-2xl border-2 border-border bg-background/60 backdrop-blur-sm p-6 tactile-card-3d hover:border-primary/50"
               >
                 <h3 className="font-heading text-base font-bold text-foreground">{principle.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">{principle.description}</p>
@@ -341,7 +316,7 @@ export default function AboutPage() {
               return (
                 <div
                   key={value.title}
-                  className="flex flex-col gap-4 rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 hover:border-primary/20 card-ai-hover transition-colors"
+                  className="flex flex-col gap-4 rounded-2xl border-2 border-border bg-card/60 backdrop-blur-sm p-6 tactile-card-3d hover:border-primary/50 transition-colors"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
                     <Icon className="h-5 w-5 text-primary" aria-hidden="true" />

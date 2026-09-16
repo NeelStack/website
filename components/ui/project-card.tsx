@@ -23,8 +23,8 @@ const statusClass: Record<Project['status'], string> = {
 
 const sharedCardClass = (status: Project['status'], className?: string) =>
   cn(
-    'group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card w-full max-w-md',
-    'card-hover hover:border-primary/30',
+    'group relative flex flex-col overflow-hidden rounded-2xl border-2 border-border bg-card w-full max-w-md',
+    'tactile-card-3d hover:border-primary/50',
     status === 'coming-soon' && 'opacity-70',
     className
   )

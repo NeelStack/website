@@ -49,11 +49,11 @@ export default function Error({
         )}
 
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button onClick={reset}>
+          <Button onClick={reset} variant="3d-yellow" size="lg" className="rounded-xl font-bold">
             <RefreshCcw className="mr-2 h-4 w-4" aria-hidden="true" />
             Try Again
           </Button>
-          <Button asChild variant="outline">
+          <Button asChild variant="3d-secondary" size="lg" className="rounded-xl font-bold">
             <Link href="/">Go to Homepage</Link>
           </Button>
         </div>
