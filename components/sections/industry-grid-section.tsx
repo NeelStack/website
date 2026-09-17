@@ -7,7 +7,7 @@ import { INDUSTRIES } from '@/constants/industries'
 
 export function IndustryGridSection() {
   return (
-    <section className="py-24 bg-transparent relative overflow-hidden">
+    <section className="py-8 sm:py-10 md:py-12 bg-transparent relative overflow-hidden">
       {/* Ambient glow */}
       <div
         className="absolute bottom-0 right-0 w-[500px] h-[300px] pointer-events-none"
@@ -15,7 +15,7 @@ export function IndustryGridSection() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-12 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         {/* Staggered heading */}
         <motion.div
           initial="hidden"

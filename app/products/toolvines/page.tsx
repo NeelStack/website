@@ -418,8 +418,8 @@ export default function ToolVinesProductPage() {
       </section>
 
       {/* ─── Client-Side Compute Architecture ────────────────────────────────────── */}
-      <Section className="py-16 bg-card/40 backdrop-blur-sm border-y border-border/40">
-        <Container className="space-y-10">
+      <Section className="bg-card/40 backdrop-blur-sm border-y border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
               WASM Engine Architecture
@@ -438,39 +438,45 @@ export default function ToolVinesProductPage() {
                 title: 'Browser Thread (60 FPS)',
                 tech: 'React 19 + Tailwind CSS',
                 icon: Activity,
-                desc: 'Handles ultra-responsive input binding, dynamic glassmorphic state rendering, and drag-and-drop file ingestion.',
+                desc: 'Maintains butter-smooth UI rendering and responsive inputs without jank.',
               },
               {
-                title: 'Web Worker Pool',
-                tech: 'Web Worker Threads',
+                title: 'WASM Runtime Sandbox',
+                tech: 'Rust Compiled Bytecode',
                 icon: Cpu,
-                desc: 'Dispatches heavy compute tasks (OCR, encryption, large diffs) off the main thread to prevent UI freezing.',
+                desc: 'Near-native speed matrix math and byte manipulation directly in memory.',
               },
               {
-                title: 'Rust WASM Core',
-                tech: 'Rust + SIMD + wasm-opt',
-                icon: Zap,
-                desc: 'Compiles low-level algorithms into highly optimized bytecode executing near native CPU speeds directly in browser memory.',
+                title: 'Parallel Web Workers',
+                tech: 'Multi-Threaded Spawns',
+                icon: Layers,
+                desc: 'Offloads CPU-heavy compression, hashing, and OCR pipelines to background threads.',
               },
               {
-                title: 'Local Client Vault',
-                tech: 'OPFS + IndexedDB',
-                icon: HardDrive,
-                desc: 'Caches user preferences and PWA assets locally with automatic session wiping upon tab close for complete privacy.',
+                title: 'Air-Gapped Client RAM',
+                tech: 'Zero Remote State',
+                icon: ShieldCheck,
+                desc: 'Files and data never transmit over the wire; state drops automatically on tab close.',
               },
-            ].map((layer) => {
-              const IconComp = layer.icon
+            ].map((arch) => {
+              const IconComp = arch.icon
               return (
                 <div
-                  key={layer.title}
-                  className="rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 space-y-2 hover:border-primary/30 transition-all group"
+                  key={arch.title}
+                  className="rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-5 space-y-2.5 hover:border-primary/30 transition-all"
                 >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20 group-hover:scale-105 transition-transform">
-                    <IconComp className="h-4.5 w-4.5" />
+                  <div className="flex items-center gap-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <IconComp className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h3 className="text-xs font-heading font-bold text-foreground">{arch.title}</h3>
+                      <p className="text-[10px] font-mono text-primary/80">{arch.tech}</p>
+                    </div>
                   </div>
-                  <h3 className="text-sm font-heading font-bold text-foreground">{layer.title}</h3>
-                  <p className="text-[10px] font-mono text-primary/70">{layer.tech}</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{layer.desc}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {arch.desc}
+                  </p>
                 </div>
               )
             })}
@@ -479,8 +485,8 @@ export default function ToolVinesProductPage() {
       </Section>
 
       {/* ─── 4 Flagship Showcase Bento ────────────────────────────────────────────── */}
-      <Section className="py-20 bg-card/60 backdrop-blur-sm border-b border-border/40">
-        <Container className="space-y-12">
+      <Section className="bg-card/60 backdrop-blur-sm border-b border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
               Flagship Capabilities
@@ -602,8 +608,8 @@ export default function ToolVinesProductPage() {
       </Section>
 
       {/* ─── 8 Tool Taxonomy Directory ─────────────────────────────────────────── */}
-      <section id="tool-catalog" className="py-20 border-t border-border/60 bg-surface/50 scroll-mt-20">
-        <Container className="space-y-12">
+      <section id="tool-catalog" className="py-8 sm:py-10 md:py-12 border-t border-border/60 bg-surface/50 scroll-mt-20">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
               Complete Directory
@@ -616,7 +622,7 @@ export default function ToolVinesProductPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {TOOL_CATEGORIES.map((group) => {
               const GroupIcon = group.icon
               return (
@@ -686,8 +692,8 @@ export default function ToolVinesProductPage() {
       </section>
 
       {/* ─── Architecture Comparison Matrix ─────────────────────────────────────── */}
-      <section className="py-20 border-t border-border/60 bg-transparent">
-        <Container className="space-y-12 max-w-5xl">
+      <section className="py-8 sm:py-10 md:py-12 border-t border-border/60 bg-transparent">
+        <Container className="space-y-6 sm:space-y-8 max-w-5xl">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-emerald-500 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
               Architecture &amp; Privacy
@@ -702,7 +708,7 @@ export default function ToolVinesProductPage() {
 
           <div className="rounded-3xl border border-border/80 bg-card/80 backdrop-blur-md p-6 sm:p-8 shadow-xl overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left text-xs border-collapse min-w-[600px]">
                 <thead>
                   <tr className="border-b border-border text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
                     <th className="py-3 px-4 w-1/3">Evaluation Vector</th>
@@ -736,8 +742,8 @@ export default function ToolVinesProductPage() {
       </section>
 
       {/* ─── Developer & Enterprise Personas ────────────────────────────────────── */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm border-t border-border/40">
-        <Container className="space-y-12">
+      <Section className="bg-card/40 backdrop-blur-sm border-t border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
               Engineered for Critical Technical Roles
@@ -774,9 +780,9 @@ export default function ToolVinesProductPage() {
       </Section>
 
       {/* ─── Enterprise Custom Portals ──────────────────────────────────────────── */}
-      <section className="py-20 border-t border-border/60 bg-surface/50">
+      <section className="py-8 sm:py-10 md:py-12 border-t border-border/60 bg-surface/50">
         <Container className="max-w-5xl">
-          <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-card via-card to-primary/5 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+          <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-card via-card to-primary/5 p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div className="max-w-2xl space-y-4">
               <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
                 Enterprise &amp; Compliance
@@ -804,8 +810,8 @@ export default function ToolVinesProductPage() {
       </section>
 
       {/* ─── Structured FAQs ────────────────────────────────────────────────────── */}
-      <section className="py-20 border-t border-border/60 bg-transparent">
-        <Container className="max-w-4xl space-y-8">
+      <section className="py-8 sm:py-10 md:py-12 border-t border-border/60 bg-transparent">
+        <Container className="max-w-4xl space-y-6">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-primary">
               Frequently Asked Questions
@@ -820,7 +826,7 @@ export default function ToolVinesProductPage() {
       </section>
 
       {/* ─── Pre-Footer CTA ──────────────────────────────────────────────────────── */}
-      <section className="py-16 border-t border-border/60 bg-gradient-to-b from-card to-surface text-center">
+      <section className="py-8 sm:py-10 md:py-12 border-t border-border/60 bg-gradient-to-b from-card to-surface text-center">
         <Container className="max-w-3xl space-y-6">
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground">
             Experience the Future of Client-Side Web Tools

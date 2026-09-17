@@ -17,6 +17,8 @@ import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
   title: 'Public Product Roadmap — Software & AI Platforms | NeelStack India',
@@ -86,8 +88,30 @@ const ROADMAP_ITEMS = [
 ]
 
 export default function RoadmapPage() {
+  const siteUrl = getSiteUrl()
+
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'NeelStack Public Product Roadmap',
+          description: 'Development stages, live platforms, and planned software products engineered by NeelStack Solutions.',
+          url: `${siteUrl}/roadmap`,
+          itemListElement: ROADMAP_ITEMS.map((item, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            item: {
+              '@type': 'SoftwareApplication',
+              name: item.title,
+              applicationCategory: item.category,
+              description: item.desc,
+              url: item.link.startsWith('http') ? item.link : `${siteUrl}${item.link}`,
+            },
+          })),
+        }}
+      />
       <PageHero
         badge="Building In Public"
         title="Public Product Roadmap"

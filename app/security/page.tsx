@@ -14,6 +14,8 @@ import { PageHero } from '@/components/ui/page-hero'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
   title: 'Security & Compliance Posture | NeelStack India',
@@ -71,8 +73,24 @@ const COMPLIANCE_ROADMAP = [
 ]
 
 export default function SecurityPage() {
+  const siteUrl = getSiteUrl()
+
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: 'NeelStack Security & Compliance Posture',
+          description: 'Enterprise security standards, AES-256 Fernet encryption, schema-per-tenant isolation, and statutory compliance controls.',
+          url: `${siteUrl}/security`,
+          publisher: {
+            '@type': 'Organization',
+            name: 'NeelStack Solutions Private Limited',
+            url: siteUrl,
+          },
+        }}
+      />
       <PageHero
         badge="Enterprise Trust & Protection"
         title="Security & Compliance Posture"

@@ -13,17 +13,18 @@ export function PricingCard({ plan, className }: PricingCardProps) {
   return (
     <div
       className={cn(
-        'relative flex flex-col rounded-2xl border-2 bg-card p-8 tactile-card-3d transition-all duration-300',
+        'group relative flex flex-col rounded-2xl border-2 bg-card p-8 tactile-card-3d transition-all duration-300',
         plan.isPopular
           ? 'border-primary ring-1 ring-primary/60 shadow-2xl shadow-primary/20 dark:shadow-primary/25 md:-translate-y-4 md:hover:-translate-y-6 z-10 bg-surface'
-          : 'border-border mt-0',
+          : 'border-border mt-0 hover:border-primary/40',
         className
       )}
     >
       {/* Popular badge */}
       {plan.isPopular && (
         <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-          <span className="inline-flex items-center rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-[0_0_12px_oklch(0.62_0.22_258/15%)]">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1 text-xs font-semibold text-primary-foreground shadow-[0_0_16px_oklch(0.62_0.22_258/35%)]">
+            <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
             Most Popular
           </span>
         </div>
@@ -31,7 +32,7 @@ export function PricingCard({ plan, className }: PricingCardProps) {
 
       {/* Header */}
       <div className="mb-6">
-        <h3 className="font-heading text-lg font-semibold text-foreground">{plan.name}</h3>
+        <h3 className="font-heading text-lg font-semibold text-foreground group-hover:text-primary transition-colors">{plan.name}</h3>
         <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{plan.description}</p>
       </div>
 
@@ -69,7 +70,7 @@ export function PricingCard({ plan, className }: PricingCardProps) {
           <li key={idx} className="flex items-start gap-3">
             {feature.included ? (
               <Check
-                className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform duration-200 group-hover:scale-110"
                 aria-label="Included"
               />
             ) : (

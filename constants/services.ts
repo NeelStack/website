@@ -9,24 +9,49 @@ import {
   GitBranch,
   Palette,
   Lightbulb,
+  Smartphone,
 } from 'lucide-react'
 import type { Service } from '@/types'
 
 export const SERVICES: Service[] = [
   {
     id: 'ai-development',
-    name: 'AI Application Development',
+    name: 'AI Application & Agent Development',
     description:
-      'We design and deploy intelligent software layers—from custom LLM integrations and retrieval-augmented generation (RAG) pipelines to specialized agent workflows—that automate and enhance operations.',
+      'We design and deploy intelligent software layers—from custom LLM integrations and retrieval-augmented generation (RAG) pipelines to autonomous multi-agent workflows—that automate and enhance operations.',
     icon: Brain,
     color: 'text-violet-400',
     bgColor: 'bg-violet-500/10',
     href: '/services/ai-development',
+    badge: 'Agentic AI & MCP',
+    tagline: 'Autonomous swarms, MCP tool execution, and deterministic enterprise guardrails.',
+    slaMetric: 'Sub-50ms Inference & Zero Data Leak',
+    turnaround: '2–4 Weeks MVP',
+    keyCapabilities: [
+      {
+        title: 'LangGraph Cyclic Agents',
+        desc: 'Deterministic state-machine workflows with cyclic execution, human-in-the-loop approvals, and structured tool outputs.',
+      },
+      {
+        title: 'Model Context Protocol (MCP)',
+        desc: 'Standardized universal tool interface connecting frontier LLMs securely to enterprise databases, internal APIs, and sandbox environments.',
+      },
+      {
+        title: 'GraphRAG & Neural Memory',
+        desc: 'High-precision hybrid vector + knowledge graph retrieval with persistent contextual memory across user sessions (Mem0 / Zep).',
+      },
+      {
+        title: 'NeMo & PII Guardrails',
+        desc: 'Enterprise data leak prevention, prompt injection mitigation, automated PII sanitization, and strict compliance enforcement.',
+      },
+    ],
     highlights: [
-      'LLM Integration & Fine-tuning',
-      'AI Assistants & Chat Interfaces',
-      'Autonomous AI Agents',
-      'Cognitive Search & Retrieval (RAG)',
+      'LangGraph Multi-Agent Workflows',
+      'Model Context Protocol (MCP) Integration',
+      'GraphRAG & Neural Memory (Mem0)',
+      'Enterprise Guardrails & PII Redaction',
+      'Fine-Tuning & Air-Gapped Local LLMs',
+      'Continuous Latency & Drift Observability',
     ],
     category: 'AI',
     techStack: [
@@ -78,12 +103,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Production-ready LLM application with full source code',
-      'RAG pipeline with vector database configured for your data',
-      'Agent workflow scripts with evaluation test suite',
-      'API documentation & integration guides',
-      'Cost & performance monitoring dashboard',
-      'Runbook for model updates and dataset refreshes',
+      'Production-ready LLM application with 100% source code ownership',
+      'RAG pipeline with vector database configured for your enterprise data',
+      'Agent workflow scripts with evaluation test suite and regression harness',
+      'OpenAPI documentation & integration guides for consumer services',
+      'Cost & performance monitoring dashboard with token rate-limiting',
+      'Operational runbook for model updates, fine-tuning, and dataset refreshes',
     ],
     faqs: [
       {
@@ -106,18 +131,42 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'web-applications',
-    name: 'Modern Web Applications',
+    name: 'Modern Web Applications & Platforms',
     description:
-      'We build highly performant, responsive, and SEO-optimized web applications utilizing Next.js, React, and TypeScript configured for long-term scalability.',
+      'We build highly performant, responsive, and SEO-optimized web applications utilizing Next.js, React, and TypeScript configured for high concurrency and sub-second edge response.',
     icon: Globe,
     color: 'text-blue-400',
     bgColor: 'bg-blue-500/10',
     href: '/services/web-applications',
+    badge: 'Next.js 16 & Rust WASM',
+    tagline: 'Sub-second Server Component architectures engineered for scale and speed.',
+    slaMetric: '< 2.5s LCP & 95+ Lighthouse Score',
+    turnaround: '2–4 Weeks MVP',
+    keyCapabilities: [
+      {
+        title: 'Next.js 16 Turbopack & React 19',
+        desc: 'Server Actions, streaming SSR, parallel data fetching, and edge route rendering for instant page transitions.',
+      },
+      {
+        title: 'Client-Side WebAssembly (WASM)',
+        desc: 'Rust-compiled modules executing heavy image, PDF, and compute tasks in-browser with zero server load.',
+      },
+      {
+        title: 'OKLCH Design Systems & Tailwind v4',
+        desc: 'Dynamic wide-gamut color palettes, WCAG 2.1 AA accessibility, fluid typography, and tactile micro-interactions.',
+      },
+      {
+        title: 'Core Web Vitals Hardening',
+        desc: 'Automated asset compression, sub-second TTFB, and zero layout shift on mobile and desktop screens.',
+      },
+    ],
     highlights: [
-      'Next.js & React Development',
-      'TypeScript Development',
-      'Frontend Engineering & Responsive CSS',
-      'Core Web Vitals Optimization',
+      'Next.js 16 & React 19 Server Components',
+      'Client-Side Rust WebAssembly Modules',
+      'TypeScript Strict Mode End-to-End',
+      'Tailwind CSS v4 & OKLCH Design Tokens',
+      'Core Web Vitals Green Guarantee (95+ Lighthouse)',
+      'Automated CI/CD Preview Deployments',
     ],
     category: 'Development',
     techStack: [
@@ -161,12 +210,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Full Next.js / React application with TypeScript',
-      'Responsive design across mobile, tablet, and desktop',
-      'Core Web Vitals scores in green (90+ Lighthouse)',
-      'CI/CD pipeline with preview deployments',
-      'Component documentation in Storybook',
-      'SEO metadata, sitemap, and schema markup',
+      'Full Next.js / React application with strict TypeScript',
+      'Responsive design across mobile, tablet, and widescreen desktop',
+      'Core Web Vitals scores in green (95+ Lighthouse across all metrics)',
+      'CI/CD pipeline with automated preview deployments per pull request',
+      'Component documentation in Storybook or documented design tokens',
+      'Programmatic SEO metadata, dynamic sitemap, and JSON-LD schema markup',
     ],
     faqs: [
       {
@@ -185,18 +234,42 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'custom-software',
-    name: 'Custom Software Development',
+    name: 'Custom Software & ERP Systems',
     description:
-      'Tailored software solutions precisely engineered to match your business processes, target goals, and technical requirements.',
+      'Tailored business software solutions, enterprise resource planning (ERP), CRM portals, and multi-tenant SaaS platforms engineered with schema-level tenant isolation.',
     icon: LayoutGrid,
     color: 'text-indigo-400',
     bgColor: 'bg-indigo-500/10',
     href: '/services/custom-software',
+    badge: 'Multi-Tenant & ERP',
+    tagline: 'Bespoke business software, CRM systems, and schema-isolated SaaS platforms.',
+    slaMetric: '100% Schema Isolation & Full IP Transfer',
+    turnaround: '4–8 Weeks Delivery',
+    keyCapabilities: [
+      {
+        title: 'Schema-per-Tenant Isolation',
+        desc: 'Dynamic PostgreSQL schema routing ensuring complete cryptographic and database-level isolation between organizational accounts.',
+      },
+      {
+        title: 'Custom ERP & Inventory Portals',
+        desc: 'Tailored enterprise resource planning, warehouse logistics, role-based workflows, and automated invoice processing.',
+      },
+      {
+        title: 'Unified Payment Webhooks',
+        desc: 'Razorpay, Stripe, and PayU integration with automated ledger reconciliation, subscription logic, and tax handling.',
+      },
+      {
+        title: 'Zero Vendor Lock-in',
+        desc: 'Full git repository transfer, clean architecture layers, and developer runbooks enabling independent client maintenance.',
+      },
+    ],
     highlights: [
-      'SaaS Product Development',
-      'ERP & CRM Systems',
-      'Multi-tenant Architecture',
-      'Source Code Ownership & Documentation',
+      'Multi-Tenant SaaS Architecture (Schema Isolation)',
+      'Custom ERP, CRM & Logistics Platforms',
+      'Granular Role-Based Access Control (RBAC)',
+      'Automated Invoicing & Payment Webhooks',
+      '100% Source Code Ownership & Git Transfer',
+      'Comprehensive Developer Runbooks & ADRs',
     ],
     category: 'Development',
     techStack: [
@@ -240,12 +313,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      '100% source code ownership transferred on delivery',
-      'Complete database schema & migration scripts',
-      'REST / GraphQL API with OpenAPI documentation',
-      'Admin panel for business operations',
-      'Automated test suite (unit, integration, e2e)',
-      'Architecture decision record (ADR) & developer runbook',
+      '100% source code ownership transferred to your GitHub/GitLab org',
+      'Complete database schema, migration scripts, and seed data',
+      'REST / GraphQL API with full OpenAPI 3.1 specifications',
+      'Admin control panel with role-based permissions and audit logs',
+      'Automated test suite (unit, integration, and e2e tests)',
+      'Architecture Decision Records (ADRs) and onboarding runbooks',
     ],
     faqs: [
       {
@@ -266,16 +339,40 @@ export const SERVICES: Service[] = [
     id: 'workflow-automation',
     name: 'Workflow & Business Automation',
     description:
-      'We eliminate manual overhead by scripting automated workflows, integrating APIs, and building custom dashboard triggers.',
+      'We eliminate manual overhead by scripting automated workflows, integrating APIs, building custom dashboard triggers, and deploying resilient worker queues.',
     icon: Bot,
     color: 'text-lime-400',
     bgColor: 'bg-lime-500/10',
     href: '/services/workflow-automation',
+    badge: 'Event-Driven Automation',
+    tagline: 'Automated business pipelines, custom webhook triggers, and low-latency RPA bots.',
+    slaMetric: '99.9% Execution Reliability',
+    turnaround: '1–2 Weeks Sprints',
+    keyCapabilities: [
+      {
+        title: 'n8n & Temporal.io Pipelines',
+        desc: 'Fault-tolerant orchestration connecting multi-step enterprise workflows across SaaS platforms and internal systems.',
+      },
+      {
+        title: 'Browser RPA (Playwright)',
+        desc: 'Automated portal scraping, legacy government portal form entry, and headless PDF report compilation.',
+      },
+      {
+        title: 'Webhook & Queue Systems',
+        desc: 'BullMQ and Redis stream workers with automatic backoff, deduplication, and retry policies for guaranteed delivery.',
+      },
+      {
+        title: 'Instant Slack & Teams Alerting',
+        desc: 'Live anomaly notifications, interactive approval requests, and audit trail dashboards.',
+      },
+    ],
     highlights: [
-      'No-code / Low-code Automations',
-      'Business API Integrations',
-      'Custom Webhook Triggers',
-      'Internal Admin Dashboards',
+      'Self-Hosted n8n & Temporal.io Workflows',
+      'Custom Webhook Handlers & Event Queues',
+      'Robotic Process Automation (Playwright RPA)',
+      'Slack / Teams Interactive Operations Bots',
+      'Automated Data Extraction & PDF Compilation',
+      'Real-Time Failure Alerts & Dead-Letter Queues',
     ],
     category: 'Automation',
     techStack: [
@@ -319,12 +416,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Automation scripts or n8n/Make workflow files',
-      'API integration documentation',
-      'Error alerting with Slack/email notifications',
-      'Execution logs and audit trail',
-      'Admin dashboard for monitoring run history',
-      'Handover guide for internal team management',
+      'Production-tested automation scripts and n8n/Make workflow files',
+      'API integration schemas with full error payload handling',
+      'Slack / Microsoft Teams webhook alerting infrastructure',
+      'Centralized execution logs and audit trail database',
+      'Admin dashboard for monitoring run history and queue throughput',
+      'Step-by-step handover guide for non-technical team management',
     ],
     faqs: [
       {
@@ -343,18 +440,42 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'enterprise-platforms',
-    name: 'Enterprise Web Platforms',
+    name: 'Enterprise Platforms & Re-Architecture',
     description:
-      'Robust enterprise software architectures that consolidate complex databases, simplify operations, and modernise legacy systems.',
+      'Robust enterprise software architectures that consolidate complex databases, simplify operations, migrate monolithic systems, and enforce SOC 2 standards.',
     icon: Cloud,
     color: 'text-cyan-400',
     bgColor: 'bg-cyan-500/10',
     href: '/services/enterprise-platforms',
+    badge: 'Strangler-Fig Migration',
+    tagline: 'Modernizing monolithic legacy codebases into resilient, distributed microservices.',
+    slaMetric: 'Zero-Downtime Migration SLA',
+    turnaround: 'Phase-Based Roadmaps',
+    keyCapabilities: [
+      {
+        title: 'Strangler-Fig Modernization',
+        desc: 'Incremental service extraction without risky big-bang rewrites — keeping your core business operations live throughout.',
+      },
+      {
+        title: 'Event-Driven & CQRS Design',
+        desc: 'Kafka and RabbitMQ event streaming with high-throughput eventual consistency and schema registry validation.',
+      },
+      {
+        title: 'Enterprise SSO & Directory Sync',
+        desc: 'SAML 2.0 and OIDC integration with Okta, Azure AD, and fine-grained attribute-based access control (ABAC).',
+      },
+      {
+        title: 'SOC 2 & DPDP Audit Readiness',
+        desc: 'Tamper-proof audit logging, encrypted data layers at rest/transit, and automated compliance policy verification.',
+      },
+    ],
     highlights: [
-      'Technical Architecture Planning',
-      'Monolith Migrations & API Gateways',
-      'Scale-ready Database Clustering',
-      'Secure Internal Corporate Portals',
+      'Strangler-Fig Monolith-to-Microservices Migration',
+      'Kafka / RabbitMQ Event-Driven Streaming',
+      'Enterprise SAML 2.0 & OIDC SSO Integration',
+      'CQRS & Distributed Database Partitioning',
+      'Zero-Downtime Traffic Cutover SLA',
+      'SOC 2 & India DPDP 2023 Security Baseline',
     ],
     category: 'Enterprise',
     techStack: [
@@ -398,12 +519,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Target architecture design document',
-      'Microservices or modular monolith codebase',
-      'API gateway configuration with rate limiting & auth',
-      'Event bus setup with schema registry',
-      'Security hardening report & compliance checklist',
-      'Operations runbook & incident response playbook',
+      'Target architecture design document and data flow diagrams',
+      'Microservices or modular monolith codebase with clean boundaries',
+      'API gateway configuration with rate limiting, auth, and telemetry',
+      'Event bus setup with schema registry and message contracts',
+      'Security hardening report and SOC 2 / DPDP compliance checklist',
+      'Operations runbook and incident response failover playbook',
     ],
     faqs: [
       {
@@ -424,16 +545,40 @@ export const SERVICES: Service[] = [
     id: 'api-development',
     name: 'REST API & Backend Engineering',
     description:
-      'We build clean, rapid, and fully documented RESTful and GraphQL APIs that connect internal services and provide reliable endpoints.',
+      'We build clean, rapid, and fully documented RESTful, GraphQL, and gRPC APIs that connect internal services, mobile apps, and third-party ecosystems with sub-50ms latency.',
     icon: Zap,
     color: 'text-yellow-400',
     bgColor: 'bg-yellow-500/10',
     href: '/services/api-development',
+    badge: 'OpenAPI 3.1 & Sub-50ms',
+    tagline: 'High-throughput RESTful, GraphQL, and gRPC backends with rigorous API contracts.',
+    slaMetric: '< 50ms Edge API Response',
+    turnaround: '2–3 Weeks Delivery',
+    keyCapabilities: [
+      {
+        title: 'Python FastAPI & Node NestJS',
+        desc: 'Asynchronous event loops, Pydantic type validation, and dependency injection architectures for lightning-fast execution.',
+      },
+      {
+        title: 'Contract-First OpenAPI 3.1',
+        desc: 'Synchronized Swagger docs, Postman collections, and automated client TypeScript SDK generation.',
+      },
+      {
+        title: 'API Gateway & Rate Limiting',
+        desc: 'Kong and Cloudflare edge gateways with token bucket rate limiting, JWT validation, and bot mitigation.',
+      },
+      {
+        title: 'Real-Time WebSockets & SSE',
+        desc: 'Sub-second bi-directional state sync, live push notification streams, and pub/sub message brokers.',
+      },
+    ],
     highlights: [
-      'Node.js & Python FastAPI',
-      'REST & GraphQL APIs',
-      'OpenAPI Documentation',
-      'API Gateway Security & Rate Limiting',
+      'High-Throughput FastAPI & NestJS Backends',
+      'Contract-First OpenAPI 3.1 & Swagger UI',
+      'GraphQL & gRPC High-Speed Services',
+      'Kong & Cloudflare Edge API Gateways',
+      'Automated TypeScript & Python SDK Generation',
+      'k6 Distributed Load Testing & Benchmarking',
     ],
     category: 'Development',
     techStack: [
@@ -477,12 +622,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Production REST or GraphQL API codebase',
-      'OpenAPI 3.1 specification document',
-      'Postman collection with environment configs',
-      'API gateway configuration with auth & rate limiting',
-      'Unit and integration test suite',
-      'SDK or code snippets for client integration',
+      'Production REST or GraphQL API codebase with 100% test coverage',
+      'Interactive OpenAPI 3.1 specification and Swagger documentation',
+      'Postman collection with pre-configured staging & production environments',
+      'API gateway configuration with rate limiting and JWT auth policies',
+      'Client SDK (TypeScript/Python) generated automatically from schema',
+      'k6 benchmark report validating throughput and sub-50ms latency',
     ],
     faqs: [
       {
@@ -501,18 +646,42 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'database-systems',
-    name: 'Database Design & Systems',
+    name: 'Database Architecture & Systems',
     description:
-      'We optimize and configure database platforms to ensure rapid query results, data security, and long-term durability.',
+      'We design, optimize, and configure high-availability database platforms ensuring rapid sub-10ms query execution, data security, pgvector search, and zero-data-loss durability.',
     icon: Server,
     color: 'text-orange-400',
     bgColor: 'bg-orange-500/10',
     href: '/services/database-systems',
+    badge: 'PostgreSQL 16 & HA',
+    tagline: 'High-availability database clustering, query tuning, and pgvector embeddings.',
+    slaMetric: '99.99% Availability & Disaster Recovery',
+    turnaround: '1–2 Weeks Audit & Tune',
+    keyCapabilities: [
+      {
+        title: 'PostgreSQL 16 & Read Replicas',
+        desc: 'PgBouncer connection pooling, multi-AZ failover, and automated Patroni clustering for continuous uptime.',
+      },
+      {
+        title: 'Vector Index Optimization',
+        desc: 'HNSW and IVFFlat index tuning in pgvector for sub-10ms similarity searches across millions of embeddings.',
+      },
+      {
+        title: 'Deep Query & Index Audits',
+        desc: 'EXPLAIN ANALYZE execution reviews, slow-query elimination, and declarative table partitioning.',
+      },
+      {
+        title: 'Point-in-Time Disaster Recovery',
+        desc: 'Automated WAL archiving, continuous snapshot backups, and cross-region replication for zero data loss.',
+      },
+    ],
     highlights: [
-      'PostgreSQL & MySQL Optimization',
-      'Query Performance Tuning',
-      'Read Replicas & Clustering',
-      'Secure Backups & Disaster Recovery',
+      'PostgreSQL 16 Multi-AZ Clustering & Read Replicas',
+      'pgvector & HNSW Vector Index Tuning',
+      'PgBouncer Connection Pooling & Proxy Optimization',
+      'Declarative Partitioning for Big Data Tables',
+      'Continuous WAL Archiving & Point-in-Time Recovery',
+      'Zero-Downtime Schema Migrations (Prisma / Drizzle)',
     ],
     category: 'Infrastructure',
     techStack: [
@@ -556,12 +725,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Database audit report with optimization recommendations',
-      'Optimized schema with migration scripts',
-      'Index strategy documentation',
-      'Replication & connection pooling configuration',
-      'Automated backup & restore runbook',
-      'Query performance baseline & monitoring dashboard',
+      'Comprehensive database audit report with query optimization plan',
+      'Optimized schema with version-controlled migration scripts',
+      'Index strategy documentation for relational & vector data',
+      'PgBouncer / RDS Proxy connection pooling configuration',
+      'Automated disaster recovery and point-in-time restore runbook',
+      'Query performance baseline & pg_stat_statements monitoring dashboard',
     ],
     faqs: [
       {
@@ -582,16 +751,40 @@ export const SERVICES: Service[] = [
     id: 'devops-cloud',
     name: 'DevOps & Cloud Infrastructure',
     description:
-      'End-to-end cloud infrastructure engineering, container orchestration, and CI/CD pipelines across AWS, GCP, and Azure — built to scale reliably and deploy with zero downtime.',
+      'End-to-end cloud infrastructure engineering, container orchestration, Terraform IaC, and CI/CD pipelines across AWS, GCP, and Azure — built to scale reliably and deploy with zero downtime.',
     icon: GitBranch,
     color: 'text-teal-400',
     bgColor: 'bg-teal-500/10',
     href: '/services/devops-cloud',
+    badge: 'Terraform & Kubernetes',
+    tagline: 'Cloud infrastructure as code, automated CI/CD pipelines, and zero-downtime scaling.',
+    slaMetric: '99.99% Production Uptime',
+    turnaround: '1–3 Weeks IaC Setup',
+    keyCapabilities: [
+      {
+        title: 'Terraform & Terragrunt IaC',
+        desc: '100% reproducible AWS, GCP, and Azure cloud environments with version-controlled code and zero manual console drift.',
+      },
+      {
+        title: 'Kubernetes & Docker Swarms',
+        desc: 'Managed EKS/GKE clusters, Helm charts, horizontal pod autoscaling, and ArgoCD GitOps continuous deployment.',
+      },
+      {
+        title: 'Blue-Green & Canary CI/CD',
+        desc: 'GitHub Actions and GitLab CI with automated preview environments and rollback triggers for zero downtime.',
+      },
+      {
+        title: 'Cloudflare Edge & WAF Lockdown',
+        desc: 'DDoS mitigation, TLS 1.3 encryption, rate limiting, and private VPC subnet perimeter defense.',
+      },
+    ],
     highlights: [
-      'AWS, GCP & Azure Infrastructure',
-      'Kubernetes & Container Orchestration',
-      'Terraform Infrastructure as Code',
-      'CI/CD Pipelines & Zero-Downtime Deploys',
+      'Terraform Infrastructure as Code (AWS / GCP / Azure)',
+      'Kubernetes (EKS / GKE) & Helm Chart Deployments',
+      'ArgoCD GitOps & Automated Blue-Green Releases',
+      'Cloudflare CDN, WAF & Zero-Trust Access',
+      'Comprehensive Datadog & Prometheus Observability',
+      'Cost Optimization & AWS Reserved Instance Planning',
     ],
     category: 'Infrastructure',
     techStack: [
@@ -646,11 +839,11 @@ export const SERVICES: Service[] = [
       'Cloud architecture diagram (AWS / GCP / Azure)',
       'Terraform modules for all infrastructure (fully version-controlled)',
       'CI/CD pipeline configuration (GitHub Actions / GitLab CI)',
-      'Kubernetes manifests or Helm charts',
+      'Kubernetes manifests or Helm charts with autoscaling rules',
       'Cloudflare CDN, WAF & DNS configuration',
-      'Monitoring dashboards with alert thresholds',
-      'Runbook for scaling, failover, and incident response',
-      'Cost optimization report with right-sizing recommendations',
+      'Centralized Prometheus / Grafana / Datadog monitoring dashboards',
+      'Operational runbook for scaling, failover, and incident response',
+      'Cloud cost optimization report with right-sizing recommendations',
     ],
     faqs: [
       {
@@ -677,18 +870,42 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'technology-consulting',
-    name: 'Technology Consulting',
+    name: 'Technology Consulting & Architecture Audits',
     description:
-      'We partner with startup founders and business leaders to review code systems, select modern stacks, and evaluate security risk.',
+      'We partner with startup founders and enterprise CTOs to audit codebases, select modern technology stacks, evaluate OWASP security risks, and optimize cloud infrastructure costs.',
     icon: Lightbulb,
     color: 'text-sky-400',
     bgColor: 'bg-sky-500/10',
     href: '/services/technology-consulting',
+    badge: 'Code & Security Audit',
+    tagline: 'Independent technical architecture reviews, OWASP security audits, and cloud cost optimization.',
+    slaMetric: 'Risk-Rated Remediation Matrix',
+    turnaround: '1–2 Weeks Assessment',
+    keyCapabilities: [
+      {
+        title: 'Architecture & Code Quality Audit',
+        desc: 'Deep static analysis, technical debt quantification, and architectural bottleneck mapping across your repositories.',
+      },
+      {
+        title: 'OWASP Top 10 Security Review',
+        desc: 'Vulnerability assessment, IAM privilege audits, dependency risk reviews, and penetration guidelines.',
+      },
+      {
+        title: 'Cloud Cost Optimization',
+        desc: 'Reserved instance planning, orphaned resource cleanup, and 30-50% infrastructure bill reduction strategies.',
+      },
+      {
+        title: 'CTO Advisory & Build vs. Buy',
+        desc: 'Strategic vendor evaluation, technology stack selection, and 12-month engineering roadmaps.',
+      },
+    ],
     highlights: [
-      'Technology Stack Audits',
-      'System Design Reviews',
-      'Security-by-Design Guidelines',
-      'Build vs. Buy Analysis',
+      'Comprehensive Codebase & Architecture Audit',
+      'OWASP Top 10 Security & Dependency Vulnerability Scan',
+      '30–50% Cloud Infrastructure Cost Optimization',
+      'Strategic Build vs. Buy & Vendor Evaluation',
+      '12-Month Actionable Technology Roadmap',
+      'Architecture Decision Records (ADR) Deliverable',
     ],
     category: 'Strategy',
     techStack: [
@@ -732,12 +949,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Technical audit report with risk-rated findings',
-      'Recommended target architecture diagram',
-      'Technology stack comparison matrix',
-      'Security remediation checklist',
-      'Cloud cost optimization plan',
-      '12-month technology roadmap',
+      'Executive-level technical audit report with risk-rated findings',
+      'Recommended target architecture blueprint and migration path',
+      'Technology stack comparison matrix with pros/cons',
+      'Security remediation checklist aligned with OWASP standards',
+      'Cloud cost optimization plan with immediate savings levers',
+      '12-month actionable technology roadmap and hiring blueprint',
     ],
     faqs: [
       {
@@ -756,18 +973,42 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'mobile-development',
-    name: 'Mobile App Development',
+    name: 'Mobile App Development (iOS & Android)',
     description:
-      'High-performance native iOS, Android, Flutter, and React Native mobile applications engineered with 60 FPS fluidity and offline-first capabilities.',
-    icon: Globe,
+      'High-performance native iOS, Android, Flutter, and React Native mobile applications engineered with 60 FPS fluidity, offline-first sync, and App Store readiness.',
+    icon: Smartphone,
     color: 'text-cyan-400',
     bgColor: 'bg-cyan-500/10',
     href: '/services/mobile-development',
+    badge: '60 FPS & Offline-First',
+    tagline: 'Native iOS & Android apps and cross-platform Flutter/React Native solutions.',
+    slaMetric: '60 FPS Fluidity & Offline Data Sync',
+    turnaround: '4–8 Weeks App Launch',
+    keyCapabilities: [
+      {
+        title: 'React Native & Flutter Cross-Platform',
+        desc: 'Unified single-codebase apps with native performance and platform-specific HIG / Material UI adaptations.',
+      },
+      {
+        title: 'SwiftUI & Jetpack Compose Native',
+        desc: 'Hardware-accelerated native iOS and Android engineering for mission-critical and sensor-heavy use cases.',
+      },
+      {
+        title: 'Offline-First SQLite & Realm',
+        desc: 'Background sync queues allowing continuous uninterrupted usage without active cellular or Wi-Fi connection.',
+      },
+      {
+        title: 'App Store & Play Store Handover',
+        desc: 'Full release management, developer certificate signing, screenshot assets, and compliance review pass.',
+      },
+    ],
     highlights: [
-      'iOS & Android Native Development',
-      'React Native & Flutter Cross-Platform',
-      'Offline-First Architecture',
-      'App Store & Play Store Publishing',
+      'Native Swift (iOS) & Kotlin (Android) Development',
+      'React Native & Flutter Cross-Platform Architecture',
+      'Offline-First Local SQLite & Realm Sync Engine',
+      '60 FPS Smooth Gestures & Fluid Animations',
+      'In-App Subscriptions (Stripe / RevenueCat)',
+      'Complete App Store & Google Play Store Submission',
     ],
     category: 'Development',
     techStack: [
@@ -811,12 +1052,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Native or cross-platform mobile application source code',
-      'Figma design files with component library',
-      'App Store and Play Store listings (fully configured)',
-      'Push notification infrastructure',
-      'CI/CD pipeline for OTA updates (Expo) or TestFlight/Firebase',
-      'Device compatibility test report',
+      'Native or cross-platform mobile application source code (100% ownership)',
+      'Figma design files with platform-specific component library',
+      'Configured App Store and Google Play Store listings and certificates',
+      'Push notification infrastructure (FCM / APNs) setup',
+      'CI/CD pipeline for Over-The-Air (OTA) updates and TestFlight distribution',
+      'Device compatibility test report across iOS and Android matrix',
     ],
     faqs: [
       {
@@ -835,18 +1076,42 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'ui-ux-design',
-    name: 'UI/UX & Product Design',
+    name: 'UI/UX & Product Design Systems',
     description:
-      'Pixel-perfect design systems, interactive Figma prototypes, and high-converting user interfaces built for modern digital products.',
+      'Pixel-perfect design systems, interactive Figma prototypes, OKLCH color scales, and high-converting user interfaces built for modern digital products and luxury editorial web experiences.',
     icon: Palette,
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     href: '/services/ui-ux-design',
+    badge: 'Design System & WCAG AA',
+    tagline: 'Editorial luxury user interfaces, Figma design tokens, and high-converting product UX.',
+    slaMetric: 'WCAG 2.1 AA & Sub-10ms Feedback',
+    turnaround: '2–4 Weeks System Build',
+    keyCapabilities: [
+      {
+        title: 'Figma Tokenized Design Systems',
+        desc: 'Component libraries with auto-layout, OKLCH variables, typography scales, and seamless Dev Mode specifications.',
+      },
+      {
+        title: 'Interactive Prototypes & Motion',
+        desc: 'Framer Motion micro-animations, clickable realistic flows, and user testing feedback loops.',
+      },
+      {
+        title: 'User Research & Conversion UX',
+        desc: 'Heatmap analysis, friction point elimination, checkout funnel optimization, and information architecture mapping.',
+      },
+      {
+        title: 'WCAG 2.1 AA Accessibility',
+        desc: 'Contrast audits, keyboard navigation flows, and screen-reader accessibility baseline across all UI components.',
+      },
+    ],
     highlights: [
-      'Interactive Figma Prototypes',
-      'Design Systems & Component Libraries',
-      'User Research & Journey Mapping',
-      'Conversion Rate Optimization',
+      'Interactive Figma Prototypes & Dev Mode Specs',
+      'Scalable Design Systems & OKLCH Design Tokens',
+      'WCAG 2.1 AA Accessibility Compliance Guaranteed',
+      'Conversion Rate & Funnel Optimization Research',
+      'Framer Motion Micro-Interaction Blueprints',
+      'Dark / Light Mode Semantic Token Variables',
     ],
     category: 'Design',
     techStack: [
@@ -890,12 +1155,12 @@ export const SERVICES: Service[] = [
       },
     ],
     deliverables: [
-      'Figma design file with auto-layout components',
-      'Interactive high-fidelity prototype',
-      'Design system with tokens (color, type, spacing)',
-      'User research report and journey maps',
-      'Accessibility audit (WCAG 2.1 AA)',
-      'Developer handoff documentation',
+      'Figma design files with auto-layout components and variables',
+      'Interactive high-fidelity clickable prototype for usability testing',
+      'Comprehensive design system with semantic design tokens',
+      'User research insights report and customer journey maps',
+      'Accessibility audit report (WCAG 2.1 AA compliance pass)',
+      'Developer handoff documentation with spacing & typography guides',
     ],
     faqs: [
       {
@@ -916,8 +1181,8 @@ export const SERVICES: Service[] = [
 
 export const SERVICE_CATEGORIES = [
   'All',
-  'Development',
   'AI',
+  'Development',
   'Enterprise',
   'Infrastructure',
   'Automation',

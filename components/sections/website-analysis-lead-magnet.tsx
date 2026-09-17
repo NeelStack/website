@@ -31,9 +31,9 @@ export function WebsiteAnalysisLeadMagnet() {
   ]
 
   return (
-    <Section className="py-20 bg-background/50 border-t border-border/60">
+    <Section className="bg-background/50 border-t border-border/60">
       <Container size="xl">
-        <div className="rounded-3xl border border-border/80 bg-card/80 p-8 sm:p-12 shadow-xl backdrop-blur-md w-full space-y-10 card-hover relative overflow-hidden">
+        <div className="rounded-3xl border border-border/80 bg-card/80 p-6 sm:p-8 md:p-10 shadow-xl backdrop-blur-md w-full space-y-6 sm:space-y-8 card-hover relative overflow-hidden">
           {/* Subtle top subtle background ambient glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-violet-500/10 blur-[90px] rounded-full pointer-events-none" aria-hidden="true" />
 

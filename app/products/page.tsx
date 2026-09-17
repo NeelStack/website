@@ -260,8 +260,8 @@ export default function ProductsPage() {
       </section>
 
       {/* ─── 4-Track Product Portfolio Cards ────────────────────────────────────── */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm border-y border-border/40">
-        <Container className="space-y-12">
+      <Section className="bg-card/40 backdrop-blur-sm border-y border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
               Product Portfolio
@@ -341,8 +341,8 @@ export default function ProductsPage() {
       </Section>
 
       {/* ─── Technical Capability Comparison Matrix ─────────────────────────────── */}
-      <section className="py-20 border-b border-border/40 bg-transparent">
-        <Container className="space-y-12 max-w-6xl">
+      <section className="py-8 sm:py-10 md:py-12 border-b border-border/40 bg-transparent">
+        <Container className="space-y-6 sm:space-y-8 max-w-6xl">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
               Technical Matrix
@@ -357,7 +357,7 @@ export default function ProductsPage() {
 
           <div className="rounded-3xl border border-border/80 bg-card/80 backdrop-blur-md p-6 sm:p-8 shadow-xl overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left text-xs border-collapse min-w-[640px]">
                 <thead>
                   <tr className="border-b border-border text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
                     <th className="py-3.5 px-4">Product Name</th>
@@ -395,8 +395,8 @@ export default function ProductsPage() {
       </section>
 
       {/* ─── Why NeelStack Builds Proprietary Software ──────────────────────────── */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm border-b border-border/40">
-        <Container className="space-y-12">
+      <Section className="bg-card/40 backdrop-blur-sm border-b border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
               Why We Build Our Own Products
@@ -443,7 +443,7 @@ export default function ProductsPage() {
       </Section>
 
       {/* ─── Pre-Footer CTA ──────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-card to-surface text-center">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-card to-surface text-center">
         <Container className="max-w-3xl space-y-6">
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground">
             Need a Custom Proprietary Product Built for Your Enterprise?

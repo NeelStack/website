@@ -3,6 +3,7 @@ import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
 import { CaseStudiesClient } from '@/components/sections/case-studies-client'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
@@ -21,8 +22,39 @@ export const metadata: Metadata = {
 }
 
 export default function CaseStudiesPage() {
+  const siteUrl = getSiteUrl()
+
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'NeelStack Enterprise Engineering Case Studies',
+          description: 'Production architecture case studies on autonomous multi-agent ERPs, multi-tenant cloud systems, and high-throughput backends.',
+          url: `${siteUrl}/case-studies`,
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Agentic AI in DhruvaOS: Autonomous Goal-Driven Enterprise Workflows',
+              url: `${siteUrl}/blog/agentic-ai-in-dhruvaos-autonomous-enterprise-erp-agi`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'DhruvaOS Foundation: Dynamic Schema-per-Tenant Multi-Tenancy Architecture',
+              url: `${siteUrl}/blog/architecting-dhruvaos-foundation-schema-per-tenant-postgresql`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'ToolVines Architecture: High-Throughput In-Browser Private Compute Platform',
+              url: `${siteUrl}/blog/building-scalable-multitenant-saas-applications`,
+            },
+          ],
+        }}
+      />
       <PageHero
         badge="Enterprise Engineering Case Studies"
         title="Real Systems. Defensible Numbers."

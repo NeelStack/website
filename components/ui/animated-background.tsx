@@ -20,7 +20,7 @@ export function AnimatedBackground() {
 
   return (
     <div
-      className="fixed inset-0 z-0 overflow-hidden pointer-events-none select-none bg-background [will-change:transform] [transform:translate3d(0,0,0)]"
+      className="fixed inset-0 -z-10 overflow-hidden pointer-events-none select-none bg-background [will-change:transform] [transform:translate3d(0,0,0)]"
       aria-hidden="true"
     >
       {/* ─── Layer 1: Adaptive Celestial Atmospheric Haze (Uniform Full-Screen Harmony) ─── */}

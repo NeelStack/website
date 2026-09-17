@@ -333,9 +333,9 @@ export default function TechnologiesPage() {
       />
 
       {/* Modern AI Ecosystem 10-Layer Visual Showcase */}
-      <section className="py-20 relative overflow-hidden" aria-labelledby="ai-ecosystem-heading">
+      <section className="py-8 sm:py-10 md:py-12 relative overflow-hidden" aria-labelledby="ai-ecosystem-heading">
         <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-3">
             <span className="inline-block text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25">
               10-Layer Frontier Architecture
             </span>
@@ -395,9 +395,9 @@ export default function TechnologiesPage() {
       </section>
 
       {/* Enterprise Full-Stack & Systems Infrastructure */}
-      <section className="py-16 border-t border-border/60 bg-muted/20" aria-labelledby="enterprise-stack-heading">
+      <section className="py-8 sm:py-10 md:py-12 border-t border-border/60 bg-muted/20" aria-labelledby="enterprise-stack-heading">
         <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8 space-y-3">
             <span className="inline-block text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25">
               Production-Grade Infrastructure
             </span>

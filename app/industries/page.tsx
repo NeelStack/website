@@ -4,6 +4,8 @@ import { PageHero } from '@/components/ui/page-hero'
 import { IndustryCard } from '@/components/ui/industry-card'
 import { Container } from '@/components/ui/container'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 import { INDUSTRIES } from '@/constants/industries'
 
 export const metadata: Metadata = {
@@ -16,8 +18,29 @@ export const metadata: Metadata = {
 }
 
 export default function IndustriesPage() {
+  const siteUrl = getSiteUrl()
+
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'Industries Served by NeelStack',
+          description: 'Enterprise software, AI automation, and cloud platforms engineered for specific industry verticals.',
+          url: `${siteUrl}/industries`,
+          itemListElement: INDUSTRIES.map((ind, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            item: {
+              '@type': 'Service',
+              name: `${ind.name} Software & AI Solutions`,
+              description: ind.description,
+              url: `${siteUrl}/industries/${ind.id}`,
+            },
+          })),
+        }}
+      />
       <PageHero
         badge="Industries we serve"
         title="Deep Domain Expertise Across Sectors"
@@ -25,7 +48,7 @@ export default function IndustriesPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Industries' }]}
       />
 
-      <section className="py-16" aria-labelledby="industries-grid-heading">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="industries-grid-heading">
         <Container>
           <h2 id="industries-grid-heading" className="sr-only">Industries</h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

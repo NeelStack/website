@@ -171,10 +171,10 @@ export default function AboutPage() {
       {/* Corporate Philosophy & Vision */}
       <Section className="bg-card/60 backdrop-blur-sm border-t border-border/60">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-start">
             <div className="space-y-6">
               <div>
-                <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+                <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
                   Our Mission &amp; Vision
                 </span>
                 <h2 className="font-heading text-3xl font-extrabold text-foreground md:text-4xl tracking-tight text-balance">
@@ -229,14 +229,14 @@ export default function AboutPage() {
       {/* Product Roadmap & Journey */}
       <Section>
         <Container>
-          <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
               Product Roadmap
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
               Our Products &amp; Current Progress
             </h2>
-            <p className="mt-4 text-base text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
               A transparent view of our live software, upcoming launches, and research initiatives.
             </p>
           </div>
@@ -275,8 +275,8 @@ export default function AboutPage() {
       {/* Engineering Principles */}
       <Section className="bg-card/60 backdrop-blur-sm border-t border-border">
         <Container>
-          <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
               How We Build
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
@@ -301,8 +301,8 @@ export default function AboutPage() {
       {/* Values section */}
       <Section>
         <Container>
-          <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
               Core Values
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">

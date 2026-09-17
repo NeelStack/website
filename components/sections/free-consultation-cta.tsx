@@ -45,7 +45,7 @@ const STATS = [
 
 export function FreeConsultationCTA() {
   return (
-    <Section className="py-10 sm:py-14 md:py-20 relative z-10 border-t border-border/50">
+    <Section className="relative z-10 border-t border-border/50">
       <Container size="lg">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -58,12 +58,12 @@ export function FreeConsultationCTA() {
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-rose-500 opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
           
           {/* Inner content */}
-          <div className="relative rounded-[2.4rem] bg-card/95 backdrop-blur-xl border border-border/40 p-6 md:p-10 lg:p-14 overflow-hidden flex flex-col items-center text-center z-10">
+          <div className="relative rounded-[2.4rem] bg-card/95 backdrop-blur-xl border border-border/40 p-6 sm:p-8 md:p-10 overflow-hidden flex flex-col items-center text-center z-10">
             
             {/* Ambient Background Glow inside the card */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-4">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
@@ -71,19 +71,19 @@ export function FreeConsultationCTA() {
               Direct Engineering Consultation
             </div>
 
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight leading-tight mb-6 max-w-3xl">
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight mb-4 max-w-3xl">
               Have a software, AI or product idea? <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-rose-400">
                 Talk to NeelStack
               </span>
             </h2>
 
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-6">
               Sit down directly with our engineering team to review your technical requirements, explore architecture options, and map out a clean execution plan.
             </p>
 
             {/* The 4 Core Stats as Floating Tiles */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl mb-8 relative z-20">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl mb-6 relative z-20">
               {STATS.map((stat, idx) => {
                 const Icon = stat.icon
                 return (

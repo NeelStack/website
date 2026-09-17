@@ -130,7 +130,7 @@ const ENGINE_TOOLVINES = {
 
 export function ThreeEnginesBento() {
   return (
-    <section id="three-engines" className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-transparent">
+    <section id="three-engines" className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-transparent">
       {/* Background Ambience */}
       <div
         className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[350px] pointer-events-none"
@@ -140,7 +140,7 @@ export function ThreeEnginesBento() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"

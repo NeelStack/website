@@ -49,10 +49,10 @@ const PILLARS = [
 
 export function TrustBarSection() {
   return (
-    <section className="relative overflow-hidden py-14 border-b border-border/60">
+    <section className="relative overflow-hidden py-8 sm:py-10 border-b border-border/60">
       {/* Gradient blend connector from hero above */}
       <div
-        className="absolute inset-x-0 top-0 h-24 pointer-events-none"
+        className="absolute inset-x-0 top-0 h-12 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, var(--background), transparent)',
         }}
@@ -72,7 +72,7 @@ export function TrustBarSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-8"
+          className="text-center mb-5"
         >
           <span className="text-[10px] font-bold text-muted-foreground/70 uppercase tracking-[0.2em]">
             Enterprise-Grade Engineering Standards

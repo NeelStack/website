@@ -66,7 +66,7 @@ export default async function IndustryDetailPage({ params }: PageProps) {
       <Section>
         <Container>
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
               {/* Industry Info */}
               <div className="md:col-span-2 space-y-6">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 mb-4">

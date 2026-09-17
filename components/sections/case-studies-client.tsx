@@ -177,8 +177,8 @@ export function CaseStudiesClient() {
     : CASE_STUDIES.filter((cs) => cs.category === activeCategory)
 
   return (
-    <section className="py-16 md:py-24" aria-label="Case studies catalog">
-      <Container className="space-y-12">
+    <section className="py-8 sm:py-10 md:py-12" aria-label="Case studies catalog">
+      <Container className="space-y-6 sm:space-y-8">
         {/* Executive Trust & Engineering Benchmark Bar */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 sm:p-7 rounded-3xl border-2 border-border/80 bg-card/80 backdrop-blur-xl shadow-lg tactile-card-3d">
           <div className="space-y-1">
@@ -255,8 +255,8 @@ export function CaseStudiesClient() {
                       </p>
                     </div>
 
-                    <div className="text-right hidden sm:block">
-                      <span className="text-xs font-mono text-muted-foreground/80 block">Engineering System</span>
+                    <div className="w-full sm:w-auto sm:text-right pt-2 sm:pt-0 border-t border-border/30 sm:border-t-0">
+                      <span className="text-[11px] font-mono text-muted-foreground/80 block">Engineering System</span>
                       <span className="text-xs font-bold text-foreground font-heading">{cs.systemProfile}</span>
                     </div>
                   </div>
@@ -347,7 +347,7 @@ export function CaseStudiesClient() {
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
                       <button
                         onClick={() => setExpandedId(isExpanded ? null : cs.id)}
                         className="text-xs font-bold text-muted-foreground hover:text-foreground underline underline-offset-4 cursor-pointer"
@@ -357,7 +357,7 @@ export function CaseStudiesClient() {
                       <Button asChild size="sm" variant="3d-yellow" className="font-extrabold rounded-xl">
                         <Link href={cs.blogUrl} className="flex items-center gap-1.5 text-xs">
                           <BookOpen className="h-3.5 w-3.5" />
-                          <span>Read Full Architecture Blog ({cs.blogReadTime})</span>
+                          <span>Read Architecture Blog ({cs.blogReadTime})</span>
                           <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       </Button>

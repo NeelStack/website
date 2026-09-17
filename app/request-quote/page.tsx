@@ -34,7 +34,7 @@ export default function RequestQuotePage() {
         </a>
       </div>
 
-      <section id="form" className="pt-2 pb-16 md:pt-4 md:pb-20 scroll-mt-24" aria-labelledby="quote-form-heading">
+      <section id="form" className="pt-2 pb-8 md:pt-2 md:pb-12 scroll-mt-24" aria-labelledby="quote-form-heading">
         <Container>
           <div className="max-w-3xl mx-auto">
             <h2 id="quote-form-heading" className="sr-only">

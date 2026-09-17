@@ -10,7 +10,6 @@ import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
-import { CapabilitiesSection } from '@/components/sections/capabilities-section'
 import { JsonLd } from '@/components/seo/json-ld'
 import { CheckCircle2, Shield, ArrowRight, Lock, Server, Sparkles, Layers } from 'lucide-react'
 
@@ -136,7 +135,7 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
       {/* ── Section 1: Domain Adaptation ── */}
       <Section>
         <Container>
-          <div className="max-w-5xl mx-auto space-y-12">
+          <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -176,7 +175,7 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
             </div>
 
             {/* Service Highlights */}
-            <div className="pt-8 border-t border-border/40 space-y-6">
+            <div className="pt-6 border-t border-border/40 space-y-4">
               <h2 className="font-heading text-xl font-bold text-foreground">Core Capabilities Included</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {service.highlights.map((item) => (
@@ -223,8 +222,6 @@ export default async function ServiceForIndustryPage({ params }: PageProps) {
           </div>
         </Container>
       </Section>
-
-      <CapabilitiesSection />
 
       <CTASection
         title={`Ready to build a ${service.name.toLowerCase()} solution for your ${industry.name.toLowerCase()} organization?`}

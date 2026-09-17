@@ -75,7 +75,7 @@ const BUILDING_PILLARS = [
 
 export function WhatWeAreBuildingSection() {
   return (
-    <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-card/30 backdrop-blur-sm border-t border-border/50">
+    <section className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-card/30 backdrop-blur-sm border-t border-border/50">
       {/* Background ambient glows */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] pointer-events-none"
@@ -85,7 +85,7 @@ export function WhatWeAreBuildingSection() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-12 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"

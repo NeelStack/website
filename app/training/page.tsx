@@ -16,6 +16,8 @@ import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { Button } from '@/components/ui/button'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
   title: 'Training & Internship Programs | NeelStack India',
@@ -76,8 +78,33 @@ const TECH_TRACKS = [
 ]
 
 export default function TrainingPage() {
+  const siteUrl = getSiteUrl()
+
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'NeelStack Training & Workforce Programs',
+          description: 'Hands-on industrial internships, corporate workshops, and faculty development programs in modern AI and software engineering.',
+          url: `${siteUrl}/training`,
+          itemListElement: PROGRAMS.map((prog, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            item: {
+              '@type': 'EducationalOccupationalProgram',
+              name: prog.title,
+              description: prog.description,
+              provider: {
+                '@type': 'Organization',
+                name: 'NeelStack Solutions Private Limited',
+                url: siteUrl,
+              },
+            },
+          })),
+        }}
+      />
       <PageHero
         badge="Education & Workforce Development"
         title="Training, Workshops & Internship Programs"

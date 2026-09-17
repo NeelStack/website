@@ -31,7 +31,7 @@ export function CategoryFilter({ categories, active }: CategoryFilterProps) {
 
   return (
     <div
-      className="mb-10 flex flex-wrap gap-2"
+      className="mb-8 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:pb-0 scrollbar-none max-w-full"
       role="group"
       aria-label="Filter services by category"
     >
@@ -40,9 +40,9 @@ export function CategoryFilter({ categories, active }: CategoryFilterProps) {
           key={cat}
           onClick={() => handleSelect(cat)}
           className={cn(
-            'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+            'shrink-0 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-colors cursor-pointer',
             active === cat
-              ? 'bg-primary text-primary-foreground'
+              ? 'bg-primary text-primary-foreground font-semibold shadow-sm'
               : 'border border-border text-muted-foreground hover:text-foreground hover:border-border/80 hover:bg-muted'
           )}
           aria-pressed={active === cat}

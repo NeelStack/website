@@ -124,7 +124,7 @@ export function ArchitecturalProcessTrack() {
   const activeStep = PIPELINE_STEPS[activeStepIndex]
 
   return (
-    <section id="process-track" className="py-10 sm:py-14 relative overflow-hidden bg-surface/50 border-t border-border/60">
+    <section id="process-track" className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-surface/50 border-t border-border/60">
       {/* Background Ambience */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[250px] pointer-events-none"
@@ -134,7 +134,7 @@ export function ArchitecturalProcessTrack() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -220,8 +220,8 @@ export function ArchitecturalProcessTrack() {
           >
             {/* Top Stage Metadata */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/50 pb-5">
-              <div className="flex items-center gap-3">
-                <span className={`font-mono text-xs font-bold px-3 py-1 rounded-md bg-muted border border-border ${activeStep.accentColor}`}>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                <span className={`font-mono text-xs font-bold px-3 py-1 rounded-md bg-muted border border-border w-fit ${activeStep.accentColor}`}>
                   PHASE // {activeStep.codeHeader}
                 </span>
                 <h3 className="font-heading text-lg sm:text-xl font-extrabold text-foreground">

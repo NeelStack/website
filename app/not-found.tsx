@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <MarketingLayout>
-      <div className="flex min-h-[80vh] flex-col items-center justify-center px-6 text-center py-20 relative overflow-hidden">
+      <div className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center py-10 sm:py-14 md:py-16 relative overflow-hidden">
         {/* Ambient glow */}
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full pointer-events-none opacity-12 blur-[100px]"
@@ -32,7 +32,7 @@ export default function NotFound() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 flex flex-col items-center gap-8 max-w-lg">
+        <div className="relative z-10 flex flex-col items-center gap-6 max-w-lg">
           {/* Illustration + ghost 404 — fixed height container for proper layering */}
           <div className="relative flex items-center justify-center w-72 h-64" aria-hidden="true">
             {/* Ghost 404 text — fills the container */}

@@ -25,7 +25,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        'relative overflow-hidden pt-24 pb-8 sm:pt-28 sm:pb-10 md:pt-32 md:pb-12',
+        'relative overflow-hidden pt-20 pb-4 sm:pt-24 sm:pb-6 md:pt-28 md:pb-6',
         className
       )}
       aria-labelledby="page-hero-heading"
@@ -44,7 +44,7 @@ export function PageHero({
       <Container className="relative z-10">
         {/* Breadcrumbs */}
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <div className={cn('mb-6', centered && 'flex justify-center')}>
+          <div className={cn('mb-3 sm:mb-4', centered && 'flex justify-center')}>
             <Breadcrumb items={breadcrumbs} />
           </div>
         )}
@@ -52,7 +52,7 @@ export function PageHero({
         <div className={cn(centered && 'text-center')}>
           {/* Badge */}
           {badge && (
-            <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5 shadow-[0_0_12px_oklch(0.62_0.22_258/15%)] dark:shadow-[0_0_16px_oklch(0.62_0.22_258/20%)]">
+            <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3.5 py-1 text-xs font-medium text-primary mb-3 shadow-[0_0_12px_oklch(0.62_0.22_258/15%)] dark:shadow-[0_0_16px_oklch(0.62_0.22_258/20%)]">
               <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
@@ -76,7 +76,7 @@ export function PageHero({
           {description && (
             <p
               className={cn(
-                'mt-4 text-base text-muted-foreground leading-relaxed md:text-lg text-pretty',
+                'mt-2.5 text-sm sm:text-base text-muted-foreground leading-relaxed md:text-lg text-pretty',
                 centered && 'mx-auto max-w-2xl'
               )}
             >
@@ -85,7 +85,7 @@ export function PageHero({
           )}
 
           {/* Optional children (CTAs, etc.) */}
-          {children && <div className="mt-8">{children}</div>}
+          {children && <div className="mt-5 sm:mt-6">{children}</div>}
         </div>
       </Container>
     </section>

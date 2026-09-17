@@ -111,14 +111,14 @@ export function TechnologySection() {
   const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
 
   return (
-    <Section id="technologies" className="py-12 sm:py-14 md:py-16 relative overflow-hidden bg-transparent">
+    <Section id="technologies" className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-transparent">
       {/* Subtle dark mesh backdrop */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 100%, rgba(59,130,246,0.05), transparent)' }}
         aria-hidden="true"
       />
-      <Container className="space-y-12 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"

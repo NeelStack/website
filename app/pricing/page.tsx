@@ -6,6 +6,8 @@ import { Container } from '@/components/ui/container'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
 import { CTASection } from '@/components/ui/cta-section'
 import type { PricingPlan, FAQItem } from '@/types'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
   title: 'Pricing — Transparent Software Engineering Plans | NeelStack India',
@@ -105,8 +107,43 @@ const PRICING_FAQ: FAQItem[] = [
 ]
 
 export default function PricingPage() {
+  const siteUrl = getSiteUrl()
+
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: PRICING_FAQ.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'NeelStack Software Engineering Plans',
+          itemListElement: PRICING_PLANS.map((plan, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            item: {
+              '@type': 'Offer',
+              name: `${plan.name} Engineering Plan`,
+              description: plan.description,
+              url: `${siteUrl}/pricing`,
+              priceCurrency: 'USD',
+              price: 'Custom',
+            },
+          })),
+        }}
+      />
       <PageHero
         badge="Pricing & Engagements"
         title="Transparent Pricing for Every Project"
@@ -114,7 +151,7 @@ export default function PricingPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]}
       />
 
-      <section className="py-16" aria-labelledby="pricing-plans-heading">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="pricing-plans-heading">
         <Container>
           <h2 id="pricing-plans-heading" className="sr-only">Pricing plans</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -124,8 +161,8 @@ export default function PricingPage() {
           </div>
 
           {/* Pricing FAQ */}
-          <div className="mt-20">
-            <h2 className="font-heading text-2xl font-bold text-foreground text-center mb-10">
+          <div className="mt-10 sm:mt-12">
+            <h2 className="font-heading text-2xl font-bold text-foreground text-center mb-6">
               Pricing FAQ
             </h2>
             <div className="max-w-2xl mx-auto">

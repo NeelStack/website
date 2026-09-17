@@ -35,7 +35,7 @@ const COMPARISON_POINTS = [
 
 export function WhyUsSection() {
   return (
-    <section className="py-12 sm:py-14 md:py-16 relative overflow-hidden bg-transparent border-t border-border/50">
+    <section className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-transparent border-t border-border/50">
       {/* Ambient glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"
@@ -43,7 +43,7 @@ export function WhyUsSection() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-16 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         {/* Company Vision Strip */}
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div
@@ -148,14 +148,24 @@ export function WhyUsSection() {
                   {item.feature}
                 </div>
 
-                <div className="md:col-span-4 flex items-center gap-2.5 text-xs text-muted-foreground bg-rose-500/5 p-3 rounded-xl border border-rose-500/20 font-medium">
-                  <X className="h-5 w-5 text-rose-500 shrink-0" />
-                  <span>{item.standard}</span>
+                <div className="md:col-span-4 flex items-start sm:items-center gap-2.5 text-xs text-muted-foreground bg-rose-500/5 p-3 rounded-xl border border-rose-500/20 font-medium">
+                  <X className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 sm:mt-0" />
+                  <div>
+                    <span className="md:hidden block text-[10px] font-mono font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400 mb-0.5">
+                      Standard Approach
+                    </span>
+                    <span>{item.standard}</span>
+                  </div>
                 </div>
 
-                <div className="md:col-span-4 flex items-center gap-2.5 text-xs font-bold text-foreground bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/30">
-                  <Check className="h-5 w-5 text-emerald-500 shrink-0" />
-                  <span>{item.neelstack}</span>
+                <div className="md:col-span-4 flex items-start sm:items-center gap-2.5 text-xs font-bold text-foreground bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/30">
+                  <Check className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5 sm:mt-0" />
+                  <div>
+                    <span className="md:hidden block text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-0.5">
+                      NeelStack Engineering
+                    </span>
+                    <span>{item.neelstack}</span>
+                  </div>
                 </div>
               </div>
             ))}

@@ -105,7 +105,7 @@ export default function ContactPage() {
         </a>
       </div>
 
-      <section id="form" className="pt-2 pb-16 md:pt-4 md:pb-20 scroll-mt-24" aria-labelledby="contact-section-heading">
+      <section id="form" className="pt-2 pb-8 md:pt-2 md:pb-12 scroll-mt-24" aria-labelledby="contact-section-heading">
         <Container>
           <h2 id="contact-section-heading" className="sr-only">Contact information and form</h2>
           
@@ -115,8 +115,8 @@ export default function ContactPage() {
           </div>
 
           {/* Institutional Trust & Operating Standards Grid */}
-          <div className="max-w-5xl mx-auto mt-12 pt-10 border-t border-border/60">
-            <div className="text-center mb-8 space-y-1.5">
+          <div className="max-w-5xl mx-auto mt-8 pt-6 sm:mt-10 sm:pt-8 border-t border-border/60">
+            <div className="text-center mb-5 sm:mb-6 space-y-1.5">
               <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-primary">
                 Operating Standards
               </span>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                                 className="text-xs text-foreground font-semibold hover:text-primary transition-colors font-mono"
                               />
                             ) : (
-                              <span className="text-xs text-foreground font-medium leading-relaxed">{line.value}</span>
+                              <span className="text-xs text-foreground font-medium leading-relaxed break-words">{line.value}</span>
                             )}
                           </dd>
                         </div>

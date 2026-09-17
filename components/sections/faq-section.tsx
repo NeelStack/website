@@ -41,7 +41,7 @@ export function FAQSection() {
   return (
     <Section id="faq" className="bg-card/60 backdrop-blur-sm">
       <Container>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
           {/* Left: Header */}
           <div>
             <SectionHeader

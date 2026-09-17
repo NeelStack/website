@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 
 export function PortfolioShowcaseSection() {
   return (
-    <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden bg-surface">
+    <section className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-surface">
       {/* Centered glow spotlight behind heading */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
@@ -19,7 +19,7 @@ export function PortfolioShowcaseSection() {
       />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-violet-500/5 blur-[130px] pointer-events-none" aria-hidden="true" />
 
-      <Container className="space-y-12 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         {/* Heading — staggered entrance */}
         <motion.div
           initial="hidden"

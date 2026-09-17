@@ -299,7 +299,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
       <Container size="md" className="max-w-4xl">
         {/* Breadcrumb Navigation */}
         <nav
-          className="mb-8 flex items-center gap-2 text-xs font-medium text-muted-foreground"
+          className="mb-8 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground"
           aria-label="Breadcrumb"
         >
           <Link href="/" className="hover:text-primary transition-colors">
@@ -310,7 +310,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
             Blog
           </Link>
           <ChevronRight className="h-3 w-3" />
-          <span className="truncate text-foreground max-w-[200px] sm:max-w-xs md:max-w-md">
+          <span className="truncate text-foreground max-w-[180px] sm:max-w-xs md:max-w-md">
             {post.title}
           </span>
         </nav>
@@ -376,11 +376,11 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
       {/* Recommended Articles Section */}
       {relatedPosts.length > 0 && (
-        <section className="border-t border-border mt-20 py-16" aria-labelledby="read-next-heading">
+        <section className="border-t border-border mt-10 sm:mt-12 py-8 sm:py-10 md:py-12" aria-labelledby="read-next-heading">
           <Container size="md" className="max-w-4xl">
             <h2
               id="read-next-heading"
-              className="font-heading text-2xl font-bold text-foreground mb-8 text-center sm:text-left"
+              className="font-heading text-2xl font-bold text-foreground mb-6 text-center sm:text-left"
             >
               Recommended Articles
             </h2>

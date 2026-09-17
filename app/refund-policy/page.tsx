@@ -25,9 +25,9 @@ export default function RefundPolicyPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Refund Policy' }]}
       />
 
-      <section className="py-16" aria-labelledby="refund-content">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="refund-content">
         <Container>
-          <div className="max-w-3xl mx-auto space-y-10 text-muted-foreground leading-relaxed">
+          <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8 text-muted-foreground leading-relaxed">
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">1. Scope of Policy</h2>
               <p>

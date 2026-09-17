@@ -53,14 +53,14 @@ const TRUST_SIGNALS = [
 
 export function TestimonialsSection() {
   return (
-    <Section id="testimonials" className="bg-transparent py-24 relative overflow-hidden">
+    <Section id="testimonials" className="bg-transparent relative overflow-hidden">
       {/* Ambient bottom glow (tightened by 1/3) */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 100%, rgba(6,182,212,0.06), transparent)' }}
         aria-hidden="true"
       />
-      <Container className="space-y-12 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"

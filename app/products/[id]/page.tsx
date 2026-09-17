@@ -19,7 +19,15 @@ const ALIAS_MAP: Record<string, string> = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params
   const target = ALIAS_MAP[id.toLowerCase()]
-  if (!target) return { title: 'Product Not Found', robots: { index: false } }
+  if (!target) {
+    return {
+      title: 'Product Not Found',
+      robots: { index: false },
+      alternates: {
+        canonical: null,
+      },
+    }
+  }
 
   return {
     title: 'Redirecting to Product Specification | NeelStack India',

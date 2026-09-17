@@ -11,7 +11,6 @@ import { Container } from '@/components/ui/container'
 import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
-import { CapabilitiesSection } from '@/components/sections/capabilities-section'
 import { BlogPreviewSection } from '@/components/sections/blog-preview-section'
 import { JsonLd } from '@/components/seo/json-ld'
 import {
@@ -207,9 +206,31 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   your engineering team can operate and extend the system independently.
                 </p>
 
+                {/* Structured Key Capabilities */}
+                {service.keyCapabilities && service.keyCapabilities.length > 0 && (
+                  <div className="pt-2 space-y-3">
+                    <h3 className="text-sm font-bold text-foreground font-mono uppercase tracking-wider">
+                      Core Architecture &amp; Capabilities
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {service.keyCapabilities.map((cap) => (
+                        <div key={cap.title} className="p-3.5 rounded-xl border border-border bg-card space-y-1 tactile-card-3d">
+                          <div className="flex items-center gap-1.5 text-xs font-bold text-foreground">
+                            <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
+                            <span>{cap.title}</span>
+                          </div>
+                          <p className="text-[11px] text-muted-foreground leading-relaxed pl-5.5">
+                            {cap.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Guarantee cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                  <div className="p-4 rounded-xl border border-border bg-card flex items-start gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className="p-4 rounded-xl border border-border bg-card flex items-start gap-3 tactile-card-3d">
                     <Shield className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-bold text-foreground">Security First</h4>
@@ -218,7 +239,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                       </p>
                     </div>
                   </div>
-                  <div className="p-4 rounded-xl border border-border bg-card flex items-start gap-3">
+                  <div className="p-4 rounded-xl border border-border bg-card flex items-start gap-3 tactile-card-3d">
                     <Code2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
                       <h4 className="text-sm font-bold text-foreground">Clean Code</h4>
@@ -281,10 +302,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
       {/* ── Section 2: Technology Stack ── */}
       {service.techStack && service.techStack.length > 0 && (
-        <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="tech-stack-heading">
+        <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="tech-stack-heading">
           <Container>
             <div className="max-w-5xl mx-auto">
-              <div className="mb-10">
+              <div className="mb-6 sm:mb-8">
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                   Technology Stack
                 </p>
@@ -292,7 +313,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   id="tech-stack-heading"
                   className="font-heading text-2xl font-bold text-foreground"
                 >
-                  Tools & Platforms We Work With
+                  Tools &amp; Platforms We Work With
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 max-w-xl">
                   We select technologies based on your specific requirements — not trend-chasing.
@@ -331,7 +352,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <Section aria-labelledby="industry-matrix-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div className="mb-6 sm:mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <div>
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                   Domain Adaptation
@@ -394,10 +415,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
       {/* ── Section 4: Delivery Process ── */}
       {service.processSteps && service.processSteps.length > 0 && (
-        <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="process-heading">
+        <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="process-heading">
           <Container>
             <div className="max-w-5xl mx-auto">
-              <div className="mb-12">
+              <div className="mb-6 sm:mb-8">
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                   How We Work
                 </p>
@@ -444,7 +465,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <Section aria-labelledby="deliverables-heading">
           <Container>
             <div className="max-w-5xl mx-auto">
-              <div className="mb-10">
+              <div className="mb-6 sm:mb-8">
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                   Project Deliverables
                 </p>
@@ -476,10 +497,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       )}
 
       {/* ── Section 6: Enterprise SLA & Governance Standards ── */}
-      <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="sla-heading">
+      <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="sla-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-10">
+            <div className="mb-6 sm:mb-8">
               <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                 Enterprise Standards
               </p>
@@ -543,7 +564,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <Section aria-labelledby="engagement-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-12">
+            <div className="mb-6 sm:mb-8">
               <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                 Flexible Collaboration
               </p>
@@ -666,10 +687,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       </Section>
 
       {/* ── Section 8: Frequently Asked Questions ── */}
-      <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="faq-heading">
+      <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="faq-heading">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <div className="mb-10">
+            <div className="mb-6 sm:mb-8">
               <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                 Common Questions
               </p>
@@ -715,7 +736,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <Section aria-labelledby="related-services-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div className="mb-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <div>
                 <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
                   Ecosystem
@@ -769,8 +790,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </Container>
       </Section>
 
-      <CapabilitiesSection />
-      
       <BlogPreviewSection />
 
       <CTASection
