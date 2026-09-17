@@ -183,14 +183,13 @@ export default function DhruvaOSPage() {
           },
         }}
       />
-      
-      {/* â”€â”€â”€ Hero Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <section className="relative pt-24 pb-20 overflow-hidden bg-transparent">
+            {/* ─── Hero Section ──────────────────────────────────────────────────────── */}
+      <section className="relative pt-20 pb-8 sm:pt-24 sm:pb-10 overflow-hidden bg-transparent">
         {/* Glow Effects */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-        <Container className="relative z-10 text-center space-y-12">
+        <Container className="relative z-10 text-center space-y-6 sm:space-y-8">
           
           {/* Breadcrumbs */}
           <div className="flex justify-center">
@@ -206,7 +205,7 @@ export default function DhruvaOSPage() {
           </div>
 
           {/* Heading Pitch */}
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-4xl mx-auto space-y-4">
             <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-foreground">
               DhruvaOS &mdash; School <br />
               <span className="bg-gradient-to-r from-primary via-cyan-300 to-violet-400 bg-clip-text text-transparent">
@@ -237,7 +236,7 @@ export default function DhruvaOSPage() {
           </p>
 
           {/* Product Overview Cards */}
-          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-6 border-2 border-border/60 bg-card/60 backdrop-blur-sm rounded-2xl px-6 tactile-card-3d">
+          <div className="max-w-4xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 py-4 sm:py-5 border-2 border-border/60 bg-card/60 backdrop-blur-sm rounded-2xl px-6 tactile-card-3d">
             <div className="text-center">
               <span className="font-mono text-base sm:text-lg font-bold text-foreground">2 Oct 2026</span>
               <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Demo Launch</p>
@@ -248,17 +247,16 @@ export default function DhruvaOSPage() {
             </div>
             <div className="text-center">
               <span className="font-mono text-base sm:text-lg font-bold text-foreground">Multi-Tenant</span>
-              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Data Isolation</p>
+              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Scalable Architecture</p>
             </div>
           </div>
-
 
         </Container>
       </section>
 
-      {/* ——— System Architecture & Foundation ————————————————————————— */}
-      <Section className="py-16 bg-card/40 backdrop-blur-sm border-y border-border/40">
-        <Container className="space-y-10">
+      {/* ─── System Architecture & Foundation ─────────────────────────────────── */}
+      <Section className="bg-card/40 backdrop-blur-sm border-y border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
               Foundation Architecture
@@ -293,8 +291,8 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Trusted By Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="border-y border-border/40 bg-card/40 backdrop-blur-sm py-10">
+      {/* ─── Trusted By Section ──────────────────────────────────────────────── */}
+      <Section className="border-y border-border/40 bg-card/40 backdrop-blur-sm">
         <Container>
           <div className="text-center space-y-4">
             <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -314,9 +312,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Orchestrate Your Academy — Grid Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20 bg-card/60 backdrop-blur-sm border-y border-border/40">
-        <Container className="max-w-5xl mx-auto text-center space-y-12">
+      {/* ─── Orchestrate Your Academy — Grid Section ──────────────────────────── */}
+      <Section className="bg-card/60 backdrop-blur-sm border-y border-border/40">
+        <Container className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
           
           <div className="max-w-3xl mx-auto space-y-4">
             <span className="inline-flex text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
@@ -377,7 +375,7 @@ export default function DhruvaOSPage() {
             ))}
           </div>
 
-          <div className="pt-4">
+          <div className="pt-2">
             <Button asChild variant="3d-yellow" size="lg" className="rounded-xl font-bold">
               <Link href="/contact">
                 Book a Live Demo <ArrowRight className="h-4 w-4 ml-1" />
@@ -389,9 +387,9 @@ export default function DhruvaOSPage() {
       </Section>
 
       {/* ─── Everything Your Institution Needs Grid ───────────────────────────────── */}
-      <Section className="py-20 bg-card/60 backdrop-blur-sm">
+      <Section className="bg-card/60 backdrop-blur-sm">
 
-        <Container className="space-y-12">
+        <Container className="space-y-6 sm:space-y-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
@@ -432,10 +430,10 @@ export default function DhruvaOSPage() {
       </Section>
 
       {/* ─── AI Everywhere ────────────────────────────────────────────────────────── */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm relative">
+      <Section className="bg-card/40 backdrop-blur-sm relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-cyan-500/5 rounded-full blur-[110px] pointer-events-none" />
 
-        <Container className="space-y-12 relative z-10">
+        <Container className="space-y-6 sm:space-y-8 relative z-10">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full flex items-center gap-1.5 w-fit mx-auto">
@@ -474,8 +472,8 @@ export default function DhruvaOSPage() {
       </Section>
 
       {/* ─── Platform For Everyone (Personas) ─────────────────────────────────────── */}
-      <Section className="py-20">
-        <Container className="space-y-12">
+      <Section>
+        <Container className="space-y-6 sm:space-y-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -505,9 +503,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Connected Lifecycle Chart â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20 bg-card/60 backdrop-blur-sm border-y border-border/40 relative">
-        <Container className="space-y-12">
+      {/* ─── Connected Lifecycle Chart ────────────────────────────────────────── */}
+      <Section className="bg-card/60 backdrop-blur-sm border-y border-border/40 relative">
+        <Container className="space-y-6 sm:space-y-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -519,7 +517,7 @@ export default function DhruvaOSPage() {
           </div>
 
           {/* Lifecycle Flowchart */}
-          <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 sm:gap-4.5 pt-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 sm:gap-4.5 pt-2">
             {[
               'Admissions',
               'Students',
@@ -545,12 +543,12 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Parent & Teacher Specialized Experiences â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm relative">
-        <Container className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {/* ─── Parent & Teacher Specialized Experiences ─────────────────────────── */}
+      <Section className="bg-card/40 backdrop-blur-sm relative">
+        <Container className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           
           {/* Parent App Specs */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-5">
             <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
               <Smartphone className="h-5 w-5" />
             </div>
@@ -571,7 +569,7 @@ export default function DhruvaOSPage() {
           </div>
 
           {/* Teacher Console Specs */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-5">
             <div className="h-10 w-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
               <Sliders className="h-5 w-5" />
             </div>
@@ -594,9 +592,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Deployment Models â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20">
-        <Container className="space-y-12">
+      {/* ─── Deployment Models ────────────────────────────────────────────────── */}
+      <Section>
+        <Container className="space-y-6 sm:space-y-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -631,9 +629,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Mobile Apps Support â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-16 bg-card/40 backdrop-blur-sm">
-        <Container className="space-y-4 text-center max-w-xl mx-auto">
+      {/* ─── Mobile Apps Support ──────────────────────────────────────────────── */}
+      <Section className="bg-card/40 backdrop-blur-sm">
+        <Container className="space-y-3 text-center max-w-xl mx-auto">
           <div className="space-y-2">
             <h2 className="text-xl font-heading font-bold text-foreground">Unified Mobile App</h2>
             <p className="text-xs text-muted-foreground leading-relaxed">
@@ -643,9 +641,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Security & Compliance â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20">
-        <Container className="space-y-12">
+      {/* ─── Security & Compliance ────────────────────────────────────────────── */}
+      <Section>
+        <Container className="space-y-6 sm:space-y-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -679,9 +677,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Integrations Panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm relative">
-        <Container className="space-y-12">
+      {/* ─── Integrations Panel ───────────────────────────────────────────────── */}
+      <Section className="bg-card/40 backdrop-blur-sm relative">
+        <Container className="space-y-6 sm:space-y-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -707,9 +705,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Why DhruvaOS / Pricing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20">
-        <Container className="space-y-12">
+      {/* ─── Why DhruvaOS / Pricing ───────────────────────────────────────────── */}
+      <Section>
+        <Container className="space-y-6 sm:space-y-8">
           
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
@@ -763,9 +761,9 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ FAQ Accordion Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm border-t border-border/40">
-        <Container className="max-w-4xl mx-auto space-y-8">
+      {/* ─── FAQ Accordion Section ────────────────────────────────────────────── */}
+      <Section className="bg-card/40 backdrop-blur-sm border-t border-border/40">
+        <Container className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           
           <div className="text-center space-y-3">
             <h2 className="text-2xl font-heading font-bold text-foreground">
@@ -781,11 +779,11 @@ export default function DhruvaOSPage() {
         </Container>
       </Section>
 
-      {/* â”€â”€â”€ Final CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-      <Section className="relative py-24 overflow-hidden bg-transparent border-t border-border/40">
+      {/* ─── Final CTA ────────────────────────────────────────────────────────── */}
+      <Section className="relative overflow-hidden bg-transparent border-t border-border/40">
         <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/5 via-cyan-500/2 to-indigo-500/5 pointer-events-none" />
         
-        <Container className="relative z-10 text-center space-y-8 max-w-3xl">
+        <Container className="relative z-10 text-center space-y-6 max-w-3xl">
           
           <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-foreground">
             Ready to Digitally Transform <br />
@@ -796,7 +794,7 @@ export default function DhruvaOSPage() {
             Book a product demonstration with our solution engineers or register as an early Pilot School partner today.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4.5 pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-4.5 pt-2">
             <Link
               href="/contact?product=dhruvaos#contact-form"
               className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-primary hover:bg-primary-hover text-white text-sm font-semibold transition-all shadow-md shadow-primary/10"
@@ -823,5 +821,3 @@ export default function DhruvaOSPage() {
     </MarketingLayout>
   )
 }
-
-

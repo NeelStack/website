@@ -99,8 +99,8 @@ export function Footer({ showPreFooterCta = false }: { showPreFooterCta?: boolea
     >
       {/* Pre-footer CTA banner (Optional) */}
       {showPreFooterCta && (
-        <div className="border-b border-border/80 bg-gradient-to-r from-card via-background to-card dark:from-surface dark:via-background dark:to-surface py-16 px-4 text-center relative overflow-hidden">
-          <div className="max-w-4xl mx-auto space-y-6 relative z-10">
+        <div className="border-b border-border/80 bg-gradient-to-r from-card via-background to-card dark:from-surface dark:via-background dark:to-surface py-10 sm:py-12 px-4 text-center relative overflow-hidden">
+          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-5 relative z-10">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-bold text-primary">
               <Sparkles className="h-3.5 w-3.5" />
               Building the Software &amp; AI Systems of Tomorrow
@@ -130,9 +130,9 @@ export function Footer({ showPreFooterCta = false }: { showPreFooterCta?: boolea
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
-        <div className="py-12 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-7">
+        <div className="py-8 sm:py-10 grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-6">
           {/* Brand column */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2">
             <FooterLogo />
             <p className="mt-2 text-xs font-bold text-primary tracking-wide">
               Global Software Products • AI Systems • Enterprise Engineering

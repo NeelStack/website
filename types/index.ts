@@ -72,6 +72,11 @@ export interface ServiceFAQ {
   answer: string
 }
 
+export interface ServiceKeyCapability {
+  title: string
+  desc: string
+}
+
 export interface Service {
   id: string
   name: string
@@ -82,6 +87,16 @@ export interface Service {
   href: string
   highlights: string[]
   category: string
+  /** Badge or technical milestone tag */
+  badge?: string
+  /** Short compelling value proposition */
+  tagline?: string
+  /** Structured key capabilities matrix */
+  keyCapabilities?: ServiceKeyCapability[]
+  /** Core SLA or latency guarantee */
+  slaMetric?: string
+  /** Typical project delivery turnaround */
+  turnaround?: string
   /** Grouped technology stacks shown on the service detail page */
   techStack?: ServiceTechGroup[]
   /** 4-step delivery process specific to this service */

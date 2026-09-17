@@ -4,6 +4,8 @@ import { PageHero } from '@/components/ui/page-hero'
 import { ProjectCard } from '@/components/ui/project-card'
 import { Container } from '@/components/ui/container'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 import type { Project } from '@/types'
 
 export const metadata: Metadata = {
@@ -74,11 +76,32 @@ const PORTFOLIO_PROJECTS: Project[] = [
 ]
 
 export default function PortfolioPage() {
+  const siteUrl = getSiteUrl()
   const liveProjects = PORTFOLIO_PROJECTS.filter((p) => p.status === 'live')
   const devProjects = PORTFOLIO_PROJECTS.filter((p) => p.status === 'in-progress')
 
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'NeelStack Software & AI Product Portfolio',
+          description: 'Software platforms and AI systems engineered and operated by NeelStack Solutions.',
+          url: `${siteUrl}/portfolio`,
+          itemListElement: PORTFOLIO_PROJECTS.map((project, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            item: {
+              '@type': 'SoftwareApplication',
+              name: project.name,
+              applicationCategory: project.category,
+              description: project.description,
+              url: project.href.startsWith('http') ? project.href : `${siteUrl}${project.href}`,
+            },
+          })),
+        }}
+      />
       <PageHero
         badge="Products & Systems"
         title="Software Products and AI Systems"
@@ -86,13 +109,13 @@ export default function PortfolioPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Portfolio' }]}
       />
 
-      <section className="py-16" aria-labelledby="live-products-heading">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="live-products-heading">
         <Container>
           {/* Live Products */}
-          <div className="mb-16">
+          <div className="mb-8 sm:mb-10">
             <h2
               id="live-products-heading"
-              className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8"
+              className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 sm:mb-5"
             >
               Live &amp; Deployed Products
             </h2>
@@ -105,7 +128,7 @@ export default function PortfolioPage() {
 
           {/* In Development & Planned */}
           <div>
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 sm:mb-5">
               Products in Development &amp; Systems Architecture
             </h2>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

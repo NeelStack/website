@@ -9,7 +9,6 @@ import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 import { CategoryFilter } from '@/components/ui/category-filter'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
-import { CapabilitiesSection } from '@/components/sections/capabilities-section'
 import { JsonLd } from '@/components/seo/json-ld'
 import { SERVICES, SERVICE_CATEGORIES } from '@/constants/services'
 import { getSiteUrl } from '@/lib/site-url'
@@ -23,7 +22,9 @@ import {
   ChevronDown,
   ChevronUp,
   Layers,
-  ArrowRight,
+  FileCode2,
+  GitPullRequest,
+  BookOpen,
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -45,9 +46,9 @@ interface PageProps {
 }
 
 function getGridClass(count: number): string {
-  if (count === 1) return 'grid grid-cols-1 gap-5 md:max-w-2xl'
-  if (count === 2) return 'grid grid-cols-1 gap-5 sm:grid-cols-2 md:max-w-4xl'
-  return 'grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3'
+  if (count === 1) return 'grid grid-cols-1 gap-6 md:max-w-2xl mx-auto'
+  if (count === 2) return 'grid grid-cols-1 gap-6 sm:grid-cols-2 md:max-w-4xl mx-auto'
+  return 'grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
 }
 
 const SERVICES_HUB_FAQS = [
@@ -82,7 +83,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
   const filtered =
     activeCategory === 'All'
       ? SERVICES
-      : SERVICES.filter((s) => s.category === activeCategory)
+      : SERVICES.filter((s) => s.category.toLowerCase() === activeCategory.toLowerCase())
 
   const siteUrl = getSiteUrl()
 
@@ -122,17 +123,17 @@ export default async function ServicesPage({ searchParams }: PageProps) {
       <PageHero
         badge="Enterprise Services"
         title="End-to-End Technology & AI Services"
-        description="From strategic architecture and frontier AI agent development to high-scale web platforms and cloud infrastructure — engineered for long-term reliability."
+        description="From strategic architecture and frontier AI agent development to high-scale web platforms and cloud infrastructure — 11 core disciplines engineered for long-term reliability."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
       />
 
       <TrustBarSection />
 
       {/* ── Section 1: Services Directory ── */}
-      <section className="py-16" aria-labelledby="services-list-heading">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="services-list-heading">
         <Container>
           {/* Category filter — client component for interactivity */}
-          <Suspense fallback={<div className="mb-10 h-10" />}>
+          <Suspense fallback={<div className="mb-6 h-10" />}>
             <CategoryFilter
               categories={SERVICE_CATEGORIES}
               active={activeCategory}
@@ -158,11 +159,11 @@ export default async function ServicesPage({ searchParams }: PageProps) {
       </section>
 
       {/* ── Section 2: Enterprise Engineering Standards ── */}
-      <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="standards-heading">
+      <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="standards-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-12 text-center max-w-2xl mx-auto">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
+            <div className="mb-6 sm:mb-8 text-center max-w-2xl mx-auto">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
                 Engineering Rigor
               </p>
               <h2
@@ -177,7 +178,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
                   <Code2 className="h-5 w-5" />
                 </div>
@@ -187,7 +188,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
                   <Sparkles className="h-5 w-5" />
                 </div>
@@ -197,7 +198,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
                   <Server className="h-5 w-5" />
                 </div>
@@ -207,7 +208,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3">
+              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
                   <Lock className="h-5 w-5" />
                 </div>
@@ -225,8 +226,8 @@ export default async function ServicesPage({ searchParams }: PageProps) {
       <Section aria-labelledby="engagement-models-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-12 text-center max-w-2xl mx-auto">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
+            <div className="mb-6 sm:mb-8 text-center max-w-2xl mx-auto">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
                 Collaboration
               </p>
               <h2
@@ -242,7 +243,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Model 1 */}
-              <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between space-y-4">
+              <div className="rounded-3xl border-2 border-border/80 bg-card p-6 flex flex-col justify-between space-y-4 tactile-card-3d shadow-md">
                 <div>
                   <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-400 mb-2">
                     <Zap className="h-3.5 w-3.5" /> Sprint Delivery
@@ -254,14 +255,14 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </div>
                 <Link
                   href="/request-quote?engagement=fixed-sprint"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2 text-xs font-bold text-foreground hover:bg-muted transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2.5 text-xs font-bold text-foreground hover:bg-muted transition-colors"
                 >
                   Scope a Sprint →
                 </Link>
               </div>
 
               {/* Model 2 */}
-              <div className="rounded-2xl border-2 border-primary/60 bg-card p-6 flex flex-col justify-between space-y-4 shadow-lg relative">
+              <div className="rounded-3xl border-2 border-primary/70 bg-card p-6 flex flex-col justify-between space-y-4 shadow-xl relative tactile-card-3d">
                 <div className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-0.5 text-[10px] font-bold text-primary-foreground tracking-wider uppercase">
                   Most Popular
                 </div>
@@ -276,14 +277,14 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </div>
                 <Link
                   href="/request-quote?engagement=dedicated-pod"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground hover:bg-primary/90 transition-colors shadow-md"
                 >
                   Book an Engineering Pod →
                 </Link>
               </div>
 
               {/* Model 3 */}
-              <div className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between space-y-4">
+              <div className="rounded-3xl border-2 border-border/80 bg-card p-6 flex flex-col justify-between space-y-4 tactile-card-3d shadow-md">
                 <div>
                   <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400 mb-2">
                     <Layers className="h-3.5 w-3.5" /> Modernization
@@ -295,7 +296,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </div>
                 <Link
                   href="/contact?subject=Enterprise%20Re-Architecture"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2 text-xs font-bold text-foreground hover:bg-muted transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2.5 text-xs font-bold text-foreground hover:bg-muted transition-colors"
                 >
                   Discuss Enterprise Scale →
                 </Link>
@@ -305,12 +306,76 @@ export default async function ServicesPage({ searchParams }: PageProps) {
         </Container>
       </Section>
 
-      {/* ── Section 4: General FAQ ── */}
-      <section className="py-16 bg-muted/30 border-y border-border/50" aria-labelledby="faq-hub-heading">
+      {/* ── Section 4: Tangible Deliverables Guarantee ── */}
+      <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="deliverables-matrix-heading">
+        <Container>
+          <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
+            <div className="text-center max-w-2xl mx-auto space-y-2">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest font-mono">
+                Tangible Artifacts
+              </p>
+              <h2
+                id="deliverables-matrix-heading"
+                className="font-heading text-3xl font-bold text-foreground"
+              >
+                What Every Project Delivers
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                When you partner with NeelStack, you receive complete production assets and runbooks — zero hidden repositories or locked down infrastructure.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                  <GitPullRequest className="h-5 w-5" />
+                </div>
+                <h4 className="text-sm font-bold text-foreground">Full Git Repository Transfer</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Clean commit history, PR review templates, CI workflows, and complete intellectual property assignment.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                  <FileCode2 className="h-5 w-5" />
+                </div>
+                <h4 className="text-sm font-bold text-foreground">Terraform IaC &amp; Docker</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Version-controlled cloud infrastructure modules, Docker Compose environments, and Kubernetes Helm charts.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+                  <Code2 className="h-5 w-5" />
+                </div>
+                <h4 className="text-sm font-bold text-foreground">OpenAPI 3.1 &amp; SDKs</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Interactive Swagger documentation, Postman collection environments, and typed client SDKs.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                  <BookOpen className="h-5 w-5" />
+                </div>
+                <h4 className="text-sm font-bold text-foreground">Runbooks &amp; Architecture ADRs</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Operational disaster recovery procedures, deployment guides, and Architecture Decision Records.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Section 5: General FAQ ── */}
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="faq-hub-heading">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <div className="mb-10 text-center">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
+            <div className="mb-6 sm:mb-8 text-center">
+              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
                 Client Questions
               </p>
               <h2
@@ -327,7 +392,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
               {SERVICES_HUB_FAQS.map((faq, i) => (
                 <details
                   key={faq.question}
-                  className="group rounded-xl border border-border bg-card overflow-hidden"
+                  className="group rounded-2xl border border-border bg-card overflow-hidden shadow-2xs"
                   open={i === 0}
                 >
                   <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-sm font-bold text-foreground list-none select-none">
@@ -350,8 +415,6 @@ export default async function ServicesPage({ searchParams }: PageProps) {
           </div>
         </Container>
       </section>
-
-      <CapabilitiesSection />
 
       <CTASection
         title="Ready to Build Enterprise-Grade Systems?"

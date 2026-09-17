@@ -53,14 +53,14 @@ const PROCESS_STEPS: ProcessStep[] = [
 
 export function ProcessSection() {
   return (
-    <Section id="process" className="bg-transparent relative overflow-hidden py-24">
+    <Section id="process" className="bg-transparent relative overflow-hidden">
       {/* Ambient top glow (tightened by 1/3) */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[460px] h-[130px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(124,58,237,0.07), transparent)' }}
         aria-hidden="true"
       />
-      <Container className="space-y-16 relative z-10">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"

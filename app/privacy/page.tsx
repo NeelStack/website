@@ -25,9 +25,9 @@ export default function PrivacyPolicyPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]}
       />
 
-      <section className="py-16" aria-labelledby="privacy-content">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="privacy-content">
         <Container>
-          <div className="max-w-3xl mx-auto space-y-10 text-muted-foreground leading-relaxed">
+          <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8 text-muted-foreground leading-relaxed">
 
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">1. Introduction</h2>

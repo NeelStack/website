@@ -30,14 +30,14 @@ export function CTASection({
   return (
     <section
       className={cn(
-        'py-20 md:py-32',
+        'py-8 sm:py-10 md:py-12',
         variant === 'bordered' ? 'border-t border-b border-border' : '',
         className
       )}
       aria-labelledby="cta-heading"
     >
       <Container>
-        <div className="relative rounded-3xl overflow-hidden bg-card border border-primary/20 p-10 md:p-16 text-center">
+        <div className="relative rounded-3xl overflow-hidden bg-card border border-primary/20 p-6 sm:p-8 md:p-12 text-center">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-dot-pattern opacity-40" aria-hidden="true" />
           {/* Top blue glow */}

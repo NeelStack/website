@@ -7,6 +7,7 @@ import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { Button } from '@/components/ui/button'
 import { CTASection } from '@/components/ui/cta-section'
+import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
@@ -68,8 +69,33 @@ const WHITEPAPERS = [
 ]
 
 export default function WhitepapersPage() {
+  const siteUrl = getSiteUrl()
+
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: 'NeelStack Engineering Whitepapers & Technical Guides',
+          description: 'Technical architecture whitepapers, benchmarks, and multi-agent system designs authored by NeelStack software architects.',
+          url: `${siteUrl}/whitepapers`,
+          itemListElement: WHITEPAPERS.map((paper, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            item: {
+              '@type': 'TechArticle',
+              headline: paper.title,
+              description: paper.description,
+              url: `${siteUrl}${paper.readUrl}`,
+              author: {
+                '@type': 'Organization',
+                name: 'NeelStack Solutions Private Limited',
+              },
+            },
+          })),
+        }}
+      />
       <PageHero
         badge="Thought Leadership"
         title="Engineering Whitepapers & Guides"
@@ -79,7 +105,7 @@ export default function WhitepapersPage() {
 
       <Section>
         <Container>
-          <div className="mx-auto max-w-3xl rounded-3xl border-2 border-primary/30 bg-card/60 backdrop-blur-xl p-8 md:p-10 text-center space-y-5 mb-16 tactile-card-3d">
+          <div className="mx-auto max-w-3xl rounded-3xl border-2 border-primary/30 bg-card/60 backdrop-blur-xl p-6 md:p-8 text-center space-y-4 mb-8 sm:mb-10 tactile-card-3d">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
               <CheckCircle2 className="h-3.5 w-3.5" />
               <span>Technical Briefings Live &amp; Published</span>
@@ -116,7 +142,7 @@ export default function WhitepapersPage() {
             {WHITEPAPERS.map((paper) => (
               <div
                 key={paper.id}
-                className="rounded-3xl border-2 border-border/80 bg-card/80 dark:bg-card/40 backdrop-blur-xl p-6 md:p-8 flex flex-col justify-between space-y-6 tactile-card-3d hover:border-primary/50"
+                className="rounded-3xl border-2 border-border/80 bg-card/80 dark:bg-card/40 backdrop-blur-xl p-6 md:p-8 flex flex-col justify-between space-y-4 sm:space-y-5 tactile-card-3d hover:border-primary/50"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">

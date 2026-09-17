@@ -55,7 +55,7 @@ export default function SupportPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Support' }]}
       />
 
-      <section className="py-16" aria-labelledby="support-options-heading">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="support-options-heading">
         <Container>
           <h2 id="support-options-heading" className="sr-only">Support options</h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -93,7 +93,7 @@ export default function SupportPage() {
           </div>
 
           {/* SLA info */}
-          <div className="mt-12 rounded-2xl border-2 border-border bg-card p-8 text-center tactile-card-3d">
+          <div className="mt-8 sm:mt-10 rounded-2xl border-2 border-border bg-card p-6 sm:p-8 text-center tactile-card-3d">
             <h2 className="font-heading text-xl font-semibold text-foreground mb-3">
               Enterprise SLA
             </h2>

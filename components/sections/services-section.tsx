@@ -1,43 +1,51 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Section, SectionHeader } from '@/components/ui/section'
 import { ServiceCard } from '@/components/ui/service-card'
 import { SERVICES } from '@/constants/services'
+import { Button } from '@/components/ui/button'
 
 interface ServicesSectionProps {
   limit?: number
   showViewAll?: boolean
+  variant?: 'default' | 'compact' | 'horizontal' | 'detailed'
 }
 
-export function ServicesSection({ limit = 6, showViewAll = true }: ServicesSectionProps) {
+export function ServicesSection({
+  limit = 6,
+  showViewAll = true,
+  variant = 'detailed',
+}: ServicesSectionProps) {
   const displayedServices = SERVICES.slice(0, limit)
 
   return (
     <Section id="services">
-      <Container>
+      <Container className="space-y-10">
         <SectionHeader
-          badge="What we do"
-          title="End-to-End Technology Services"
-          description="From strategy to deployment, we offer a full spectrum of technology services to help your organization build, scale, and modernize."
+          badge="11 Core Disciplines"
+          title="End-to-End Engineering & AI Services"
+          description="From strategy to deployment, we offer a full spectrum of technology services engineered for high performance, zero downtime, and complete source code ownership."
         />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {displayedServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+            <ServiceCard key={service.id} service={service} variant={variant} />
           ))}
         </div>
 
         {showViewAll && (
-          <div className="mt-12 flex justify-center">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all duration-200"
-              aria-label="View all services"
-            >
-              View all {SERVICES.length} services
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button asChild variant="3d-primary" size="lg" className="rounded-xl font-bold">
+              <Link href="/services" className="gap-2 flex items-center">
+                Explore All {SERVICES.length} Services <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="3d-secondary" size="lg" className="rounded-xl font-bold">
+              <Link href="/book-consultation" className="gap-2 flex items-center">
+                Book Architecture Call <Sparkles className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         )}
       </Container>

@@ -17,7 +17,7 @@ interface SectionHeaderProps {
 
 export function Section({ children, className, id, as: Component = 'section' }: SectionProps) {
   return (
-    <Component id={id} className={cn('py-14 md:py-20', className)}>
+    <Component id={id} className={cn('py-8 sm:py-10 md:py-12', className)}>
       {children}
     </Component>
   )
@@ -37,7 +37,7 @@ export function SectionHeader({
   }[align]
 
   return (
-    <div className={cn('flex flex-col gap-4 mb-12 md:mb-16', alignClass, className)}>
+    <div className={cn('flex flex-col gap-3 mb-6 sm:mb-8', alignClass, className)}>
       {badge && (
         <span className="relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-primary shadow-[0_0_12px_oklch(0.62_0.22_258/12%)]">
           <span className="relative flex h-1.5 w-1.5" aria-hidden="true">

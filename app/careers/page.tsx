@@ -60,14 +60,14 @@ export default function CareersPage() {
       <Section>
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <div className="flex h-12 w-12 mx-auto items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 mb-6">
+            <div className="flex h-12 w-12 mx-auto items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 mb-4">
               <Inbox className="h-6 w-6 text-primary" aria-hidden="true" />
             </div>
             
-            <h2 className="font-heading text-2xl font-bold text-foreground mb-4">
+            <h2 className="font-heading text-2xl font-bold text-foreground mb-3">
               Connect With Us
             </h2>
-            <p className="text-base text-muted-foreground leading-relaxed mb-6">
+            <p className="text-base text-muted-foreground leading-relaxed mb-4">
               We&apos;re always interested in connecting with talented engineers, designers and builders.
               Although we don&apos;t have active openings today, we&apos;d love to hear from passionate people interested in building modern software.
             </p>
@@ -86,8 +86,8 @@ export default function CareersPage() {
       {/* What we value in engineers */}
       <Section className="bg-card border-t border-border">
         <Container>
-          <div className="text-center mb-12">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-5">
+          <div className="text-center mb-6 sm:mb-8">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-3">
               Our Culture
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">

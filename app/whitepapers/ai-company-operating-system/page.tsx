@@ -89,11 +89,11 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
         }}
       />
 
-      <article className="py-16 sm:py-24 relative overflow-hidden bg-background">
+      <article className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-background">
         {/* Glow ambient meshes */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-blue-500/10 via-purple-500/5 to-transparent blur-[120px] pointer-events-none" />
 
-        <Container className="max-w-4xl mx-auto space-y-12 relative z-10">
+        <Container className="max-w-4xl mx-auto space-y-6 sm:space-y-8 relative z-10">
           {/* Breadcrumb Navigation */}
           <div className="flex justify-center sm:justify-start">
             <Breadcrumb
@@ -106,7 +106,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
           </div>
 
           {/* Whitepaper Header Banner */}
-          <div className="space-y-6 text-center sm:text-left border-b border-border/60 pb-10">
+          <div className="space-y-5 text-center sm:text-left border-b border-border/60 pb-6 sm:pb-8">
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/20">
                 <Sparkles className="h-3.5 w-3.5" />
@@ -178,7 +178,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
           </div>
 
           {/* Body Content — Deep-Dive Sections */}
-          <div className="prose prose-slate dark:prose-invert max-w-none space-y-12">
+          <div className="prose prose-slate dark:prose-invert max-w-none space-y-8 sm:space-y-10">
             
             {/* Executive Summary */}
             <section id="executive-summary" className="space-y-4 scroll-mt-28">

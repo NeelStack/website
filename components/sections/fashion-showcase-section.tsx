@@ -55,7 +55,7 @@ const cardVariants = {
 
 export function FashionShowcaseSection() {
   return (
-    <Section className="py-20 relative overflow-hidden bg-gradient-to-b from-background via-surface to-background">
+    <Section className="relative overflow-hidden bg-gradient-to-b from-background via-surface to-background">
       {/* Ambient gradient glow backdrop (tightened by 1/3) */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[460px] h-[260px] rounded-full blur-[90px] pointer-events-none opacity-40 dark:opacity-20"
@@ -66,7 +66,7 @@ export function FashionShowcaseSection() {
         aria-hidden="true"
       />
 
-      <Container className="relative z-10 space-y-12">
+      <Container className="relative z-10 space-y-6 sm:space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -12,7 +12,7 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb" className={cn('flex', className)}>
       <ol
-        className="flex items-center gap-1.5 text-xs text-muted-foreground"
+        className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"
         itemScope
         itemType="https://schema.org/BreadcrumbList"
       >

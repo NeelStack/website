@@ -54,9 +54,9 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 function ProjectCardInner({ project, isLinked }: { project: Project; isLinked: boolean }) {
   return (
     <>
-      {/* Image / placeholder with brand gradient */}
+      {/* Visual Header with brand gradient & subtle zoom */}
       <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-primary/10 via-card to-accent/10">
-        <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern opacity-50">
+        <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern opacity-50 transition-transform duration-500 ease-out group-hover:scale-110">
           <span
             className="text-5xl font-heading font-black text-foreground/5 select-none"
             aria-hidden="true"
@@ -65,11 +65,13 @@ function ProjectCardInner({ project, isLinked }: { project: Project; isLinked: b
           </span>
         </div>
         {isLinked && (
-          <div className="absolute inset-0 flex items-center justify-center bg-background/0 group-hover:bg-background/20 transition-colors">
-            <ArrowUpRight
-              className="h-8 w-8 text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-hidden="true"
-            />
+          <div className="absolute inset-0 flex items-center justify-center bg-background/0 group-hover:bg-background/20 transition-all duration-300">
+            <div className="p-3 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
+              <ArrowUpRight
+                className="h-6 w-6 text-foreground"
+                aria-hidden="true"
+              />
+            </div>
           </div>
         )}
       </div>
@@ -79,7 +81,7 @@ function ProjectCardInner({ project, isLinked }: { project: Project; isLinked: b
         <div className="flex items-center gap-2 mb-3">
           <span
             className={cn(
-              'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium',
+              'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium transition-transform duration-200 group-hover:scale-105',
               statusClass[project.status]
             )}
           >

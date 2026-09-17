@@ -39,7 +39,7 @@ export function BlogGrid({ posts, featuredPost, categories }: BlogGridProps) {
     <>
       {/* Category filter */}
       <div
-        className="mb-10 flex flex-wrap gap-2"
+        className="mb-8 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:pb-0 scrollbar-none max-w-full"
         role="group"
         aria-label="Filter posts by category"
       >
@@ -49,9 +49,9 @@ export function BlogGrid({ posts, featuredPost, categories }: BlogGridProps) {
             <button
               key={cat}
               onClick={() => handleCategoryClick(cat)}
-              className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+              className={`shrink-0 rounded-full border px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-colors cursor-pointer ${
                 isActive
-                  ? 'border-primary bg-primary/10 text-primary'
+                  ? 'border-primary bg-primary/10 text-primary font-semibold'
                   : 'border-border text-muted-foreground hover:text-foreground hover:border-border/80'
               }`}
               aria-pressed={isActive}

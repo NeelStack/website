@@ -84,8 +84,8 @@ export function CorporateGovernanceCard() {
   }
 
   return (
-    <section id="corporate-governance" className="py-10 sm:py-14 relative overflow-hidden bg-transparent border-t border-border/60">
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+    <section id="corporate-governance" className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-transparent border-t border-border/60">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -190,7 +190,7 @@ export function CorporateGovernanceCard() {
                       <span className="text-[10px] font-semibold text-muted-foreground block">
                         {item.label}
                       </span>
-                      <span className="font-mono text-xs font-bold text-foreground tracking-tight select-all">
+                      <span className="font-mono text-xs font-bold text-foreground tracking-tight select-all break-all">
                         {item.value}
                       </span>
                       <p className="text-[10px] text-muted-foreground/80 mt-0.5 leading-snug">

@@ -53,7 +53,7 @@ export function StatsSection() {
 
   return (
     <section
-      className="border-y border-border/80 bg-card py-16 md:py-24 relative overflow-hidden"
+      className="border-y border-border/80 bg-card py-8 sm:py-10 md:py-12 relative overflow-hidden"
       aria-label="Core Pillars of Execution"
     >
       {/* Subtle top gradient glow */}
@@ -64,7 +64,7 @@ export function StatsSection() {
       />
 
       <Container>
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-primary mb-10">
+          <p className="text-center text-xs font-bold uppercase tracking-widest text-primary mb-6 sm:mb-8">
             Why Teams Choose NeelStack
           </p>
           <div

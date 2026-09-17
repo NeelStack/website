@@ -12,7 +12,7 @@ export function BlogPreviewSection() {
   const previewPosts = BLOG_POSTS.slice(0, 3)
 
   return (
-    <section id="blog" className="py-24 border-t border-border/60 section-blend-top bg-surface/30">
+    <section id="blog" className="py-8 sm:py-10 md:py-12 border-t border-border/60 section-blend-top bg-surface/30">
       <Container>
         <motion.div
           initial="hidden"
@@ -22,7 +22,7 @@ export function BlogPreviewSection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-4 mb-16"
+          className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-3 mb-8 sm:mb-10"
         >
           <motion.span
             variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
@@ -32,13 +32,13 @@ export function BlogPreviewSection() {
           </motion.span>
           <motion.h2
             variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
-            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight text-balance"
+            className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold text-foreground tracking-tight text-balance"
           >
             Deep Dives &amp; Technical Lessons
           </motion.h2>
           <motion.p
             variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
-            className="text-sm sm:text-base text-muted-foreground"
+            className="text-xs sm:text-sm text-muted-foreground"
           >
             Architecture breakdowns, product development stories, AI implementations, and the lessons we learn building software at scale.
           </motion.p>
@@ -58,7 +58,7 @@ export function BlogPreviewSection() {
           ))}
         </div>
 
-        <div className="mt-14 flex justify-center">
+        <div className="mt-8 sm:mt-10 flex justify-center">
           <Button asChild variant="3d-secondary" size="lg" className="rounded-xl font-bold">
             <Link href="/blog" className="gap-2 group">
               Read all articles

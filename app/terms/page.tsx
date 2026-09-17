@@ -25,9 +25,9 @@ export default function TermsOfServicePage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Terms of Service' }]}
       />
 
-      <section className="py-16" aria-labelledby="terms-content">
+      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="terms-content">
         <Container>
-          <div className="max-w-3xl mx-auto space-y-10 text-muted-foreground leading-relaxed">
+          <div className="max-w-3xl mx-auto space-y-6 sm:space-y-8 text-muted-foreground leading-relaxed">
 
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">1. Acceptance of Terms</h2>

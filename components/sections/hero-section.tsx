@@ -30,7 +30,7 @@ const FRONTIER_BADGES = [
 
 export function HeroSection() {
   return (
-    <HeroSpotlight className="pt-24 pb-10 sm:pt-28 sm:pb-12 md:pt-32 md:pb-14">
+    <HeroSpotlight className="pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-28 md:pb-10">
       {/* Subtle Grid Overlay */}
       <div
         className="absolute inset-0 bg-grid-pattern opacity-[0.04] dark:opacity-[0.12] pointer-events-none z-0"
@@ -52,9 +52,9 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full border-2 border-blue-500/50 dark:border-cyan-400/50 bg-blue-500/10 dark:bg-blue-950/60 px-4 py-1.5 text-xs font-mono font-bold text-blue-600 dark:text-cyan-300 backdrop-blur-md shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(6,182,212,0.6)] hover:border-cyan-400 hover:shadow-[3px_3px_0px_#000] dark:hover:shadow-[3px_3px_0px_rgba(6,182,212,0.9)] transition-all cursor-default">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border-2 border-blue-500/50 dark:border-cyan-400/50 bg-blue-500/10 dark:bg-blue-950/60 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-mono font-bold text-blue-600 dark:text-cyan-300 backdrop-blur-md shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(6,182,212,0.6)] hover:border-cyan-400 hover:shadow-[3px_3px_0px_#000] dark:hover:shadow-[3px_3px_0px_rgba(6,182,212,0.9)] transition-all cursor-default max-w-full">
               <Sparkles className="h-3.5 w-3.5 text-blue-500 dark:text-cyan-400 animate-pulse shrink-0" />
-              <span className="tracking-tight">
+              <span className="tracking-tight text-center">
                 [FRONTIER MULTI-AGENT INTELLIGENCE &amp; ENTERPRISE SYSTEMS]
               </span>
             </div>

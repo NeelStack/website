@@ -44,7 +44,7 @@ export default function BookConsultationPage() {
         }}
       />
 
-      <div className="relative pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 overflow-hidden bg-transparent">
+      <div className="relative pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-28 md:pb-12 overflow-hidden bg-transparent">
         {/* Ambient background glows */}
         <div
           className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
@@ -55,7 +55,7 @@ export default function BookConsultationPage() {
           aria-hidden="true"
         />
 
-        <Container className="relative z-10 space-y-8">
+        <Container className="relative z-10 space-y-6 sm:space-y-8">
           {/* Breadcrumb Navigation */}
           <div>
             <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Free Consultation' }]} />

@@ -168,8 +168,8 @@ export const ENGINEERING_PILLARS = [
 
 export function LeadershipShowcase() {
   return (
-    <section id="leadership" className="py-14 sm:py-18 relative overflow-hidden bg-surface/60 border-t border-border/60">
-      <Container className="space-y-16 relative z-10">
+    <section id="leadership" className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-surface/60 border-t border-border/60">
+      <Container className="space-y-6 sm:space-y-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-primary uppercase tracking-widest bg-primary/10 px-3.5 py-1 rounded-full border border-primary/25">
@@ -253,7 +253,7 @@ export function LeadershipShowcase() {
                         </p>
                       </div>
 
-                      <p className="font-mono text-[10px] text-muted-foreground border-y border-border/50 py-1.5">
+                      <p className="font-mono text-[10px] text-muted-foreground border-y border-border/50 py-1.5 break-words">
                         {person.credentials}
                       </p>
 

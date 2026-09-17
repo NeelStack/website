@@ -345,8 +345,8 @@ export default function NaukariMitraPage() {
       </section>
 
       {/* ─── 8 Major Exam Hubs ──────────────────────────────────────────────────── */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm border-y border-border/40">
-        <Container className="space-y-10">
+      <Section className="bg-card/40 backdrop-blur-sm border-y border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">
               Comprehensive Coverage
@@ -382,8 +382,8 @@ export default function NaukariMitraPage() {
       </Section>
 
       {/* ─── Cognitive Architecture Subsystems ──────────────────────────────────── */}
-      <section id="architecture" className="py-20 border-b border-border/40 bg-surface/50 scroll-mt-20">
-        <Container className="space-y-12">
+      <section id="architecture" className="py-8 sm:py-10 md:py-12 border-b border-border/40 bg-surface/50 scroll-mt-20">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
               Cognitive Architecture
@@ -418,8 +418,8 @@ export default function NaukariMitraPage() {
       </section>
 
       {/* ─── Personas & Impact ─────────────────────────────────────────────────── */}
-      <Section className="py-20 bg-card/40 backdrop-blur-sm border-b border-border/40">
-        <Container className="space-y-12">
+      <Section className="bg-card/40 backdrop-blur-sm border-b border-border/40">
+        <Container className="space-y-6 sm:space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
               Built for Every Aspirant Journey
@@ -448,8 +448,8 @@ export default function NaukariMitraPage() {
       </Section>
 
       {/* ─── Structured FAQs ────────────────────────────────────────────────────── */}
-      <section className="py-20 border-b border-border/40 bg-transparent">
-        <Container className="max-w-4xl space-y-8">
+      <section className="py-8 sm:py-10 md:py-12 border-b border-border/40 bg-transparent">
+        <Container className="max-w-4xl space-y-6">
           <div className="text-center space-y-2">
             <span className="text-[10px] font-bold font-mono uppercase tracking-widest text-emerald-500">
               Frequently Asked Questions
@@ -464,7 +464,7 @@ export default function NaukariMitraPage() {
       </section>
 
       {/* ─── Pre-Footer CTA ──────────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-card to-surface text-center">
+      <section className="py-8 sm:py-10 md:py-12 bg-gradient-to-b from-card to-surface text-center">
         <Container className="max-w-3xl space-y-6">
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground">
             Join the Next Era of Competitive Exam Mentorship
