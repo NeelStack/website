@@ -28,8 +28,7 @@ export interface ContactValidationInput {
   institutionName?: string
   role?: string
   institutionType?: string
-  studentStrength?: string
-  priorityModule?: string
+  city?: string
 }
 
 export function validateContactForm(data: ContactValidationInput): {
@@ -47,27 +46,32 @@ export function validateContactForm(data: ContactValidationInput): {
   }
 
   if (!email) {
-    errors.email = 'Email address is required.'
+    errors.email = 'Official email address is required.'
   } else if (!isValidEmail(email)) {
-    errors.email = 'Please enter a valid email address (e.g. alex@company.com).'
+    errors.email = 'Please enter a valid email address (e.g. principal@school.edu.in).'
   }
 
   if (!message) {
     errors.message = data.mode === 'dhruvaos'
-      ? 'Please provide campus requirements or priority questions.'
+      ? 'Please provide campus requirements, current software, or migration questions.'
       : 'Please describe your project, timeline, or inquiries.'
   }
 
   if (data.mode === 'dhruvaos') {
     const institutionName = data.institutionName?.trim()
+    const city = data.city?.trim()
     const phone = data.phone?.trim()
 
     if (!institutionName) {
-      errors.institutionName = 'School or Institution name is required.'
+      errors.institutionName = 'School / College / Institution name is required.'
+    }
+
+    if (!city) {
+      errors.city = 'Campus City & State / Location is required.'
     }
 
     if (!phone) {
-      errors.phone = 'Phone number is required for pilot coordination.'
+      errors.phone = 'Phone / WhatsApp number is required for institutional coordination.'
     } else if (!isValidPhone(phone)) {
       errors.phone = 'Please enter a valid phone number with area/country code.'
     }

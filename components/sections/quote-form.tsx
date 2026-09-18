@@ -141,10 +141,10 @@ function QuoteFormInner() {
   const budgetOptions = config.budgetRanges
     ? config.budgetRanges.map((b) => ({ value: b.id, label: b.label }))
     : [
-        { value: 'under-1000', label: config.formatOptions.under100 },
-        { value: '1000-5000', label: config.formatOptions.range100To1000 },
-        { value: '5000-15000', label: config.formatOptions.range1000To5000 },
-        { value: '15000-plus', label: config.formatOptions.above5000 },
+        { value: 'under-100000', label: config.formatOptions?.under100 || 'Under ₹1 Lakh' },
+        { value: '100000-500000', label: config.formatOptions?.range100To1000 || '₹1 Lakh – ₹5 Lakh' },
+        { value: '500000-2000000', label: config.formatOptions?.range1000To5000 || '₹5 Lakh – ₹20 Lakh' },
+        { value: '5000000-plus', label: config.formatOptions?.above5000 || '₹50 Lakh+' },
       ]
 
   const handleFieldChange = (field: string, value: string) => {
@@ -539,16 +539,24 @@ function QuoteFormInner() {
           </div>
         )}
 
-        <Button type="submit" size="lg" variant="gradient" className="w-full glow-cta" disabled={submitting}>
-          {submitting ? (
-            <>
-              <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-              Submitting Proposal Brief...
-            </>
-          ) : (
-            'Submit Quote Request'
-          )}
-        </Button>
+        <div className="flex flex-col sm:flex-row items-center justify-center pt-2">
+          <Button
+            type="submit"
+            size="lg"
+            variant="gradient"
+            className="w-full sm:w-auto min-w-[260px] h-12 px-8 rounded-xl text-sm sm:text-base font-extrabold shadow-md flex items-center justify-center glow-cta"
+            disabled={submitting}
+          >
+            {submitting ? (
+              <>
+                <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                Submitting Proposal Brief...
+              </>
+            ) : (
+              'Submit Quote Request'
+            )}
+          </Button>
+        </div>
 
         <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
           By submitting this form, you consent to our processing of your details according to our{' '}

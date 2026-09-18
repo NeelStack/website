@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Zap, X, PhoneCall, Sparkles, ArrowRight, Bot } from 'lucide-react'
-import { useCurrency } from '@/components/providers/currency-provider'
 
 const ACTIONS = [
   {
@@ -21,23 +20,10 @@ const ACTIONS = [
     iconBg: 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-300',
   },
   {
-    id: 'audit',
-    icon: Zap,
-    label: null, // set dynamically
-    subtitle: 'Performance, SEO & multi-tenant security review',
-    href: '/request-quote',
-    external: false,
-    color: 'violet',
-    borderClass: 'border-violet-500/40 dark:border-violet-400/40',
-    bgClass: 'bg-violet-500/10 hover:bg-violet-500/20',
-    textClass: 'text-violet-600 dark:text-violet-300',
-    iconBg: 'bg-violet-500/20 text-violet-600 dark:text-violet-300',
-  },
-  {
-    id: 'call',
+    id: 'discovery',
     icon: PhoneCall,
     label: 'Book 20-Min Architecture Discovery',
-    subtitle: 'Free — talk directly with engineering leadership',
+    subtitle: 'Free — 1-on-1 strategy with engineering leadership',
     href: '/book-consultation',
     external: false,
     color: 'emerald',
@@ -47,10 +33,23 @@ const ACTIONS = [
     iconBg: 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300',
   },
   {
+    id: 'scope',
+    icon: Zap,
+    label: 'Request Project Scope & NDA',
+    subtitle: 'Fixed-price milestone proposal & SLA breakdown',
+    href: '/request-quote',
+    external: false,
+    color: 'violet',
+    borderClass: 'border-violet-500/40 dark:border-violet-400/40',
+    bgClass: 'bg-violet-500/10 hover:bg-violet-500/20',
+    textClass: 'text-violet-600 dark:text-violet-300',
+    iconBg: 'bg-violet-500/20 text-violet-600 dark:text-violet-300',
+  },
+  {
     id: 'email',
     icon: Mail,
     label: 'Direct Engineering Desk',
-    subtitle: 'Response in <24h with NDA privacy guarantee',
+    subtitle: 'Response in <24h with NDA confidentiality',
     href: 'mailto:contact@neelstack.com?subject=Enterprise%20AI%20and%20Software%20Inquiry',
     external: true,
     color: 'blue',
@@ -63,7 +62,6 @@ const ACTIONS = [
 
 export function FloatingConversionWidget() {
   const [isOpen, setIsOpen] = useState(false)
-  const { config } = useCurrency()
   const widgetRef = useRef<HTMLDivElement>(null)
 
   // Close on click outside
@@ -96,10 +94,10 @@ export function FloatingConversionWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.92 }}
             transition={{ type: 'spring', stiffness: 420, damping: 28 }}
-            className="w-[calc(100vw-2rem)] sm:w-[360px] max-w-[360px] rounded-2xl tactile-card-3d bg-card/95 dark:bg-slate-950/95 backdrop-blur-2xl overflow-hidden"
+            className="w-[calc(100vw-2rem)] sm:w-[360px] max-w-[360px] max-h-[85dvh] flex flex-col rounded-2xl tactile-card-3d bg-card/95 dark:bg-slate-950/95 backdrop-blur-2xl overflow-hidden"
           >
             {/* 3D Header with Live AI Status */}
-            <div className="px-5 pt-4 pb-3 border-b-2 border-border/80 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-violet-500/10">
+            <div className="shrink-0 px-5 pt-4 pb-3 border-b-2 border-border/80 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-violet-500/10">
               <div className="flex items-start justify-between">
                 <div className="space-y-1">
                   <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full border border-cyan-500/40 bg-cyan-500/15 text-[10px] font-mono font-bold text-cyan-600 dark:text-cyan-300">
@@ -124,12 +122,10 @@ export function FloatingConversionWidget() {
             </div>
 
             {/* Actions List with 3D Tactile Cards */}
-            <div className="p-3 space-y-2">
+            <div className="flex-1 overflow-y-auto overscroll-contain p-3 space-y-2 custom-scrollbar">
               {ACTIONS.map((action, idx) => {
                 const Icon = action.icon
-                const label = action.id === 'audit'
-                  ? `${config.auditPriceFormatted} Full Architecture Audit`
-                  : action.label
+                const label = action.label
 
                 const content = (
                   <motion.div
@@ -166,7 +162,7 @@ export function FloatingConversionWidget() {
             </div>
 
             {/* Footer */}
-            <div className="px-5 py-2.5 border-t-2 border-border/70 bg-muted/30">
+            <div className="shrink-0 px-5 py-2.5 border-t-2 border-border/70 bg-muted/30">
               <p className="text-[10px] text-muted-foreground text-center font-mono">
                 <span className="font-semibold text-foreground/80">contact@neelstack.com</span>
                 {' · '}Direct Engineer SLA
@@ -179,14 +175,14 @@ export function FloatingConversionWidget() {
       {/* 3D Floating Copilot Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group relative flex h-14 w-14 cursor-pointer items-center justify-center rounded-2xl tactile-copilot-3d text-white select-none outline-none"
+        className="group relative flex h-12 w-12 sm:h-14 sm:w-14 cursor-pointer items-center justify-center rounded-2xl tactile-copilot-3d text-white select-none outline-none shadow-lg"
         aria-label="Open AI Copilot and Engineering desk"
         aria-expanded={isOpen}
       >
         {/* Live Radar Pulse Indicator */}
-        <span className="absolute -top-1 -right-1 flex h-4 w-4">
+        <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 sm:h-4 sm:w-4">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-80" />
-          <span className="relative inline-flex rounded-full h-4 w-4 bg-cyan-500 border-2 border-black" />
+          <span className="relative inline-flex rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 bg-cyan-500 border-2 border-black" />
         </span>
 
         {/* Morphing Icon */}
@@ -199,7 +195,7 @@ export function FloatingConversionWidget() {
               exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.15 }}
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5 sm:h-6 sm:w-6" />
             </motion.span>
           ) : (
             <motion.span
@@ -210,7 +206,7 @@ export function FloatingConversionWidget() {
               transition={{ duration: 0.15 }}
               className="flex items-center justify-center"
             >
-              <Bot className="h-7 w-7 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-200" />
+              <Bot className="h-6 w-6 sm:h-7 sm:w-7 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-200" />
             </motion.span>
           )}
         </AnimatePresence>

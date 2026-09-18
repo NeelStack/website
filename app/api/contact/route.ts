@@ -355,8 +355,7 @@ export async function POST(req: Request) {
       const cleanInstitution = body.institutionName || 'Educational Institution'
       const cleanRole = body.role || 'Institution Leader'
       const cleanInstitutionType = body.institutionType || 'K-12 School'
-      const cleanStudentStrength = body.studentStrength || '500 – 1,500 Students'
-      const cleanPriorityModule = body.priorityModule || 'Full Unified School Operating System'
+      const cleanCity = body.city || 'Not specified'
       const cleanPhone = body.phone || 'Not provided'
       const cleanMessage = body.message || ''
 
@@ -371,11 +370,10 @@ export async function POST(req: Request) {
         fields: [
           { label: 'Institution Name', value: cleanInstitution, highlight: true },
           { label: 'Leader / Contact', value: `${cleanName} (${cleanRole})`, highlight: true },
+          { label: 'Campus Location / City', value: cleanCity, highlight: true },
           { label: 'Official Email', value: cleanEmail, isLink: 'email' },
           { label: 'Phone / WhatsApp', value: cleanPhone, isLink: cleanPhone !== 'Not provided' ? 'tel' : undefined },
-          { label: 'Institution Type', value: cleanInstitutionType },
-          { label: 'Student Strength', value: cleanStudentStrength, highlight: true },
-          { label: 'Priority Focus Module', value: cleanPriorityModule, highlight: true },
+          { label: 'Institution Type / Board', value: cleanInstitutionType },
         ],
         messageHeading: 'Campus Setup, Software & Migration Requirements',
         messageContent: cleanMessage,

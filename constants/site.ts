@@ -11,7 +11,7 @@ export const SITE_CONFIG = {
     general: 'contact@neelstack.com',
     support: 'contact@neelstack.com',
     sales: 'contact@neelstack.com',
-    careers: 'careers@neelstack.com',
+    careers: 'contact@neelstack.com',
   },
   address: {
     line1: 'Based in India',

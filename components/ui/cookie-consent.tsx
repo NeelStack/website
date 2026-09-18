@@ -34,18 +34,18 @@ export function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-50 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-3 rounded-2xl border border-border/60 bg-card/95 dark:bg-card/90 p-4 shadow-2xl shadow-black/10 dark:shadow-black/40 backdrop-blur-xl transition-all duration-300 animate-in slide-in-from-bottom-8 fade-in sm:bottom-6 sm:right-6"
+      className="fixed bottom-4 left-4 z-50 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-3 rounded-2xl border-2 border-border/80 bg-card/95 dark:bg-slate-950/95 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl transition-all duration-300 animate-in slide-in-from-bottom-8 fade-in sm:bottom-6 sm:left-6 tactile-card-3d"
       role="dialog"
       aria-label="Cookie consent"
     >
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+        <div className="flex items-center gap-2 text-sm font-bold text-foreground">
           <Cookie className="h-4 w-4 text-primary" />
-          <span>We use cookies</span>
+          <span>Cookie &amp; Privacy Preferences</span>
         </div>
         <button
           onClick={handleRejectAll}
-          className="text-muted-foreground hover:text-foreground hover:bg-muted/80 rounded-md transition-colors p-0.5"
+          className="cursor-pointer text-muted-foreground hover:text-foreground hover:bg-muted/80 rounded-lg transition-colors p-1"
           aria-label="Decline and close"
         >
           <X className="h-4 w-4" />
@@ -53,8 +53,8 @@ export function CookieConsent() {
       </div>
       
       <p className="text-xs text-muted-foreground leading-relaxed">
-        We use cookies to improve your experience and analyze site traffic. Read our{' '}
-        <Link href="/privacy" className="font-medium text-foreground hover:underline">
+        We use essential cookies and privacy-first analytics to ensure fast performance and enhance your experience. No third-party ad trackers are used. Learn more in our{' '}
+        <Link href="/privacy" className="font-semibold text-primary hover:underline">
           Privacy Policy
         </Link>.
       </p>
@@ -62,16 +62,18 @@ export function CookieConsent() {
       <div className="flex items-center gap-2 pt-1">
         <Button
           onClick={handleAcceptAll}
-          className="h-8 w-full bg-primary text-xs font-semibold text-primary-foreground hover:bg-primary/95"
+          size="sm"
+          className="h-8.5 w-full bg-primary text-xs font-extrabold text-primary-foreground hover:bg-primary/95 shadow-sm"
         >
           Accept all
         </Button>
         <Button
           variant="outline"
+          size="sm"
           onClick={handleRejectAll}
-          className="h-8 w-full border-border/80 text-xs text-muted-foreground hover:text-foreground"
+          className="h-8.5 w-full border-border/80 text-xs font-semibold text-muted-foreground hover:text-foreground"
         >
-          Decline
+          Essential only
         </Button>
       </div>
     </div>

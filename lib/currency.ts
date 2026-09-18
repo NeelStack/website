@@ -13,9 +13,6 @@ export interface CurrencyConfig {
   code: CurrencyCode
   name: string
   symbol: string
-  auditPriceFormatted: string
-  auditPrice: string
-  auditPriceNumber: number
   consultationText: string
   budgetRanges: BudgetRangeOption[]
   formatOptions: {
@@ -33,9 +30,6 @@ export const CURRENCY_CONFIGS: Record<CurrencyCode, CurrencyConfig> = {
     code: 'USD',
     name: 'USD ($)',
     symbol: '$',
-    auditPriceFormatted: budgetRangesData.USD.auditPriceFormatted,
-    auditPrice: budgetRangesData.USD.auditPriceFormatted,
-    auditPriceNumber: budgetRangesData.USD.auditPriceNumber,
     consultationText: budgetRangesData.USD.consultationText,
     budgetRanges: budgetRangesData.USD.ranges,
     formatOptions: {
@@ -49,9 +43,6 @@ export const CURRENCY_CONFIGS: Record<CurrencyCode, CurrencyConfig> = {
     code: 'INR',
     name: 'INR (₹)',
     symbol: '₹',
-    auditPriceFormatted: budgetRangesData.INR.auditPriceFormatted,
-    auditPrice: budgetRangesData.INR.auditPriceFormatted,
-    auditPriceNumber: budgetRangesData.INR.auditPriceNumber,
     consultationText: budgetRangesData.INR.consultationText,
     budgetRanges: budgetRangesData.INR.ranges,
     formatOptions: {
@@ -65,9 +56,6 @@ export const CURRENCY_CONFIGS: Record<CurrencyCode, CurrencyConfig> = {
     code: 'EUR',
     name: 'EUR (€)',
     symbol: '€',
-    auditPriceFormatted: budgetRangesData.EUR.auditPriceFormatted,
-    auditPrice: budgetRangesData.EUR.auditPriceFormatted,
-    auditPriceNumber: budgetRangesData.EUR.auditPriceNumber,
     consultationText: budgetRangesData.EUR.consultationText,
     budgetRanges: budgetRangesData.EUR.ranges,
     formatOptions: {
@@ -81,9 +69,6 @@ export const CURRENCY_CONFIGS: Record<CurrencyCode, CurrencyConfig> = {
     code: 'GBP',
     name: 'GBP (£)',
     symbol: '£',
-    auditPriceFormatted: budgetRangesData.GBP.auditPriceFormatted,
-    auditPrice: budgetRangesData.GBP.auditPriceFormatted,
-    auditPriceNumber: budgetRangesData.GBP.auditPriceNumber,
     consultationText: budgetRangesData.GBP.consultationText,
     budgetRanges: budgetRangesData.GBP.ranges,
     formatOptions: {

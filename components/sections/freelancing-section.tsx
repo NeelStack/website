@@ -19,10 +19,10 @@ import { useCurrency } from '@/components/providers/currency-provider'
 import { CurrencyCode } from '@/lib/currency'
 
 const CURRENCY_RATES: Record<CurrencyCode, Record<string, string>> = {
-  USD: { starter: '$15', pro: '$35', expert: '$55', elite: '$75' },
-  INR: { starter: '₹499', pro: '₹1,499', expert: '₹2,499', elite: '₹3,999' },
-  EUR: { starter: '€15', pro: '€35', expert: '€55', elite: '€75' },
-  GBP: { starter: '£15', pro: '£30', expert: '£45', elite: '£60' },
+  USD: { starter: '$25', pro: '$50', expert: '$80', elite: '$120' },
+  INR: { starter: '₹2,000', pro: '₹4,000', expert: '₹6,500', elite: '₹10,000' },
+  EUR: { starter: '€25', pro: '€50', expert: '€80', elite: '€120' },
+  GBP: { starter: '£20', pro: '£40', expert: '£65', elite: '£100' },
 }
 
 const RATE_TIERS = [

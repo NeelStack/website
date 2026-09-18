@@ -3,12 +3,12 @@
 import React, { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion'
 
-interface HeroSpotlightProps {
+interface HeroSpotlightProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode
   className?: string
 }
 
-export function HeroSpotlight({ children, className = '' }: HeroSpotlightProps) {
+export function HeroSpotlight({ children, className = '', onMouseEnter, onMouseLeave, ...rest }: HeroSpotlightProps) {
   const sectionRef = useRef<HTMLElement>(null)
 
   // Cursor Spotlight coordinates
@@ -29,8 +29,11 @@ export function HeroSpotlight({ children, className = '' }: HeroSpotlightProps) 
     <section
       ref={sectionRef}
       onMouseMove={handleSectionMouseMove}
-      className={`relative overflow-hidden pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-28 md:pb-12 flex flex-col justify-center bg-transparent ${className}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`relative overflow-hidden min-h-[calc(100vh-5rem)] flex flex-col justify-center py-12 sm:py-16 md:py-20 bg-transparent ${className}`}
       aria-label="Hero section"
+      {...rest}
     >
       {/* Dynamic Cursor Spotlight Layer */}
       <motion.div

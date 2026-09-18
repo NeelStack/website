@@ -7,45 +7,32 @@ import { CopyEmailButton } from '@/components/ui/copy-email-button'
 import { CheckCircle2, AlertCircle, RefreshCw, School, Sparkles, Building2, Layers } from 'lucide-react'
 
 const WHAT_DO_YOU_NEED_OPTIONS = [
-  'DhruvaOS School Operating System & Education OS',
-  'AI Systems & Autonomous Agent Architecture',
-  'Software Development & Product Engineering',
-  'Platform Architecture & Modern Web Applications',
-  'Technical Partnership or Enterprise Collaboration',
+  'DhruvaOS School Operating System',
+  'AI Systems & Autonomous Agents',
+  'Custom Software & Product Engineering',
+  'Cloud SaaS & Modern Web Apps',
+  'Technical Partnership & Advisory',
   'Other Inquiries',
 ]
 
 const DHRUVA_ROLES = [
-  'Principal',
+  'Principal / Head of Institution',
   'School Owner / Director / Trustee',
   'Academic Coordinator / Vice Principal',
   'Administrator / Registrar',
   'IT Head / System Admin',
-  'Other',
+  'Management Committee Member',
+  'Other Educational Leader',
 ]
 
 const DHRUVA_INSTITUTION_TYPES = [
   'K-12 School (CBSE Affiliated)',
-  'K-12 School (ICSE Affiliated)',
+  'K-12 School (ICSE / ISC Affiliated)',
   'State Board School',
-  'Degree College / Higher Education',
+  'International / IB / Cambridge School',
+  'Degree College / University',
   'Multi-Campus Educational Trust',
   'Coaching / Training Academy',
-]
-
-const DHRUVA_STUDENT_STRENGTHS = [
-  'Under 500 Students',
-  '500 – 1,500 Students',
-  '1,500 – 3,000 Students',
-  '3,000+ Students',
-]
-
-const DHRUVA_PRIORITY_MODULES = [
-  'Fee Management & Parent Mobile App',
-  'Biometric & Attendance Tracking',
-  'AI Lesson Planner & Auto-Exam Generator',
-  'Student Admissions & Web CMS',
-  'Complete Unified EdOS / ERP Migration',
 ]
 
 import { validateContactForm, isValidEmail, isValidPhone } from '@/lib/validation'
@@ -73,8 +60,7 @@ function ContactFormInner() {
     institutionName: '',
     role: DHRUVA_ROLES[0],
     institutionType: DHRUVA_INSTITUTION_TYPES[0],
-    studentStrength: DHRUVA_STUDENT_STRENGTHS[1],
-    priorityModule: DHRUVA_PRIORITY_MODULES[0],
+    city: '',
   })
 
   const formRef = useRef<HTMLFormElement>(null)
@@ -92,27 +78,25 @@ function ContactFormInner() {
     const serviceParam = searchParams.get('service')?.toLowerCase()
     const subjectParam = searchParams.get('subject')
     const inquiryParam = searchParams.get('inquiry')?.toLowerCase()
-    const moduleParam = searchParams.get('module')?.toLowerCase()
 
     setFormDataState((prev) => {
       let nextNeed = prev.need
       let nextMessage = prev.message
-      let nextModule = prev.priorityModule
 
       if (serviceParam) {
         if (serviceParam.includes('ai') || serviceParam.includes('agent') || serviceParam.includes('automation')) {
-          nextNeed = 'AI Systems & Autonomous Agent Architecture'
-        } else if (serviceParam.includes('web') || serviceParam.includes('performance')) {
-          nextNeed = 'Platform Architecture & Modern Web Applications'
+          nextNeed = 'AI Systems & Autonomous Agents'
+        } else if (serviceParam.includes('web') || serviceParam.includes('performance') || serviceParam.includes('saas')) {
+          nextNeed = 'Cloud SaaS & Modern Web Apps'
         } else if (serviceParam.includes('custom') || serviceParam.includes('backend') || serviceParam.includes('api') || serviceParam.includes('cloud')) {
-          nextNeed = 'Software Development & Product Engineering'
+          nextNeed = 'Custom Software & Product Engineering'
         } else if (serviceParam.includes('consulting') || serviceParam.includes('design')) {
-          nextNeed = 'Technical Partnership or Enterprise Collaboration'
+          nextNeed = 'Technical Partnership & Advisory'
         }
       }
 
       if (inquiryParam === 'training') {
-        nextNeed = 'Technical Partnership or Enterprise Collaboration'
+        nextNeed = 'Technical Partnership & Advisory'
         if (!nextMessage) {
           nextMessage = 'Inquiry regarding Enterprise AI & Architecture Engineering Training Programs.'
         }
@@ -122,18 +106,10 @@ function ContactFormInner() {
         nextMessage = `Inquiry regarding ${subjectParam}.`
       }
 
-      if (moduleParam) {
-        const matched = DHRUVA_PRIORITY_MODULES.find((m) =>
-          m.toLowerCase().includes(moduleParam)
-        )
-        if (matched) nextModule = matched
-      }
-
       return {
         ...prev,
         need: nextNeed || prev.need,
         message: nextMessage || prev.message,
-        priorityModule: nextModule || prev.priorityModule,
       }
     })
   }, [searchParams, isDhruvaParam])
@@ -217,8 +193,7 @@ function ContactFormInner() {
       institutionName: formDataState.institutionName,
       role: formDataState.role,
       institutionType: formDataState.institutionType,
-      studentStrength: formDataState.studentStrength,
-      priorityModule: formDataState.priorityModule,
+      city: formDataState.city,
     })
 
     if (!validationResult.isValid) {
@@ -249,8 +224,7 @@ function ContactFormInner() {
         institutionName: formDataState.institutionName.trim(),
         role: formDataState.role.trim() || 'Institution Leader',
         institutionType: formDataState.institutionType.trim() || 'K-12 School',
-        studentStrength: formDataState.studentStrength.trim() || '500 – 1,500 Students',
-        priorityModule: formDataState.priorityModule.trim() || 'Full Unified EdOS',
+        city: formDataState.city.trim() || 'Not specified',
         message: formDataState.message.trim(),
       }
     } else {
@@ -429,6 +403,7 @@ function ContactFormInner() {
         {mode === 'dhruvaos' ? (
           /* ──────── DhruvaOS School-Specific Form Fields ──────── */
           <>
+            {/* Row 1: Contact Name & Role */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">
@@ -445,7 +420,7 @@ function ContactFormInner() {
                   value={formDataState.name}
                   onChange={(e) => handleFieldChange('name', e.target.value)}
                   autoComplete="name"
-                  placeholder="e.g. Shyam Chaurasiya"
+                  placeholder="e.g. Dr. Rajesh Sharma"
                   className={getInputClass('name')}
                 />
                 {fieldErrors.name && (
@@ -478,34 +453,35 @@ function ContactFormInner() {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="institutionName" className="block text-sm font-medium text-foreground mb-1.5">
-                School / College / Institution Name <span aria-hidden="true" className="text-red-500 font-bold">*</span>
-              </label>
-              <input
-                id="institutionName"
-                name="institutionName"
-                type="text"
-                required
-                aria-required="true"
-                aria-invalid={!!fieldErrors.institutionName}
-                value={formDataState.institutionName}
-                onChange={(e) => handleFieldChange('institutionName', e.target.value)}
-                placeholder="e.g. St. Xavier's Senior Secondary School"
-                className={getInputClass('institutionName')}
-              />
-              {fieldErrors.institutionName && (
-                <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
-                  <AlertCircle className="h-3.5 w-3.5 shrink-0" />
-                  <span>{fieldErrors.institutionName}</span>
-                </p>
-              )}
-            </div>
-
+            {/* Row 2: Institution Name & Affiliation */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
+                <label htmlFor="institutionName" className="block text-sm font-medium text-foreground mb-1.5">
+                  School / College / Institution Name <span aria-hidden="true" className="text-red-500 font-bold">*</span>
+                </label>
+                <input
+                  id="institutionName"
+                  name="institutionName"
+                  type="text"
+                  required
+                  aria-required="true"
+                  aria-invalid={!!fieldErrors.institutionName}
+                  value={formDataState.institutionName}
+                  onChange={(e) => handleFieldChange('institutionName', e.target.value)}
+                  placeholder="e.g. St. Xavier's Senior Secondary School"
+                  className={getInputClass('institutionName')}
+                />
+                {fieldErrors.institutionName && (
+                  <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
+                    <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                    <span>{fieldErrors.institutionName}</span>
+                  </p>
+                )}
+              </div>
+
+              <div>
                 <label htmlFor="institutionType" className="block text-sm font-medium text-foreground mb-1.5">
-                  Institution Type <span aria-hidden="true" className="text-red-500 font-bold">*</span>
+                  Institution Type / Affiliation <span aria-hidden="true" className="text-red-500 font-bold">*</span>
                 </label>
                 <select
                   id="institutionType"
@@ -523,29 +499,9 @@ function ContactFormInner() {
                   ))}
                 </select>
               </div>
-
-              <div>
-                <label htmlFor="studentStrength" className="block text-sm font-medium text-foreground mb-1.5">
-                  Student Strength <span aria-hidden="true" className="text-red-500 font-bold">*</span>
-                </label>
-                <select
-                  id="studentStrength"
-                  name="studentStrength"
-                  required
-                  aria-required="true"
-                  value={formDataState.studentStrength}
-                  onChange={(e) => handleFieldChange('studentStrength', e.target.value)}
-                  className={getSelectClass('studentStrength')}
-                >
-                  {DHRUVA_STUDENT_STRENGTHS.map((strength) => (
-                    <option key={strength} value={strength} className="bg-card text-foreground py-2">
-                      {strength}
-                    </option>
-                  ))}
-                </select>
-              </div>
             </div>
 
+            {/* Row 3: Official Email & Phone/WhatsApp */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
@@ -598,25 +554,32 @@ function ContactFormInner() {
               </div>
             </div>
 
+            {/* Row 4: Campus Location / City */}
             <div>
-              <label htmlFor="priorityModule" className="block text-sm font-medium text-foreground mb-1.5">
-                Primary Module Priority Focus
+              <label htmlFor="city" className="block text-sm font-medium text-foreground mb-1.5">
+                Campus City &amp; State / Location <span aria-hidden="true" className="text-red-500 font-bold">*</span>
               </label>
-              <select
-                id="priorityModule"
-                name="priorityModule"
-                value={formDataState.priorityModule}
-                onChange={(e) => handleFieldChange('priorityModule', e.target.value)}
-                className={getSelectClass('priorityModule')}
-              >
-                {DHRUVA_PRIORITY_MODULES.map((mod) => (
-                  <option key={mod} value={mod} className="bg-card text-foreground py-2">
-                    {mod}
-                  </option>
-                ))}
-              </select>
+              <input
+                id="city"
+                name="city"
+                type="text"
+                required
+                aria-required="true"
+                aria-invalid={!!fieldErrors.city}
+                value={formDataState.city}
+                onChange={(e) => handleFieldChange('city', e.target.value)}
+                placeholder="e.g. Lucknow, UP / New Delhi NCR"
+                className={getInputClass('city')}
+              />
+              {fieldErrors.city && (
+                <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
+                  <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                  <span>{fieldErrors.city}</span>
+                </p>
+              )}
             </div>
 
+            {/* Row 5: Software Setup & Migration Requirements */}
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">
                 Current Setup, Software &amp; Migration Requirements <span aria-hidden="true" className="text-red-500 font-bold">*</span>
@@ -630,7 +593,7 @@ function ContactFormInner() {
                 value={formDataState.message}
                 onChange={(e) => handleFieldChange('message', e.target.value)}
                 rows={4}
-                placeholder="Tell us about your campus, existing software in use, migration needs, or specific questions..."
+                placeholder="Tell us about your campus, existing software in use (e.g., Excel / legacy desktop software), migration needs, or specific questions..."
                 className={`${getInputClass('message')} resize-none`}
               />
               {fieldErrors.message && (
@@ -730,30 +693,42 @@ function ContactFormInner() {
             </div>
 
             <div>
-              <label htmlFor="need" className="block text-sm font-medium text-foreground mb-1.5">
-                What do you need? <span aria-hidden="true" className="text-red-500 font-bold">*</span>
-              </label>
-              <select
-                id="need"
-                name="need"
-                required
-                aria-required="true"
-                aria-invalid={!!fieldErrors.need}
-                value={formDataState.need}
-                onChange={(e) => handleFieldChange('need', e.target.value)}
-                className={getSelectClass('need')}
-              >
-                <option value="" className="bg-card text-foreground py-2">
-                  Select an option
-                </option>
-                {WHAT_DO_YOU_NEED_OPTIONS.map((opt) => (
-                  <option key={opt} value={opt} className="bg-card text-foreground py-2">
-                    {opt}
-                  </option>
-                ))}
-              </select>
+              <div className="flex items-center justify-between mb-2">
+                <label className="block text-sm font-semibold text-foreground">
+                  What Would You Like to Discuss / Enable? <span aria-hidden="true" className="text-red-500 font-bold">*</span>
+                </label>
+                <span className="text-[11px] text-muted-foreground font-medium hidden sm:inline-block">Select primary area of interest</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                {WHAT_DO_YOU_NEED_OPTIONS.map((opt) => {
+                  const isSelected = formDataState.need === opt
+                  return (
+                    <button
+                      key={opt}
+                      type="button"
+                      onClick={() => handleFieldChange('need', opt)}
+                      className={`group flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border text-left text-xs font-semibold transition-all cursor-pointer ${
+                        isSelected
+                          ? 'border-primary bg-primary/10 text-primary shadow-sm ring-1.5 ring-primary/40 font-bold'
+                          : 'border-border/80 bg-card/90 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-muted/60'
+                      }`}
+                    >
+                      <div className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-md border text-[10px] transition-all ${
+                        isSelected
+                          ? 'border-primary bg-primary text-primary-foreground font-bold'
+                          : 'border-muted-foreground/40 bg-transparent group-hover:border-primary/60'
+                      }`}>
+                        {isSelected && <CheckCircle2 className="h-3.5 w-3.5" />}
+                      </div>
+                      <span className="leading-snug">{opt}</span>
+                    </button>
+                  )
+                })}
+              </div>
+
               {fieldErrors.need && (
-                <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-1.5 animate-in fade-in duration-200">
+                <p className="text-xs text-red-500 font-medium flex items-center gap-1.5 mt-2 animate-in fade-in duration-200">
                   <AlertCircle className="h-3.5 w-3.5 shrink-0" />
                   <span>{fieldErrors.need}</span>
                 </p>
@@ -809,18 +784,26 @@ function ContactFormInner() {
           </div>
         )}
 
-        <Button type="submit" variant="3d-yellow" size="lg" className="w-full h-12 rounded-xl text-sm font-extrabold" disabled={submitting}>
-          {submitting ? (
-            <>
-              <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-              Submitting Application...
-            </>
-          ) : mode === 'dhruvaos' ? (
-            'Submit DhruvaOS Pilot Application'
-          ) : (
-            'Talk to NeelStack'
-          )}
-        </Button>
+        <div className="flex flex-col sm:flex-row items-center justify-center pt-2">
+          <Button
+            type="submit"
+            variant="3d-yellow"
+            size="lg"
+            className="w-full sm:w-auto min-w-[260px] h-12 px-8 rounded-xl text-sm sm:text-base font-extrabold shadow-md flex items-center justify-center"
+            disabled={submitting}
+          >
+            {submitting ? (
+              <>
+                <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                Submitting Application...
+              </>
+            ) : mode === 'dhruvaos' ? (
+              'Submit DhruvaOS Pilot Application'
+            ) : (
+              'Talk to NeelStack'
+            )}
+          </Button>
+        </div>
 
         <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
           By submitting this form, you consent to our processing of your details according to our{' '}

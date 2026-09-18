@@ -7,7 +7,7 @@ import { getSiteUrl } from '@/lib/site-url'
 import { JsonLd } from '@/components/seo/json-ld'
 import { CurrencyProvider } from '@/components/providers/currency-provider'
 import { MouseSpotlight } from '@/components/effects/mouse-spotlight'
-import { PageProgressLoader } from '@/components/ui/page-progress-loader'
+import { NavigationProgressProvider } from '@/components/navigation-progress'
 
 
 const inter = Inter({
@@ -230,7 +230,7 @@ export default function RootLayout({
               'Next.js 16 Web Application Engineering',
               'Rust WebAssembly Development',
               'Python FastAPI Microservices',
-              'PostgreSQL Schema-per-Tenant Architecture',
+              'PostgreSQL Row-Level Security (RLS) Multi-Tenancy Architecture',
             ],
             hasOfferCatalog: {
               '@type': 'OfferCatalog',
@@ -287,9 +287,10 @@ export default function RootLayout({
           }}
         />
         <CurrencyProvider>
-          <PageProgressLoader />
-          <MouseSpotlight />
-          {children}
+          <NavigationProgressProvider>
+            <MouseSpotlight />
+            {children}
+          </NavigationProgressProvider>
         </CurrencyProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

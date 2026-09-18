@@ -39,7 +39,7 @@ export function BlogGrid({ posts, featuredPost, categories }: BlogGridProps) {
     <>
       {/* Category filter */}
       <div
-        className="mb-8 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:pb-0 scrollbar-none max-w-full"
+        className="mb-5 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:pb-0 scrollbar-none max-w-full"
         role="group"
         aria-label="Filter posts by category"
       >
@@ -64,8 +64,8 @@ export function BlogGrid({ posts, featuredPost, categories }: BlogGridProps) {
 
       {/* Featured post (only show on 'All' category) */}
       {featuredPost && isAll && (
-        <div className="mb-12">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+        <div className="mb-7">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
             Featured
           </p>
           <BlogCard post={featuredPost} variant="featured" />

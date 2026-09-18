@@ -44,7 +44,7 @@ export default function BookConsultationPage() {
         }}
       />
 
-      <div className="relative pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-28 md:pb-12 overflow-hidden bg-transparent">
+      <div className="relative pt-20 pb-8 sm:pt-22 sm:pb-10 md:pt-24 md:pb-12 overflow-hidden bg-transparent">
         {/* Ambient background glows */}
         <div
           className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"

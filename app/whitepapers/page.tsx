@@ -53,8 +53,8 @@ const WHITEPAPERS = [
     status: 'Available Online',
     readUrl: '/blog/architecting-dhruvaos-foundation-schema-per-tenant-postgresql',
     description:
-      'How DhruvaOS digitizes administrative workflows, eliminates database row locks with schema-per-tenant isolation, and introduces predictive analytics ahead of the October 2 Demo Launch.',
-    topics: ['EdOS Architecture Blueprint', 'PostgreSQL Schema Isolation', 'AI RAG Gateway', 'GST e-Invoicing Adapter'],
+      'How DhruvaOS digitizes administrative workflows, eliminates database row locks with Row-Level Security (RLS) multi-tenancy, and introduces predictive analytics ahead of the October 2 Demo Launch.',
+    topics: ['EdOS Architecture Blueprint', 'PostgreSQL RLS Multi-Tenancy', 'AI RAG Gateway', 'GST e-Invoicing Adapter'],
   },
   {
     id: 'cloud-native-nextjs-fastapi-scaling',
@@ -103,7 +103,7 @@ export default function WhitepapersPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Whitepapers' }]}
       />
 
-      <Section>
+      <Section className="pt-4 pb-8 sm:pt-6 sm:pb-10">
         <Container>
           <div className="mx-auto max-w-3xl rounded-3xl border-2 border-primary/30 bg-card/60 backdrop-blur-xl p-6 md:p-8 text-center space-y-4 mb-8 sm:mb-10 tactile-card-3d">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">

@@ -31,7 +31,7 @@ export function CategoryFilter({ categories, active }: CategoryFilterProps) {
 
   return (
     <div
-      className="mb-8 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:pb-0 scrollbar-none max-w-full"
+      className="mb-5 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:pb-0 scrollbar-none max-w-full"
       role="group"
       aria-label="Filter services by category"
     >

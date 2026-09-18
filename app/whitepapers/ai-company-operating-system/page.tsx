@@ -20,8 +20,10 @@ import {
   Activity,
   Layers,
   ChevronRight,
-  Printer,
-  Share2,
+  Zap,
+  Globe,
+  Database,
+  Terminal,
 } from 'lucide-react'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { Container } from '@/components/ui/container'
@@ -85,12 +87,12 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
             url: getSiteUrl(),
           },
           datePublished: '2026-09-01',
-          dateModified: '2026-09-14',
+          dateModified: '2026-09-18',
         }}
       />
 
-      <article className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-background">
-        {/* Glow ambient meshes */}
+      <article className="pt-20 pb-12 sm:pt-22 sm:pb-14 md:pt-24 md:pb-16 relative overflow-hidden bg-background">
+        {/* Ambient background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-blue-500/10 via-purple-500/5 to-transparent blur-[120px] pointer-events-none" />
 
         <Container className="max-w-4xl mx-auto space-y-6 sm:space-y-8 relative z-10">
@@ -113,7 +115,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
                 Strategic Whitepaper
               </span>
               <span className="text-xs font-mono text-muted-foreground bg-muted/60 px-3 py-1 rounded-full border border-border">
-                Version 1.0 — September 2026
+                Publication Version 1.0 · September 2026
               </span>
               <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
                 Official Charter
@@ -159,37 +161,37 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
           <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 space-y-3">
             <p className="text-xs font-bold uppercase tracking-wider text-foreground flex items-center gap-1.5">
               <Compass className="h-4 w-4 text-primary" />
-              Strategic Whitepaper Sections
+              Table of Contents &amp; Architectural Sections
             </p>
             <div className="flex flex-wrap gap-2 text-xs">
-              <a href="#executive-summary" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">Executive Summary</a>
-              <a href="#the-thesis" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">The Thesis</a>
-              <a href="#the-vision" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">AI Executive Team</a>
-              <a href="#company-brain" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">The Company Brain</a>
-              <a href="#boardroom-mode" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">AI Boardroom</a>
-              <a href="#meeting-execution" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">Meeting Execution</a>
-              <a href="#authority-model" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">Authority Model</a>
-              <a href="#trust-layer" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">The Trust Layer</a>
-              <a href="#three-engines" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">Three-Engine Strategy</a>
-              <a href="#capital-allocation" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">Capital Allocation</a>
-              <a href="#operating-principles" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">15 Principles</a>
-              <a href="#five-year-roadmap" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">5-Year Roadmap</a>
+              <a href="#executive-summary" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">1. Executive Summary</a>
+              <a href="#the-thesis" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">2. The Thesis</a>
+              <a href="#the-vision" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">3. AI Executive Team</a>
+              <a href="#company-brain" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">4. The Company Brain</a>
+              <a href="#boardroom-mode" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">5. AI Boardroom Deliberation</a>
+              <a href="#meeting-execution" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">6. Meeting Execution Engine</a>
+              <a href="#authority-model" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">7. 4-Tier Authority Model</a>
+              <a href="#trust-layer" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">8. The Trust Layer</a>
+              <a href="#three-engines" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">9. Three-Engine Strategy</a>
+              <a href="#growth-horizons" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">10. Strategic Growth Horizons</a>
+              <a href="#operating-principles" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">11. Operating Principles</a>
+              <a href="#strategic-statement" className="px-3 py-1 rounded-lg bg-card border border-border hover:border-primary/50 transition-colors">12. Strategic Mandate</a>
             </div>
           </div>
 
           {/* Body Content — Deep-Dive Sections */}
           <div className="prose prose-slate dark:prose-invert max-w-none space-y-8 sm:space-y-10">
             
-            {/* Executive Summary */}
+            {/* 1. Executive Summary */}
             <section id="executive-summary" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                Executive Summary
+                1. Executive Summary &amp; Abstract
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                NeelStack Solutions Private Limited was incorporated on <strong>31 August 2026</strong> with a long-term ambition far larger than becoming another software services provider.
+                NeelStack Solutions Private Limited was incorporated on <strong>31 August 2026</strong> with a mission extending beyond traditional IT consultancy: to pioneer the architecture through which technology companies of the future operate autonomously.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                The company operates through three complementary, self-reinforcing engines:
+                The enterprise operates through three distinct, mutually reinforcing engines designed for immediate viability and enduring strategic defensibility:
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose my-6">
@@ -204,14 +206,14 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-purple-500">Engine 2</span>
                   <h3 className="text-base font-bold text-foreground">DhruvaOS</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Our unified School Operating System (launching 2 October 2026), built to become a recurring B2B SaaS business and our active laboratory for agent coordination.
+                    Unified School Operating System (launching 2 October 2026), engineered as a multi-tenant B2B SaaS platform and active proving ground for multi-agent coordination.
                   </p>
                 </div>
                 <div className="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 space-y-2">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-500">Engine 3</span>
                   <h3 className="text-base font-bold text-foreground">ToolVines</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Live browser-native tools platform (toolvines.com) delivering zero-retention utilities, organic search traffic, and scalable experimentation.
+                    Client-side WebAssembly developer utility network (toolvines.com) delivering zero-retention utilities, organic discovery, and high-velocity experiments.
                   </p>
                 </div>
               </div>
@@ -219,52 +221,52 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               <div className="p-6 rounded-2xl border border-primary/30 bg-primary/5 not-prose my-6">
                 <p className="text-xs font-bold uppercase tracking-widest text-primary mb-2">The Long-Term Strategic Opportunity</p>
                 <h3 className="text-xl sm:text-2xl font-heading font-black text-foreground">
-                  BUILD THE AI COMPANY OPERATING SYSTEM
+                  THE AI COMPANY OPERATING SYSTEM
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                  The vision is to create a platform where any human founder can hire a coordinated, persistent, accountable <strong>AI executive workforce</strong> (AI CEO, AI CTO, AI CFO, AI COO, AI CRO, AI CMO, AI Product Officer) and hundreds of specialized AI agents.
+                  The central thesis of this charter is the instantiation of a persistent, synchronized, and accountable <strong>AI executive workforce</strong> (AI CEO, AI CTO, AI CFO, AI COO, AI CRO, AI CMO, AI Product Officer) capable of orchestrating specialized agent swarms under clear human governance.
                 </p>
                 <div className="mt-4 pt-4 border-t border-primary/20 text-xs font-semibold text-foreground italic">
-                  &ldquo;The human founder remains the legal owner and ultimate accountable decision-maker. The AI becomes the company&apos;s intelligence and execution layer.&rdquo;
+                  &ldquo;The human founder remains the legal owner and ultimate accountable decision-maker. The AI executive team becomes the enterprise&apos;s persistent intelligence and execution layer.&rdquo;
                 </div>
               </div>
             </section>
 
-            {/* 1. The Thesis */}
+            {/* 2. The Thesis */}
             <section id="the-thesis" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                1. The Thesis
+                2. The Thesis: Reorganizing Enterprise Around Agentic Intelligence
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                The traditional company is constrained by human organizational bandwidth. Assembling a complete C-suite and departmental workforce (CEO, CTO, CFO, COO, CRO, CMO, Product, Engineering, Sales, QA) is slow, capital-intensive, and geographically constrained.
+                The traditional corporation is severely constrained by human organizational bandwidth. Assembling a complete C-suite and departmental hierarchy is slow, capital-intensive, and fraught with coordination latency.
               </p>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Enterprise AI is moving rapidly from <em>&ldquo;ask AI a question&rdquo;</em> toward autonomous agents that operate across real tools, databases, and organizational workflows with explicit permissions, approval checkpoints, and audit trails.
+                Enterprise artificial intelligence is shifting rapidly from passive query interfaces (<em>&ldquo;ask an LLM a question&rdquo;</em>) toward autonomous agent swarms that interact directly with real databases, tools, APIs, and business workflows within explicit permission boundaries.
               </p>
               <blockquote className="p-4 rounded-xl border-l-4 border-primary bg-muted/40 font-semibold text-foreground not-italic my-4">
-                &ldquo;The next generation of companies will not simply use AI. They will be organized around AI.&rdquo;
+                &ldquo;The next generation of high-performing enterprises will not merely use AI as an assistant. They will be fundamentally organized around coordinated AI architectures.&rdquo;
               </blockquote>
             </section>
 
-            {/* 2. The Vision: Executive Roles */}
+            {/* 3. The Vision: Executive Roles */}
             <section id="the-vision" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                2. The Vision: The AI Executive Team
+                3. The AI Executive Team &amp; Functional Swarms
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                A founder enters NeelStack and instantiates a complete, synchronized executive council:
+                Under the AI Company OS architecture, an enterprise instantiates a complete, synchronized executive council:
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose my-6">
                 {[
-                  { role: 'AI CEO', focus: 'Strategy & Capital', desc: 'Strategy, prioritization, company health, resource allocation, executive coordination, and bottleneck identification.' },
-                  { role: 'AI CTO', focus: 'Engineering & Architecture', desc: 'Technology stack, system architecture, security postures, technical debt audits, and release velocity.' },
-                  { role: 'AI CFO', focus: 'Financial Physics', desc: 'Cash runway, revenue forecasting, unit economics, scenario modeling, expense optimization, and budget gates.' },
-                  { role: 'AI COO', focus: 'Operational Rhythm', desc: 'Project execution, timeline tracking, cross-department handoffs, SOP enforcement, and organizational friction removal.' },
-                  { role: 'AI CRO', focus: 'Commercial Engine', desc: 'Lead qualification, pipeline velocity, pricing structures, proposals, and enterprise sales cycles.' },
-                  { role: 'AI CMO', focus: 'Positioning & Demand', desc: 'Positioning, SEO intelligence, content distribution, competitor audits, and customer acquisition campaigns.' },
-                  { role: 'AI Product Officer', focus: 'User Problem Validation', desc: 'Customer evidence synthesis, PRD drafting, feature prioritization, telemetry analysis, and feedback loops.' },
-                  { role: 'Specialist AI Employees', focus: 'Execution Layer', desc: 'Dedicated agents across Sales, Research, Developer, QA, Support, Recruiting, and Executive Assistance.' },
+                  { role: 'AI CEO', focus: 'Strategy & Capital Allocation', desc: 'Prioritization, company health, resource allocation, executive coordination, and bottleneck identification.' },
+                  { role: 'AI CTO', focus: 'Engineering & Architecture', desc: 'System architecture, technology stack governance, security posture, technical debt audits, and release velocity.' },
+                  { role: 'AI CFO', focus: 'Financial Physics & Runway', desc: 'Cash runway modeling, revenue forecasting, unit economics, scenario analysis, expense optimization, and budget gates.' },
+                  { role: 'AI COO', focus: 'Operational Rhythm & SOPs', desc: 'Cross-functional project delivery, milestone tracking, handoff governance, SOP enforcement, and operational velocity.' },
+                  { role: 'AI CRO', focus: 'Commercial Engine & Pipeline', desc: 'Lead qualification, pipeline velocity, pricing structures, enterprise RFP response generation, and deal cycle tracking.' },
+                  { role: 'AI CMO', focus: 'Positioning & Market Demand', desc: 'Market positioning, SEO intelligence, content distribution, competitor auditing, and customer acquisition campaigns.' },
+                  { role: 'AI Product Officer', focus: 'User Problem Validation', desc: 'Customer telemetry synthesis, PRD drafting, feature prioritization, UX audit reviews, and user feedback loops.' },
+                  { role: 'Specialist AI Swarms', focus: 'Execution Layer', desc: 'Task-executing agents across Sales Engineering, Security, Code Generation, QA Automation, and Support Operations.' },
                 ].map((item) => (
                   <div key={item.role} className="p-4 rounded-xl border border-border/80 bg-card/60 space-y-1.5">
                     <div className="flex items-center justify-between">
@@ -277,23 +279,23 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </div>
             </section>
 
-            {/* 5. The Company Brain */}
+            {/* 4. The Company Brain */}
             <section id="company-brain" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                5. The Company Brain: Persistent Institutional Memory
+                4. The Company Brain: Persistent Institutional Memory System
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Every enterprise deployed on NeelStack maintains an encrypted, persistent <strong>Company Brain</strong>. Unlike transient LLM chat windows, the Company Brain stores seven interconnected domains:
+                Every organization operating within this framework maintains an encrypted, immutable <strong>Company Brain</strong>. Unlike transient LLM session context, the Company Brain persists seven interconnected intelligence domains:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 not-prose my-6">
                 {[
-                  { domain: 'Company Facts', desc: 'Revenue, costs, headcount, legal contracts, pricing, and infrastructure.' },
-                  { domain: 'Strategy & Thesis', desc: 'Company mission, positioning, quarterly OKRs, and market focus.' },
-                  { domain: 'Decision History', desc: 'What was decided, when, by whom, why, expected vs actual outcomes.' },
-                  { domain: 'Customer Intelligence', desc: 'Meeting transcripts, objections, feature requests, and buying behavior.' },
-                  { domain: 'Operational SOPs', desc: 'Workflows, security protocols, release gates, and employee handbooks.' },
-                  { domain: 'Financial Vault', desc: 'Cash runway, burn rate, invoices, receivables, and tax filings.' },
-                  { domain: 'Technical Topology', desc: 'Architecture blueprints, API schemas, repositories, and incident logs.' },
+                  { domain: 'Core Company Facts', desc: 'Legal structure, revenue figures, cost bases, headcount, active contracts, pricing tiers, and cloud topology.' },
+                  { domain: 'Strategic Thesis', desc: 'Corporate mission, market positioning, quarterly OKRs, and competitive differentiation vectors.' },
+                  { domain: 'Decision Ledger', desc: 'Historical record of decisions: who decided, when, strategic rationale, and expected vs actual outcomes.' },
+                  { domain: 'Customer Intelligence', desc: 'Call transcripts, objection patterns, feature requests, procurement timelines, and contract nuances.' },
+                  { domain: 'Operational SOPs', desc: 'Standard operating procedures, deployment checklists, security policies, and incident response runbooks.' },
+                  { domain: 'Financial Vault', desc: 'Runway forecasts, burn trajectory, accounts receivable, vendor commitments, and statutory tax records.' },
+                  { domain: 'Technical Topology', desc: 'Database schemas, API specifications, microservice architectures, and system telemetry.' },
                 ].map((item) => (
                   <div key={item.domain} className="p-3.5 rounded-xl border border-border/70 bg-card/40 space-y-1">
                     <p className="text-xs font-bold text-foreground">{item.domain}</p>
@@ -303,63 +305,63 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </div>
             </section>
 
-            {/* 7. The AI Boardroom */}
+            {/* 5. The AI Boardroom */}
             <section id="boardroom-mode" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                7. The AI Boardroom &amp; Constructive Disagreement
+                5. The AI Boardroom: Dialectic Deliberation &amp; Constructive Disagreement
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                When a founder presents a critical strategic question (e.g. <em>&ldquo;Should we hire 20 engineers and launch a second product line?&rdquo;</em>), NeelStack does not return a single generic response. It initiates an executive deliberation where agents are engineered to challenge assumptions:
+                When a founder presents a consequential strategic decision (e.g. <em>&ldquo;Should we commit capital to a secondary product vertical?&rdquo;</em>), the system does not generate an uncritical consensus. It triggers a multi-agent dialectic debate where agents are explicitly prompted to challenge assumptions from their functional domains:
               </p>
               
               <div className="p-5 rounded-2xl border border-border bg-card/90 space-y-3 not-prose my-6 font-mono text-xs">
-                <p className="text-primary font-bold uppercase tracking-wider">{"// Simulated Boardroom Deliberation"}</p>
+                <p className="text-primary font-bold uppercase tracking-wider">{"// Multi-Agent Boardroom Deliberation Protocol"}</p>
                 <div className="space-y-2 text-muted-foreground">
-                  <p><strong className="text-foreground">AI CTO:</strong> Technically feasible in 21 days with current Turborepo architecture.</p>
-                  <p><strong className="text-foreground">AI CRO:</strong> Five enterprise pipeline accounts have explicitly requested this feature.</p>
-                  <p><strong className="text-foreground">AI CMO:</strong> Positioning overlaps directly with two incumbents; customer acquisition cost will spike 40%.</p>
-                  <p><strong className="text-foreground">AI CFO:</strong> Cash reserves support development, but additional hiring reduces runway from 18 to 9 months.</p>
-                  <p><strong className="text-foreground">AI COO:</strong> Current engineering capacity is already committed at 91% through DhruvaOS launch.</p>
-                  <p className="text-emerald-500 font-bold"><strong className="text-foreground">AI CEO Decision:</strong> RECOMMENDATION: DO NOT HIRE YET. Run 5 paid pilot contracts with existing team before committing capital.</p>
+                  <p><strong className="text-foreground">AI CTO:</strong> Architecture is modular and ready; 3-week delivery feasible with current Next.js/Turborepo foundation.</p>
+                  <p><strong className="text-foreground">AI CRO:</strong> Validated demand from 5 enterprise pipeline prospects representing strong pilot conversion potential.</p>
+                  <p><strong className="text-foreground">AI CMO:</strong> Competitive density in target segment is elevated; acquisition cost will experience upward pressure.</p>
+                  <p><strong className="text-foreground">AI CFO:</strong> Reserve capital is healthy, but immediate hiring would contract runway buffer from 18 to 11 months.</p>
+                  <p><strong className="text-foreground">AI COO:</strong> Current engineering bandwidth is 89% allocated toward flagship DhruvaOS milestone commitments.</p>
+                  <p className="text-emerald-500 font-bold"><strong className="text-foreground">AI CEO Synthesis:</strong> RECOMMENDATION: DEFER FULL HIRING. Execute 3 paid pilot contracts utilizing existing modular infrastructure before expanding fixed costs.</p>
                 </div>
               </div>
               <p className="text-sm font-semibold text-foreground">
-                Disagreement is a core feature. An AI executive team that cannot say &ldquo;NO&rdquo; is a toy.
+                Dialectic challenge is an essential design requirement. An executive advisory layer that cannot challenge faulty assumptions is merely an expensive echo chamber.
               </p>
             </section>
 
-            {/* 8-10. Meeting Execution Engine */}
+            {/* 6. Meeting Execution Engine */}
             <section id="meeting-execution" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                8–10. The Closed-Loop Meeting Execution Engine
+                6. Closed-Loop Context &amp; Meeting Execution Pipeline
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Meetings currently end with lost transcripts and forgotten promises. NeelStack transforms meetings into a closed execution loop:
+                Enterprise friction frequently originates in the disconnect between strategic discussions and tactical follow-through. The AI Company OS introduces a closed execution loop:
               </p>
-              <div className="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 text-center not-prose font-mono text-xs sm:text-sm font-bold text-cyan-600 dark:text-cyan-400">
-                Meeting → Understanding → Decision → Execution → 14 Verified Actions
+              <div className="p-4 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 text-center not-prose font-mono text-xs sm:text-sm font-bold text-cyan-600 dark:text-cyan-400">
+                Strategic Briefing → Live Contextual Guidance → Action Item Synthesis → Automated Workflow Execution
               </div>
               <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1.5 my-4">
-                <li><strong>Pre-Meeting Brief:</strong> AI executives review customer history, discount tolerances, and engineering feasibility.</li>
-                <li><strong>During Meeting:</strong> Contextual advisor to the founder (e.g. AI CFO recommending discount boundaries).</li>
-                <li><strong>Post-Meeting Execution:</strong> Automatically extracts commitments, updates CRM, compiles commercial proposals, creates engineering tasks, and schedules calendar follow-ups.</li>
+                <li><strong>Pre-Meeting Intelligence:</strong> Agents summarize historical interactions, contract terms, pricing boundaries, and technical constraints before discussions commence.</li>
+                <li><strong>Real-Time Advisory:</strong> Contextual guardrails delivered during discussions (e.g., CFO discount parameter boundaries).</li>
+                <li><strong>Post-Meeting Automated Execution:</strong> Automatic generation of commercial proposals, CRM record synchronization, engineering issue creation, and milestone tracking.</li>
               </ul>
             </section>
 
-            {/* 13. Agent Authority Model */}
+            {/* 7. Agent Authority Model */}
             <section id="authority-model" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                13. The 4-Level Agent Authority Model
+                7. The 4-Tier Agent Authority &amp; Governance Model
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Autonomous AI must never receive unconstrained authority over money, legal commitments, or production systems:
+                Autonomous software agents must operate within deterministic, risk-calibrated authorization boundaries:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 not-prose my-6">
                 {[
-                  { level: 'Level 0', title: 'OBSERVE', desc: 'Read-only access to company telemetry, documents, analytics, and meetings.' },
-                  { level: 'Level 1', title: 'RECOMMEND', desc: 'Synthesizes insights, highlights anomalies, and submits structured proposals.' },
-                  { level: 'Level 2', title: 'APPROVAL', desc: 'Agent compiles complete action (draft email, PR, invoice). Human approves. Agent executes.' },
-                  { level: 'Level 3', title: 'AUTONOMY', desc: 'Pre-approved low-risk actions within hard rate limits (sync CRM, run test suites, format logs).' },
+                  { level: 'Tier 0', title: 'OBSERVE', desc: 'Read-only access to corporate telemetry, documents, analytics dashboards, and meeting feeds.' },
+                  { level: 'Tier 1', title: 'RECOMMEND', desc: 'Analyzes cross-functional patterns, identifies operational bottlenecks, and presents structured proposals.' },
+                  { level: 'Tier 2', title: 'APPROVAL-GATED', desc: 'Agent compiles complete deliverable (draft contract, PR, invoice). Human approves. Agent executes.' },
+                  { level: 'Tier 3', title: 'AUTONOMOUS', desc: 'Pre-approved, deterministic operations within strict rate limits (CRM sync, CI test triggering, log normalization).' },
                 ].map((item) => (
                   <div key={item.level} className="p-4 rounded-xl border border-border bg-card/70 space-y-1.5">
                     <span className="text-[10px] font-mono font-bold uppercase text-primary">{item.level}</span>
@@ -370,16 +372,25 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </div>
             </section>
 
-            {/* 16. The Trust Layer */}
+            {/* 8. The Trust Layer */}
             <section id="trust-layer" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                16. The Trust Layer: Trust Is The Product
+                8. The Trust Layer: Security &amp; Compliance Foundation
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                The biggest barrier to deploying an AI workforce is not raw model intelligence — it is enterprise trust. NeelStack constructs eight mandatory security pillars:
+                The adoption of autonomous agentic workforces is governed by enterprise trust. NeelStack enforces eight foundational security pillars across all agent workflows:
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 not-prose my-6 text-center">
-                {['Identity & Role Verification', 'Granular Authorization', 'Cryptographic Audit Trail', 'Observability & Traceability', 'Deterministic Evaluation', 'Single-Click Rollback', 'Human Escalation Gates', 'Strict Tenant Isolation'].map((pillar) => (
+                {[
+                  'Identity & Role Verification',
+                  'Granular Authorization (RBAC)',
+                  'Cryptographic Audit Trails',
+                  'Full Execution Observability',
+                  'Deterministic Safety Evaluations',
+                  'Single-Click State Rollbacks',
+                  'Mandatory Human Escalation',
+                  'Strict Tenant Isolation (VPC)',
+                ].map((pillar) => (
                   <div key={pillar} className="p-3.5 rounded-xl border border-border/70 bg-card/40 flex items-center justify-center text-xs font-semibold text-foreground">
                     {pillar}
                   </div>
@@ -387,47 +398,63 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </div>
             </section>
 
-            {/* 20 & 22. Strategy & Capital Allocation */}
+            {/* 9. Three-Engine Strategy */}
             <section id="three-engines" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                20–22. Capital Allocation &amp; The Three-Engine Strategy
+                9. The Three-Engine Strategic Flywheel
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                NeelStack refuses to build ten speculative products simultaneously. We maintain disciplined capital allocation until clear product-market fit:
+                Sustainable technology scaling demands disciplined focus. NeelStack allocates resources across three deliberate operational engines:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose my-6">
                 <div className="p-5 rounded-2xl border border-purple-500/30 bg-purple-500/10 space-y-1">
                   <span className="text-3xl font-black text-purple-500">80%</span>
-                  <h4 className="text-sm font-bold text-foreground">DhruvaOS</h4>
-                  <p className="text-xs text-muted-foreground">Primary product bet. School operating system, recurring SaaS revenue, and our living AI laboratory.</p>
+                  <h4 className="text-sm font-bold text-foreground">DhruvaOS Platform</h4>
+                  <p className="text-xs text-muted-foreground">Primary product focus. Unified School Operating System, recurring SaaS revenue, and our living AI laboratory.</p>
                 </div>
                 <div className="p-5 rounded-2xl border border-blue-500/30 bg-blue-500/10 space-y-1">
                   <span className="text-3xl font-black text-blue-500">15%</span>
                   <h4 className="text-sm font-bold text-foreground">NeelStack Services &amp; AI Infra</h4>
-                  <p className="text-xs text-muted-foreground">Cash flow generation, custom software engineering, and reusable multi-agent architecture.</p>
+                  <p className="text-xs text-muted-foreground">High-velocity enterprise software delivery, custom agent development, and reusable multi-agent architecture.</p>
                 </div>
                 <div className="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 space-y-1">
                   <span className="text-3xl font-black text-cyan-500">5%</span>
                   <h4 className="text-sm font-bold text-foreground">ToolVines Platform</h4>
-                  <p className="text-xs text-muted-foreground">Organic web traffic, zero-retention utilities, and high-velocity experiments.</p>
+                  <p className="text-xs text-muted-foreground">Zero-retention browser utilities, organic top-of-funnel discovery, and rapid developer tooling experiments.</p>
                 </div>
               </div>
-              <p className="text-xs font-mono text-muted-foreground">
-                * Speculative products (NaukariMitra, SarakariMitra) remain deliberately parked until core revenue gates are passed. Focus is a strategic advantage.
-              </p>
             </section>
 
-            {/* 23. Road to $1B & 24. 5-Year Roadmap */}
-            <section id="five-year-roadmap" className="space-y-4 scroll-mt-28">
+            {/* 10. Growth Horizons */}
+            <section id="growth-horizons" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                23–24. The 8 Stages of Commercialization (2026–2030+)
+                10. Strategic Growth Horizons (2026–2030+)
               </h2>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Our roadmap progresses through four structured strategic horizons, prioritizing genuine utility, customer retention, and sound economics at each stage:
+              </p>
               <div className="space-y-3 not-prose my-6">
                 {[
-                  { stage: 'Stage 1 & 2', title: '₹0 → ₹1 Lakh (2026)', desc: 'Proof of commercialization. DhruvaOS launch, NeelStack service contracts, and Company Brain prototype.' },
-                  { stage: 'Stage 3 & 4', title: '₹10 Lakh → ₹1 Crore (2027)', desc: 'Repeatable sales engine. DhruvaOS PMF, meeting intelligence, and external FounderOS pilot deployments.' },
-                  { stage: 'Stage 5 & 6', title: '₹10 Crore → ₹100 Crore+ (2028–2029)', desc: 'AI Workforce scale. Full executive council, multi-tenant agent execution, and enterprise advisor networks.' },
-                  { stage: 'Stage 7 & 8', title: 'National & Global Scale → $1B+ (2030+)', desc: 'Global platform through which millions of companies create, operate, and scale with AI.' },
+                  {
+                    stage: 'Horizon 1 (2026)',
+                    title: 'Foundation & Proving Ground',
+                    desc: 'Launch and commercial validation of DhruvaOS, foundational enterprise engineering contracts, and the initial Company Brain memory prototype.',
+                  },
+                  {
+                    stage: 'Horizon 2 (2027)',
+                    title: 'Repeatable Multi-Agent Workflows',
+                    desc: 'Expansion of DhruvaOS across premier educational institutions, live meeting intelligence pipelines, and external FounderOS pilot deployments.',
+                  },
+                  {
+                    stage: 'Horizon 3 (2028–2029)',
+                    title: 'Autonomous Enterprise Scaling',
+                    desc: 'Deployment of full synchronized C-suite executive councils, multi-tenant agent execution networks, and enterprise compliance certifications.',
+                  },
+                  {
+                    stage: 'Horizon 4 (2030+)',
+                    title: 'Global Enterprise Infrastructure',
+                    desc: 'Worldwide platform enabling thousands of enterprises to create, operate, and scale autonomously with coordinated AI workforces.',
+                  },
                 ].map((item) => (
                   <div key={item.stage} className="p-4 rounded-xl border border-border/70 bg-card/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
@@ -440,28 +467,28 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </div>
             </section>
 
-            {/* 30. 15 Operating Principles */}
+            {/* 11. 15 Operating Principles */}
             <section id="operating-principles" className="space-y-4 scroll-mt-28">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground border-b border-border/40 pb-2">
-                30. NeelStack&apos;s 15 Operating Principles
+                11. Core Operating Principles
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 not-prose my-6">
                 {[
-                  '1. Revenue before vanity.',
-                  '2. Customers before assumptions.',
-                  '3. Execution before presentations.',
-                  '4. Evidence before scaling.',
-                  '5. Focus before expansion.',
-                  '6. Cash before unnecessary hiring.',
-                  '7. AI must produce outcomes.',
-                  '8. Agents must be accountable.',
-                  '9. AI must challenge humans.',
-                  '10. Humans remain accountable for consequential decisions.',
-                  '11. Every important action must be auditable.',
-                  '12. Build once, reuse everywhere.',
-                  '13. Distribution matters as much as technology.',
-                  '14. Kill weak ideas quickly.',
-                  '15. Never manufacture traction.',
+                  '1. Real customer value before vanity metrics.',
+                  '2. Direct customer evidence before assumptions.',
+                  '3. Production execution before theoretical slides.',
+                  '4. Verified unit economics before premature scaling.',
+                  '5. Strategic focus before horizontal distraction.',
+                  '6. Prudent cash management before headcount expansion.',
+                  '7. AI systems must deliver measurable business outcomes.',
+                  '8. Autonomous agents must be fully observable and accountable.',
+                  '9. AI advisors must be engineered to challenge human biases.',
+                  '10. Humans retain legal and moral accountability for consequential choices.',
+                  '11. Every consequential action must possess a cryptographic audit trail.',
+                  '12. Design modularly: build once, deploy across platforms.',
+                  '13. Distribution strategy is as vital as technological capability.',
+                  '14. Ruthlessly sunset unviable initiatives early.',
+                  '15. Never manufacture artificial traction or fake trust signals.',
                 ].map((principle) => (
                   <div key={principle} className="p-3 rounded-xl border border-border/60 bg-card/40 text-xs font-semibold text-foreground">
                     {principle}
@@ -470,26 +497,26 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               </div>
             </section>
 
-            {/* 41 & 42. The Final Strategic Statement */}
-            <section className="space-y-4 border-t border-border/60 pt-8">
+            {/* 12. The Strategic Statement */}
+            <section id="strategic-statement" className="space-y-4 border-t border-border/60 pt-8">
               <div className="p-6 sm:p-8 rounded-3xl border border-primary/30 bg-gradient-to-br from-card via-card to-primary/5 space-y-4 not-prose">
                 <span className="text-xs font-mono font-bold uppercase tracking-widest text-primary">
-                  The Final Strategic Statement
+                  The Strategic Mandate
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-heading font-black text-foreground">
-                  Build the Company That Builds Companies
+                  Build the Enterprise That Empowers Enterprises to Scale
                 </h3>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  Enduring, high-scale enterprise value does not begin with speculative forecasts. It begins with real economic utility and customer trust from Day 1. First customer. Then first 10 customers. Then disciplined operational compounding across global markets.
+                  Enduring enterprise transformation does not start with speculative projections. It begins with genuine operational utility and unwavering customer trust from Day 1. First customer. Then first ten customers. Then disciplined architectural compounding across global markets.
                 </p>
                 <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono font-bold text-foreground">
-                  <span>Human vision.</span>
+                  <span>Human Leadership.</span>
                   <span>•</span>
-                  <span>Machine intelligence.</span>
+                  <span>Machine Intelligence.</span>
                   <span>•</span>
-                  <span>AI workforce.</span>
+                  <span>AI Workforce.</span>
                   <span>•</span>
-                  <span>Company execution.</span>
+                  <span>Enterprise Execution.</span>
                 </div>
               </div>
             </section>
@@ -500,7 +527,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-border/60">
             <div className="text-center sm:text-left">
               <p className="text-sm font-bold text-foreground">Interested in NeelStack&apos;s AI Workforce Architecture?</p>
-              <p className="text-xs text-muted-foreground mt-0.5">Explore our software products, services, or discuss strategic partnerships.</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Explore our software platforms, engineering services, or schedule an architecture briefing.</p>
             </div>
             <div className="flex items-center gap-3">
               <Button asChild variant="outline" size="sm">

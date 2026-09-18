@@ -1,232 +1,169 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Container } from '@/components/ui/container'
-import { Section } from '@/components/ui/section'
-import { Laptop, Server, Cloud, Bot, Network, ShieldCheck, CheckCircle2 } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { Laptop, Server, Cloud, Bot, Cpu, Database, CheckCircle2 } from 'lucide-react'
 
-const TECH_CATEGORIES = [
-  {
-    id: 'agentic-ai',
-    title: 'Agentic AI & MCP',
-    icon: Bot,
-    badge: 'Autonomous Multi-Agent Runtimes',
-    color: 'text-rose-600 dark:text-rose-400',
-    bgColor: 'bg-rose-500/10 border-rose-500/25',
-    items: [
-      { name: 'LangGraph & Multi-Agent Graphs', desc: 'Deterministic cyclic state machines, human-in-the-loop & persistence checkpoints' },
-      { name: 'Model Context Protocol (MCP)', desc: 'Anthropic MCP SDK, custom enterprise database & tool servers' },
-      { name: 'PydanticAI & Agent Frameworks', desc: 'Type-safe production agent runtimes with validated tool schemas' },
-      { name: 'Frontier Foundation LLMs', desc: 'Anthropic Claude 3.5 Sonnet, Google Gemini 1.5/2.0 Pro, GPT-4o, Llama 3.3' },
-      { name: 'Multi-Agent Swarms', desc: 'Microsoft AutoGen, CrewAI & collaborative multi-agent task execution' },
-      { name: 'Air-Gapped & Local Inference', desc: 'vLLM, Ollama & high-throughput self-hosted open-weights models' },
-    ],
-  },
-  {
-    id: 'rag-memory',
-    title: 'GraphRAG & Memory',
-    icon: Network,
-    badge: 'Cognitive Retrieval & Neural State',
-    color: 'text-violet-600 dark:text-violet-400',
-    bgColor: 'bg-violet-500/10 border-violet-500/25',
-    items: [
-      { name: 'Microsoft GraphRAG', desc: 'Knowledge-graph accelerated retrieval over unstructured enterprise corpora' },
-      { name: 'DSPy Compiled Pipelines', desc: 'Self-optimizing algorithmic prompt synthesis & structured reasoning pipelines' },
-      { name: 'Mem0 & Letta (MemGPT)', desc: 'Stateful episodic, semantic, and hierarchical agent memory architectures' },
-      { name: 'LlamaIndex & Haystack 2.0', desc: 'High-accuracy document ingestion, hybrid semantic chunking & reranking' },
-      { name: 'Qdrant & pgvector', desc: 'Rust-based vector search & PostgreSQL HNSW high-dimensional indexing' },
-      { name: 'Voyage AI & BGE-M3', desc: 'State-of-the-art dense embedding models with contextual reranker layers' },
-    ],
-  },
-  {
-    id: 'ai-security',
-    title: 'Security & Observability',
-    icon: ShieldCheck,
-    badge: 'Enterprise Guardrails & Telemetry',
-    color: 'text-emerald-600 dark:text-emerald-400',
-    bgColor: 'bg-emerald-500/10 border-emerald-500/25',
-    items: [
-      { name: 'NVIDIA NeMo Guardrails', desc: 'Programmable dialogue safety rails, topical containment & jailbreak mitigation' },
-      { name: 'Langfuse & LangSmith', desc: 'Distributed LLM tracing, latency profiling, cost tracking & session replay' },
-      { name: 'Microsoft Presidio', desc: 'Automated enterprise PII detection, redaction & compliance data masking' },
-      { name: 'Promptfoo Red-Teaming', desc: 'Automated LLM vulnerability red-teaming & CI/CD evaluation test harnesses' },
-      { name: 'Guardrails AI & Lakera', desc: 'Real-time hallucination prevention & prompt injection defense shields' },
-      { name: 'OpenTelemetry AI Spans', desc: 'Standardized vendor-agnostic distributed telemetry across agent microservices' },
-    ],
-  },
+const TECH_LAYERS = [
   {
     id: 'frontend',
-    title: 'Frontend & WASM',
+    title: 'Frontend & Mobile Experience',
+    badge: 'Client Tier',
     icon: Laptop,
-    badge: 'Sub-Second Next.js & WebAssembly',
-    color: 'text-blue-600 dark:text-blue-400',
-    bgColor: 'bg-blue-500/10 border-blue-500/25',
-    items: [
-      { name: 'Next.js 16 App Router', desc: 'Turbopack, Server Actions & edge streaming SSR architectures' },
-      { name: 'React 19 & Concurrent UI', desc: 'React Compiler, Server Components & optimistic state mutations' },
-      { name: 'Rust & WebAssembly (WASM)', desc: 'Zero-latency client-side compute powering ToolVines utility suite' },
-      { name: 'TypeScript 5.5+', desc: 'Strict end-to-end static type safety across distributed API surfaces' },
-      { name: 'Tailwind CSS v4', desc: 'Modern OKLCH color engine & lightning-fast atomic compilation' },
-      { name: 'React Native & Flutter', desc: '60 FPS cross-platform native iOS & Android applications' },
-    ],
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React Native', 'PWA'],
+    capabilities: 'Fast SSR/SSG rendering, fluid animations, and cross-platform mobile fidelity.',
+    accent: 'text-blue-500 dark:text-cyan-400',
+    iconBg: 'bg-blue-500/10 border-blue-500/30 text-blue-500 dark:text-cyan-400',
+    borderHover: 'hover:border-cyan-500/50',
   },
   {
     id: 'backend',
-    title: 'Backend & Microservices',
+    title: 'Backend & Distributed Services',
+    badge: 'Core Services',
     icon: Server,
-    badge: 'High-Throughput Go & FastAPI',
-    color: 'text-cyan-600 dark:text-cyan-400',
-    bgColor: 'bg-cyan-500/10 border-cyan-500/25',
-    items: [
-      { name: 'Python FastAPI', desc: 'Asynchronous sub-millisecond REST APIs with Pydantic v2 validation' },
-      { name: 'Go (Golang) Services', desc: 'Ultra-low-latency concurrency & minimal memory footprint microservices' },
-      { name: 'Rust Systems Services', desc: 'Memory-safe, zero-cost abstractions for compute-intensive workloads' },
-      { name: 'NestJS & Node.js', desc: 'Enterprise-structured modular TypeScript microservices architecture' },
-      { name: 'gRPC & Protocol Buffers', desc: 'High-performance binary inter-service streaming & low-overhead RPCs' },
-      { name: 'PostgreSQL 16 & Redis 7', desc: 'Enterprise ACID relational storage, in-memory caching & pub/sub' },
-    ],
+    technologies: ['Node.js', 'Python / FastAPI', 'Go', 'REST APIs', 'gRPC', 'WebSockets'],
+    capabilities: 'High-throughput microservices, robust authentication, and event pipelines.',
+    accent: 'text-emerald-500 dark:text-emerald-400',
+    iconBg: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500 dark:text-emerald-400',
+    borderHover: 'hover:border-emerald-500/50',
   },
   {
-    id: 'cloud',
-    title: 'Cloud, Edge & DevOps',
+    id: 'cloud-devops',
+    title: 'Cloud Infrastructure & DevOps',
+    badge: 'Scale & Resilience',
     icon: Cloud,
-    badge: 'Zero-Downtime Infrastructure',
-    color: 'text-amber-600 dark:text-amber-400',
-    bgColor: 'bg-amber-500/10 border-amber-500/25',
-    items: [
-      { name: 'AWS & Vercel Edge', desc: 'Multi-region global distribution, serverless lambdas & edge caching' },
-      { name: 'Docker & Kubernetes', desc: 'Containerization, pod autoscaling & zero-downtime rolling deploys' },
-      { name: 'Terraform & OpenTofu', desc: 'Declarative Infrastructure-as-Code for reproducible cloud topologies' },
-      { name: 'GitHub Actions CI/CD', desc: 'Automated test suites, security scans & production pipelines' },
-      { name: 'Cloudflare Workers & WAF', desc: 'Global edge computing, anti-DDoS & edge security rules' },
-      { name: 'Datadog & Sentry', desc: 'Enterprise APM telemetry, distributed traces & real-time alerting' },
-    ],
+    technologies: ['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Terraform IaC', 'CI/CD'],
+    capabilities: 'Multi-region redundancy, automated deployment pipelines, and 24/7 uptime.',
+    accent: 'text-amber-500 dark:text-amber-400',
+    iconBg: 'bg-amber-500/10 border-amber-500/30 text-amber-500 dark:text-amber-400',
+    borderHover: 'hover:border-amber-500/50',
+  },
+  {
+    id: 'ai-data',
+    title: 'AI, LLMs & Data Architecture',
+    badge: 'Intelligent Tier',
+    icon: Bot,
+    technologies: ['OpenAI', 'Claude', 'Gemini', 'RAG Pipelines', 'PostgreSQL', 'Redis', 'pgvector'],
+    capabilities: 'Autonomous task agents, semantic vector search, and partitioned databases.',
+    accent: 'text-violet-500 dark:text-violet-400',
+    iconBg: 'bg-violet-500/10 border-violet-500/30 text-violet-500 dark:text-violet-400',
+    borderHover: 'hover:border-violet-500/50',
   },
 ]
 
 export function TechnologySection() {
-  const [activeTab, setActiveTab] = useState('agentic-ai')
-  const currentCategory = TECH_CATEGORIES.find((c) => c.id === activeTab) ?? TECH_CATEGORIES[0]
-
   return (
-    <Section id="technologies" className="py-8 sm:py-10 md:py-12 relative overflow-hidden bg-transparent">
-      {/* Subtle dark mesh backdrop */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 100%, rgba(59,130,246,0.05), transparent)' }}
-        aria-hidden="true"
-      />
-      <Container className="space-y-6 sm:space-y-8 relative z-10">
+    <section id="technologies" className="py-14 sm:py-18 md:py-24 relative overflow-hidden bg-transparent border-t border-border/60">
+      <Container className="space-y-10 sm:space-y-12 relative z-10">
+        {/* Section Header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-          className="text-center max-w-2xl mx-auto space-y-4"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
+          className="text-center max-w-3xl mx-auto space-y-4"
         >
           <motion.span
-            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
-            className="inline-block text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full border border-primary/25"
+            variants={{
+              hidden: { opacity: 0, y: 10 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+            className="inline-block text-xs font-bold text-primary uppercase tracking-widest bg-primary/10 px-3.5 py-1 rounded-full border border-primary/25"
           >
-            Frontier AI & Enterprise Stack
+            Technology Architecture
           </motion.span>
+
           <motion.h2
-            variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22,1,0.36,1] } } }}
-            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight"
+            variants={{
+              hidden: { opacity: 0, y: 16 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight text-balance"
           >
-            Next-Generation Tech Ecosystem
+            Modern Stack. Enterprise Architecture.
           </motion.h2>
+
           <motion.p
-            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22,1,0.36,1] } } }}
-            className="text-sm sm:text-base text-muted-foreground"
+            variants={{
+              hidden: { opacity: 0, y: 12 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+            className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto"
           >
-            We architect autonomous multi-agent systems, Model Context Protocol (MCP) integrations, GraphRAG neural memory, and high-concurrency distributed backends.
+            We select battle-tested, modern tools tailored to performance, maintainability, and scale.
           </motion.p>
-          <motion.div
-            variants={{ hidden: { scaleX: 0, opacity: 0 }, visible: { scaleX: 1, opacity: 1, transition: { duration: 0.7, delay: 0.2, ease: [0.22,1,0.36,1] } } }}
-            style={{ originX: 0.5 }}
-            className="mx-auto h-px w-32 bg-gradient-to-r from-transparent via-primary/60 to-transparent"
-          />
         </motion.div>
 
-        {/* Tab Switcher — Centered, 3D tactile pills */}
-        <div className="flex flex-wrap justify-center gap-2 p-2 rounded-2xl border-2 border-border/80 bg-card dark:bg-[#0b1329] max-w-4xl mx-auto shadow-md tactile-card-3d">
-          {TECH_CATEGORIES.map((cat) => {
-            const Icon = cat.icon
-            const isActive = activeTab === cat.id
+        {/* 4 Connected Technology Layers in 2x2 Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {TECH_LAYERS.map((layer, idx) => {
+            const Icon = layer.icon
             return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={cn(
-                  'relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-150 cursor-pointer font-heading',
-                  isActive
-                    ? 'text-primary-foreground shadow-md'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
-                )}
+              <motion.div
+                key={layer.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className={`rounded-3xl border-2 border-slate-200/90 dark:border-white/[0.08] bg-card/95 dark:bg-[#0a1122]/95 p-6 sm:p-7 space-y-4 tactile-card-3d ${layer.borderHover} transition-colors shadow-md dark:shadow-2xl h-full flex flex-col justify-between`}
               >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabBg"
-                    className="absolute inset-0 bg-primary rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.4)]"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10 flex items-center gap-2">
-                  <Icon className="h-4 w-4" />
-                  <span>{cat.title}</span>
-                </span>
-              </button>
+                <div className="space-y-4">
+                  {/* Header: Icon + Title + Tier Badge */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${layer.iconBg} shrink-0`}
+                      >
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-mono font-bold text-muted-foreground uppercase tracking-wider">
+                          {layer.badge}
+                        </span>
+                        <h3 className="font-heading text-base font-extrabold text-foreground">
+                          {layer.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Capabilities Summary */}
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {layer.capabilities}
+                  </p>
+
+                  {/* Stack Pills */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {layer.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[11px] font-medium text-foreground/90 bg-muted/60 dark:bg-white/[0.05] px-2.5 py-1 rounded-lg border border-border/60"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             )
           })}
         </div>
-
-        {/* Active Tech Stack Grid with AnimatePresence */}
-        <div className="rounded-3xl border-2 border-border/90 bg-card dark:bg-[#0b1329] p-6 md:p-8 shadow-xl tactile-card-3d relative overflow-hidden">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-border/60 pb-6 mb-6">
-            <div className="flex items-center gap-3">
-              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border-2 ${currentCategory.bgColor} ${currentCategory.color} shadow-sm`}>
-                <currentCategory.icon className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-foreground">{currentCategory.title}</h3>
-                <span className={`text-xs font-mono font-bold uppercase tracking-wider ${currentCategory.color}`}>
-                  {currentCategory.badge}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {currentCategory.items.map((tech) => (
-                <div
-                  key={tech.name}
-                  className="group p-4 rounded-2xl border-2 border-border/70 bg-card dark:bg-white/[0.02] hover:border-primary/60 hover:bg-card transition-all duration-150 shadow-2xs tactile-card-3d flex flex-col justify-between gap-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-heading text-sm font-extrabold text-foreground group-hover:text-primary transition-colors">
-                      {tech.name}
-                    </h4>
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 opacity-80 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{tech.desc}</p>
-                </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
       </Container>
-    </Section>
+    </section>
   )
 }
-

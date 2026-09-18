@@ -134,7 +134,7 @@ const CAPABILITY_MATRIX = [
     product: 'DhruvaOS',
     runtime: 'Turborepo + FastAPI + Postgres 16',
     target: 'K-12, Colleges & University Trusts',
-    highlight: 'Schema-per-tenant isolation, 12 AI modules, DPDP 2023',
+    highlight: 'Shared schema RLS isolation, 12 AI modules, DPDP 2023',
     privacy: 'AES-256 at Rest / Role-Based RBAC',
     status: 'Launching 2 Oct 2026',
   },

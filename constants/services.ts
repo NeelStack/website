@@ -242,13 +242,13 @@ export const SERVICES: Service[] = [
     bgColor: 'bg-indigo-500/10',
     href: '/services/custom-software',
     badge: 'Multi-Tenant & ERP',
-    tagline: 'Bespoke business software, CRM systems, and schema-isolated SaaS platforms.',
-    slaMetric: '100% Schema Isolation & Full IP Transfer',
+    tagline: 'Bespoke business software, CRM systems, and multi-tenant SaaS platforms.',
+    slaMetric: '100% Data Isolation & Full IP Transfer',
     turnaround: '4–8 Weeks Delivery',
     keyCapabilities: [
       {
-        title: 'Schema-per-Tenant Isolation',
-        desc: 'Dynamic PostgreSQL schema routing ensuring complete cryptographic and database-level isolation between organizational accounts.',
+        title: 'Multi-Tenant RLS Isolation',
+        desc: 'PostgreSQL Row-Level Security (RLS) policies ensuring complete cryptographic and database-level isolation between organizational accounts.',
       },
       {
         title: 'Custom ERP & Inventory Portals',

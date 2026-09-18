@@ -30,7 +30,7 @@ const ENGINE_SERVICES = {
   category: 'Enterprise AI & Custom Software Engineering',
   badge: 'ENTERPRISE AI & DEV · ZERO DATA LEAK',
   description:
-    'Architecting production-grade multi-agent swarms, Model Context Protocol (MCP) tool pipelines, sub-second web platforms, and schema-per-tenant enterprise backends.',
+    'Architecting production-grade multi-agent swarms, Model Context Protocol (MCP) tool pipelines, sub-second web platforms, and multi-tenant Row-Level Security (RLS) enterprise backends.',
   accentColor: 'text-blue-500 dark:text-cyan-400',
   icon: Bot,
   actionText: 'Book AI Consultation',
@@ -45,8 +45,8 @@ const ENGINE_SERVICES = {
       desc: 'Turbopack, React 19 Server Components, and Rust WASM edge runtimes.',
     },
     {
-      title: 'Schema-per-Tenant Backends',
-      desc: 'Dynamic PostgreSQL 16 schema isolation, FastAPI async core, and Redis 7 clusters.',
+      title: 'Multi-Tenant RLS Backends',
+      desc: 'Unified PostgreSQL 16 Row-Level Security, FastAPI async core, and Redis 7 clusters.',
     },
     {
       title: 'Air-Gapped & Enterprise Security',

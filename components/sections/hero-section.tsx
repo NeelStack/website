@@ -1,177 +1,372 @@
 'use client'
 
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import {
   ArrowRight,
-  Bot,
-  Cpu,
-  Layers,
   Sparkles,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  School,
+  Cpu,
+  Database,
+  Code2,
   ShieldCheck,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { HeroSpotlight } from '@/components/ui/hero-spotlight'
 
-const MLH_HERO_STATS = [
-  { value: '99.9%', label: 'Uptime SLA', code: 'ENTERPRISE INFRA', accent: 'text-blue-600 dark:text-cyan-400' },
-  { value: '<24h', label: 'Response SLA', code: 'DIRECT ENGINEER ACCESS', accent: 'text-emerald-600 dark:text-emerald-400' },
-  { value: 'NDA', label: 'Privacy by Design', code: 'ZERO DATA LEAKS', accent: 'text-violet-600 dark:text-violet-400' },
-  { value: '2026', label: 'Founded', code: 'DPIIT RECOGNIZED', accent: 'text-indigo-600 dark:text-indigo-400' },
+export interface HeroSlide {
+  id: string
+  number: string
+  badgeText: string
+  badgeIcon: React.ElementType
+  badgeStyle: string
+  titlePrefix: string
+  highlightText: string
+  subtitleLine1: string
+  subtitleLine2: string
+  accentGradient: string
+  mediaPreview?: string
+}
+
+export const HERO_SLIDES: HeroSlide[] = [
+  {
+    id: 'core-engineering',
+    number: '01',
+    badgeText: 'SOFTWARE ENGINEERING & AI SYSTEMS',
+    badgeIcon: Code2,
+    badgeStyle:
+      'border-blue-500/40 bg-blue-500/10 text-blue-600 dark:border-cyan-400/50 dark:bg-cyan-950/60 dark:text-cyan-300 shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(6,182,212,0.6)]',
+    titlePrefix: 'Software Engineering',
+    highlightText: 'for Modern Businesses',
+    subtitleLine1:
+      'We architect, build, and modernize custom business software, scalable cloud applications, and AI systems.',
+    subtitleLine2:
+      'Delivering reliable, production-grade digital platforms from concept to deployment.',
+    accentGradient:
+      'from-blue-700 via-indigo-600 to-violet-700 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-300',
+  },
+  {
+    id: 'ai-agents',
+    number: '02',
+    badgeText: 'AI SYSTEMS & AUTONOMOUS AGENTS',
+    badgeIcon: Sparkles,
+    badgeStyle:
+      'border-indigo-500/40 bg-indigo-500/10 text-indigo-600 dark:border-indigo-400/50 dark:bg-indigo-950/60 dark:text-indigo-300 shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(99,102,241,0.6)]',
+    titlePrefix: 'AI-Led Innovation',
+    highlightText: '& Autonomous Agent Systems',
+    subtitleLine1:
+      'Deploy deterministic multi-agent swarms, enterprise knowledge RAG pipelines,',
+    subtitleLine2:
+      'and intelligent workflow automation built for production-grade reliability.',
+    accentGradient:
+      'from-blue-700 via-indigo-600 to-purple-700 dark:from-cyan-300 dark:via-blue-400 dark:to-violet-300',
+  },
+  {
+    id: 'dhruvaos',
+    number: '03',
+    badgeText: 'FLAGSHIP SCHOOL OPERATING SYSTEM',
+    badgeIcon: School,
+    badgeStyle:
+      'border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:border-emerald-400/50 dark:bg-emerald-950/60 dark:text-emerald-300 shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(16,185,129,0.6)]',
+    titlePrefix: 'DhruvaOS — Next-Gen',
+    highlightText: 'Education Operating System',
+    subtitleLine1:
+      'Unifying admissions, smart fee collections, and biometric campus attendance',
+    subtitleLine2:
+      'with AI lesson planning and real-time parent mobile apps across modern schools.',
+    accentGradient:
+      'from-emerald-700 via-teal-700 to-emerald-700 dark:from-emerald-300 dark:via-teal-300 dark:to-cyan-300',
+  },
+  {
+    id: 'saas-platforms',
+    number: '04',
+    badgeText: 'ENTERPRISE PLATFORM ENGINEERING',
+    badgeIcon: Cpu,
+    badgeStyle:
+      'border-violet-500/40 bg-violet-500/10 text-violet-600 dark:border-violet-400/50 dark:bg-violet-950/60 dark:text-violet-300 shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(139,92,246,0.6)]',
+    titlePrefix: 'Multi-Tenant SaaS &',
+    highlightText: 'High-Throughput Platforms',
+    subtitleLine1:
+      'Engineered for sub-100ms response times and strict PostgreSQL Row-Level Security',
+    subtitleLine2:
+      'with high-throughput microservices architecture built for enterprise scale.',
+    accentGradient:
+      'from-violet-700 via-purple-700 to-indigo-700 dark:from-violet-300 dark:via-purple-300 dark:to-indigo-300',
+  },
+  {
+    id: 'modernization',
+    number: '05',
+    badgeText: 'ZERO-DOWNTIME TRANSFORMATION',
+    badgeIcon: Database,
+    badgeStyle:
+      'border-amber-500/40 bg-amber-500/10 text-amber-600 dark:border-amber-400/50 dark:bg-amber-950/60 dark:text-amber-300 shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(245,158,11,0.6)]',
+    titlePrefix: 'Legacy Modernization &',
+    highlightText: 'Cloud Architecture',
+    subtitleLine1:
+      'Transform legacy desktop ERPs, monolithic codebases, and fragmented data tables',
+    subtitleLine2:
+      'into modern, high-security cloud-native systems with zero business downtime.',
+    accentGradient:
+      'from-amber-700 via-orange-600 to-rose-700 dark:from-amber-300 dark:via-orange-300 dark:to-yellow-300',
+  },
 ]
 
-const FRONTIER_BADGES = [
-  { icon: Bot, label: 'Multi-Agent Swarms', code: 'LangGraph · MCP' },
-  { icon: Cpu, label: 'Sub-Second Edge', code: 'Next.js 16 · WASM' },
-  { icon: Layers, label: 'Three Core Engines', code: 'Services · DhruvaOS · ToolVines' },
-  { icon: ShieldCheck, label: 'Verified Entity', code: 'DIPP278202 · MCA' },
-]
+const AUTOPLAY_INTERVAL = 5500 // 5.5 seconds per slide
+
+// 3D Kinetic Slide Animation Variants
+const slide3DVariants: Variants = {
+  enter: (direction: number) => ({
+    opacity: 0,
+    y: direction > 0 ? 22 : -22,
+    rotateX: direction > 0 ? 14 : -14,
+    scale: 0.96,
+    filter: 'blur(6px)',
+  }),
+  center: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.42,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    },
+  },
+  exit: (direction: number) => ({
+    opacity: 0,
+    y: direction > 0 ? -22 : 22,
+    rotateX: direction > 0 ? -14 : 14,
+    scale: 0.96,
+    filter: 'blur(6px)',
+    transition: {
+      duration: 0.34,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    },
+  }),
+}
 
 export function HeroSection() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [direction, setDirection] = useState<number>(1)
+  const [isPaused, setIsPaused] = useState(false)
+  const touchStartXRef = useRef<number | null>(null)
+
+  const goToNext = useCallback(() => {
+    setDirection(1)
+    setCurrentIndex((prev) => (prev + 1) % HERO_SLIDES.length)
+  }, [])
+
+  const goToPrev = useCallback(() => {
+    setDirection(-1)
+    setCurrentIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
+  }, [])
+
+  // Auto-rotation timer that cleanly resets and pauses on hover
+  useEffect(() => {
+    if (isPaused) return
+
+    const timer = setInterval(() => {
+      goToNext()
+    }, AUTOPLAY_INTERVAL)
+
+    return () => clearInterval(timer)
+  }, [isPaused, goToNext, currentIndex])
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') goToNext()
+      if (e.key === 'ArrowLeft') goToPrev()
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [goToNext, goToPrev])
+
+  // Mobile Touch swipe support
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null) return
+    const touchEndX = e.changedTouches[0].clientX
+    const diff = touchStartXRef.current - touchEndX
+
+    if (Math.abs(diff) > 35) {
+      if (diff > 0) {
+        goToNext()
+      } else {
+        goToPrev()
+      }
+    }
+    touchStartXRef.current = null
+  }
+
+  const currentSlide = HERO_SLIDES[currentIndex]
+  const BadgeIcon = currentSlide.badgeIcon
+
   return (
-    <HeroSpotlight className="pt-20 pb-8 sm:pt-24 sm:pb-10 md:pt-28 md:pb-10">
+    <HeroSpotlight
+      className="relative overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Subtle Grid Overlay */}
       <div
         className="absolute inset-0 bg-grid-pattern opacity-[0.04] dark:opacity-[0.12] pointer-events-none z-0"
         aria-hidden="true"
       />
 
-      {/* Dynamic subtle ambient mesh glow */}
+      {/* Ambient mesh glow */}
       <div
         className="absolute inset-0 ambient-mesh-glow opacity-15 dark:opacity-30 pointer-events-none z-0"
         aria-hidden="true"
       />
 
-      <Container className="relative z-10 w-full max-w-5xl mx-auto">
-        {/* Main Centered Layout */}
+      {/* 
+        PREV & NEXT ARROWS:
+        True vertical center of hero viewport with wide breathing room away from the headline.
+        Default: Clean, elegant arrow glyphs.
+        Hover: Instant 3D tactile button pop with physical depth and tactile active click.
+      */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-30 w-full max-w-[94rem] mx-auto px-3 sm:px-6 md:px-10 lg:px-14 flex items-center justify-between">
+        {/* Prev Arrow / 3D Tactile on Hover */}
+        <button
+          type="button"
+          onClick={goToPrev}
+          aria-label="Previous capability slide"
+          className="pointer-events-auto cursor-pointer flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform group-hover:scale-110" />
+        </button>
+
+        {/* Next Arrow / 3D Tactile on Hover */}
+        <button
+          type="button"
+          onClick={goToNext}
+          aria-label="Next capability slide"
+          className="pointer-events-auto cursor-pointer flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform group-hover:scale-110" />
+        </button>
+      </div>
+
+      <Container className="relative z-10 w-full max-w-4.5xl mx-auto px-4 sm:px-8 md:px-12">
         <div className="flex flex-col gap-6 text-center items-center">
-          {/* Top Monospace Announcement Pill — 3D Tactile Capsule */}
+          
+          {/* Height-Stabilized 3D Kinetic Dynamic Headline Area */}
+          <div
+            className="w-full min-h-[300px] xs:min-h-[280px] sm:min-h-[265px] md:min-h-[255px] lg:min-h-[245px] flex flex-col justify-center items-center px-8 sm:px-14 md:px-18"
+            style={{ perspective: 1200 }}
+          >
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={currentSlide.id}
+                custom={direction}
+                variants={slide3DVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                style={{ transformStyle: 'preserve-3d' }}
+                className="flex flex-col items-center gap-3.5 sm:gap-4 max-w-3.5xl"
+              >
+                {/* Dynamic Category Badge */}
+                <div
+                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full border-2 px-3.5 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-mono font-bold backdrop-blur-md transition-all cursor-default max-w-full ${currentSlide.badgeStyle}`}
+                >
+                  <BadgeIcon className="h-3.5 w-3.5 shrink-0 animate-pulse" />
+                  <span className="tracking-tight text-center truncate sm:whitespace-normal">
+                    {currentSlide.badgeText}
+                  </span>
+                </div>
+
+                {/* Main Dynamic 3D Headline — Exactly 2 Balanced Lines */}
+                <h1 className="font-heading text-3xl xs:text-4xl sm:text-4.5xl md:text-5xl lg:text-5.5xl xl:text-6xl font-extrabold tracking-[-0.035em] text-foreground leading-[1.12] sm:leading-[1.1] text-3d-headline flex flex-col items-center">
+                  <span className="block">{currentSlide.titlePrefix}</span>
+                  <span
+                    className={`block bg-gradient-to-r ${currentSlide.accentGradient} bg-clip-text text-transparent pb-0.5`}
+                  >
+                    {currentSlide.highlightText}
+                  </span>
+                </h1>
+
+                {/* Main Dynamic Subtitle — Exactly 2 Balanced Lines */}
+                <p className="max-w-3.5xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground font-sans font-medium text-center flex flex-col items-center">
+                  <span className="block">{currentSlide.subtitleLine1}</span>
+                  <span className="block">{currentSlide.subtitleLine2}</span>
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Rock-Solid Stationary CTA Buttons (Never shift position) */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border-2 border-blue-500/50 dark:border-cyan-400/50 bg-blue-500/10 dark:bg-blue-950/60 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-mono font-bold text-blue-600 dark:text-cyan-300 backdrop-blur-md shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_rgba(6,182,212,0.6)] hover:border-cyan-400 hover:shadow-[3px_3px_0px_#000] dark:hover:shadow-[3px_3px_0px_rgba(6,182,212,0.9)] transition-all cursor-default max-w-full">
-              <Sparkles className="h-3.5 w-3.5 text-blue-500 dark:text-cyan-400 animate-pulse shrink-0" />
-              <span className="tracking-tight text-center">
-                [FRONTIER MULTI-AGENT INTELLIGENCE &amp; ENTERPRISE SYSTEMS]
-              </span>
-            </div>
-          </motion.div>
-
-          {/* Main Title with 3D Depth */}
-          <motion.h1
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.5rem] font-extrabold tracking-[-0.035em] text-foreground text-balance leading-[1.08] lg:leading-[1.06] text-3d-headline"
-          >
-            Building{' '}
-            <span className="text-gradient-brand drop-shadow-sm">
-              Scalable Software &amp; AI Systems
-            </span>{' '}
-            for the AI-Native Era
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground text-balance font-sans font-medium"
+            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 mt-1 sm:mt-2 w-full sm:w-auto"
           >
-            NeelStack Solutions builds software products, AI-powered systems and digital platforms for businesses and organizations.
-          </motion.p>
-
-          {/* Tactile CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full sm:w-auto"
-          >
-            {/* Primary Yellow Tactile Button */}
             <div className="w-full sm:w-auto">
               <Button
                 asChild
                 variant="3d-yellow"
                 size="lg"
-                className="w-full sm:w-auto h-13 px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2"
+                className="w-full sm:w-auto h-12 sm:h-13 px-7 sm:px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
               >
                 <Link href="/contact" className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4" />
-                  Talk to NeelStack
+                  Start a Project
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
             </div>
 
-            {/* Secondary Tactile Button */}
             <div className="w-full sm:w-auto">
               <Button
                 asChild
                 variant="3d-secondary"
                 size="lg"
-                className="w-full sm:w-auto h-13 px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2"
+                className="w-full sm:w-auto h-12 sm:h-13 px-7 sm:px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
               >
-                <Link href="/products" className="flex items-center gap-2">
-                  <Layers className="h-4 w-4 text-primary" />
-                  Explore Products
+                <Link href="/services" className="flex items-center gap-2">
+                  Explore Services
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
             </div>
           </motion.div>
 
-          {/* Frontier Technology Badges with 3D Micro Elevation */}
+          {/* Clean Trust Cues */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center justify-center gap-2 mt-2"
+            transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-1 sm:pt-2 text-xs font-medium text-muted-foreground"
           >
-            {FRONTIER_BADGES.map(({ icon: Icon, label, code }) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-1.5 rounded-full border-2 border-border/80 bg-background/80 dark:bg-card/80 px-3.5 py-1 text-xs font-semibold text-foreground tracking-wide hover:border-cyan-500/50 hover:bg-cyan-500/5 shadow-[2px_2px_0px_rgba(0,0,0,0.06)] dark:shadow-[2px_2px_0px_rgba(0,0,0,0.4)] hover:-translate-y-0.5 transition-all duration-150 cursor-default"
-              >
-                <Icon className="h-3.5 w-3.5 text-blue-500 dark:text-cyan-400" aria-hidden="true" />
-                <span>{label}</span>
-                <span className="font-mono text-[10px] text-muted-foreground ml-0.5 opacity-80">
-                  [{code}]
-                </span>
-              </span>
-            ))}
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+              100% Client Code &amp; IP Ownership
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+              Direct Senior Engineer Access
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5 text-cyan-500 shrink-0" />
+              Enterprise-Grade SLA &amp; Security
+            </span>
           </motion.div>
 
-          {/* 3D Tactile Hero Metrics Strip */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-4 pt-4 border-t border-border/60"
-          >
-            {MLH_HERO_STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className="flex flex-col items-center justify-center p-3.5 rounded-2xl tactile-card-3d bg-card/80 dark:bg-card/60 backdrop-blur-md cursor-default"
-              >
-                <span className={`font-heading text-2xl sm:text-3xl font-black ${stat.accent} tracking-tight leading-none drop-shadow-sm`}>
-                  {stat.value}
-                </span>
-                <span className="text-xs font-bold text-foreground mt-1.5 tracking-tight">
-                  {stat.label}
-                </span>
-                <span className="font-mono text-[9px] text-muted-foreground mt-0.5 uppercase tracking-tight">
-                  [{stat.code}]
-                </span>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </Container>
     </HeroSpotlight>
   )
 }
-
