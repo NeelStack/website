@@ -43,7 +43,7 @@ const SECURITY_PILLARS = [
     icon: Server,
     title: 'Multi-Tenant Data Isolation',
     description:
-      'PostgreSQL 16 schema-per-tenant isolation ensures no institutional data crosses boundaries. Row-Level Security (RLS) policies enforce strict IDOR prevention across all API endpoints.',
+      'PostgreSQL 16 Shared Schema multi-tenancy with forced Row-Level Security (RLS) ensures no institutional data crosses boundaries. Kernel-level RLS policies enforce strict IDOR prevention across all API endpoints.',
   },
   {
     icon: Eye,
@@ -82,7 +82,7 @@ export default function SecurityPage() {
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           name: 'NeelStack Security & Compliance Posture',
-          description: 'Enterprise security standards, AES-256 Fernet encryption, schema-per-tenant isolation, and statutory compliance controls.',
+          description: 'Enterprise security standards, AES-256 Fernet encryption, Row-Level Security (RLS) multi-tenancy, and statutory compliance controls.',
           url: `${siteUrl}/security`,
           publisher: {
             '@type': 'Organization',

@@ -130,7 +130,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
       <TrustBarSection />
 
       {/* ── Section 1: Services Directory ── */}
-      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="services-list-heading">
+      <section className="pt-6 pb-10 sm:pt-8 sm:pb-12" aria-labelledby="services-list-heading">
         <Container>
           {/* Category filter — client component for interactivity */}
           <Suspense fallback={<div className="mb-6 h-10" />}>

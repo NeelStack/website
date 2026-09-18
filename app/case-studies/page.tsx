@@ -43,7 +43,7 @@ export default function CaseStudiesPage() {
             {
               '@type': 'ListItem',
               position: 2,
-              name: 'DhruvaOS Foundation: Dynamic Schema-per-Tenant Multi-Tenancy Architecture',
+              name: 'DhruvaOS Foundation: Shared Schema PostgreSQL with Row-Level Security',
               url: `${siteUrl}/blog/architecting-dhruvaos-foundation-schema-per-tenant-postgresql`,
             },
             {

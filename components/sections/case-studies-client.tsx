@@ -70,8 +70,8 @@ const CASE_STUDIES: CaseStudy[] = [
   },
   {
     id: 'dhruvaos-multitenant-erp-architecture',
-    title: 'DhruvaOS Foundation: Dynamic Schema-per-Tenant Multi-Tenancy Architecture',
-    subtitle: 'Segregating enterprise workloads with physical PostgreSQL schemas and sub-10ms Zitadel OIDC authorization.',
+    title: 'DhruvaOS Foundation: Shared Schema Multi-Tenancy with PostgreSQL Row-Level Security',
+    subtitle: 'Enforcing institutional data isolation with database-native Row-Level Security (RLS) and sub-10ms Zitadel OIDC authorization.',
     systemProfile: 'DhruvaOS Cloud ERP Foundation Architecture',
     industry: 'Enterprise Cloud ERP',
     category: 'erp',
@@ -82,15 +82,15 @@ const CASE_STUDIES: CaseStudy[] = [
     metrics: [
       { value: '99.6%', label: 'Latency Reduction', desc: 'p95 API response maintained under 42ms' },
       { value: '99.98%', label: 'SLA Availability', desc: 'High-throughput concurrency with zero row locks' },
-      { value: '100%', label: 'Tenant Isolation', desc: 'Physical schema separation per enterprise organization' },
-      { value: 'Zero', label: 'Data Leak Surface', desc: 'PostgreSQL search_path dynamically bound per request' },
+      { value: '100%', label: 'Tenant Isolation', desc: 'Kernel-enforced PostgreSQL Row-Level Security' },
+      { value: 'Zero', label: 'Data Leak Surface', desc: 'Transaction-local tenant session binding per request' },
     ],
     challenge:
-      'A single shared database schema with tenant_id filtering introduces severe data-leak risks and database row-lock contention during peak enterprise operations. Institutional clients (hospitals, university campuses, enterprise manufacturers) demand absolute physical isolation of sensitive ledgers, student records, and tax filings with zero downtime migrations.',
+      'Multi-tenant enterprise ERPs require absolute data isolation, sub-second query performance, and atomic migrations. Traditional schema-per-tenant approaches cause migration bottlenecks and connection pool bloat, while naive application-layer WHERE filters risk catastrophic data leaks if a filter is omitted.',
     solution:
-      'NeelStack engineered the DhruvaOS Foundation 9-component topology. We implemented dynamic schema-per-tenant isolation inside PostgreSQL 16, dynamically setting search_path based on verified JWT tokens. Heavy asynchronous tasks (GST e-invoicing generation, payroll runs, PDF exports) are offloaded to distributed Celery worker clusters backed by Redis 7, while Zitadel handles OIDC/SAML single sign-on.',
+      'NeelStack engineered the DhruvaOS Foundation 9-component topology using a unified Shared Schema with forced PostgreSQL 16 Row-Level Security (RLS). Database transactions dynamically set app.current_tenant_id from verified Zitadel OIDC JWTs. Heavy background tasks (report cards, payroll, fee receipt exports) are offloaded to Celery worker clusters backed by Redis 7.',
     architectureHighlights: [
-      'PostgreSQL 16 Schema-per-Tenant isolation with dynamic connection pool search_path routing',
+      'PostgreSQL 16 Shared Schema RLS isolation with dynamic session context routing',
       'FastAPI async core engine capable of processing 12,000 requests/second per container pod',
       'Stateless Zitadel enterprise identity provider with background in-memory JWKS cache',
       'Direct NIC GST e-Invoicing integration with automated digital signature verification',
@@ -199,7 +199,7 @@ export function CaseStudiesClient() {
           <div className="space-y-1">
             <span className="text-2xl sm:text-3xl font-heading font-black text-violet-600 dark:text-violet-400">Zero</span>
             <p className="text-xs font-bold text-foreground">Data Leak Vulnerability</p>
-            <p className="text-[11px] text-muted-foreground">Schema-per-tenant PostgreSQL isolation</p>
+            <p className="text-[11px] text-muted-foreground">Shared schema PostgreSQL RLS isolation</p>
           </div>
         </div>
 

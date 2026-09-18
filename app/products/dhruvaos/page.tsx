@@ -278,7 +278,7 @@ export default function DhruvaOSPage() {
               { title: 'Core API', tech: 'Python 3.13 FastAPI', desc: 'Multi-tenant data, finances, background provisioning, and academic logic.' },
               { title: 'AI Gateway', tech: 'FastAPI + pgvector RAG', desc: 'Semantic retrieval, SSE streaming, Gemini/OpenAI/Ollama model support.' },
               { title: 'Licensing API', tech: 'FastAPI + Razorpay/Stripe', desc: 'Subscription billing, GST e-invoicing, and quota enforcement.' },
-              { title: 'Database Vault', tech: 'PostgreSQL 16 + pgvector', desc: 'Schema-per-tenant isolation with automated Alembic migrations.' },
+              { title: 'Database Vault', tech: 'PostgreSQL 16 + pgvector', desc: 'Shared schema Row-Level Security (RLS) with atomic Alembic migrations.' },
               { title: 'Identity & Auth', tech: 'Zitadel OIDC/SAML', desc: 'Dynamic JWKS verification, WebAuthn FIDO2 passkeys, and RBAC.' },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border-2 border-border bg-card/60 backdrop-blur-sm p-4 space-y-1.5 tactile-card-3d hover:border-primary/50 transition-colors">

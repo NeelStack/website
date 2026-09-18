@@ -564,11 +564,11 @@ Try out **ToolVines** today at **[https://toolvines.com](https://toolvines.com)*
   {
     id: '9',
     slug: 'architecting-dhruvaos-foundation-schema-per-tenant-postgresql',
-    title: 'Architecting DhruvaOS Foundation: Schema-per-Tenant PostgreSQL & Autonomous AI Workflows',
+    title: 'Architecting DhruvaOS Foundation: Shared Schema PostgreSQL with Row-Level Security & Autonomous AI Workflows',
     excerpt:
-      'A deep dive into how we engineered DhruvaOS Foundation — dynamic PostgreSQL schemas per tenant, Zitadel OIDC JWKS token verification, Celery distributed tasks, and native AI RAG gateway ahead of the October 2 Demo Launch.',
+      'A deep dive into how we engineered DhruvaOS Foundation — unified shared schema PostgreSQL with kernel-level Row-Level Security (RLS), Zitadel OIDC JWKS token verification, Celery distributed tasks, and native AI RAG gateway ahead of the October 2 Demo Launch.',
     category: 'Architecture',
-    tags: ['DhruvaOS', 'PostgreSQL', 'Multi-Tenancy', 'FastAPI', 'System Design'],
+    tags: ['DhruvaOS', 'PostgreSQL', 'Multi-Tenancy', 'Row-Level Security', 'FastAPI', 'System Design'],
     author: { name: 'Shyam Chaurasiya', role: 'Founder & Engineering Lead' },
     publishedAt: 'August 14, 2026',
     readTime: '13 min read',
@@ -576,9 +576,9 @@ Try out **ToolVines** today at **[https://toolvines.com](https://toolvines.com)*
     featured: true,
     content: `Ahead of our **Public Demo Launch on October 2, 2026**, we are pulling back the curtain on the core architecture powering **DhruvaOS** — NeelStack's cloud operating system and multi-tenant enterprise ERP platform.
 
-When enterprises evaluate an ERP, two non-negotiable requirements dominate every RFP: **guaranteed data isolation** and **zero-compromise compliance**. A single shared schema with \`tenant_id\` filtering may suffice for simple SaaS apps, but for hospital networks, industrial manufacturing, and financial institutions handling sensitive payroll and tax logs, true physical separation is paramount.
+When educational institutions and enterprises evaluate an operating system, two non-negotiable requirements dominate: **absolute data isolation** and **sub-second database scalability**. While naive SaaS architectures rely solely on application-layer \`WHERE school_id = ...\` queries, enterprise platforms require kernel-level defense-in-depth where the database engine itself rejects cross-tenant access.
 
-Here is how we designed and implemented the **DhruvaOS Foundation** architecture to satisfy these enterprise demands.
+Here is how we designed and implemented the **DhruvaOS Foundation** architecture using a **Shared Database, Shared Schema with PostgreSQL Row-Level Security (RLS)**.
 
 ---
 
@@ -587,53 +587,64 @@ Here is how we designed and implemented the **DhruvaOS Foundation** architecture
 The DhruvaOS Foundation is engineered as a loosely coupled, cloud-native microservices cluster:
 
 1. **Web Portal (Next.js 16 App Router):** Enterprise dashboard with sub-second SSR, dynamic OKLCH theme switching, and real-time WebSocket telemetry.
-2. **API Gateway & Core Engine (FastAPI):** Asynchronous Python core managing authentication, schema routing, and API contracts.
+2. **API Gateway & Core Engine (FastAPI):** Asynchronous Python core managing authentication, tenant context injection, and API contracts.
 3. **Identity & Access Management (Zitadel OIDC/SAML):** Centralized identity provider with dynamic JWKS caching, multi-factor authentication, and RBAC/ABAC policies.
-4. **Primary Relational Store (PostgreSQL 16):** Dedicated PostgreSQL instance running dynamic **schema-per-tenant isolation** with Row-Level Security (RLS) as an additional defense-in-depth barrier.
+4. **Primary Relational Store (PostgreSQL 16):** Unified relational database running **Shared Schema multi-tenancy with forced Row-Level Security (RLS)** policies.
 5. **Caching & Ephemeral State (Redis 7):** Sub-millisecond distributed cache for session metadata, rate limiting, and real-time publish/subscribe event distribution.
-6. **Asynchronous Task Queue (Celery):** Distributed task execution cluster handling long-running background jobs (GST e-invoicing generation, payroll runs, PDF exports).
-7. **Vector RAG & AI Agent Gateway (Qdrant & LangGraph):** Autonomous cognitive agents executing semantic searches, ledger queries, and inventory forecasting over vector embeddings.
-8. **Object Storage (MinIO / S3 Object Lock):** Encrypted document storage supporting WORM (Write Once Read Many) immutability for statutory audit records.
-9. **Message Broker & Event Bus (RabbitMQ):** Reliable AMQP message broker orchestrating inter-service event streaming and saga transactions.
+6. **Asynchronous Task Queue (Celery):** Distributed task execution cluster handling long-running background jobs (report card generation, payroll runs, fee receipt exports).
+7. **Vector RAG & AI Agent Gateway (Qdrant & LangGraph):** Autonomous cognitive agents executing semantic searches, timetable constraint solving, and academic remediation workflows.
+8. **Object Storage (MinIO / S3 Object Lock):** Encrypted document storage supporting WORM (Write Once Read Many) immutability for statutory student records and audit trails.
+9. **Message Broker & Event Bus (RabbitMQ / NATS):** Reliable message broker orchestrating inter-service event streaming and asynchronous workflows.
 
 ---
 
-### Dynamic Schema-per-Tenant Isolation
+### Shared Schema Multi-Tenancy with Row-Level Security (RLS)
 
-Rather than forcing all enterprises into a monolithic schema or provisioning hundreds of costly cloud databases, DhruvaOS provisions a dedicated PostgreSQL schema for each enterprise tenant (e.g. \`tenant_corp_alpha\`, \`tenant_health_beta\`).
+Rather than maintaining hundreds of separate PostgreSQL schemas (which causes migration bottlenecks, high connection pool overhead, and catalog bloat), DhruvaOS implements a **Shared Database, Shared Schema** architecture. 
+
+Every tenant-owned entity includes a mandatory \`tenant_id\` column, and PostgreSQL **Row-Level Security (RLS)** is enabled and forced on all tables.
 
 \`\`\`sql
--- Automated schema provisioning on tenant onboarding
-CREATE SCHEMA IF NOT EXISTS tenant_corp_alpha;
+-- Enable and FORCE Row-Level Security on tenant-scoped tables
+ALTER TABLE students ENABLE ROW LEVEL SECURITY;
+ALTER TABLE students FORCE ROW LEVEL SECURITY;
 
--- Apply search path dynamically per database connection
-SET search_path TO tenant_corp_alpha, public;
+-- Unified RLS policy evaluated on every SELECT, UPDATE, DELETE, and INSERT
+CREATE POLICY tenant_isolation_policy ON students
+  FOR ALL
+  USING (tenant_id = NULLIF(current_setting('app.current_tenant_id', true), '')::uuid)
+  WITH CHECK (tenant_id = NULLIF(current_setting('app.current_tenant_id', true), '')::uuid);
 \`\`\`
 
-#### The Dynamic Connection Pool Manager
-In our FastAPI core, our database session manager dynamically configures the PostgreSQL \`search_path\` using tenant context extracted from the verified JWT:
+#### Context-Bound Database Session Injection
+In our FastAPI core, database connections dynamically set the transaction-local tenant context extracted from the verified JWT:
 
 \`\`\`python
 from fastapi import Request, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import text
 from core.database import async_session_factory
+from core.context import get_tenant_context
 
 async def get_tenant_db_session(request: Request) -> AsyncSession:
-    tenant_slug = request.state.tenant_slug
+    tenant_id = get_tenant_context()
     async with async_session_factory() as session:
-        # Set search_path dynamically for this connection checkout
+        # Bind transaction-local tenant context for PostgreSQL RLS
         await session.execute(
-            text(f"SET LOCAL search_path = tenant_{tenant_slug}, public")
+            text(f"SET LOCAL app.current_tenant_id = '{tenant_id}'")
         )
         try:
             yield session
-        finally:
+            await session.commit()
+        except Exception:
             await session.rollback()
+            raise
 \`\`\`
 
 This guarantees that:
-- Queries never accidentally touch other tenants' data, even if an engineer writes a query without a WHERE clause.
-- Database backups, schema exports, and individual tenant purges can be executed with zero downtime using native PostgreSQL commands (\`pg_dump --schema=tenant_corp_alpha\`).
+- **Zero Cross-Tenant Leakage:** Even if an engineer writes a raw query without a \`WHERE tenant_id = ...\` clause, the PostgreSQL engine automatically filters data to the current active tenant.
+- **Instant Tenant Provisioning (<100ms):** New schools are onboarded instantly via a simple transactional row insert, completely eliminating slow \`CREATE SCHEMA\` DDL locks.
+- **Atomic Migrations:** A single \`alembic upgrade head\` updates the entire database across all institutions simultaneously with zero downtime.
 
 ---
 
@@ -643,6 +654,7 @@ DhruvaOS integrates **Zitadel** as its enterprise identity provider. To achieve 
 
 \`\`\`python
 import httpx
+import time
 from jose import jwt
 
 class JWKSCache:
@@ -670,9 +682,9 @@ class JWKSCache:
 ### Native AI Agent Gateway
 
 Unlike legacy ERPs that bolted on generic AI chatbots, DhruvaOS features an embedded **LangGraph Multi-Agent Engine**:
-- **Financial Audit Agent:** Scans purchase orders against vendor GSTIN credentials and flags duplicate or fraudulent invoices before payout.
-- **Inventory Predictor Agent:** Analyzes 180-day consumption trends and triggers automated purchase orders when stock levels hit critical reorder thresholds.
-- **Voice / Natural Language Interface:** Allows warehouse managers to query inventory and register goods receipts directly through voice commands.
+- **Timetable Constraint Solver Agent:** Solves NP-hard multi-grade faculty scheduling constraints in under 12 seconds with zero room or teacher collisions.
+- **Biometric Attendance Intelligence:** Automatically detects pattern anomalies and triggers WhatsApp / SMS alerts to parents within minutes of roll call.
+- **Academic Remediation Engine:** Analyzes exam performance trends and drafts personalized study roadmaps for students.
 
 ---
 
@@ -680,7 +692,7 @@ Unlike legacy ERPs that bolted on generic AI chatbots, DhruvaOS features an embe
 
 With stress tests demonstrating sub-30ms p95 API latency across 50,000 simulated concurrent tenants, DhruvaOS is on track for its public demo debut on **October 2, 2026**.
 
-To request an enterprise early-access preview or schedule a private architecture walkthrough with our engineering leadership, visit our [DhruvaOS Product Page](/products/dhruvaos) or contact our team at **/contact**.`,
+To request an institutional early-access preview or schedule a private architecture walkthrough with our engineering leadership, visit our [DhruvaOS Product Page](/products/dhruvaos) or contact our team at **/contact**.`,
   },
   {
     id: '10',
@@ -1257,7 +1269,7 @@ NeelStack delivers five primary engineering capabilities for startups, mid-marke
 From customer support bots handling 50,000+ daily tickets to autonomous procurement agents, we build cognitive AI workflows integrated with Claude 3.5 Sonnet, Gemini 1.5/2.0 Pro, and Llama 3.3.
 
 #### B. Custom Enterprise Software & Schema-Isolated ERP
-Tired of generic off-the-shelf software that does not fit your operational workflows? We architect bespoke ERP, CRM, and supply chain management platforms with dedicated PostgreSQL schema-per-tenant isolation, role-based access control (RBAC), and automated GST compliance.
+Tired of generic off-the-shelf software that does not fit your operational workflows? We architect bespoke ERP, CRM, and supply chain management platforms with enterprise PostgreSQL Row-Level Security (RLS) multi-tenancy isolation, role-based access control (RBAC), and automated GST compliance.
 
 #### C. High-Speed Web Applications & WebAssembly (WASM)
 Sub-second, SEO-optimized web applications engineered on **Next.js 16 App Router**, React 19, and Tailwind CSS v4. For compute-heavy web tools, we compile zero-latency **Rust WebAssembly (WASM)** modules that execute directly in the client browser (the identical architecture powering [ToolVines.com](https://toolvines.com)).
@@ -1337,7 +1349,7 @@ To solve these systemic limitations, we engineered a layered enterprise architec
 \`\`\`
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   Layer 4: Organizational Memory Hub                  │
-│       (PostgreSQL Schema-per-Tenant + Qdrant Vectors + Neo4j Graph)     │
+│       (PostgreSQL Shared Schema RLS + Qdrant Vectors + Neo4j Graph)    │
 ├────────────────────────────────────────────────────────────────────────┤
 │             Layer 3: Multi-Agent Supervisor State-Graph               │
 │    (LangGraph Router • Goal Decomposition • Delegation • Synthesis)    │
@@ -1376,7 +1388,7 @@ class LedgerDisbursementSchema(BaseModel):
 @mcp.tool(name="execute_ledger_journal_entry")
 async def execute_ledger_journal_entry(data: LedgerDisbursementSchema) -> dict[str, Any]:
     """
-    Executes an immutable double-entry journal voucher in the tenant's isolated schema.
+    Executes an immutable double-entry journal voucher in the tenant's isolated context.
     Guarded by AST schema checks and WORM audit logging.
     """
     async with get_tenant_db_session(data.tenant_id) as session:
@@ -1477,7 +1489,7 @@ An AI workforce is only as capable as its memory architecture. We structure orga
 |---|---|---|
 | **Working Memory** | Redis 7 + LangGraph Checkpointers | Active multi-step reasoning state and intermediate task context |
 | **Episodic Memory** | Qdrant Vector DB (PgVector / Cosine) | Historical decisions, past vendor communications, and past problem resolutions |
-| **Semantic Entity Graph** | PostgreSQL Schema-per-Tenant + Neo4j | Organizational knowledge graph: employees, department budgets, vendor relationships, and compliance rules |
+| **Semantic Entity Graph** | PostgreSQL Shared Schema RLS + Neo4j | Organizational knowledge graph: employees, department budgets, vendor relationships, and compliance rules |
 
 ---
 
@@ -1494,7 +1506,7 @@ We apply this exact multi-agent workforce infrastructure in our proprietary prod
 Building an autonomous AI workforce does not require abandoning existing ERPs or infrastructure. The path to agentic autonomy follows a clear 3-step evolution:
 
 1. **Expose Universal APIs via MCP:** Wrap internal databases, CRM pipelines, and microservices in clean Model Context Protocol servers with strict Pydantic schemas.
-2. **Implement Schema Isolation:** Transition multi-tenant architectures to PostgreSQL schema-per-tenant separation to prevent cross-tenant data leakage during agent retrieval.
+2. **Implement Multi-Tenant Row-Level Security (RLS):** Enforce strict database-level Row-Level Security policies to prevent cross-tenant data leakage during agent retrieval.
 3. **Deploy Supervisor-Worker Graphs:** Start with narrow, high-value supervisory workflows (e.g. automated invoice reconciliation or regulatory compliance audits) with strict Human-in-the-Loop thresholds before expanding autonomous scope.
 
 ---

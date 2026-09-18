@@ -264,7 +264,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const relatedPosts = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 2)
 
   return (
-    <MarketingLayout className="pt-24 pb-16">
+    <MarketingLayout className="pt-20 pb-12 sm:pt-22 sm:pb-14">
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -299,7 +299,7 @@ export default async function BlogDetailPage({ params }: PageProps) {
       <Container size="md" className="max-w-4xl">
         {/* Breadcrumb Navigation */}
         <nav
-          className="mb-8 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground"
+          className="mb-4 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground"
           aria-label="Breadcrumb"
         >
           <Link href="/" className="hover:text-primary transition-colors">

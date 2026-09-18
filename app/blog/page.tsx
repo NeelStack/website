@@ -51,7 +51,7 @@ export default function BlogPage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Blog' }]}
       />
 
-      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="blog-posts-heading">
+      <section className="pt-4 pb-10 sm:pt-5 sm:pb-12" aria-labelledby="blog-posts-heading">
         <Container>
           <h2 id="blog-posts-heading" className="sr-only">Blog posts</h2>
 

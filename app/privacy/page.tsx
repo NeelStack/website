@@ -74,12 +74,12 @@ export default function PrivacyPolicyPage() {
             </div>
 
             <div>
-              <h2 className="font-heading text-xl font-semibold text-foreground mb-3">5. Cookies & Tracking Banners</h2>
+              <h2 className="font-heading text-xl font-semibold text-foreground mb-3">5. Cookies &amp; Local Storage</h2>
               <p>
-                We believe in keeping your browsing experience fast, clean, and private. <strong className="text-foreground">We do not use advertising tracking cookies</strong>, which is why you will not see an annoying cookie consent banner on our website.
+                We believe in keeping your browsing experience fast, transparent, and private. <strong className="text-foreground">We do not use third-party advertising tracking cookies</strong>.
               </p>
               <p className="mt-3">
-                We use privacy-friendly web analytics tools (such as Vercel Analytics in a cookie-less configuration) to assess site performance and traffic patterns. We only use strictly necessary functional local storage or state to keep forms and settings working.
+                We use strictly necessary cookies and local storage to preserve your essential preferences (such as light/dark mode and active form states) and privacy-first web analytics (such as Vercel Analytics) to monitor platform health and performance. You can accept or adjust your cookie preferences at any time via the consent controls on our website.
               </p>
             </div>
 

@@ -131,9 +131,9 @@ export default function CareersPage() {
               share your GitHub profile, and describe interesting technical challenges you enjoy solving.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <span className="text-sm font-mono text-primary font-semibold">
+              <Link href="mailto:contact@neelstack.com" className="text-sm font-mono text-primary font-semibold hover:underline">
                 contact@neelstack.com
-              </span>
+              </Link>
             </div>
           </div>
         </Container>

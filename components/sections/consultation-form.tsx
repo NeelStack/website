@@ -34,7 +34,9 @@ function ConsultationFormInner() {
 
         let initialTopic = topicParam || subjectParam || ''
         if (!initialTopic && serviceParam) {
-          if (serviceParam.includes('ai') || serviceParam.includes('agent')) {
+          if (serviceParam.includes('dhruva')) {
+            initialTopic = 'DhruvaOS Institutional School Operating System Architecture & Pilot Onboarding'
+          } else if (serviceParam.includes('ai') || serviceParam.includes('agent')) {
             initialTopic = 'AI Application Development & Autonomous Agent Architecture Strategy'
           } else if (serviceParam.includes('web') || serviceParam.includes('saas')) {
             initialTopic = 'Modern Web Applications & Multi-Tenant SaaS System Architecture'
@@ -361,16 +363,24 @@ function ConsultationFormInner() {
           </div>
         )}
 
-        <Button type="submit" variant="3d-yellow" size="lg" className="w-full h-12 rounded-xl text-sm font-extrabold" disabled={submitting}>
-          {submitting ? (
-            <>
-              <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-              Requesting...
-            </>
-          ) : (
-            'Request Free Consultation Call'
-          )}
-        </Button>
+        <div className="flex flex-col sm:flex-row items-center justify-center pt-2">
+          <Button
+            type="submit"
+            variant="3d-yellow"
+            size="lg"
+            className="w-full sm:w-auto min-w-[260px] h-12 px-8 rounded-xl text-sm sm:text-base font-extrabold shadow-md flex items-center justify-center"
+            disabled={submitting}
+          >
+            {submitting ? (
+              <>
+                <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                Requesting...
+              </>
+            ) : (
+              'Request Free Consultation Call'
+            )}
+          </Button>
+        </div>
 
         <p className="text-[11px] text-muted-foreground text-center mt-3 leading-relaxed">
           By submitting this form, you consent to our processing of your details according to our{' '}

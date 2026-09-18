@@ -40,7 +40,7 @@ const PIPELINE_STEPS = [
     telemetryStatus: 'TOPOLOGY CALIBRATED · 45MS LATENCY ENVELOPE',
     specs: [
       { label: 'Target Latency', value: '< 45ms Global Edge', icon: Zap },
-      { label: 'Isolation Mode', value: 'Schema-per-Tenant', icon: Lock },
+      { label: 'Isolation Mode', value: 'Shared Schema RLS', icon: Lock },
       { label: 'Encryption', value: 'AES-256 & TLS 1.3', icon: ShieldCheck },
       { label: 'Stack Baseline', value: 'Next.js 16 + FastAPI', icon: Layers },
     ],

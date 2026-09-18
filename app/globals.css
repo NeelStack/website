@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark, .dark *));
 
 @theme inline {
-  --font-sans: var(--font-inter), 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-space-grotesk), var(--font-jakarta), 'Space Grotesk Fallback', ui-sans-serif, sans-serif;
-  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback', ui-monospace, monospace;
+  --font-sans: var(--font-geist), var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: var(--font-geist), var(--font-jakarta), var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Spacing scale & Tokens */
   --color-background: var(--background);
@@ -1351,5 +1351,47 @@
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   letter-spacing: -0.02em;
 }
+
+/* ============================================================
+   Top Route Navigation Progress Bar (GPU Accelerated)
+   ============================================================ */
+.tv-route-progress-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  z-index: 9999999;
+  pointer-events: none;
+  overflow: hidden;
+  filter: drop-shadow(0 1px 8px rgba(6, 182, 212, 0.7));
+}
+
+.tv-route-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 25%, #6366f1 55%, #a855f7 80%, #06b6d4 100%);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.95), 0 0 8px rgba(99, 102, 241, 0.9);
+  will-change: transform;
+}
+
+.tv-route-progress-peg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), #ffffff);
+  box-shadow: 0 0 20px 2px #06b6d4, 0 0 10px 1px #ffffff;
+  border-radius: 9999px;
+  opacity: 1;
+  transform: rotate(2deg) translateY(-2px);
+}
+
+
 
 

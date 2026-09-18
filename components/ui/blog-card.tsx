@@ -41,34 +41,37 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
     return (
       <article
         className={cn(
-          'group relative overflow-hidden rounded-3xl border-2 border-border/90 bg-card shadow-md tactile-card-3d',
-          'hover:border-primary/60 transition-all duration-200',
+          'group relative overflow-hidden rounded-3xl border-2 border-border/90 bg-card p-6 sm:p-7 shadow-md tactile-card-3d',
+          'hover:border-primary/60 transition-all duration-200 bg-gradient-to-br from-primary/[0.04] via-card to-accent/[0.04]',
           className
         )}
       >
-        <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-primary/15 via-card to-accent/15 dark:from-primary/10 dark:to-accent/10 border-b border-border/50">
-          <div className="absolute inset-0 flex items-center justify-center bg-grid-pattern opacity-40">
-            <span
-              className="text-4xl font-heading font-black text-foreground/5 select-none"
-              aria-hidden="true"
-            >
-              {post.category}
-            </span>
+        <div className="flex flex-col space-y-3 sm:space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-0.5">
+            <div className="flex items-center gap-2">
+              <span className="text-[10.5px] font-mono font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20">
+                ✦ Featured Publication
+              </span>
+              <Tag variant="primary">{post.category}</Tag>
+            </div>
+            <div className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground">
+              <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>{post.readTime}</span>
+              <span>·</span>
+              <span>{post.publishedAt}</span>
+            </div>
           </div>
-          <div className="absolute top-4 left-4">
-            <Tag variant="primary">{post.category}</Tag>
-          </div>
-        </div>
 
-        <div className="p-6">
-          <h3 className="font-heading text-xl font-extrabold text-foreground mb-3 group-hover:text-primary transition-colors text-balance leading-tight">
+          <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-foreground group-hover:text-primary transition-colors text-balance leading-tight">
             {post.title}
           </h3>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
+
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3">
             {post.excerpt}
           </p>
+
           <div className="flex items-center justify-between border-t border-border/50 pt-4 mt-2">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <div
                 className="h-8 w-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary"
                 aria-hidden="true"
@@ -77,19 +80,16 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
               </div>
               <div>
                 <p className="text-xs font-bold text-foreground leading-none">{post.author.name}</p>
-                <div className="flex items-center gap-1 text-[10px] text-muted-foreground mt-0.5 font-mono">
-                  <Clock className="h-3 w-3" aria-hidden="true" />
-                  {post.readTime}
-                </div>
+                <p className="text-[10.5px] text-muted-foreground mt-0.5 font-mono">{post.author.role}</p>
               </div>
             </div>
             <Link
               href={post.href}
-              className="inline-flex items-center gap-1 text-xs font-extrabold text-primary hover:gap-2 transition-all duration-200 font-heading"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-primary hover:gap-2 transition-all duration-200 font-heading"
               aria-label={`Read ${post.title}`}
             >
               Read Article
-              <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -100,39 +100,50 @@ export function BlogCard({ post, className, variant = 'default' }: BlogCardProps
   return (
     <article
       className={cn(
-        'group flex flex-col justify-between rounded-3xl border-2 border-border/90 bg-card overflow-hidden shadow-sm tactile-card-3d',
+        'group flex flex-col justify-between rounded-3xl border-2 border-border/90 bg-card p-5 sm:p-6 shadow-sm tactile-card-3d',
         'hover:border-primary/60 transition-all duration-200',
         className
       )}
     >
-      {/* Decorative header gradient with abstract file layout */}
-      <div className="relative h-44 w-full overflow-hidden bg-gradient-to-br from-primary/15 via-card to-accent/15 dark:from-primary/10 dark:to-accent/10 flex items-center justify-center border-b border-border/60">
-        <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden="true" />
-        <div className="absolute top-4 left-4">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-full border border-primary/20">
+      <div className="flex flex-col flex-1 space-y-3">
+        {/* Top category & timing strip */}
+        <div className="flex items-center justify-between gap-2 pb-1">
+          <span className="text-[10.5px] font-mono font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-0.5 rounded-full border border-primary/20">
             {post.category}
           </span>
+          <div className="flex items-center gap-1 text-[11px] font-mono text-muted-foreground font-medium">
+            <Clock className="h-3 w-3" aria-hidden="true" />
+            <span>{post.readTime}</span>
+          </div>
         </div>
-        <FileText className="h-10 w-10 text-primary/30 group-hover:scale-110 transition-transform duration-300" />
-      </div>
 
-      <div className="flex flex-col flex-1 p-5 sm:p-6 space-y-3">
+        {/* Title */}
         <h3 className="font-heading text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors text-balance leading-snug">
           {post.title}
         </h3>
-        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+
+        {/* Excerpt */}
+        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
           {post.excerpt}
         </p>
+
+        {/* Footer */}
         <div className="flex items-center justify-between mt-auto border-t border-border/50 pt-4">
-          <div className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground font-medium">
-            <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>{post.readTime}</span>
-            <span>·</span>
-            <span>{post.publishedAt}</span>
+          <div className="flex items-center gap-2">
+            <div
+              className="h-7 w-7 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs font-bold text-primary"
+              aria-hidden="true"
+            >
+              {post.author.name.charAt(0)}
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-foreground leading-none">{post.author.name}</p>
+              <p className="text-[10px] text-muted-foreground mt-0.5 font-mono">{post.publishedAt}</p>
+            </div>
           </div>
           <Link
             href={post.href}
-            className="text-xs font-extrabold font-heading text-primary inline-flex items-center gap-1 hover:gap-2 transition-all duration-200"
+            className="text-xs font-extrabold font-heading text-primary inline-flex items-center gap-1 hover:gap-1.5 transition-all duration-200"
             aria-label={`Read ${post.title}`}
           >
             Read Article

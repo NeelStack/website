@@ -58,6 +58,7 @@ describe('Contact Form Validation', () => {
     })
     assert.equal(result.isValid, false)
     assert.ok(result.errors.institutionName)
+    assert.ok(result.errors.city)
     assert.ok(result.errors.phone)
   })
 
@@ -65,10 +66,11 @@ describe('Contact Form Validation', () => {
     const result = validateContactForm({
       mode: 'dhruvaos',
       name: 'Principal Sharma',
-      email: 'sharma@school.edu',
+      email: 'sharma@school.edu.in',
       phone: '+91 98765 43210',
       institutionName: 'Delhi Heritage Academy',
-      message: 'Interested in full Unified EdOS migration.',
+      city: 'New Delhi, Delhi NCR',
+      message: 'Interested in full Unified EdOS migration from legacy desktop ERP.',
     })
     assert.equal(result.isValid, true)
     assert.deepEqual(result.errors, {})

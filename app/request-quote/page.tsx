@@ -23,18 +23,7 @@ export default function RequestQuotePage() {
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Request a Quote' }]}
       />
 
-      {/* Quick Jump Action on Mobile / Small Screens */}
-      <div className="flex justify-center -mt-6 mb-8 lg:hidden">
-        <a
-          href="#quote-form"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-violet-500/40 bg-card/80 dark:bg-card/40 backdrop-blur-md text-xs font-semibold text-foreground hover:border-violet-500 hover:text-violet-400 transition-all shadow-sm"
-        >
-          <span>Fill Quote Brief Below</span>
-          <span className="text-violet-400 font-bold">↓</span>
-        </a>
-      </div>
-
-      <section id="form" className="pt-2 pb-8 md:pt-2 md:pb-12 scroll-mt-24" aria-labelledby="quote-form-heading">
+      <section id="form" className="pt-2 pb-8 md:pt-4 md:pb-12 scroll-mt-24" aria-labelledby="quote-form-heading">
         <Container>
           <div className="max-w-3xl mx-auto">
             <h2 id="quote-form-heading" className="sr-only">

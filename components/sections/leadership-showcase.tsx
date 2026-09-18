@@ -151,7 +151,7 @@ export const ENGINEERING_PILLARS = [
   },
   {
     title: 'Modern Full-Stack Engineering',
-    desc: 'Next.js 16 App Router, React 19, Python FastAPI, PostgreSQL 16 schema-per-tenant isolation, and Docker containerization.',
+    desc: 'Next.js 16 App Router, React 19, Python FastAPI, PostgreSQL 16 Row-Level Security (RLS) multi-tenancy, and Docker containerization.',
     icon: Cpu,
   },
   {

@@ -1,31 +1,30 @@
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { HeroSection } from '@/components/sections/hero-section'
-import { TelemetryProofBar } from '@/components/sections/telemetry-proof-bar'
-import { ThreeEnginesBento } from '@/components/sections/three-engines-bento'
-import { ArchitecturalProcessTrack } from '@/components/sections/architectural-process-track'
-import { AiStrategySection } from '@/components/sections/ai-strategy-section'
-import { CapabilitiesSection } from '@/components/sections/capabilities-section'
-import { TechnologySection } from '@/components/sections/technology-section'
-import { CorporateGovernanceCard } from '@/components/sections/corporate-governance-card'
+import { TrustStripSection } from '@/components/sections/telemetry-proof-bar'
+import { ServicesOverviewSection } from '@/components/sections/services-overview-section'
+import { BusinessProblemsSection } from '@/components/sections/business-problems-section'
+import { IndustriesOverviewSection } from '@/components/sections/industries-overview-section'
 import { WhyUsSection } from '@/components/sections/why-us-section'
+import { DhruvaOSShowcaseSection } from '@/components/sections/dhruvaos-showcase-section'
+import { TechnologySection } from '@/components/sections/technology-section'
 import { FreeConsultationCTA } from '@/components/sections/free-consultation-cta'
 
 export const metadata: Metadata = {
-  title: 'NeelStack Solutions | Frontier Multi-Agent Intelligence & Enterprise Systems',
+  title: 'NeelStack Solutions | Software Engineering & AI Services for Modern Businesses',
   description:
-    'Architecting autonomous systems and scalable software for the AI-native era. Powering the Three Engines: NeelStack Services, DhruvaOS, and ToolVines.',
+    'NeelStack designs, builds and modernizes custom software, AI-powered systems and digital products for businesses. From enterprise applications to SaaS products and intelligent automation.',
   keywords: [
     'NeelStack Solutions',
-    'Frontier AI engineering',
-    'Multi-agent intelligence',
-    'Agentic AI India',
-    'ToolVines',
-    'DhruvaOS school operating system',
-    'AI Company OS',
+    'Custom software development',
+    'AI development services',
+    'Software engineering company India',
     'Enterprise software development',
-    'Model Context Protocol',
-    'LangGraph multi-agent workflows',
+    'SaaS product engineering',
+    'DhruvaOS school operating system',
+    'Cloud and DevOps services',
+    'Legacy modernization',
+    'AI agent development',
   ],
   alternates: {
     canonical: '/',
@@ -35,34 +34,31 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <MarketingLayout>
-      {/* 1. Hero Section: Frontier AI Engineering */}
+      {/* 1. Hero: Kinetic capabilities & AI systems headline */}
       <HeroSection />
 
-      {/* 2. High-Trust Metrics & Telemetry Bar */}
-      <TelemetryProofBar />
+      {/* 2. Trust Strip: Capabilities + registrations */}
+      <TrustStripSection />
 
-      {/* 3. The Three Engines Tactile Bento Grid */}
-      <ThreeEnginesBento />
+      {/* 4. Services: 6 business-oriented service cards */}
+      <ServicesOverviewSection />
 
-      {/* 4. Architectural Process Track ("How We Build") */}
-      <ArchitecturalProcessTrack />
+      {/* 4. Business Problems: Interactive Challenge-Solution Architecture */}
+      <BusinessProblemsSection />
 
-      {/* 5. AI Agent Strategy & Autonomous Workforce Platform */}
-      <AiStrategySection />
+      {/* 5. Industries: 6 balanced domain verticals */}
+      <IndustriesOverviewSection />
 
-      {/* 6. Core Engineering & Technical Capabilities */}
-      <CapabilitiesSection />
-
-      {/* 7. Frontier Technology Stack */}
-      <TechnologySection />
-
-      {/* 8. Corporate Governance & Transparency Card */}
-      <CorporateGovernanceCard />
-
-      {/* 9. Why NeelStack & Engineering Discipline */}
+      {/* 6. Why NeelStack: 3 High-Impact Value Pillars */}
       <WhyUsSection />
 
-      {/* 10. Contact / Request Architecture Proposal CTA */}
+      {/* 7. Products & Platforms: DhruvaOS Flagship Showcase + ToolVines Companion Bar */}
+      <DhruvaOSShowcaseSection />
+
+      {/* 8. Technology: Connected 4-tier technology architecture */}
+      <TechnologySection />
+
+      {/* 9. CTA: Outcome-driven final conversion banner */}
       <FreeConsultationCTA />
     </MarketingLayout>
   )
