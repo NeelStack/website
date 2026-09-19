@@ -157,6 +157,7 @@ export function HeroSection() {
   const [direction, setDirection] = useState<number>(1)
   const [isPaused, setIsPaused] = useState(false)
   const touchStartXRef = useRef<number | null>(null)
+  const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const goToNext = useCallback(() => {
     setDirection(1)
@@ -168,7 +169,18 @@ export function HeroSection() {
     setCurrentIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
   }, [])
 
-  // Auto-rotation timer that cleanly resets and pauses on hover
+  const goToSlide = useCallback(
+    (targetIdx: number) => {
+      if (targetIdx === currentIndex) return
+      // When wrapping from 4 to 0, or moving forward, keep forward direction
+      const newDirection = targetIdx > currentIndex || (currentIndex === HERO_SLIDES.length - 1 && targetIdx === 0) ? 1 : -1
+      setDirection(newDirection)
+      setCurrentIndex(targetIdx)
+    },
+    [currentIndex]
+  )
+
+  // Auto-rotation timer: continuously cycles 1 -> 2 -> 3 -> 4 -> 5 -> 1 -> 2 -> 3 -> 4 -> 5...
   useEffect(() => {
     if (isPaused) return
 
@@ -191,22 +203,29 @@ export function HeroSection() {
 
   // Mobile Touch swipe support
   const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true)
     touchStartXRef.current = e.touches[0].clientX
   }
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartXRef.current === null) return
-    const touchEndX = e.changedTouches[0].clientX
-    const diff = touchStartXRef.current - touchEndX
+    if (touchStartXRef.current !== null) {
+      const touchEndX = e.changedTouches[0].clientX
+      const diff = touchStartXRef.current - touchEndX
 
-    if (Math.abs(diff) > 35) {
-      if (diff > 0) {
-        goToNext()
-      } else {
-        goToPrev()
+      if (Math.abs(diff) > 35) {
+        if (diff > 0) {
+          goToNext()
+        } else {
+          goToPrev()
+        }
       }
+      touchStartXRef.current = null
     }
-    touchStartXRef.current = null
+
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current)
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false)
+    }, 2000)
   }
 
   const currentSlide = HERO_SLIDES[currentIndex]
@@ -215,8 +234,6 @@ export function HeroSection() {
   return (
     <HeroSpotlight
       className="relative overflow-hidden pt-20 pb-6 sm:pt-24 sm:pb-8 md:pt-26 md:pb-8 lg:pt-26 lg:pb-10 xl:pt-28 xl:pb-14"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -241,6 +258,8 @@ export function HeroSection() {
         <button
           type="button"
           onClick={goToPrev}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           aria-label="Previous capability slide"
           className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
@@ -251,6 +270,8 @@ export function HeroSection() {
         <button
           type="button"
           onClick={goToNext}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           aria-label="Next capability slide"
           className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
@@ -306,26 +327,24 @@ export function HeroSection() {
             </AnimatePresence>
           </div>
 
-          {/* Slide Pagination Dots for Mobile (With Generous Touch Target) */}
-          <div className="flex items-center justify-center gap-1 select-none sm:hidden my-1">
+          {/* Slide Pagination Dots (Clean Minimalist Indicator with Infinite Shift) */}
+          <div className="flex items-center justify-center gap-1.5 select-none my-1">
             {HERO_SLIDES.map((slide, idx) => {
               const isActive = idx === currentIndex
               return (
                 <button
                   key={slide.id}
                   type="button"
-                  onClick={() => {
-                    setDirection(idx > currentIndex ? 1 : -1)
-                    setCurrentIndex(idx)
-                  }}
+                  onClick={() => goToSlide(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className="p-2 cursor-pointer flex items-center justify-center focus-visible:outline-none"
+                  className="p-1.5 cursor-pointer flex items-center justify-center focus-visible:outline-none"
                 >
                   <span
-                    className={`h-2 rounded-full transition-all duration-300 block ${isActive
+                    className={`h-2 rounded-full transition-all duration-300 block ${
+                      isActive
                         ? 'w-6 bg-primary shadow-xs'
-                        : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
-                      }`}
+                        : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-500'
+                    }`}
                   />
                 </button>
               )

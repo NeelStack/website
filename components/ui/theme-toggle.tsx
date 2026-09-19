@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Moon, Sun } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -22,21 +22,40 @@ export function ThemeToggle({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false)
   const [isDark, setIsDark] = useState(false)
 
-  // Sync state with DOM class
-  const syncWithDOM = useCallback(() => {
-    if (typeof document !== 'undefined') {
-      const isDarkTheme = document.documentElement.classList.contains('dark')
-      setIsDark(isDarkTheme)
-    }
-  }, [])
-
   useEffect(() => {
-    // Read DOM theme immediately before marking mounted
-    const isDarkTheme = document.documentElement.classList.contains('dark')
-    setIsDark(isDarkTheme)
+    // Read DOM theme immediately
+    const checkDomTheme = () => {
+      if (typeof document !== 'undefined') {
+        const isDarkTheme = document.documentElement.classList.contains('dark')
+        setIsDark(isDarkTheme)
+      }
+    }
+
+    checkDomTheme()
     setMounted(true)
 
-    // Listen for cross-tab theme changes
+    // 1. MutationObserver: Watch <html> class attribute changes in real-time
+    // Guarantees all ThemeToggle instances (desktop, mobile header, mobile drawer) stay in sync
+    const observer = new MutationObserver(() => {
+      checkDomTheme()
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    // 2. Intra-window custom event: Instant simultaneous updates across all mounted toggles
+    const handleCustomThemeChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ isDark: boolean }>
+      if (customEvent.detail && typeof customEvent.detail.isDark === 'boolean') {
+        setIsDark(customEvent.detail.isDark)
+      } else {
+        checkDomTheme()
+      }
+    }
+    window.addEventListener('neelstack-theme-change', handleCustomThemeChange)
+
+    // 3. Storage event: Cross-tab theme synchronization
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === 'theme') {
         const newTheme = e.newValue
@@ -51,8 +70,9 @@ export function ThemeToggle({ className }: { className?: string }) {
         }
       }
     }
+    window.addEventListener('storage', handleStorageChange)
 
-    // Listen for OS system theme changes (if user hasn't explicitly overridden)
+    // 4. OS system theme changes (if user hasn't explicitly overridden)
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleSystemThemeChange = (e: MediaQueryListEvent) => {
       try {
@@ -72,37 +92,46 @@ export function ThemeToggle({ className }: { className?: string }) {
         // Safe fallback for restricted storage environments
       }
     }
-
-    window.addEventListener('storage', handleStorageChange)
     mediaQuery.addEventListener('change', handleSystemThemeChange)
 
     return () => {
+      observer.disconnect()
+      window.removeEventListener('neelstack-theme-change', handleCustomThemeChange)
       window.removeEventListener('storage', handleStorageChange)
       mediaQuery.removeEventListener('change', handleSystemThemeChange)
     }
-  }, [syncWithDOM])
+  }, [])
 
   const toggleTheme = () => {
-    const nextDark = !isDark
-    setIsDark(nextDark)
+    // Determine the next state based on the ACTUAL current DOM class, never stale React state
+    const currentIsDark = document.documentElement.classList.contains('dark')
+    const nextDark = !currentIsDark
 
+    // Apply to DOM class immediately
     if (nextDark) {
       document.documentElement.classList.add('dark')
       document.documentElement.classList.remove('light')
-      try {
-        localStorage.setItem('theme', 'dark')
-      } catch {
-        // Safe fallback for restricted storage environments
-      }
     } else {
       document.documentElement.classList.remove('dark')
       document.documentElement.classList.add('light')
-      try {
-        localStorage.setItem('theme', 'light')
-      } catch {
-        // Safe fallback for restricted storage environments
-      }
     }
+
+    // Persist to localStorage
+    try {
+      localStorage.setItem('theme', nextDark ? 'dark' : 'light')
+    } catch {
+      // Safe fallback for restricted storage environments
+    }
+
+    // Update local state immediately
+    setIsDark(nextDark)
+
+    // Broadcast event so all other ThemeToggle instances on the page update simultaneously
+    window.dispatchEvent(
+      new CustomEvent('neelstack-theme-change', {
+        detail: { isDark: nextDark },
+      })
+    )
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {

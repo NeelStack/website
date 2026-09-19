@@ -7,11 +7,11 @@ import { CopyEmailButton } from '@/components/ui/copy-email-button'
 import { CheckCircle2, AlertCircle, RefreshCw, School, Sparkles, Building2, Layers } from 'lucide-react'
 
 const WHAT_DO_YOU_NEED_OPTIONS = [
+  'Custom Software & ERP Development',
+  'Legacy Modernization & Architecture Upgrade',
+  'Static Website & High-Speed Web Development',
   'DhruvaOS School Operating System',
   'AI Systems & Autonomous Agents',
-  'Custom Software & Product Engineering',
-  'Cloud SaaS & Modern Web Apps',
-  'Technical Partnership & Advisory',
   'Other Inquiries',
 ]
 
@@ -86,17 +86,19 @@ function ContactFormInner() {
       if (serviceParam) {
         if (serviceParam.includes('ai') || serviceParam.includes('agent') || serviceParam.includes('automation')) {
           nextNeed = 'AI Systems & Autonomous Agents'
-        } else if (serviceParam.includes('web') || serviceParam.includes('performance') || serviceParam.includes('saas')) {
-          nextNeed = 'Cloud SaaS & Modern Web Apps'
-        } else if (serviceParam.includes('custom') || serviceParam.includes('backend') || serviceParam.includes('api') || serviceParam.includes('cloud')) {
-          nextNeed = 'Custom Software & Product Engineering'
-        } else if (serviceParam.includes('consulting') || serviceParam.includes('design')) {
-          nextNeed = 'Technical Partnership & Advisory'
+        } else if (serviceParam.includes('legacy') || serviceParam.includes('upgrade') || serviceParam.includes('moderniz')) {
+          nextNeed = 'Legacy Modernization & Architecture Upgrade'
+        } else if (serviceParam.includes('static') || serviceParam.includes('fast-web') || serviceParam.includes('landing')) {
+          nextNeed = 'Static Website & High-Speed Web Development'
+        } else if (serviceParam.includes('dhruva') || serviceParam.includes('school')) {
+          nextNeed = 'DhruvaOS School Operating System'
+        } else {
+          nextNeed = 'Custom Software & ERP Development'
         }
       }
 
       if (inquiryParam === 'training') {
-        nextNeed = 'Technical Partnership & Advisory'
+        nextNeed = 'Custom Software & ERP Development'
         if (!nextMessage) {
           nextMessage = 'Inquiry regarding Enterprise AI & Architecture Engineering Training Programs.'
         }
@@ -336,23 +338,6 @@ function ContactFormInner() {
         <button
           type="button"
           onClick={() => {
-            setMode('dhruvaos')
-            setError(null)
-            focusFirstInput()
-          }}
-          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-            mode === 'dhruvaos'
-              ? 'bg-primary text-primary-foreground shadow-sm'
-              : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
-          }`}
-        >
-          <School className="h-3.5 w-3.5" />
-          <span>✦ DhruvaOS School Onboarding</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
             setMode('general')
             setError(null)
             focusFirstInput()
@@ -365,6 +350,23 @@ function ContactFormInner() {
         >
           <Building2 className="h-3.5 w-3.5" />
           <span>General Software &amp; AI</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            setMode('dhruvaos')
+            setError(null)
+            focusFirstInput()
+          }}
+          className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+            mode === 'dhruvaos'
+              ? 'bg-primary text-primary-foreground shadow-sm'
+              : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+          }`}
+        >
+          <School className="h-3.5 w-3.5" />
+          <span>✦ DhruvaOS School Onboarding</span>
         </button>
       </div>
 

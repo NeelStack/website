@@ -234,8 +234,8 @@ export function AiNetworkBg() {
 
       const baseR = isMobile ? 380 : isTablet ? 460 : 560
 
-      // A. Build Outward-Framing Logarithmic Spiral Galactic Arms + Full-Field Ambient Nodes (Less Dense & Cleaner)
-      const starCount = isMobile ? 58 : isTablet ? 78 : 98
+      // A. Build Outward-Framing Logarithmic Spiral Galactic Arms + Full-Field Ambient Nodes (More dots, subtle & serene)
+      const starCount = isMobile ? 88 : isTablet ? 124 : 160
       const armCount = 3
       const colors: CelestialStarNode['colorType'][] = [
         'cyan',
@@ -252,7 +252,7 @@ export function AiNetworkBg() {
 
         // 75% stars on majestic logarithmic spiral arms, 25% ambient full-canvas celestial field nodes
         const isAmbientField = i >= Math.floor(starCount * 0.75)
-        const isHub = i % 20 === 0 // ~5% prominent supermassive AI core nodes
+        const isHub = i % 24 === 0 // ~4% prominent supermassive AI core nodes
 
         let x = 0
         let y = 0
@@ -265,7 +265,7 @@ export function AiNetworkBg() {
           const spiralAngle = u * Math.PI * 3.4 + armOffset
           dist = (baseR * 0.32 + u * baseR * 1.08) * (0.88 + Math.random() * 0.24)
 
-          const dispersion = (isMobile ? 24 : 34) * (0.45 + u * 0.75)
+          const dispersion = (isMobile ? 26 : 38) * (0.45 + u * 0.75)
           x = Math.cos(spiralAngle) * dist + (Math.random() - 0.5) * dispersion
           z = Math.sin(spiralAngle) * dist + (Math.random() - 0.5) * dispersion
           y =
@@ -294,13 +294,13 @@ export function AiNetworkBg() {
           baseX: x,
           baseY: y,
           baseZ: z,
-          radius: isHub ? (Math.random() * 0.6 + 1.2) : (Math.random() * 0.7 + 0.55),
-          energy: isHub ? 0.35 : (0.12 + Math.random() * 0.20),
+          radius: isHub ? (Math.random() * 0.45 + 1.0) : (Math.random() * 0.45 + 0.42),
+          energy: isHub ? 0.25 : (0.08 + Math.random() * 0.14),
           pulsePhase: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.008 + Math.random() * 0.010,
+          pulseSpeed: 0.006 + Math.random() * 0.008,
           colorType,
-          orbitSpeed: (0.000025 + (isAmbientField ? 0.00001 : 0.000025)) * (isMobile ? 1.05 : 1.0),
-          hasGlint: isHub || Math.random() < 0.20,
+          orbitSpeed: (0.000022 + (isAmbientField ? 0.00001 : 0.000022)) * (isMobile ? 1.05 : 1.0),
+          hasGlint: isHub || Math.random() < 0.12,
           isHub,
           hubRingPhase: Math.random() * Math.PI * 2,
         })
@@ -875,19 +875,6 @@ export function AiNetworkBg() {
         let finalScreenX = proj.screenX
         let finalScreenY = proj.screenY
 
-        // Interactive Cursor Magnetic Gravitational Lens
-        if (mouseX > 0 && mouseY > 0) {
-          const mdx = finalScreenX - mouseX
-          const mdy = finalScreenY - mouseY
-          const mdist = Math.hypot(mdx, mdy)
-          const maxInfluence = 160
-          if (mdist < maxInfluence && mdist > 0) {
-            const pull = (1 - mdist / maxInfluence) * (isMobile ? 12 : 20)
-            finalScreenX += (mdx / mdist) * pull * 0.6
-            finalScreenY += (mdy / mdist) * pull * 0.6
-          }
-        }
-
         // Apply Physical Ripple Displacement from Active Gravitational Quakes
         for (let q = 0; q < activeQuakes.length; q++) {
           const quake = activeQuakes[q]
@@ -1113,12 +1100,12 @@ export function AiNetworkBg() {
       })
       ctx.restore()
 
-      // ── J. Render 3D Celestial Stars & Supermassive Hub Nodes ──
+      // ── J. Render 3D Celestial Stars & Supermassive Hub Nodes (Subtle, Non-Distracting Starlight) ──
       projectedStars.forEach((ps) => {
         const star = ps.star
-        const pulse = 1 + Math.sin(star.pulsePhase) * 0.08 + star.energy * 0.18
-        const r = Math.max(0.6, star.radius * ps.scale * pulse)
-        const depthAlpha = Math.max(0.15, 1 - ps.depth * 0.45) * ps.textCalmAlpha
+        const pulse = 1 + Math.sin(star.pulsePhase) * 0.06 + star.energy * 0.12
+        const r = Math.max(0.5, star.radius * ps.scale * pulse)
+        const depthAlpha = Math.max(0.14, 1 - ps.depth * 0.45) * ps.textCalmAlpha
 
         ctx.save()
 
@@ -1135,29 +1122,29 @@ export function AiNetworkBg() {
           darkHex = '#6366F1'
           lightHex = '#4F46E5'
         } else if (star.colorType === 'white') {
-          darkHex = '#FFFFFF'
+          darkHex = '#E0F2FE'
           lightHex = '#3B82F6'
         }
 
         const activeHex = isDark ? darkHex : lightHex
 
-        // Supermassive Hub Radar/Sonar Pulsing Ring
+        // Supermassive Hub Radar/Sonar Pulsing Ring (Subtle)
         if (star.isHub && !prefersReducedMotion) {
           const ringProgress = (Math.sin(star.hubRingPhase) + 1) / 2
-          const maxHubRingR = r * 4.5
+          const maxHubRingR = r * 3.8
           const hubRingR = r * 1.5 + ringProgress * maxHubRingR
-          const hubAlpha = (1 - ringProgress) * (isDark ? 0.35 : 0.25) * depthAlpha
+          const hubAlpha = (1 - ringProgress) * (isDark ? 0.25 : 0.16) * depthAlpha
 
           ctx.beginPath()
           ctx.arc(ps.screenX, ps.screenY, hubRingR, 0, Math.PI * 2)
           ctx.strokeStyle = activeHex
-          ctx.lineWidth = 0.65
+          ctx.lineWidth = 0.6
           ctx.globalAlpha = hubAlpha
           ctx.stroke()
         }
 
-        // 1. Radiant Starlight Aura
-        const glowRadius = r * (star.isHub ? 2.8 : 2.0)
+        // 1. Radiant Starlight Aura (Gentle, soft, non-distracting)
+        const glowRadius = r * (star.isHub ? 2.2 : 1.5)
         const glow = ctx.createRadialGradient(
           ps.screenX,
           ps.screenY,
@@ -1167,20 +1154,20 @@ export function AiNetworkBg() {
           glowRadius
         )
 
-        glow.addColorStop(0, isDark ? (star.energy > 0.45 ? '#FFFFFF' : activeHex) : activeHex)
-        glow.addColorStop(0.5, activeHex)
+        glow.addColorStop(0, activeHex)
+        glow.addColorStop(0.55, activeHex)
         glow.addColorStop(1, 'rgba(0,0,0,0)')
 
         ctx.beginPath()
         ctx.arc(ps.screenX, ps.screenY, glowRadius, 0, Math.PI * 2)
         ctx.fillStyle = glow
-        ctx.globalAlpha = isDark ? (0.28 + star.energy * 0.20) * depthAlpha : (0.20 + star.energy * 0.16) * depthAlpha
+        ctx.globalAlpha = isDark ? (0.16 + star.energy * 0.10) * depthAlpha : (0.11 + star.energy * 0.08) * depthAlpha
         ctx.fill()
 
-        // 2. Prismatic 4-Point Starburst Diffraction Spike (JWST aesthetic)
-        if (star.hasGlint && (star.isHub || star.energy > 0.3 || ps.depth < 0.35) && !prefersReducedMotion) {
-          const spikeLen = r * (star.isHub ? 3.0 : 2.2)
-          ctx.strokeStyle = isDark ? 'rgba(224, 242, 254, 0.50)' : 'rgba(37, 99, 235, 0.40)'
+        // 2. Prismatic 4-Point Starburst Diffraction Spike (JWST aesthetic, only on rare hub stars)
+        if (star.hasGlint && star.isHub && !prefersReducedMotion) {
+          const spikeLen = r * 2.4
+          ctx.strokeStyle = isDark ? 'rgba(224, 242, 254, 0.40)' : 'rgba(37, 99, 235, 0.30)'
           ctx.lineWidth = 0.5
 
           ctx.beginPath()
@@ -1194,13 +1181,11 @@ export function AiNetworkBg() {
           ctx.stroke()
         }
 
-        // 3. Stellar Pin-Point Solid Nucleus
+        // 3. Stellar Pin-Point Solid Nucleus (Clean, non-flashy)
         ctx.beginPath()
         ctx.arc(ps.screenX, ps.screenY, r, 0, Math.PI * 2)
-        ctx.fillStyle = isDark
-          ? (star.energy > 0.45 ? '#FFFFFF' : activeHex)
-          : activeHex
-        ctx.globalAlpha = isDark ? depthAlpha * 0.65 : depthAlpha * 0.52
+        ctx.fillStyle = activeHex
+        ctx.globalAlpha = isDark ? depthAlpha * 0.55 : depthAlpha * 0.42
         ctx.fill()
 
         ctx.restore()
