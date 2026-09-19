@@ -260,7 +260,7 @@ export function HeroSection() {
 
       <Container className="relative z-10 w-full max-w-4.5xl mx-auto px-4 sm:px-8 md:px-12">
         <div className="flex flex-col gap-5 sm:gap-6 text-center items-center">
-          
+
           {/* Snug Responsive 3D Kinetic Dynamic Headline Area */}
           <div
             className="w-full min-h-[195px] xs:min-h-[215px] sm:min-h-[240px] md:min-h-[255px] flex flex-col justify-center items-center px-1 sm:px-8"
@@ -322,11 +322,10 @@ export function HeroSection() {
                   className="p-2 cursor-pointer flex items-center justify-center focus-visible:outline-none"
                 >
                   <span
-                    className={`h-2 rounded-full transition-all duration-300 block ${
-                      isActive
+                    className={`h-2 rounded-full transition-all duration-300 block ${isActive
                         ? 'w-6 bg-primary shadow-xs'
                         : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
-                    }`}
+                      }`}
                   />
                 </button>
               )
