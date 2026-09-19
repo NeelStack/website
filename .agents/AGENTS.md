@@ -105,3 +105,27 @@ These rules apply to all AI agents working on this repository. They are derived 
 - **Strategic Whitepaper:** Version 1.0 published at `/whitepapers/ai-company-operating-system`.
 - **Contact Channel:** Single unified email `contact@neelstack.com`.
 
+---
+
+## 9. Design System & Frontend Architecture Standards
+
+> Full specification: [`docs/NEELSTACK_DESIGN_SYSTEM.md`](docs/NEELSTACK_DESIGN_SYSTEM.md)
+
+- **Neo-Brutalist Tactile Elevation (`.tactile-card-3d` in `app/globals.css`):**
+  - Cards use hard-offset neo-brutalist `box-shadow` (`4px 4px 0px 0px`) with diagonal hover lift (`translate(-3px, -3px)` expanding to `7px 7px 0px 0px`).
+  - Mouse-following spotlight overlay via `::before` pseudo-element driven by `MouseSpotlight` (`components/effects/mouse-spotlight.tsx`).
+  - Never wrap entire card containers in full-body 3D rotate tilt matrices (`rotateX`/`rotateY`), which causes unnatural card warping.
+
+- **Theme Switcher Architecture (`components/ui/theme-toggle.tsx`):**
+  - Zero FOUC: Inline `<script>` in `app/layout.tsx` `<head>` checks both `localStorage.getItem('theme')` and `window.matchMedia('(prefers-color-scheme: dark)')`.
+  - Multi-Tab Sync: `window.addEventListener('storage', ...)` syncs theme across all active tabs instantly.
+  - Accessibility: `role="switch"`, `aria-checked={isDark}`, `Enter`/`Space` keyboard navigation.
+  - Neo-Brutalist switch: `.tactile-switch-3d` with `2.5px 2.5px 0px` offset shadow. Geometry: `w-[68px] h-[32px]`, `24px × 24px` sliding knob, 2px balanced margins.
+
+- **3D AI Neural Cosmos Canvas (`components/ui/ai-network-bg.tsx`):**
+  - Canvas 2D engine: 58 nodes (mobile) / 78 (tablet) / 98 (desktop).
+  - 3 logarithmic spiral galaxy arms (75% of nodes) + ambient full-viewport constellation field (25%).
+  - Streaming synaptic data pulses, volumetric chromatic nebulae, accretion orbital photons, and magnetic cursor/touch deflection.
+  - Performance: `IntersectionObserver` + `visibilitychange` + `prefers-reduced-motion` detection.
+
+

@@ -131,8 +131,10 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  colorScheme: 'dark',
-  themeColor: '#070b14',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#070b14' },
+  ],
 }
 
 export default function RootLayout({
@@ -143,7 +145,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${geist.variable} ${geistMono.variable} bg-background text-foreground light`}
+      className={`${inter.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${geist.variable} ${geistMono.variable} bg-background text-foreground`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -152,8 +154,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const t = localStorage.getItem('theme');
-                if (t === 'dark') {
+                const storedTheme = localStorage.getItem('theme');
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDark = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
+                if (isDark) {
                   document.documentElement.classList.add('dark');
                   document.documentElement.classList.remove('light');
                 } else {

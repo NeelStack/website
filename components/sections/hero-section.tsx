@@ -213,7 +213,7 @@ export function HeroSection() {
 
   return (
     <HeroSpotlight
-      className="relative overflow-hidden"
+      className="relative overflow-hidden pt-16 pb-10 sm:pt-20 sm:pb-14 md:pt-24 md:pb-16"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -232,20 +232,18 @@ export function HeroSection() {
       />
 
       {/* 
-        PREV & NEXT ARROWS:
-        True vertical center of hero viewport with wide breathing room away from the headline.
-        Default: Clean, elegant arrow glyphs.
-        Hover: Instant 3D tactile button pop with physical depth and tactile active click.
+        PREV & NEXT ARROWS (Desktop / Tablet):
+        Clean, elegant arrow glyphs on desktop with 3D tactile button pop on hover.
       */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-30 w-full max-w-[94rem] mx-auto px-3 sm:px-6 md:px-10 lg:px-14 flex items-center justify-between">
+      <div className="hidden sm:flex absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-30 w-full max-w-[94rem] mx-auto px-4 md:px-10 lg:px-14 items-center justify-between">
         {/* Prev Arrow / 3D Tactile on Hover */}
         <button
           type="button"
           onClick={goToPrev}
           aria-label="Previous capability slide"
-          className="pointer-events-auto cursor-pointer flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform group-hover:scale-110" />
+          <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110" />
         </button>
 
         {/* Next Arrow / 3D Tactile on Hover */}
@@ -253,18 +251,18 @@ export function HeroSection() {
           type="button"
           onClick={goToNext}
           aria-label="Next capability slide"
-          className="pointer-events-auto cursor-pointer flex h-11 w-11 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform group-hover:scale-110" />
+          <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110" />
         </button>
       </div>
 
       <Container className="relative z-10 w-full max-w-4.5xl mx-auto px-4 sm:px-8 md:px-12">
-        <div className="flex flex-col gap-6 text-center items-center">
+        <div className="flex flex-col gap-5 sm:gap-6 text-center items-center">
           
-          {/* Height-Stabilized 3D Kinetic Dynamic Headline Area */}
+          {/* Snug Responsive 3D Kinetic Dynamic Headline Area */}
           <div
-            className="w-full min-h-[300px] xs:min-h-[280px] sm:min-h-[265px] md:min-h-[255px] lg:min-h-[245px] flex flex-col justify-center items-center px-8 sm:px-14 md:px-18"
+            className="w-full min-h-[195px] xs:min-h-[215px] sm:min-h-[240px] md:min-h-[255px] flex flex-col justify-center items-center px-1 sm:px-8"
             style={{ perspective: 1200 }}
           >
             <AnimatePresence mode="wait" custom={direction}>
@@ -276,20 +274,20 @@ export function HeroSection() {
                 animate="center"
                 exit="exit"
                 style={{ transformStyle: 'preserve-3d' }}
-                className="flex flex-col items-center gap-3.5 sm:gap-4 max-w-3.5xl"
+                className="flex flex-col items-center gap-2.5 xs:gap-3 sm:gap-4 max-w-3.5xl"
               >
                 {/* Dynamic Category Badge */}
                 <div
-                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full border-2 px-3.5 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-mono font-bold backdrop-blur-md transition-all cursor-default max-w-full ${currentSlide.badgeStyle}`}
+                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full border-2 px-3 sm:px-4 py-1 sm:py-1.5 text-[10.5px] xs:text-[11px] sm:text-xs font-mono font-bold backdrop-blur-md transition-all cursor-default max-w-full ${currentSlide.badgeStyle}`}
                 >
-                  <BadgeIcon className="h-3.5 w-3.5 shrink-0 animate-pulse" />
+                  <BadgeIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0 animate-pulse" />
                   <span className="tracking-tight text-center truncate sm:whitespace-normal">
                     {currentSlide.badgeText}
                   </span>
                 </div>
 
-                {/* Main Dynamic 3D Headline — Exactly 2 Balanced Lines */}
-                <h1 className="font-heading text-3xl xs:text-4xl sm:text-4.5xl md:text-5xl lg:text-5.5xl xl:text-6xl font-extrabold tracking-[-0.035em] text-foreground leading-[1.12] sm:leading-[1.1] text-3d-headline flex flex-col items-center">
+                {/* Main Dynamic 3D Headline */}
+                <h1 className="font-heading text-[1.85rem] xs:text-[2.25rem] sm:text-4.5xl md:text-5xl lg:text-5.5xl xl:text-6xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.12] sm:leading-[1.1] text-3d-headline flex flex-col items-center select-none text-balance">
                   <span className="block">{currentSlide.titlePrefix}</span>
                   <span
                     className={`block bg-gradient-to-r ${currentSlide.accentGradient} bg-clip-text text-transparent pb-0.5`}
@@ -298,32 +296,55 @@ export function HeroSection() {
                   </span>
                 </h1>
 
-                {/* Main Dynamic Subtitle — Exactly 2 Balanced Lines */}
-                <p className="max-w-3.5xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground font-sans font-medium text-center flex flex-col items-center">
-                  <span className="block">{currentSlide.subtitleLine1}</span>
-                  <span className="block">{currentSlide.subtitleLine2}</span>
+                {/* Main Dynamic Subtitle */}
+                <p className="max-w-3xl text-[14px] xs:text-[15.5px] sm:text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-200 font-sans font-medium text-center text-balance px-2 select-none">
+                  <span className="sm:block">{currentSlide.subtitleLine1} </span>
+                  <span className="sm:block">{currentSlide.subtitleLine2}</span>
                 </p>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Rock-Solid Stationary CTA Buttons (Never shift position) */}
+          {/* Slide Pagination Dots for Mobile */}
+          <div className="flex items-center justify-center gap-2 select-none sm:hidden my-1">
+            {HERO_SLIDES.map((slide, idx) => {
+              const isActive = idx === currentIndex
+              return (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => {
+                    setDirection(idx > currentIndex ? 1 : -1)
+                    setCurrentIndex(idx)
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? 'w-6 bg-primary shadow-xs'
+                      : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
+                  }`}
+                />
+              )
+            })}
+          </div>
+
+          {/* Rock-Solid Stationary CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 mt-1 sm:mt-2 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-0.5 sm:mt-2 w-full sm:w-auto max-w-xs sm:max-w-none"
           >
             <div className="w-full sm:w-auto">
               <Button
                 asChild
                 variant="3d-yellow"
                 size="lg"
-                className="w-full sm:w-auto h-12 sm:h-13 px-7 sm:px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
+                className="w-full sm:w-auto h-12 sm:h-13 px-7 sm:px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold shadow-md"
               >
-                <Link href="/contact" className="flex items-center gap-2">
+                <Link href="/contact" className="flex items-center justify-center gap-2">
                   <Sparkles className="h-4 w-4" />
-                  Start a Project
+                  <span>Start a Project</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
@@ -336,8 +357,8 @@ export function HeroSection() {
                 size="lg"
                 className="w-full sm:w-auto h-12 sm:h-13 px-7 sm:px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
               >
-                <Link href="/services" className="flex items-center gap-2">
-                  Explore Services
+                <Link href="/services" className="flex items-center justify-center gap-2">
+                  <span>Explore Services</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
@@ -349,7 +370,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-1 sm:pt-2 text-xs font-medium text-muted-foreground"
+            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-1 sm:pt-2 text-xs font-semibold text-slate-700 dark:text-slate-300"
           >
             <span className="inline-flex items-center gap-1.5">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />

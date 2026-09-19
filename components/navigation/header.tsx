@@ -1362,16 +1362,6 @@ export function Header() {
 
           {/* Mobile Right Action Strip */}
           <div className="flex items-center gap-2 lg:hidden">
-            {/* Talk AI Mobile Pill */}
-            <button
-              onClick={() => setAiModalOpen(true)}
-              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-cyan-500/40 bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 text-xs font-bold cursor-pointer"
-              aria-label="Open AI Copilot"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-cyan-500" />
-              <span>Talk AI</span>
-            </button>
-
             {/* Theme Toggle */}
             <ThemeToggle />
 
