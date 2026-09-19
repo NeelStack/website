@@ -105,3 +105,24 @@ These rules apply to all AI agents working on this repository. They are derived 
 - **Strategic Whitepaper:** Version 1.0 published at `/whitepapers/ai-company-operating-system`.
 - **Contact Channel:** Single unified email `contact@neelstack.com`.
 
+---
+
+## 9. Design System & Frontend Architecture Standards
+
+- **Permanent 3D Tactile Elevation (`.tactile-card-3d` in `app/globals.css`):**
+  - Cards must use permanent multi-tier physical depth elevation (`box-shadow`, specular borders, and subtle upward translation on hover `translateY(-4px)`).
+  - Never wrap entire card containers in full-body 3D rotate tilt matrices (`rotateX`/`rotateY`), which causes unnatural card warping.
+  - Interactive kinetic 3D tilt is strictly isolated to **icons and badges** via `KineticIconTilt` (`components/3d/kinetic-tilt.tsx`).
+
+- **Theme Switcher Architecture (`components/ui/theme-toggle.tsx`):**
+  - Zero FOUC: Inline hydration script in `app/layout.tsx` checks both `localStorage.getItem('theme')` and `window.matchMedia('(prefers-color-scheme: dark)')`.
+  - Multi-Tab Sync: `window.addEventListener('storage', ...)` syncs theme across all active tabs instantly.
+  - Accessibility: `role="switch"`, `aria-checked={isDark}`, `Enter`/`Space` keyboard navigation.
+  - Symmetrical 3D Physical Geometry: `w-[68px] h-[32px]`, `24px × 24px` sliding knob, 2px balanced margins.
+
+- **3D AI Neural Cosmos Canvas (`components/ui/ai-network-bg.tsx`):**
+  - Lightweight Canvas 2D engine with logarithmic spiral galaxy arms + ambient full-screen constellation nodes.
+  - Animated synaptic data pulses, subtle volumetric chromatic nebulae, and magnetic cursor/touch deflection.
+  - Balanced typography quiet zone (`calmRx`, `calmRy`) ensuring 100% text legibility.
+
+
