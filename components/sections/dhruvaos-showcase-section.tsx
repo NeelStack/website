@@ -42,7 +42,7 @@ const DHRUVAOS_FEATURES = [
 
 export function DhruvaOSShowcaseSection() {
   return (
-    <section id="products" className="py-14 sm:py-18 md:py-24 relative overflow-hidden bg-surface/50 border-t border-border/60">
+    <section id="products" className="py-10 sm:py-14 md:py-16 lg:py-20 relative overflow-hidden bg-surface/50 border-t border-border/60">
       {/* Ambient violet mesh glow */}
       <div
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[450px] pointer-events-none"
@@ -53,7 +53,7 @@ export function DhruvaOSShowcaseSection() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+      <Container className="space-y-8 sm:space-y-12 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -63,7 +63,7 @@ export function DhruvaOSShowcaseSection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4"
         >
           <motion.span
             variants={{
@@ -115,14 +115,14 @@ export function DhruvaOSShowcaseSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-6xl mx-auto rounded-3xl border-2 border-violet-500/30 bg-card/95 dark:bg-[#0a0718]/95 backdrop-blur-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-md dark:shadow-2xl relative overflow-hidden"
+          className="max-w-6xl mx-auto rounded-3xl border-2 border-violet-500/30 bg-card/95 dark:bg-[#0a0718]/95 backdrop-blur-xl p-5 sm:p-8 md:p-10 lg:p-12 shadow-md dark:shadow-2xl relative overflow-hidden"
         >
           {/* Corner glow */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
             {/* Left Column: Product Information */}
-            <div className="lg:col-span-5 space-y-6 relative z-10">
+            <div className="lg:col-span-5 space-y-5 sm:space-y-6 relative z-10">
               <div className="flex flex-wrap items-center gap-2.5">
                 <div className="inline-flex items-center gap-1.5 text-xs font-bold text-violet-500 dark:text-violet-400 uppercase tracking-widest bg-violet-500/10 px-3 py-1 rounded-full border border-violet-500/30">
                   <GraduationCap className="h-3.5 w-3.5" />
@@ -143,7 +143,7 @@ export function DhruvaOSShowcaseSection() {
                 </p>
               </div>
 
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 A unified institutional platform built to replace fragmented software. From online admissions and automated fee reconciliation to smart attendance, exams, and AI-driven campus analytics.
               </p>
 
@@ -153,7 +153,7 @@ export function DhruvaOSShowcaseSection() {
                   return (
                     <span
                       key={feature.label}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-violet-500/20 bg-violet-500/5 dark:bg-violet-500/10 px-2.5 py-1 text-[11px] font-semibold text-foreground hover:border-violet-500/40 transition-all cursor-default"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-violet-500/20 bg-violet-500/5 dark:bg-violet-500/10 px-2.5 py-1 text-xs font-semibold text-foreground hover:border-violet-500/40 transition-all cursor-default"
                     >
                       <Icon className="h-3 w-3 text-violet-500 dark:text-violet-400 shrink-0" />
                       {feature.label}

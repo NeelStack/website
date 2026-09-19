@@ -130,9 +130,9 @@ export function Footer({ showPreFooterCta = false }: { showPreFooterCta?: boolea
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
-        <div className="py-8 sm:py-10 grid grid-cols-2 gap-8 sm:gap-10 lg:grid-cols-6">
+        <div className="py-8 sm:py-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-10">
           {/* Brand column */}
-          <div className="col-span-2">
+          <div className="col-span-2 md:col-span-4 lg:col-span-2">
             <FooterLogo />
             <p className="mt-2 text-xs font-bold text-primary tracking-wide">
               Global Software Products • AI Systems • Enterprise Engineering

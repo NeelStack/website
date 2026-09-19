@@ -31,7 +31,7 @@ export function HeroSpotlight({ children, className = '', onMouseEnter, onMouseL
       onMouseMove={handleSectionMouseMove}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={`relative overflow-hidden min-h-[calc(100vh-5rem)] flex flex-col justify-center py-12 sm:py-16 md:py-20 bg-transparent ${className}`}
+      className={`relative overflow-hidden min-h-0 hero-viewport-desktop flex flex-col justify-center bg-transparent ${className}`}
       aria-label="Hero section"
       {...rest}
     >
