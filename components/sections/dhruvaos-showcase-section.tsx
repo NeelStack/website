@@ -252,7 +252,7 @@ export function DhruvaOSShowcaseSection() {
                   </div>
 
                   {/* Layer 3: Application & AI Services (ECS Fargate) */}
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
                     <div className="rounded-lg border border-slate-200/90 dark:border-white/[0.08] bg-white dark:bg-white/[0.03] p-2.5 space-y-1 shadow-2xs">
                       <div className="flex items-center justify-between">
                         <span className="font-heading text-xs font-bold text-cyan-700 dark:text-cyan-300">Core Engine</span>
@@ -295,7 +295,7 @@ export function DhruvaOSShowcaseSection() {
                   </div>
 
                   {/* Layer 4: Isolated Data & Storage Tier */}
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
                     <div className="rounded-lg border border-slate-200/90 dark:border-white/[0.08] bg-white dark:bg-white/[0.02] p-2.5 flex items-center gap-2.5 shadow-2xs">
                       <Database className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
                       <div className="min-w-0">

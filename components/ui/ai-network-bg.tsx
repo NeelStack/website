@@ -4,21 +4,20 @@ import React, { useEffect, useRef } from 'react'
 
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * NEELSTACK // THE 3D CELESTIAL INTELLIGENCE COSMOS (HIGH-DEFINITION ENGINE)
+ * NEELSTACK // THE 3D CELESTIAL INTELLIGENCE COSMOS (ADVANCED NEURAL ENGINE)
  *
- * "Intelligence is not just software. It is a cosmic gravitational law."
+ * "Intelligence is not just software. It is a living, cosmic neural network."
  *
  * Visual Architecture:
- * 1. Logarithmic Spiral Galactic Arms — Dispersed outward to frame the hero stage
- * 2. High-Contrast Dual-Theme Color Science — Crisp sapphire & indigo in Light mode,
- *    radiant bioluminescent cyan/blue/violet in Dark mode
- * 3. Delicate Accretion Halo Rings — Distinct architectural orbital manifolds
- * 4. 3D Orbital Quantum Probes — Crisp geometric micro-satellites with solar arrays & beacons
- * 5. Pin-Point Celestial Stars — Solid nuclei, JWST diffraction glints & radial aura
- * 6. Gravitational Synaptic Cosmic Web — Dynamic 3D filaments connecting nodes
- * 7. Hero Typographic Quiet Zone — Balanced 32% text protection ensuring full visibility
- * 8. CELESTIAL EARTHQUAKE INTERACTION — 3D camera harmonic tremor, radial gravitational
- *    warp ripple wave, physical node oscillation & relativistic interference rings on click
+ * 1. Logarithmic Spiral Galactic Arms + Ambient Deep Field Neural Constellations
+ * 2. Active Synaptic Data Pulses — Luminous energy beacons streaming along connections
+ * 3. 3D Volumetric Chromatic Nebula Glows — Ethereal multi-stop depth auroras
+ * 4. Supermassive Hub Pulsar Nodes — Radar/sonar relativistic energy rings & JWST starbursts
+ * 5. Accretion Halo Orbital Photons — Energy beads circulating along 3D orbital manifolds
+ * 6. Interactive Magnetic Gravitational Lens — Nodes react organically to cursor/touch
+ * 7. Dual-Theme Vibrant Color Science — Crisp sapphire/indigo in Light mode,
+ *    radiant cyber-cyan/violet in Dark mode
+ * 8. Celestial Shockwave Interaction — Relativistic gravitational earthquake on click
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -48,6 +47,16 @@ interface CelestialStarNode {
   colorType: 'cyan' | 'blue' | 'violet' | 'white' | 'indigo'
   orbitSpeed: number
   hasGlint: boolean
+  isHub: boolean
+  hubRingPhase: number
+}
+
+interface SynapticPulse {
+  fromNodeId: number
+  toNodeId: number
+  progress: number // 0.0 to 1.0
+  speed: number
+  color: string
 }
 
 interface AccretionRing3D {
@@ -61,6 +70,7 @@ interface AccretionRing3D {
   width: number
   darkColors: [string, string, string]
   lightColors: [string, string, string]
+  photonAngle: number
 }
 
 interface OrbitalSatellite3D {
@@ -111,6 +121,19 @@ interface NebulaDustParticle3D {
   maxLife: number
   darkColor: string
   lightColor: string
+}
+
+interface NebulaCloud3D {
+  x: number
+  y: number
+  z: number
+  radius: number
+  rotAngle: number
+  rotSpeed: number
+  darkGrad: [string, string]
+  lightGrad: [string, string]
+  pulsePhase: number
+  pulseSpeed: number
 }
 
 export function AiNetworkBg() {
@@ -191,6 +214,9 @@ export function AiNetworkBg() {
     let activeQuakes: CelestialQuake[] = []
     let quantumSparks: QuantumSpark[] = []
     let nebulaDust: NebulaDustParticle3D[] = []
+    let nebulaClouds: NebulaCloud3D[] = []
+    let synapticPulses: SynapticPulse[] = []
+    let activeConnectionsList: [number, number][] = []
 
     let lastFrameTime = performance.now()
 
@@ -202,11 +228,14 @@ export function AiNetworkBg() {
       activeQuakes = []
       quantumSparks = []
       nebulaDust = []
+      nebulaClouds = []
+      synapticPulses = []
+      activeConnectionsList = []
 
-      const baseR = isMobile ? 250 : isTablet ? 360 : 490
+      const baseR = isMobile ? 380 : isTablet ? 460 : 560
 
-      // A. Build Outward-Framing Logarithmic Spiral Galactic Arms
-      const starCount = isMobile ? 65 : isTablet ? 100 : 145
+      // A. Build Outward-Framing Logarithmic Spiral Galactic Arms + Full-Field Ambient Nodes
+      const starCount = isMobile ? 115 : isTablet ? 145 : 175
       const armCount = 3
       const colors: CelestialStarNode['colorType'][] = [
         'cyan',
@@ -221,17 +250,36 @@ export function AiNetworkBg() {
         const armIdx = i % armCount
         const armOffset = (armIdx * Math.PI * 2) / armCount
 
-        // Outward distribution: frames the central zone beautifully
-        const u = 0.22 + Math.random() * 0.78
-        const spiralAngle = u * Math.PI * 3.3 + armOffset
-        const dist = (baseR * 0.36 + u * baseR * 0.95) * (0.9 + Math.random() * 0.2)
+        // 72% stars on majestic logarithmic spiral arms, 28% ambient full-canvas celestial field nodes
+        const isAmbientField = i >= Math.floor(starCount * 0.72)
+        const isHub = i % 14 === 0 // ~8% prominent supermassive AI core nodes
 
-        const dispersion = (isMobile ? 18 : 30) * (0.45 + u * 0.75)
-        const x = Math.cos(spiralAngle) * dist + (Math.random() - 0.5) * dispersion
-        const z = Math.sin(spiralAngle) * dist + (Math.random() - 0.5) * dispersion
-        const y =
-          Math.sin(dist * 0.008 + spiralAngle) * (isMobile ? 22 : 36) * (1 - u * 0.2) +
-          (Math.random() - 0.5) * dispersion * 0.6
+        let x = 0
+        let y = 0
+        let z = 0
+        let dist = 0
+
+        if (!isAmbientField) {
+          // Outward spiral arm distribution
+          const u = 0.14 + Math.random() * 0.86
+          const spiralAngle = u * Math.PI * 3.4 + armOffset
+          dist = (baseR * 0.30 + u * baseR * 1.08) * (0.88 + Math.random() * 0.24)
+
+          const dispersion = (isMobile ? 24 : 34) * (0.45 + u * 0.75)
+          x = Math.cos(spiralAngle) * dist + (Math.random() - 0.5) * dispersion
+          z = Math.sin(spiralAngle) * dist + (Math.random() - 0.5) * dispersion
+          y =
+            Math.sin(dist * 0.007 + spiralAngle) * (isMobile ? 36 : 46) * (1 - u * 0.2) +
+            (Math.random() - 0.5) * dispersion * 0.8
+        } else {
+          // Full-viewport ambient constellation field nodes (ensuring full coverage top to bottom on mobile)
+          const spreadW = isMobile ? (width / dpr) * 0.96 : baseR * 1.9
+          const spreadH = isMobile ? (height / dpr) * 0.92 : baseR * 1.5
+          x = (Math.random() - 0.5) * spreadW
+          y = (Math.random() - 0.5) * spreadH
+          z = (Math.random() - 0.5) * baseR * 1.3
+          dist = Math.hypot(x, y, z)
+        }
 
         const colorType = colors[i % colors.length]
 
@@ -246,17 +294,53 @@ export function AiNetworkBg() {
           baseX: x,
           baseY: y,
           baseZ: z,
-          radius: Math.random() * 0.9 + 0.6,
-          energy: 0.15 + Math.random() * 0.25,
+          radius: isHub ? (Math.random() * 0.7 + 1.4) : (Math.random() * 0.8 + 0.65),
+          energy: isHub ? 0.45 : (0.15 + Math.random() * 0.25),
           pulsePhase: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.008 + Math.random() * 0.01,
+          pulseSpeed: 0.008 + Math.random() * 0.012,
           colorType,
-          orbitSpeed: (0.000025 + (1 - u) * 0.000035) * (isMobile ? 1.05 : 1.0),
-          hasGlint: Math.random() < 0.2,
+          orbitSpeed: (0.000025 + (isAmbientField ? 0.00001 : 0.00003)) * (isMobile ? 1.05 : 1.0),
+          hasGlint: isHub || Math.random() < 0.25,
+          isHub,
+          hubRingPhase: Math.random() * Math.PI * 2,
         })
       }
 
-      // B. Build Accretion Halo Rings (Framing Perimeters)
+      // B. Build 3D Volumetric Chromatic Nebula Glow Clouds
+      const cloudCount = isMobile ? 3 : 5
+      const cloudColorsDark: [string, string][] = [
+        ['rgba(6, 182, 212, 0.12)', 'rgba(6, 182, 212, 0)'],
+        ['rgba(59, 130, 246, 0.12)', 'rgba(59, 130, 246, 0)'],
+        ['rgba(139, 92, 246, 0.12)', 'rgba(139, 92, 246, 0)'],
+        ['rgba(99, 102, 241, 0.10)', 'rgba(99, 102, 241, 0)'],
+        ['rgba(14, 165, 233, 0.10)', 'rgba(14, 165, 233, 0)'],
+      ]
+      const cloudColorsLight: [string, string][] = [
+        ['rgba(37, 99, 235, 0.08)', 'rgba(37, 99, 235, 0)'],
+        ['rgba(79, 70, 229, 0.08)', 'rgba(79, 70, 229, 0)'],
+        ['rgba(124, 58, 237, 0.07)', 'rgba(124, 58, 237, 0)'],
+        ['rgba(2, 132, 199, 0.08)', 'rgba(2, 132, 199, 0)'],
+        ['rgba(99, 102, 241, 0.07)', 'rgba(99, 102, 241, 0)'],
+      ]
+
+      for (let c = 0; c < cloudCount; c++) {
+        const angle = (c * Math.PI * 2) / cloudCount + 0.3
+        const dist = baseR * (0.45 + (c % 2) * 0.35)
+        nebulaClouds.push({
+          x: Math.cos(angle) * dist,
+          y: Math.sin(angle * 1.5) * (baseR * 0.3),
+          z: Math.sin(angle) * dist,
+          radius: baseR * (0.65 + Math.random() * 0.35),
+          rotAngle: angle,
+          rotSpeed: (0.00003 + c * 0.00001) * (c % 2 === 0 ? 1 : -1),
+          darkGrad: cloudColorsDark[c % cloudColorsDark.length],
+          lightGrad: cloudColorsLight[c % cloudColorsLight.length],
+          pulsePhase: Math.random() * Math.PI * 2,
+          pulseSpeed: 0.005 + Math.random() * 0.005,
+        })
+      }
+
+      // C. Build Accretion Halo Rings (Framing Perimeters + Photons)
       const ringConfigs = [
         {
           radius: baseR * 0.52,
@@ -264,29 +348,29 @@ export function AiNetworkBg() {
           tiltY: 0.25,
           tiltZ: 0.15,
           rotSpeed: 0.00005,
-          width: 0.8,
-          dark: ['rgba(56, 189, 248, 0.25)', 'rgba(59, 130, 246, 0.20)', 'rgba(139, 92, 246, 0.20)'] as [string, string, string],
-          light: ['rgba(37, 99, 235, 0.18)', 'rgba(79, 70, 229, 0.16)', 'rgba(124, 58, 237, 0.16)'] as [string, string, string],
+          width: 0.85,
+          dark: ['rgba(56, 189, 248, 0.28)', 'rgba(59, 130, 246, 0.22)', 'rgba(139, 92, 246, 0.22)'] as [string, string, string],
+          light: ['rgba(37, 99, 235, 0.20)', 'rgba(79, 70, 229, 0.18)', 'rgba(124, 58, 237, 0.18)'] as [string, string, string],
         },
         {
-          radius: baseR * 0.78,
+          radius: baseR * 0.82,
           tiltX: 0.82,
           tiltY: -0.3,
           tiltZ: 0.35,
           rotSpeed: -0.00004,
-          width: 0.7,
-          dark: ['rgba(139, 92, 246, 0.20)', 'rgba(99, 102, 241, 0.18)', 'rgba(56, 189, 248, 0.18)'] as [string, string, string],
-          light: ['rgba(79, 70, 229, 0.16)', 'rgba(37, 99, 235, 0.14)', 'rgba(2, 132, 199, 0.14)'] as [string, string, string],
+          width: 0.75,
+          dark: ['rgba(139, 92, 246, 0.22)', 'rgba(99, 102, 241, 0.20)', 'rgba(56, 189, 248, 0.20)'] as [string, string, string],
+          light: ['rgba(79, 70, 229, 0.18)', 'rgba(37, 99, 235, 0.16)', 'rgba(2, 132, 199, 0.16)'] as [string, string, string],
         },
         {
-          radius: baseR * 1.04,
+          radius: baseR * 1.12,
           tiltX: -0.65,
           tiltY: 0.6,
           tiltZ: -0.2,
           rotSpeed: 0.00003,
-          width: 0.6,
-          dark: ['rgba(99, 102, 241, 0.18)', 'rgba(59, 130, 246, 0.15)', 'rgba(224, 242, 254, 0.18)'] as [string, string, string],
-          light: ['rgba(37, 99, 235, 0.14)', 'rgba(99, 102, 241, 0.12)', 'rgba(2, 132, 199, 0.12)'] as [string, string, string],
+          width: 0.65,
+          dark: ['rgba(99, 102, 241, 0.20)', 'rgba(59, 130, 246, 0.18)', 'rgba(224, 242, 254, 0.20)'] as [string, string, string],
+          light: ['rgba(37, 99, 235, 0.16)', 'rgba(99, 102, 241, 0.14)', 'rgba(2, 132, 199, 0.14)'] as [string, string, string],
         },
       ]
 
@@ -302,37 +386,38 @@ export function AiNetworkBg() {
           width: rc.width,
           darkColors: rc.dark,
           lightColors: rc.light,
+          photonAngle: Math.random() * Math.PI * 2,
         })
       })
 
-      // C. Build 3D Orbital Quantum Probes (Crisp Geometric Satellites)
-      const satelliteCount = isMobile ? 2 : 4
+      // D. Build 3D Orbital Quantum Probes (Crisp Geometric Satellites)
+      const satelliteCount = isMobile ? 3 : 4
       for (let s = 0; s < satelliteCount; s++) {
         satellites.push({
           id: s,
-          orbitRadius: baseR * (0.62 + (s * 0.2)),
+          orbitRadius: baseR * (0.58 + s * 0.22),
           orbitAngle: (s * Math.PI * 2) / satelliteCount + Math.random(),
           orbitSpeed: (0.00006 + (satelliteCount - s) * 0.00002) * (s % 2 === 0 ? 1 : -1),
-          tiltX: 0.45 + (s * 0.18),
-          tiltY: -0.3 + (s * 0.22),
-          tiltZ: (s * 0.12),
-          scale: isMobile ? 0.8 : 0.95,
+          tiltX: 0.45 + s * 0.18,
+          tiltY: -0.3 + s * 0.22,
+          tiltZ: s * 0.12,
+          scale: isMobile ? 0.85 : 0.95,
           beaconPhase: Math.random() * Math.PI * 2,
         })
       }
 
-      // D. Ambient Deep Cosmic Dust
-      const dustCount = isMobile ? 12 : 20
+      // E. Ambient Deep Cosmic Dust
+      const dustCount = isMobile ? 24 : 34
       for (let d = 0; d < dustCount; d++) {
         nebulaDust.push({
-          x: (Math.random() - 0.5) * baseR * 2.6,
-          y: (Math.random() - 0.5) * baseR * 1.8,
+          x: (Math.random() - 0.5) * (isMobile ? (width / dpr) * 1.3 : baseR * 2.8),
+          y: (Math.random() - 0.5) * (isMobile ? (height / dpr) * 1.3 : baseR * 2.2),
           z: (Math.random() - 0.5) * baseR * 2.6,
-          vx: (Math.random() - 0.5) * 0.03,
-          vy: (Math.random() - 0.5) * 0.03,
-          vz: (Math.random() - 0.5) * 0.03,
-          radius: Math.random() * 0.7 + 0.35,
-          alpha: Math.random() * 0.14 + 0.06,
+          vx: (Math.random() - 0.5) * 0.035,
+          vy: (Math.random() - 0.5) * 0.035,
+          vz: (Math.random() - 0.5) * 0.035,
+          radius: Math.random() * 0.75 + 0.35,
+          alpha: Math.random() * 0.16 + 0.08,
           life: 0,
           maxLife: 320 + Math.random() * 350,
           darkColor: Math.random() > 0.5 ? '#38BDF8' : '#8B5CF6',
@@ -370,11 +455,18 @@ export function AiNetworkBg() {
     const handleTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
         const touch = e.touches[0]
+        mouseX = touch.clientX
+        mouseY = touch.clientY
         const cx = window.innerWidth * 0.5
         const cy = window.innerHeight * 0.5
         targetCameraRotY = (touch.clientX - cx) * 0.00028
         targetCameraRotX = -(touch.clientY - cy) * 0.00024
       }
+    }
+
+    const handleTouchEnd = () => {
+      mouseX = -9999
+      mouseY = -9999
     }
 
     // ─── CELESTIAL EARTHQUAKE TRIGGER (ON CLICK) ───────────────────────────
@@ -395,23 +487,23 @@ export function AiNetworkBg() {
 
       // 2. High-Energy Supernova Excitation on Stars
       stars.forEach((star) => {
-        star.energy = 0.85
+        star.energy = 0.90
       })
 
       // 3. Emit Micro Quantum Sparks
-      const sparkCount = isMobile ? 8 : 16
+      const sparkCount = isMobile ? 10 : 20
       for (let k = 0; k < sparkCount; k++) {
         const angle = Math.random() * Math.PI * 2
-        const spd = Math.random() * 3.5 + 1.2
+        const spd = Math.random() * 3.8 + 1.2
         quantumSparks.push({
           x: e.clientX,
           y: e.clientY,
           vx: Math.cos(angle) * spd,
           vy: Math.sin(angle) * spd,
-          radius: Math.random() * 1.1 + 0.5,
-          alpha: 0.85,
+          radius: Math.random() * 1.2 + 0.5,
+          alpha: 0.90,
           life: 0,
-          maxLife: 38 + Math.random() * 22,
+          maxLife: 42 + Math.random() * 22,
           color: Math.random() > 0.5 ? '#2563EB' : '#7C3AED',
         })
       }
@@ -420,6 +512,7 @@ export function AiNetworkBg() {
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
     window.addEventListener('mouseleave', handleMouseLeave, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
     window.addEventListener('click', handleClick, { passive: true })
 
     initCelestialCosmos()
@@ -470,6 +563,7 @@ export function AiNetworkBg() {
     let globalRotY = 0
     let globalRotX = 0.28
     let globalRotZ = 0.06
+    let pulseSpawnTimer = 0
 
     const render = (currentTime: number) => {
       if (!isTabVisible || !isInViewport) {
@@ -526,10 +620,47 @@ export function AiNetworkBg() {
       }
 
       // Hero Typographic Quiet Zone Ellipse Radii (Balanced protection allowing full visibility)
-      const calmRx = isMobile ? 190 : 320
-      const calmRy = isMobile ? 110 : 170
+      const calmRx = isMobile ? 140 : 300
+      const calmRy = isMobile ? 95 : 160
 
-      // ── A. Render Gravitational Earthquake Ripple Rings ──
+      // ── A. Render 3D Volumetric Chromatic Nebula Glow Clouds ──
+      ctx.save()
+      if (isDark) ctx.globalCompositeOperation = 'screen'
+      nebulaClouds.forEach((cloud) => {
+        if (!prefersReducedMotion) {
+          cloud.rotAngle += cloud.rotSpeed * dt
+          cloud.pulsePhase += cloud.pulseSpeed * dt
+        }
+
+        const currentDist = Math.hypot(cloud.x, cloud.z)
+        const cX = Math.cos(cloud.rotAngle) * currentDist
+        const cZ = Math.sin(cloud.rotAngle) * currentDist
+
+        const proj = project3D(
+          { x: cX, y: cloud.y, z: cZ },
+          cx,
+          cy,
+          globalRotX,
+          globalRotY,
+          globalRotZ
+        )
+
+        const pulse = 1 + Math.sin(cloud.pulsePhase) * 0.15
+        const r = cloud.radius * proj.scale * pulse
+
+        const grad = ctx.createRadialGradient(proj.screenX, proj.screenY, 0, proj.screenX, proj.screenY, r)
+        const colors = isDark ? cloud.darkGrad : cloud.lightGrad
+        grad.addColorStop(0, colors[0])
+        grad.addColorStop(1, colors[1])
+
+        ctx.beginPath()
+        ctx.arc(proj.screenX, proj.screenY, r, 0, Math.PI * 2)
+        ctx.fillStyle = grad
+        ctx.fill()
+      })
+      ctx.restore()
+
+      // ── B. Render Gravitational Earthquake Ripple Rings ──
       ctx.save()
       for (let q = 0; q < activeQuakes.length; q++) {
         const quake = activeQuakes[q]
@@ -554,7 +685,7 @@ export function AiNetworkBg() {
       }
       ctx.restore()
 
-      // ── B. Render Micro Quantum Sparks ──
+      // ── C. Render Micro Quantum Sparks ──
       ctx.save()
       for (let k = quantumSparks.length - 1; k >= 0; k--) {
         const spark = quantumSparks[k]
@@ -578,7 +709,7 @@ export function AiNetworkBg() {
       }
       ctx.restore()
 
-      // ── C. Render Ambient Cosmic Dust ──
+      // ── D. Render Ambient Cosmic Dust ──
       ctx.save()
       for (let d = nebulaDust.length - 1; d >= 0; d--) {
         const pt = nebulaDust[d]
@@ -604,27 +735,28 @@ export function AiNetworkBg() {
           continue
         }
 
-        // Hero Quiet Zone Dampening (gentle 30% minimum floor)
+        // Hero Quiet Zone Dampening
         const cdx = proj.screenX - cx
         const cdy = proj.screenY - cy
         const calmNorm = Math.sqrt((cdx / calmRx) ** 2 + (cdy / calmRy) ** 2)
-        const textCalmAlpha = calmNorm < 1.0 ? Math.max(0.30, 0.30 + calmNorm * 0.70) : 1.0
+        const textCalmAlpha = calmNorm < 1.0 ? Math.max(0.38, 0.38 + calmNorm * 0.62) : 1.0
 
         const depthAlpha = Math.max(0.10, 1 - proj.depth * 0.5) * textCalmAlpha
         ctx.beginPath()
         ctx.arc(proj.screenX, proj.screenY, Math.max(0.45, pt.radius * proj.scale), 0, Math.PI * 2)
         ctx.fillStyle = isDark ? pt.darkColor : pt.lightColor
-        ctx.globalAlpha = isDark ? pt.alpha * fade * depthAlpha * 0.42 : pt.alpha * fade * depthAlpha * 0.30
+        ctx.globalAlpha = isDark ? pt.alpha * fade * depthAlpha * 0.45 : pt.alpha * fade * depthAlpha * 0.32
         ctx.fill()
       }
       ctx.restore()
 
-      // ── D. Render Accretion Halo Rings ──
+      // ── E. Render Accretion Halo Rings + Orbiting Photons ──
       ctx.save()
       if (isDark) ctx.globalCompositeOperation = 'screen'
 
       accretionRings.forEach((ring) => {
         ring.rotPhase += ring.rotSpeed * dt
+        ring.photonAngle += (ring.rotSpeed * 8) * dt
 
         const ringSegments = isMobile ? 48 : 72
         const ringPoints: { screenX: number; screenY: number; scale: number; depth: number }[] = []
@@ -676,13 +808,33 @@ export function AiNetworkBg() {
 
           ctx.strokeStyle = grad
           ctx.lineWidth = ring.width
-          ctx.globalAlpha = isDark ? 0.15 : 0.11
+          ctx.globalAlpha = isDark ? 0.16 : 0.12
           ctx.stroke()
+
+          // Render Orbiting Accretion Photon
+          const photonAngle = ring.photonAngle
+          const plx = ring.radius * Math.cos(photonAngle)
+          const ply = ring.radius * Math.sin(photonAngle)
+          const cosTX = Math.cos(ring.tiltX + ring.rotPhase)
+          const sinTX = Math.sin(ring.tiltX + ring.rotPhase)
+          const py1 = ply * cosTX
+          const pz1 = ply * sinTX
+          const cosTY = Math.cos(ring.tiltY)
+          const sinTY = Math.sin(ring.tiltY)
+          const px2 = plx * cosTY + pz1 * sinTY
+          const pz2 = -plx * sinTY + pz1 * cosTY
+
+          const pProj = project3D({ x: px2, y: py1, z: pz2 }, cx, cy, globalRotX, globalRotY, globalRotZ)
+          ctx.beginPath()
+          ctx.arc(pProj.screenX, pProj.screenY, Math.max(0.8, 1.6 * pProj.scale), 0, Math.PI * 2)
+          ctx.fillStyle = isDark ? '#38BDF8' : '#2563EB'
+          ctx.globalAlpha = isDark ? 0.85 : 0.65
+          ctx.fill()
         }
       })
       ctx.restore()
 
-      // ── E. Update & Project Star Nodes with Gravitational Warp Ripples ──
+      // ── F. Update & Project Star Nodes with Gravitational Interactivity ──
       const projectedStars: {
         star: CelestialStarNode
         screenX: number
@@ -704,6 +856,9 @@ export function AiNetworkBg() {
 
           star.pulsePhase += star.pulseSpeed * dt
           star.energy = Math.max(0.10, star.energy - 0.002 * dt)
+          if (star.isHub) {
+            star.hubRingPhase += 0.012 * dt
+          }
         }
 
         const proj = project3D(
@@ -717,6 +872,19 @@ export function AiNetworkBg() {
 
         let finalScreenX = proj.screenX
         let finalScreenY = proj.screenY
+
+        // Interactive Cursor Magnetic Gravitational Lens
+        if (mouseX > 0 && mouseY > 0) {
+          const mdx = finalScreenX - mouseX
+          const mdy = finalScreenY - mouseY
+          const mdist = Math.hypot(mdx, mdy)
+          const maxInfluence = 160
+          if (mdist < maxInfluence && mdist > 0) {
+            const pull = (1 - mdist / maxInfluence) * (isMobile ? 12 : 20)
+            finalScreenX += (mdx / mdist) * pull * 0.6
+            finalScreenY += (mdy / mdist) * pull * 0.6
+          }
+        }
 
         // Apply Physical Ripple Displacement from Active Gravitational Quakes
         for (let q = 0; q < activeQuakes.length; q++) {
@@ -742,7 +910,7 @@ export function AiNetworkBg() {
         const cdx = finalScreenX - cx
         const cdy = finalScreenY - cy
         const calmNorm = Math.sqrt((cdx / calmRx) ** 2 + (cdy / calmRy) ** 2)
-        const textCalmAlpha = calmNorm < 1.0 ? Math.max(0.30, 0.30 + calmNorm * 0.70) : 1.0
+        const textCalmAlpha = calmNorm < 1.0 ? Math.max(0.38, 0.38 + calmNorm * 0.62) : 1.0
 
         projectedStars.push({
           star,
@@ -758,9 +926,10 @@ export function AiNetworkBg() {
       // Depth Sort (Z-Buffer)
       projectedStars.sort((a, b) => b.rawZ - a.rawZ)
 
-      // ── F. Render Gravitational Synaptic Cosmic Web (Interstellar Links) ──
-      const maxConnectDist3D = isMobile ? 75 : 110
+      // ── G. Render Gravitational Synaptic Cosmic Web (Interstellar Links) ──
+      const maxConnectDist3D = isMobile ? 95 : 120
       const maxConnectDistSq = maxConnectDist3D * maxConnectDist3D
+      activeConnectionsList = []
 
       ctx.save()
       for (let i = 0; i < projectedStars.length; i++) {
@@ -781,8 +950,8 @@ export function AiNetworkBg() {
             const avgEnergy = (ps1.star.energy + ps2.star.energy) / 2
             const avgTextCalm = (ps1.textCalmAlpha + ps2.textCalmAlpha) / 2
 
-            const depthFactor = Math.max(0.10, 1 - avgDepth * 0.5) * avgTextCalm
-            const alpha = (1 - dist3D / maxConnectDist3D) * 0.20 * depthFactor * (0.35 + avgEnergy * 0.65)
+            const depthFactor = Math.max(0.12, 1 - avgDepth * 0.45) * avgTextCalm
+            const alpha = (1 - dist3D / maxConnectDist3D) * 0.22 * depthFactor * (0.35 + avgEnergy * 0.65)
 
             ctx.beginPath()
             ctx.moveTo(ps1.screenX, ps1.screenY)
@@ -790,24 +959,78 @@ export function AiNetworkBg() {
 
             if (isDark) {
               ctx.strokeStyle = avgEnergy > 0.4 ? '#38BDF8' : '#6366F1'
-              ctx.lineWidth = 0.5
-              ctx.globalAlpha = alpha * 0.45
+              ctx.lineWidth = 0.55
+              ctx.globalAlpha = alpha * 0.50
             } else {
               ctx.strokeStyle = avgEnergy > 0.4 ? '#2563EB' : '#4F46E5'
-              ctx.lineWidth = 0.5
-              ctx.globalAlpha = alpha * 0.35
+              ctx.lineWidth = 0.55
+              ctx.globalAlpha = alpha * 0.40
             }
 
             ctx.stroke()
+            activeConnectionsList.push([ps1.star.id, ps2.star.id])
 
             connections++
-            if (connections >= 2) break
+            if (connections >= (isMobile ? 2 : 3)) break
           }
         }
       }
       ctx.restore()
 
-      // ── G. Render 3D Orbital Quantum Probes (Satellites) ──
+      // ── H. Spawn & Render Flowing Synaptic Data Pulses (Active Intelligence Flow) ──
+      pulseSpawnTimer += dt
+      if (pulseSpawnTimer > (isMobile ? 18 : 12) && activeConnectionsList.length > 0 && !prefersReducedMotion) {
+        pulseSpawnTimer = 0
+        const randPair = activeConnectionsList[Math.floor(Math.random() * activeConnectionsList.length)]
+        const forward = Math.random() > 0.5
+        synapticPulses.push({
+          fromNodeId: forward ? randPair[0] : randPair[1],
+          toNodeId: forward ? randPair[1] : randPair[0],
+          progress: 0,
+          speed: 0.015 + Math.random() * 0.015,
+          color: isDark
+            ? (Math.random() > 0.5 ? '#38BDF8' : '#A855F7')
+            : (Math.random() > 0.5 ? '#2563EB' : '#7C3AED'),
+        })
+      }
+
+      // Render Synaptic Pulses
+      ctx.save()
+      const starMap = new Map(projectedStars.map(ps => [ps.star.id, ps]))
+      for (let p = synapticPulses.length - 1; p >= 0; p--) {
+        const pulse = synapticPulses[p]
+        pulse.progress += pulse.speed * dt
+        if (pulse.progress >= 1.0) {
+          const targetStar = starMap.get(pulse.toNodeId)
+          if (targetStar) {
+            targetStar.star.energy = Math.min(1.0, targetStar.star.energy + 0.35)
+          }
+          synapticPulses.splice(p, 1)
+          continue
+        }
+
+        const ps1 = starMap.get(pulse.fromNodeId)
+        const ps2 = starMap.get(pulse.toNodeId)
+        if (!ps1 || !ps2) {
+          synapticPulses.splice(p, 1)
+          continue
+        }
+
+        const px = ps1.screenX + (ps2.screenX - ps1.screenX) * pulse.progress
+        const py = ps1.screenY + (ps2.screenY - ps1.screenY) * pulse.progress
+        const avgDepth = (ps1.depth + ps2.depth) / 2
+        const pulseSize = Math.max(0.8, 1.8 * ((ps1.scale + ps2.scale) / 2))
+
+        // Pulse Glow Core
+        ctx.beginPath()
+        ctx.arc(px, py, pulseSize, 0, Math.PI * 2)
+        ctx.fillStyle = pulse.color
+        ctx.globalAlpha = isDark ? 0.90 * (1 - avgDepth * 0.4) : 0.75 * (1 - avgDepth * 0.4)
+        ctx.fill()
+      }
+      ctx.restore()
+
+      // ── I. Render 3D Orbital Quantum Probes (Satellites) ──
       ctx.save()
       satellites.forEach((sat) => {
         if (!prefersReducedMotion) {
@@ -815,13 +1038,11 @@ export function AiNetworkBg() {
           sat.beaconPhase += 0.025 * dt
         }
 
-        // Calculate 3D position in inclined orbit
         const currentR = sat.orbitRadius
         const lx = currentR * Math.cos(sat.orbitAngle)
         const lz = currentR * Math.sin(sat.orbitAngle)
         const ly = Math.sin(sat.orbitAngle * 2) * 8
 
-        // Orbit tilt matrix
         const cosTX = Math.cos(sat.tiltX)
         const sinTX = Math.sin(sat.tiltX)
         const y1 = ly * cosTX - lz * sinTX
@@ -841,7 +1062,6 @@ export function AiNetworkBg() {
           globalRotZ
         )
 
-        // Hero quiet zone dampening
         const cdx = proj.screenX - cx
         const cdy = proj.screenY - cy
         const calmNorm = Math.sqrt((cdx / calmRx) ** 2 + (cdy / calmRy) ** 2)
@@ -891,10 +1111,10 @@ export function AiNetworkBg() {
       })
       ctx.restore()
 
-      // ── H. Render 3D Celestial Stars with Prismatic Starburst Glints ──
+      // ── J. Render 3D Celestial Stars & Supermassive Hub Nodes ──
       projectedStars.forEach((ps) => {
         const star = ps.star
-        const pulse = 1 + Math.sin(star.pulsePhase) * 0.08 + star.energy * 0.15
+        const pulse = 1 + Math.sin(star.pulsePhase) * 0.08 + star.energy * 0.18
         const r = Math.max(0.6, star.radius * ps.scale * pulse)
         const depthAlpha = Math.max(0.15, 1 - ps.depth * 0.45) * ps.textCalmAlpha
 
@@ -919,8 +1139,23 @@ export function AiNetworkBg() {
 
         const activeHex = isDark ? darkHex : lightHex
 
+        // Supermassive Hub Radar/Sonar Pulsing Ring
+        if (star.isHub && !prefersReducedMotion) {
+          const ringProgress = (Math.sin(star.hubRingPhase) + 1) / 2
+          const maxHubRingR = r * 4.5
+          const hubRingR = r * 1.5 + ringProgress * maxHubRingR
+          const hubAlpha = (1 - ringProgress) * (isDark ? 0.35 : 0.25) * depthAlpha
+
+          ctx.beginPath()
+          ctx.arc(ps.screenX, ps.screenY, hubRingR, 0, Math.PI * 2)
+          ctx.strokeStyle = activeHex
+          ctx.lineWidth = 0.65
+          ctx.globalAlpha = hubAlpha
+          ctx.stroke()
+        }
+
         // 1. Radiant Starlight Aura
-        const glowRadius = r * 2.0
+        const glowRadius = r * (star.isHub ? 2.8 : 2.0)
         const glow = ctx.createRadialGradient(
           ps.screenX,
           ps.screenY,
@@ -937,13 +1172,13 @@ export function AiNetworkBg() {
         ctx.beginPath()
         ctx.arc(ps.screenX, ps.screenY, glowRadius, 0, Math.PI * 2)
         ctx.fillStyle = glow
-        ctx.globalAlpha = isDark ? (0.24 + star.energy * 0.18) * depthAlpha : (0.16 + star.energy * 0.14) * depthAlpha
+        ctx.globalAlpha = isDark ? (0.28 + star.energy * 0.20) * depthAlpha : (0.20 + star.energy * 0.16) * depthAlpha
         ctx.fill()
 
         // 2. Prismatic 4-Point Starburst Diffraction Spike (JWST aesthetic)
-        if (star.hasGlint && (star.energy > 0.3 || ps.depth < 0.35) && !prefersReducedMotion) {
-          const spikeLen = r * 2.2
-          ctx.strokeStyle = isDark ? 'rgba(224, 242, 254, 0.45)' : 'rgba(37, 99, 235, 0.35)'
+        if (star.hasGlint && (star.isHub || star.energy > 0.3 || ps.depth < 0.35) && !prefersReducedMotion) {
+          const spikeLen = r * (star.isHub ? 3.0 : 2.2)
+          ctx.strokeStyle = isDark ? 'rgba(224, 242, 254, 0.50)' : 'rgba(37, 99, 235, 0.40)'
           ctx.lineWidth = 0.5
 
           ctx.beginPath()
@@ -961,11 +1196,9 @@ export function AiNetworkBg() {
         ctx.beginPath()
         ctx.arc(ps.screenX, ps.screenY, r, 0, Math.PI * 2)
         ctx.fillStyle = isDark
-          ? star.energy > 0.5
-            ? '#FFFFFF'
-            : activeHex
+          ? (star.energy > 0.45 ? '#FFFFFF' : activeHex)
           : activeHex
-        ctx.globalAlpha = isDark ? depthAlpha * 0.58 : depthAlpha * 0.44
+        ctx.globalAlpha = isDark ? depthAlpha * 0.65 : depthAlpha * 0.52
         ctx.fill()
 
         ctx.restore()
@@ -983,6 +1216,7 @@ export function AiNetworkBg() {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseleave', handleMouseLeave)
       window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('click', handleClick)
       document.removeEventListener('visibilitychange', handleVisibility)
       motionQuery.removeEventListener('change', handleMotionChange)
