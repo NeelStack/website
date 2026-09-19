@@ -9,12 +9,11 @@ import { useCurrency } from '@/components/providers/currency-provider'
 import { validateQuoteForm, isValidEmail } from '@/lib/validation'
 
 const PROJECT_TYPES = [
-  'Custom Software Development',
-  'AI / Machine Learning Integration',
-  'Web Application & SaaS Engineering',
-  'Mobile Application Development',
-  'Website Performance & UX Audit',
-  'Technical Strategy & Architecture',
+  'Custom Software & ERP Development',
+  'Legacy Modernization & Architecture Upgrade',
+  'Static Website & High-Speed Web Development',
+  'DhruvaOS School Operating System',
+  'AI Systems & Autonomous Agents',
   'Other',
 ]
 
@@ -62,17 +61,15 @@ function QuoteFormInner() {
         nextProjectType = projectTypeParam
       } else if (serviceParam) {
         if (serviceParam.includes('ai') || serviceParam.includes('agent') || serviceParam.includes('automation')) {
-          nextProjectType = 'AI / Machine Learning Integration'
-        } else if (serviceParam.includes('web') || serviceParam.includes('saas')) {
-          nextProjectType = 'Web Application & SaaS Engineering'
-        } else if (serviceParam.includes('performance') || serviceParam.includes('optimization')) {
-          nextProjectType = 'Website Performance & UX Audit'
-        } else if (serviceParam.includes('consulting') || serviceParam.includes('strategy')) {
-          nextProjectType = 'Technical Strategy & Architecture'
-        } else if (serviceParam.includes('mobile') || serviceParam.includes('app')) {
-          nextProjectType = 'Mobile Application Development'
+          nextProjectType = 'AI Systems & Autonomous Agents'
+        } else if (serviceParam.includes('legacy') || serviceParam.includes('upgrade') || serviceParam.includes('moderniz')) {
+          nextProjectType = 'Legacy Modernization & Architecture Upgrade'
+        } else if (serviceParam.includes('static') || serviceParam.includes('fast-web') || serviceParam.includes('landing')) {
+          nextProjectType = 'Static Website & High-Speed Web Development'
+        } else if (serviceParam.includes('dhruva') || serviceParam.includes('school')) {
+          nextProjectType = 'DhruvaOS School Operating System'
         } else {
-          nextProjectType = 'Custom Software Development'
+          nextProjectType = 'Custom Software & ERP Development'
         }
       }
 
