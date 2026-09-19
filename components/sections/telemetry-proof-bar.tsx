@@ -30,8 +30,9 @@ const TRUST_ITEMS = [
 export function TrustStripSection() {
   return (
     <section
+      id="trust-strip"
       aria-label="NeelStack capabilities and trust credentials"
-      className="relative overflow-hidden border-y border-border/70 bg-card/60 dark:bg-[#070d1e]/80 backdrop-blur-md py-5 sm:py-6 z-20"
+      className="relative overflow-hidden border-y border-border/70 bg-card/60 dark:bg-[#070d1e]/80 backdrop-blur-md py-5 sm:py-6 z-20 scroll-mt-16"
     >
       {/* Top gradient line */}
       <div

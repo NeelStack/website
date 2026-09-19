@@ -14,6 +14,7 @@ import {
   Database,
   Code2,
   ShieldCheck,
+  ChevronDown,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
@@ -305,8 +306,8 @@ export function HeroSection() {
             </AnimatePresence>
           </div>
 
-          {/* Slide Pagination Dots for Mobile */}
-          <div className="flex items-center justify-center gap-2 select-none sm:hidden my-1">
+          {/* Slide Pagination Dots for Mobile (With Generous Touch Target) */}
+          <div className="flex items-center justify-center gap-1 select-none sm:hidden my-1">
             {HERO_SLIDES.map((slide, idx) => {
               const isActive = idx === currentIndex
               return (
@@ -318,12 +319,16 @@ export function HeroSection() {
                     setCurrentIndex(idx)
                   }}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? 'w-6 bg-primary shadow-xs'
-                      : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
-                  }`}
-                />
+                  className="p-2 cursor-pointer flex items-center justify-center focus-visible:outline-none"
+                >
+                  <span
+                    className={`h-2 rounded-full transition-all duration-300 block ${
+                      isActive
+                        ? 'w-6 bg-primary shadow-xs'
+                        : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
+                    }`}
+                  />
+                </button>
               )
             })}
           </div>
@@ -365,25 +370,42 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Clean Trust Cues */}
+          {/* Clean Tactile Trust Badges */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-1 sm:pt-2 text-xs font-semibold text-slate-700 dark:text-slate-300"
+            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-1.5 sm:pt-2 text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300 max-w-2xl mx-auto"
           >
-            <span className="inline-flex items-center gap-1.5">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
               100% Client Code &amp; IP Ownership
             </span>
-            <span className="inline-flex items-center gap-1.5">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
               Direct Senior Engineer Access
             </span>
-            <span className="inline-flex items-center gap-1.5">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
               <ShieldCheck className="h-3.5 w-3.5 text-cyan-500 shrink-0" />
               Enterprise-Grade SLA &amp; Security
             </span>
+          </motion.div>
+
+          {/* Subtle Mobile Scroll Cue to Bridge Viewport Void */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-col items-center justify-center pt-2 sm:pt-4 select-none"
+          >
+            <a
+              href="#trust-strip"
+              className="group flex flex-col items-center gap-1 text-[10.5px] font-mono font-medium tracking-wider uppercase text-slate-400/80 hover:text-slate-600 dark:text-slate-500 dark:hover:text-cyan-400 transition-colors cursor-pointer"
+              aria-label="Scroll to explore ecosystem"
+            >
+              <span>Explore Ecosystem</span>
+              <ChevronDown className="h-3.5 w-3.5 animate-bounce text-slate-400 dark:text-slate-500 group-hover:text-primary transition-colors" />
+            </a>
           </motion.div>
 
         </div>

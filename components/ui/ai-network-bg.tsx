@@ -308,11 +308,17 @@ export function AiNetworkBg() {
 
       // B. Build 3D Volumetric Chromatic Nebula Glow Clouds (Subtle Ethereal Depth)
       const cloudCount = isMobile ? 2 : 3
-      const cloudColorsDark: [string, string][] = [
-        ['rgba(6, 182, 212, 0.07)', 'rgba(6, 182, 212, 0)'],
-        ['rgba(59, 130, 246, 0.07)', 'rgba(59, 130, 246, 0)'],
-        ['rgba(139, 92, 246, 0.06)', 'rgba(139, 92, 246, 0)'],
-      ]
+      const cloudColorsDark: [string, string][] = isMobile
+        ? [
+            ['rgba(6, 182, 212, 0.12)', 'rgba(6, 182, 212, 0)'],
+            ['rgba(59, 130, 246, 0.11)', 'rgba(59, 130, 246, 0)'],
+            ['rgba(139, 92, 246, 0.10)', 'rgba(139, 92, 246, 0)'],
+          ]
+        : [
+            ['rgba(6, 182, 212, 0.07)', 'rgba(6, 182, 212, 0)'],
+            ['rgba(59, 130, 246, 0.07)', 'rgba(59, 130, 246, 0)'],
+            ['rgba(139, 92, 246, 0.06)', 'rgba(139, 92, 246, 0)'],
+          ]
       const cloudColorsLight: [string, string][] = [
         ['rgba(37, 99, 235, 0.05)', 'rgba(37, 99, 235, 0)'],
         ['rgba(79, 70, 229, 0.05)', 'rgba(79, 70, 229, 0)'],
@@ -923,7 +929,7 @@ export function AiNetworkBg() {
       projectedStars.sort((a, b) => b.rawZ - a.rawZ)
 
       // ── G. Render Gravitational Synaptic Cosmic Web (Interstellar Links) ──
-      const maxConnectDist3D = isMobile ? 80 : 100
+      const maxConnectDist3D = isMobile ? 92 : 100
       const maxConnectDistSq = maxConnectDist3D * maxConnectDist3D
       activeConnectionsList = []
 
@@ -955,12 +961,12 @@ export function AiNetworkBg() {
 
             if (isDark) {
               ctx.strokeStyle = avgEnergy > 0.4 ? '#38BDF8' : '#6366F1'
-              ctx.lineWidth = 0.50
-              ctx.globalAlpha = alpha * 0.38
+              ctx.lineWidth = isMobile ? 0.70 : 0.50
+              ctx.globalAlpha = isMobile ? alpha * 0.75 : alpha * 0.38
             } else {
               ctx.strokeStyle = avgEnergy > 0.4 ? '#2563EB' : '#4F46E5'
-              ctx.lineWidth = 0.50
-              ctx.globalAlpha = alpha * 0.28
+              ctx.lineWidth = isMobile ? 0.70 : 0.50
+              ctx.globalAlpha = isMobile ? alpha * 0.55 : alpha * 0.28
             }
 
             ctx.stroke()
