@@ -103,14 +103,14 @@ const INDUSTRIES = [
 
 export function IndustriesOverviewSection() {
   return (
-    <section id="industries" className="py-14 sm:py-18 md:py-24 relative overflow-hidden bg-transparent border-t border-border/60">
+    <section id="industries" className="py-10 sm:py-14 md:py-16 lg:py-20 relative overflow-hidden bg-transparent border-t border-border/60">
       {/* Ambient background glow */}
       <div
         className="absolute top-1/2 right-10 w-96 h-96 rounded-full bg-blue-500/5 blur-[140px] pointer-events-none"
         aria-hidden="true"
       />
 
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+      <Container className="space-y-8 sm:space-y-12 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -120,7 +120,7 @@ export function IndustriesOverviewSection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4"
         >
           <motion.span
             variants={{
@@ -166,7 +166,7 @@ export function IndustriesOverviewSection() {
         </motion.div>
 
         {/* 6 Balanced Industry Cards in a 3x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {INDUSTRIES.map((industry, idx) => {
             const Icon = industry.icon
             return (
@@ -176,7 +176,7 @@ export function IndustriesOverviewSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className={`group rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-5 bg-card/95 dark:bg-[#0a1122]/95 border-2 border-slate-200/90 dark:border-white/[0.08] backdrop-blur-md tactile-card-3d ${industry.borderHover} relative overflow-hidden shadow-md dark:shadow-2xl h-full`}
+                className={`group rounded-3xl p-5 sm:p-7 flex flex-col justify-between space-y-5 bg-card/95 dark:bg-[#0a1122]/95 border-2 border-slate-200/90 dark:border-white/[0.08] backdrop-blur-md tactile-card-3d ${industry.borderHover} relative overflow-hidden shadow-md dark:shadow-2xl h-full`}
               >
                 <div className="space-y-4 relative z-10">
                   {/* Top row: Icon + Domain Badge */}
@@ -187,7 +187,7 @@ export function IndustriesOverviewSection() {
                       <Icon className="h-5 w-5" />
                     </div>
 
-                    <span className="text-[10px] font-mono font-bold text-muted-foreground bg-muted/60 dark:bg-white/[0.04] px-2.5 py-1 rounded-md border border-border/40">
+                    <span className="text-[11px] font-mono font-bold text-muted-foreground bg-muted/60 dark:bg-white/[0.04] px-2.5 py-1 rounded-md border border-border/40">
                       {industry.badge}
                     </span>
                   </div>
@@ -198,7 +198,7 @@ export function IndustriesOverviewSection() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {industry.description}
                   </p>
                 </div>
@@ -207,7 +207,7 @@ export function IndustriesOverviewSection() {
                 <div className="pt-4 border-t border-border/50 relative z-10">
                   <Link
                     href={industry.href}
-                    className={`inline-flex items-center gap-1.5 text-xs font-extrabold ${industry.accent} group-hover:gap-2.5 transition-all`}
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold ${industry.accent} group-hover:gap-2.5 transition-all`}
                   >
                     {industry.ctaText} <ArrowRight className="h-3.5 w-3.5" />
                   </Link>

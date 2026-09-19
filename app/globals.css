@@ -323,6 +323,13 @@
     z-index: 1;
   }
 
+  /* Hero Viewport Height: Full viewport fold ONLY on widescreen landscape displays, never on tall portrait tablets (iPad Pro 13, iPad Pro 11, etc.) */
+  @media (min-width: 1024px) and (orientation: landscape) {
+    .hero-viewport-desktop {
+      min-height: calc(100vh - 5rem);
+    }
+  }
+
   /* Lenis Smooth Scroll Recommended Styles */
   html.lenis, html.lenis body {
     height: auto;

@@ -214,7 +214,7 @@ export function HeroSection() {
 
   return (
     <HeroSpotlight
-      className="relative overflow-hidden pt-16 pb-10 sm:pt-20 sm:pb-14 md:pt-24 md:pb-16"
+      className="relative overflow-hidden pt-20 pb-6 sm:pt-24 sm:pb-8 md:pt-26 md:pb-8 lg:pt-26 lg:pb-10 xl:pt-28 xl:pb-14"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -236,7 +236,7 @@ export function HeroSection() {
         PREV & NEXT ARROWS (Desktop / Tablet):
         Clean, elegant arrow glyphs on desktop with 3D tactile button pop on hover.
       */}
-      <div className="hidden sm:flex absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-30 w-full max-w-[94rem] mx-auto px-4 md:px-10 lg:px-14 items-center justify-between">
+      <div className="hidden sm:flex absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-30 w-full max-w-[94rem] mx-auto px-4 md:px-6 lg:px-14 items-center justify-between">
         {/* Prev Arrow / 3D Tactile on Hover */}
         <button
           type="button"
@@ -258,12 +258,12 @@ export function HeroSection() {
         </button>
       </div>
 
-      <Container className="relative z-10 w-full max-w-4.5xl mx-auto px-4 sm:px-8 md:px-12">
+      <Container className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-12">
         <div className="flex flex-col gap-5 sm:gap-6 text-center items-center">
 
           {/* Snug Responsive 3D Kinetic Dynamic Headline Area */}
           <div
-            className="w-full min-h-[195px] xs:min-h-[215px] sm:min-h-[240px] md:min-h-[255px] flex flex-col justify-center items-center px-1 sm:px-8"
+            className="w-full min-h-[220px] sm:min-h-[240px] md:min-h-[255px] flex flex-col justify-center items-center px-1 sm:px-8"
             style={{ perspective: 1200 }}
           >
             <AnimatePresence mode="wait" custom={direction}>
@@ -275,20 +275,20 @@ export function HeroSection() {
                 animate="center"
                 exit="exit"
                 style={{ transformStyle: 'preserve-3d' }}
-                className="flex flex-col items-center gap-2.5 xs:gap-3 sm:gap-4 max-w-3.5xl"
+                className="flex flex-col items-center gap-3 sm:gap-4 max-w-4xl"
               >
                 {/* Dynamic Category Badge */}
                 <div
-                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full border-2 px-3 sm:px-4 py-1 sm:py-1.5 text-[10.5px] xs:text-[11px] sm:text-xs font-mono font-bold backdrop-blur-md transition-all cursor-default max-w-full ${currentSlide.badgeStyle}`}
+                  className={`inline-flex items-center gap-2 rounded-full border-2 px-3.5 sm:px-4 py-1.5 text-xs font-mono font-bold backdrop-blur-md transition-all cursor-default max-w-full ${currentSlide.badgeStyle}`}
                 >
-                  <BadgeIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0 animate-pulse" />
+                  <BadgeIcon className="h-3.5 w-3.5 shrink-0 animate-pulse" />
                   <span className="tracking-tight text-center truncate sm:whitespace-normal">
                     {currentSlide.badgeText}
                   </span>
                 </div>
 
                 {/* Main Dynamic 3D Headline */}
-                <h1 className="font-heading text-[1.85rem] xs:text-[2.25rem] sm:text-4.5xl md:text-5xl lg:text-5.5xl xl:text-6xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.12] sm:leading-[1.1] text-3d-headline flex flex-col items-center select-none text-balance">
+                <h1 className="font-heading text-[2.2rem] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.12] sm:leading-[1.1] text-3d-headline flex flex-col items-center select-none text-balance">
                   <span className="block">{currentSlide.titlePrefix}</span>
                   <span
                     className={`block bg-gradient-to-r ${currentSlide.accentGradient} bg-clip-text text-transparent pb-0.5`}
@@ -298,7 +298,7 @@ export function HeroSection() {
                 </h1>
 
                 {/* Main Dynamic Subtitle */}
-                <p className="max-w-3xl text-[14px] xs:text-[15.5px] sm:text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-200 font-sans font-medium text-center text-balance px-2 select-none">
+                <p className="max-w-3xl text-[15.5px] sm:text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-200 font-sans font-medium text-center text-balance px-1 sm:px-2 select-none">
                   <span className="sm:block">{currentSlide.subtitleLine1} </span>
                   <span className="sm:block">{currentSlide.subtitleLine2}</span>
                 </p>
@@ -337,14 +337,14 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-0.5 sm:mt-2 w-full sm:w-auto max-w-xs sm:max-w-none"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-1 sm:mt-2 w-full sm:w-auto max-w-sm sm:max-w-none"
           >
             <div className="w-full sm:w-auto">
               <Button
                 asChild
                 variant="3d-yellow"
                 size="lg"
-                className="w-full sm:w-auto h-12 sm:h-13 px-7 sm:px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold shadow-md"
+                className="w-full sm:w-auto h-12.5 sm:h-13 px-7 sm:px-8 text-[15px] sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold shadow-md"
               >
                 <Link href="/contact" className="flex items-center justify-center gap-2">
                   <Sparkles className="h-4 w-4" />
@@ -359,7 +359,7 @@ export function HeroSection() {
                 asChild
                 variant="3d-secondary"
                 size="lg"
-                className="w-full sm:w-auto h-12 sm:h-13 px-7 sm:px-8 text-sm sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
+                className="w-full sm:w-auto h-12.5 sm:h-13 px-7 sm:px-8 text-[15px] sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
               >
                 <Link href="/services" className="flex items-center justify-center gap-2">
                   <span>Explore Services</span>
@@ -374,17 +374,17 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-1.5 sm:pt-2 text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300 max-w-2xl mx-auto"
+            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2 sm:pt-2 text-xs font-semibold text-slate-700 dark:text-slate-300 max-w-2xl mx-auto"
           >
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
               100% Client Code &amp; IP Ownership
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
               Direct Senior Engineer Access
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
               <ShieldCheck className="h-3.5 w-3.5 text-cyan-500 shrink-0" />
               Enterprise-Grade SLA &amp; Security
             </span>
@@ -399,7 +399,7 @@ export function HeroSection() {
           >
             <a
               href="#trust-strip"
-              className="group flex flex-col items-center gap-1 text-[10.5px] font-mono font-medium tracking-wider uppercase text-slate-400/80 hover:text-slate-600 dark:text-slate-500 dark:hover:text-cyan-400 transition-colors cursor-pointer"
+              className="group flex flex-col items-center gap-1 text-xs font-mono font-medium tracking-wider uppercase text-slate-400/80 hover:text-slate-600 dark:text-slate-500 dark:hover:text-cyan-400 transition-colors cursor-pointer"
               aria-label="Scroll to explore ecosystem"
             >
               <span>Explore Ecosystem</span>

@@ -24,13 +24,17 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   // Sync state with DOM class
   const syncWithDOM = useCallback(() => {
-    const isDarkTheme = document.documentElement.classList.contains('dark')
-    setIsDark(isDarkTheme)
+    if (typeof document !== 'undefined') {
+      const isDarkTheme = document.documentElement.classList.contains('dark')
+      setIsDark(isDarkTheme)
+    }
   }, [])
 
   useEffect(() => {
+    // Read DOM theme immediately before marking mounted
+    const isDarkTheme = document.documentElement.classList.contains('dark')
+    setIsDark(isDarkTheme)
     setMounted(true)
-    syncWithDOM()
 
     // Listen for cross-tab theme changes
     const handleStorageChange = (e: StorageEvent) => {
@@ -51,17 +55,21 @@ export function ThemeToggle({ className }: { className?: string }) {
     // Listen for OS system theme changes (if user hasn't explicitly overridden)
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleSystemThemeChange = (e: MediaQueryListEvent) => {
-      const storedTheme = localStorage.getItem('theme')
-      if (!storedTheme) {
-        if (e.matches) {
-          document.documentElement.classList.add('dark')
-          document.documentElement.classList.remove('light')
-          setIsDark(true)
-        } else {
-          document.documentElement.classList.remove('dark')
-          document.documentElement.classList.add('light')
-          setIsDark(false)
+      try {
+        const storedTheme = localStorage.getItem('theme')
+        if (!storedTheme) {
+          if (e.matches) {
+            document.documentElement.classList.add('dark')
+            document.documentElement.classList.remove('light')
+            setIsDark(true)
+          } else {
+            document.documentElement.classList.remove('dark')
+            document.documentElement.classList.add('light')
+            setIsDark(false)
+          }
         }
+      } catch {
+        // Safe fallback for restricted storage environments
       }
     }
 
@@ -104,16 +112,28 @@ export function ThemeToggle({ className }: { className?: string }) {
     }
   }
 
-  // Skeleton fallback during SSR to guarantee zero layout shift
+  // Pure CSS-driven skeleton fallback during SSR to guarantee zero layout shift and zero theme flash
   if (!mounted) {
     return (
       <div
         className={cn(
-          'w-[68px] h-[32px] rounded-full border-2 border-slate-200 dark:border-white/10 bg-muted/60 shrink-0',
+          'group relative flex items-center justify-between w-[68px] h-[32px] rounded-full px-2 select-none shrink-0 border-2 transition-none',
+          'bg-gradient-to-r from-amber-100 via-sky-50 to-amber-100 border-amber-300/80',
+          'dark:bg-gradient-to-r dark:from-slate-950 dark:via-[#0b1329] dark:to-slate-950 dark:border-cyan-500/30',
           className
         )}
         aria-hidden="true"
-      />
+      >
+        <Sun className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400/40 opacity-75 shrink-0" />
+        <Moon className="h-3.5 w-3.5 text-slate-400/50 dark:text-cyan-400 opacity-75 shrink-0" />
+        <div
+          className={cn(
+            'absolute top-[2px] h-[24px] w-[24px] rounded-full border-2 transition-none',
+            'left-[2px] bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-200 border-amber-900/80 shadow-[1px_1px_0px_#78350f]',
+            'dark:left-[38px] dark:bg-gradient-to-tr dark:from-slate-950 dark:via-cyan-950 dark:to-slate-900 dark:border-cyan-300 dark:shadow-[0_0_12px_rgba(6,182,212,0.7)]'
+          )}
+        />
+      </div>
     )
   }
 
@@ -155,6 +175,7 @@ export function ThemeToggle({ className }: { className?: string }) {
 
       {/* 3D Elevated Sliding Switch Knob */}
       <motion.div
+        initial={false}
         animate={{
           x: isDark ? 36 : 0,
         }}
@@ -172,7 +193,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       >
         <motion.div
           key={isDark ? 'dark-icon' : 'light-icon'}
-          initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+          initial={false}
           animate={{ rotate: 0, scale: 1, opacity: 1 }}
           exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
           transition={{ duration: 0.18 }}

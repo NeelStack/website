@@ -107,7 +107,7 @@ export function BusinessProblemsSection() {
   const ActiveIcon = activeChallenge.icon
 
   return (
-    <section className="py-14 sm:py-18 md:py-24 relative overflow-hidden bg-surface/50 border-t border-border/60">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-20 relative overflow-hidden bg-surface/50 border-t border-border/60">
       {/* Ambient background glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
@@ -118,7 +118,7 @@ export function BusinessProblemsSection() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+      <Container className="space-y-8 sm:space-y-12 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -128,7 +128,7 @@ export function BusinessProblemsSection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4"
         >
           <motion.span
             variants={{
@@ -175,9 +175,9 @@ export function BusinessProblemsSection() {
         </motion.div>
 
         {/* Interactive Challenge -> Solution Architecture Split */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
-          {/* Left Column: 4 Challenge Selectors */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+          {/* Left Column: 4 Challenge Selectors (2x2 grid on iPad/tablet, single column on desktop & mobile) */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5 sm:gap-3">
             {CHALLENGES.map((challenge) => {
               const Icon = challenge.icon
               const isActive = challenge.id === activeId
@@ -186,7 +186,7 @@ export function BusinessProblemsSection() {
                   key={challenge.id}
                   type="button"
                   onClick={() => setActiveId(challenge.id)}
-                  className={`text-left p-4 sm:p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer flex items-start gap-3.5 relative overflow-hidden group ${
+                  className={`text-left p-3.5 sm:p-5 rounded-2xl border-2 transition-all duration-200 cursor-pointer flex items-start gap-3.5 relative overflow-hidden group ${
                     isActive
                       ? `${challenge.activeBg} shadow-md border-primary/60 dark:border-primary/50`
                       : 'border-slate-200/80 dark:border-white/[0.06] bg-card/80 dark:bg-[#0a1122]/60 hover:border-slate-300 dark:hover:border-white/[0.12] hover:bg-card dark:hover:bg-[#0a1122]/90'
@@ -216,7 +216,7 @@ export function BusinessProblemsSection() {
                     >
                       {challenge.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground line-clamp-1">
+                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-1">
                       {challenge.shortDesc}
                     </p>
                   </div>
@@ -234,7 +234,7 @@ export function BusinessProblemsSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="h-full rounded-3xl p-6 sm:p-8 bg-card/95 dark:bg-[#0a1122] border-2 border-slate-200/90 dark:border-white/[0.08] shadow-lg dark:shadow-2xl flex flex-col justify-between space-y-6 relative overflow-hidden"
+                className="h-full rounded-3xl p-5 sm:p-8 bg-card/95 dark:bg-[#0a1122] border-2 border-slate-200/90 dark:border-white/[0.08] shadow-lg dark:shadow-2xl flex flex-col justify-between space-y-6 relative overflow-hidden"
               >
                 {/* Background accent glow */}
                 <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
@@ -246,7 +246,7 @@ export function BusinessProblemsSection() {
                       <ShieldAlert className="h-4 w-4 shrink-0" />
                       <span>The Business Bottleneck</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed pl-6">
+                    <p className="text-sm text-foreground/80 leading-relaxed pl-6">
                       {activeChallenge.painPoint}
                     </p>
                   </div>
@@ -266,7 +266,7 @@ export function BusinessProblemsSection() {
 
                     <ul className="space-y-2.5 pt-1">
                       {activeChallenge.solutionDetails.map((detail) => (
-                        <li key={detail} className="flex items-start gap-2.5 text-xs sm:text-sm text-muted-foreground">
+                        <li key={detail} className="flex items-start gap-2.5 text-sm text-muted-foreground">
                           <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
                           <span className="leading-relaxed">{detail}</span>
                         </li>
@@ -289,12 +289,12 @@ export function BusinessProblemsSection() {
                 <div className="pt-4 border-t border-border/50 relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                   <Link
                     href={activeChallenge.serviceLink}
-                    className={`inline-flex items-center gap-1.5 text-xs font-extrabold ${activeChallenge.accent} hover:gap-2.5 transition-all`}
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold ${activeChallenge.accent} hover:gap-2.5 transition-all`}
                   >
                     {activeChallenge.serviceLabel} <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
 
-                  <Button asChild variant="3d-yellow" size="default" className="h-10 px-5 font-bold rounded-xl text-xs">
+                  <Button asChild variant="3d-yellow" size="default" className="h-10 px-5 font-bold rounded-xl text-xs sm:text-sm">
                     <Link href="/contact" className="flex items-center gap-1.5">
                       Discuss This Challenge <ArrowRight className="h-3.5 w-3.5" />
                     </Link>

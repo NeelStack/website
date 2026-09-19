@@ -74,7 +74,7 @@ const VALUE_PILLARS = [
 
 export function WhyUsSection() {
   return (
-    <section className="py-14 sm:py-18 md:py-24 relative overflow-hidden bg-surface/40 border-t border-border/50">
+    <section className="py-10 sm:py-14 md:py-16 lg:py-20 relative overflow-hidden bg-surface/40 border-t border-border/50">
       {/* Ambient background glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] pointer-events-none"
@@ -85,7 +85,7 @@ export function WhyUsSection() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+      <Container className="space-y-8 sm:space-y-12 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -95,7 +95,7 @@ export function WhyUsSection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4"
         >
           <motion.span
             variants={{
@@ -141,7 +141,7 @@ export function WhyUsSection() {
         </motion.div>
 
         {/* 3 High-Impact Value Pillars */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
           {VALUE_PILLARS.map((pillar, idx) => {
             const Icon = pillar.icon
             return (
@@ -151,7 +151,7 @@ export function WhyUsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`group p-6 sm:p-8 rounded-3xl border-2 border-slate-200/90 dark:border-white/[0.08] bg-card/95 dark:bg-[#0a1122]/95 backdrop-blur-md space-y-6 relative overflow-hidden tactile-card-3d ${pillar.borderHover} h-full flex flex-col justify-between shadow-md dark:shadow-2xl`}
+                className={`group p-5 sm:p-6 lg:p-8 rounded-3xl border-2 border-slate-200/90 dark:border-white/[0.08] bg-card/95 dark:bg-[#0a1122]/95 backdrop-blur-md space-y-5 lg:space-y-6 relative overflow-hidden tactile-card-3d ${pillar.borderHover} h-full flex flex-col justify-between shadow-md dark:shadow-2xl`}
               >
                 {/* Top glow accent */}
                 <div
@@ -184,14 +184,14 @@ export function WhyUsSection() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {pillar.description}
                   </p>
 
                   {/* Feature Checklist */}
                   <div className="space-y-2.5 pt-2 border-t border-border/40">
                     {pillar.features.map((feature) => (
-                      <div key={feature} className="flex items-start gap-2.5 text-xs text-foreground/85">
+                      <div key={feature} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/85">
                         <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
                         <span className="leading-relaxed">{feature}</span>
                       </div>
@@ -201,7 +201,7 @@ export function WhyUsSection() {
 
                 {/* Bottom Highlight Badge */}
                 <div className="pt-4 border-t border-border/50 relative z-10">
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-muted-foreground/80 bg-muted/50 dark:bg-white/[0.04] px-3 py-1.5 rounded-lg border border-border/50 w-full justify-center">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground/80 bg-muted/50 dark:bg-white/[0.04] px-3 py-1.5 rounded-lg border border-border/50 w-full justify-center">
                     <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
                     {pillar.highlightBadge}
                   </span>

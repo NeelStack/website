@@ -109,7 +109,7 @@ const SERVICES = [
 
 export function ServicesOverviewSection() {
   return (
-    <section id="services" className="py-14 sm:py-18 md:py-24 relative overflow-hidden bg-transparent">
+    <section id="services" className="py-10 sm:py-14 md:py-16 lg:py-20 relative overflow-hidden bg-transparent">
       {/* Ambient background glow */}
       <div
         className="absolute top-1/4 left-0 w-96 h-96 rounded-full bg-blue-500/5 blur-[140px] pointer-events-none"
@@ -120,7 +120,7 @@ export function ServicesOverviewSection() {
         aria-hidden="true"
       />
 
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+      <Container className="space-y-8 sm:space-y-12 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -130,7 +130,7 @@ export function ServicesOverviewSection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4"
         >
           <motion.span
             variants={{
@@ -176,7 +176,7 @@ export function ServicesOverviewSection() {
         </motion.div>
 
         {/* Services Grid with Rich Card Anatomy */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {SERVICES.map((service, idx) => {
             const Icon = service.icon
             return (
@@ -186,7 +186,7 @@ export function ServicesOverviewSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className={`group rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6 bg-card/95 dark:bg-[#0a1122]/95 border-2 border-slate-200/90 dark:border-white/[0.08] backdrop-blur-md tactile-card-3d ${service.borderHover} relative overflow-hidden shadow-md dark:shadow-2xl h-full`}
+                className={`group rounded-3xl p-5 sm:p-7 flex flex-col justify-between space-y-5 sm:space-y-6 bg-card/95 dark:bg-[#0a1122]/95 border-2 border-slate-200/90 dark:border-white/[0.08] backdrop-blur-md tactile-card-3d ${service.borderHover} relative overflow-hidden shadow-md dark:shadow-2xl h-full`}
               >
                 {/* Top gradient glow bar */}
                 <div
@@ -204,7 +204,7 @@ export function ServicesOverviewSection() {
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                           {service.category}
                         </span>
                       </div>
@@ -220,20 +220,20 @@ export function ServicesOverviewSection() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Structured Deliverables */}
                   <div className="space-y-2 pt-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70 block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/70 block">
                       Key Deliverables
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[11px] font-medium text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-white/[0.05] px-2.5 py-0.5 rounded-md border border-slate-200/80 dark:border-white/10"
+                          className="text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-white/[0.05] px-2.5 py-1 rounded-md border border-slate-200/80 dark:border-white/10"
                         >
                           {tag}
                         </span>
@@ -246,7 +246,7 @@ export function ServicesOverviewSection() {
                 <div className="pt-4 border-t border-border/50 relative z-10 flex items-center justify-between">
                   <Link
                     href={service.href}
-                    className={`inline-flex items-center gap-1.5 text-xs font-extrabold ${service.accent} group-hover:gap-2.5 transition-all`}
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold ${service.accent} group-hover:gap-2.5 transition-all`}
                   >
                     Explore Service Details <ArrowRight className="h-3.5 w-3.5" />
                   </Link>

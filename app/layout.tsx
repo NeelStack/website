@@ -153,20 +153,30 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              try {
-                const storedTheme = localStorage.getItem('theme');
-                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const isDark = storedTheme === 'dark' || (!storedTheme && systemPrefersDark);
-                if (isDark) {
-                  document.documentElement.classList.add('dark');
-                  document.documentElement.classList.remove('light');
-                } else {
-                  document.documentElement.classList.add('light');
-                  document.documentElement.classList.remove('dark');
+              (function() {
+                try {
+                  var storedTheme = localStorage.getItem('theme');
+                  var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var isDark = storedTheme === 'dark' || (storedTheme !== 'light' && systemPrefersDark);
+                  if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                  } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {
+                  try {
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                      document.documentElement.classList.add('dark');
+                      document.documentElement.classList.remove('light');
+                    } else {
+                      document.documentElement.classList.add('light');
+                      document.documentElement.classList.remove('dark');
+                    }
+                  } catch (_) {}
                 }
-              } catch (e) {
-                document.documentElement.classList.add('light');
-              }
+              })();
             `,
           }}
         />

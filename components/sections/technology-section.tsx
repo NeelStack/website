@@ -53,8 +53,8 @@ const TECH_LAYERS = [
 
 export function TechnologySection() {
   return (
-    <section id="technologies" className="py-14 sm:py-18 md:py-24 relative overflow-hidden bg-transparent border-t border-border/60">
-      <Container className="space-y-10 sm:space-y-12 relative z-10">
+    <section id="technologies" className="py-10 sm:py-14 md:py-16 lg:py-20 relative overflow-hidden bg-transparent border-t border-border/60">
+      <Container className="space-y-8 sm:space-y-12 relative z-10">
         {/* Section Header */}
         <motion.div
           initial="hidden"
@@ -64,7 +64,7 @@ export function TechnologySection() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.1 } },
           }}
-          className="text-center max-w-3xl mx-auto space-y-4"
+          className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4"
         >
           <motion.span
             variants={{
@@ -110,7 +110,7 @@ export function TechnologySection() {
         </motion.div>
 
         {/* 4 Connected Technology Layers in 2x2 Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {TECH_LAYERS.map((layer, idx) => {
             const Icon = layer.icon
             return (
@@ -120,7 +120,7 @@ export function TechnologySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className={`rounded-3xl border-2 border-slate-200/90 dark:border-white/[0.08] bg-card/95 dark:bg-[#0a1122]/95 p-6 sm:p-7 space-y-4 tactile-card-3d ${layer.borderHover} transition-colors shadow-md dark:shadow-2xl h-full flex flex-col justify-between`}
+                className={`rounded-3xl border-2 border-slate-200/90 dark:border-white/[0.08] bg-card/95 dark:bg-[#0a1122]/95 p-5 sm:p-7 space-y-4 tactile-card-3d ${layer.borderHover} transition-colors shadow-md dark:shadow-2xl h-full flex flex-col justify-between`}
               >
                 <div className="space-y-4">
                   {/* Header: Icon + Title + Tier Badge */}
@@ -143,7 +143,7 @@ export function TechnologySection() {
                   </div>
 
                   {/* Capabilities Summary */}
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {layer.capabilities}
                   </p>
 
@@ -152,7 +152,7 @@ export function TechnologySection() {
                     {layer.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-[11px] font-medium text-foreground/90 bg-muted/60 dark:bg-white/[0.05] px-2.5 py-1 rounded-lg border border-border/60"
+                        className="text-xs font-medium text-foreground/90 bg-muted/60 dark:bg-white/[0.05] px-2.5 py-1 rounded-lg border border-border/60"
                       >
                         {tech}
                       </span>

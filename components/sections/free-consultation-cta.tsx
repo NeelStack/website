@@ -15,7 +15,7 @@ const TRUST_REASSURANCES = [
 
 export function FreeConsultationCTA() {
   return (
-    <Section className="relative z-10 border-t border-border/50 py-16 sm:py-20">
+    <Section className="relative z-10 border-t border-border/50 py-10 sm:py-14 md:py-16 lg:py-20">
       <Container size="lg">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -28,11 +28,11 @@ export function FreeConsultationCTA() {
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-rose-500 opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
 
           {/* Inner content */}
-          <div className="relative rounded-[2.4rem] bg-card/95 backdrop-blur-xl border border-border/40 p-6 sm:p-12 md:p-16 overflow-hidden flex flex-col items-center text-center z-10 space-y-6 sm:space-y-7">
+          <div className="relative rounded-[2.4rem] bg-card/95 backdrop-blur-xl border border-border/40 p-5 sm:p-12 md:p-16 overflow-hidden flex flex-col items-center text-center z-10 space-y-5 sm:space-y-7">
             {/* Ambient glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-            <h2 className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight max-w-3xl relative z-10">
+            <h2 className="font-heading text-[1.75rem] sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight leading-tight max-w-3xl relative z-10">
               Have a software challenge?{' '}
               <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-rose-400">
@@ -40,7 +40,7 @@ export function FreeConsultationCTA() {
               </span>
             </h2>
 
-            <p className="text-xs xs:text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto relative z-10">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto relative z-10">
               Tell us about your project, timeline, and goals. We will provide a direct architectural review and engineering scope without sales pressure.
             </p>
 
@@ -50,7 +50,7 @@ export function FreeConsultationCTA() {
                 asChild
                 variant="3d-yellow"
                 size="xl"
-                className="w-full sm:w-auto h-12 sm:h-14 md:h-15 px-6 sm:px-10 text-sm sm:text-base md:text-lg rounded-2xl flex items-center justify-center gap-3 cursor-pointer shadow-xl hover:scale-105 transition-transform"
+                className="w-full sm:w-auto h-12.5 sm:h-14 md:h-15 px-6 sm:px-10 text-[15px] sm:text-base md:text-lg rounded-2xl flex items-center justify-center gap-3 cursor-pointer shadow-xl hover:scale-105 transition-transform"
               >
                 <Link href="/contact" className="flex items-center justify-center gap-3">
                   Start a Conversation
