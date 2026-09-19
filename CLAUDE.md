@@ -51,21 +51,23 @@ pnpm run ci-check
 
 ## 5. Design System & Frontend Standards
 
-1. **Permanent 3D Tactile Cards (`.tactile-card-3d` in `app/globals.css`):**
-   - Cards have permanent physical elevation shadows, crisp specular borders, and hover elevation (`translateY(-4px)`).
-   - Never tilt or warp whole card bounding boxes.
-   - 3D kinetic tilt physics is strictly isolated to **icons and badges** via `KineticIconTilt` (`components/3d/kinetic-tilt.tsx`).
+> Full specification: [`docs/NEELSTACK_DESIGN_SYSTEM.md`](docs/NEELSTACK_DESIGN_SYSTEM.md)
+
+1. **Neo-Brutalist Tactile Cards (`.tactile-card-3d` in `app/globals.css`):**
+   - Cards use hard-offset neo-brutalist `box-shadow` (`4px 4px 0px 0px`) with diagonal hover lift (`translate(-3px, -3px)` expanding to `7px 7px 0px 0px`).
+   - Mouse-following spotlight overlay via `::before` pseudo-element driven by `MouseSpotlight` (`components/effects/mouse-spotlight.tsx`).
+   - Never tilt or warp whole card bounding boxes with `rotateX`/`rotateY`.
 2. **Enterprise Theme Switcher (`components/ui/theme-toggle.tsx`):**
-   - Zero FOUC: Inline script in `app/layout.tsx` checks `localStorage` and `window.matchMedia('(prefers-color-scheme: dark)')`.
+   - Zero FOUC: Inline `<script>` in `app/layout.tsx` `<head>` checks `localStorage` and `window.matchMedia('(prefers-color-scheme: dark)')`.
    - Cross-Tab Synchronization via `window.addEventListener('storage', ...)`.
-   - Symmetrical 3D switch geometry (`w-[68px] h-[32px]`, `24px × 24px` knob).
+   - Neo-Brutalist switch: `.tactile-switch-3d` with `2.5px 2.5px 0px` offset shadow. Geometry: `w-[68px] h-[32px]`, `24px × 24px` knob.
    - WCAG 2.1 AA accessible (`role="switch"`, `aria-checked`, `Enter`/`Space` keyboard navigation).
 3. **Living 3D AI Neural Cosmos (`components/ui/ai-network-bg.tsx`):**
-   - Logarithmic spiral arms + full-screen ambient nodes.
-   - Streaming synaptic data pulses along connections.
-   - Volumetric chromatic nebula depth clouds.
-   - Magnetic cursor/touch deflection lens.
-   - Typographic quiet zone protecting text readability.
+   - Canvas 2D engine: 58 nodes (mobile) / 78 (tablet) / 98 (desktop).
+   - 3 logarithmic spiral arms (75%) + full-viewport ambient nodes (25%).
+   - Streaming synaptic data pulses, volumetric chromatic nebulae, accretion orbital photons.
+   - Magnetic cursor/touch deflection, celestial shockwave on click.
+   - Performance: `IntersectionObserver` + `visibilitychange` + `prefers-reduced-motion` detection.
 
 ---
 

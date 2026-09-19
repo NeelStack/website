@@ -109,20 +109,23 @@ These rules apply to all AI agents working on this repository. They are derived 
 
 ## 9. Design System & Frontend Architecture Standards
 
-- **Permanent 3D Tactile Elevation (`.tactile-card-3d` in `app/globals.css`):**
-  - Cards must use permanent multi-tier physical depth elevation (`box-shadow`, specular borders, and subtle upward translation on hover `translateY(-4px)`).
+> Full specification: [`docs/NEELSTACK_DESIGN_SYSTEM.md`](docs/NEELSTACK_DESIGN_SYSTEM.md)
+
+- **Neo-Brutalist Tactile Elevation (`.tactile-card-3d` in `app/globals.css`):**
+  - Cards use hard-offset neo-brutalist `box-shadow` (`4px 4px 0px 0px`) with diagonal hover lift (`translate(-3px, -3px)` expanding to `7px 7px 0px 0px`).
+  - Mouse-following spotlight overlay via `::before` pseudo-element driven by `MouseSpotlight` (`components/effects/mouse-spotlight.tsx`).
   - Never wrap entire card containers in full-body 3D rotate tilt matrices (`rotateX`/`rotateY`), which causes unnatural card warping.
-  - Interactive kinetic 3D tilt is strictly isolated to **icons and badges** via `KineticIconTilt` (`components/3d/kinetic-tilt.tsx`).
 
 - **Theme Switcher Architecture (`components/ui/theme-toggle.tsx`):**
-  - Zero FOUC: Inline hydration script in `app/layout.tsx` checks both `localStorage.getItem('theme')` and `window.matchMedia('(prefers-color-scheme: dark)')`.
+  - Zero FOUC: Inline `<script>` in `app/layout.tsx` `<head>` checks both `localStorage.getItem('theme')` and `window.matchMedia('(prefers-color-scheme: dark)')`.
   - Multi-Tab Sync: `window.addEventListener('storage', ...)` syncs theme across all active tabs instantly.
   - Accessibility: `role="switch"`, `aria-checked={isDark}`, `Enter`/`Space` keyboard navigation.
-  - Symmetrical 3D Physical Geometry: `w-[68px] h-[32px]`, `24px × 24px` sliding knob, 2px balanced margins.
+  - Neo-Brutalist switch: `.tactile-switch-3d` with `2.5px 2.5px 0px` offset shadow. Geometry: `w-[68px] h-[32px]`, `24px × 24px` sliding knob, 2px balanced margins.
 
 - **3D AI Neural Cosmos Canvas (`components/ui/ai-network-bg.tsx`):**
-  - Lightweight Canvas 2D engine with logarithmic spiral galaxy arms + ambient full-screen constellation nodes.
-  - Animated synaptic data pulses, subtle volumetric chromatic nebulae, and magnetic cursor/touch deflection.
-  - Balanced typography quiet zone (`calmRx`, `calmRy`) ensuring 100% text legibility.
+  - Canvas 2D engine: 58 nodes (mobile) / 78 (tablet) / 98 (desktop).
+  - 3 logarithmic spiral galaxy arms (75% of nodes) + ambient full-viewport constellation field (25%).
+  - Streaming synaptic data pulses, volumetric chromatic nebulae, accretion orbital photons, and magnetic cursor/touch deflection.
+  - Performance: `IntersectionObserver` + `visibilitychange` + `prefers-reduced-motion` detection.
 
 
