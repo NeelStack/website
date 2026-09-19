@@ -234,8 +234,8 @@ export function AiNetworkBg() {
 
       const baseR = isMobile ? 380 : isTablet ? 460 : 560
 
-      // A. Build Outward-Framing Logarithmic Spiral Galactic Arms + Full-Field Ambient Nodes
-      const starCount = isMobile ? 115 : isTablet ? 145 : 175
+      // A. Build Outward-Framing Logarithmic Spiral Galactic Arms + Full-Field Ambient Nodes (Less Dense & Cleaner)
+      const starCount = isMobile ? 58 : isTablet ? 78 : 98
       const armCount = 3
       const colors: CelestialStarNode['colorType'][] = [
         'cyan',
@@ -250,9 +250,9 @@ export function AiNetworkBg() {
         const armIdx = i % armCount
         const armOffset = (armIdx * Math.PI * 2) / armCount
 
-        // 72% stars on majestic logarithmic spiral arms, 28% ambient full-canvas celestial field nodes
-        const isAmbientField = i >= Math.floor(starCount * 0.72)
-        const isHub = i % 14 === 0 // ~8% prominent supermassive AI core nodes
+        // 75% stars on majestic logarithmic spiral arms, 25% ambient full-canvas celestial field nodes
+        const isAmbientField = i >= Math.floor(starCount * 0.75)
+        const isHub = i % 20 === 0 // ~5% prominent supermassive AI core nodes
 
         let x = 0
         let y = 0
@@ -261,9 +261,9 @@ export function AiNetworkBg() {
 
         if (!isAmbientField) {
           // Outward spiral arm distribution
-          const u = 0.14 + Math.random() * 0.86
+          const u = 0.16 + Math.random() * 0.84
           const spiralAngle = u * Math.PI * 3.4 + armOffset
-          dist = (baseR * 0.30 + u * baseR * 1.08) * (0.88 + Math.random() * 0.24)
+          dist = (baseR * 0.32 + u * baseR * 1.08) * (0.88 + Math.random() * 0.24)
 
           const dispersion = (isMobile ? 24 : 34) * (0.45 + u * 0.75)
           x = Math.cos(spiralAngle) * dist + (Math.random() - 0.5) * dispersion
@@ -294,33 +294,29 @@ export function AiNetworkBg() {
           baseX: x,
           baseY: y,
           baseZ: z,
-          radius: isHub ? (Math.random() * 0.7 + 1.4) : (Math.random() * 0.8 + 0.65),
-          energy: isHub ? 0.45 : (0.15 + Math.random() * 0.25),
+          radius: isHub ? (Math.random() * 0.6 + 1.2) : (Math.random() * 0.7 + 0.55),
+          energy: isHub ? 0.35 : (0.12 + Math.random() * 0.20),
           pulsePhase: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.008 + Math.random() * 0.012,
+          pulseSpeed: 0.008 + Math.random() * 0.010,
           colorType,
-          orbitSpeed: (0.000025 + (isAmbientField ? 0.00001 : 0.00003)) * (isMobile ? 1.05 : 1.0),
-          hasGlint: isHub || Math.random() < 0.25,
+          orbitSpeed: (0.000025 + (isAmbientField ? 0.00001 : 0.000025)) * (isMobile ? 1.05 : 1.0),
+          hasGlint: isHub || Math.random() < 0.20,
           isHub,
           hubRingPhase: Math.random() * Math.PI * 2,
         })
       }
 
-      // B. Build 3D Volumetric Chromatic Nebula Glow Clouds
-      const cloudCount = isMobile ? 3 : 5
+      // B. Build 3D Volumetric Chromatic Nebula Glow Clouds (Subtle Ethereal Depth)
+      const cloudCount = isMobile ? 2 : 3
       const cloudColorsDark: [string, string][] = [
-        ['rgba(6, 182, 212, 0.12)', 'rgba(6, 182, 212, 0)'],
-        ['rgba(59, 130, 246, 0.12)', 'rgba(59, 130, 246, 0)'],
-        ['rgba(139, 92, 246, 0.12)', 'rgba(139, 92, 246, 0)'],
-        ['rgba(99, 102, 241, 0.10)', 'rgba(99, 102, 241, 0)'],
-        ['rgba(14, 165, 233, 0.10)', 'rgba(14, 165, 233, 0)'],
+        ['rgba(6, 182, 212, 0.07)', 'rgba(6, 182, 212, 0)'],
+        ['rgba(59, 130, 246, 0.07)', 'rgba(59, 130, 246, 0)'],
+        ['rgba(139, 92, 246, 0.06)', 'rgba(139, 92, 246, 0)'],
       ]
       const cloudColorsLight: [string, string][] = [
-        ['rgba(37, 99, 235, 0.08)', 'rgba(37, 99, 235, 0)'],
-        ['rgba(79, 70, 229, 0.08)', 'rgba(79, 70, 229, 0)'],
-        ['rgba(124, 58, 237, 0.07)', 'rgba(124, 58, 237, 0)'],
-        ['rgba(2, 132, 199, 0.08)', 'rgba(2, 132, 199, 0)'],
-        ['rgba(99, 102, 241, 0.07)', 'rgba(99, 102, 241, 0)'],
+        ['rgba(37, 99, 235, 0.05)', 'rgba(37, 99, 235, 0)'],
+        ['rgba(79, 70, 229, 0.05)', 'rgba(79, 70, 229, 0)'],
+        ['rgba(124, 58, 237, 0.04)', 'rgba(124, 58, 237, 0)'],
       ]
 
       for (let c = 0; c < cloudCount; c++) {
@@ -348,9 +344,9 @@ export function AiNetworkBg() {
           tiltY: 0.25,
           tiltZ: 0.15,
           rotSpeed: 0.00005,
-          width: 0.85,
-          dark: ['rgba(56, 189, 248, 0.28)', 'rgba(59, 130, 246, 0.22)', 'rgba(139, 92, 246, 0.22)'] as [string, string, string],
-          light: ['rgba(37, 99, 235, 0.20)', 'rgba(79, 70, 229, 0.18)', 'rgba(124, 58, 237, 0.18)'] as [string, string, string],
+          width: 0.75,
+          dark: ['rgba(56, 189, 248, 0.22)', 'rgba(59, 130, 246, 0.18)', 'rgba(139, 92, 246, 0.18)'] as [string, string, string],
+          light: ['rgba(37, 99, 235, 0.16)', 'rgba(79, 70, 229, 0.14)', 'rgba(124, 58, 237, 0.14)'] as [string, string, string],
         },
         {
           radius: baseR * 0.82,
@@ -358,9 +354,9 @@ export function AiNetworkBg() {
           tiltY: -0.3,
           tiltZ: 0.35,
           rotSpeed: -0.00004,
-          width: 0.75,
-          dark: ['rgba(139, 92, 246, 0.22)', 'rgba(99, 102, 241, 0.20)', 'rgba(56, 189, 248, 0.20)'] as [string, string, string],
-          light: ['rgba(79, 70, 229, 0.18)', 'rgba(37, 99, 235, 0.16)', 'rgba(2, 132, 199, 0.16)'] as [string, string, string],
+          width: 0.65,
+          dark: ['rgba(139, 92, 246, 0.18)', 'rgba(99, 102, 241, 0.16)', 'rgba(56, 189, 248, 0.16)'] as [string, string, string],
+          light: ['rgba(79, 70, 229, 0.14)', 'rgba(37, 99, 235, 0.12)', 'rgba(2, 132, 199, 0.12)'] as [string, string, string],
         },
         {
           radius: baseR * 1.12,
@@ -368,9 +364,9 @@ export function AiNetworkBg() {
           tiltY: 0.6,
           tiltZ: -0.2,
           rotSpeed: 0.00003,
-          width: 0.65,
-          dark: ['rgba(99, 102, 241, 0.20)', 'rgba(59, 130, 246, 0.18)', 'rgba(224, 242, 254, 0.20)'] as [string, string, string],
-          light: ['rgba(37, 99, 235, 0.16)', 'rgba(99, 102, 241, 0.14)', 'rgba(2, 132, 199, 0.14)'] as [string, string, string],
+          width: 0.55,
+          dark: ['rgba(99, 102, 241, 0.16)', 'rgba(59, 130, 246, 0.14)', 'rgba(224, 242, 254, 0.16)'] as [string, string, string],
+          light: ['rgba(37, 99, 235, 0.12)', 'rgba(99, 102, 241, 0.10)', 'rgba(2, 132, 199, 0.10)'] as [string, string, string],
         },
       ]
 
@@ -407,17 +403,17 @@ export function AiNetworkBg() {
       }
 
       // E. Ambient Deep Cosmic Dust
-      const dustCount = isMobile ? 24 : 34
+      const dustCount = isMobile ? 12 : 18
       for (let d = 0; d < dustCount; d++) {
         nebulaDust.push({
           x: (Math.random() - 0.5) * (isMobile ? (width / dpr) * 1.3 : baseR * 2.8),
           y: (Math.random() - 0.5) * (isMobile ? (height / dpr) * 1.3 : baseR * 2.2),
           z: (Math.random() - 0.5) * baseR * 2.6,
-          vx: (Math.random() - 0.5) * 0.035,
-          vy: (Math.random() - 0.5) * 0.035,
-          vz: (Math.random() - 0.5) * 0.035,
-          radius: Math.random() * 0.75 + 0.35,
-          alpha: Math.random() * 0.16 + 0.08,
+          vx: (Math.random() - 0.5) * 0.03,
+          vy: (Math.random() - 0.5) * 0.03,
+          vz: (Math.random() - 0.5) * 0.03,
+          radius: Math.random() * 0.7 + 0.3,
+          alpha: Math.random() * 0.12 + 0.05,
           life: 0,
           maxLife: 320 + Math.random() * 350,
           darkColor: Math.random() > 0.5 ? '#38BDF8' : '#8B5CF6',
@@ -927,7 +923,7 @@ export function AiNetworkBg() {
       projectedStars.sort((a, b) => b.rawZ - a.rawZ)
 
       // ── G. Render Gravitational Synaptic Cosmic Web (Interstellar Links) ──
-      const maxConnectDist3D = isMobile ? 95 : 120
+      const maxConnectDist3D = isMobile ? 80 : 100
       const maxConnectDistSq = maxConnectDist3D * maxConnectDist3D
       activeConnectionsList = []
 
@@ -951,7 +947,7 @@ export function AiNetworkBg() {
             const avgTextCalm = (ps1.textCalmAlpha + ps2.textCalmAlpha) / 2
 
             const depthFactor = Math.max(0.12, 1 - avgDepth * 0.45) * avgTextCalm
-            const alpha = (1 - dist3D / maxConnectDist3D) * 0.22 * depthFactor * (0.35 + avgEnergy * 0.65)
+            const alpha = (1 - dist3D / maxConnectDist3D) * 0.18 * depthFactor * (0.35 + avgEnergy * 0.65)
 
             ctx.beginPath()
             ctx.moveTo(ps1.screenX, ps1.screenY)
@@ -959,19 +955,19 @@ export function AiNetworkBg() {
 
             if (isDark) {
               ctx.strokeStyle = avgEnergy > 0.4 ? '#38BDF8' : '#6366F1'
-              ctx.lineWidth = 0.55
-              ctx.globalAlpha = alpha * 0.50
+              ctx.lineWidth = 0.50
+              ctx.globalAlpha = alpha * 0.38
             } else {
               ctx.strokeStyle = avgEnergy > 0.4 ? '#2563EB' : '#4F46E5'
-              ctx.lineWidth = 0.55
-              ctx.globalAlpha = alpha * 0.40
+              ctx.lineWidth = 0.50
+              ctx.globalAlpha = alpha * 0.28
             }
 
             ctx.stroke()
             activeConnectionsList.push([ps1.star.id, ps2.star.id])
 
             connections++
-            if (connections >= (isMobile ? 2 : 3)) break
+            if (connections >= (isMobile ? 1 : 2)) break
           }
         }
       }
@@ -979,7 +975,7 @@ export function AiNetworkBg() {
 
       // ── H. Spawn & Render Flowing Synaptic Data Pulses (Active Intelligence Flow) ──
       pulseSpawnTimer += dt
-      if (pulseSpawnTimer > (isMobile ? 18 : 12) && activeConnectionsList.length > 0 && !prefersReducedMotion) {
+      if (pulseSpawnTimer > (isMobile ? 26 : 18) && activeConnectionsList.length > 0 && !prefersReducedMotion) {
         pulseSpawnTimer = 0
         const randPair = activeConnectionsList[Math.floor(Math.random() * activeConnectionsList.length)]
         const forward = Math.random() > 0.5
@@ -987,7 +983,7 @@ export function AiNetworkBg() {
           fromNodeId: forward ? randPair[0] : randPair[1],
           toNodeId: forward ? randPair[1] : randPair[0],
           progress: 0,
-          speed: 0.015 + Math.random() * 0.015,
+          speed: 0.012 + Math.random() * 0.012,
           color: isDark
             ? (Math.random() > 0.5 ? '#38BDF8' : '#A855F7')
             : (Math.random() > 0.5 ? '#2563EB' : '#7C3AED'),
