@@ -138,7 +138,7 @@ export function Footer({ showPreFooterCta = false }: { showPreFooterCta?: boolea
               Global Software Products • AI Systems • Enterprise Engineering
             </p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
-              NeelStack Solutions designs, builds and deploys software products, autonomous AI systems and digital platforms for clients in the US, UK, UAE, Europe &amp; India.
+              NeelStack Solutions designs, builds, and deploys software products, autonomous AI systems, and modern digital platforms for clients globally.
             </p>
             <p className="mt-2 text-xs font-mono text-foreground">
               <a href="mailto:contact@neelstack.com" className="hover:text-primary transition-colors">

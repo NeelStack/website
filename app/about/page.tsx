@@ -169,12 +169,12 @@ export default function AboutPage() {
       <AccreditationBadges />
 
       {/* Corporate Philosophy & Vision */}
-      <Section className="bg-card/60 backdrop-blur-sm border-t border-border/60">
+      <Section className="bg-card/40 backdrop-blur-sm border-t border-border/60">
         <Container>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 items-start">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 items-start">
+            <div className="lg:col-span-6 space-y-6">
               <div>
-                <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
+                <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-widest mb-3">
                   Our Mission &amp; Vision
                 </span>
                 <h2 className="font-heading text-3xl font-extrabold text-foreground md:text-4xl tracking-tight text-balance">
@@ -182,16 +182,16 @@ export default function AboutPage() {
                 </h2>
               </div>
               
-              <div className="p-6 rounded-2xl border-2 border-primary/30 bg-primary/5 space-y-3 tactile-card-3d">
-                <h3 className="font-heading text-base font-bold text-primary uppercase tracking-wider">Our Vision</h3>
-                <p className="text-base text-foreground leading-relaxed font-medium">
+              <blockquote className="border-l-2 border-primary pl-5 py-2 space-y-1">
+                <span className="font-heading text-xs font-bold text-primary uppercase tracking-wider block">Vision Statement</span>
+                <p className="text-base sm:text-lg text-foreground leading-relaxed font-medium">
                   &ldquo;Build technology that allows organizations and founders to operate with greater intelligence, automation and speed.&rdquo;
                 </p>
-              </div>
+              </blockquote>
 
-              <div className="p-6 rounded-2xl border-2 border-border/80 bg-card/80 space-y-3 tactile-card-3d">
+              <div className="p-5 sm:p-6 rounded-2xl border border-border/70 bg-card/70 space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-heading text-base font-bold text-foreground uppercase tracking-wider">Long-Term Vision</h3>
+                  <h3 className="font-heading text-sm font-bold text-foreground uppercase tracking-wider">Long-Term Vision</h3>
                   <Link href="/whitepapers/ai-company-operating-system" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
                     Whitepaper <ArrowRight className="h-3 w-3" />
                   </Link>
@@ -202,23 +202,31 @@ export default function AboutPage() {
               </div>
 
               {/* Founding Story & Location */}
-              <div className="p-6 rounded-2xl border-2 border-border/80 bg-card/40 space-y-3 tactile-card-3d">
-                <h3 className="font-heading text-sm font-bold text-foreground uppercase tracking-wider">Company Background</h3>
+              <div className="p-5 sm:p-6 rounded-2xl border border-border/70 bg-card/40 space-y-2">
+                <h3 className="font-heading text-xs font-bold text-muted-foreground uppercase tracking-wider">Company Background</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary engines: <strong className="text-foreground">NeelStack Services</strong> (cash flow &amp; enterprise engineering), <strong className="text-foreground">DhruvaOS</strong> (School Operating System SaaS), and <strong className="text-foreground">ToolVines</strong> (browser utilities &amp; traffic platform).
+                  Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary engines: <strong className="text-foreground">NeelStack Services</strong> (enterprise engineering), <strong className="text-foreground">DhruvaOS</strong> (School Operating System SaaS), and <strong className="text-foreground">ToolVines</strong> (free browser utilities).
                 </p>
               </div>
             </div>
 
-            {/* Why NeelStack grid */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {/* Why NeelStack connected matrix */}
+            <div className="lg:col-span-6 rounded-2xl border border-border/70 bg-card/60 divide-y divide-border/60 overflow-hidden">
+              <div className="p-4 sm:p-5 bg-muted/30">
+                <span className="text-xs font-mono font-bold text-primary uppercase tracking-wider block">
+                  {"// The NeelStack Advantage"}
+                </span>
+                <h3 className="font-heading text-lg font-bold text-foreground mt-1">
+                  Why Modern Businesses Build With Us
+                </h3>
+              </div>
               {WHY_NEELSTACK.map((item) => (
                 <div
                   key={item.title}
-                  className="rounded-2xl border-2 border-border bg-background/60 backdrop-blur-sm p-5 space-y-2 tactile-card-3d hover:border-primary/50 transition-colors"
+                  className="p-5 space-y-1.5 hover:bg-muted/20 transition-colors"
                 >
-                  <h3 className="font-heading text-sm font-bold text-foreground">{item.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                  <h4 className="font-heading text-sm font-bold text-foreground">{item.title}</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -229,8 +237,8 @@ export default function AboutPage() {
       {/* Product Roadmap & Journey */}
       <Section>
         <Container>
-          <div className="text-center mb-6 sm:mb-8">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
+          <div className="text-center mb-8">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-widest mb-3">
               Product Roadmap
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
@@ -241,30 +249,26 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-4">
-              {JOURNEY.map((item) => (
-                <div
-                  key={item.name}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border-2 border-border bg-card/60 backdrop-blur-sm p-6 tactile-card-3d hover:border-primary/50 transition-colors"
-                >
-                  <div className="flex-1 space-y-1.5">
-                    <div className="flex flex-wrap items-center gap-2.5">
-                      <h3 className="font-heading text-base font-bold text-foreground">{item.name}</h3>
-                      <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${
-                        item.status === 'live' ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400' :
-                        item.status === 'launching' ? 'border-amber-500/30 bg-amber-500/10 text-amber-400' :
-                        item.status === 'dev' ? 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400' :
-                        'border-violet-500/30 bg-violet-500/10 text-violet-400'
-                      }`}>
-                        {item.label}
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{item.detail}</p>
-                  </div>
+          <div className="max-w-4xl mx-auto space-y-3">
+            {JOURNEY.map((item) => (
+              <div
+                key={item.name}
+                className="rounded-2xl border border-border/70 bg-card/60 hover:bg-card/90 hover:border-primary/40 backdrop-blur-sm p-5 sm:p-6 transition-all"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2">
+                  <h3 className="font-heading text-base font-bold text-foreground">{item.name}</h3>
+                  <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold shrink-0 self-start sm:self-auto ${
+                    item.status === 'live' ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' :
+                    item.status === 'launching' ? 'border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400' :
+                    item.status === 'dev' ? 'border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400' :
+                    'border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-400'
+                  }`}>
+                    {item.label}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{item.detail}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </Section>
@@ -272,37 +276,43 @@ export default function AboutPage() {
       {/* Leadership Showcase Section */}
       <LeadershipShowcase />
 
-      {/* Engineering Principles */}
-      <Section className="bg-card/60 backdrop-blur-sm border-t border-border">
+      {/* Engineering Principles (Numbered Editorial Guide) */}
+      <Section className="bg-card/40 backdrop-blur-sm border-t border-border">
         <Container>
-          <div className="text-center mb-6 sm:mb-8">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
+          <div className="text-center mb-8">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-widest mb-3">
               How We Build
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
               Engineering Principles
             </h2>
+            <p className="mt-2 text-sm text-muted-foreground max-w-lg mx-auto">
+              The fundamental engineering axioms that guide our architecture and development practices.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-            {PRINCIPLES.map((principle) => (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+            {PRINCIPLES.map((principle, idx) => (
               <div
                 key={principle.title}
-                className="flex flex-col gap-2 rounded-2xl border-2 border-border bg-background/60 backdrop-blur-sm p-6 tactile-card-3d hover:border-primary/50"
+                className="flex flex-col gap-2 rounded-2xl border border-border/70 bg-card/60 p-5 hover:border-primary/40 transition-all"
               >
-                <h3 className="font-heading text-base font-bold text-foreground">{principle.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{principle.description}</p>
+                <span className="font-mono text-xs font-bold text-primary">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-heading text-sm sm:text-base font-bold text-foreground">{principle.title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{principle.description}</p>
               </div>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* Values section */}
+      {/* Values section (Connected Editorial Values Directory) */}
       <Section>
         <Container>
-          <div className="text-center mb-6 sm:mb-8">
-            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-3">
+          <div className="text-center mb-8">
+            <span className="inline-flex rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-widest mb-3">
               Core Values
             </span>
             <h2 className="font-heading text-3xl font-extrabold text-foreground text-balance">
@@ -310,21 +320,21 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
             {VALUES.map((value) => {
               const Icon = value.icon
               return (
                 <div
                   key={value.title}
-                  className="flex flex-col gap-4 rounded-2xl border-2 border-border bg-card/60 backdrop-blur-sm p-6 tactile-card-3d hover:border-primary/50 transition-colors"
+                  className="flex flex-col gap-3 rounded-2xl border border-border/70 bg-card/60 hover:bg-card/90 hover:border-primary/40 backdrop-blur-sm p-5 sm:p-6 transition-all"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
-                    <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading text-base font-semibold text-foreground">
+                  <h3 className="font-heading text-base font-bold text-foreground">
                     {value.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </div>

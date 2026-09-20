@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
-import { ServiceCard } from '@/components/ui/service-card'
+import { ServiceDirectoryItem } from '@/components/ui/service-directory-item'
+import { FAQAccordion } from '@/components/ui/faq-accordion'
 import { Container } from '@/components/ui/container'
-import { Section } from '@/components/ui/section'
 import { CTASection } from '@/components/ui/cta-section'
 import { CategoryFilter } from '@/components/ui/category-filter'
 import { TrustBarSection } from '@/components/sections/trust-bar-section'
@@ -13,14 +13,11 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { SERVICES, SERVICE_CATEGORIES } from '@/constants/services'
 import { getSiteUrl } from '@/lib/site-url'
 import {
-  Shield,
   Zap,
   Code2,
   Lock,
   Server,
   Sparkles,
-  ChevronDown,
-  ChevronUp,
   Layers,
   FileCode2,
   GitPullRequest,
@@ -43,12 +40,6 @@ export const metadata: Metadata = {
 
 interface PageProps {
   searchParams: Promise<{ category?: string }>
-}
-
-function getGridClass(count: number): string {
-  if (count === 1) return 'grid grid-cols-1 gap-6 md:max-w-2xl mx-auto'
-  if (count === 2) return 'grid grid-cols-1 gap-6 sm:grid-cols-2 md:max-w-4xl mx-auto'
-  return 'grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
 }
 
 const SERVICES_HUB_FAQS = [
@@ -129,8 +120,8 @@ export default async function ServicesPage({ searchParams }: PageProps) {
 
       <TrustBarSection />
 
-      {/* ── Section 1: Services Directory ── */}
-      <section className="pt-6 pb-10 sm:pt-8 sm:pb-12" aria-labelledby="services-list-heading">
+      {/* ── Section 1: Services Directory (Editorial Layout) ── */}
+      <section className="pt-4 pb-8 sm:pt-6 sm:pb-10" aria-labelledby="services-list-heading">
         <Container>
           {/* Category filter — client component for interactivity */}
           <Suspense fallback={<div className="mb-6 h-10" />}>
@@ -146,41 +137,46 @@ export default async function ServicesPage({ searchParams }: PageProps) {
             {activeCategory !== 'All' ? ` in ${activeCategory}` : ''}
           </p>
 
-          {/* Services grid */}
+          {/* Services editorial directory */}
           <h2 id="services-list-heading" className="sr-only">
             Services list
           </h2>
-          <div className={getGridClass(filtered.length)}>
-            {filtered.map((service) => (
-              <ServiceCard key={service.id} service={service} variant="detailed" />
+          <div className="border-t border-border/60">
+            {filtered.map((service, index) => (
+              <ServiceDirectoryItem
+                key={service.id}
+                service={service}
+                index={index}
+              />
             ))}
           </div>
         </Container>
       </section>
 
-      {/* ── Section 2: Enterprise Engineering Standards ── */}
-      <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="standards-heading">
+      {/* ── Section 2: Enterprise Engineering Standards (Unified Spec Matrix) ── */}
+      <section className="py-6 sm:py-8 md:py-10 bg-muted/20 border-y border-border/50" aria-labelledby="standards-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-6 sm:mb-8 text-center max-w-2xl mx-auto">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
+            <div className="mb-5 sm:mb-7 text-center max-w-2xl mx-auto">
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1.5 font-mono">
                 Engineering Rigor
               </p>
               <h2
                 id="standards-heading"
-                className="font-heading text-3xl font-bold text-foreground"
+                className="font-heading text-2xl sm:text-3xl font-bold text-foreground"
               >
                 The NeelStack Engineering Standard
               </h2>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
                 We reject brittle prototypes and hollow boilerplate. Every platform we build is hardened for real-world enterprise operations.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                  <Code2 className="h-5 w-5" />
+            {/* Unified 4-pillar spec matrix — zero card boxes */}
+            <div className="border border-border/70 rounded-2xl bg-card/60 divide-y sm:divide-y-0 sm:divide-x divide-border/70 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 overflow-hidden">
+              <div className="p-5 sm:p-6 space-y-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <Code2 className="h-4 w-4" />
                 </div>
                 <h3 className="text-sm font-bold text-foreground">TypeScript Strict Mode</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -188,19 +184,19 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
-                  <Sparkles className="h-5 w-5" />
+              <div className="p-5 sm:p-6 space-y-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <Sparkles className="h-4 w-4" />
                 </div>
-                <h3 className="text-sm font-bold text-foreground">Frontier AI & RAG</h3>
+                <h3 className="text-sm font-bold text-foreground">Frontier AI &amp; RAG</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Deterministic agentic workflows, GraphRAG memory layers, and guardrail protected model inference.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                  <Server className="h-5 w-5" />
+              <div className="p-5 sm:p-6 space-y-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <Server className="h-4 w-4" />
                 </div>
                 <h3 className="text-sm font-bold text-foreground">Zero-Downtime CI/CD</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -208,9 +204,9 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card p-5 space-y-3 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
-                  <Lock className="h-5 w-5" />
+              <div className="p-5 sm:p-6 space-y-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <Lock className="h-4 w-4" />
                 </div>
                 <h3 className="text-sm font-bold text-foreground">100% Code Ownership</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -223,30 +219,30 @@ export default async function ServicesPage({ searchParams }: PageProps) {
       </section>
 
       {/* ── Section 3: Engagement Models ── */}
-      <Section aria-labelledby="engagement-models-heading">
+      <section className="py-6 sm:py-8 md:py-10" aria-labelledby="engagement-models-heading">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <div className="mb-6 sm:mb-8 text-center max-w-2xl mx-auto">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
+            <div className="mb-5 sm:mb-7 text-center max-w-2xl mx-auto">
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1.5 font-mono">
                 Collaboration
               </p>
               <h2
                 id="engagement-models-heading"
-                className="font-heading text-3xl font-bold text-foreground"
+                className="font-heading text-2xl sm:text-3xl font-bold text-foreground"
               >
                 How We Partner With You
               </h2>
-              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-2 leading-relaxed">
                 Flexible engagement structures tailored for high-growth startups and established enterprise organizations.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {/* Model 1 */}
-              <div className="rounded-3xl border-2 border-border/80 bg-card p-6 flex flex-col justify-between space-y-4 tactile-card-3d shadow-md">
+              <div className="rounded-2xl border border-border/80 bg-card p-5 sm:p-6 flex flex-col justify-between space-y-4 tactile-card-3d shadow-xs">
                 <div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-400 mb-2">
-                    <Zap className="h-3.5 w-3.5" /> Sprint Delivery
+                  <div className="inline-flex items-center gap-1.5 rounded-md border border-border/70 bg-muted/40 px-2.5 py-1 text-xs font-mono text-muted-foreground mb-2">
+                    <Zap className="h-3 w-3" /> Sprint Delivery
                   </div>
                   <h3 className="text-base font-bold text-foreground">Fixed-Scope MVP Sprint</h3>
                   <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
@@ -255,20 +251,20 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </div>
                 <Link
                   href="/request-quote?engagement=fixed-sprint"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2.5 text-xs font-bold text-foreground hover:bg-muted transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/40 px-4 py-2 text-xs font-bold text-foreground hover:bg-muted transition-colors"
                 >
                   Scope a Sprint →
                 </Link>
               </div>
 
               {/* Model 2 */}
-              <div className="rounded-3xl border-2 border-primary/70 bg-card p-6 flex flex-col justify-between space-y-4 shadow-xl relative tactile-card-3d">
-                <div className="absolute -top-3 right-6 rounded-full bg-primary px-3 py-0.5 text-[10px] font-bold text-primary-foreground tracking-wider uppercase">
+              <div className="rounded-2xl border-2 border-primary/70 bg-card p-5 sm:p-6 flex flex-col justify-between space-y-4 relative tactile-card-3d shadow-md">
+                <div className="absolute -top-2.5 right-5 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-mono font-bold text-primary-foreground tracking-wider uppercase">
                   Most Popular
                 </div>
                 <div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-xs font-bold text-purple-400 mb-2">
-                    <Sparkles className="h-3.5 w-3.5" /> Embedded Pod
+                  <div className="inline-flex items-center gap-1.5 rounded-md border border-border/70 bg-muted/40 px-2.5 py-1 text-xs font-mono text-muted-foreground mb-2">
+                    <Sparkles className="h-3 w-3" /> Embedded Pod
                   </div>
                   <h3 className="text-base font-bold text-foreground">Dedicated Engineering Pod</h3>
                   <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
@@ -277,17 +273,17 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </div>
                 <Link
                   href="/request-quote?engagement=dedicated-pod"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground hover:bg-primary/90 transition-colors shadow-md"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-foreground hover:bg-primary/90 transition-colors shadow-xs"
                 >
                   Book an Engineering Pod →
                 </Link>
               </div>
 
               {/* Model 3 */}
-              <div className="rounded-3xl border-2 border-border/80 bg-card p-6 flex flex-col justify-between space-y-4 tactile-card-3d shadow-md">
+              <div className="rounded-2xl border border-border/80 bg-card p-5 sm:p-6 flex flex-col justify-between space-y-4 tactile-card-3d shadow-xs">
                 <div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400 mb-2">
-                    <Layers className="h-3.5 w-3.5" /> Modernization
+                  <div className="inline-flex items-center gap-1.5 rounded-md border border-border/70 bg-muted/40 px-2.5 py-1 text-xs font-mono text-muted-foreground mb-2">
+                    <Layers className="h-3 w-3" /> Modernization
                   </div>
                   <h3 className="text-base font-bold text-foreground">Enterprise Re-Architecture</h3>
                   <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
@@ -296,7 +292,7 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </div>
                 <Link
                   href="/contact?subject=Enterprise%20Re-Architecture"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/60 px-4 py-2.5 text-xs font-bold text-foreground hover:bg-muted transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-muted/40 px-4 py-2 text-xs font-bold text-foreground hover:bg-muted transition-colors"
                 >
                   Discuss Enterprise Scale →
                 </Link>
@@ -304,31 +300,32 @@ export default async function ServicesPage({ searchParams }: PageProps) {
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* ── Section 4: Tangible Deliverables Guarantee ── */}
-      <section className="py-8 sm:py-10 md:py-12 bg-muted/30 border-y border-border/50" aria-labelledby="deliverables-matrix-heading">
+      {/* ── Section 4: Tangible Deliverables Guarantee (Unified Matrix) ── */}
+      <section className="py-6 sm:py-8 md:py-10 bg-muted/20 border-y border-border/50" aria-labelledby="deliverables-matrix-heading">
         <Container>
-          <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
-            <div className="text-center max-w-2xl mx-auto space-y-2">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest font-mono">
+          <div className="max-w-5xl mx-auto space-y-5 sm:space-y-7">
+            <div className="text-center max-w-2xl mx-auto space-y-1.5">
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest font-mono">
                 Tangible Artifacts
               </p>
               <h2
                 id="deliverables-matrix-heading"
-                className="font-heading text-3xl font-bold text-foreground"
+                className="font-heading text-2xl sm:text-3xl font-bold text-foreground"
               >
                 What Every Project Delivers
               </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 When you partner with NeelStack, you receive complete production assets and runbooks — zero hidden repositories or locked down infrastructure.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                  <GitPullRequest className="h-5 w-5" />
+            {/* Unified 4-column deliverables matrix */}
+            <div className="border border-border/70 rounded-2xl bg-card/60 divide-y sm:divide-y-0 sm:divide-x divide-border/70 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 overflow-hidden">
+              <div className="p-5 sm:p-6 space-y-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <GitPullRequest className="h-4 w-4" />
                 </div>
                 <h4 className="text-sm font-bold text-foreground">Full Git Repository Transfer</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -336,9 +333,9 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400">
-                  <FileCode2 className="h-5 w-5" />
+              <div className="p-5 sm:p-6 space-y-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <FileCode2 className="h-4 w-4" />
                 </div>
                 <h4 className="text-sm font-bold text-foreground">Terraform IaC &amp; Docker</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -346,9 +343,9 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-                  <Code2 className="h-5 w-5" />
+              <div className="p-5 sm:p-6 space-y-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <Code2 className="h-4 w-4" />
                 </div>
                 <h4 className="text-sm font-bold text-foreground">OpenAPI 3.1 &amp; SDKs</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -356,9 +353,9 @@ export default async function ServicesPage({ searchParams }: PageProps) {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl border border-border bg-card space-y-2 tactile-card-3d shadow-2xs">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400">
-                  <BookOpen className="h-5 w-5" />
+              <div className="p-5 sm:p-6 space-y-2">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted/50 border border-border/70 text-foreground/80">
+                  <BookOpen className="h-4 w-4" />
                 </div>
                 <h4 className="text-sm font-bold text-foreground">Runbooks &amp; Architecture ADRs</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
@@ -370,48 +367,25 @@ export default async function ServicesPage({ searchParams }: PageProps) {
         </Container>
       </section>
 
-      {/* ── Section 5: General FAQ ── */}
-      <section className="py-8 sm:py-10 md:py-12" aria-labelledby="faq-hub-heading">
+      {/* ── Section 5: General FAQ (Multi-Open Accordion) ── */}
+      <section className="py-6 sm:py-8 md:py-10" aria-labelledby="faq-hub-heading">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <div className="mb-6 sm:mb-8 text-center">
-              <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2 font-mono">
+            <div className="mb-5 sm:mb-7 text-center">
+              <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1.5 font-mono">
                 Client Questions
               </p>
               <h2
                 id="faq-hub-heading"
-                className="font-heading text-3xl font-bold text-foreground"
+                className="font-heading text-2xl sm:text-3xl font-bold text-foreground"
               >
                 Frequently Asked Questions
               </h2>
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1.5">
                 Key operational details about working with NeelStack.
               </p>
             </div>
-            <div className="space-y-4">
-              {SERVICES_HUB_FAQS.map((faq, i) => (
-                <details
-                  key={faq.question}
-                  className="group rounded-2xl border border-border bg-card overflow-hidden shadow-2xs"
-                  open={i === 0}
-                >
-                  <summary className="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-sm font-bold text-foreground list-none select-none">
-                    <span>{faq.question}</span>
-                    <ChevronDown
-                      className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-200 group-open:hidden"
-                      aria-hidden="true"
-                    />
-                    <ChevronUp
-                      className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-200 hidden group-open:block"
-                      aria-hidden="true"
-                    />
-                  </summary>
-                  <div className="px-5 pb-5 pt-1 border-t border-border/40">
-                    <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
-                  </div>
-                </details>
-              ))}
-            </div>
+            <FAQAccordion items={SERVICES_HUB_FAQS} />
           </div>
         </Container>
       </section>

@@ -8,6 +8,7 @@ import type { FAQItem } from '@/types'
 interface FAQAccordionProps {
   items: FAQItem[]
   className?: string
+  allowMultiple?: boolean
 }
 
 interface FAQItemProps {
@@ -59,11 +60,23 @@ function FAQItemRow({ item, isOpen, onToggle }: FAQItemProps) {
   )
 }
 
-export function FAQAccordion({ items, className }: FAQAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+export function FAQAccordion({ items, className, allowMultiple = true }: FAQAccordionProps) {
+  // Allow multiple items to be open simultaneously so clicking next does not close the previous
+  const [openIndices, setOpenIndices] = useState<Set<number>>(() => new Set([0]))
 
   const handleToggle = (idx: number) => {
-    setOpenIndex((prev) => (prev === idx ? null : idx))
+    setOpenIndices((prev) => {
+      const next = new Set(prev)
+      if (next.has(idx)) {
+        next.delete(idx)
+      } else {
+        if (!allowMultiple) {
+          next.clear()
+        }
+        next.add(idx)
+      }
+      return next
+    })
   }
 
   return (
@@ -72,7 +85,7 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
         <FAQItemRow
           key={idx}
           item={item}
-          isOpen={openIndex === idx}
+          isOpen={openIndices.has(idx)}
           onToggle={() => handleToggle(idx)}
         />
       ))}

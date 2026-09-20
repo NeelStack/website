@@ -116,26 +116,24 @@ export function TechnologySection() {
             return (
               <motion.div
                 key={layer.id}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className={`rounded-3xl border-2 border-slate-200/90 dark:border-white/[0.08] bg-card/95 dark:bg-[#0a1122]/95 p-5 sm:p-7 space-y-4 tactile-card-3d ${layer.borderHover} transition-colors shadow-md dark:shadow-2xl h-full flex flex-col justify-between`}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className="group rounded-2xl border border-border/70 bg-card/70 dark:bg-[#0c1222]/70 hover:bg-card dark:hover:bg-[#0c1222] hover:border-primary/40 backdrop-blur-sm p-5 sm:p-6 space-y-4 transition-all duration-200 shadow-xs hover:shadow-md h-full flex flex-col justify-between"
               >
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   {/* Header: Icon + Title + Tier Badge */}
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div
-                        className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${layer.iconBg} shrink-0`}
-                      >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover:scale-105 transition-transform shrink-0">
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
                         <span className="text-[10px] font-mono font-bold text-muted-foreground uppercase tracking-wider">
                           {layer.badge}
                         </span>
-                        <h3 className="font-heading text-base font-extrabold text-foreground">
+                        <h3 className="font-heading text-base font-extrabold text-foreground group-hover:text-primary transition-colors">
                           {layer.title}
                         </h3>
                       </div>
@@ -152,7 +150,7 @@ export function TechnologySection() {
                     {layer.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs font-medium text-foreground/90 bg-muted/60 dark:bg-white/[0.05] px-2.5 py-1 rounded-lg border border-border/60"
+                        className="text-xs font-medium text-foreground/85 bg-muted/50 dark:bg-white/[0.04] px-2.5 py-0.5 rounded-md border border-border/50"
                       >
                         {tech}
                       </span>

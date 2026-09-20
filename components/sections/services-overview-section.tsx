@@ -175,47 +175,37 @@ export function ServicesOverviewSection() {
           </motion.p>
         </motion.div>
 
-        {/* Services Grid with Rich Card Anatomy */}
+        {/* Architectural Capabilities Matrix */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {SERVICES.map((service, idx) => {
             const Icon = service.icon
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className={`group rounded-3xl p-5 sm:p-7 flex flex-col justify-between space-y-5 sm:space-y-6 bg-card/95 dark:bg-[#0a1122]/95 border-2 border-slate-200/90 dark:border-white/[0.08] backdrop-blur-md tactile-card-3d ${service.borderHover} relative overflow-hidden shadow-md dark:shadow-2xl h-full`}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className="group rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-5 bg-card/70 dark:bg-[#0c1222]/70 hover:bg-card dark:hover:bg-[#0c1222] border border-border/70 hover:border-primary/40 backdrop-blur-sm transition-all duration-200 relative overflow-hidden shadow-xs hover:shadow-md h-full"
               >
-                {/* Top gradient glow bar */}
-                <div
-                  className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${service.topGlow} opacity-60 group-hover:opacity-100 transition-opacity`}
-                  aria-hidden="true"
-                />
-
-                <div className="space-y-4 relative z-10">
-                  {/* Card Header: Icon + Category + Number */}
+                <div className="space-y-3.5 relative z-10">
+                  {/* Item Header: Icon + Category + Number */}
                   <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${service.iconBg} group-hover:scale-105 transition-transform duration-300 shadow-2xs shrink-0`}
-                      >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover:scale-105 transition-transform shrink-0">
                         <Icon className="h-5 w-5" />
                       </div>
-                      <div>
-                        <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                          {service.category}
-                        </span>
-                      </div>
+                      <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+                        {service.category}
+                      </span>
                     </div>
-                    <span className="font-mono text-xs font-bold text-muted-foreground/60 bg-muted/60 dark:bg-white/[0.04] px-2 py-0.5 rounded-md border border-border/40">
+                    <span className="font-mono text-xs font-bold text-muted-foreground/60 bg-muted/40 dark:bg-white/[0.04] px-2 py-0.5 rounded border border-border/40">
                       {service.number}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-heading text-lg sm:text-xl font-extrabold text-foreground group-hover:text-primary transition-colors leading-snug">
+                  <h3 className="font-heading text-lg font-extrabold text-foreground group-hover:text-primary transition-colors leading-snug">
                     {service.title}
                   </h3>
 
@@ -224,16 +214,16 @@ export function ServicesOverviewSection() {
                     {service.description}
                   </p>
 
-                  {/* Structured Deliverables */}
-                  <div className="space-y-2 pt-1">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground/70 block">
-                      Key Deliverables
+                  {/* Deliverables */}
+                  <div className="space-y-1.5 pt-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70 block">
+                      Core Deliverables
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-white/[0.05] px-2.5 py-1 rounded-md border border-slate-200/80 dark:border-white/10"
+                          className="text-[11px] font-medium text-foreground/80 bg-muted/60 dark:bg-white/[0.04] px-2 py-0.5 rounded border border-border/50"
                         >
                           {tag}
                         </span>
@@ -243,10 +233,10 @@ export function ServicesOverviewSection() {
                 </div>
 
                 {/* Card Action Link */}
-                <div className="pt-4 border-t border-border/50 relative z-10 flex items-center justify-between">
+                <div className="pt-3 border-t border-border/50 relative z-10 flex items-center justify-between">
                   <Link
                     href={service.href}
-                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold ${service.accent} group-hover:gap-2.5 transition-all`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2 transition-all"
                   >
                     Explore Service Details <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
