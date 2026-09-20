@@ -5,7 +5,7 @@ const GLOBAL_DELIVERY_PILLARS = [
   {
     icon: Globe,
     title: 'Serving Worldwide',
-    detail: 'Clients in US, UK, UAE, EU & India',
+    detail: 'Serving enterprises & startups globally',
     badge: 'EST · GMT · GST · IST',
   },
   {

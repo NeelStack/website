@@ -165,29 +165,27 @@ export function IndustriesOverviewSection() {
           </motion.p>
         </motion.div>
 
-        {/* 6 Balanced Industry Cards in a 3x2 Grid */}
+        {/* 6 Balanced Domain Verticals Matrix */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {INDUSTRIES.map((industry, idx) => {
             const Icon = industry.icon
             return (
               <motion.div
                 key={industry.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className={`group rounded-3xl p-5 sm:p-7 flex flex-col justify-between space-y-5 bg-card/95 dark:bg-[#0a1122]/95 border-2 border-slate-200/90 dark:border-white/[0.08] backdrop-blur-md tactile-card-3d ${industry.borderHover} relative overflow-hidden shadow-md dark:shadow-2xl h-full`}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className="group rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-4 bg-card/70 dark:bg-[#0c1222]/70 hover:bg-card dark:hover:bg-[#0c1222] border border-border/70 hover:border-primary/40 backdrop-blur-sm transition-all duration-200 relative overflow-hidden shadow-xs hover:shadow-md h-full"
               >
-                <div className="space-y-4 relative z-10">
+                <div className="space-y-3.5 relative z-10">
                   {/* Top row: Icon + Domain Badge */}
                   <div className="flex items-center justify-between gap-2">
-                    <div
-                      className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${industry.iconBg} group-hover:scale-105 transition-transform duration-300 shadow-2xs`}
-                    >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover:scale-105 transition-transform shrink-0">
                       <Icon className="h-5 w-5" />
                     </div>
 
-                    <span className="text-[11px] font-mono font-bold text-muted-foreground bg-muted/60 dark:bg-white/[0.04] px-2.5 py-1 rounded-md border border-border/40">
+                    <span className="text-[10px] font-mono font-bold text-muted-foreground bg-muted/40 dark:bg-white/[0.04] px-2.5 py-0.5 rounded border border-border/40">
                       {industry.badge}
                     </span>
                   </div>
@@ -204,10 +202,10 @@ export function IndustriesOverviewSection() {
                 </div>
 
                 {/* Footer Action */}
-                <div className="pt-4 border-t border-border/50 relative z-10">
+                <div className="pt-3 border-t border-border/50 relative z-10">
                   <Link
                     href={industry.href}
-                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold ${industry.accent} group-hover:gap-2.5 transition-all`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:gap-2 transition-all"
                   >
                     {industry.ctaText} <ArrowRight className="h-3.5 w-3.5" />
                   </Link>

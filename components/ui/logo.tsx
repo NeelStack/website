@@ -162,17 +162,17 @@ export function NeelStackLogo({
           {/* Stylish Symmetrical Brand Wordmark */}
           <span className={cn('font-sans font-bold tracking-[-0.03em] leading-none', textSize)}>
             {variant === 'monochrome' ? (
-              <span className="text-foreground">NeelStack</span>
+              <span className="text-foreground/90">NeelStack</span>
             ) : (
-              <span className="inline-flex items-baseline font-black tracking-[-0.035em]">
+              <span className="inline-flex items-baseline font-bold tracking-[-0.03em] opacity-90 group-hover:opacity-100 transition-opacity">
                 {/* N - Royal / Electric Blue */}
                 <span className="text-[#2563EB] dark:text-[#3B82F6] transition-colors duration-200">N</span>
                 {/* ee - Rich Violet Core */}
                 <span className="text-[#7C3AED] dark:text-[#8B5CF6] transition-colors duration-200">ee</span>
                 {/* l - Royal / Electric Blue */}
                 <span className="text-[#2563EB] dark:text-[#3B82F6] transition-colors duration-200">l</span>
-                {/* Stack - Pure Black in Light / Pure White in Dark */}
-                <span className="text-slate-950 dark:text-white transition-colors duration-200 ml-[1px]">
+                {/* Stack - Refined Black in Light / Soft White in Dark with 90% opacity */}
+                <span className="text-slate-900/90 dark:text-white/90 transition-colors duration-200 ml-[1px]">
                   Stack
                 </span>
               </span>

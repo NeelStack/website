@@ -19,7 +19,7 @@ export default function RequestQuotePage() {
       <PageHero
         badge="Global Software & AI Proposals • USD ($), EUR (€), GBP (£), AED, INR (₹)"
         title="Tell Us About Your Project"
-        description="Submit your project brief below. Our senior architects evaluate scope, architecture, and timeline for enterprise clients across the US, UK, UAE, Europe, and India — delivering a detailed proposal within 1 business day."
+        description="Submit your project brief below. Our senior architects evaluate scope, architecture, and timeline for enterprise clients and high-growth teams globally — delivering a detailed proposal within 1 business day."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Request a Quote' }]}
       />
 

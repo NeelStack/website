@@ -36,7 +36,7 @@ const CONTACT_CARDS: ContactCard[] = [
     icon: Globe,
     title: 'Global Delivery & Client Reach',
     lines: [
-      { label: 'Client Geographic Reach', value: 'Serving businesses in US, UK, UAE, Europe & India' },
+      { label: 'Client Geographic Reach', value: 'Serving clients and businesses globally' },
       { label: 'Workforce Architecture', value: 'Remote-first engineering with multi-timezone overlap' },
       { label: 'Commercial Terms', value: 'Invoicing in USD ($), EUR (€), GBP (£), AED & INR (₹)' },
     ],

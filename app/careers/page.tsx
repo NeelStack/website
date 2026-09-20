@@ -95,21 +95,21 @@ export default function CareersPage() {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {VALUES_BUILDERS.map((value) => {
               const Icon = value.icon
               return (
                 <div
                   key={value.title}
-                  className="flex flex-col gap-4 rounded-2xl border-2 border-border bg-background p-6 tactile-card-3d hover:border-primary/50"
+                  className="flex flex-col gap-3 rounded-2xl border border-border/70 bg-card/60 hover:bg-card/90 hover:border-primary/40 backdrop-blur-sm p-5 sm:p-6 transition-all"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
-                    <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
                   </div>
-                  <h3 className="font-heading text-base font-semibold text-foreground">
+                  <h3 className="font-heading text-base font-bold text-foreground">
                     {value.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -122,11 +122,11 @@ export default function CareersPage() {
       {/* Open invite call */}
       <Section>
         <Container>
-          <div className="rounded-3xl border-2 border-border bg-gradient-to-r from-primary/5 via-transparent to-accent/5 p-8 md:p-12 text-center max-w-4xl mx-auto tactile-card-3d">
-            <h2 className="font-heading text-2xl font-bold text-foreground mb-4">
+          <div className="rounded-2xl border border-border/70 bg-card/60 backdrop-blur-sm p-6 sm:p-8 md:p-10 text-center max-w-3xl mx-auto">
+            <h2 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-3">
               How to reach out
             </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6">
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-xl mx-auto mb-5">
               When you write to us, tell us what you&apos;re building, 
               share your GitHub profile, and describe interesting technical challenges you enjoy solving.
             </p>

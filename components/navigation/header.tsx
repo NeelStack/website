@@ -656,7 +656,7 @@ function DesktopNavbar() {
             openMenu === 'Services'
               ? 'text-primary font-bold bg-primary/10'
               : pathname.startsWith('/services')
-                ? 'text-foreground font-semibold'
+                ? 'text-primary font-bold bg-primary/10 border border-primary/20 shadow-2xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
           )}
           aria-expanded={openMenu === 'Services'}
@@ -665,7 +665,8 @@ function DesktopNavbar() {
           <ChevronDown
             className={cn(
               'h-3.5 w-3.5 opacity-60 transition-transform duration-200',
-              openMenu === 'Services' && 'rotate-180 opacity-100 text-primary'
+              (openMenu === 'Services' || pathname.startsWith('/services')) && 'text-primary opacity-100',
+              openMenu === 'Services' && 'rotate-180'
             )}
           />
         </button>
@@ -677,7 +678,7 @@ function DesktopNavbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.98 }}
               transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute left-0 top-full mt-2.5 z-50 rounded-2xl border-2 border-slate-200/90 dark:border-white/10 bg-card dark:bg-[#070b14] shadow-2xl shadow-slate-900/15 dark:shadow-black/80 overflow-hidden"
+              className="absolute left-0 top-full mt-2.5 z-50 rounded-2xl border-2 border-slate-200/90 dark:border-white/10 bg-card/98 dark:bg-[#070b14]/98 backdrop-blur-xl shadow-2xl shadow-slate-900/15 dark:shadow-black/80 overflow-hidden"
             >
               <ServicesDropdown onClose={() => setOpenMenu(null)} />
             </motion.div>
@@ -695,7 +696,7 @@ function DesktopNavbar() {
             openMenu === 'Products'
               ? 'text-primary font-bold bg-primary/10'
               : pathname.startsWith('/products')
-                ? 'text-foreground font-semibold'
+                ? 'text-primary font-bold bg-primary/10 border border-primary/20 shadow-2xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
           )}
           aria-expanded={openMenu === 'Products'}
@@ -704,7 +705,8 @@ function DesktopNavbar() {
           <ChevronDown
             className={cn(
               'h-3.5 w-3.5 opacity-60 transition-transform duration-200',
-              openMenu === 'Products' && 'rotate-180 opacity-100 text-primary'
+              (openMenu === 'Products' || pathname.startsWith('/products')) && 'text-primary opacity-100',
+              openMenu === 'Products' && 'rotate-180'
             )}
           />
         </button>
@@ -716,7 +718,7 @@ function DesktopNavbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.98 }}
               transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute left-0 xl:-left-10 top-full mt-2.5 z-50 rounded-2xl border-2 border-slate-200/90 dark:border-white/10 bg-card dark:bg-[#070b14] shadow-2xl shadow-slate-900/15 dark:shadow-black/80 overflow-hidden"
+              className="absolute left-0 xl:-left-10 top-full mt-2.5 z-50 rounded-2xl border-2 border-slate-200/90 dark:border-white/10 bg-card/98 dark:bg-[#070b14]/98 backdrop-blur-xl shadow-2xl shadow-slate-900/15 dark:shadow-black/80 overflow-hidden"
             >
               <ProductsDropdown onClose={() => setOpenMenu(null)} />
             </motion.div>
@@ -733,8 +735,8 @@ function DesktopNavbar() {
             'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13.5px] font-medium transition-all duration-150 select-none cursor-pointer',
             openMenu === 'Company'
               ? 'text-primary font-bold bg-primary/10'
-              : pathname === '/about' || pathname === '/careers' || pathname.startsWith('/case-studies') || pathname.startsWith('/blog')
-                ? 'text-foreground font-semibold'
+              : pathname === '/about' || pathname === '/careers' || pathname.startsWith('/case-studies') || pathname.startsWith('/blog') || pathname.startsWith('/whitepapers')
+                ? 'text-primary font-bold bg-primary/10 border border-primary/20 shadow-2xs'
                 : 'text-muted-foreground hover:text-foreground hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
           )}
           aria-expanded={openMenu === 'Company'}
@@ -743,7 +745,8 @@ function DesktopNavbar() {
           <ChevronDown
             className={cn(
               'h-3.5 w-3.5 opacity-60 transition-transform duration-200',
-              openMenu === 'Company' && 'rotate-180 opacity-100 text-primary'
+              (openMenu === 'Company' || pathname === '/about' || pathname === '/careers' || pathname.startsWith('/case-studies') || pathname.startsWith('/blog') || pathname.startsWith('/whitepapers')) && 'text-primary opacity-100',
+              openMenu === 'Company' && 'rotate-180'
             )}
           />
         </button>
@@ -755,7 +758,7 @@ function DesktopNavbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6, scale: 0.98 }}
               transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute right-0 top-full mt-2.5 z-50 rounded-2xl border-2 border-slate-200/90 dark:border-white/10 bg-card dark:bg-[#070b14] shadow-2xl shadow-slate-900/15 dark:shadow-black/80 overflow-hidden"
+              className="absolute right-0 top-full mt-2.5 z-50 rounded-2xl border-2 border-slate-200/90 dark:border-white/10 bg-card/98 dark:bg-[#070b14]/98 backdrop-blur-xl shadow-2xl shadow-slate-900/15 dark:shadow-black/80 overflow-hidden"
             >
               <CompanyDropdown onClose={() => setOpenMenu(null)} />
             </motion.div>
@@ -769,7 +772,7 @@ function DesktopNavbar() {
         className={cn(
           'px-3.5 py-1.5 rounded-full text-[13.5px] font-medium transition-all duration-150',
           pathname === '/pricing'
-            ? 'text-foreground font-semibold'
+            ? 'text-primary font-bold bg-primary/10 border border-primary/20 shadow-2xs'
             : 'text-muted-foreground hover:text-foreground hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
         )}
       >
@@ -782,7 +785,7 @@ function DesktopNavbar() {
         className={cn(
           'px-3.5 py-1.5 rounded-full text-[13.5px] font-medium transition-all duration-150',
           pathname === '/contact'
-            ? 'text-foreground font-semibold'
+            ? 'text-primary font-bold bg-primary/10 border border-primary/20 shadow-2xs'
             : 'text-muted-foreground hover:text-foreground hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
         )}
       >
@@ -1340,7 +1343,7 @@ export function Header() {
             {/* Talk AI Pill */}
             <button
               onClick={() => setAiModalOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-cyan-500/40 dark:border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-violet-500/10 hover:from-cyan-500/20 hover:to-violet-500/20 text-cyan-700 dark:text-cyan-300 text-xs font-bold transition-all cursor-pointer shadow-2xs hover:shadow-[0_0_12px_rgba(6,182,212,0.25)]"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-cyan-500/40 dark:border-cyan-400/40 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-violet-500/10 hover:from-cyan-500/20 hover:to-violet-500/20 text-cyan-700 dark:text-cyan-300 text-xs font-bold transition-all cursor-pointer shadow-2xs hover:shadow-[0_0_12px_rgba(6,182,212,0.25)] hover:-translate-y-0.5 active:translate-y-0"
             >
               <Sparkles className="h-3.5 w-3.5 text-cyan-500 dark:text-cyan-400 animate-pulse" />
               <span>Talk AI</span>
@@ -1354,14 +1357,24 @@ export function Header() {
               asChild
               variant="3d-yellow"
               size="sm"
-              className="rounded-xl px-4 text-xs font-extrabold shadow-sm"
+              className="rounded-xl px-4 text-xs font-extrabold shadow-sm hover:-translate-y-0.5 active:translate-y-0"
             >
               <Link href="/book-consultation">Book Consultation</Link>
             </Button>
           </div>
 
           {/* Mobile Right Action Strip */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+            {/* Mobile Talk AI Quick Trigger */}
+            <button
+              onClick={() => setAiModalOpen(true)}
+              aria-label="Open AI Copilot"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-cyan-500/30 dark:border-cyan-400/40 bg-cyan-500/10 dark:bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 text-xs font-bold transition-all cursor-pointer shadow-2xs hover:bg-cyan-500/20 active:scale-95"
+            >
+              <Sparkles className="h-3.5 w-3.5 text-cyan-500 dark:text-cyan-400 animate-pulse" />
+              <span className="hidden xs:inline text-[11px]">Talk AI</span>
+            </button>
+
             {/* Theme Toggle */}
             <ThemeToggle />
 
@@ -1369,7 +1382,7 @@ export function Header() {
             <button
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
-              className="h-9 w-9 flex items-center justify-center rounded-xl border border-slate-200/80 dark:border-white/10 bg-muted/60 text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
+              className="min-h-[38px] min-w-[38px] h-9 w-9 flex items-center justify-center rounded-xl border border-slate-200/80 dark:border-white/10 bg-muted/60 text-muted-foreground hover:text-foreground active:scale-95 cursor-pointer transition-all"
             >
               <Menu className="h-5 w-5" />
             </button>
