@@ -35,11 +35,13 @@ import { getSiteUrl } from '@/lib/site-url'
 export const metadata: Metadata = {
   title: 'The AI Company Operating System — Strategic Architectural Charter | NeelStack India',
   description:
-    'A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises. Architectural framework for deploying AI executive workforces (AI CEO, CTO, CFO, COO) alongside human founders.',
+    'A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises. We build enterprise AI solutions across LLMs, RAG, autonomous multi-agent systems, LangChain, LangGraph, and Model Context Protocol (MCP).',
   keywords: [
     'AI Company Operating System',
-    'AI CEO',
+    'Enterprise AI Solutions',
+    'LLM RAG Systems',
     'AI Executive Workforce',
+    'LangChain LangGraph MCP',
     'NeelStack Whitepaper',
     'Shyam Chaurasiya',
     'Autonomous Multi-Agent Architecture',
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The AI Company Operating System — Strategic Architectural Charter | NeelStack Solutions',
     description:
-      'A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises. Authored by Founder & Legal CEO Shyam Chaurasiya with Strategic AI Operating Partner.',
+      'A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises. Authored by Founder & Legal CEO Shyam Chaurasiya with NeelStack AI Engineering & Research Lab.',
     type: 'article',
     url: `${getSiteUrl()}/whitepapers/ai-company-operating-system`,
   },
@@ -77,8 +79,8 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
               jobTitle: 'Founder & Legal CEO',
             },
             {
-              '@type': 'Thing',
-              name: 'NeelStack AI CEO (Strategic AI Operating Partner)',
+              '@type': 'Organization',
+              name: 'NeelStack AI Solutions Engineering Lab',
             },
           ],
           publisher: {
@@ -142,12 +144,12 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
                 <p className="text-[11px] text-muted-foreground">Accountable Human Decision-Maker</p>
               </div>
               <div>
-                <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Strategic AI Operating Partner</p>
+                <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">AI Engineering &amp; Solutions</p>
                 <p className="text-xs font-bold text-primary mt-0.5 flex items-center gap-1">
                   <Bot className="h-3.5 w-3.5" />
-                  NeelStack AI CEO
+                  We Build AI Solutions
                 </p>
-                <p className="text-[11px] text-muted-foreground">Intelligence &amp; Execution Layer</p>
+                <p className="text-[11px] text-muted-foreground">LLM · RAG · Agents · MCP · LangGraph</p>
               </div>
               <div>
                 <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Long-Term Vision</p>
@@ -224,7 +226,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
                   THE AI COMPANY OPERATING SYSTEM
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                  The central thesis of this charter is the instantiation of a persistent, synchronized, and accountable <strong>AI executive workforce</strong> (AI CEO, AI CTO, AI CFO, AI COO, AI CRO, AI CMO, AI Product Officer) capable of orchestrating specialized agent swarms under clear human governance.
+                  The central thesis of this charter is the instantiation of a persistent, synchronized, and accountable <strong>autonomous multi-agent architecture</strong> (coordinating Strategy, Engineering, Finance, Operations, Revenue, Marketing, and Product agents) capable of orchestrating specialized agent swarms under clear human governance.
                 </p>
                 <div className="mt-4 pt-4 border-t border-primary/20 text-xs font-semibold text-foreground italic">
                   &ldquo;The human founder remains the legal owner and ultimate accountable decision-maker. The AI executive team becomes the enterprise&apos;s persistent intelligence and execution layer.&rdquo;
@@ -259,7 +261,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose my-6">
                 {[
-                  { role: 'AI CEO', focus: 'Strategy & Capital Allocation', desc: 'Prioritization, company health, resource allocation, executive coordination, and bottleneck identification.' },
+                  { role: 'Strategy & Orchestration Agent', focus: 'Strategy & Capital Allocation', desc: 'Prioritization, company health, resource allocation, executive coordination, and bottleneck identification.' },
                   { role: 'AI CTO', focus: 'Engineering & Architecture', desc: 'System architecture, technology stack governance, security posture, technical debt audits, and release velocity.' },
                   { role: 'AI CFO', focus: 'Financial Physics & Runway', desc: 'Cash runway modeling, revenue forecasting, unit economics, scenario analysis, expense optimization, and budget gates.' },
                   { role: 'AI COO', focus: 'Operational Rhythm & SOPs', desc: 'Cross-functional project delivery, milestone tracking, handoff governance, SOP enforcement, and operational velocity.' },
@@ -322,7 +324,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
                   <p><strong className="text-foreground">AI CMO:</strong> Competitive density in target segment is elevated; acquisition cost will experience upward pressure.</p>
                   <p><strong className="text-foreground">AI CFO:</strong> Reserve capital is healthy, but immediate hiring would contract runway buffer from 18 to 11 months.</p>
                   <p><strong className="text-foreground">AI COO:</strong> Current engineering bandwidth is 89% allocated toward flagship DhruvaOS milestone commitments.</p>
-                  <p className="text-emerald-500 font-bold"><strong className="text-foreground">AI CEO Synthesis:</strong> RECOMMENDATION: DEFER FULL HIRING. Execute 3 paid pilot contracts utilizing existing modular infrastructure before expanding fixed costs.</p>
+                  <p className="text-emerald-500 font-bold"><strong className="text-foreground">Strategic Orchestrator Synthesis:</strong> RECOMMENDATION: DEFER FULL HIRING. Execute 3 paid pilot contracts utilizing existing modular infrastructure before expanding fixed costs.</p>
                 </div>
               </div>
               <p className="text-sm font-semibold text-foreground">

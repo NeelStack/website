@@ -83,7 +83,7 @@ const ENGINE_DHRUVAOS = {
   engineNumber: '// ENGINE 02',
   name: 'DhruvaOS',
   category: 'Institutional Operating System',
-  badge: 'LAUNCH: 02 OCT 2026 · PILOTS OPEN',
+  badge: 'BETA LIVE · FULL LAUNCH: 14 NOV 2026',
   description:
     'The modern institutional operating system powering school administration, automated student lifecycles, dynamic fee ledgers, and official multi-campus portals.',
   accentColor: 'text-violet-500 dark:text-violet-400',

@@ -71,7 +71,7 @@ export const PRODUCTS: Product[] = [
     name: 'AI Company OS',
     tagline: 'Autonomous Multi-Agent Workforce Platform',
     description:
-      "NeelStack's research and product direction exploring 11 specialized AI agents (AI CEO, AI CTO, AI CFO, AI COO, AI CRO, AI CMO, AI Product, Systems, QA, Research, and Support) coordinated via Model Context Protocol (MCP) and LangGraph.",
+      "NeelStack's enterprise AI research and engineering framework: building autonomous multi-agent architectures (LLMs, RAG, LangChain, LangGraph, and Model Context Protocol) that automate mission-critical organizational intelligence and domain workflows.",
     status: 'in-development',
     icon: Bot,
     color: 'text-cyan-500 dark:text-cyan-400',
@@ -88,9 +88,9 @@ export const PRODUCTS: Product[] = [
   {
     id: 'naukarimitra',
     name: 'NaukariMitra',
-    tagline: 'AI-Powered Government Job Companion — Planned',
+    tagline: 'AI-Powered Government Exam Companion — Planned',
     description:
-      'Planned AI-powered competitive examination preparation platform designed to provide syllabus vector RAG, adaptive mock tests, and multilingual concept mentoring for over 3 Crore Indian aspirants (naukarimitra.in).',
+      'Planned AI-powered competitive examination preparation platform designed to provide syllabus vector RAG, adaptive mock tests, and multilingual concept mentoring for Indian exam aspirants (naukarimitra.in).',
     status: 'planned',
     icon: GraduationCap,
     color: 'text-emerald-500 dark:text-emerald-400',
@@ -110,7 +110,7 @@ export const PRODUCTS: Product[] = [
     name: 'SarkariMitra',
     tagline: 'AI Citizen Assistance Platform — Planned',
     description:
-      'Planned AI-powered citizen assistance platform helping 140 Crore people discover 1,500+ Central and State government schemes, verify eligibility criteria, and obtain verified document checklists with scam-free official redirects (sarakarimitra.org).',
+      'Planned AI-powered citizen assistance platform designed to help citizens discover Central and State government schemes, verify eligibility criteria, and obtain verified document checklists with official redirects (sarakarimitra.org).',
     status: 'planned',
     icon: Building,
     color: 'text-amber-500 dark:text-amber-400',

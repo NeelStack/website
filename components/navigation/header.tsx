@@ -116,7 +116,7 @@ const PRODUCTS_MENU = {
     {
       title: 'DhruvaOS',
       tag: 'Flagship Platform',
-      badge: 'Launching 2 Oct 2026',
+      badge: 'Beta Live · Launching 14 Nov 2026',
       badgeColor: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
       description:
         'Unified AI-powered school operating system. Admissions, fees, exams, attendance & campus AI.',
@@ -187,7 +187,7 @@ const COMPANY_MENU: {
     {
       title: 'Leadership & Team',
       href: '/about#leadership',
-      description: 'Meet the founders, software architects, and AI executive operating partner.',
+      description: 'Meet the founders, software architects, and core engineering leads.',
       icon: Users,
       iconColor: 'text-emerald-500 dark:text-emerald-400',
       iconBg: 'bg-emerald-500/10 border-emerald-500/20',
@@ -1155,7 +1155,7 @@ function MobileMenu({
                     <span className="truncate">DhruvaOS (School OS)</span>
                   </div>
                   <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-violet-500/10 font-bold border border-violet-500/20 shrink-0">
-                    2 Oct 2026
+                    14 Nov 2026
                   </span>
                 </Link>
 

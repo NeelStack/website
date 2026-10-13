@@ -39,11 +39,13 @@ import {
 export const metadata: Metadata = {
   title: 'AI Company Operating System (AI Workforce Platform) | NeelStack India',
   description:
-    'The AI Company Operating System is NeelStack’s multi-agent architectural framework. Coordinating 11 specialized autonomous AI agents (AI CEO, CTO, CFO, COO, CMO, CRO, Product, Systems, QA, Research, Support) via Model Context Protocol (MCP) and LangGraph under human governance.',
+    'The AI Company Operating System is NeelStack’s enterprise AI architecture. We build solutions across the full AI spectrum: LLMs, RAG, autonomous AI agent swarms, LangChain, LangGraph, and Model Context Protocol (MCP) tool meshes under human governance.',
   keywords: [
     'AI Company OS',
     'AI Workforce Platform',
-    'AI CEO Multi-Agent Framework',
+    'Enterprise AI Solutions',
+    'Autonomous Multi-Agent Architecture',
+    'LLM RAG Solutions',
     'Model Context Protocol MCP',
     'LangGraph Multi-Agent Architecture',
     'Enterprise AI Operating System',
@@ -58,14 +60,14 @@ export const metadata: Metadata = {
 // 11 Specialized AI Agent Squads (6 Executive + 5 Functional)
 const AGENT_SQUADS = [
   {
-    role: 'AI CEO',
-    tier: 'Executive Squad',
+    role: 'Strategic Orchestrator Agent',
+    tier: 'Executive Strategy Squad',
     icon: Sparkles,
     color: 'text-cyan-500',
     bgColor: 'bg-cyan-500/10',
     borderColor: 'border-cyan-500/20',
-    scope: 'Macro Strategic Orchestration',
-    desc: 'Synthesizes high-level corporate objectives, arbitrates resource allocation conflicts across squads, and maintains alignment with founder vision.',
+    scope: 'Macro Strategic Orchestration & Multi-Model Planning',
+    desc: 'Synthesizes high-level corporate objectives, arbitrates resource allocation across squads, coordinates multi-model LLM reasoning chains, and maintains alignment with founder vision.',
   },
   {
     role: 'AI CTO',
