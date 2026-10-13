@@ -38,7 +38,7 @@ import {
 export const metadata: Metadata = {
   title: 'NaukariMitra | AI-Powered Government Exam Preparation Platform | NeelStack India',
   description:
-    'NaukariMitra is NeelStack’s planned AI exam preparation platform engineered to democratize competitive exam guidance for over 3 Crore Indian aspirants across UPSC, SSC, Banking, Railways, and State PSCs with zero distraction.',
+    'NaukariMitra is NeelStack’s planned AI exam preparation platform engineered to support competitive exam guidance for Indian aspirants across UPSC, SSC, Banking, Railways, and State PSCs with zero distraction.',
   keywords: [
     'NaukariMitra',
     'AI Government Exam Preparation',
@@ -265,7 +265,7 @@ export default function NaukariMitraPage() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-sm shadow-sm">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              Phase 3 Roadmap &middot; AI Exam Intelligence &middot; 3 Crore+ Indian Aspirants
+              Phase 3 Roadmap &middot; AI Exam Intelligence &middot; Pan-India Aspirants
             </span>
           </div>
 

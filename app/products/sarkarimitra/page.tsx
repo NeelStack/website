@@ -37,7 +37,7 @@ import {
 export const metadata: Metadata = {
   title: 'SarkariMitra | AI Citizen Assistance & Government Scheme Discovery Engine | NeelStack India',
   description:
-    'SarkariMitra is NeelStack’s planned AI civic assistance platform indexing 1,500+ Central and State welfare schemes, providing plain-language conversational eligibility checks, document checklists, and scam-free official redirects for 140 Crore Indian citizens.',
+    'SarkariMitra is NeelStack’s planned AI civic assistance platform indexing 1,500+ Central and State welfare schemes, providing plain-language conversational eligibility checks, document checklists, and verified official redirects for citizens across India.',
   keywords: [
     'SarkariMitra',
     'SarakariMitra',
@@ -264,7 +264,7 @@ export default function SarkariMitraPage() {
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 backdrop-blur-sm shadow-sm">
             <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
             <span className="text-xs font-semibold text-amber-600 dark:text-amber-400">
-              Phase 3 Roadmap &middot; Civic Intelligence &middot; 140 Crore Citizens
+              Phase 3 Roadmap &middot; Civic Intelligence &middot; Pan-India Citizen Focus
             </span>
           </div>
 

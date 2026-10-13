@@ -122,11 +122,6 @@ export default function AboutPage() {
               name: 'Neelam Chaurasiya',
               jobTitle: 'Co-Founder & Business Operations Lead',
             },
-            {
-              '@type': 'Thing',
-              name: 'NeelStack AI CEO',
-              description: 'Strategic AI Operating Partner & Multi-Agent Intelligence Layer',
-            },
           ],
           employee: [
             {
@@ -197,7 +192,7 @@ export default function AboutPage() {
                   </Link>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  NeelStack aims to build the <strong>AI Company Operating System</strong> — an intelligent executive workforce platform (AI CEO, CTO, CFO, COO) that coordinates organizational intelligence, persistent institutional memory, and workflow execution alongside human founders.
+                  We build enterprise-grade AI solutions across the modern stack — deploying custom <strong>LLMs, high-accuracy RAG and GraphRAG pipelines, autonomous AI agents, LangChain/LangGraph orchestration, and Model Context Protocol (MCP) toolkits</strong> that automate high-stakes workflows alongside human teams.
                 </p>
               </div>
 

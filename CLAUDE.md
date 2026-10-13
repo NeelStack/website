@@ -81,7 +81,7 @@ pnpm run ci-check
 - **Leadership:**
   - **Shyam Chaurasiya** — Founder & Legal CEO
   - **Neelam Chaurasiya** — Co-founder & Business Operations
-  - **NeelStack AI CEO** — Strategic AI Operating Partner
+  - **Core AI Engineering** — We Build Enterprise AI Solutions (LLMs, RAG, Autonomous AI Agents, LangChain, LangGraph, Model Context Protocol)
 - **Three Engines:**
   1. **NeelStack Services** — AI engineering, LLM/RAG integration, autonomous AI agents, chatbot development, agentic workflows, custom software.
   2. **DhruvaOS** — Flagship School Operating System (Beta live October 2026 · Full launch: **14 November 2026**).

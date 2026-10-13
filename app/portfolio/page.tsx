@@ -48,7 +48,7 @@ const PORTFOLIO_PROJECTS: Project[] = [
     status: 'in-progress',
     category: 'AI Systems Architecture',
     tags: ['LangGraph', 'Model Context Protocol (MCP)', 'Multi-Agent', 'Memory'],
-    href: '/#ai-strategy',
+    href: '/products/ai-company-os',
     year: '2026',
   },
   {

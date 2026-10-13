@@ -1,17 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import {
   ShieldCheck,
   Mail,
   Bot,
   Cpu,
   Sparkles,
-  ExternalLink,
   Code2,
   Lock,
-  Workflow,
   CheckCircle2,
 } from 'lucide-react'
 import { Container } from '@/components/ui/container'
@@ -50,23 +47,6 @@ export const FOUNDING_LEADERSHIP = [
     email: 'contact@neelstack.com',
     accentColor: 'border-purple-500/30 hover:border-purple-500/60',
     badgeClass: 'bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/25',
-  },
-  {
-    name: 'NeelStack AI CEO',
-    role: 'Strategic AI Operating Partner',
-    badge: 'Autonomous Executive Intelligence',
-    type: 'ai-partner',
-    avatarSrc: '/images/illustrations/avatar-leader.png',
-    credentials: 'Multi-Agent Swarm · Model Context Protocol · LangGraph',
-    bio: 'Executive agentic intelligence partner supporting real-time telemetry analysis, autonomous multi-agent workforce coordination, and operational strategy simulations.',
-    focusAreas: [
-      'Multi-Agent Swarm Orchestration (LangGraph)',
-      'Model Context Protocol (MCP) Tool Integration',
-      'Organizational Memory & GraphRAG Retrieval',
-    ],
-    whitepaperLink: '/whitepapers/ai-company-operating-system',
-    accentColor: 'border-cyan-500/40 hover:border-cyan-400',
-    badgeClass: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border-cyan-500/30',
   },
 ]
 
@@ -182,48 +162,31 @@ export function LeadershipShowcase() {
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Governed by human legal accountability, enterprise technical discipline, and powered by autonomous multi-agent intelligence.
+            Governed by human legal accountability, verified credentials, and rigorous systems engineering discipline.
           </p>
         </div>
 
-        {/* 1. Founding Leadership Trio */}
+        {/* 1. Founding Leadership Duo */}
         <div className="space-y-6">
-          <div className="flex items-center gap-2 pb-2 border-b border-border/60 max-w-6xl mx-auto">
+          <div className="flex items-center gap-2 pb-2 border-b border-border/60 max-w-4xl mx-auto">
             <span className="text-xs font-mono font-bold text-primary uppercase tracking-widest">
               {"// Founding & Executive Leadership"}
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
             {FOUNDING_LEADERSHIP.map((person) => {
-              const isAi = person.type === 'ai-partner'
-
               return (
                 <div
                   key={person.name}
                   className={`rounded-3xl border ${person.accentColor} bg-card/90 dark:bg-[#0c1222]/90 backdrop-blur-xl overflow-hidden flex flex-col tactile-card-3d group`}
                 >
                   {/* Visual Avatar Banner */}
-                  <div
-                    className={`relative flex items-end justify-center pt-8 pb-0 border-b border-border/50 ${
-                      isAi
-                        ? 'bg-gradient-to-b from-cyan-500/15 via-cyan-500/5 to-transparent'
-                        : 'bg-gradient-to-b from-primary/10 via-primary/5 to-transparent'
-                    }`}
-                  >
-                    {isAi && (
-                      <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-[10px] font-mono font-bold text-cyan-400">
-                        <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                        AI Operating Partner
-                      </div>
-                    )}
-
-                    {!isAi && (
-                      <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono font-bold text-emerald-500 dark:text-emerald-400">
-                        <ShieldCheck className="h-3 w-3" />
-                        Verified Leader
-                      </div>
-                    )}
+                  <div className="relative flex items-end justify-center pt-8 pb-0 border-b border-border/50 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">
+                    <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono font-bold text-emerald-500 dark:text-emerald-400">
+                      <ShieldCheck className="h-3 w-3" />
+                      Verified Leader
+                    </div>
 
                     <Image
                       src={person.avatarSrc}
@@ -248,7 +211,7 @@ export function LeadershipShowcase() {
                         <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
                           {person.name}
                         </h3>
-                        <p className={`text-xs font-bold uppercase tracking-wider mt-0.5 ${isAi ? 'text-cyan-500 dark:text-cyan-400' : 'text-primary'}`}>
+                        <p className="text-xs font-bold uppercase tracking-wider mt-0.5 text-primary">
                           {person.role}
                         </p>
                       </div>
@@ -270,7 +233,7 @@ export function LeadershipShowcase() {
                       <ul className="space-y-1.5">
                         {person.focusAreas.map((area) => (
                           <li key={area} className="flex items-start gap-2 text-xs text-muted-foreground">
-                            <CheckCircle2 className={`h-3.5 w-3.5 shrink-0 mt-0.5 ${isAi ? 'text-cyan-400' : 'text-primary'}`} />
+                            <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5 text-primary" />
                             <span>{area}</span>
                           </li>
                         ))}
@@ -279,21 +242,12 @@ export function LeadershipShowcase() {
 
                     {/* Card Action Link */}
                     <div className="pt-3 border-t border-border/50 flex items-center justify-between">
-                      {person.whitepaperLink ? (
-                        <Link
-                          href={person.whitepaperLink}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-500 dark:text-cyan-400 hover:underline"
-                        >
-                          Read AI OS Whitepaper v1.0 <ExternalLink className="h-3.5 w-3.5" />
-                        </Link>
-                      ) : (
-                        <a
-                          href={`mailto:${person.email}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:underline"
-                        >
-                          <Mail className="h-3.5 w-3.5" /> Contact via {person.email}
-                        </a>
-                      )}
+                      <a
+                        href={`mailto:${person.email}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:underline"
+                      >
+                        <Mail className="h-3.5 w-3.5" /> Contact via {person.email}
+                      </a>
                     </div>
                   </div>
                 </div>

@@ -1497,7 +1497,7 @@ An AI workforce is only as capable as its memory architecture. We structure orga
 
 We apply this exact multi-agent workforce infrastructure in our proprietary products:
 - In **DhruvaOS (our School Operating System — Beta live, full launch 14 November 2026)**, autonomous agents handle dynamic constraint-solving for NP-hard faculty timetables in <12s, monitor biometric attendance anomalies, and draft individualized academic remediation roadmaps.
-- In **AI Company OS (our long-term R&D direction)**, specialized autonomous agents (AI CEO, AI CTO, AI CFO, Operations, and Sales) coordinate company intelligence, streamline inter-departmental handoffs, and automate repetitive knowledge workflows.
+- In **our enterprise AI solutions architecture**, autonomous agent swarms (powered by LLMs, RAG, LangChain, LangGraph, and MCP) coordinate company intelligence, streamline inter-departmental handoffs, and automate complex knowledge pipelines.
 
 ---
 

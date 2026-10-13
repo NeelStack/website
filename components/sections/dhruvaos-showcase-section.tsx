@@ -130,7 +130,7 @@ export function DhruvaOSShowcaseSection() {
                 </div>
                 <span className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/25">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Launching 2 Oct 2026
+                  Beta Live · Launching 14 Nov 2026
                 </span>
               </div>
 

@@ -140,7 +140,7 @@ export const MAIN_NAV: NavMenu[] = [
           {
             label: 'Leadership & Team',
             href: '/about#leadership',
-            description: 'Founders, software architects & AI executive partner',
+            description: 'Founders, software architects & core engineering leads',
             icon: Users,
           },
           {
@@ -208,7 +208,7 @@ export const FOOTER_NAV = {
     { label: 'About NeelStack', href: '/about' },
     { label: 'Leadership & Team', href: '/about#leadership' },
     { label: 'Strategic Whitepaper', href: '/whitepapers/ai-company-operating-system' },
-    { label: 'AI Agent Strategy', href: '/#ai-strategy' },
+    { label: 'AI Agent Strategy', href: '/products/ai-company-os' },
     { label: 'Architecture Blueprints', href: '/case-studies' },
     { label: 'Security & Compliance', href: '/security' },
     { label: 'Engineering Blog', href: '/blog' },

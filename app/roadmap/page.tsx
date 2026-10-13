@@ -58,7 +58,7 @@ const ROADMAP_ITEMS = [
     status: 'Research & Product Direction',
     statusBadge: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
     icon: Boxes,
-    desc: 'An AI-powered company operating layer exploring specialized autonomous agents (AI CEO, CTO, CFO, Operations, Sales) for organizational intelligence and workflow automation.',
+    desc: 'Enterprise AI solutions framework combining LLM integration, RAG neural search, LangChain/LangGraph state machines, and Model Context Protocol (MCP) for autonomous workflow orchestration.',
     features: ['11 Specialized autonomous agent squads', 'Model Context Protocol (MCP) tooling', 'Hierarchical company memory & decision support'],
     link: '/products/ai-company-os',
     isExternal: false,

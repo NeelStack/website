@@ -45,7 +45,7 @@ const CASE_STUDIES: CaseStudy[] = [
     systemProfile: 'DhruvaOS Autonomous Cognitive Engine (Proprietary SaaS)',
     industry: 'Enterprise AI & Autonomous Operations',
     category: 'ai',
-    categoryLabel: 'Agentic AI & AGI',
+    categoryLabel: 'Agentic AI & Agent Systems',
     timeframe: 'In Production · Beta Live · Full Launch November 14, 2026',
     blogUrl: '/blog/agentic-ai-in-dhruvaos-autonomous-enterprise-erp-agi',
     blogReadTime: '14 min read',
@@ -116,7 +116,7 @@ const CASE_STUDIES: CaseStudy[] = [
       { value: '100/100', label: 'Core Web Vitals', desc: 'Lighthouse score across 100+ intent landing routes' },
     ],
     challenge:
-      'Traditional online file converter sites upload confidential user documents to remote cloud servers, creating severe compliance and privacy vulnerabilities under GDPR and India\'s DPDPA 2023, while generating massive cloud compute and storage bills ($18,000/month). The engineering objective was to provide instant image compression, PDF editing, and AI workflows without ever retaining private user files.',
+      'Traditional online file converter sites upload confidential user documents to remote cloud servers, creating severe compliance and privacy vulnerabilities under GDPR and India\'s DPDPA 2023, while generating substantial ongoing server compute and storage overhead. The engineering objective was to provide instant image compression, PDF editing, and conversion workflows without ever retaining private user files on a remote server.',
     solution:
       'NeelStack architected ToolVines on a browser-native execution model. Using WebAssembly (WASM), HTML5 OffscreenCanvas, and disposable Web Workers, file operations execute inside the visitor\'s browser memory buffer and are garbage-collected immediately upon completion. A hybrid AI provider using Google Gemini 1.5 Flash streams tokens in sub-500ms with Upstash Redis edge rate limiting.',
     architectureHighlights: [
@@ -162,7 +162,7 @@ const CASE_STUDIES: CaseStudy[] = [
 
 const CATEGORIES = [
   { id: 'all', label: 'All Architecture Studies' },
-  { id: 'ai', label: 'Agentic AI & AGI' },
+  { id: 'ai', label: 'Agentic AI & Agent Systems' },
   { id: 'erp', label: 'Enterprise ERP' },
   { id: 'cloud', label: 'Browser-Native WASM' },
   { id: 'backend', label: 'Backend Architecture' },
