@@ -13,7 +13,7 @@ export const PRODUCT_META: Record<string, { deployedLabel?: string; targetLaunch
     deployedLabel: 'Live Product',
   },
   dhruvaos: {
-    targetLaunch: '2 October 2026',
+    targetLaunch: '14 November 2026',
   },
   'ai-company-os': {
     deployedLabel: 'R&D / Whitepaper v1.0',
@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'dhruvaos',
     name: 'DhruvaOS',
-    tagline: 'School Operating System — Launching 2 October 2026',
+    tagline: 'School Operating System — Beta Live · Launching 14 November 2026',
     description:
       "DhruvaOS is NeelStack's unified school operating system, ready for launch and currently onboarding early pilot institutions. Built to provide a unified digital infrastructure for school administration, academic management, and modern workflows.",
     status: 'in-development',

@@ -47,7 +47,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     subtitleLine1:
       'We architect, build, and modernize custom business software, scalable cloud applications, and AI systems.',
     subtitleLine2:
-      'Delivering reliable, production-grade digital platforms from concept to deployment.',
+      'We build custom LLM integrations, RAG pipelines, AI agents, chatbots, and scalable enterprise software.',
     accentGradient:
       'from-blue-700 via-indigo-600 to-violet-700 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-300',
   },
@@ -63,7 +63,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     subtitleLine1:
       'Deploy deterministic multi-agent swarms, enterprise knowledge RAG pipelines,',
     subtitleLine2:
-      'and intelligent workflow automation built for production-grade reliability.',
+      'and chatbot integrations built for production-grade reliability and real business impact.',
     accentGradient:
       'from-blue-700 via-indigo-600 to-purple-700 dark:from-cyan-300 dark:via-blue-400 dark:to-violet-300',
   },
@@ -93,7 +93,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     titlePrefix: 'Multi-Tenant SaaS &',
     highlightText: 'High-Throughput Platforms',
     subtitleLine1:
-      'Engineered for sub-100ms response times and strict PostgreSQL Row-Level Security',
+      'Engineered for sub-100ms response times and dedicated PostgreSQL physical schema isolation',
     subtitleLine2:
       'with high-throughput microservices architecture built for enterprise scale.',
     accentGradient:
@@ -263,7 +263,7 @@ export function HeroSection() {
           aria-label="Previous capability slide"
           className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110" />
+          <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110 rtl:rotate-180" />
         </button>
 
         {/* Next Arrow / 3D Tactile on Hover */}
@@ -275,7 +275,7 @@ export function HeroSection() {
           aria-label="Next capability slide"
           className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110" />
+          <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110 rtl:rotate-180" />
         </button>
       </div>
 

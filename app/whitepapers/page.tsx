@@ -53,7 +53,7 @@ const WHITEPAPERS = [
     status: 'Available Online',
     readUrl: '/blog/architecting-dhruvaos-foundation-schema-per-tenant-postgresql',
     description:
-      'How DhruvaOS digitizes administrative workflows, eliminates database row locks with Row-Level Security (RLS) multi-tenancy, and introduces predictive analytics ahead of the October 2 Demo Launch.',
+      'How DhruvaOS digitizes administrative workflows, eliminates database row locks with Row-Level Security (RLS) multi-tenancy, and introduces predictive analytics ahead of the November 14 Full Launch.',
     topics: ['EdOS Architecture Blueprint', 'PostgreSQL RLS Multi-Tenancy', 'AI RAG Gateway', 'GST e-Invoicing Adapter'],
   },
   {

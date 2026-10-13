@@ -171,7 +171,7 @@ export function ServicesOverviewSection() {
             }}
             className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto"
           >
-            Senior engineering teams building robust digital products, cloud infrastructures, and AI systems tailored to your business goals.
+            Senior engineering teams building AI-powered products, LLM integrations, autonomous agents, chatbots, and enterprise software tailored to your business.
           </motion.p>
         </motion.div>
 

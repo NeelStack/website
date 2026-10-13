@@ -82,7 +82,7 @@ export const MAIN_NAV: NavMenu[] = [
           {
             label: 'DhruvaOS (School OS)',
             href: '/products/dhruvaos',
-            description: 'Unified school operating system — launching 2 October 2026',
+            description: 'Unified school operating system — Beta live · launching 14 November 2026',
             icon: Zap,
           },
           {

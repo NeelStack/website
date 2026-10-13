@@ -3,9 +3,9 @@ export const SITE_CONFIG = {
   shortName: 'NeelStack',
   fullName: 'NeelStack Solutions Private Limited',
   legalName: 'NeelStack Solutions Private Limited',
-  tagline: 'Building the Software and AI Systems of Tomorrow',
+  tagline: 'AI Engineering, LLM Integration & Custom Software Development',
   description:
-    'NeelStack Solutions builds software products, AI-powered systems and digital platforms for businesses and organizations.',
+    'NeelStack Solutions builds AI-powered products, LLM/RAG pipelines, autonomous AI agents, chatbot integrations, and custom enterprise software for modern businesses.',
   url: 'https://neelstack.com',
   email: {
     general: 'contact@neelstack.com',
