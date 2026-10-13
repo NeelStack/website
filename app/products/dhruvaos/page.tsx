@@ -199,14 +199,14 @@ export default function DhruvaOSPage() {
             </Button>
           </div>
           <p className="text-xs font-mono text-muted-foreground/80">
-            Dedicated portal <span className="text-primary font-semibold">dhruvaos.com</span> launching 2 October 2026
+            Dedicated portal <span className="text-primary font-semibold">dhruvaos.com</span> — Beta live · full launch 14 November 2026
           </p>
 
           {/* Clean Overview Stat Strip — Zero Boxed Cards */}
           <div className="max-w-3xl mx-auto grid grid-cols-3 divide-x divide-border/60 py-3 sm:py-4 border-y border-border/60">
             <div className="text-center px-3">
-              <span className="font-mono text-base sm:text-lg font-bold text-foreground">2 Oct 2026</span>
-              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Demo Launch</p>
+              <span className="font-mono text-base sm:text-lg font-bold text-foreground">14 Nov 2026</span>
+              <p className="text-[10px] text-muted-foreground uppercase mt-0.5">Full Launch</p>
             </div>
             <div className="text-center px-3">
               <span className="font-mono text-base sm:text-lg font-bold text-foreground">4 Core Pillars</span>

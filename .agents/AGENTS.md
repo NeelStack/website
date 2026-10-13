@@ -99,8 +99,8 @@ These rules apply to all AI agents working on this repository. They are derived 
   - **Neelam Chaurasiya** — Co-founder & Business Operations
   - **NeelStack AI CEO** — Strategic AI Operating Partner (ChatGPT / Frontier Multi-Agent Intelligence Layer)
 - **Three Engines Architecture:**
-  1. **NeelStack Services** — Enterprise AI development, agentic workflows, custom software, full-stack systems.
-  2. **DhruvaOS** — School Operating System (Launch date: **2 October 2026** across all pages).
+  1. **NeelStack Services** — AI engineering, LLM/RAG integration, autonomous AI agents, chatbot development, agentic workflows, custom software, full-stack systems.
+  2. **DhruvaOS** — School Operating System (Beta live October 2026 · Full launch: **14 November 2026** across all pages).
   3. **ToolVines** — Free developer and growth tools network.
 - **Strategic Whitepaper:** Version 1.0 published at `/whitepapers/ai-company-operating-system`.
 - **Contact Channel:** Single unified email `contact@neelstack.com`.

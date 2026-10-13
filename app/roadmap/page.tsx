@@ -44,10 +44,10 @@ const ROADMAP_ITEMS = [
   {
     title: 'DhruvaOS',
     category: 'School Operating System',
-    status: 'Ready for Launch — Launching 2 October 2026',
+    status: 'Beta Live · Full Launch 14 November 2026',
     statusBadge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
     icon: Zap,
-    desc: "NeelStack's unified school operating system, ready for launch and currently onboarding early pilot institutions. Features school onboarding, admin setup, CMS, official website, mobile app, desktop app, school management, and intelligent AI workflows.",
+    desc: "NeelStack's unified school operating system, currently in public beta and onboarding early pilot institutions. Features school onboarding, admin setup, CMS, official website, mobile app, desktop app, school management, and intelligent AI workflows.",
     features: ['School onboarding & admin setup', 'CMS & official website builder', 'Cross-platform mobile & desktop apps', 'Planned AI-agent capabilities'],
     link: '/products/dhruvaos',
     isExternal: false,

@@ -206,7 +206,7 @@ export default function AiCompanyOperatingSystemWhitepaperPage() {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-purple-500">Engine 2</span>
                   <h3 className="text-base font-bold text-foreground">DhruvaOS</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    Unified School Operating System (launching 2 October 2026), engineered as a multi-tenant B2B SaaS platform and active proving ground for multi-agent coordination.
+                    Unified School Operating System (Beta live · full launch 14 November 2026), engineered as a multi-tenant B2B SaaS platform and active proving ground for multi-agent coordination.
                   </p>
                 </div>
                 <div className="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 space-y-2">

@@ -33,9 +33,9 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'About NeelStack Solutions | Software Products & AI Systems',
+  title: 'About NeelStack Solutions | AI Engineering, LLM Integration & Custom Software',
   description:
-    'Learn about NeelStack Solutions — a software products and AI systems company incorporated in India in August 2026. Discover our vision, engineering principles, and product roadmap.',
+    'Learn about NeelStack Solutions — an AI engineering and custom software company incorporated in India in August 2026. We build LLM/RAG pipelines, autonomous AI agents, chatbot integrations, and enterprise software products.',
   alternates: {
     canonical: '/about',
   },
@@ -77,10 +77,10 @@ const JOURNEY = [
     detail: 'Browser-based productivity platform providing fast PDF, image, document, and AI tools with zero server-side file retention and client-side WebAssembly processing.',
   },
   {
-    name: 'DhruvaOS (dhruvaos.com · Launching 2 October 2026)',
+    name: 'DhruvaOS (dhruvaos.com · Beta Live · Launching 14 November 2026)',
     status: 'launching',
-    label: 'Ready for Launch — Launching 2 October 2026',
-    detail: "NeelStack's unified school operating system, ready for launch and currently onboarding early pilot institutions. Features school onboarding, admin setup, CMS, official school website, mobile app, desktop app, institutional management, and intelligent AI workflows.",
+    label: 'Beta Live · Full Launch 14 November 2026',
+    detail: "NeelStack's unified school operating system, currently in public beta and onboarding early pilot institutions. Features school onboarding, admin setup, CMS, official school website, mobile app, desktop app, institutional management, and intelligent AI workflows.",
   },
   {
     name: 'AI Workforce Platform / AI Company OS',
@@ -161,7 +161,7 @@ export default function AboutPage() {
       <PageHero
         badge="About NeelStack Solutions"
         title="Building the Software and AI Systems of Tomorrow"
-        description="NeelStack Solutions Private Limited is a technology company incorporated in India in August 2026, building software products, AI-powered systems, and modern digital platforms."
+        description="NeelStack Solutions Private Limited is an AI engineering and custom software company incorporated in India in August 2026. We build LLM/RAG pipelines, autonomous AI agents, chatbot integrations, and modern digital platforms."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 
@@ -205,7 +205,7 @@ export default function AboutPage() {
               <div className="p-5 sm:p-6 rounded-2xl border border-border/70 bg-card/40 space-y-2">
                 <h3 className="font-heading text-xs font-bold text-muted-foreground uppercase tracking-wider">Company Background</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary engines: <strong className="text-foreground">NeelStack Services</strong> (enterprise engineering), <strong className="text-foreground">DhruvaOS</strong> (School Operating System SaaS), and <strong className="text-foreground">ToolVines</strong> (free browser utilities).
+                  Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary engines: <strong className="text-foreground">NeelStack Services</strong> (AI engineering, LLM/RAG integration, agentic workflows, chatbot development & enterprise software), <strong className="text-foreground">DhruvaOS</strong> (School Operating System SaaS), and <strong className="text-foreground">ToolVines</strong> (free browser utilities).
                 </p>
               </div>
             </div>

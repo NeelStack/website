@@ -11,20 +11,20 @@ import { TechnologySection } from '@/components/sections/technology-section'
 import { FreeConsultationCTA } from '@/components/sections/free-consultation-cta'
 
 export const metadata: Metadata = {
-  title: 'NeelStack Solutions | Software Engineering & AI Services for Modern Businesses',
+  title: 'NeelStack Solutions | AI Engineering, LLM Integration & Custom Software Development',
   description:
-    'NeelStack designs, builds and modernizes custom software, AI-powered systems and digital products for businesses. From enterprise applications to SaaS products and intelligent automation.',
+    'NeelStack builds AI-powered products, LLM/RAG pipelines, autonomous AI agents, chatbot integrations, and custom enterprise software. From AI product engineering to SaaS platforms and intelligent automation.',
   keywords: [
     'NeelStack Solutions',
-    'Custom software development',
-    'AI development services',
-    'Software engineering company India',
-    'Enterprise software development',
-    'SaaS product engineering',
-    'DhruvaOS school operating system',
-    'Cloud and DevOps services',
-    'Legacy modernization',
+    'AI engineering company India',
+    'LLM integration services',
+    'RAG pipeline development',
     'AI agent development',
+    'Chatbot integration services',
+    'Custom software development',
+    'AI product engineering',
+    'Enterprise AI solutions',
+    'DhruvaOS school operating system',
   ],
   alternates: {
     canonical: '/',

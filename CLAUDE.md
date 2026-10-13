@@ -83,7 +83,7 @@ pnpm run ci-check
   - **Neelam Chaurasiya** — Co-founder & Business Operations
   - **NeelStack AI CEO** — Strategic AI Operating Partner
 - **Three Engines:**
-  1. **NeelStack Services** — Enterprise AI development, agentic workflows, custom software.
-  2. **DhruvaOS** — Flagship School Operating System (Launch date: **2 October 2026**).
+  1. **NeelStack Services** — AI engineering, LLM/RAG integration, autonomous AI agents, chatbot development, agentic workflows, custom software.
+  2. **DhruvaOS** — Flagship School Operating System (Beta live October 2026 · Full launch: **14 November 2026**).
   3. **ToolVines** — Free developer and growth tools network.
 - **Unified Contact:** `contact@neelstack.com`

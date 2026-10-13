@@ -566,7 +566,7 @@ Try out **ToolVines** today at **[https://toolvines.com](https://toolvines.com)*
     slug: 'architecting-dhruvaos-foundation-schema-per-tenant-postgresql',
     title: 'Architecting DhruvaOS Foundation: Shared Schema PostgreSQL with Row-Level Security & Autonomous AI Workflows',
     excerpt:
-      'A deep dive into how we engineered DhruvaOS Foundation — unified shared schema PostgreSQL with kernel-level Row-Level Security (RLS), Zitadel OIDC JWKS token verification, Celery distributed tasks, and native AI RAG gateway ahead of the October 2 Demo Launch.',
+      'A deep dive into how we engineered DhruvaOS Foundation — unified shared schema PostgreSQL with kernel-level Row-Level Security (RLS), Zitadel OIDC JWKS token verification, Celery distributed tasks, and native AI RAG gateway ahead of the November 14 Full Launch.',
     category: 'Architecture',
     tags: ['DhruvaOS', 'PostgreSQL', 'Multi-Tenancy', 'Row-Level Security', 'FastAPI', 'System Design'],
     author: { name: 'Shyam Chaurasiya', role: 'Founder & Engineering Lead' },
@@ -574,7 +574,7 @@ Try out **ToolVines** today at **[https://toolvines.com](https://toolvines.com)*
     readTime: '13 min read',
     href: '/blog/architecting-dhruvaos-foundation-schema-per-tenant-postgresql',
     featured: true,
-    content: `Ahead of our **Public Demo Launch on October 2, 2026**, we are pulling back the curtain on the core architecture powering **DhruvaOS** — NeelStack's cloud operating system and multi-tenant enterprise ERP platform.
+    content: `Ahead of our **Full Launch on November 14, 2026**, we are pulling back the curtain on the core architecture powering **DhruvaOS** — NeelStack's cloud operating system and multi-tenant enterprise ERP platform.
 
 When educational institutions and enterprises evaluate an operating system, two non-negotiable requirements dominate: **absolute data isolation** and **sub-second database scalability**. While naive SaaS architectures rely solely on application-layer \`WHERE school_id = ...\` queries, enterprise platforms require kernel-level defense-in-depth where the database engine itself rejects cross-tenant access.
 
@@ -688,9 +688,9 @@ Unlike legacy ERPs that bolted on generic AI chatbots, DhruvaOS features an embe
 
 ---
 
-### The Road to Demo Launch — October 2, 2026
+### The Road to Full Launch — November 14, 2026
 
-With stress tests demonstrating sub-30ms p95 API latency across 50,000 simulated concurrent tenants, DhruvaOS is on track for its public demo debut on **October 2, 2026**.
+With stress tests demonstrating sub-30ms p95 API latency across 50,000 simulated concurrent tenants, DhruvaOS is on track for its full launch on **November 14, 2026**.
 
 To request an institutional early-access preview or schedule a private architecture walkthrough with our engineering leadership, visit our [DhruvaOS Product Page](/products/dhruvaos) or contact our team at **/contact**.`,
   },
@@ -1042,7 +1042,7 @@ Security is not a marketing veneer — it is the foundation of enterprise enterp
     slug: 'agentic-ai-in-dhruvaos-autonomous-enterprise-erp-agi',
     title: 'Agentic AI in DhruvaOS: From Static ERPs to Autonomous Goal-Driven Enterprise Systems',
     excerpt:
-      'An architectural breakdown of how we engineered autonomous agentic AI inside DhruvaOS — state-graph multi-agent reasoning, AST-level deterministic execution, and eliminating manual form-filling across enterprise operations ahead of our October 2 Demo Launch.',
+      'An architectural breakdown of how we engineered autonomous agentic AI inside DhruvaOS — state-graph multi-agent reasoning, AST-level deterministic execution, and eliminating manual form-filling across enterprise operations ahead of our November 14 Full Launch.',
     category: 'Artificial Intelligence',
     tags: ['Agentic AI', 'DhruvaOS', 'LangGraph', 'Enterprise ERP', 'AST Execution', 'System Design'],
     author: { name: 'Shyam Chaurasiya', role: 'Founder & Engineering Lead' },
@@ -1054,7 +1054,7 @@ Security is not a marketing veneer — it is the foundation of enterprise enterp
 
 Whether using legacy ERPs like SAP, Oracle, or modern web portals, employees spend 80% of their workday copying numbers from emails, navigating dense dropdown trees, clicking through multi-step modal forms, and reconciling ledgers manually. The software itself is completely passive — a glorified relational database wrapped in HTML tables.
 
-When we began architecting **DhruvaOS** (ahead of our **Public Demo Launch on October 2, 2026**), we discarded this legacy assumption. We asked a fundamental question: **What if the ERP itself was an autonomous, cognitive agentic system?**
+When we began architecting **DhruvaOS** (ahead of our **Full Launch on November 14, 2026**), we discarded this legacy assumption. We asked a fundamental question: **What if the ERP itself was an autonomous, cognitive agentic system?**
 
 Here is the architectural blueprint of how we engineered **Agentic AI inside DhruvaOS** using LangGraph state machines, AST-verified deterministic tool execution, and isolated PostgreSQL schemas.
 
@@ -1173,11 +1173,11 @@ Autonomous does not mean unsupervised. We enforce deterministic authority bounda
 
 ---
 
-### Experience the Future on October 2, 2026
+### Experience the Future on November 14, 2026
 
 Agentic AI is not science fiction or an academic thought experiment — it is the core operating foundation of DhruvaOS.
 
-Join us on **October 2, 2026** for our **Public Demo Launch**, where we will showcase live multi-agent orchestration across multi-tenant enterprise environments.
+Join us on **November 14, 2026** for our **Full Launch**, where we will showcase live multi-agent orchestration across multi-tenant enterprise environments.
 
 To request early architectural preview access or discuss custom agentic integrations for your enterprise, visit our [DhruvaOS Product Page](/products/dhruvaos) or contact our engineering team at **/contact**.`,
   },
@@ -1496,7 +1496,7 @@ An AI workforce is only as capable as its memory architecture. We structure orga
 ### Real-World Blueprint: DhruvaOS & AI Company OS
 
 We apply this exact multi-agent workforce infrastructure in our proprietary products:
-- In **DhruvaOS (our School Operating System launching 2 October 2026)**, autonomous agents handle dynamic constraint-solving for NP-hard faculty timetables in <12s, monitor biometric attendance anomalies, and draft individualized academic remediation roadmaps.
+- In **DhruvaOS (our School Operating System — Beta live, full launch 14 November 2026)**, autonomous agents handle dynamic constraint-solving for NP-hard faculty timetables in <12s, monitor biometric attendance anomalies, and draft individualized academic remediation roadmaps.
 - In **AI Company OS (our long-term R&D direction)**, specialized autonomous agents (AI CEO, AI CTO, AI CFO, Operations, and Sales) coordinate company intelligence, streamline inter-departmental handoffs, and automate repetitive knowledge workflows.
 
 ---
