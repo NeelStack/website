@@ -4,7 +4,7 @@ import { SERVICES } from '../constants/services.ts'
 import { PRODUCTS } from '../constants/products.ts'
 import { INDUSTRIES } from '../constants/industries.ts'
 
-const BASE_URL = 'https://www.neelstack.com'
+const BASE_URL = 'https://neelstack.com'
 
 const corePages = [
   '/',
@@ -56,6 +56,21 @@ const allTestRoutes = [
 
 console.log(`Auditing ${allTestRoutes.length} representative routes on live site (${BASE_URL})...\n`)
 
+function extractTextContent(htmlStr) {
+  let text = ''
+  let insideTag = false
+  for (let i = 0; i < htmlStr.length; i++) {
+    if (htmlStr[i] === '<') {
+      insideTag = true
+    } else if (htmlStr[i] === '>') {
+      insideTag = false
+    } else if (!insideTag) {
+      text += htmlStr[i]
+    }
+  }
+  return text.trim()
+}
+
 async function auditRoute(route) {
   const url = `${BASE_URL}${route}`
   try {
@@ -91,7 +106,7 @@ async function auditRoute(route) {
       robots = robotsMatch ? robotsMatch[1] : null
 
       const h1Matches = [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)]
-      h1s = h1Matches.map(m => m[1].replace(/<[^>]+>/g, '').trim())
+      h1s = h1Matches.map(m => extractTextContent(m[1]))
 
       const jsonLdMatches = [...html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
       jsonLdCount = jsonLdMatches.length
@@ -126,7 +141,16 @@ async function main() {
     const res = await auditRoute(r)
     results.push(res)
     const h1Status = res.h1Count === 1 ? 'OK' : `FAIL(${res.h1Count})`
-    const canStatus = res.canonical ? (res.canonical.includes('neelstack.com') ? 'OK' : 'INVALID') : 'NONE'
+    const canStatus = (() => {
+      if (!res.canonical) return 'NONE'
+      try {
+        const canonicalHost = new URL(res.canonical).hostname.toLowerCase()
+        const allowedCanonicalHosts = new Set(['neelstack.com', 'www.neelstack.com'])
+        return allowedCanonicalHosts.has(canonicalHost) ? 'OK' : 'INVALID'
+      } catch {
+        return 'INVALID'
+      }
+    })()
     console.log(`[${res.status}] ${r.padEnd(35)} | Canonical: ${canStatus} | H1: ${h1Status} | JSON-LD: ${res.jsonLdCount} | TitleLen: ${res.titleLength}`)
   }
 
