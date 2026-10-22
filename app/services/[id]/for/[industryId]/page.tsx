@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${service.name} for ${industry.name} — Enterprise Solutions | NeelStack India`,
+    title: `${service.name} for ${industry.name}`,
     description: `Tailored ${service.name.toLowerCase()} software solutions engineered for ${industry.name}. Modular, secure, and scalable architectures designed for sector workflows.`,
     alternates: {
       canonical: `/services/${id}/for/${industryId}`,

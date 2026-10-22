@@ -37,7 +37,18 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'AI Company Operating System (AI Workforce Platform) | NeelStack India',
+  title: 'AI Company OS — Autonomous AI Workforce Platform',
+  openGraph: {
+    title: 'AI Company OS — Autonomous AI Workforce Platform | NeelStack',
+    description: 'Architecting autonomous multi-agent systems, Model Context Protocol tools, and cyclic LangGraph workflows for enterprise operations.',
+    url: `${getSiteUrl()}/products/ai-company-os`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Company OS — Autonomous AI Workforce Platform | NeelStack',
+    description: 'Architecting autonomous multi-agent systems, Model Context Protocol tools, and cyclic LangGraph workflows.',
+  },
   description:
     'The AI Company Operating System is NeelStack’s enterprise AI architecture. We build solutions across the full AI spectrum: LLMs, RAG, autonomous AI agent swarms, LangChain, LangGraph, and Model Context Protocol (MCP) tool meshes under human governance.',
   keywords: [
@@ -278,6 +289,32 @@ const FAQ_ITEMS = [
 export default function AICompanyOSPage() {
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: getSiteUrl(),
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Products',
+              item: `${getSiteUrl()}/products`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'AI Company OS',
+              item: `${getSiteUrl()}/products/ai-company-os`,
+            },
+          ],
+        }}
+      />
       <JsonLd
         data={{
           '@context': 'https://schema.org',

@@ -9,7 +9,18 @@ import { getSiteUrl } from '@/lib/site-url'
 import { INDUSTRIES } from '@/constants/industries'
 
 export const metadata: Metadata = {
-  title: 'Industries We Serve — Enterprise Software Solutions | NeelStack India',
+  title: 'Industry Solutions & Vertical Engineering',
+  openGraph: {
+    title: 'Industry Solutions & Vertical Software Engineering | NeelStack',
+    description: 'Discover tailored software and AI systems engineered for Education, Healthcare, Retail, Fashion, Pharmaceuticals, and Startups.',
+    url: `${getSiteUrl()}/industries`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Industry Solutions & Vertical Software Engineering | NeelStack',
+    description: 'Tailored software and AI systems engineered for specific industry verticals.',
+  },
   description:
     'NeelStack engineers specialized enterprise software and AI solutions for education, healthcare, government, pharma, retail, manufacturing, finance, logistics, real estate, and startups worldwide.',
   alternates: {

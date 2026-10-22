@@ -11,7 +11,18 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Contact NeelStack Solutions | Talk to Our Team',
+  title: 'Contact Our Engineering Team',
+  openGraph: {
+    title: 'Contact NeelStack Solutions — Get in Touch',
+    description: 'Start a software or AI project with NeelStack Solutions. Connect with our engineering leadership in Gorakhpur and Bengaluru, India.',
+    url: `${getSiteUrl()}/contact`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact NeelStack Solutions — Get in Touch',
+    description: 'Start a software or AI project with NeelStack Solutions. Connect with our engineering leadership.',
+  },
   description:
     'Have a software, AI or product idea? Connect with NeelStack Solutions. Inquire about products, system integrations, or technology exploration.',
   alternates: {

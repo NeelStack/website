@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { INDUSTRIES } from '@/constants/industries'
@@ -25,7 +26,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
   return {
-    title: `${industry.name} Software & AI Solutions | NeelStack India`,
+    title: `${industry.name} Software & AI Solutions`,
+    openGraph: {
+      title: `${industry.name} Software & AI Solutions | NeelStack`,
+      description: industry.description,
+      url: `${getSiteUrl()}/industries/${industry.id}`,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${industry.name} Software & AI Solutions | NeelStack`,
+      description: industry.description,
+    },
     description: industry.description,
     alternates: {
       canonical: `/industries/${industry.id}`,

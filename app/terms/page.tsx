@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -5,7 +6,18 @@ import { Container } from '@/components/ui/container'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | NeelStack India',
+  title: 'Terms of Service',
+  openGraph: {
+    title: 'Terms of Service | NeelStack Solutions',
+    description: 'Terms of service and software development engagement guidelines of NeelStack Solutions Private Limited.',
+    url: `${getSiteUrl()}/terms`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | NeelStack Solutions',
+    description: 'Terms of service and software development engagement guidelines of NeelStack Solutions Private Limited.',
+  },
   description:
     'Terms of Service for NeelStack Solutions Private Limited — the rules and conditions governing use of our website and services.',
   alternates: {

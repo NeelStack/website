@@ -33,7 +33,18 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'DhruvaOS | AI-Powered Education Operating System (EdOS) | NeelStack India',
+  title: 'DhruvaOS — Next-Gen School Operating System',
+  openGraph: {
+    title: 'DhruvaOS — Next-Gen AI-Powered School Operating System (EdOS)',
+    description: 'Unified digital operating system for schools, colleges, and educational trusts managing admissions, smart fees, campus analytics, and parent apps.',
+    url: `${getSiteUrl()}/products/dhruvaos`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DhruvaOS — Next-Gen AI-Powered School Operating System (EdOS)',
+    description: 'Unified digital operating system for schools, colleges, and educational trusts managing admissions, smart fees, campus analytics, and parent apps.',
+  },
   description:
     'Digitally transform schools, colleges, universities, and educational trusts with DhruvaOS. The modern, enterprise-grade AI-powered operating system for all administrative, academic, financial, and AI workflows.',
   keywords: [
@@ -152,6 +163,46 @@ export default function DhruvaOSPage() {
             name: 'NeelStack',
             url: getSiteUrl(),
           },
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: getSiteUrl(),
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Products',
+              item: `${getSiteUrl()}/products`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'DhruvaOS',
+              item: `${getSiteUrl()}/products/dhruvaos`,
+            },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: FAQ_ITEMS.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
         }}
       />
 

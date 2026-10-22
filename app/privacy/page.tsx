@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -5,7 +6,18 @@ import { Container } from '@/components/ui/container'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | NeelStack India',
+  title: 'Privacy Policy',
+  openGraph: {
+    title: 'Privacy Policy | NeelStack Solutions',
+    description: 'Privacy policy and data governance practices of NeelStack Solutions Private Limited under India DPDP Act 2023.',
+    url: `${getSiteUrl()}/privacy`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | NeelStack Solutions',
+    description: 'Privacy policy and data governance practices of NeelStack Solutions Private Limited.',
+  },
   description:
     'Privacy Policy for NeelStack Solutions Private Limited — how we collect, use, and protect your personal information.',
   alternates: {

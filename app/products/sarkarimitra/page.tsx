@@ -35,7 +35,18 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'SarkariMitra | AI Citizen Assistance & Government Scheme Discovery Engine | NeelStack India',
+  title: 'SarkariMitra — AI Citizen Scheme Discovery (Planned)',
+  openGraph: {
+    title: 'SarkariMitra — AI Citizen Assistance & Scheme Discovery (Planned)',
+    description: 'Planned citizen assistance platform designed to discover Central and State government schemes with verified official redirects.',
+    url: `${getSiteUrl()}/products/sarkarimitra`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SarkariMitra — AI Citizen Assistance & Scheme Discovery (Planned)',
+    description: 'Planned citizen assistance platform designed to discover Central and State government schemes with verified official redirects.',
+  },
   description:
     'SarkariMitra is NeelStack’s planned AI civic assistance platform indexing 1,500+ Central and State welfare schemes, providing plain-language conversational eligibility checks, document checklists, and verified official redirects for citizens across India.',
   keywords: [

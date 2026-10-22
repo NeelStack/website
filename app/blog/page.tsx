@@ -7,7 +7,7 @@ import { BlogGrid } from '@/components/sections/blog-grid'
 import { BLOG_POSTS } from '@/constants/blog'
 
 export const metadata: Metadata = {
-  title: 'Engineering Blog — Enterprise AI & Software Insights | NeelStack India',
+  title: 'Engineering Blog — AI & Software Architecture Insights',
   description:
     'Engineering insights, frontier AI research, product updates, and software engineering deep dives from the NeelStack team in India.',
   alternates: {

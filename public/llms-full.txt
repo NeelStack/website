@@ -1,0 +1,74 @@
+# NeelStack Solutions — Complete Context & Documentation
+
+> NeelStack Solutions Private Limited is an enterprise AI engineering and custom software development company incorporated in Uttar Pradesh, India (CIN: U62011UP2026PTC250857). We design, architect, and deploy production AI systems (LLMs, RAG, autonomous multi-agent swarms, Model Context Protocol tools), high-throughput SaaS platforms, and enterprise digital solutions.
+
+## 1. Company Overview
+
+- Legal Entity: NeelStack Solutions Private Limited
+- Incorporation Date: 31 August 2026
+- Corporate Identity Number (CIN): U62011UP2026PTC250857
+- GSTIN: 09AALCN9356Q1ZA
+- Startup India Registration: DIPP278202
+- MSME Registration: UDYAM-UP-32-0131171
+- Leadership:
+  - Shyam Chaurasiya — Founder & Legal CEO
+  - Neelam Chaurasiya — Co-founder & Business Operations
+- Headquarters: Gorakhpur, Uttar Pradesh, India (PIN: 273406)
+- Engineering Hub: Gorakhpur & Bengaluru, India
+- Primary Email: contact@neelstack.com
+- Official Website: https://neelstack.com
+
+## 2. Core Product Portfolio
+
+### DhruvaOS (School Operating System)
+- Target: Schools, K-12 Academies, Colleges, Universities, and Educational Trusts
+- Launch Timeline: Beta live October 2026 · Full Public Launch November 14, 2026
+- Architectural Highlights: Unified EdOS unifying admissions, automated fee reconciliation, biometric & RFID attendance, multi-lingual parent communications, and AI curricular lesson planning.
+- URL: https://neelstack.com/products/dhruvaos
+
+### ToolVines (Browser-Native Developer Platform)
+- Target: Software engineers, security auditors, DevOps architects, designers, and privacy officers
+- Status: Live Product (https://toolvines.com)
+- Architectural Highlights: 320+ developer utilities, cryptography formatters, PDF tools, and media transcoders executing 100% client-side via Rust WebAssembly with zero data sent to remote servers.
+- URL: https://neelstack.com/products/toolvines
+
+### AI Company OS (Autonomous AI Workforce Platform)
+- Target: Mid-market enterprises and automated business operations
+- Status: Research & Development / Whitepaper v1.0 Published
+- Architectural Highlights: 11 specialized executive and operational AI agent squads orchestrated via LangGraph cyclic state machines, Model Context Protocol (MCP) tool integration, and human-in-the-loop authorization gates.
+- URL: https://neelstack.com/products/ai-company-os
+- Whitepaper: https://neelstack.com/whitepapers/ai-company-operating-system
+
+### Planned Concepts
+- NaukariMitra: Independent AI-powered competitive exam preparation companion providing syllabus vector RAG and vernacular mentoring (https://neelstack.com/products/naukarimitra).
+- SarkariMitra: Independent citizen assistance engine for Central and State government schemes with 100% official .gov.in redirects (https://neelstack.com/products/sarkarimitra).
+
+## 3. Technology Stack & Architecture Standards
+
+- Frontend: Next.js 16 (App Router, Turbopack, React 19 Server Components), Tailwind CSS v4, Framer Motion
+- Client-Side WASM: Rust compiled to WebAssembly via wasm-pack
+- Backend & Microservices: Python FastAPI, Node.js, Go
+- AI Frameworks: LangChain, LangGraph, Model Context Protocol (MCP), Microsoft GraphRAG, pgvector
+- Databases: PostgreSQL with physical schema-level multi-tenancy and Row-Level Security (RLS), Redis
+- Security: TLS 1.3, AES-256 at rest, DPDP Act 2023 compliance, zero vendor lock-in
+
+## 4. Key Links & Endpoints
+
+- Home: https://neelstack.com/
+- Services: https://neelstack.com/services
+- Products: https://neelstack.com/products
+- Technologies: https://neelstack.com/technologies
+- Blog: https://neelstack.com/blog
+- Case Studies: https://neelstack.com/case-studies
+- Industries: https://neelstack.com/industries
+- Portfolio: https://neelstack.com/portfolio
+- Pricing: https://neelstack.com/pricing
+- Contact: https://neelstack.com/contact
+- Book Consultation: https://neelstack.com/book-consultation
+- Request Quote: https://neelstack.com/request-quote
+- Support: https://neelstack.com/support
+- Privacy Policy: https://neelstack.com/privacy
+- Terms of Service: https://neelstack.com/terms
+- Sitemap: https://neelstack.com/sitemap.xml
+- Robots.txt: https://neelstack.com/robots.txt
+

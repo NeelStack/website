@@ -36,7 +36,18 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'NaukariMitra | AI-Powered Government Exam Preparation Platform | NeelStack India',
+  title: 'NaukariMitra — AI Exam Preparation Platform (Planned)',
+  openGraph: {
+    title: 'NaukariMitra — AI-Powered Government Exam Preparation Platform (Planned)',
+    description: 'Planned competitive examination platform providing syllabus vector RAG, adaptive mock tests, and vernacular concept mentoring for Indian aspirants.',
+    url: `${getSiteUrl()}/products/naukarimitra`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NaukariMitra — AI-Powered Government Exam Preparation Platform (Planned)',
+    description: 'Planned competitive examination platform providing syllabus vector RAG and adaptive mock tests.',
+  },
   description:
     'NaukariMitra is NeelStack’s planned AI exam preparation platform engineered to support competitive exam guidance for Indian aspirants across UPSC, SSC, Banking, Railways, and State PSCs with zero distraction.',
   keywords: [

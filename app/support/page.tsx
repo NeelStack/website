@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { BookOpen, Mail, MessageCircle, Phone } from 'lucide-react'
@@ -8,7 +9,18 @@ import { Button } from '@/components/ui/button'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Support Center — Technical Assistance | NeelStack India',
+  title: 'Support Center & Technical Assistance',
+  openGraph: {
+    title: 'Support Center & Technical Assistance | NeelStack',
+    description: 'Prompt technical support, documentation, and SLA assistance from the NeelStack engineering team.',
+    url: `${getSiteUrl()}/support`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Support Center & Technical Assistance | NeelStack',
+    description: 'Prompt technical support, documentation, and SLA assistance from the NeelStack engineering team.',
+  },
   description:
     'Get prompt technical help, documentation, and enterprise SLAs from the NeelStack support engineering team in India.',
   alternates: {

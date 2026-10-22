@@ -28,7 +28,18 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Proprietary Software Products — DhruvaOS, ToolVines, AI Company OS | NeelStack India',
+  title: 'Software Products — DhruvaOS, ToolVines, AI Company OS',
+  openGraph: {
+    title: 'Proprietary Software Products — DhruvaOS, ToolVines, AI Company OS | NeelStack',
+    description: 'Explore production-grade software platforms built by NeelStack: DhruvaOS (School EdOS), ToolVines (Developer Suite), and AI Company OS.',
+    url: `${getSiteUrl()}/products`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Proprietary Software Products — DhruvaOS, ToolVines, AI Company OS | NeelStack',
+    description: 'Explore production-grade software platforms built by NeelStack: DhruvaOS, ToolVines, and AI Company OS.',
+  },
   description:
     'Explore NeelStack’s proprietary software ecosystem — ToolVines browser-native tools, DhruvaOS school operating system, AI Company OS multi-agent framework, NaukariMitra, and SarkariMitra.',
   keywords: [

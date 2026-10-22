@@ -9,6 +9,8 @@ import { WhyUsSection } from '@/components/sections/why-us-section'
 import { DhruvaOSShowcaseSection } from '@/components/sections/dhruvaos-showcase-section'
 import { TechnologySection } from '@/components/sections/technology-section'
 import { FreeConsultationCTA } from '@/components/sections/free-consultation-cta'
+import { JsonLd } from '@/components/seo/json-ld'
+import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
   title: 'NeelStack Solutions | AI Engineering, LLM Integration & Custom Software Development',
@@ -34,6 +36,22 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <MarketingLayout>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'NeelStack Solutions',
+          alternateName: ['NeelStack', 'NeelStack AI', 'NeelStack Technologies'],
+          url: getSiteUrl(),
+          description:
+            'NeelStack Solutions builds software products, AI systems, and digital platforms, including ToolVines and DhruvaOS.',
+          publisher: {
+            '@type': 'Organization',
+            name: 'NeelStack Solutions Private Limited',
+            url: getSiteUrl(),
+          },
+        }}
+      />
       {/* 1. Hero: Kinetic capabilities & AI systems headline */}
       <HeroSection />
 

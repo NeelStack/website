@@ -10,7 +10,18 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Pricing — Transparent Software Engineering Plans | NeelStack India',
+  title: 'Pricing — Transparent Engineering & Sprints',
+  openGraph: {
+    title: 'Pricing — Transparent Software Engineering & Sprints | NeelStack',
+    description: 'Transparent pricing for fixed-scope sprints, dedicated engineering pods, and enterprise modernization roadmaps.',
+    url: `${getSiteUrl()}/pricing`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pricing — Transparent Software Engineering & Sprints | NeelStack',
+    description: 'Transparent pricing for fixed-scope sprints, dedicated engineering pods, and enterprise modernization roadmaps.',
+  },
   description:
     'Transparent, flexible engineering pricing for every stage of your business. Choose from Starter, Professional, or Enterprise plans — or request a custom quote from NeelStack India.',
   alternates: {

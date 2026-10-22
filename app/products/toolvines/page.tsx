@@ -40,7 +40,18 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'ToolVines | 320+ Browser-Native Developer & Productivity Tools | NeelStack India',
+  title: 'ToolVines — 320+ Client-Side Developer Tools',
+  openGraph: {
+    title: 'ToolVines — 320+ Browser-Native Developer & Productivity Tools',
+    description: 'High-performance suite of 320+ developer utilities running 100% client-side via Rust WebAssembly. Zero server uploads, zero data retention.',
+    url: `${getSiteUrl()}/products/toolvines`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ToolVines — 320+ Browser-Native Developer & Productivity Tools',
+    description: 'High-performance suite of 320+ developer utilities running 100% client-side via Rust WebAssembly.',
+  },
   description:
     'ToolVines is NeelStack’s live browser-native productivity platform with 320+ developer utilities running 100% client-side via Rust WebAssembly. Zero server uploads, zero telemetry, instant offline processing.',
   keywords: [
@@ -320,6 +331,46 @@ export default function ToolVinesProductPage() {
             name: 'NeelStack Solutions Private Limited',
             url: getSiteUrl(),
           },
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: getSiteUrl(),
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Products',
+              item: `${getSiteUrl()}/products`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: 'ToolVines',
+              item: `${getSiteUrl()}/products/toolvines`,
+            },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: FAQ_ITEMS.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
         }}
       />
 

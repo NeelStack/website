@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -18,7 +19,18 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Frontier AI & Engineering Tech Stack in India | NeelStack Ecosystem',
+  title: 'Frontier AI & Enterprise Technology Stack',
+  openGraph: {
+    title: 'Frontier AI & Enterprise Technology Stack | NeelStack',
+    description: 'Modern software engineering stack: Next.js 16, Rust WebAssembly, Python FastAPI, LangGraph, Model Context Protocol, and PostgreSQL RLS.',
+    url: `${getSiteUrl()}/technologies`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Frontier AI & Enterprise Technology Stack | NeelStack',
+    description: 'Modern software engineering stack: Next.js 16, Rust WebAssembly, Python FastAPI, and LangGraph.',
+  },
   description:
     'Explore the modern frontier AI ecosystem and enterprise tech stack powering NeelStack — Model Context Protocol (MCP), LangGraph, GraphRAG, Mem0, NeMo Guardrails, Qdrant, Next.js 16, and high-performance cloud backends.',
   alternates: {

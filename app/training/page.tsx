@@ -20,7 +20,18 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Training & Internship Programs | NeelStack India',
+  title: 'Training & Fellowship Programs',
+  openGraph: {
+    title: 'Engineering Training & Fellowship Programs | NeelStack',
+    description: 'Hands-on engineering training in modern full-stack development, autonomous AI workflows, and cloud systems.',
+    url: `${getSiteUrl()}/training`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Engineering Training & Fellowship Programs | NeelStack',
+    description: 'Hands-on engineering training in modern full-stack development, autonomous AI workflows, and cloud systems.',
+  },
   description:
     'Industrial training, corporate workshops, faculty development programs, and hands-on engineering internships in AI, web architecture, and cloud systems.',
   alternates: {

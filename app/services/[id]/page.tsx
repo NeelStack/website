@@ -45,13 +45,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
   return {
-    title: `${service.name} — Professional ${service.category} Services | NeelStack India`,
-    description: `NeelStack delivers enterprise ${service.name.toLowerCase()} services. ${service.description}`,
-    alternates: { canonical: `/services/${resolvedParams.id}` },
-    openGraph: {
-      title: `${service.name} — Professional ${service.category} Services | NeelStack`,
-      description: service.description,
-    },
+    title: `${service.name} — ${service.category} Engineering`,
+    
   }
 }
 
