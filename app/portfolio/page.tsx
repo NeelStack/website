@@ -9,7 +9,18 @@ import { getSiteUrl } from '@/lib/site-url'
 import type { Project } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Product Portfolio — Software & AI Systems | NeelStack Solutions',
+  title: 'Product Portfolio — Deployed Systems & Platforms',
+  openGraph: {
+    title: 'Product Portfolio — Deployed Software & AI Systems | NeelStack',
+    description: 'Explore proprietary software products, open developer utilities, and enterprise platforms engineered by NeelStack.',
+    url: `${getSiteUrl()}/portfolio`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Product Portfolio — Deployed Software & AI Systems | NeelStack',
+    description: 'Explore proprietary software products, open developer utilities, and enterprise platforms engineered by NeelStack.',
+  },
   description:
     'Explore the NeelStack Solutions product portfolio — including ToolVines (live), DhruvaOS (in development), and our AI workforce research direction.',
   alternates: {

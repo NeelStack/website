@@ -18,7 +18,18 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Security & Compliance Posture | NeelStack India',
+  title: 'Security, Privacy & Compliance Posture',
+  openGraph: {
+    title: 'Security, Privacy & Compliance Posture | NeelStack',
+    description: 'Enterprise security standards: AES-256 encryption, TLS 1.3, DPDP 2023 compliance, and zero data lock-in guarantee.',
+    url: `${getSiteUrl()}/security`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Security, Privacy & Compliance Posture | NeelStack',
+    description: 'Enterprise security standards: AES-256 encryption, TLS 1.3, and DPDP 2023 compliance.',
+  },
   description:
     'NeelStack security architecture, encryption standards, data privacy commitments, role-based access control policies, and compliance roadmap.',
   alternates: {

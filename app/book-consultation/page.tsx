@@ -9,7 +9,18 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Get Your First Consultation Call FREE! — Strategy Session | NeelStack India',
+  title: 'Book a Strategy & Engineering Consultation',
+  openGraph: {
+    title: 'Book a Strategy & Engineering Consultation | NeelStack',
+    description: 'Schedule a free technical consultation with NeelStack senior engineers to discuss AI workflows, software architecture, and system design.',
+    url: `${getSiteUrl()}/book-consultation`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Book a Strategy & Engineering Consultation | NeelStack',
+    description: 'Schedule a free technical consultation with NeelStack senior engineers to discuss AI workflows, software architecture, and system design.',
+  },
   description:
     'Schedule a 100% free 20-minute strategy call with NeelStack technical leads. Understand requirements, discuss project goals, and explore the ideal architecture solution.',
   alternates: {

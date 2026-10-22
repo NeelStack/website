@@ -1,0 +1,31 @@
+# NeelStack Solutions
+
+> NeelStack Solutions Private Limited is an enterprise AI engineering and custom software development company incorporated in Uttar Pradesh, India (CIN: U62011UP2026PTC250857). We design, architect, and deploy production AI systems (LLMs, RAG, autonomous multi-agent swarms, Model Context Protocol tools), high-throughput SaaS platforms, and enterprise digital solutions.
+
+## Core Products & Platforms
+
+- [DhruvaOS](https://neelstack.com/products/dhruvaos): Unified AI-powered School Operating System (EdOS) integrating admissions, fee reconciliation, RFID/biometric campus attendance, and generative lesson planning. Full production launch November 14, 2026.
+- [ToolVines](https://neelstack.com/products/toolvines): High-performance suite of 320+ browser-native developer utilities, cryptography formatters, and PDF engines executing 100% client-side via Rust WebAssembly with zero data retention (https://toolvines.com).
+- [AI Company OS](https://neelstack.com/products/ai-company-os): Enterprise AI research framework and autonomous multi-agent workforce platform orchestrating specialized executive and operational agent swarms with human-in-the-loop authorization gates.
+- [AI Company OS Whitepaper](https://neelstack.com/whitepapers/ai-company-operating-system): Architectural charter and technical specification for autonomous enterprise organizational intelligence.
+
+## Enterprise Engineering Services
+
+- [AI & Autonomous Agents](https://neelstack.com/services/ai-development): Custom multi-agent swarms (LangGraph, LangChain), domain knowledge RAG pipelines, cognitive search, and Model Context Protocol (MCP) tool integration.
+- [Web & Mobile Applications](https://neelstack.com/services/web-applications): High-performance Next.js 16 web applications, sub-second API backends, and React Native / Flutter mobile applications.
+- [Custom Software Development](https://neelstack.com/services/custom-software): Schema-isolated multi-tenant ERP platforms, microservices architecture, and business automation workflows.
+- [Cloud Architecture & DevOps](https://neelstack.com/services/devops-cloud): Kubernetes orchestration, automated CI/CD pipelines, zero-downtime database migrations, and cloud cost optimization.
+- [Enterprise Platforms](https://neelstack.com/services/enterprise-platforms): High-concurrency event-driven architectures, distributed message queues, and API gateways.
+- [Database Systems](https://neelstack.com/services/database-systems): PostgreSQL schema partitioning, vector indexing (pgvector, Milvus), and automated compliance data retention.
+
+## Corporate Details & Contact
+
+- Legal Entity: NeelStack Solutions Private Limited
+- CIN: U62011UP2026PTC250857
+- GSTIN: 09AALCN9356Q1ZA
+- Startup India Registration: DIPP278202
+- MSME Registration: UDYAM-UP-32-0131171
+- Leadership: Shyam Chaurasiya (Founder & CEO), Neelam Chaurasiya (Co-Founder & Operations)
+- Primary Contact: contact@neelstack.com
+- Documentation & Support: https://neelstack.com/support
+

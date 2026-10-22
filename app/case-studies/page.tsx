@@ -7,7 +7,7 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Enterprise Case Studies — Software & AI Systems Architecture | NeelStack India',
+  title: 'Enterprise Case Studies & Architecture Work',
   description:
     'Deep dives into how NeelStack engineers multi-tenant cloud ERPs, autonomous AI agent workflows, and high-throughput systems with defensible metrics.',
   alternates: {

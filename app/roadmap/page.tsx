@@ -21,7 +21,18 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Public Product Roadmap — Software & AI Platforms | NeelStack India',
+  title: 'Public Product Roadmap',
+  openGraph: {
+    title: 'Public Product Roadmap — Software & AI Platforms | NeelStack',
+    description: 'Track real-time engineering milestones for DhruvaOS, ToolVines, AI Company OS, and NeelStack developer tools.',
+    url: `${getSiteUrl()}/roadmap`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Public Product Roadmap — Software & AI Platforms | NeelStack',
+    description: 'Track real-time engineering milestones for DhruvaOS, ToolVines, and NeelStack platforms.',
+  },
   description:
     'Explore NeelStack’s active and upcoming product roadmap: ToolVines (live), DhruvaOS (beta), NaukariMitra, SarkariMitra, and enterprise AI automation platforms.',
   alternates: {

@@ -153,7 +153,7 @@ export function NeelStackLogo({
       href="/"
       onClick={onClick}
       className={cn('inline-flex items-center gap-2.5 sm:gap-3 group select-none shrink-0', className)}
-      aria-label="NeelStack Solutions — Home"
+      aria-label="NeelStack — Home"
     >
       <LogoMark size={size} variant={variant} />
 
@@ -180,7 +180,7 @@ export function NeelStackLogo({
           </span>
 
           {/* AI-Native Executive Badge */}
-          <span className="hidden xl:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-[9px] font-bold text-violet-700 dark:text-violet-400 tracking-tight shrink-0">
+          <span aria-hidden="true" className="hidden xl:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-violet-500/10 border border-violet-500/25 text-[9px] font-bold text-violet-700 dark:text-violet-400 tracking-tight shrink-0">
             <span className="relative flex h-1.5 w-1.5 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-violet-500" />
@@ -190,7 +190,7 @@ export function NeelStackLogo({
         </div>
 
         {showTagline && (
-          <span className="text-[8px] font-bold text-slate-500 dark:text-slate-400 tracking-[0.25em] uppercase mt-1">
+          <span aria-hidden="true" className="text-[8px] font-bold text-slate-700 dark:text-slate-300 tracking-[0.25em] uppercase mt-1">
             AI-Native Product Engineering
           </span>
         )}

@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import {
   Code,
@@ -15,7 +16,18 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Careers — Join Our Software & AI Engineering Team | NeelStack India',
+  title: 'Careers — Join Our Engineering Team',
+  openGraph: {
+    title: 'Careers — Join Our Software & AI Engineering Team | NeelStack',
+    description: 'Join the NeelStack engineering team building enterprise AI agents, multi-tenant SaaS platforms, and developer utilities.',
+    url: `${getSiteUrl()}/careers`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Careers — Join Our Software & AI Engineering Team | NeelStack',
+    description: 'Join the NeelStack engineering team building enterprise AI agents, multi-tenant SaaS platforms, and developer utilities.',
+  },
   description:
     'Build with NeelStack India. Although we are not actively hiring today, we are always looking to connect with high-agency engineers and designers who build with ownership and velocity.',
   alternates: {

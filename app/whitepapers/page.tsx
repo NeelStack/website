@@ -11,7 +11,7 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'Technical Whitepapers & Architecture Guides | NeelStack India',
+  title: 'Technical Whitepapers & Architectural Guides',
   description:
     'Deep-dive technical whitepapers, system architecture blueprints, and AI readiness guides produced by NeelStack software architects in India.',
   alternates: {

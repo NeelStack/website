@@ -33,7 +33,18 @@ import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
-  title: 'About NeelStack Solutions | AI Engineering, LLM Integration & Custom Software',
+  title: 'About Us — AI Engineering & Enterprise Software',
+  openGraph: {
+    title: 'About NeelStack Solutions — AI Engineering & Enterprise Software',
+    description: 'Learn about NeelStack Solutions — an AI engineering and custom software company incorporated in India in August 2026. We build LLM/RAG pipelines, autonomous AI agents, and enterprise software products.',
+    url: `${getSiteUrl()}/about`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About NeelStack Solutions — AI Engineering & Enterprise Software',
+    description: 'Learn about NeelStack Solutions — an AI engineering and custom software company building enterprise AI and digital products.',
+  },
   description:
     'Learn about NeelStack Solutions — an AI engineering and custom software company incorporated in India in August 2026. We build LLM/RAG pipelines, autonomous AI agents, chatbot integrations, and enterprise software products.',
   alternates: {

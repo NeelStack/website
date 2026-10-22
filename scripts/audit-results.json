@@ -1,0 +1,914 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "location": null,
+    "title": "NeelStack Solutions | AI Engineering, LLM Integration &amp; Custom Software Development",
+    "titleLength": 87,
+    "description": "NeelStack builds AI-powered products, LLM/RAG pipelines, autonomous AI agents, chatbot integrations, and custom enterprise software. From AI product engineering to SaaS platforms and intelligent automation.",
+    "descLength": 206,
+    "canonical": "https://neelstack.com",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Software Engineeringfor Modern Businesses"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/about",
+    "status": 200,
+    "location": null,
+    "title": "About NeelStack Solutions | AI Engineering, LLM Integration &amp; Custom Software | NeelStack Solutions",
+    "titleLength": 103,
+    "description": "Learn about NeelStack Solutions — an AI engineering and custom software company incorporated in India in August 2026. We build LLM/RAG pipelines, autonomous AI agents, chatbot integrations, and enterprise software products.",
+    "descLength": 223,
+    "canonical": "https://neelstack.com/about",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Building the Software and AI Systems of Tomorrow"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/services",
+    "status": 200,
+    "location": null,
+    "title": "Software Engineering &amp; AI Development Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 90,
+    "description": "NeelStack delivers end-to-end technology services: Agentic AI development, modern web applications, enterprise software, API backends, cloud infrastructure, and technology consulting.",
+    "descLength": 183,
+    "canonical": "https://neelstack.com/services",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "End-to-End Technology &amp; AI Services"
+    ],
+    "jsonLdCount": 3
+  },
+  {
+    "route": "/products",
+    "status": 200,
+    "location": null,
+    "title": "Proprietary Software Products — DhruvaOS, ToolVines, AI Company OS | NeelStack India | NeelStack Solutions",
+    "titleLength": 106,
+    "description": "Explore NeelStack’s proprietary software ecosystem — ToolVines browser-native tools, DhruvaOS school operating system, AI Company OS multi-agent framework, NaukariMitra, and SarkariMitra.",
+    "descLength": 187,
+    "canonical": "https://neelstack.com/products",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Software We Build, Ship, and Prove in Production"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/technologies",
+    "status": 200,
+    "location": null,
+    "title": "Frontier AI &amp; Engineering Tech Stack in India | NeelStack Ecosystem | NeelStack Solutions",
+    "titleLength": 93,
+    "description": "Explore the modern frontier AI ecosystem and enterprise tech stack powering NeelStack — Model Context Protocol (MCP), LangGraph, GraphRAG, Mem0, NeMo Guardrails, Qdrant, Next.js 16, and high-performance cloud backends.",
+    "descLength": 218,
+    "canonical": "https://neelstack.com/technologies",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "The Modern AI &amp; Engineering Ecosystem"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/blog",
+    "status": 200,
+    "location": null,
+    "title": "Engineering Blog — Enterprise AI &amp; Software Insights | NeelStack India | NeelStack Solutions",
+    "titleLength": 96,
+    "description": "Engineering insights, frontier AI research, product updates, and software engineering deep dives from the NeelStack team in India.",
+    "descLength": 130,
+    "canonical": "https://neelstack.com/blog",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Insights from Our Team"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/case-studies",
+    "status": 200,
+    "location": null,
+    "title": "Enterprise Case Studies — Software &amp; AI Systems Architecture | NeelStack India | NeelStack Solutions",
+    "titleLength": 104,
+    "description": "Deep dives into how NeelStack engineers multi-tenant cloud ERPs, autonomous AI agent workflows, and high-throughput systems with defensible metrics.",
+    "descLength": 148,
+    "canonical": "https://neelstack.com/case-studies",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Real Systems. Defensible Numbers."
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/industries",
+    "status": 200,
+    "location": null,
+    "title": "Industries We Serve — Enterprise Software Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 91,
+    "description": "NeelStack engineers specialized enterprise software and AI solutions for education, healthcare, government, pharma, retail, manufacturing, finance, logistics, real estate, and startups worldwide.",
+    "descLength": 195,
+    "canonical": "https://neelstack.com/industries",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Deep Domain Expertise Across Sectors"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/portfolio",
+    "status": 200,
+    "location": null,
+    "title": "Product Portfolio — Software &amp; AI Systems | NeelStack Solutions | NeelStack Solutions",
+    "titleLength": 89,
+    "description": "Explore the NeelStack Solutions product portfolio — including ToolVines (live), DhruvaOS (in development), and our AI workforce research direction.",
+    "descLength": 147,
+    "canonical": "https://neelstack.com/portfolio",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Software Products and AI Systems"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/pricing",
+    "status": 200,
+    "location": null,
+    "title": "Pricing — Transparent Software Engineering Plans | NeelStack India | NeelStack Solutions",
+    "titleLength": 88,
+    "description": "Transparent, flexible engineering pricing for every stage of your business. Choose from Starter, Professional, or Enterprise plans — or request a custom quote from NeelStack India.",
+    "descLength": 180,
+    "canonical": "https://neelstack.com/pricing",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Transparent Pricing for Every Project"
+    ],
+    "jsonLdCount": 3
+  },
+  {
+    "route": "/training",
+    "status": 200,
+    "location": null,
+    "title": "Training &amp; Internship Programs | NeelStack India | NeelStack Solutions",
+    "titleLength": 74,
+    "description": "Industrial training, corporate workshops, faculty development programs, and hands-on engineering internships in AI, web architecture, and cloud systems.",
+    "descLength": 152,
+    "canonical": "https://neelstack.com/training",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Training, Workshops &amp; Internship Programs"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/roadmap",
+    "status": 200,
+    "location": null,
+    "title": "Public Product Roadmap — Software &amp; AI Platforms | NeelStack India | NeelStack Solutions",
+    "titleLength": 92,
+    "description": "Explore NeelStack’s active and upcoming product roadmap: ToolVines (live), DhruvaOS (beta), NaukariMitra, SarkariMitra, and enterprise AI automation platforms.",
+    "descLength": 159,
+    "canonical": "https://neelstack.com/roadmap",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Public Product Roadmap"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/whitepapers",
+    "status": 200,
+    "location": null,
+    "title": "Technical Whitepapers &amp; Architecture Guides | NeelStack India | NeelStack Solutions",
+    "titleLength": 87,
+    "description": "Deep-dive technical whitepapers, system architecture blueprints, and AI readiness guides produced by NeelStack software architects in India.",
+    "descLength": 140,
+    "canonical": "https://neelstack.com/whitepapers",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Engineering Whitepapers &amp; Guides"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/whitepapers/ai-company-operating-system",
+    "status": 200,
+    "location": null,
+    "title": "The AI Company Operating System — Strategic Architectural Charter | NeelStack India | NeelStack Solutions",
+    "titleLength": 105,
+    "description": "A Strategic Architectural Charter for Next-Generation Autonomous Technology Enterprises. We build enterprise AI solutions across LLMs, RAG, autonomous multi-agent systems, LangChain, LangGraph, and Model Context Protocol (MCP).",
+    "descLength": 227,
+    "canonical": "https://neelstack.com/whitepapers/ai-company-operating-system",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "The AI Company Operating System"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/security",
+    "status": 200,
+    "location": null,
+    "title": "Security &amp; Compliance Posture | NeelStack India | NeelStack Solutions",
+    "titleLength": 73,
+    "description": "NeelStack security architecture, encryption standards, data privacy commitments, role-based access control policies, and compliance roadmap.",
+    "descLength": 140,
+    "canonical": "https://neelstack.com/security",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Security &amp; Compliance Posture"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/careers",
+    "status": 200,
+    "location": null,
+    "title": "Careers — Join Our Software &amp; AI Engineering Team | NeelStack India | NeelStack Solutions",
+    "titleLength": 93,
+    "description": "Build with NeelStack India. Although we are not actively hiring today, we are always looking to connect with high-agency engineers and designers who build with ownership and velocity.",
+    "descLength": 183,
+    "canonical": "https://neelstack.com/careers",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "We are always looking for builders"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/contact",
+    "status": 200,
+    "location": null,
+    "title": "Contact NeelStack Solutions | Talk to Our Team | NeelStack Solutions",
+    "titleLength": 68,
+    "description": "Have a software, AI or product idea? Connect with NeelStack Solutions. Inquire about products, system integrations, or technology exploration.",
+    "descLength": 142,
+    "canonical": "https://neelstack.com/contact",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Have a Software, AI or Product Idea? Talk to Our Team."
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/book-consultation",
+    "status": 200,
+    "location": null,
+    "title": "Get Your First Consultation Call FREE! — Strategy Session | NeelStack India | NeelStack Solutions",
+    "titleLength": 97,
+    "description": "Schedule a 100% free 20-minute strategy call with NeelStack technical leads. Understand requirements, discuss project goals, and explore the ideal architecture solution.",
+    "descLength": 169,
+    "canonical": "https://neelstack.com/book-consultation",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Get Your First Consultation Call FREE!"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/request-quote",
+    "status": 200,
+    "location": null,
+    "title": "Request a Quote — Project Estimate &amp; Proposal | NeelStack India | NeelStack Solutions",
+    "titleLength": 89,
+    "description": "Get a free, no-obligation custom software estimate from NeelStack India. Base currency USD ($) with automatic local currency conversion (₹ INR, € EUR, £ GBP, AED). We respond within 1 business day.",
+    "descLength": 197,
+    "canonical": "https://neelstack.com/request-quote",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Tell Us About Your Project"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/privacy",
+    "status": 200,
+    "location": null,
+    "title": "Privacy Policy | NeelStack India | NeelStack Solutions",
+    "titleLength": 54,
+    "description": "Privacy Policy for NeelStack Solutions Private Limited — how we collect, use, and protect your personal information.",
+    "descLength": 116,
+    "canonical": "https://neelstack.com/privacy",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Privacy Policy"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/terms",
+    "status": 200,
+    "location": null,
+    "title": "Terms of Service | NeelStack India | NeelStack Solutions",
+    "titleLength": 56,
+    "description": "Terms of Service for NeelStack Solutions Private Limited — the rules and conditions governing use of our website and services.",
+    "descLength": 126,
+    "canonical": "https://neelstack.com/terms",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Terms of Service"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/refund-policy",
+    "status": 200,
+    "location": null,
+    "title": "Refund and Cancellation Policy | NeelStack India | NeelStack Solutions",
+    "titleLength": 70,
+    "description": "Refund and cancellation policy for NeelStack Solutions Private Limited — terms governing service cancellations, consultations, and product refunds.",
+    "descLength": 147,
+    "canonical": "https://neelstack.com/refund-policy",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Refund &amp; Cancellation"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/support",
+    "status": 200,
+    "location": null,
+    "title": "Support Center — Technical Assistance | NeelStack India | NeelStack Solutions",
+    "titleLength": 77,
+    "description": "Get prompt technical help, documentation, and enterprise SLAs from the NeelStack support engineering team in India.",
+    "descLength": 115,
+    "canonical": "https://neelstack.com/support",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "How Can We Help?"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/products/toolvines",
+    "status": 200,
+    "location": null,
+    "title": "ToolVines | 320+ Browser-Native Developer &amp; Productivity Tools | NeelStack India | NeelStack Solutions",
+    "titleLength": 106,
+    "description": "ToolVines is NeelStack’s live browser-native productivity platform with 320+ developer utilities running 100% client-side via Rust WebAssembly. Zero server uploads, zero telemetry, instant offline processing.",
+    "descLength": 208,
+    "canonical": "https://neelstack.com/products/toolvines",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "ToolVines — Browser-Native Developer &amp; Productivity Platform"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/products/dhruvaos",
+    "status": 200,
+    "location": null,
+    "title": "DhruvaOS | AI-Powered Education Operating System (EdOS) | NeelStack India | NeelStack Solutions",
+    "titleLength": 95,
+    "description": "Digitally transform schools, colleges, universities, and educational trusts with DhruvaOS. The modern, enterprise-grade AI-powered operating system for all administrative, academic, financial, and AI workflows.",
+    "descLength": 210,
+    "canonical": "https://neelstack.com/products/dhruvaos",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "DhruvaOS — School Operating System"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/products/ai-company-os",
+    "status": 200,
+    "location": null,
+    "title": "AI Company Operating System (AI Workforce Platform) | NeelStack India | NeelStack Solutions",
+    "titleLength": 91,
+    "description": "The AI Company Operating System is NeelStack’s enterprise AI architecture. We build solutions across the full AI spectrum: LLMs, RAG, autonomous AI agent swarms, LangChain, LangGraph, and Model Context Protocol (MCP) tool meshes under human governance.",
+    "descLength": 252,
+    "canonical": "https://neelstack.com/products/ai-company-os",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "AI Company OS — The Autonomous Workforce Platform"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/products/naukarimitra",
+    "status": 200,
+    "location": null,
+    "title": "NaukariMitra | AI-Powered Government Exam Preparation Platform | NeelStack India | NeelStack Solutions",
+    "titleLength": 102,
+    "description": "NaukariMitra is NeelStack’s planned AI exam preparation platform engineered to support competitive exam guidance for Indian aspirants across UPSC, SSC, Banking, Railways, and State PSCs with zero distraction.",
+    "descLength": 208,
+    "canonical": "https://neelstack.com/products/naukarimitra",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "NaukariMitra — AI-Powered Government Exam Companion"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/products/sarkarimitra",
+    "status": 200,
+    "location": null,
+    "title": "SarkariMitra | AI Citizen Assistance &amp; Government Scheme Discovery Engine | NeelStack India | NeelStack Solutions",
+    "titleLength": 117,
+    "description": "SarkariMitra is NeelStack’s planned AI civic assistance platform indexing 1,500+ Central and State welfare schemes, providing plain-language conversational eligibility checks, document checklists, and verified official redirects for citizens across India.",
+    "descLength": 255,
+    "canonical": "https://neelstack.com/products/sarkarimitra",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "SarkariMitra — AI Citizen Welfare &amp; Scheme Navigator"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/services/ai-development",
+    "status": 200,
+    "location": null,
+    "title": "AI Application &amp; Agent Development — Professional AI Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 105,
+    "description": "NeelStack delivers enterprise ai application &amp; agent development services. We design and deploy intelligent software layers—from custom LLM integrations and retrieval-augmented generation (RAG) pipelines to autonomous multi-agent workflows—that automate and enhance operations.",
+    "descLength": 281,
+    "canonical": "https://neelstack.com/services/ai-development",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "AI Application &amp; Agent Development"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/web-applications",
+    "status": 200,
+    "location": null,
+    "title": "Modern Web Applications &amp; Platforms — Professional Development Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 115,
+    "description": "NeelStack delivers enterprise modern web applications &amp; platforms services. We build highly performant, responsive, and SEO-optimized web applications utilizing Next.js, React, and TypeScript configured for high concurrency and sub-second edge response.",
+    "descLength": 257,
+    "canonical": "https://neelstack.com/services/web-applications",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Modern Web Applications &amp; Platforms"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/custom-software",
+    "status": 200,
+    "location": null,
+    "title": "Custom Software &amp; ERP Systems — Professional Development Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 109,
+    "description": "NeelStack delivers enterprise custom software &amp; erp systems services. Tailored business software solutions, enterprise resource planning (ERP), CRM portals, and multi-tenant SaaS platforms engineered with schema-level tenant isolation.",
+    "descLength": 239,
+    "canonical": "https://neelstack.com/services/custom-software",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Custom Software &amp; ERP Systems"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/workflow-automation",
+    "status": 200,
+    "location": null,
+    "title": "Workflow &amp; Business Automation — Professional Automation Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 109,
+    "description": "NeelStack delivers enterprise workflow &amp; business automation services. We eliminate manual overhead by scripting automated workflows, integrating APIs, building custom dashboard triggers, and deploying resilient worker queues.",
+    "descLength": 230,
+    "canonical": "https://neelstack.com/services/workflow-automation",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Workflow &amp; Business Automation"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/enterprise-platforms",
+    "status": 200,
+    "location": null,
+    "title": "Enterprise Platforms &amp; Re-Architecture — Professional Enterprise Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 117,
+    "description": "NeelStack delivers enterprise enterprise platforms &amp; re-architecture services. Robust enterprise software architectures that consolidate complex databases, simplify operations, migrate monolithic systems, and enforce SOC 2 standards.",
+    "descLength": 237,
+    "canonical": "https://neelstack.com/services/enterprise-platforms",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Enterprise Platforms &amp; Re-Architecture"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/api-development",
+    "status": 200,
+    "location": null,
+    "title": "REST API &amp; Backend Engineering — Professional Development Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 110,
+    "description": "NeelStack delivers enterprise rest api &amp; backend engineering services. We build clean, rapid, and fully documented RESTful, GraphQL, and gRPC APIs that connect internal services, mobile apps, and third-party ecosystems with sub-50ms latency.",
+    "descLength": 245,
+    "canonical": "https://neelstack.com/services/api-development",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "REST API &amp; Backend Engineering"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/database-systems",
+    "status": 200,
+    "location": null,
+    "title": "Database Architecture &amp; Systems — Professional Infrastructure Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 114,
+    "description": "NeelStack delivers enterprise database architecture &amp; systems services. We design, optimize, and configure high-availability database platforms ensuring rapid sub-10ms query execution, data security, pgvector search, and zero-data-loss durability.",
+    "descLength": 251,
+    "canonical": "https://neelstack.com/services/database-systems",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Database Architecture &amp; Systems"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/devops-cloud",
+    "status": 200,
+    "location": null,
+    "title": "DevOps &amp; Cloud Infrastructure — Professional Infrastructure Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 112,
+    "description": "NeelStack delivers enterprise devops &amp; cloud infrastructure services. End-to-end cloud infrastructure engineering, container orchestration, Terraform IaC, and CI/CD pipelines across AWS, GCP, and Azure — built to scale reliably and deploy with zero downtime.",
+    "descLength": 262,
+    "canonical": "https://neelstack.com/services/devops-cloud",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "DevOps &amp; Cloud Infrastructure"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/technology-consulting",
+    "status": 200,
+    "location": null,
+    "title": "Technology Consulting &amp; Architecture Audits — Professional Strategy Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 120,
+    "description": "NeelStack delivers enterprise technology consulting &amp; architecture audits services. We partner with startup founders and enterprise CTOs to audit codebases, select modern technology stacks, evaluate OWASP security risks, and optimize cloud infrastructure costs.",
+    "descLength": 265,
+    "canonical": "https://neelstack.com/services/technology-consulting",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Technology Consulting &amp; Architecture Audits"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/mobile-development",
+    "status": 200,
+    "location": null,
+    "title": "Mobile App Development (iOS &amp; Android) — Professional Development Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 118,
+    "description": "NeelStack delivers enterprise mobile app development (ios &amp; android) services. High-performance native iOS, Android, Flutter, and React Native mobile applications engineered with 60 FPS fluidity, offline-first sync, and App Store readiness.",
+    "descLength": 244,
+    "canonical": "https://neelstack.com/services/mobile-development",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Mobile App Development (iOS &amp; Android)"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/services/ui-ux-design",
+    "status": 200,
+    "location": null,
+    "title": "UI/UX &amp; Product Design Systems — Professional Design Services | NeelStack India | NeelStack Solutions",
+    "titleLength": 105,
+    "description": "NeelStack delivers enterprise ui/ux &amp; product design systems services. Pixel-perfect design systems, interactive Figma prototypes, OKLCH color scales, and high-converting user interfaces built for modern digital products and luxury editorial web experiences.",
+    "descLength": 262,
+    "canonical": "https://neelstack.com/services/ui-ux-design",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "UI/UX &amp; Product Design Systems"
+    ],
+    "jsonLdCount": 4
+  },
+  {
+    "route": "/industries/fashion-d2c",
+    "status": 200,
+    "location": null,
+    "title": "Fashion, Apparel &amp; D2C Brands Software &amp; AI Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 101,
+    "description": "Designing high-aesthetic Next.js storefronts, 3D interactive lookbooks, AI size estimation, and social commerce integrations for clothing brands.",
+    "descLength": 145,
+    "canonical": "https://neelstack.com/industries/fashion-d2c",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Fashion, Apparel &amp; D2C Brands"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/industries/education",
+    "status": 200,
+    "location": null,
+    "title": "Education &amp; Academia Software &amp; AI Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 92,
+    "description": "Transforming educational institutions with custom portals, administration platforms, and personalized testing guides.",
+    "descLength": 117,
+    "canonical": "https://neelstack.com/industries/education",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Education &amp; Academia"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/industries/healthcare",
+    "status": 200,
+    "location": null,
+    "title": "Healthcare Providers Software &amp; AI Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 88,
+    "description": "Designing web applications and operational tools tailored for clinics, laboratories, and health services.",
+    "descLength": 105,
+    "canonical": "https://neelstack.com/industries/healthcare",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Healthcare Providers"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/industries/pharmaceutical",
+    "status": 200,
+    "location": null,
+    "title": "Pharmaceutical Systems Software &amp; AI Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 90,
+    "description": "Helping pharmaceutical brand developers manage distribution, inventory tracking, CMS interfaces, and third-party manufacturing checks.",
+    "descLength": 134,
+    "canonical": "https://neelstack.com/industries/pharmaceutical",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Pharmaceutical Systems"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/industries/government",
+    "status": 200,
+    "location": null,
+    "title": "Government &amp; Public Sector Software &amp; AI Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 98,
+    "description": "Providing citizen assistance utilities, conversational schemes search algorithms, and guidelines tools.",
+    "descLength": 103,
+    "canonical": "https://neelstack.com/industries/government",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Government &amp; Public Sector"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/industries/retail",
+    "status": 200,
+    "location": null,
+    "title": "Retail &amp; Digital Commerce Software &amp; AI Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 97,
+    "description": "Empowering book stores, retailers, and distributors with point of sale, billing, and stock analytics platforms.",
+    "descLength": 111,
+    "canonical": "https://neelstack.com/industries/retail",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Retail &amp; Digital Commerce"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/industries/startups",
+    "status": 200,
+    "location": null,
+    "title": "Startups &amp; SaaS Projects Software &amp; AI Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 96,
+    "description": "Accelerating early-stage businesses with high-fidelity React frontends, robust Python backends, and cloud hosting setups.",
+    "descLength": 121,
+    "canonical": "https://neelstack.com/industries/startups",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Startups &amp; SaaS Projects"
+    ],
+    "jsonLdCount": 1
+  },
+  {
+    "route": "/blog/building-scalable-multitenant-saas-applications",
+    "status": 200,
+    "location": null,
+    "title": "Building Scalable Multi-Tenant SaaS Applications with Next.js and PostgreSQL | NeelStack Blog | NeelStack Solutions",
+    "titleLength": 115,
+    "description": "Learn how to architect a production-ready multi-tenant SaaS platform — row-level security, tenant isolation, and feature flagging.",
+    "descLength": 130,
+    "canonical": "https://neelstack.com/blog/building-scalable-multitenant-saas-applications",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Building Scalable Multi-Tenant SaaS Applications with Next.js and PostgreSQL"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/blog/how-ai-is-transforming-government-information-access-in-india",
+    "status": 200,
+    "location": null,
+    "title": "How AI is Transforming Government Information Access in India | NeelStack Blog | NeelStack Solutions",
+    "titleLength": 100,
+    "description": "An inside look at how we are designing SarkariMitra — our in-development AI citizen assistant — to simplify public schemes discovery using conversational LLM pipelines.",
+    "descLength": 168,
+    "canonical": "https://neelstack.com/blog/how-ai-is-transforming-government-information-access-in-india",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "How AI is Transforming Government Information Access in India"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/blog/erp-architecture-decisions-monolith-vs-microservices",
+    "status": 200,
+    "location": null,
+    "title": "ERP Architecture Decisions: Monolith vs Microservices for Enterprise Clients | NeelStack Blog | NeelStack Solutions",
+    "titleLength": 115,
+    "description": "When should you build an ERP as a monolith and when should you go microservices? We break down the trade-offs with real examples.",
+    "descLength": 129,
+    "canonical": "https://neelstack.com/blog/erp-architecture-decisions-monolith-vs-microservices",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "ERP Architecture Decisions: Monolith vs Microservices for Enterprise Clients"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/blog/standardizing-core-web-vitals",
+    "status": 200,
+    "location": null,
+    "title": "Standardizing Core Web Vitals: Building Software That Works for Everyone | NeelStack Blog | NeelStack Solutions",
+    "titleLength": 111,
+    "description": "Performance is not a feature — it is a fundamental requirement. Here is how we build performant frontends at NeelStack.",
+    "descLength": 119,
+    "canonical": "https://neelstack.com/blog/standardizing-core-web-vitals",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Standardizing Core Web Vitals: Building Software That Works for Everyone"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/blog/why-we-chose-nextjs-app-router",
+    "status": 200,
+    "location": null,
+    "title": "Why We Chose Next.js App Router for All Our New Projects | NeelStack Blog | NeelStack Solutions",
+    "titleLength": 95,
+    "description": "After evaluating several frameworks, we standardized on Next.js App Router. Here is our reasoning, trade-offs, and lessons from production.",
+    "descLength": 139,
+    "canonical": "https://neelstack.com/blog/why-we-chose-nextjs-app-router",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Why We Chose Next.js App Router for All Our New Projects"
+    ],
+    "jsonLdCount": 2
+  },
+  {
+    "route": "/services/ai-development/for/fashion-d2c",
+    "status": 200,
+    "location": null,
+    "title": "AI Application &amp; Agent Development for Fashion, Apparel &amp; D2C Brands — Enterprise Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 139,
+    "description": "Tailored ai application &amp; agent development software solutions engineered for Fashion, Apparel &amp; D2C Brands. Modular, secure, and scalable architectures designed for sector workflows.",
+    "descLength": 191,
+    "canonical": "https://neelstack.com/services/ai-development/for/fashion-d2c",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "AI Application &amp; Agent Development Solutions Tailored for Fashion, Apparel &amp; D2C Brands"
+    ],
+    "jsonLdCount": 3
+  },
+  {
+    "route": "/services/ai-development/for/education",
+    "status": 200,
+    "location": null,
+    "title": "AI Application &amp; Agent Development for Education &amp; Academia — Enterprise Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 130,
+    "description": "Tailored ai application &amp; agent development software solutions engineered for Education &amp; Academia. Modular, secure, and scalable architectures designed for sector workflows.",
+    "descLength": 182,
+    "canonical": "https://neelstack.com/services/ai-development/for/education",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "AI Application &amp; Agent Development Solutions Tailored for Education &amp; Academia"
+    ],
+    "jsonLdCount": 3
+  },
+  {
+    "route": "/services/web-applications/for/fashion-d2c",
+    "status": 200,
+    "location": null,
+    "title": "Modern Web Applications &amp; Platforms for Fashion, Apparel &amp; D2C Brands — Enterprise Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 140,
+    "description": "Tailored modern web applications &amp; platforms software solutions engineered for Fashion, Apparel &amp; D2C Brands. Modular, secure, and scalable architectures designed for sector workflows.",
+    "descLength": 192,
+    "canonical": "https://neelstack.com/services/web-applications/for/fashion-d2c",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Modern Web Applications &amp; Platforms Solutions Tailored for Fashion, Apparel &amp; D2C Brands"
+    ],
+    "jsonLdCount": 3
+  },
+  {
+    "route": "/services/web-applications/for/education",
+    "status": 200,
+    "location": null,
+    "title": "Modern Web Applications &amp; Platforms for Education &amp; Academia — Enterprise Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 131,
+    "description": "Tailored modern web applications &amp; platforms software solutions engineered for Education &amp; Academia. Modular, secure, and scalable architectures designed for sector workflows.",
+    "descLength": 183,
+    "canonical": "https://neelstack.com/services/web-applications/for/education",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Modern Web Applications &amp; Platforms Solutions Tailored for Education &amp; Academia"
+    ],
+    "jsonLdCount": 3
+  },
+  {
+    "route": "/services/custom-software/for/fashion-d2c",
+    "status": 200,
+    "location": null,
+    "title": "Custom Software &amp; ERP Systems for Fashion, Apparel &amp; D2C Brands — Enterprise Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 134,
+    "description": "Tailored custom software &amp; erp systems software solutions engineered for Fashion, Apparel &amp; D2C Brands. Modular, secure, and scalable architectures designed for sector workflows.",
+    "descLength": 186,
+    "canonical": "https://neelstack.com/services/custom-software/for/fashion-d2c",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Custom Software &amp; ERP Systems Solutions Tailored for Fashion, Apparel &amp; D2C Brands"
+    ],
+    "jsonLdCount": 3
+  },
+  {
+    "route": "/services/custom-software/for/education",
+    "status": 200,
+    "location": null,
+    "title": "Custom Software &amp; ERP Systems for Education &amp; Academia — Enterprise Solutions | NeelStack India | NeelStack Solutions",
+    "titleLength": 125,
+    "description": "Tailored custom software &amp; erp systems software solutions engineered for Education &amp; Academia. Modular, secure, and scalable architectures designed for sector workflows.",
+    "descLength": 177,
+    "canonical": "https://neelstack.com/services/custom-software/for/education",
+    "robots": "index, follow",
+    "h1Count": 1,
+    "h1s": [
+      "Custom Software &amp; ERP Systems Solutions Tailored for Education &amp; Academia"
+    ],
+    "jsonLdCount": 3
+  }
+]

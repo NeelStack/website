@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -5,7 +6,18 @@ import { Container } from '@/components/ui/container'
 import { QuoteForm } from '@/components/sections/quote-form'
 
 export const metadata: Metadata = {
-  title: 'Request a Quote — Project Estimate & Proposal | NeelStack India',
+  title: 'Request a Project Quote & Proposal',
+  openGraph: {
+    title: 'Request a Project Quote & Architecture Proposal | NeelStack',
+    description: 'Get a comprehensive project estimate, technical specification, and development roadmap from NeelStack engineers.',
+    url: `${getSiteUrl()}/request-quote`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Request a Project Quote & Architecture Proposal | NeelStack',
+    description: 'Get a comprehensive project estimate, technical specification, and development roadmap.',
+  },
   description:
     'Get a free, no-obligation custom software estimate from NeelStack India. Base currency USD ($) with automatic local currency conversion (₹ INR, € EUR, £ GBP, AED). We respond within 1 business day.',
   alternates: {

@@ -25,14 +25,20 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Software Engineering & AI Development Services | NeelStack India',
+  title: 'Software Engineering & AI Development Services',
   description:
     'NeelStack delivers end-to-end technology services: Agentic AI development, modern web applications, enterprise software, API backends, cloud infrastructure, and technology consulting.',
   alternates: {
     canonical: '/services',
   },
   openGraph: {
-    title: 'Software Engineering & AI Services | NeelStack India',
+    title: 'Software Engineering & AI Development Services',
+    url: `${getSiteUrl()}/services`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Software Engineering & AI Development Services',
     description:
       'End-to-end technology services: AI development, web applications, custom software, DevOps, database design, and technology consulting.',
   },

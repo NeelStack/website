@@ -1,3 +1,4 @@
+import { getSiteUrl } from '@/lib/site-url'
 import type { Metadata } from 'next'
 import { MarketingLayout } from '@/components/layouts/marketing-layout'
 import { PageHero } from '@/components/ui/page-hero'
@@ -5,7 +6,18 @@ import { Container } from '@/components/ui/container'
 import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
-  title: 'Refund and Cancellation Policy | NeelStack India',
+  title: 'Refund and Cancellation Policy',
+  openGraph: {
+    title: 'Refund and Cancellation Policy | NeelStack Solutions',
+    description: 'Milestone delivery and refund terms for NeelStack software development and consulting services.',
+    url: `${getSiteUrl()}/refund-policy`,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Refund and Cancellation Policy | NeelStack Solutions',
+    description: 'Milestone delivery and refund terms for NeelStack software development services.',
+  },
   description:
     'Refund and cancellation policy for NeelStack Solutions Private Limited — terms governing service cancellations, consultations, and product refunds.',
   alternates: {

@@ -287,12 +287,12 @@ export function HeroSection() {
             className="w-full min-h-[220px] sm:min-h-[240px] md:min-h-[255px] flex flex-col justify-center items-center px-1 sm:px-8"
             style={{ perspective: 1200 }}
           >
-            <AnimatePresence mode="wait" custom={direction}>
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
                 key={currentSlide.id}
                 custom={direction}
                 variants={slide3DVariants}
-                initial="enter"
+                initial={false}
                 animate="center"
                 exit="exit"
                 style={{ transformStyle: 'preserve-3d' }}
