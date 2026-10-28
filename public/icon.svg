@@ -1,38 +1,38 @@
-<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="neelstack-dual-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3B82F6" />
-      <stop offset="100%" stop-color="#8B5CF6" />
-    </linearGradient>
-  </defs>
-  
-  <!-- 6-Sided Hexagon in 2 Symmetrical 3-Edge Halves -->
-  <!-- Top Half (3 edges: Royal Blue) -->
-  <path
-    d="M15.36,70 L15.36,30 L50,10 L84.64,30"
-    fill="none"
-    stroke="#3B82F6"
-    stroke-width="5.8"
-    stroke-linejoin="round"
-    stroke-linecap="round"
-  />
-  <!-- Bottom Half (3 edges: Rich Violet) -->
-  <path
-    d="M84.64,30 L84.64,70 L50,90 L15.36,70"
-    fill="none"
-    stroke="#8B5CF6"
-    stroke-width="5.8"
-    stroke-linejoin="round"
-    stroke-linecap="round"
-  />
-
-  <!-- Geometric N Synapse -->
-  <path
-    d="M38,67 V33 L62,67 V33"
-    fill="none"
-    stroke="url(#neelstack-dual-grad)"
-    stroke-width="7"
-    stroke-linejoin="round"
-    stroke-linecap="butt"
-  />
-</svg>
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="192" height="192" rx="42" fill="#070B14"/>
+      <g transform="translate(32, 32) scale(1.28)">
+        <defs>
+          <linearGradient id="favicon-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3B82F6" />
+            <stop offset="100%" stop-color="#8B5CF6" />
+          </linearGradient>
+        </defs>
+        <!-- Top Half (Royal Blue) -->
+        <path
+          d="M15.36,70 L15.36,30 L50,10 L84.64,30"
+          fill="none"
+          stroke="#3B82F6"
+          stroke-width="6.8"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+        <!-- Bottom Half (Rich Violet) -->
+        <path
+          d="M84.64,30 L84.64,70 L50,90 L15.36,70"
+          fill="none"
+          stroke="#8B5CF6"
+          stroke-width="6.8"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+        <!-- Geometric N Synapse -->
+        <path
+          d="M38,67 V33 L62,67 V33"
+          fill="none"
+          stroke="url(#favicon-grad)"
+          stroke-width="8.4"
+          stroke-linejoin="round"
+          stroke-linecap="butt"
+        />
+      </g>
+    </svg>

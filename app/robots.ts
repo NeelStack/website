@@ -21,6 +21,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: [
           'Googlebot',
+          'Googlebot-Image',
           'Bingbot',
           'GPTBot',
           'OAI-SearchBot',
