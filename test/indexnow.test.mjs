@@ -18,6 +18,27 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const rootDir = path.resolve(__dirname, '..')
 
+/**
+ * Validates that an array contains an exact URL by parsing URL components.
+ * Prevents CodeQL 'js/incomplete-url-substring-sanitization' false-positives
+ * triggered by string substring searches on URL literals.
+ */
+function containsExactUrl(urlList, expectedUrl) {
+  const target = new URL(expectedUrl)
+  return urlList.some((item) => {
+    try {
+      const parsed = new URL(item)
+      return (
+        parsed.protocol === target.protocol &&
+        parsed.host === target.host &&
+        parsed.pathname === target.pathname
+      )
+    } catch {
+      return false
+    }
+  })
+}
+
 describe('IndexNow Verification File', () => {
   it('should verify the static key verification file exists in public/ with exact key content', () => {
     const key = DEFAULT_INDEXNOW_KEY
@@ -55,9 +76,9 @@ describe('IndexNow URL Filtering and Validation', () => {
     ]
     const filtered = filterEligibleUrls(input, 'neelstack.com')
     assert.equal(filtered.length, 3) // https://neelstack.com and https://neelstack.com/ normalize to same root
-    assert.ok(filtered.includes('https://neelstack.com/'))
-    assert.ok(filtered.includes('https://neelstack.com/services'))
-    assert.ok(filtered.includes('https://neelstack.com/products/dhruvaos'))
+    assert.ok(containsExactUrl(filtered, 'https://neelstack.com/'))
+    assert.ok(containsExactUrl(filtered, 'https://neelstack.com/services'))
+    assert.ok(containsExactUrl(filtered, 'https://neelstack.com/products/dhruvaos'))
   })
 
   it('should filter out external domains, private API paths, and noindex routes', () => {
@@ -92,18 +113,18 @@ describe('Priority & All URLs Generators', () => {
   it('should generate non-empty priority URL list including key pillars', () => {
     const priority = getPriorityUrls()
     assert.ok(priority.length > 5)
-    assert.ok(priority.includes('https://neelstack.com/'))
-    assert.ok(priority.includes('https://neelstack.com/services'))
-    assert.ok(priority.includes('https://neelstack.com/products'))
-    assert.ok(priority.includes('https://neelstack.com/technologies'))
-    assert.ok(priority.includes('https://neelstack.com/whitepapers/ai-company-operating-system'))
+    assert.ok(containsExactUrl(priority, 'https://neelstack.com/'))
+    assert.ok(containsExactUrl(priority, 'https://neelstack.com/services'))
+    assert.ok(containsExactUrl(priority, 'https://neelstack.com/products'))
+    assert.ok(containsExactUrl(priority, 'https://neelstack.com/technologies'))
+    assert.ok(containsExactUrl(priority, 'https://neelstack.com/whitepapers/ai-company-operating-system'))
   })
 
   it('should generate comprehensive public URLs list', () => {
     const all = getAllPublicUrls()
     assert.ok(all.length >= 25)
-    assert.ok(all.includes('https://neelstack.com/products/dhruvaos'))
-    assert.ok(all.includes('https://neelstack.com/products/toolvines'))
+    assert.ok(containsExactUrl(all, 'https://neelstack.com/products/dhruvaos'))
+    assert.ok(containsExactUrl(all, 'https://neelstack.com/products/toolvines'))
   })
 })
 

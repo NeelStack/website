@@ -115,9 +115,9 @@ const PRODUCTS_MENU = {
   flagships: [
     {
       title: 'DhruvaOS',
-      tag: 'Flagship Platform',
-      badge: 'Beta Live · Launching 14 Nov 2026',
-      badgeColor: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+      tag: 'School Operating System',
+      badge: 'Beta · 14 Nov 2026',
+      badgeColor: 'text-violet-600 dark:text-violet-400 bg-violet-500/10 border-violet-500/20',
       description:
         'Unified AI-powered school operating system. Admissions, fees, exams, attendance & campus AI.',
       href: '/products/dhruvaos',
@@ -128,7 +128,7 @@ const PRODUCTS_MENU = {
     },
     {
       title: 'ToolVines',
-      tag: 'Developer Tools',
+      tag: 'Developer Tools Network',
       badge: 'Free & Live',
       badgeColor: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
       description:
@@ -354,7 +354,7 @@ function ProductsDropdown({ onClose }: { onClose: () => void }) {
   const pathname = usePathname()
 
   return (
-    <div className="w-[540px] p-4">
+    <div className="w-[580px] p-4">
       <div className="grid grid-cols-2 gap-3">
         {/* Column 1: Flagship Platforms */}
         <div className="space-y-1">
@@ -363,7 +363,7 @@ function ProductsDropdown({ onClose }: { onClose: () => void }) {
             Flagship Platforms
           </p>
 
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             {PRODUCTS_MENU.flagships.map((prod) => {
               const Icon = prod.icon
               const isExternal = !!prod.isExternal
@@ -372,35 +372,39 @@ function ProductsDropdown({ onClose }: { onClose: () => void }) {
               const itemContent = (
                 <div
                   className={cn(
-                    'group flex items-center justify-between gap-2 px-2.5 py-2 rounded-xl border transition-all duration-150',
+                    'group flex items-start gap-2.5 px-3 py-2.5 rounded-xl border transition-all duration-150',
                     isActive
                       ? 'bg-primary/10 border-primary/30 text-primary'
                       : 'border-transparent hover:border-slate-200/80 dark:hover:border-white/[0.08] hover:bg-slate-100/70 dark:hover:bg-white/[0.04]'
                   )}
                 >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div
-                      className={cn(
-                        'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-transform group-hover:scale-105',
-                        prod.iconBg,
-                        prod.iconColor
-                      )}
-                    >
-                      <Icon className="h-3.5 w-3.5" />
-                    </div>
-                    <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors leading-tight truncate">
-                      {prod.title}
-                    </span>
-                  </div>
-
-                  <span
+                  <div
                     className={cn(
-                      'text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-full border shrink-0',
-                      prod.badgeColor
+                      'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-transform group-hover:scale-105 mt-0.5',
+                      prod.iconBg,
+                      prod.iconColor
                     )}
                   >
-                    {prod.badge}
-                  </span>
+                    <Icon className="h-3.5 w-3.5" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                        {prod.title}
+                      </span>
+                      <span
+                        className={cn(
+                          'text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border shrink-0',
+                          prod.badgeColor
+                        )}
+                      >
+                        {prod.badge}
+                      </span>
+                    </div>
+                    <p className="text-[11px] font-medium text-muted-foreground group-hover:text-foreground/80 transition-colors leading-tight mt-1 truncate">
+                      {prod.tag}
+                    </p>
+                  </div>
                 </div>
               )
 
@@ -1144,19 +1148,28 @@ function MobileMenu({
               />
             </button>
             {openSection === 'Products' && (
-              <div className="p-2 space-y-1 bg-card/80 border-t border-border/40">
+              <div className="p-2 space-y-1.5 bg-card/80 border-t border-border/40">
                 <Link
                   href="/products/dhruvaos"
                   onClick={onClose}
-                  className="flex items-center justify-between p-2.5 rounded-xl text-xs font-bold text-violet-600 dark:text-violet-400 bg-violet-500/5 hover:bg-violet-500/10 border border-violet-500/20 transition-colors"
+                  className="flex items-start gap-2.5 p-2.5 rounded-xl bg-violet-500/5 hover:bg-violet-500/10 border border-violet-500/25 transition-colors"
                 >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <Zap className="h-3.5 w-3.5 shrink-0" />
-                    <span className="truncate">DhruvaOS (School OS)</span>
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/30 mt-0.5">
+                    <Zap className="h-4 w-4" />
                   </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-violet-500/10 font-bold border border-violet-500/20 shrink-0">
-                    14 Nov 2026
-                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className="text-xs font-extrabold text-foreground tracking-tight">
+                        DhruvaOS
+                      </span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-violet-500/15 text-violet-700 dark:text-violet-300 font-bold border border-violet-500/25 shrink-0">
+                        Beta · 14 Nov 2026
+                      </span>
+                    </div>
+                    <p className="text-[11px] font-medium text-muted-foreground mt-0.5">
+                      School Operating System &amp; Campus AI
+                    </p>
+                  </div>
                 </Link>
 
                 <a
@@ -1164,13 +1177,24 @@ function MobileMenu({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={onClose}
-                  className="flex items-center justify-between p-2.5 rounded-xl text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 hover:bg-emerald-500/10 border border-emerald-500/20 transition-colors"
+                  className="flex items-start gap-2.5 p-2.5 rounded-xl bg-emerald-500/5 hover:bg-emerald-500/10 border border-emerald-500/25 transition-colors"
                 >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <Wrench className="h-3.5 w-3.5 shrink-0" />
-                    <span className="truncate">ToolVines (Developer Utilities)</span>
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 mt-0.5">
+                    <Wrench className="h-4 w-4" />
                   </div>
-                  <ExternalLink className="h-3 w-3 shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-1.5">
+                      <span className="text-xs font-extrabold text-foreground tracking-tight">
+                        ToolVines
+                      </span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-500/25 shrink-0 flex items-center gap-1">
+                        Free &amp; Live <ExternalLink className="h-2.5 w-2.5" />
+                      </span>
+                    </div>
+                    <p className="text-[11px] font-medium text-muted-foreground mt-0.5">
+                      320+ Client-Side Developer Utilities
+                    </p>
+                  </div>
                 </a>
 
                 {PRODUCTS_MENU.secondary.map((prod) => {
