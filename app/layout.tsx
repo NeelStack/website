@@ -112,18 +112,23 @@ export const metadata: Metadata = {
       'msvalidate.01': '1DF5012D21BE5D63AD02D85C003C479D',
     },
   },
+  manifest: '/manifest.webmanifest',
   icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
+
       { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+
+
+
+      { url: '/favicon.ico', sizes: '48x48 32x32 16x16' },
     ],
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
     shortcut: '/favicon.ico',
+
   },
 }
 
@@ -211,7 +216,7 @@ export default function RootLayout({
             name: 'NeelStack Solutions Private Limited',
             alternateName: ['NeelStack', 'NeelStack AI', 'NeelStack Technologies'],
             url: getSiteUrl(),
-            logo: `${getSiteUrl()}/icon.svg`,
+            logo: `${getSiteUrl()}/logo-mark.png`,
             image: `${getSiteUrl()}/opengraph-image`,
             description:
               'NeelStack Solutions builds software products, AI-powered systems and digital platforms for businesses and organizations. Incorporated in India in August 2026.',

@@ -1,0 +1,45 @@
+import type { MetadataRoute } from 'next'
+
+/**
+ * Web App Manifest generator for NeelStack Solutions.
+ * Meets Google Search, Chrome PWA, and Android home screen icon standards.
+ */
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'NeelStack Solutions',
+    short_name: 'NeelStack',
+    description:
+      'NeelStack Solutions builds software products, AI systems and digital platforms, including ToolVines and DhruvaOS.',
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#070B14',
+    theme_color: '#070B14',
+    icons: [
+      {
+        src: '/favicon-48x48.png',
+        sizes: '48x48',
+        type: 'image/png',
+      },
+      {
+        src: '/favicon-96x96.png',
+        sizes: '96x96',
+        type: 'image/png',
+      },
+      {
+        src: '/favicon-144x144.png',
+        sizes: '144x144',
+        type: 'image/png',
+      },
+      {
+        src: '/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: '/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+  }
+}
