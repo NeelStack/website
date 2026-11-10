@@ -79,7 +79,7 @@ pnpm run ci-check
   - **Startup India:** `DIPP278202`
   - **MSME:** `UDYAM-UP-32-0131171`
 - **Leadership:**
-  - **Shyam Chaurasiya** — Founder & Legal CEO
+  - **Shyam Chaurasiya** — Founder & CEO
   - **Neelam Chaurasiya** — Co-founder & Business Operations
   - **Core AI Engineering** — We Build Enterprise AI Solutions (LLMs, RAG, Autonomous AI Agents, LangChain, LangGraph, Model Context Protocol)
 - **Three Engines:**

@@ -6,10 +6,10 @@ import {
   ArrowRight,
   Code2,
   Bot,
-  Globe,
   Cloud,
-  Rocket,
   RefreshCw,
+  Users,
+  CheckCircle2,
 } from 'lucide-react'
 import { Container } from '@/components/ui/container'
 import { Button } from '@/components/ui/button'
@@ -22,7 +22,7 @@ const SERVICES = [
     category: 'Enterprise Engineering',
     description:
       'Tailored business applications, internal workflow platforms, client portals, and multi-tenant systems built around your specific operations.',
-    tags: ['Custom ERP', 'B2B Portals', 'Workflow Engines', 'Secure APIs'],
+    tags: ['Custom ERP', 'B2B Portals', 'Workflow Engines'],
     icon: Code2,
     href: '/services/custom-software',
     accent: 'text-blue-500 dark:text-cyan-400',
@@ -37,7 +37,7 @@ const SERVICES = [
     category: 'Intelligent Systems',
     description:
       'Custom LLM applications, RAG search pipelines, task-executing autonomous agents, and computer vision systems embedded directly into your tools.',
-    tags: ['AI Agents', 'RAG Pipelines', 'LLM Fine-Tuning', 'Document AI'],
+    tags: ['AI Agents', 'RAG Pipelines', 'LLM Fine-Tuning'],
     icon: Bot,
     href: '/services/ai-development',
     accent: 'text-violet-500 dark:text-violet-400',
@@ -46,19 +46,19 @@ const SERVICES = [
     borderHover: 'hover:border-violet-500/50',
   },
   {
-    id: 'web-mobile',
+    id: 'legacy-modernization',
     number: '03',
-    title: 'Web & Mobile Applications',
-    category: 'Product Experience',
+    title: 'Legacy System Modernization',
+    category: 'Refactoring & Migration',
     description:
-      'High-performance web apps, responsive SaaS dashboards, and cross-platform iOS & Android mobile solutions with fluid animations and offline sync.',
-    tags: ['React / Next.js', 'React Native', 'PWA & Offline', 'SaaS Dashboards'],
-    icon: Globe,
-    href: '/services/web-applications',
-    accent: 'text-emerald-500 dark:text-emerald-400',
-    iconBg: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500 dark:text-emerald-400',
-    topGlow: 'from-emerald-500/10 to-transparent',
-    borderHover: 'hover:border-emerald-500/50',
+      'Deconstruct fragile legacy monoliths into scalable microservices and modern APIs with structured cutovers and zero business interruption.',
+    tags: ['Monolith Deconstruction', 'Zero-Downtime Migration', 'API Facades'],
+    icon: RefreshCw,
+    href: '/services/legacy-modernisation',
+    accent: 'text-indigo-500 dark:text-indigo-400',
+    iconBg: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-500 dark:text-indigo-400',
+    topGlow: 'from-indigo-500/10 to-transparent',
+    borderHover: 'hover:border-indigo-500/50',
   },
   {
     id: 'cloud-devops',
@@ -67,7 +67,7 @@ const SERVICES = [
     category: 'Infrastructure & Scale',
     description:
       'Resilient multi-cloud deployments, automated CI/CD release pipelines, Kubernetes clustering, Terraform IaC, and 24/7 telemetry monitoring.',
-    tags: ['AWS / GCP / Azure', 'Docker & K8s', 'Terraform IaC', 'CI/CD Automation'],
+    tags: ['AWS / GCP / Azure', 'Docker & K8s', 'CI/CD Automation'],
     icon: Cloud,
     href: '/services/devops-cloud',
     accent: 'text-amber-500 dark:text-amber-400',
@@ -76,34 +76,34 @@ const SERVICES = [
     borderHover: 'hover:border-amber-500/50',
   },
   {
-    id: 'product-engineering',
+    id: 'dedicated-teams',
     number: '05',
-    title: 'Full-Cycle MVP & Product Engineering',
-    category: 'Rapid Execution',
+    title: 'Dedicated Engineering Pods',
+    category: 'Turnkey Delivery Teams',
     description:
-      'From wireframes to production release in weeks. Architecture, rapid sprint cycles, UX design, load testing, and investor-ready launch.',
-    tags: ['Rapid MVP Build', 'Full-Stack Sprints', 'Stripe Payments', 'User Analytics'],
-    icon: Rocket,
-    href: '/services',
-    accent: 'text-rose-500 dark:text-rose-400',
-    iconBg: 'bg-rose-500/10 border-rose-500/30 text-rose-500 dark:text-rose-400',
-    topGlow: 'from-rose-500/10 to-transparent',
-    borderHover: 'hover:border-rose-500/50',
+      'Autonomous, self-managed software pods comprising Tech Leads, Senior Developers, and QA engineers dedicated exclusively to your deliverables.',
+    tags: ['Self-Managed Squads', 'Full-Time Allocation', 'Zero Onboarding Lag'],
+    icon: Users,
+    href: '/services/dedicated-teams',
+    accent: 'text-emerald-500 dark:text-emerald-400',
+    iconBg: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500 dark:text-emerald-400',
+    topGlow: 'from-emerald-500/10 to-transparent',
+    borderHover: 'hover:border-emerald-500/50',
   },
   {
-    id: 'legacy-modernization',
+    id: 'ai-model-evaluation',
     number: '06',
-    title: 'Legacy System Modernization',
-    category: 'Refactoring & Migration',
+    title: 'AI Model Evaluation & Data Operations',
+    category: 'Quality Assurance & Alignment',
     description:
-      'Deconstruct fragile legacy monoliths into scalable microservices and modern APIs without business interruption or data loss.',
-    tags: ['Microservices', 'Zero-Downtime Migration', 'API Facades', 'Security Hardening'],
-    icon: RefreshCw,
-    href: '/services',
-    accent: 'text-indigo-500 dark:text-indigo-400',
-    iconBg: 'bg-indigo-500/10 border-indigo-500/30 text-indigo-500 dark:text-indigo-400',
-    topGlow: 'from-indigo-500/10 to-transparent',
-    borderHover: 'hover:border-indigo-500/50',
+      'Human-in-the-loop validation, RLHF annotation, prompt red-teaming, and rigorous output scoring pipelines with auditable inter-annotator agreement.',
+    tags: ['RLHF Alignment', 'Red-Teaming', 'High-Throughput QA'],
+    icon: CheckCircle2,
+    href: '/services/ai-model-evaluation',
+    accent: 'text-cyan-500 dark:text-cyan-400',
+    iconBg: 'bg-cyan-500/10 border-cyan-500/30 text-cyan-500 dark:text-cyan-400',
+    topGlow: 'from-cyan-500/10 to-transparent',
+    borderHover: 'hover:border-cyan-500/50',
   },
 ]
 
@@ -256,7 +256,7 @@ export function ServicesOverviewSection() {
               className="h-12 px-8 font-extrabold rounded-xl shadow-lg"
             >
               <Link href="/services" className="gap-2 flex items-center justify-center">
-                Explore All 6 Services <ArrowRight className="h-4 w-4" />
+                Explore All 16 Services <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
             <Button

@@ -11,8 +11,7 @@ export function CookieConsent() {
   useEffect(() => {
     const savedConsent = localStorage.getItem('neelstack_cookie_consent')
     if (!savedConsent) {
-      const timer = setTimeout(() => setShowBanner(true), 1500)
-      return () => clearTimeout(timer)
+      setShowBanner(true)
     }
   }, [])
 
@@ -34,7 +33,7 @@ export function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-4 left-4 z-50 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-3 rounded-2xl border-2 border-border/80 bg-card/95 dark:bg-slate-950/95 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl transition-all duration-300 animate-in slide-in-from-bottom-8 fade-in sm:bottom-6 sm:left-6 tactile-card-3d"
+      className="fixed top-20 right-4 sm:top-24 sm:right-6 z-50 flex w-[calc(100%-2rem)] max-w-sm flex-col gap-3 rounded-2xl border-2 border-border/80 bg-card/98 dark:bg-slate-950/98 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl transition-all duration-300 animate-in slide-in-from-top-4 fade-in tactile-card-3d"
       role="dialog"
       aria-label="Cookie consent"
     >
@@ -51,7 +50,7 @@ export function CookieConsent() {
           <X className="h-4 w-4" />
         </button>
       </div>
-      
+
       <p className="text-xs text-muted-foreground leading-relaxed">
         We use essential cookies and privacy-first analytics to ensure fast performance and enhance your experience. No third-party ad trackers are used. Learn more in our{' '}
         <Link href="/privacy" className="font-semibold text-primary hover:underline">

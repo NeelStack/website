@@ -50,7 +50,13 @@ export default function CaseStudiesPage() {
               '@type': 'ListItem',
               position: 3,
               name: 'ToolVines Architecture: High-Throughput In-Browser Private Compute Platform',
-              url: `${siteUrl}/blog/building-scalable-multitenant-saas-applications`,
+              url: `${siteUrl}/blog/architecting-toolvines-client-side-utility-engine-nextjs-16`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 4,
+              name: 'High-Throughput Enterprise Backend: Sub-50ms FastAPI Microservices & WORM Compliance',
+              url: `${siteUrl}/blog/achieving-sub-50ms-api-latency-fastapi-redis-async-python`,
             },
           ],
         }}

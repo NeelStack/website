@@ -19,6 +19,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { HeroSpotlight } from '@/components/ui/hero-spotlight'
+import { ParticleLogoCanvas } from '@/components/effects/particle-logo-canvas'
 
 export interface HeroSlide {
   id: string
@@ -32,6 +33,9 @@ export interface HeroSlide {
   subtitleLine2: string
   accentGradient: string
   mediaPreview?: string
+  darkPalette: string[]
+  lightPalette: string[]
+  dotClass: string
 }
 
 export const HERO_SLIDES: HeroSlide[] = [
@@ -50,6 +54,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       'We build custom LLM integrations, RAG pipelines, AI agents, chatbots, and scalable enterprise software.',
     accentGradient:
       'from-blue-700 via-indigo-600 to-violet-700 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-300',
+    darkPalette: ['#38bdf8', '#60a5fa', '#93c5fd', '#818cf8', '#ffffff'],
+    lightPalette: ['#0284c7', '#2563eb', '#3b82f6', '#1d4ed8', '#4338ca'],
+    dotClass: 'bg-blue-600 dark:bg-cyan-400 shadow-[0_0_10px_rgba(37,99,235,0.6)]',
   },
   {
     id: 'ai-agents',
@@ -66,6 +73,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       'and chatbot integrations built for production-grade reliability and real business impact.',
     accentGradient:
       'from-blue-700 via-indigo-600 to-purple-700 dark:from-cyan-300 dark:via-blue-400 dark:to-violet-300',
+    darkPalette: ['#a855f7', '#818cf8', '#c084fc', '#38bdf8', '#ffffff'],
+    lightPalette: ['#7c3aed', '#6366f1', '#4f46e5', '#9333ea', '#2563eb'],
+    dotClass: 'bg-indigo-600 dark:bg-indigo-400 shadow-[0_0_10px_rgba(99,102,241,0.6)]',
   },
   {
     id: 'dhruvaos',
@@ -82,6 +92,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       'with AI lesson planning and real-time parent mobile apps across modern schools.',
     accentGradient:
       'from-emerald-700 via-teal-700 to-emerald-700 dark:from-emerald-300 dark:via-teal-300 dark:to-cyan-300',
+    darkPalette: ['#34d399', '#2dd4bf', '#10b981', '#6ee7b7', '#ffffff'],
+    lightPalette: ['#059669', '#0d9488', '#10b981', '#047857', '#0f766e'],
+    dotClass: 'bg-emerald-600 dark:bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.6)]',
   },
   {
     id: 'saas-platforms',
@@ -98,6 +111,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       'with high-throughput microservices architecture built for enterprise scale.',
     accentGradient:
       'from-violet-700 via-purple-700 to-indigo-700 dark:from-violet-300 dark:via-purple-300 dark:to-indigo-300',
+    darkPalette: ['#c084fc', '#e879f9', '#a855f7', '#818cf8', '#ffffff'],
+    lightPalette: ['#9333ea', '#c026d3', '#7e22ce', '#6b21a8', '#4f46e5'],
+    dotClass: 'bg-violet-600 dark:bg-purple-400 shadow-[0_0_10px_rgba(139,92,246,0.6)]',
   },
   {
     id: 'modernization',
@@ -114,6 +130,9 @@ export const HERO_SLIDES: HeroSlide[] = [
       'into modern, high-security cloud-native systems with zero business downtime.',
     accentGradient:
       'from-amber-700 via-orange-600 to-rose-700 dark:from-amber-300 dark:via-orange-300 dark:to-yellow-300',
+    darkPalette: ['#fbbf24', '#f97316', '#f59e0b', '#fb923c', '#ffffff'],
+    lightPalette: ['#d97706', '#ea580c', '#b45309', '#c2410c', '#e11d48'],
+    dotClass: 'bg-amber-600 dark:bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.6)]',
   },
 ]
 
@@ -157,6 +176,7 @@ export function HeroSection() {
   const [direction, setDirection] = useState<number>(1)
   const [isPaused, setIsPaused] = useState(false)
   const touchStartXRef = useRef<number | null>(null)
+  const touchStartYRef = useRef<number | null>(null)
   const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const goToNext = useCallback(() => {
@@ -201,25 +221,30 @@ export function HeroSection() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [goToNext, goToPrev])
 
-  // Mobile Touch swipe support
+  // Mobile Touch swipe support with vertical scroll passthrough
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsPaused(true)
     touchStartXRef.current = e.touches[0].clientX
+    touchStartYRef.current = e.touches[0].clientY
   }
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartXRef.current !== null) {
+    if (touchStartXRef.current !== null && touchStartYRef.current !== null) {
       const touchEndX = e.changedTouches[0].clientX
-      const diff = touchStartXRef.current - touchEndX
+      const touchEndY = e.changedTouches[0].clientY
+      const diffX = touchStartXRef.current - touchEndX
+      const diffY = touchStartYRef.current - touchEndY
 
-      if (Math.abs(diff) > 35) {
-        if (diff > 0) {
+      // Only transition slides if the horizontal swipe is distinct and greater than vertical scroll
+      if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+        if (diffX > 0) {
           goToNext()
         } else {
           goToPrev()
         }
       }
       touchStartXRef.current = null
+      touchStartYRef.current = null
     }
 
     if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current)
@@ -250,183 +275,235 @@ export function HeroSection() {
       />
 
       {/* 
-        PREV & NEXT ARROWS (Desktop / Tablet):
-        Clean, elegant arrow glyphs on desktop with 3D tactile button pop on hover.
+        PREV & NEXT ARROWS (Ultra-wide 2xl screens only to prevent crowding container):
       */}
-      <div className="hidden sm:flex absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-30 w-full max-w-[94rem] mx-auto px-4 md:px-6 lg:px-14 items-center justify-between">
-        {/* Prev Arrow / 3D Tactile on Hover */}
+      <div className="hidden 2xl:flex absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-30 w-full max-w-[96rem] mx-auto px-6 items-center justify-between">
+        {/* Prev Arrow */}
         <button
           type="button"
           onClick={goToPrev}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           aria-label="Previous capability slide"
-          className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="pointer-events-auto cursor-pointer flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200/80 dark:border-slate-800 text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:bg-slate-100 dark:hover:bg-slate-900/90 shadow-sm transition-all focus-visible:outline-none"
         >
-          <ChevronLeft className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110 rtl:rotate-180" />
+          <ChevronLeft className="h-6 w-6 stroke-[2.2] rtl:rotate-180" />
         </button>
 
-        {/* Next Arrow / 3D Tactile on Hover */}
+        {/* Next Arrow */}
         <button
           type="button"
           onClick={goToNext}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           aria-label="Next capability slide"
-          className="pointer-events-auto cursor-pointer flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-2xl border-2 border-transparent text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:border-slate-900 dark:hover:border-cyan-400/90 hover:bg-amber-400 dark:hover:bg-[#070d1d]/95 hover:shadow-[4px_4px_0px_#0f172a] dark:hover:shadow-[4px_4px_0px_rgba(6,182,212,0.9)] hover:-translate-y-0.5 active:translate-x-[2.5px] active:translate-y-[2.5px] active:shadow-[1px_1px_0px_#0f172a] active:dark:shadow-[1px_1px_0px_rgba(6,182,212,0.9)] backdrop-blur-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="pointer-events-auto cursor-pointer flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200/80 dark:border-slate-800 text-muted-foreground/80 hover:text-foreground dark:hover:text-cyan-300 hover:bg-slate-100 dark:hover:bg-slate-900/90 shadow-sm transition-all focus-visible:outline-none"
         >
-          <ChevronRight className="h-6 w-6 sm:h-7 sm:w-7 stroke-[2.2] transition-transform hover:scale-110 rtl:rotate-180" />
+          <ChevronRight className="h-6 w-6 stroke-[2.2] rtl:rotate-180" />
         </button>
       </div>
 
-      <Container className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-8 md:px-12">
-        <div className="flex flex-col gap-5 sm:gap-6 text-center items-center">
+      <Container className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
 
-          {/* Snug Responsive 3D Kinetic Dynamic Headline Area */}
-          <div
-            className="w-full min-h-[220px] sm:min-h-[240px] md:min-h-[255px] flex flex-col justify-center items-center px-1 sm:px-8"
-            style={{ perspective: 1200 }}
-          >
-            <AnimatePresence mode="wait" custom={direction} initial={false}>
-              <motion.div
-                key={currentSlide.id}
-                custom={direction}
-                variants={slide3DVariants}
-                initial={false}
-                animate="center"
-                exit="exit"
-                style={{ transformStyle: 'preserve-3d' }}
-                className="flex flex-col items-center gap-3 sm:gap-4 max-w-4xl"
-              >
-                {/* Dynamic Category Badge */}
-                <div
-                  className={`inline-flex items-center gap-2 rounded-full border-2 px-3.5 sm:px-4 py-1.5 text-xs font-mono font-bold backdrop-blur-md transition-all cursor-default max-w-full ${currentSlide.badgeStyle}`}
-                >
-                  <BadgeIcon className="h-3.5 w-3.5 shrink-0 animate-pulse" />
-                  <span className="tracking-tight text-center truncate sm:whitespace-normal">
-                    {currentSlide.badgeText}
-                  </span>
-                </div>
+          {/* Left Column: 3D Kinetic Dynamic Headline & CTAs (Spacious & Balanced) */}
+          <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-5 sm:gap-6">
 
-                {/* Main Dynamic 3D Headline */}
-                <h1 className="font-heading text-[2.2rem] sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.12] sm:leading-[1.1] text-3d-headline flex flex-col items-center select-none text-balance">
-                  <span className="block">{currentSlide.titlePrefix}</span>
-                  <span
-                    className={`block bg-gradient-to-r ${currentSlide.accentGradient} bg-clip-text text-transparent pb-0.5`}
-                  >
-                    {currentSlide.highlightText}
-                  </span>
-                </h1>
-
-                {/* Main Dynamic Subtitle */}
-                <p className="max-w-3xl text-[15.5px] sm:text-base md:text-lg leading-relaxed text-slate-700 dark:text-slate-200 font-sans font-medium text-center text-balance px-1 sm:px-2 select-none">
-                  <span className="sm:block">{currentSlide.subtitleLine1} </span>
-                  <span className="sm:block">{currentSlide.subtitleLine2}</span>
-                </p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Slide Pagination Dots (Clean Minimalist Indicator with Infinite Shift) */}
-          <div className="flex items-center justify-center gap-1.5 select-none my-1">
-            {HERO_SLIDES.map((slide, idx) => {
-              const isActive = idx === currentIndex
-              return (
-                <button
-                  key={slide.id}
-                  type="button"
-                  onClick={() => goToSlide(idx)}
-                  aria-label={`Go to slide ${idx + 1}`}
-                  className="p-1.5 cursor-pointer flex items-center justify-center focus-visible:outline-none"
-                >
-                  <span
-                    className={`h-2 rounded-full transition-all duration-300 block ${
-                      isActive
-                        ? 'w-6 bg-primary shadow-xs'
-                        : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-500'
-                    }`}
-                  />
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Rock-Solid Stationary CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-1 sm:mt-2 w-full sm:w-auto max-w-sm sm:max-w-none"
-          >
-            <div className="w-full sm:w-auto">
-              <Button
-                asChild
-                variant="3d-yellow"
-                size="lg"
-                className="w-full sm:w-auto h-12.5 sm:h-13 px-7 sm:px-8 text-[15px] sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold shadow-md"
-              >
-                <Link href="/contact" className="flex items-center justify-center gap-2">
-                  <Sparkles className="h-4 w-4" />
-                  <span>Start a Project</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
-
-            <div className="w-full sm:w-auto">
-              <Button
-                asChild
-                variant="3d-secondary"
-                size="lg"
-                className="w-full sm:w-auto h-12.5 sm:h-13 px-7 sm:px-8 text-[15px] sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
-              >
-                <Link href="/services" className="flex items-center justify-center gap-2">
-                  <span>Explore Services</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Clean Tactile Trust Badges */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2 sm:pt-2 text-xs font-semibold text-slate-700 dark:text-slate-300 max-w-2xl mx-auto"
-          >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
-              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-              100% Client Code &amp; IP Ownership
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
-              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-              Direct Senior Engineer Access
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
-              <ShieldCheck className="h-3.5 w-3.5 text-cyan-500 shrink-0" />
-              Enterprise-Grade SLA &amp; Security
-            </span>
-          </motion.div>
-
-          {/* Subtle Mobile Scroll Cue to Bridge Viewport Void */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-col items-center justify-center pt-2 sm:pt-4 select-none"
-          >
-            <a
-              href="#trust-strip"
-              className="group flex flex-col items-center gap-1 text-xs font-mono font-medium tracking-wider uppercase text-slate-400/80 hover:text-slate-600 dark:text-slate-500 dark:hover:text-cyan-400 transition-colors cursor-pointer"
-              aria-label="Scroll to explore ecosystem"
+            {/* Snug Responsive 3D Kinetic Dynamic Headline Area */}
+            <div
+              className="w-full min-h-[170px] sm:min-h-[185px] md:min-h-[200px] flex flex-col justify-center items-center lg:items-start px-0"
+              style={{ perspective: 1200 }}
             >
-              <span>Explore Ecosystem</span>
-              <ChevronDown className="h-3.5 w-3.5 animate-bounce text-slate-400 dark:text-slate-500 group-hover:text-primary transition-colors" />
-            </a>
+              <AnimatePresence mode="wait" custom={direction} initial={false}>
+                <motion.div
+                  key={currentSlide.id}
+                  custom={direction}
+                  variants={slide3DVariants}
+                  initial={false}
+                  animate="center"
+                  exit="exit"
+                  style={{ transformStyle: 'preserve-3d' }}
+                  className="w-full flex flex-col items-center lg:items-start gap-3 sm:gap-3.5"
+                >
+                  {/* Dynamic Category Badge */}
+                  <div
+                    className={`inline-flex items-center gap-2 rounded-full border-2 px-3.5 sm:px-4 py-1.5 text-xs font-mono font-bold backdrop-blur-md transition-all cursor-default max-w-full ${currentSlide.badgeStyle}`}
+                  >
+                    <BadgeIcon className="h-3.5 w-3.5 shrink-0 animate-pulse" />
+                    <span className="tracking-tight text-center truncate sm:whitespace-normal">
+                      {currentSlide.badgeText}
+                    </span>
+                  </div>
+
+                  {/* Main Dynamic 3D Headline (Clean, Natural Wrap, Never Cramped) */}
+                  <h1 className="font-heading text-3xl sm:text-4xl md:text-[2.65rem] lg:text-[2.85rem] xl:text-[3.15rem] font-extrabold tracking-tight text-slate-950 dark:text-white leading-[1.14] sm:leading-[1.12] text-3d-headline flex flex-col items-center lg:items-start select-none max-w-xl">
+                    <span className="block">{currentSlide.titlePrefix}</span>
+                    <span
+                      className={`block bg-gradient-to-r ${currentSlide.accentGradient} bg-clip-text text-transparent pb-0.5`}
+                    >
+                      {currentSlide.highlightText}
+                    </span>
+                  </h1>
+
+                  {/* Main Dynamic Subtitle */}
+                  <p className="max-w-xl text-[15px] sm:text-base md:text-[16.5px] leading-relaxed text-slate-700 dark:text-slate-200 font-sans font-medium text-center lg:text-left select-none">
+                    <span className="sm:block">{currentSlide.subtitleLine1} </span>
+                    <span className="sm:block">{currentSlide.subtitleLine2}</span>
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Slide Pagination Dots & Compact Nav Controls */}
+            <div className="flex items-center justify-center lg:justify-start gap-2 select-none my-1">
+              <button
+                type="button"
+                onClick={goToPrev}
+                aria-label="Previous capability slide"
+                className="h-7 w-7 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-cyan-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors cursor-pointer"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+
+              <div className="flex items-center gap-1.5">
+                {HERO_SLIDES.map((slide, idx) => {
+                  const isActive = idx === currentIndex
+                  return (
+                    <button
+                      key={slide.id}
+                      type="button"
+                      onClick={() => goToSlide(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className="p-1 cursor-pointer flex items-center justify-center focus-visible:outline-none"
+                    >
+                      <span
+                        className={`h-2 rounded-full transition-all duration-300 block ${
+                          isActive
+                            ? `w-7 shadow-xs ${slide.dotClass}`
+                            : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-500'
+                        }`}
+                      />
+                    </button>
+                  )
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={goToNext}
+                aria-label="Next capability slide"
+                className="h-7 w-7 flex items-center justify-center rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-cyan-300 hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors cursor-pointer"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Rock-Solid Stationary CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 mt-1 sm:mt-2 w-full sm:w-auto max-w-sm sm:max-w-none"
+            >
+              <div className="w-full sm:w-auto">
+                <Button
+                  asChild
+                  variant="3d-yellow"
+                  size="lg"
+                  className="w-full sm:w-auto h-12.5 sm:h-13 px-7 sm:px-8 text-[15px] sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold shadow-md"
+                >
+                  <Link href="/contact" className="flex items-center justify-center gap-2">
+                    <Sparkles className="h-4 w-4" />
+                    <span>Start a Project</span>
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="w-full sm:w-auto">
+                <Button
+                  asChild
+                  variant="3d-secondary"
+                  size="lg"
+                  className="w-full sm:w-auto h-12.5 sm:h-13 px-7 sm:px-8 text-[15px] sm:text-base rounded-xl flex items-center justify-center gap-2 font-bold"
+                >
+                  <Link href="/services" className="flex items-center justify-center gap-2">
+                    <span>Explore Services</span>
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Clean Tactile Trust Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-2 text-xs font-semibold text-slate-700 dark:text-slate-300 max-w-2xl"
+            >
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
+                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                100% Client Code &amp; IP Ownership
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
+                <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                Direct Senior Engineer Access
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-xs shadow-2xs">
+                <ShieldCheck className="h-3.5 w-3.5 text-cyan-500 shrink-0" />
+                Enterprise-Grade SLA &amp; Security
+              </span>
+            </motion.div>
+
+          </div>
+
+          {/* Right Column: Interactive Particle Logo Matrix (Bold, Commanding & Free Floating) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative w-full h-[320px] sm:h-[380px] md:h-[440px] lg:h-[480px] xl:h-[510px]"
+          >
+            {/* Subtle Ethereal Ambient Glow behind floating particles */}
+            <div className="absolute inset-0 -z-10 bg-radial from-primary/10 via-indigo-500/5 to-transparent blur-3xl rounded-full scale-95 pointer-events-none" />
+
+            <ParticleLogoCanvas
+              src="/logo-mark-dark.png"
+              particleSize={2.4}
+              densityStep={3}
+              maxContentWidth={460}
+              maxContentHeight={460}
+              darkPalette={currentSlide.darkPalette}
+              lightPalette={currentSlide.lightPalette}
+              repulseRadius={85}
+              repulseStrength={7.5}
+              clickShockwave={true}
+              shockwaveRadius={210}
+              shockwaveStrength={24}
+              className="w-full h-full"
+              ariaLabel="NeelStack interactive neural logo matrix"
+            />
           </motion.div>
 
         </div>
+
+        {/* Subtle Mobile Scroll Cue to Bridge Viewport Void */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex flex-col items-center justify-center pt-6 sm:pt-8 select-none"
+        >
+          <a
+            href="#trust-strip"
+            className="group flex flex-col items-center gap-1 text-xs font-mono font-medium tracking-wider uppercase text-slate-400/80 hover:text-slate-600 dark:text-slate-500 dark:hover:text-cyan-400 transition-colors cursor-pointer"
+            aria-label="Scroll to explore ecosystem"
+          >
+            <span>Explore Ecosystem</span>
+            <ChevronDown className="h-3.5 w-3.5 animate-bounce text-slate-400 dark:text-slate-500 group-hover:text-primary transition-colors" />
+          </a>
+        </motion.div>
       </Container>
     </HeroSpotlight>
   )

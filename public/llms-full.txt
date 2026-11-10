@@ -1,6 +1,6 @@
 # NeelStack Solutions — Complete Context & Documentation
 
-> NeelStack Solutions Private Limited is an enterprise AI engineering and custom software development company incorporated in Uttar Pradesh, India (CIN: U62011UP2026PTC250857). We design, architect, and deploy production AI systems (LLMs, RAG, autonomous multi-agent swarms, Model Context Protocol tools), high-throughput SaaS platforms, and enterprise digital solutions.
+> NeelStack Solutions Private Limited is an AI-native technology and software engineering company incorporated in Uttar Pradesh, India (CIN: U62011UP2026PTC250857). We build proprietary software products, engineer custom business applications, modernise legacy systems, and deliver specialised AI and software engineering capabilities through flexible delivery teams.
 
 ## 1. Company Overview
 
@@ -8,67 +8,44 @@
 - Incorporation Date: 31 August 2026
 - Corporate Identity Number (CIN): U62011UP2026PTC250857
 - GSTIN: 09AALCN9356Q1ZA
-- Startup India Registration: DIPP278202
+- Startup India Registration: DIPP278202 (Recognized)
 - MSME Registration: UDYAM-UP-32-0131171
 - Leadership:
-  - Shyam Chaurasiya — Founder & Legal CEO
+  - Shyam Chaurasiya — Founder & CEO
   - Neelam Chaurasiya — Co-founder & Business Operations
 - Headquarters: Gorakhpur, Uttar Pradesh, India (PIN: 273406)
-- Engineering Hub: Gorakhpur & Bengaluru, India
 - Primary Email: contact@neelstack.com
 - Official Website: https://neelstack.com
 
-## 2. Core Product Portfolio
+### Workforce Delivery Model Transparency
+NeelStack delivers engineering solutions through a transparent, high-integrity hybrid model: direct core architects and engineers, supplemented by screened, contractually-engaged senior engineers and approved delivery partners under strict IP assignment, non-disclosure (NDA), and client confidentiality agreements.
 
-### DhruvaOS (School Operating System)
+## 2. Division 1: Proprietary Software Products
+
+### DhruvaOS (Flagship AI-Native School Operating System)
 - Target: Schools, K-12 Academies, Colleges, Universities, and Educational Trusts
-- Launch Timeline: Beta live October 2026 · Full Public Launch November 14, 2026
-- Architectural Highlights: Unified EdOS unifying admissions, automated fee reconciliation, biometric & RFID attendance, multi-lingual parent communications, and AI curricular lesson planning.
-- URL: https://neelstack.com/products/dhruvaos
+- Launch Timeline: Beta Live with early pilot institutions · Full Public Launch November 14, 2026
+- Scope: School administration, online admissions, automated fee reconciliation, RFID & biometric campus attendance, academics & examinations, parent/student portals, mobile & desktop applications, and institutional analytics.
+- URL: https://neelstack.com/products/dhruvaos (Dedicated portal: https://dhruvaos.com)
 
 ### ToolVines (Browser-Native Developer Platform)
-- Target: Software engineers, security auditors, DevOps architects, designers, and privacy officers
-- Status: Live Product (https://toolvines.com)
-- Architectural Highlights: 320+ developer utilities, cryptography formatters, PDF tools, and media transcoders executing 100% client-side via Rust WebAssembly with zero data sent to remote servers.
+- Target: Software engineers, DevOps architects, technical writers, and knowledge workers
+- Status: Live Product in Production (https://toolvines.com)
+- Scope: Suite of client-side developer utilities, cryptography tools, PDF formatters, and media transcoders executing 100% in-browser via Rust WebAssembly with zero remote document storage.
 - URL: https://neelstack.com/products/toolvines
 
-### AI Company OS (Autonomous AI Workforce Platform)
-- Target: Mid-market enterprises and automated business operations
-- Status: Research & Development / Whitepaper v1.0 Published
-- Architectural Highlights: 11 specialized executive and operational AI agent squads orchestrated via LangGraph cyclic state machines, Model Context Protocol (MCP) tool integration, and human-in-the-loop authorization gates.
-- URL: https://neelstack.com/products/ai-company-os
-- Whitepaper: https://neelstack.com/whitepapers/ai-company-operating-system
+## 3. Division 2: Enterprise Software & AI Engineering Services
 
-### Planned Concepts
-- NaukariMitra: Independent AI-powered competitive exam preparation companion providing syllabus vector RAG and vernacular mentoring (https://neelstack.com/products/naukarimitra).
-- SarkariMitra: Independent citizen assistance engine for Central and State government schemes with 100% official .gov.in redirects (https://neelstack.com/products/sarkarimitra).
+- Custom Software Development: Bespoke business applications, ERP systems, internal workflow engines, and B2B portals.
+- AI Application & Agent Development: Frontier LLM integrations (Claude 3.5, GPT-4o, Gemini 1.5/2.0), LangGraph cyclic agents, Model Context Protocol (MCP) tool execution, and GraphRAG knowledge search.
+- Legacy System Modernization: Deconstructing brittle monolithic architectures into scalable microservices and APIs using strangler-fig patterns, dual-write database synchronization, automated regression harnesses, and rollback safeguards.
+- Cloud Architecture & DevOps: Resilient multi-AZ cloud deployments on AWS/GCP/Azure, Docker containerization, Kubernetes clustering, Terraform infrastructure-as-code, and compute optimization.
+- Modern Web & Mobile Applications: High-performance Next.js 16 web applications, sub-second API backends, and cross-platform iOS & Android mobile applications.
 
-## 3. Technology Stack & Architecture Standards
+## 4. Division 3: Specialist Engineering & AI Workforce
 
-- Frontend: Next.js 16 (App Router, Turbopack, React 19 Server Components), Tailwind CSS v4, Framer Motion
-- Client-Side WASM: Rust compiled to WebAssembly via wasm-pack
-- Backend & Microservices: Python FastAPI, Node.js, Go
-- AI Frameworks: LangChain, LangGraph, Model Context Protocol (MCP), Microsoft GraphRAG, pgvector
-- Databases: PostgreSQL with physical schema-level multi-tenancy and Row-Level Security (RLS), Redis
-- Security: TLS 1.3, AES-256 at rest, DPDP Act 2023 compliance, zero vendor lock-in
-
-## 4. Key Links & Endpoints
-
-- Home: https://neelstack.com/
-- Services: https://neelstack.com/services
-- Products: https://neelstack.com/products
-- Technologies: https://neelstack.com/technologies
-- Blog: https://neelstack.com/blog
-- Case Studies: https://neelstack.com/case-studies
-- Industries: https://neelstack.com/industries
-- Portfolio: https://neelstack.com/portfolio
-- Pricing: https://neelstack.com/pricing
-- Contact: https://neelstack.com/contact
-- Book Consultation: https://neelstack.com/book-consultation
-- Request Quote: https://neelstack.com/request-quote
-- Support: https://neelstack.com/support
-- Privacy Policy: https://neelstack.com/privacy
-- Terms of Service: https://neelstack.com/terms
-- Sitemap: https://neelstack.com/sitemap.xml
-- Robots.txt: https://neelstack.com/robots.txt
-
+- Contract Software Developers: Individual senior engineers across Next.js/React, Python FastAPI, Java, and Cloud DevOps for staff augmentation.
+- Dedicated Engineering Pods: Managed cross-functional squads (3–8 specialists) governed by agile sprint retainers with 100% client code ownership upon milestone delivery.
+- AI Model Evaluation: Human-in-the-loop (HITL) evaluation, RLHF preference ranking, prompt-response accuracy benchmarking, and hallucination reduction.
+- AI Data Annotation & QA: Multilingual Indian vernacular validation, code review benchmarking, and domain data curation.
+- Vendor Partnerships: Structured subcontracting and delivery partnerships for global IT system integrators and technology consulting firms (https://neelstack.com/partnerships).

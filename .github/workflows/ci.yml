@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, dev]
 
+# Explicitly limit GITHUB_TOKEN permissions to read-only (CodeQL & OpenSSF Best Practice)
+permissions:
+  contents: read
+
 jobs:
   ci:
     name: Lint, Type-check & Build

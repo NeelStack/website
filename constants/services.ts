@@ -10,6 +10,11 @@ import {
   Palette,
   Lightbulb,
   Smartphone,
+  RefreshCw,
+  Users,
+  Layers,
+  CheckCircle2,
+  FileCheck,
 } from 'lucide-react'
 import type { Service } from '@/types'
 
@@ -25,7 +30,7 @@ export const SERVICES: Service[] = [
     href: '/services/ai-development',
     badge: 'Agentic AI & MCP',
     tagline: 'Autonomous swarms, MCP tool execution, and deterministic enterprise guardrails.',
-    slaMetric: 'Sub-50ms Inference & Zero Data Leak',
+    slaMetric: 'Sub-50ms API & Retrieval Latency (FastAPI + pgvector)',
     turnaround: '2–4 Weeks MVP',
     keyCapabilities: [
       {
@@ -140,7 +145,7 @@ export const SERVICES: Service[] = [
     href: '/services/web-applications',
     badge: 'Next.js 16 & Rust WASM',
     tagline: 'Sub-second Server Component architectures engineered for scale and speed.',
-    slaMetric: '< 2.5s LCP & 95+ Lighthouse Score',
+    slaMetric: '< 2.5s LCP & Engineered for 90+ Core Web Vitals',
     turnaround: '2–4 Weeks MVP',
     keyCapabilities: [
       {
@@ -165,7 +170,7 @@ export const SERVICES: Service[] = [
       'Client-Side Rust WebAssembly Modules',
       'TypeScript Strict Mode End-to-End',
       'Tailwind CSS v4 & OKLCH Design Tokens',
-      'Core Web Vitals Green Guarantee (95+ Lighthouse)',
+      'Engineered for High-Performance Core Web Vitals Baselines',
       'Automated CI/CD Preview Deployments',
     ],
     category: 'Development',
@@ -212,7 +217,7 @@ export const SERVICES: Service[] = [
     deliverables: [
       'Full Next.js / React application with strict TypeScript',
       'Responsive design across mobile, tablet, and widescreen desktop',
-      'Core Web Vitals scores in green (95+ Lighthouse across all metrics)',
+      'Core Web Vitals scores optimized for 90+ Lighthouse across all metrics',
       'CI/CD pipeline with automated preview deployments per pull request',
       'Component documentation in Storybook or documented design tokens',
       'Programmatic SEO metadata, dynamic sitemap, and JSON-LD schema markup',
@@ -655,7 +660,7 @@ export const SERVICES: Service[] = [
     href: '/services/database-systems',
     badge: 'PostgreSQL 16 & HA',
     tagline: 'High-availability database clustering, query tuning, and pgvector embeddings.',
-    slaMetric: '99.99% Availability & Disaster Recovery',
+    slaMetric: 'Multi-AZ High Availability & Automated Disaster Recovery',
     turnaround: '1–2 Weeks Audit & Tune',
     keyCapabilities: [
       {
@@ -758,7 +763,7 @@ export const SERVICES: Service[] = [
     href: '/services/devops-cloud',
     badge: 'Terraform & Kubernetes',
     tagline: 'Cloud infrastructure as code, automated CI/CD pipelines, and zero-downtime scaling.',
-    slaMetric: '99.99% Production Uptime',
+    slaMetric: 'Multi-AZ High Availability & Fault Tolerance',
     turnaround: '1–3 Weeks IaC Setup',
     keyCapabilities: [
       {
@@ -1177,6 +1182,499 @@ export const SERVICES: Service[] = [
       },
     ],
   },
+  {
+    id: 'legacy-modernisation',
+    name: 'Legacy System Modernization',
+    description:
+      'We deconstruct fragile legacy monoliths, desktop ERPs, and outdated databases into scalable microservices and modern APIs using phased strangler-fig migration with zero business disruption.',
+    icon: RefreshCw,
+    color: 'text-amber-400',
+    bgColor: 'bg-amber-500/10',
+    href: '/services/legacy-modernisation',
+    badge: 'Strangler-Fig & Dual-Write',
+    tagline: 'Risk-mitigated incremental migration, automated regression testing, and modern cloud architecture.',
+    slaMetric: 'Phased Migration with Zero Business Disruption',
+    turnaround: '4–12 Weeks Per Module',
+    keyCapabilities: [
+      {
+        title: 'Monolith Deconstruction',
+        desc: 'Identifying domain boundaries, breaking shared database locks, and extracting modular microservices using the Strangler Fig pattern.',
+      },
+      {
+        title: 'Dual-Write & CDC Synchronization',
+        desc: 'Real-time database synchronization via Change Data Capture (Debezium/Kafka) guaranteeing data consistency during migration.',
+      },
+      {
+        title: 'Automated Regression Harnesses',
+        desc: 'Shadow traffic mirroring and automated integration testing to prove parity between legacy and modern systems before cutover.',
+      },
+      {
+        title: 'Database & Cloud Modernization',
+        desc: 'Migrating legacy on-premise relational stores (SQL Server, Oracle) to cloud-native PostgreSQL (RDS/Aurora) and serverless containers.',
+      },
+    ],
+    highlights: [
+      'Strangler Fig Incremental Decoupling',
+      'Change Data Capture (CDC) Synchronization',
+      'Shadow Traffic Mirroring & Parity Testing',
+      'Dual-Write Database Safeguards',
+      'Cloud Migration (AWS / GCP / Azure)',
+      'Full Source Code & IP Ownership',
+    ],
+    category: 'Enterprise',
+    techStack: [
+      {
+        label: 'Migration & Synchronization',
+        items: ['Apache Kafka', 'Debezium CDC', 'AWS DMS', 'Dual-Write Proxies', 'Shadow Traffic Replay'],
+      },
+      {
+        label: 'Target Modern Architecture',
+        items: ['FastAPI (Python)', 'Next.js 16', 'Node.js', 'Go Microservices', 'Docker & Kubernetes'],
+      },
+      {
+        label: 'Modern Cloud Databases',
+        items: ['PostgreSQL 16', 'AWS Aurora', 'Redis Distributed Cache', 'MongoDB Atlas', 'pgvector'],
+      },
+      {
+        label: 'Quality & Observability',
+        items: ['Datadog APM', 'OpenTelemetry', 'Playwright E2E', 'Jest Regression', 'Prometheus'],
+      },
+    ],
+    processSteps: [
+      {
+        step: 1,
+        title: 'Legacy Assessment & Domain Mapping',
+        description: 'Comprehensive codebase audit, dependency graph extraction, database schema analysis, and risk register creation.',
+      },
+      {
+        step: 2,
+        title: 'Target Architecture & Anti-Corruption Layer',
+        description: 'Designing modular microservices, establishing API facades (anti-corruption layers), and setting up CDC synchronization.',
+      },
+      {
+        step: 3,
+        title: 'Phased Extraction & Shadow Testing',
+        description: 'Migrating individual business modules incrementally, routing read/write traffic in parallel, and verifying output parity.',
+      },
+      {
+        step: 4,
+        title: 'Safe Cutover & Legacy Decommissioning',
+        description: 'Seamless DNS switchover, final data reconciliation, decommissioning legacy hardware, and handing over complete documentation.',
+      },
+    ],
+    deliverables: [
+      'Modern microservice and API source code repositories',
+      'Automated CI/CD pipelines and infrastructure-as-code scripts',
+      'Full architectural migration documentation and data dictionaries',
+      'Automated test suites covering 100% of critical business paths',
+    ],
+    faqs: [
+      {
+        question: 'How do you prevent downtime and business interruption during migration?',
+        answer: 'We use the Strangler Fig pattern with an Anti-Corruption Layer and dual-write database synchronization. Your legacy system continues operating normally while new features and services are migrated modularly behind reverse proxies.',
+      },
+      {
+        question: 'What if an extracted service encounters issues during cutover?',
+        answer: 'Every module is deployed with automated rollback safeguards and traffic mirroring. If an anomaly is detected, traffic immediately falls back to the legacy system with zero data loss.',
+      },
+      {
+        question: 'Who owns the modernized software code?',
+        answer: 'You retain 100% legal ownership of all modern source code, infrastructure scripts, and documentation upon milestone delivery.',
+      },
+    ],
+  },
+  {
+    id: 'contract-engineering',
+    name: 'Contract Software Engineering',
+    description:
+      'Senior contract software developers across frontend, backend, cloud, and AI engineering for fast, high-impact staff augmentation and project delivery.',
+    icon: Users,
+    color: 'text-blue-400',
+    bgColor: 'bg-blue-500/10',
+    href: '/services/contract-engineering',
+    badge: 'Senior Talent & Fast Onboarding',
+    tagline: 'Vetted senior developers, transparent sprint billing, and direct Slack/Teams integration.',
+    slaMetric: 'Candidate Profiles in 48–72 Hours',
+    turnaround: 'Flexible Sprints & Monthly Retainers',
+    keyCapabilities: [
+      {
+        title: 'Senior Specialized Developers',
+        desc: 'Pre-screened software engineers specializing in Next.js, React, Python FastAPI, Go, Java Spring, and Cloud DevOps.',
+      },
+      {
+        title: 'Seamless Team Embedding',
+        desc: 'Engineers integrate directly into your daily standups, Jira/Linear boards, GitHub pull requests, and communication channels.',
+      },
+      {
+        title: 'Transparent Delivery Model',
+        desc: 'Delivered by NeelStack core engineers and screened contract professionals under strict IP assignment and confidentiality agreements.',
+      },
+      {
+        title: 'Risk-Free 2-Week Trial',
+        desc: 'Evaluate fit with a 2-week risk-free trial period before committing to long-term sprint retainers.',
+      },
+    ],
+    highlights: [
+      'Frontend (Next.js, React 19, TypeScript)',
+      'Backend (Python FastAPI, Node.js, Go, Java)',
+      'Cloud & DevOps (AWS, Docker, K8s, Terraform)',
+      'AI & LLM Engineers (LangGraph, MCP, RAG)',
+      'Direct Slack/Teams Integration',
+      'Full IP Assignment Upon Delivery',
+    ],
+    category: 'Workforce',
+    techStack: [
+      {
+        label: 'Frontend & UI',
+        items: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'React Native', 'Flutter'],
+      },
+      {
+        label: 'Backend & Data',
+        items: ['Python (FastAPI)', 'Node.js', 'Go', 'Java (Spring Boot)', 'PostgreSQL', 'Redis'],
+      },
+      {
+        label: 'Cloud & Infrastructure',
+        items: ['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'],
+      },
+      {
+        label: 'AI & Data Engineering',
+        items: ['PyTorch', 'LangChain', 'LangGraph', 'vLLM', 'pgvector', 'Qdrant'],
+      },
+    ],
+    processSteps: [
+      {
+        step: 1,
+        title: 'Technical Role & Skill Profiling',
+        description: 'We analyze your tech stack, team workflow, required seniority level, and project roadmap to define exact talent requirements.',
+      },
+      {
+        step: 2,
+        title: 'Profile Shortlisting & Tech Interviews',
+        description: 'Within 48–72 hours, we present screened engineer profiles with verified coding assessments for your direct technical interview.',
+      },
+      {
+        step: 3,
+        title: 'Trial Sprint & Onboarding',
+        description: 'Selected engineers join your Slack, repositories, and standups for a 2-week trial sprint to confirm cultural and technical alignment.',
+      },
+      {
+        step: 4,
+        title: 'Continuous Delivery & Account Governance',
+        description: 'Bi-weekly delivery reviews, flexible scaling up or down, and dedicated account management ensure sustained project velocity.',
+      },
+    ],
+    deliverables: [
+      'Screened, senior engineering talent matched to your exact stack',
+      'Direct daily commits and pull request reviews in your repositories',
+      'Transparent weekly timesheets and milestone delivery reporting',
+      '100% intellectual property assignment and non-disclosure protection',
+    ],
+    faqs: [
+      {
+        question: 'Are all developers direct employees of NeelStack?',
+        answer: 'NeelStack operates a high-transparency model: capabilities are delivered by our core architects and engineers, supplemented by screened, contractually-engaged senior professionals and vetted delivery partners under strict IP assignment and confidentiality agreements.',
+      },
+      {
+        question: 'How quickly can an engineer onboard to our project?',
+        answer: 'We present pre-vetted profiles within 48 to 72 hours. Once interviewed and approved, engineers can typically begin within 3 to 7 business days.',
+      },
+      {
+        question: 'What happens if a developer is not the right fit?',
+        answer: 'We offer a 2-week risk-free trial sprint. If a developer does not meet your technical expectations during this period, you can request an immediate replacement with no exit penalties.',
+      },
+    ],
+  },
+  {
+    id: 'dedicated-teams',
+    name: 'Dedicated Engineering Pods',
+    description:
+      'Autonomous, cross-functional squads (3–8 engineers) dedicated to your product roadmap, featuring dedicated tech leads, developers, and QA engineers.',
+    icon: Layers,
+    color: 'text-cyan-400',
+    bgColor: 'bg-cyan-500/10',
+    href: '/services/dedicated-teams',
+    badge: 'Cross-Functional Squads',
+    tagline: 'Self-governing engineering pods with tech leads, full-stack developers, and automated QA.',
+    slaMetric: 'Dedicated Full-Time Squad Allocation',
+    turnaround: 'Monthly Sprint Retainers',
+    keyCapabilities: [
+      {
+        title: 'Cross-Functional Squad Architecture',
+        desc: 'Tailored pods comprising Tech Lead/Architect, Senior Frontend, Senior Backend, DevOps, and QA Automation specialists.',
+      },
+      {
+        title: 'Agile Velocity & Sprint Cadence',
+        desc: 'Sprint planning, backlog grooming, daily async standups, and bi-weekly demo releases fully aligned with your product goals.',
+      },
+      {
+        title: 'Elastic Team Scaling',
+        desc: 'Scale pod size up or down as project milestones require, with predictable monthly retainer budgeting and zero hiring overhead.',
+      },
+      {
+        title: 'Architecture Governance',
+        desc: 'NeelStack principal architects review pull requests and system design to ensure long-term maintainability and zero technical debt.',
+      },
+    ],
+    highlights: [
+      'Dedicated Tech Lead & Architect',
+      'Senior Full-Stack & Mobile Engineers',
+      'Embedded DevOps & QA Automation',
+      'Sprint-Based Milestone Delivery',
+      'Bi-Weekly Sprint Demos & Retros',
+      '100% Client Code & Repo Ownership',
+    ],
+    category: 'Workforce',
+    techStack: [
+      {
+        label: 'Core Stack Competencies',
+        items: ['Next.js 16', 'React 19', 'Python FastAPI', 'Node.js / TypeScript', 'PostgreSQL', 'Redis'],
+      },
+      {
+        label: 'DevOps & Tooling',
+        items: ['AWS ECS / EKS', 'Docker', 'Kubernetes', 'GitHub Actions CI/CD', 'Terraform', 'Datadog'],
+      },
+      {
+        label: 'Collaboration & PM',
+        items: ['Linear / Jira', 'GitHub Enterprise', 'Slack / Microsoft Teams', 'Notion', 'Figma'],
+      },
+    ],
+    processSteps: [
+      {
+        step: 1,
+        title: 'Pod Sizing & Skill Matrix Formulation',
+        description: 'We assess your product backlog, release milestones, and architecture requirements to structure the optimal squad composition.',
+      },
+      {
+        step: 2,
+        title: 'Squad Selection & Client Review',
+        description: 'You review candidate profiles, meet the Tech Lead, and align on sprint cadence, code review guidelines, and communication protocols.',
+      },
+      {
+        step: 3,
+        title: 'Environment & Tooling Provisioning',
+        description: 'Access provisioning, local sandbox setup, CI/CD pipeline integration, and sprint 0 architecture alignment.',
+      },
+      {
+        step: 4,
+        title: 'Full Sprint Velocity & Continuous Delivery',
+        description: 'Bi-weekly sprint demos, PR velocity tracking, automated testing gates, and monthly executive progress reviews.',
+      },
+    ],
+    deliverables: [
+      'Complete, self-governing engineering pod dedicated 100% to your codebase',
+      'Bi-weekly production-ready sprint releases with automated test suites',
+      'Complete architecture documentation, API specs, and runbooks',
+      'Transparent velocity metrics, burndown charts, and monthly reports',
+    ],
+    faqs: [
+      {
+        question: 'What is the minimum engagement period for a dedicated engineering pod?',
+        answer: 'Dedicated pods operate on flexible 3-month or 6-month sprint agreements with 30-day notice terms for scaling or adjustments.',
+      },
+      {
+        question: 'How do you handle IP rights and confidential project data?',
+        answer: 'You retain 100% ownership of all source code, design assets, and intellectual property. All team members sign strict confidentiality and IP assignment agreements prior to onboarding.',
+      },
+      {
+        question: 'Can we adjust the team composition as project needs change?',
+        answer: 'Yes. Dedicated pods are flexible: you can add specialized skills (such as AI engineers, mobile developers, or security specialists) for specific sprint milestones.',
+      },
+    ],
+  },
+  {
+    id: 'ai-model-evaluation',
+    name: 'AI Model Evaluation & Human-in-the-Loop',
+    description:
+      'Rigorous evaluation, RLHF preference ranking, prompt-response accuracy benchmarking, and hallucination reduction for LLMs, RAG systems, and AI agents.',
+    icon: CheckCircle2,
+    color: 'text-violet-400',
+    bgColor: 'bg-violet-500/10',
+    href: '/services/ai-model-evaluation',
+    badge: 'Benchmarking & RLHF',
+    tagline: 'Empirical model accuracy testing, human preference scoring, and enterprise safety guardrails.',
+    slaMetric: 'Statistical Evaluation & QA Confidence Scoring',
+    turnaround: '1–3 Weeks Per Benchmark Suite',
+    keyCapabilities: [
+      {
+        title: 'Human Preference & RLHF Ranking',
+        desc: 'Domain-expert human evaluation scoring model responses across helpfulness, truthfulness, instruction-following, and safety.',
+      },
+      {
+        title: 'RAG Retrieval & Answer Quality Audits',
+        desc: 'Benchmarking precision, recall, context relevance, faithfulness, and answer relevance using industry standard metrics (Ragas, TruLens).',
+      },
+      {
+        title: 'Hallucination & Red-Teaming Audits',
+        desc: 'Adversarial prompt injection testing, toxic output probing, and boundary verification to prevent brand reputation risks.',
+      },
+      {
+        title: 'Enterprise Safety & Compliance Gates',
+        desc: 'Automated evaluation pipelines integrated into CI/CD to prevent model drift and regression before production deployment.',
+      },
+    ],
+    highlights: [
+      'Human-in-the-Loop (HITL) Preference Ranking',
+      'RAG Context Relevance & Faithfulness (Ragas)',
+      'Adversarial Red-Teaming & Prompt Probing',
+      'Domain-Specific Expert Reviewers',
+      'CI/CD Automated Eval Harnesses (Langfuse)',
+      'Full Data Privacy & Air-Gapped Environments',
+    ],
+    category: 'Workforce',
+    techStack: [
+      {
+        label: 'Evaluation Frameworks',
+        items: ['Ragas', 'TruLens', 'DeepEval', 'Promptfoo', 'LangSmith', 'Langfuse'],
+      },
+      {
+        label: 'Benchmarking Dimensions',
+        items: ['Faithfulness', 'Answer Relevance', 'Context Precision', 'Toxicity / PII', 'Hallucination Rate'],
+      },
+      {
+        label: 'Foundation Models Evaluated',
+        items: ['Anthropic Claude 3.5', 'OpenAI GPT-4o', 'Google Gemini 1.5/2.0', 'Meta Llama 3.3', 'Mistral'],
+      },
+    ],
+    processSteps: [
+      {
+        step: 1,
+        title: 'Benchmark Criteria & Rubric Definition',
+        description: 'We work with your domain leaders to establish multi-dimensional scoring rubrics, ground-truth test datasets, and acceptance thresholds.',
+      },
+      {
+        step: 2,
+        title: 'Automated Evaluation Harness Build',
+        description: 'Setting up automated evaluation pipelines measuring context retrieval, faithfulness, latency, and cost per query.',
+      },
+      {
+        step: 3,
+        title: 'Domain Expert Human Scoring',
+        description: 'Trained technical and domain specialists score responses across multi-turn dialogs, complex domain reasoning, and edge cases.',
+      },
+      {
+        step: 4,
+        title: 'Synthesis, Drift Reporting & Guardrails',
+        description: 'Delivering comprehensive statistical evaluation reports, prompt improvement recommendations, and regression guardrails for CI/CD.',
+      },
+    ],
+    deliverables: [
+      'Comprehensive statistical evaluation report with quantitative metric distributions',
+      'Curated golden test dataset with verified ground-truth responses',
+      'Automated CI/CD evaluation harness code and regression dashboards',
+      'Actionable prompt engineering and guardrail recommendations',
+    ],
+    faqs: [
+      {
+        question: 'How do you ensure domain expertise for specialized evaluation?',
+        answer: 'We assign evaluators matched to your specific domain (software engineering, healthcare, legal, or finance) who adhere to rigorous calibration rubrics and double-blind scoring procedures.',
+      },
+      {
+        question: 'Is client proprietary data kept private during evaluation?',
+        answer: 'Yes. All evaluations occur in isolated, private environments. Evaluators work under strict NDAs, and no client data is used for model training or retained outside the project boundary.',
+      },
+      {
+        question: 'Can you integrate evaluation into our existing CI/CD pipelines?',
+        answer: 'Yes. We deliver automated eval harnesses using tools like Promptfoo, Langfuse, or Ragas that execute on every pull request to catch model drift or regressions before release.',
+      },
+    ],
+  },
+  {
+    id: 'ai-data-annotation',
+    name: 'AI Data Annotation & Operations',
+    description:
+      'High-precision domain data collection, multilingual Indian vernacular validation, multimodal labeling, and data quality assurance for frontier AI models.',
+    icon: FileCheck,
+    color: 'text-emerald-400',
+    bgColor: 'bg-emerald-500/10',
+    href: '/services/ai-data-annotation',
+    badge: 'Domain Labeling & QA',
+    tagline: 'High-accuracy dataset labeling, vernacular language validation, and multi-tier QA pipelines.',
+    slaMetric: '99%+ Annotation Accuracy Standard',
+    turnaround: 'Flexible Weekly Batch Delivery',
+    keyCapabilities: [
+      {
+        title: 'Multilingual Vernacular Validation',
+        desc: 'Native speaker linguistic validation, dialect verification, and conversational dataset curation across 8+ Indian regional languages.',
+      },
+      {
+        title: 'Code & Technical Data Annotation',
+        desc: 'Senior software engineers annotating code snippets, debugging workflows, and API specifications for code-generation models.',
+      },
+      {
+        title: 'Multi-Tier Quality Assurance',
+        desc: 'Rigorous multi-stage QA with inter-annotator agreement (IAA) consensus checks and spot audits guaranteeing 99%+ accuracy.',
+      },
+      {
+        title: 'Secure On-Premise / Air-Gapped Labeling',
+        desc: 'Strict data security controls with isolated tooling, role-based access, and zero data leakage policies.',
+      },
+    ],
+    highlights: [
+      '8+ Indian Vernacular Languages',
+      'Technical Code & Schema Annotation',
+      'Multi-Tier Inter-Annotator Agreement (IAA)',
+      'Multimodal (Text, Audio, Document, Image)',
+      'Strict NDA & Data Isolation Controls',
+      'Scalable Managed Delivery Operations',
+    ],
+    category: 'Workforce',
+    techStack: [
+      {
+        label: 'Annotation Tooling Supported',
+        items: ['Label Studio', 'CVAT', 'Prodigy', 'Custom Annotation Portals', 'Argilla'],
+      },
+      {
+        label: 'Data Modalities',
+        items: ['Structured Text & Dialogue', 'Source Code & ASTs', 'Document OCR & Layout', 'Audio & Speech', 'Images & Video'],
+      },
+      {
+        label: 'Supported Regional Languages',
+        items: ['Hindi', 'Bengali', 'Tamil', 'Telugu', 'Marathi', 'Gujarati', 'Kannada', 'Malayalam'],
+      },
+    ],
+    processSteps: [
+      {
+        step: 1,
+        title: 'Annotation Guideline & Schema Alignment',
+        description: 'Creating comprehensive annotation guidelines, edge-case decision trees, and labeling schemas tailored to your model objectives.',
+      },
+      {
+        step: 2,
+        title: 'Annotator Calibration & Pilot Batch',
+        description: 'Training specialized annotators and running an initial pilot batch to measure inter-annotator agreement (IAA) and refine guidelines.',
+      },
+      {
+        step: 3,
+        title: 'Scaled Annotation & Continuous QA',
+        description: 'Production-scale labeling with automated consensus checks, random sample audits by lead reviewers, and real-time error tracking.',
+      },
+      {
+        step: 4,
+        title: 'Packaging & Formatted Delivery',
+        description: 'Validated datasets exported in your required format (JSONL, Parquet, HuggingFace datasets) with complete provenance and QA audit logs.',
+      },
+    ],
+    deliverables: [
+      'Clean, validated datasets formatted for immediate model ingestion',
+      'Inter-annotator agreement (Cohen’s Kappa / Fleiss’ Kappa) QA reports',
+      'Comprehensive annotation guideline documentation and edge-case registers',
+      'Signed compliance certificates verifying zero data leakage',
+    ],
+    faqs: [
+      {
+        question: 'What quality assurance measures do you use to ensure accuracy?',
+        answer: 'We employ a multi-tier QA workflow: 100% of annotations pass through automated validation, 20%–30% are dual-annotated to measure inter-annotator agreement (IAA), and senior QA leads conduct daily spot audits to maintain >99% accuracy.',
+      },
+      {
+        question: 'Can you handle Indian regional language annotation?',
+        answer: 'Yes. We have native speaker capabilities across Hindi, Bengali, Tamil, Telugu, Marathi, Gujarati, Kannada, and Malayalam for conversational AI, translation quality, and dialect verification.',
+      },
+      {
+        question: 'How do you handle data privacy and security?',
+        answer: 'All annotators operate within secured, monitored virtual environments with strict role-based access control, watermark protection, and strict NDAs. Zero client data is ever exported or retained.',
+      },
+    ],
+  },
 ]
 
 export const SERVICE_CATEGORIES = [
@@ -1185,6 +1683,7 @@ export const SERVICE_CATEGORIES = [
   'Development',
   'Enterprise',
   'Infrastructure',
+  'Workforce',
   'Automation',
   'Strategy',
   'Design',

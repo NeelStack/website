@@ -6,13 +6,13 @@ interface PageProps {
 }
 
 const ALIAS_MAP: Record<string, string> = {
-  'naukari-mitra': '/products/naukarimitra',
-  'naukarimitra': '/products/naukarimitra',
-  'sarakarimitra': '/products/sarkarimitra',
-  'sarkari-mitra': '/products/sarkarimitra',
-  'sarkarimitra': '/products/sarkarimitra',
-  'ai-company-os': '/products/ai-company-os',
-  'toolvines': '/products/toolvines',
+  'naukari-mitra': '/products',
+  'naukarimitra': '/products',
+  'sarakarimitra': '/products',
+  'sarkari-mitra': '/products',
+  'sarkarimitra': '/products',
+  'ai-company-os': '/products',
+  'toolvines': 'https://toolvines.com',
   'dhruvaos': '/products/dhruvaos',
 }
 

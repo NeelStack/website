@@ -130,9 +130,9 @@ export function Footer({ showPreFooterCta = false }: { showPreFooterCta?: boolea
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
-        <div className="py-8 sm:py-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-10">
+        <div className="py-8 sm:py-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 sm:gap-8">
           {/* Brand column */}
-          <div className="col-span-2 md:col-span-4 lg:col-span-2">
+          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-2">
             <FooterLogo />
             <p className="mt-2 text-xs font-bold text-primary tracking-wide">
               Global Software Products • AI Systems • Enterprise Engineering
@@ -166,6 +166,7 @@ export function Footer({ showPreFooterCta = false }: { showPreFooterCta?: boolea
           {/* Nav columns */}
           <FooterColumn title="Products" links={FOOTER_NAV.products} />
           <FooterColumn title="Services" links={FOOTER_NAV.services} />
+          <FooterColumn title="Workforce" links={FOOTER_NAV.workforce} />
           <FooterColumn title="Company" links={FOOTER_NAV.company} />
           <FooterColumn title="Legal" links={FOOTER_NAV.legal} />
         </div>

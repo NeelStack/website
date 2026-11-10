@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: 'Explore proprietary software products, open developer utilities, and enterprise platforms engineered by NeelStack.',
   },
   description:
-    'Explore the NeelStack Solutions product portfolio — including ToolVines (live), DhruvaOS (in development), and our AI workforce research direction.',
+    'Explore the NeelStack Solutions product portfolio — including DhruvaOS (flagship beta), ToolVines (live platform), and our specialist AI workforce engineering capabilities.',
   alternates: {
     canonical: '/portfolio',
   },
@@ -30,58 +30,25 @@ export const metadata: Metadata = {
 
 const PORTFOLIO_PROJECTS: Project[] = [
   {
-    id: 'toolvines',
-    name: 'ToolVines',
-    description:
-      'Browser-based productivity platform providing PDF, image, document, and AI tools with zero server-side file retention and client-side WebAssembly compute.',
-    status: 'live',
-    category: 'Productivity Platform',
-    tags: ['WebAssembly', 'Next.js', 'Zero-Retention', 'Browser Compute'],
-    href: 'https://toolvines.com',
-    year: '2026',
-  },
-  {
     id: 'dhruvaos',
     name: 'DhruvaOS',
     description:
-      "NeelStack's school operating system, currently being prepared for launch. Features school onboarding, admin setup, CMS, official website, mobile app, desktop app, and planned AI capabilities.",
+      "NeelStack's flagship AI-native school operating system, currently in active beta and onboarding early pilot institutions. Features unified school onboarding, automated fee reconciliation, CMS, cross-platform apps, and campus AI.",
     status: 'in-progress',
-    category: 'School Operating System',
-    tags: ['FastAPI', 'Next.js', 'PostgreSQL', 'Multi-Tenant', 'Tauri'],
+    category: 'Flagship School Operating System',
+    tags: ['FastAPI', 'Next.js 16', 'PostgreSQL 16 RLS', 'Multi-Tenant', 'Tauri / Flutter'],
     href: '/products/dhruvaos',
     year: '2026',
   },
   {
-    id: 'ai-workforce',
-    name: 'AI Workforce Platform / AI Company OS',
+    id: 'toolvines',
+    name: 'ToolVines',
     description:
-      'Research and product direction exploring specialized AI agents (Executive, Engineering, Operations, Sales) for organizational intelligence and workflow automation.',
-    status: 'in-progress',
-    category: 'AI Systems Architecture',
-    tags: ['LangGraph', 'Model Context Protocol (MCP)', 'Multi-Agent', 'Memory'],
-    href: '/products/ai-company-os',
-    year: '2026',
-  },
-  {
-    id: 'naukarimitra',
-    name: 'NaukariMitra',
-    description:
-      'Planned career exploration and competitive exam preparation platform with guided learning workflows and structured resources.',
-    status: 'in-progress',
-    category: 'Career & Learning (Planned)',
-    tags: ['React', 'AI Assistance', 'Education', 'Mock Testing'],
-    href: '/products/naukarimitra',
-    year: '2026',
-  },
-  {
-    id: 'sarkarimitra',
-    name: 'SarkariMitra',
-    description:
-      'Planned public services and citizen guidance platform designed to help users discover and navigate government schemes and public documentation.',
-    status: 'in-progress',
-    category: 'Public Services (Planned)',
-    tags: ['Next.js', 'Conversational AI', 'Public Services'],
-    href: '/products/sarkarimitra',
+      'Browser-native productivity platform providing 320+ PDF, image, document, and developer utilities with zero server-side file retention and client-side Rust WebAssembly compute.',
+    status: 'live',
+    category: 'Developer Platform (Live)',
+    tags: ['Rust WASM', 'Next.js 16', 'Zero-Retention', 'Client-Side Compute'],
+    href: 'https://toolvines.com',
     year: '2026',
   },
 ]

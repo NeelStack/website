@@ -146,20 +146,20 @@ export function ThemeToggle({ className }: { className?: string }) {
     return (
       <div
         className={cn(
-          'group relative flex items-center justify-between w-[68px] h-[32px] rounded-full px-2 select-none shrink-0 border-2 transition-none',
-          'bg-gradient-to-r from-amber-100 via-sky-50 to-amber-100 border-amber-300/80',
-          'dark:bg-gradient-to-r dark:from-slate-950 dark:via-[#0b1329] dark:to-slate-950 dark:border-cyan-500/30',
+          'group relative flex items-center justify-between w-[54px] h-[28px] rounded-full px-1.5 select-none shrink-0 border transition-none',
+          'bg-slate-100 border-slate-300/80',
+          'dark:bg-slate-800/90 dark:border-slate-700/80',
           className
         )}
         aria-hidden="true"
       >
-        <Sun className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400/40 opacity-75 shrink-0" />
-        <Moon className="h-3.5 w-3.5 text-slate-400/50 dark:text-cyan-400 opacity-75 shrink-0" />
+        <Sun className="h-3 w-3 text-amber-500/50 dark:text-slate-500 opacity-60 shrink-0" />
+        <Moon className="h-3 w-3 text-slate-400 dark:text-cyan-400/50 opacity-60 shrink-0" />
         <div
           className={cn(
-            'absolute top-[2px] h-[24px] w-[24px] rounded-full border-2 transition-none',
-            'left-[2px] bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-200 border-amber-900/80 shadow-[1px_1px_0px_#78350f]',
-            'dark:left-[38px] dark:bg-gradient-to-tr dark:from-slate-950 dark:via-cyan-950 dark:to-slate-900 dark:border-cyan-300 dark:shadow-[0_0_12px_rgba(6,182,212,0.7)]'
+            'absolute top-[2px] h-[22px] w-[22px] rounded-full border transition-none shadow-xs',
+            'left-[2px] bg-white border-slate-200/90',
+            'dark:left-[30px] dark:bg-slate-900 dark:border-slate-700'
           )}
         />
       </div>
@@ -176,48 +176,44 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       title={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       className={cn(
-        'group relative flex items-center justify-between w-[68px] h-[32px] rounded-full px-2 cursor-pointer select-none shrink-0 tactile-switch-3d transition-all duration-300',
+        'group relative flex items-center justify-between w-[54px] h-[28px] rounded-full px-1.5 cursor-pointer select-none shrink-0 tactile-switch-3d transition-colors duration-200',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
         isDark
-          ? 'bg-gradient-to-r from-slate-950 via-[#0b1329] to-slate-950 border-2 border-cyan-500/30 shadow-[inset_0_2px_4px_rgba(0,0,0,0.8),0_1px_0_rgba(255,255,255,0.08)]'
-          : 'bg-gradient-to-r from-amber-100 via-sky-50 to-amber-100 border-2 border-amber-300/80 shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_1px_0_rgba(255,255,255,0.9)]',
+          ? 'bg-slate-800/90 border-slate-700/80 hover:bg-slate-800'
+          : 'bg-slate-100 border-slate-300/80 hover:bg-slate-200/80',
         className
       )}
     >
       {/* Background Track Icons */}
       <Sun
         className={cn(
-          'h-3.5 w-3.5 transition-all duration-300 z-0 pointer-events-none',
-          isDark
-            ? 'text-amber-400/40 scale-75'
-            : 'text-amber-600 scale-100 drop-shadow-[0_0_6px_rgba(245,158,11,0.5)]'
+          'h-3 w-3 transition-opacity duration-200 z-0 pointer-events-none',
+          isDark ? 'opacity-25 text-slate-500' : 'opacity-60 text-amber-600/80'
         )}
       />
       <Moon
         className={cn(
-          'h-3.5 w-3.5 transition-all duration-300 z-0 pointer-events-none',
-          isDark
-            ? 'text-cyan-400 scale-100 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]'
-            : 'text-slate-400/50 scale-75'
+          'h-3 w-3 transition-opacity duration-200 z-0 pointer-events-none',
+          isDark ? 'opacity-60 text-cyan-400/80' : 'opacity-25 text-slate-400'
         )}
       />
 
-      {/* 3D Elevated Sliding Switch Knob */}
+      {/* Subtle Elevated Sliding Switch Knob */}
       <motion.div
         initial={false}
         animate={{
-          x: isDark ? 36 : 0,
+          x: isDark ? 28 : 0,
         }}
         transition={{
           type: 'spring',
-          stiffness: 520,
-          damping: 30,
+          stiffness: 550,
+          damping: 32,
         }}
         className={cn(
-          'absolute top-[2px] left-[2px] h-[24px] w-[24px] rounded-full flex items-center justify-center z-10 pointer-events-none border-2 transition-colors duration-300',
+          'absolute top-[2px] left-[2px] h-[22px] w-[22px] rounded-full flex items-center justify-center z-10 pointer-events-none border transition-colors duration-200 shadow-xs',
           isDark
-            ? 'bg-gradient-to-tr from-slate-950 via-cyan-950 to-slate-900 border-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.7),1px_1px_0px_#0284c7]'
-            : 'bg-gradient-to-tr from-amber-400 via-amber-300 to-yellow-200 border-amber-900/80 shadow-[1px_1px_0px_#78350f,0_2px_4px_rgba(245,158,11,0.3)]'
+            ? 'bg-slate-900 border-slate-700 text-slate-200'
+            : 'bg-white border-slate-200/90 text-slate-700'
         )}
       >
         <motion.div
@@ -225,13 +221,13 @@ export function ThemeToggle({ className }: { className?: string }) {
           initial={false}
           animate={{ rotate: 0, scale: 1, opacity: 1 }}
           exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
-          transition={{ duration: 0.18 }}
+          transition={{ duration: 0.16 }}
           className="flex items-center justify-center"
         >
           {isDark ? (
-            <Moon className="h-3 w-3 text-cyan-200 drop-shadow-[0_0_4px_rgba(6,182,212,0.9)]" />
+            <Moon className="h-2.5 w-2.5 text-cyan-300" />
           ) : (
-            <Sun className="h-3 w-3 text-amber-950 drop-shadow-[0_1px_0px_rgba(255,255,255,0.6)]" />
+            <Sun className="h-2.5 w-2.5 text-amber-500" />
           )}
         </motion.div>
       </motion.div>

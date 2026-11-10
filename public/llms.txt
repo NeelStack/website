@@ -1,31 +1,37 @@
 # NeelStack Solutions
 
-> NeelStack Solutions Private Limited is an enterprise AI engineering and custom software development company incorporated in Uttar Pradesh, India (CIN: U62011UP2026PTC250857). We design, architect, and deploy production AI systems (LLMs, RAG, autonomous multi-agent swarms, Model Context Protocol tools), high-throughput SaaS platforms, and enterprise digital solutions.
+> NeelStack Solutions Private Limited is an AI-native technology and software engineering company incorporated in Uttar Pradesh, India (CIN: U62011UP2026PTC250857). We build proprietary software products, engineer custom business applications, modernise legacy systems, and deliver specialised AI and software engineering capabilities through flexible delivery teams.
 
-## Core Products & Platforms
+## 1. Proprietary Software Products
 
-- [DhruvaOS](https://neelstack.com/products/dhruvaos): Unified AI-powered School Operating System (EdOS) integrating admissions, fee reconciliation, RFID/biometric campus attendance, and generative lesson planning. Full production launch November 14, 2026.
-- [ToolVines](https://neelstack.com/products/toolvines): High-performance suite of 320+ browser-native developer utilities, cryptography formatters, and PDF engines executing 100% client-side via Rust WebAssembly with zero data retention (https://toolvines.com).
-- [AI Company OS](https://neelstack.com/products/ai-company-os): Enterprise AI research framework and autonomous multi-agent workforce platform orchestrating specialized executive and operational agent swarms with human-in-the-loop authorization gates.
-- [AI Company OS Whitepaper](https://neelstack.com/whitepapers/ai-company-operating-system): Architectural charter and technical specification for autonomous enterprise organizational intelligence.
+- [DhruvaOS](https://neelstack.com/products/dhruvaos): Flagship AI-powered School Operating System (School ERP / EdOS). Unifying admissions, fee reconciliation, RFID/biometric campus attendance, examination suites, and multi-tenant school governance. Beta live with early institutional pilots; full production launch November 14, 2026 (https://dhruvaos.com).
+- [ToolVines](https://neelstack.com/products/toolvines): High-performance browser-native developer utilities, cryptography formatters, and PDF engines executing 100% client-side via Rust WebAssembly with zero remote document storage (https://toolvines.com).
 
-## Enterprise Engineering Services
+## 2. Enterprise Software & AI Engineering Services
 
-- [AI & Autonomous Agents](https://neelstack.com/services/ai-development): Custom multi-agent swarms (LangGraph, LangChain), domain knowledge RAG pipelines, cognitive search, and Model Context Protocol (MCP) tool integration.
-- [Web & Mobile Applications](https://neelstack.com/services/web-applications): High-performance Next.js 16 web applications, sub-second API backends, and React Native / Flutter mobile applications.
-- [Custom Software Development](https://neelstack.com/services/custom-software): Schema-isolated multi-tenant ERP platforms, microservices architecture, and business automation workflows.
-- [Cloud Architecture & DevOps](https://neelstack.com/services/devops-cloud): Kubernetes orchestration, automated CI/CD pipelines, zero-downtime database migrations, and cloud cost optimization.
-- [Enterprise Platforms](https://neelstack.com/services/enterprise-platforms): High-concurrency event-driven architectures, distributed message queues, and API gateways.
-- [Database Systems](https://neelstack.com/services/database-systems): PostgreSQL schema partitioning, vector indexing (pgvector, Milvus), and automated compliance data retention.
+- [Custom Software Development](https://neelstack.com/services/custom-software): Bespoke business software, schema-isolated multi-tenant ERP platforms, internal workflow engines, and secure API systems.
+- [AI Application & Agent Development](https://neelstack.com/services/ai-development): Custom multi-agent systems (LangGraph, LangChain), domain knowledge RAG pipelines, cognitive search, and Model Context Protocol (MCP) tool integration.
+- [Legacy System Modernization](https://neelstack.com/services/legacy-modernisation): Deconstructing monolithic codebases into scalable microservices and APIs using strangler-fig patterns, dual-write synchronization, and automated regression safeguards.
+- [Cloud Architecture & DevOps](https://neelstack.com/services/devops-cloud): Multi-AZ Kubernetes orchestration, automated CI/CD pipelines, containerization, and cloud infrastructure optimization.
+- [Modern Web Applications](https://neelstack.com/services/web-applications): High-performance Next.js 16 web applications, sub-second API backends, and responsive SaaS dashboards.
+- [Mobile App Development](https://neelstack.com/services/mobile-development): Cross-platform iOS and Android mobile solutions with offline synchronization (React Native, Flutter).
+
+## 3. Specialist Engineering & AI Workforce
+
+- [Contract Software Engineering](https://neelstack.com/services/contract-engineering): Senior contract software developers across TypeScript/Next.js, Python FastAPI, Java, and Cloud DevOps for flexible staff augmentation.
+- [Dedicated Engineering Pods](https://neelstack.com/services/dedicated-teams): Managed cross-functional engineering teams (3–8 specialists) governed by agile sprint retainers with 100% client code ownership.
+- [AI Model Evaluation](https://neelstack.com/services/ai-model-evaluation): Human-in-the-loop (HITL) evaluation, RLHF preference ranking, prompt-response accuracy benchmarking, and model output validation.
+- [AI Data Annotation & Operations](https://neelstack.com/services/ai-data-annotation): Domain-specific data collection, multilingual Indian vernacular validation, code review benchmarking, and managed QA pipelines.
+- [Vendor Partnerships](https://neelstack.com/partnerships): Technology subcontracting, delivery partnerships, and vendor onboarding for IT service integrators and enterprise software firms.
 
 ## Corporate Details & Contact
 
 - Legal Entity: NeelStack Solutions Private Limited
 - CIN: U62011UP2026PTC250857
 - GSTIN: 09AALCN9356Q1ZA
-- Startup India Registration: DIPP278202
+- Startup India Registration: DIPP278202 (Recognized)
 - MSME Registration: UDYAM-UP-32-0131171
-- Leadership: Shyam Chaurasiya (Founder & CEO), Neelam Chaurasiya (Co-Founder & Operations)
+- Incorporation Date: 31 August 2026
+- Leadership: Shyam Chaurasiya (Founder & CEO), Neelam Chaurasiya (Co-Founder & Business Operations)
 - Primary Contact: contact@neelstack.com
 - Documentation & Support: https://neelstack.com/support
-

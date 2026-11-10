@@ -8,11 +8,14 @@ import { CheckCircle2, AlertCircle, RefreshCw, School, Sparkles, Building2, Laye
 
 const WHAT_DO_YOU_NEED_OPTIONS = [
   'Custom Software & ERP Development',
-  'Legacy Modernization & Architecture Upgrade',
-  'Static Website & High-Speed Web Development',
+  'AI Systems, RAG & Autonomous Agents',
+  'Legacy Modernization & Cloud Migration',
+  'Contract Engineering & Dedicated Pods',
+  'AI Model Evaluation & Data Annotation',
+  'Vendor Subcontracting & Systems Integration',
   'DhruvaOS School Operating System',
-  'AI Systems & Autonomous Agents',
-  'Other Inquiries',
+  'Static Website & High-Speed Web Development',
+  'General Inquiry / Other',
 ]
 
 const DHRUVA_ROLES = [
@@ -84,10 +87,16 @@ function ContactFormInner() {
       let nextMessage = prev.message
 
       if (serviceParam) {
-        if (serviceParam.includes('ai') || serviceParam.includes('agent') || serviceParam.includes('automation')) {
-          nextNeed = 'AI Systems & Autonomous Agents'
+        if (serviceParam.includes('contract') || serviceParam.includes('pod') || serviceParam.includes('dedicated')) {
+          nextNeed = 'Contract Engineering & Dedicated Pods'
+        } else if (serviceParam.includes('evaluation') || serviceParam.includes('annotation') || serviceParam.includes('rlhf')) {
+          nextNeed = 'AI Model Evaluation & Data Annotation'
+        } else if (serviceParam.includes('vendor') || serviceParam.includes('partner') || serviceParam.includes('subcontract')) {
+          nextNeed = 'Vendor Subcontracting & Systems Integration'
+        } else if (serviceParam.includes('ai') || serviceParam.includes('agent') || serviceParam.includes('automation')) {
+          nextNeed = 'AI Systems, RAG & Autonomous Agents'
         } else if (serviceParam.includes('legacy') || serviceParam.includes('upgrade') || serviceParam.includes('moderniz')) {
-          nextNeed = 'Legacy Modernization & Architecture Upgrade'
+          nextNeed = 'Legacy Modernization & Cloud Migration'
         } else if (serviceParam.includes('static') || serviceParam.includes('fast-web') || serviceParam.includes('landing')) {
           nextNeed = 'Static Website & High-Speed Web Development'
         } else if (serviceParam.includes('dhruva') || serviceParam.includes('school')) {
@@ -97,15 +106,18 @@ function ContactFormInner() {
         }
       }
 
-      if (inquiryParam === 'training') {
-        nextNeed = 'Custom Software & ERP Development'
-        if (!nextMessage) {
-          nextMessage = 'Inquiry regarding Enterprise AI & Architecture Engineering Training Programs.'
+      if (subjectParam) {
+        const subLower = subjectParam.toLowerCase()
+        if (subLower.includes('partner') || subLower.includes('subcontract') || subLower.includes('vendor')) {
+          nextNeed = 'Vendor Subcontracting & Systems Integration'
+        } else if (subLower.includes('contract') || subLower.includes('pod') || subLower.includes('dedicated')) {
+          nextNeed = 'Contract Engineering & Dedicated Pods'
+        } else if (subLower.includes('evaluation') || subLower.includes('annotation')) {
+          nextNeed = 'AI Model Evaluation & Data Annotation'
         }
-      }
-
-      if (subjectParam && !nextMessage) {
-        nextMessage = `Inquiry regarding ${subjectParam}.`
+        if (!nextMessage) {
+          nextMessage = `Inquiry regarding ${subjectParam}.`
+        }
       }
 
       return {
