@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import {
-  ShieldCheck,
   Mail,
   Bot,
   Cpu,
@@ -16,12 +15,11 @@ import { Container } from '@/components/ui/container'
 export const FOUNDING_LEADERSHIP = [
   {
     name: 'Shyam Sundar Chaurasiya',
-    role: 'Founder & Engineering Lead',
-    badge: 'Founder & Legal CEO',
+    role: 'Founder & CEO',
     type: 'human-founder',
     avatarSrc: '/images/illustrations/avatar-leader.png',
-    credentials: 'MCA Registered Director · CIN: U62011UP2026PTC250857',
-    bio: 'Founder, legal CEO, and lead systems architect directing technology architecture, engineering roadmap, and product execution across all NeelStack platforms.',
+    credentials: 'Director · CIN: U62011UP2026PTC250857',
+    bio: 'Founder, CEO, and lead systems architect directing technology architecture, engineering roadmap, and product execution across all NeelStack platforms.',
     focusAreas: [
       'Systems Architecture & Cloud Topology',
       'Next.js 16 SSR & Python FastAPI Microservices',
@@ -29,16 +27,14 @@ export const FOUNDING_LEADERSHIP = [
     ],
     email: 'contact@neelstack.com',
     accentColor: 'border-blue-500/30 hover:border-blue-500/60',
-    badgeClass: 'bg-blue-500/10 text-blue-600 dark:text-cyan-300 border-blue-500/25',
   },
   {
     name: 'Neelam Chaurasiya',
-    role: 'Co-Founder & Business Operations Lead',
-    badge: 'Co-Founder & Operations Lead',
+    role: 'Co-Founder & Head of Operations',
     type: 'human-founder',
     avatarSrc: '/images/illustrations/avatar-cofounder-female.png',
-    credentials: 'Co-founder & Governance Officer · GSTIN: 09AALCN9356Q1ZA',
-    bio: 'Oversees organizational planning, corporate governance, financial logistics, and institutional partner relationships. Guides statutory compliance and operational growth.',
+    credentials: 'Co-Founder & Director · GSTIN: 09AALCN9356Q1ZA',
+    bio: 'Co-Founder directing organizational planning, corporate governance, financial logistics, and institutional partner relationships. Guides statutory compliance and operational growth.',
     focusAreas: [
       'Business Operations & Institutional Growth',
       'Statutory Compliance (GST, MSME, DPIIT)',
@@ -46,7 +42,6 @@ export const FOUNDING_LEADERSHIP = [
     ],
     email: 'contact@neelstack.com',
     accentColor: 'border-purple-500/30 hover:border-purple-500/60',
-    badgeClass: 'bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/25',
   },
 ]
 
@@ -54,7 +49,6 @@ export const TECHNICAL_LEADERSHIP = [
   {
     name: 'Pradeep Kumar Maurya',
     role: 'Marketing Lead',
-    badge: 'Growth Strategy & Marketing',
     avatarSrc: '/images/illustrations/avatar-business.png',
     bio: 'Directs marketing strategy, developer relations, brand architecture, and educational outreach to expand NeelStack products and services.',
     focusAreas: [
@@ -63,12 +57,10 @@ export const TECHNICAL_LEADERSHIP = [
       'Developer Advocacy & Product Marketing',
     ],
     email: 'contact@neelstack.com',
-    badgeClass: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/25',
   },
   {
     name: 'Aman Singh',
     role: 'Senior Agentic AI & ML Developer',
-    badge: 'Agentic AI & ML Systems',
     avatarSrc: '/images/illustrations/avatar-engineer.png',
     bio: 'Specializes in autonomous agentic workflows, LangGraph state machines, Model Context Protocol tools, and vector RAG neural memory pipelines.',
     focusAreas: [
@@ -77,12 +69,10 @@ export const TECHNICAL_LEADERSHIP = [
       'Vector Embeddings & Semantic Search Pipelines',
     ],
     email: 'contact@neelstack.com',
-    badgeClass: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/25',
   },
   {
     name: 'Rakesh Kushwaha',
     role: 'Senior Systems Architect & Infrastructure Lead',
-    badge: 'Systems Architecture & Cloud Infra',
     avatarSrc: '/images/illustrations/hero-developer.png',
     bio: 'Leads distributed backend systems, multi-tenant database sharding, cloud edge reliability, and secure Docker/Kubernetes container orchestration.',
     focusAreas: [
@@ -91,12 +81,10 @@ export const TECHNICAL_LEADERSHIP = [
       'High-Throughput API Gateway Engineering',
     ],
     email: 'contact@neelstack.com',
-    badgeClass: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/25',
   },
   {
     name: 'Shyam Singh',
     role: 'Senior Full-Stack Engineer & Frontend Lead',
-    badge: 'Full-Stack & Frontend Lead',
     avatarSrc: '/images/illustrations/avatar-engineer.png',
     bio: 'Engineers high-performance web applications, sub-second Next.js SSR interfaces, client-side WebAssembly integrations, and accessible design systems.',
     focusAreas: [
@@ -105,12 +93,10 @@ export const TECHNICAL_LEADERSHIP = [
       'Design Systems & Responsive UX Architecture',
     ],
     email: 'contact@neelstack.com',
-    badgeClass: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/25',
   },
   {
     name: 'Vishnu Chaurasiya',
     role: 'Senior Full-Stack Developer',
-    badge: 'Full-Stack & Backend Systems',
     avatarSrc: '/images/illustrations/hero-developer.png',
     bio: 'Builds robust backend microservices, high-speed REST/GraphQL APIs, database query optimizations, and end-to-end automated testing suites.',
     focusAreas: [
@@ -119,7 +105,6 @@ export const TECHNICAL_LEADERSHIP = [
       'Automated Testing & Continuous Integration',
     ],
     email: 'contact@neelstack.com',
-    badgeClass: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/25',
   },
 ]
 
@@ -154,11 +139,11 @@ export function LeadershipShowcase() {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-primary uppercase tracking-widest bg-primary/10 px-3.5 py-1 rounded-full border border-primary/25">
             <Sparkles className="h-3.5 w-3.5 text-primary" />
-            [CORPORATE LEADERSHIP &amp; ENGINEERING TEAM]
+            Leadership &amp; Engineering
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground tracking-tight">
-            Founders, Leadership &amp; Engineering Team
+            Founders &amp; Engineering Team
           </h2>
 
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -170,7 +155,7 @@ export function LeadershipShowcase() {
         <div className="space-y-6">
           <div className="flex items-center gap-2 pb-2 border-b border-border/60 max-w-4xl mx-auto">
             <span className="text-xs font-mono font-bold text-primary uppercase tracking-widest">
-              {"// Founding & Executive Leadership"}
+              Founding Leadership
             </span>
           </div>
 
@@ -183,11 +168,6 @@ export function LeadershipShowcase() {
                 >
                   {/* Visual Avatar Banner */}
                   <div className="relative flex items-end justify-center pt-8 pb-0 border-b border-border/50 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">
-                    <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono font-bold text-emerald-500 dark:text-emerald-400">
-                      <ShieldCheck className="h-3 w-3" />
-                      Verified Leader
-                    </div>
-
                     <Image
                       src={person.avatarSrc}
                       alt={`${person.name} illustration portrait`}
@@ -203,15 +183,11 @@ export function LeadershipShowcase() {
                   {/* Card Body */}
                   <div className="p-6 flex flex-col justify-between flex-1 gap-5">
                     <div className="space-y-3">
-                      <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase border ${person.badgeClass}`}>
-                        {person.badge}
-                      </span>
-
                       <div>
                         <h3 className="font-heading text-xl sm:text-2xl font-extrabold text-foreground tracking-tight">
                           {person.name}
                         </h3>
-                        <p className="text-xs font-bold uppercase tracking-wider mt-0.5 text-primary">
+                        <p className="text-xs font-bold uppercase tracking-wider mt-1 text-primary">
                           {person.role}
                         </p>
                       </div>
@@ -260,7 +236,7 @@ export function LeadershipShowcase() {
         <div className="space-y-6 max-w-6xl mx-auto">
           <div className="flex items-center gap-2 pb-2 border-b border-border/60">
             <span className="text-xs font-mono font-bold text-primary uppercase tracking-widest">
-              {"// Technical Leadership & Core Engineering Team"}
+              Technical &amp; Engineering Team
             </span>
           </div>
 
@@ -286,16 +262,12 @@ export function LeadershipShowcase() {
 
                 {/* Member Body */}
                 <div className="p-5 flex flex-col justify-between flex-1 gap-4">
-                  <div className="space-y-2">
-                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-wider uppercase border ${member.badgeClass}`}>
-                      {member.badge}
-                    </span>
-
+                  <div className="space-y-1.5">
                     <div>
                       <h4 className="font-heading text-base sm:text-lg font-bold text-foreground">
                         {member.name}
                       </h4>
-                      <p className="text-[11px] font-semibold text-primary mt-0.5">
+                      <p className="text-xs font-semibold text-primary mt-0.5">
                         {member.role}
                       </p>
                     </div>

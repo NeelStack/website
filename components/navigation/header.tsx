@@ -25,6 +25,10 @@ import {
   Briefcase,
   Info,
   Rocket,
+  CheckCircle2,
+  FileCheck,
+  Layers,
+  Handshake,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -96,8 +100,8 @@ const SERVICES_MENU: {
     },
     {
       title: 'Legacy Modernization',
-      href: '/services',
-      description: 'Monolith deconstruction, microservices refactoring & zero-downtime data migration.',
+      href: '/services/legacy-modernisation',
+      description: 'Monolith deconstruction, microservices refactoring & dual-write data migration.',
       icon: RefreshCw,
       iconColor: 'text-indigo-500 dark:text-indigo-400',
       iconBg: 'bg-indigo-500/10 border-indigo-500/20',
@@ -143,22 +147,22 @@ const PRODUCTS_MENU = {
   ],
   secondary: [
     {
-      title: 'AI Company OS',
-      description: 'Autonomous multi-agent enterprise workforce platform & operating system.',
-      href: '/products/ai-company-os',
-      icon: Bot,
-    },
-    {
-      title: 'Strategic Whitepaper v1.0',
-      description: 'Architectural thesis on the AI company operating system & agent swarms.',
-      href: '/whitepapers/ai-company-operating-system',
-      icon: FileText,
-    },
-    {
-      title: 'Product Roadmap & Pipeline',
-      description: 'Explore upcoming platforms including NaukariMitra & SarkariMitra.',
+      title: 'Public Product Roadmap',
+      description: 'Track milestones, beta releases, and active deployment stages.',
       href: '/roadmap',
       icon: Rocket,
+    },
+    {
+      title: 'DhruvaOS Pilot Program',
+      description: 'Request early institutional access & campus migration assistance.',
+      href: '/book-consultation',
+      icon: Sparkles,
+    },
+    {
+      title: 'Products & Platforms Hub',
+      description: 'Explore all NeelStack software platforms and architecture.',
+      href: '/products',
+      icon: Layers,
     },
   ],
   footer: {
@@ -232,6 +236,75 @@ const COMPANY_MENU: {
     text: 'CIN: U62011UP2026PTC250857 · DPIIT Recognized Startup',
     ctaText: 'Read Whitepaper',
     ctaHref: '/whitepapers/ai-company-operating-system',
+  },
+}
+
+const WORKFORCE_MENU: {
+  label: string
+  column1: NavItem[]
+  column2: NavItem[]
+  footer: { text: string; ctaText: string; ctaHref: string }
+} = {
+  label: 'Workforce',
+  column1: [
+    {
+      title: 'Contract Developers',
+      href: '/services/contract-engineering',
+      description: 'Senior contract engineers in Next.js, Python, Java, and DevOps.',
+      icon: Users,
+      iconColor: 'text-blue-500 dark:text-cyan-400',
+      iconBg: 'bg-blue-500/10 border-blue-500/20',
+      badge: '48h Match',
+    },
+    {
+      title: 'Dedicated Engineering Pods',
+      href: '/services/dedicated-teams',
+      description: 'Managed squads (3–8 specialists) with tech leads and automated QA.',
+      icon: Layers,
+      iconColor: 'text-cyan-500 dark:text-cyan-400',
+      iconBg: 'bg-cyan-500/10 border-cyan-500/20',
+    },
+    {
+      title: 'Vendor Subcontracting',
+      href: '/partnerships',
+      description: 'Structured IT subcontracting & delivery for enterprise system integrators.',
+      icon: Handshake,
+      iconColor: 'text-emerald-500 dark:text-emerald-400',
+      iconBg: 'bg-emerald-500/10 border-emerald-500/20',
+      badge: 'B2B Partners',
+    },
+  ],
+  column2: [
+    {
+      title: 'AI Model Evaluation',
+      href: '/services/ai-model-evaluation',
+      description: 'Human-in-the-loop evaluation, RLHF preference ranking & benchmark suites.',
+      icon: CheckCircle2,
+      iconColor: 'text-violet-500 dark:text-violet-400',
+      iconBg: 'bg-violet-500/10 border-violet-500/20',
+      badge: 'RLHF',
+    },
+    {
+      title: 'AI Data Annotation & QA',
+      href: '/services/ai-data-annotation',
+      description: 'Multilingual Indian vernacular validation, code review & multimodal labeling.',
+      icon: FileCheck,
+      iconColor: 'text-amber-500 dark:text-amber-400',
+      iconBg: 'bg-amber-500/10 border-amber-500/20',
+    },
+    {
+      title: 'Engineering Rates & Pricing',
+      href: '/pricing',
+      description: 'Transparent monthly sprint retainers and flexible pod engagements.',
+      icon: Rocket,
+      iconColor: 'text-rose-500 dark:text-rose-400',
+      iconBg: 'bg-rose-500/10 border-rose-500/20',
+    },
+  ],
+  footer: {
+    text: 'Screened engineers under strict IP assignment and confidentiality agreements',
+    ctaText: 'Explore Vendor Terms',
+    ctaHref: '/partnerships',
   },
 }
 
@@ -601,6 +674,124 @@ function CompanyDropdown({ onClose }: { onClose: () => void }) {
   )
 }
 
+function WorkforceDropdown({ onClose }: { onClose: () => void }) {
+  const pathname = usePathname()
+
+  return (
+    <div className="w-[560px] p-4">
+      <div className="grid grid-cols-2 gap-3">
+        {/* Column 1: Engineering Delivery */}
+        <div className="space-y-1">
+          <p className="px-2 pb-1 text-[10px] font-mono font-bold tracking-wider uppercase text-muted-foreground/70 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+            Engineering Delivery
+          </p>
+          <div className="space-y-1">
+            {WORKFORCE_MENU.column1.map((item) => {
+              const Icon = item.icon
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={onClose}
+                  className={cn(
+                    'group flex items-center justify-between gap-2.5 px-2.5 py-2 rounded-xl border transition-all duration-150',
+                    isActive
+                      ? 'bg-primary/10 border-primary/30 text-primary'
+                      : 'border-transparent hover:border-slate-200/80 dark:hover:border-white/[0.08] hover:bg-slate-100/70 dark:hover:bg-white/[0.04]'
+                  )}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div
+                      className={cn(
+                        'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-transform group-hover:scale-105',
+                        item.iconBg,
+                        item.iconColor
+                      )}
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors leading-tight truncate">
+                      {item.title}
+                    </span>
+                  </div>
+                  {item.badge && (
+                    <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/20 shrink-0">
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Column 2: AI Data & Evaluation */}
+        <div className="space-y-1">
+          <p className="px-2 pb-1 text-[10px] font-mono font-bold tracking-wider uppercase text-muted-foreground/70 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-violet-500" />
+            AI Operations & Rates
+          </p>
+          <div className="space-y-1">
+            {WORKFORCE_MENU.column2.map((item) => {
+              const Icon = item.icon
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={onClose}
+                  className={cn(
+                    'group flex items-center justify-between gap-2.5 px-2.5 py-2 rounded-xl border transition-all duration-150',
+                    isActive
+                      ? 'bg-primary/10 border-primary/30 text-primary'
+                      : 'border-transparent hover:border-slate-200/80 dark:hover:border-white/[0.08] hover:bg-slate-100/70 dark:hover:bg-white/[0.04]'
+                  )}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div
+                      className={cn(
+                        'flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border transition-transform group-hover:scale-105',
+                        item.iconBg,
+                        item.iconColor
+                      )}
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-foreground group-hover:text-primary transition-colors leading-tight truncate">
+                      {item.title}
+                    </span>
+                  </div>
+                  {item.badge && (
+                    <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20 shrink-0">
+                      {item.badge}
+                    </span>
+                  )}
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Dropdown Footer */}
+      <div className="mt-3 pt-2.5 border-t border-slate-200/80 dark:border-white/[0.08] flex items-center justify-between text-xs">
+        <span className="text-muted-foreground text-[10.5px] font-mono">
+          {WORKFORCE_MENU.footer.text}
+        </span>
+        <Link
+          href={WORKFORCE_MENU.footer.ctaHref}
+          onClick={onClose}
+          className="font-bold text-primary hover:underline flex items-center gap-1 text-[11px] transition-colors"
+        >
+          {WORKFORCE_MENU.footer.ctaText} <ArrowRight className="h-3 w-3" />
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 // ─── Desktop Navigation Bar ───────────────────────────────────────────────────
 
 function DesktopNavbar() {
@@ -730,7 +921,57 @@ function DesktopNavbar() {
         </AnimatePresence>
       </div>
 
-      {/* 3. Company Menu */}
+      {/* 3. Workforce Menu (Division 3) */}
+      <div className="relative">
+        <button
+          onClick={() => handleToggle('Workforce')}
+          onMouseEnter={() => handleOpen('Workforce')}
+          className={cn(
+            'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13.5px] font-medium transition-all duration-150 select-none cursor-pointer',
+            openMenu === 'Workforce'
+              ? 'text-primary font-bold bg-primary/10'
+              : pathname.startsWith('/services/contract-engineering') ||
+                pathname.startsWith('/services/dedicated-teams') ||
+                pathname.startsWith('/services/ai-model-evaluation') ||
+                pathname.startsWith('/services/ai-data-annotation') ||
+                pathname === '/partnerships'
+                ? 'text-primary font-bold bg-primary/10 border border-primary/20 shadow-2xs'
+                : 'text-muted-foreground hover:text-foreground hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
+          )}
+          aria-expanded={openMenu === 'Workforce'}
+        >
+          <span>Workforce</span>
+          <ChevronDown
+            className={cn(
+              'h-3.5 w-3.5 opacity-60 transition-transform duration-200',
+              (openMenu === 'Workforce' ||
+                pathname.startsWith('/services/contract-engineering') ||
+                pathname.startsWith('/services/dedicated-teams') ||
+                pathname.startsWith('/services/ai-model-evaluation') ||
+                pathname.startsWith('/services/ai-data-annotation') ||
+                pathname === '/partnerships') &&
+                'text-primary opacity-100',
+              openMenu === 'Workforce' && 'rotate-180'
+            )}
+          />
+        </button>
+
+        <AnimatePresence>
+          {openMenu === 'Workforce' && (
+            <motion.div
+              initial={{ opacity: 0, y: 8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 6, scale: 0.98 }}
+              transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute left-1/2 -translate-x-1/2 top-full mt-2.5 z-50 rounded-2xl border-2 border-slate-200/90 dark:border-white/10 bg-card/98 dark:bg-[#070b14]/98 backdrop-blur-xl shadow-2xl shadow-slate-900/15 dark:shadow-black/80 overflow-hidden"
+            >
+              <WorkforceDropdown onClose={() => setOpenMenu(null)} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* 4. Company Menu */}
       <div className="relative">
         <button
           onClick={() => handleToggle('Company')}
@@ -1126,7 +1367,7 @@ function MobileMenu({
                   onClick={onClose}
                   className="flex items-center justify-between p-2 rounded-xl text-xs font-bold text-primary hover:bg-primary/10 transition-colors pt-2 border-t border-border/40"
                 >
-                  <span>View All 6 Services</span>
+                  <span>View All 16 Engineering Services</span>
                   <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
@@ -1227,7 +1468,54 @@ function MobileMenu({
             )}
           </div>
 
-          {/* Accordion 3: Company */}
+          {/* Accordion 3: Workforce (Division 3) */}
+          <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] overflow-hidden bg-card/40">
+            <button
+              onClick={() => setOpenSection((prev) => (prev === 'Workforce' ? null : 'Workforce'))}
+              className="w-full flex items-center justify-between p-3.5 text-xs font-bold text-foreground bg-muted/30 hover:bg-muted/50 transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-blue-500" />
+                Engineering &amp; AI Workforce
+              </span>
+              <ChevronDown
+                className={cn('h-4 w-4 transition-transform text-muted-foreground', openSection === 'Workforce' && 'rotate-180 text-primary')}
+              />
+            </button>
+            {openSection === 'Workforce' && (
+              <div className="p-2 space-y-1 bg-card/80 border-t border-border/40">
+                {[...WORKFORCE_MENU.column1, ...WORKFORCE_MENU.column2].map((w) => {
+                  const Icon = w.icon
+                  const isActive = pathname === w.href
+                  return (
+                    <Link
+                      key={w.href}
+                      href={w.href}
+                      onClick={onClose}
+                      className={cn(
+                        'flex items-center gap-2.5 p-2 rounded-xl text-xs font-semibold transition-colors',
+                        isActive
+                          ? 'bg-primary/10 text-primary font-bold'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/60'
+                      )}
+                    >
+                      <div className={cn('flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border', w.iconBg, w.iconColor)}>
+                        <Icon className="h-3.5 w-3.5" />
+                      </div>
+                      <span className="flex-1 truncate">{w.title}</span>
+                      {w.badge && (
+                        <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-primary/10 text-primary border border-primary/20 shrink-0">
+                          {w.badge}
+                        </span>
+                      )}
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Accordion 4: Company */}
           <div className="rounded-2xl border border-slate-200/80 dark:border-white/[0.08] overflow-hidden bg-card/40">
             <button
               onClick={() => setOpenSection((prev) => (prev === 'Company' ? null : 'Company'))}

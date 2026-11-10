@@ -28,27 +28,28 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Software Products — DhruvaOS, ToolVines, AI Company OS',
+  title: 'Proprietary Software Products — DhruvaOS & ToolVines',
   openGraph: {
-    title: 'Proprietary Software Products — DhruvaOS, ToolVines, AI Company OS | NeelStack',
-    description: 'Explore production-grade software platforms built by NeelStack: DhruvaOS (School EdOS), ToolVines (Developer Suite), and AI Company OS.',
+    title: 'Proprietary Software Products — DhruvaOS & ToolVines | NeelStack',
+    description:
+      'Explore production-grade software platforms built by NeelStack: DhruvaOS (AI School Operating System) and ToolVines (Developer Utility Suite).',
     url: `${getSiteUrl()}/products`,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Proprietary Software Products — DhruvaOS, ToolVines, AI Company OS | NeelStack',
-    description: 'Explore production-grade software platforms built by NeelStack: DhruvaOS, ToolVines, and AI Company OS.',
+    title: 'Proprietary Software Products — DhruvaOS & ToolVines | NeelStack',
+    description:
+      'Explore production-grade software platforms built by NeelStack: DhruvaOS and ToolVines.',
   },
   description:
-    'Explore NeelStack’s proprietary software ecosystem — ToolVines browser-native tools, DhruvaOS school operating system, AI Company OS multi-agent framework, NaukariMitra, and SarkariMitra.',
+    'Explore NeelStack’s proprietary software ecosystem — DhruvaOS AI school operating system and ToolVines browser-native developer tools.',
   keywords: [
     'NeelStack Products',
     'DhruvaOS School OS',
+    'AI School ERP India',
     'ToolVines Developer Tools',
-    'AI Company Operating System',
-    'NaukariMitra AI Exam Prep',
-    'SarkariMitra Citizen Schemes',
+    'Client-Side WebAssembly Tools',
     'Proprietary Software India',
   ],
   alternates: {
@@ -56,27 +57,12 @@ export const metadata: Metadata = {
   },
 }
 
-// 5 Flagship & Planned Products Portfolio
+// Proprietary Products Portfolio
 const PORTFOLIO_PRODUCTS = [
-  {
-    id: 'toolvines',
-    name: 'ToolVines',
-    track: 'Track 1: Shipped & Scaling',
-    badge: 'Live in Production',
-    badgeColor: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
-    tagline: 'Browser-Native Developer & Productivity Platform',
-    desc: 'Suite of 320+ developer utilities, document formatters, crypto engines, and media tools executing 100% client-side via Rust WebAssembly. Zero server uploads, zero telemetry.',
-    icon: FileText,
-    iconColor: 'text-blue-500',
-    iconBg: 'bg-blue-500/10',
-    metrics: ['320+ Client-Side Tools', '0.00 KB Server Uploads', '100% Offline PWA'],
-    href: '/products/toolvines',
-    externalHref: 'https://toolvines.com',
-  },
   {
     id: 'dhruvaos',
     name: 'DhruvaOS',
-    track: 'Track 2: Ready for Launch',
+    track: 'Flagship Institutional Operating System',
     badge: 'Beta Live · Launch: 14 November 2026',
     badgeColor: 'border-purple-500/30 bg-purple-500/10 text-purple-400',
     tagline: 'Unified School Operating System (EdOS)',
@@ -88,59 +74,24 @@ const PORTFOLIO_PRODUCTS = [
     href: '/products/dhruvaos',
   },
   {
-    id: 'ai-company-os',
-    name: 'AI Company Operating System',
-    track: 'Track 4: Strategic Enterprise Framework',
-    badge: 'R&D Framework & Whitepaper v1.0',
-    badgeColor: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400',
-    tagline: 'Autonomous Multi-Agent Workforce Platform',
-    desc: 'We build enterprise AI solutions coordinating autonomous multi-agent systems, LLM/RAG architectures, LangGraph workflows, and Model Context Protocol (MCP) tool meshes under human governance.',
-    icon: Bot,
-    iconColor: 'text-cyan-500',
-    iconBg: 'bg-cyan-500/10',
-    metrics: ['11 Specialized Agents', 'MCP Schema mesh', 'LangGraph State Machines'],
-    href: '/products/ai-company-os',
-  },
-  {
-    id: 'naukarimitra',
-    name: 'NaukariMitra',
-    track: 'Track 3: Civic & EdTech Intelligence',
-    badge: 'Phase 3 Roadmap · Planned',
-    badgeColor: 'border-teal-500/30 bg-teal-500/10 text-teal-400',
-    tagline: 'AI-Powered Government Exam Companion',
-    desc: 'Democratizing competitive exam preparation for Indian aspirants across UPSC, SSC, Banking, Railways, and State PSCs through multilingual syllabus RAG and adaptive mock tests.',
-    icon: GraduationCap,
-    iconColor: 'text-teal-500',
-    iconBg: 'bg-teal-500/10',
-    metrics: ['50+ Exam Knowledge Graphs', '8+ Vernacular Languages', '100% Ad-Free'],
-    href: '/products/naukarimitra',
-  },
-  {
-    id: 'sarkarimitra',
-    name: 'SarkariMitra',
-    track: 'Track 3: Civic & EdTech Intelligence',
-    badge: 'Phase 3 Roadmap · Planned',
-    badgeColor: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
-    tagline: 'AI Citizen Assistance & Scheme Navigator',
-    desc: 'Bridging the welfare information gap for citizens across India. Plain-language conversational eligibility checks, dialect voice queries, document checklists, and verified official redirection.',
-    icon: Building,
-    iconColor: 'text-amber-500',
-    iconBg: 'bg-amber-500/10',
-    metrics: ['1,500+ Welfare Schemes', 'Voice-First Dialects', '100% .gov.in Redirection'],
-    href: '/products/sarkarimitra',
+    id: 'toolvines',
+    name: 'ToolVines',
+    track: 'Shipped & Scaling Platform',
+    badge: 'Live in Production',
+    badgeColor: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+    tagline: 'Browser-Native Developer & Productivity Platform',
+    desc: 'Suite of 320+ developer utilities, document formatters, crypto engines, and media tools executing 100% client-side via Rust WebAssembly. Zero server uploads, zero telemetry.',
+    icon: FileText,
+    iconColor: 'text-blue-500',
+    iconBg: 'bg-blue-500/10',
+    metrics: ['320+ Client-Side Tools', '0.00 KB Server Uploads', '100% Offline PWA'],
+    href: '/products/toolvines',
+    externalHref: 'https://toolvines.com',
   },
 ]
 
 // Technical Capability Comparison Matrix
 const CAPABILITY_MATRIX = [
-  {
-    product: 'ToolVines',
-    runtime: 'Rust WASM + React 19 + PWA',
-    target: 'Global Developers & Engineers',
-    highlight: '100% Client-Side In-Memory WASM; 0 Bytes Uploaded',
-    privacy: 'Zero Telemetry / No Database Retention',
-    status: 'Live in Production',
-  },
   {
     product: 'DhruvaOS',
     runtime: 'Turborepo + FastAPI + Postgres 16',
@@ -150,28 +101,12 @@ const CAPABILITY_MATRIX = [
     status: 'Beta Live · Launching 14 Nov 2026',
   },
   {
-    product: 'AI Company OS',
-    runtime: 'LangGraph + MCP Mesh + LiteLLM',
-    target: 'Enterprises & Tech Leadership',
-    highlight: '11 autonomous agent squads, cyclic state graphs, GraphRAG',
-    privacy: 'Human-in-the-Loop Multi-Tier Authorization',
-    status: 'R&D Framework / Whitepaper',
-  },
-  {
-    product: 'NaukariMitra',
-    runtime: 'FastAPI + pgvector + Bhashini AI',
-    target: 'Indian Competitive Exam Aspirants',
-    highlight: '50+ exam syllabus vector RAG & adaptive mock tests',
-    privacy: 'Zero Student Data Monetization / Ad-Free',
-    status: 'Planned (Phase 3 Roadmap)',
-  },
-  {
-    product: 'SarkariMitra',
-    runtime: 'Knowledge Graph + Multilingual Voice',
-    target: 'Citizens Across India',
-    highlight: 'Conversational eligibility & authentic .gov.in shield',
-    privacy: 'Zero PII Retention / Ephemeral Sessions',
-    status: 'Planned (Phase 3 Roadmap)',
+    product: 'ToolVines',
+    runtime: 'Rust WASM + React 19 + PWA',
+    target: 'Global Developers & Engineers',
+    highlight: '100% Client-Side In-Memory WASM; 0 Bytes Uploaded',
+    privacy: 'Zero Telemetry / No Database Retention',
+    status: 'Live in Production',
   },
 ]
 
@@ -184,7 +119,7 @@ export default function ProductsPage() {
           '@type': 'CollectionPage',
           name: 'NeelStack Proprietary Software Products',
           description:
-            'Explore NeelStack’s proprietary software ecosystem — ToolVines browser-native tools, DhruvaOS school operating system, AI Company OS multi-agent framework, NaukariMitra, and SarkariMitra.',
+            'Explore NeelStack’s proprietary software ecosystem — DhruvaOS AI school operating system and ToolVines browser-native tools.',
           url: `${getSiteUrl()}/products`,
           provider: {
             '@type': 'Organization',

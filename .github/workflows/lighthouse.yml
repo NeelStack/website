@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, master, dev]
 
+# Explicitly limit GITHUB_TOKEN permissions to read-only (CodeQL & OpenSSF Best Practice)
+permissions:
+  contents: read
+
 jobs:
   lighthouse:
     runs-on: ubuntu-latest

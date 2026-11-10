@@ -82,34 +82,22 @@ const WHY_NEELSTACK = [
 
 const JOURNEY = [
   {
-    name: 'ToolVines (toolvines.com)',
-    status: 'live',
-    label: 'Live Product',
-    detail: 'Browser-based productivity platform providing fast PDF, image, document, and AI tools with zero server-side file retention and client-side WebAssembly processing.',
-  },
-  {
     name: 'DhruvaOS (dhruvaos.com · Beta Live · Launching 14 November 2026)',
     status: 'launching',
     label: 'Beta Live · Full Launch 14 November 2026',
-    detail: "NeelStack's unified school operating system, currently in public beta and onboarding early pilot institutions. Features school onboarding, admin setup, CMS, official school website, mobile app, desktop app, institutional management, and intelligent AI workflows.",
+    detail: "NeelStack's flagship school operating system, currently in active beta and onboarding early pilot institutions. Features school onboarding, admin setup, dynamic fee ledgers, CMS, mobile apps, and intelligent AI campus workflows.",
   },
   {
-    name: 'AI Workforce Platform / AI Company OS',
-    status: 'dev',
-    label: 'Research & Product Direction',
-    detail: 'An AI-powered company operating layer exploring specialized autonomous agents (Executive, Engineering, Operations, Strategy) for organizational intelligence and workflow automation.',
+    name: 'ToolVines (toolvines.com)',
+    status: 'live',
+    label: 'Live Platform',
+    detail: 'Browser-based productivity platform providing fast PDF, image, document, and developer utilities with zero server-side file retention and client-side WebAssembly processing.',
   },
   {
-    name: 'NaukariMitra (naukarimitra.in)',
-    status: 'planned',
-    label: 'Planned Product',
-    detail: 'Planned career exploration and competitive exam preparation platform with guided learning workflows and structured resources.',
-  },
-  {
-    name: 'SarakariMitra (sarakarimitra.org)',
-    status: 'planned',
-    label: 'Planned Product',
-    detail: 'Planned public services and citizen guidance platform designed to help users discover and navigate government schemes and public documentation.',
+    name: 'Engineering & AI Workforce Capacity',
+    status: 'live',
+    label: 'Active Delivery',
+    detail: 'Deploying dedicated software pods, contract engineers, and specialized AI data operations (annotation, review, RLHF labeling, and model evaluation) for enterprise partners.',
   },
 ]
 
@@ -126,7 +114,7 @@ export default function AboutPage() {
             {
               '@type': 'Person',
               name: 'Shyam Sundar Chaurasiya',
-              jobTitle: 'Founder & Engineering Lead (Legal CEO)',
+              jobTitle: 'Founder & CEO',
             },
             {
               '@type': 'Person',
@@ -211,7 +199,22 @@ export default function AboutPage() {
               <div className="p-5 sm:p-6 rounded-2xl border border-border/70 bg-card/40 space-y-2">
                 <h3 className="font-heading text-xs font-bold text-muted-foreground uppercase tracking-wider">Company Background</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary engines: <strong className="text-foreground">NeelStack Services</strong> (AI engineering, LLM/RAG integration, agentic workflows, chatbot development & enterprise software), <strong className="text-foreground">DhruvaOS</strong> (School Operating System SaaS), and <strong className="text-foreground">ToolVines</strong> (free browser utilities).
+                  Incorporated on <strong className="text-foreground">31 August 2026</strong> in India ({SITE_CONFIG.legalName}), NeelStack operates through three complementary business divisions: <strong className="text-foreground">Proprietary Products</strong> (DhruvaOS and ToolVines), <strong className="text-foreground">Enterprise Engineering Services</strong> (AI systems, custom software, and legacy modernization), and <strong className="text-foreground">Specialist Workforce Pods</strong> (dedicated engineering pods, contract developers, and AI model evaluation).
+                </p>
+              </div>
+
+              {/* Workforce Delivery Model Transparency */}
+              <div className="p-5 sm:p-6 rounded-2xl border border-blue-500/30 bg-blue-500/5 space-y-2">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-heading text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                    Workforce &amp; Delivery Model
+                  </h3>
+                  <Link href="/partnerships" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                    Partnerships <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Our core engineering architecture, product leadership, and statutory operations are centralized in India. For global enterprises and system integrators requiring rapid elastic scale, we deploy pre-vetted senior contract engineers, dedicated full-stack pods, and specialized human-in-the-loop AI annotation teams backed by bilateral NDAs and 100% intellectual property assignment.
                 </p>
               </div>
             </div>

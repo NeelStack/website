@@ -50,7 +50,7 @@ Official marketing site and client portal for NeelStack. Built on Next.js (App R
 ├── constants/
 │   ├── industries.ts           # 6 active sector definitions
 │   ├── navigation.ts           # Main menus synced with roadmap & services
-│   ├── products.ts             # 4 proprietary builds (ToolVines, NaukariMitra, SarkariMitra, DhruvaOS)
+│   ├── products.ts             # Proprietary products (DhruvaOS #1 Flagship, ToolVines #2 Live Platform)
 │   ├── services.ts             # 10 active engineering services & 30 capabilities
 │   └── site.ts                 # Real office details and social handles
 └── lib/

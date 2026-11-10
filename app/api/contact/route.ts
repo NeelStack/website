@@ -402,12 +402,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid form type specified' }, { status: 400 })
     }
 
-    // 6. Dispatch email via Resend with crucial reply_to header
+    // 6. Dispatch email via Resend with crucial replyTo header
     try {
       const { error: sendError } = await resend.emails.send({
         from: process.env.CONTACT_SENDER_EMAIL || 'NeelStack Notifications <onboarding@resend.dev>',
         to: process.env.CONTACT_RECEIVER_EMAIL || 'contact@neelstack.com',
-        reply_to: cleanEmail,
+        replyTo: cleanEmail,
         subject: subject,
         html: htmlContent,
       })

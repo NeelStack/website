@@ -68,6 +68,11 @@ const SERVICE_ILLUSTRATIONS: Record<string, string> = {
   'devops-cloud':          '/images/illustrations/service-ai.png',
   'technology-consulting': '/images/illustrations/cta-advisor.png',
   'ui-ux-design':          '/images/illustrations/cta-advisor.png',
+  'legacy-modernisation':  '/images/illustrations/service-web-dev.png',
+  'contract-engineering':  '/images/illustrations/hero-developer.png',
+  'dedicated-teams':       '/images/illustrations/service-web-dev.png',
+  'ai-model-evaluation':   '/images/illustrations/service-ai.png',
+  'ai-data-annotation':    '/images/illustrations/service-ai.png',
 }
 
 /* ── Generic fallback FAQs used only if a service has no faqs ── */

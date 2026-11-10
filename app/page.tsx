@@ -11,6 +11,7 @@ import { TechnologySection } from '@/components/sections/technology-section'
 import { FreeConsultationCTA } from '@/components/sections/free-consultation-cta'
 import { JsonLd } from '@/components/seo/json-ld'
 import { getSiteUrl } from '@/lib/site-url'
+import { SITE_CONFIG } from '@/constants/site'
 
 export const metadata: Metadata = {
   title: 'NeelStack Solutions | AI Engineering, LLM Integration & Custom Software Development',
@@ -44,11 +45,32 @@ export default function HomePage() {
           alternateName: ['NeelStack', 'NeelStack AI', 'NeelStack Technologies'],
           url: getSiteUrl(),
           description:
-            'NeelStack Solutions builds software products, AI systems, and digital platforms, including ToolVines and DhruvaOS.',
+            'NeelStack Solutions is an AI-native software engineering company building proprietary products, custom enterprise applications, legacy modernization, and specialist engineering workforce pods.',
           publisher: {
             '@type': 'Organization',
-            name: 'NeelStack Solutions Private Limited',
+            name: SITE_CONFIG.legalName,
             url: getSiteUrl(),
+            legalName: SITE_CONFIG.legalName,
+            sameAs: Object.values(SITE_CONFIG.social),
+            founder: [
+              {
+                '@type': 'Person',
+                name: 'Shyam Sundar Chaurasiya',
+                jobTitle: 'Founder & CEO',
+              },
+              {
+                '@type': 'Person',
+                name: 'Neelam Chaurasiya',
+                jobTitle: 'Co-founder & Business Operations',
+              },
+            ],
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: SITE_CONFIG.address.city,
+              addressRegion: SITE_CONFIG.address.state,
+              postalCode: SITE_CONFIG.address.postalCode,
+              addressCountry: 'IN',
+            },
           },
         }}
       />
@@ -58,7 +80,7 @@ export default function HomePage() {
       {/* 2. Trust Strip: Capabilities + registrations */}
       <TrustStripSection />
 
-      {/* 4. Services: 6 business-oriented service cards */}
+      {/* 3. Services: 6 core engineering disciplines */}
       <ServicesOverviewSection />
 
       {/* 4. Business Problems: Interactive Challenge-Solution Architecture */}

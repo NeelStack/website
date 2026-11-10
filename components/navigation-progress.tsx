@@ -193,14 +193,7 @@ export function NavigationProgressProvider({ children }: { children: React.React
       if (!(anchor instanceof HTMLAnchorElement)) return
 
       const href = anchor.getAttribute('href')
-      if (
-        !href ||
-        href.startsWith('#') ||
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:') ||
-        href.startsWith('javascript:') ||
-        anchor.hasAttribute('download')
-      ) {
+      if (!href || href.startsWith('#') || anchor.hasAttribute('download')) {
         return
       }
 
@@ -210,11 +203,21 @@ export function NavigationProgressProvider({ children }: { children: React.React
         const nextUrl = new URL(anchor.href, window.location.href)
         const currentUrl = new URL(window.location.href)
 
+        // Strict protocol whitelist: Only track standard HTTP/HTTPS schemes on same origin
+        // (Prevents javascript:, mailto:, tel:, data:, etc. without fragile prefix checks)
+        if (nextUrl.protocol !== 'http:' && nextUrl.protocol !== 'https:') {
+          return
+        }
+
+        if (nextUrl.origin !== currentUrl.origin) {
+          return
+        }
+
         const currentNorm = normalizeUrl(currentUrl)
         const targetNorm = normalizeUrl(nextUrl)
 
         // Same page and query -> ignore (in-page hash/scroll)
-        if (nextUrl.origin === currentUrl.origin && currentNorm === targetNorm) {
+        if (currentNorm === targetNorm) {
           return
         }
 

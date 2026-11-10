@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
+@import './shadcn.css';
 
 @custom-variant dark (&:is(.dark, .dark *));
 
@@ -1215,30 +1215,31 @@
   box-shadow: 8px 8px 0px 0px #b45309, 0 0 30px rgba(251, 191, 36, 0.6);
 }
 
-/* 3D Tactile Theme Switch */
+/* Refined Tactile Theme Switch */
 .tactile-switch-3d {
   position: relative;
-  border: 2px solid #334155;
-  box-shadow: 2.5px 2.5px 0px 0px #0f172a;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease;
+  border: 1px solid #cbd5e1;
+  box-shadow: 1px 1px 0px 0px rgba(15, 23, 42, 0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .dark .tactile-switch-3d {
-  border-color: #38bdf8;
-  box-shadow: 2.5px 2.5px 0px 0px #0284c7, 0 0 14px rgba(6, 182, 212, 0.45);
+  border-color: #334155;
+  box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.35);
 }
 .tactile-switch-3d:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 3.5px 3.5px 0px 0px #0f172a;
+  border-color: #94a3b8;
+  box-shadow: 1.5px 1.5px 0px 0px rgba(15, 23, 42, 0.18);
 }
 .dark .tactile-switch-3d:hover {
-  box-shadow: 3.5px 3.5px 0px 0px #0284c7, 0 0 18px rgba(56, 189, 248, 0.6);
+  border-color: #475569;
+  box-shadow: 1.5px 1.5px 0px 0px rgba(0, 0, 0, 0.5);
 }
 .tactile-switch-3d:active {
-  transform: translate(1px, 1px);
-  box-shadow: 0px 0px 0px 0px #0f172a;
+  transform: translate(0.5px, 0.5px);
+  box-shadow: 0px 0px 0px 0px transparent;
 }
 .dark .tactile-switch-3d:active {
-  box-shadow: 0px 0px 0px 0px #0284c7;
+  box-shadow: 0px 0px 0px 0px transparent;
 }
 
 /* 3D Copilot Floating Trigger */

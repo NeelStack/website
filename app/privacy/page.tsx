@@ -98,7 +98,7 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2 className="font-heading text-xl font-semibold text-foreground mb-3">6. AI Processing & Data Sovereignty</h2>
               <p>
-                Our proprietary AI systems (such as NaukariMitra, SarkariMitra, and DhruvaOS) process user-provided materials, search queries, and notes. To protect your intellectual and private data:
+                Our proprietary software platforms and client AI systems (such as DhruvaOS and custom enterprise deployments) process user-provided materials, search queries, and notes. To protect your intellectual and private data:
               </p>
               <ul className="mt-3 space-y-2 list-disc list-inside">
                 <li><strong className="text-foreground">Zero-Training Guarantee:</strong> We coordinate all API connections using enterprise terms which guarantee that your query prompts, uploaded files, or custom datasets are never stored, shared, or utilized to train third-party public models.</li>

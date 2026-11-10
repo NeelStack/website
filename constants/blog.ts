@@ -100,51 +100,51 @@ When building multi-tenant architectures, make choices that prioritize security 
   {
     id: '2',
     slug: 'how-ai-is-transforming-government-information-access-in-india',
-    title: 'How AI is Transforming Government Information Access in India',
+    title: 'How AI and Multilingual RAG are Transforming Public Information Access in India',
     excerpt:
-      'An inside look at how we are designing SarkariMitra — our in-development AI citizen assistant — to simplify public schemes discovery using conversational LLM pipelines.',
+      'An architectural look at how conversational LLM pipelines, layout-aware OCR, and vernacular embeddings simplify complex policy discovery across Indian languages.',
     category: 'Artificial Intelligence',
-    tags: ['AI', 'Government', 'SarkariMitra'],
+    tags: ['AI', 'Government', 'RAG Pipelines', 'Multilingual'],
     author: { name: 'Shyam Chaurasiya', role: 'Founder & Engineering Lead' },
     publishedAt: 'June 28, 2026',
     readTime: '7 min read',
     href: '/blog/how-ai-is-transforming-government-information-access-in-india',
     content: `Government schemes represent a lifeline for millions of citizens across India. However, the sheer volume of policies, the fragmentation of websites, and the dense language used in official documents make discovery extremely difficult for everyday citizens.
 
-At NeelStack, we are building **SarkariMitra**—an AI citizen assistant we are designing to simplify this search through conversational AI, semantic query processing, and localized languages. Here is a technical breakdown of the architecture we are working on.
+At NeelStack, our AI engineering lab has researched and benchmarked conversational AI architectures designed to simplify this search through semantic query processing, layout-aware document chunking, and localized Indian languages. Here is a technical breakdown of the architecture we have developed.
 
 ### The Challenge: Data Ingestion and Semantic Alignment
 
-Official schemes documents are often published as poorly formatted PDFs, multiple tables, or scans. Standard web crawlers fail to capture the context properly. Our planned solution consists of an automated ingestion pipeline:
+Official schemes documents are often published as poorly formatted PDFs, multiple tables, or scans. Standard web crawlers fail to capture the context properly. Our architectural approach consists of an automated ingestion pipeline:
 
-1. **OCR and Structural Layout Processing:** We plan to use advanced layout models to extract textual hierarchies from public portals, mapping out Eligibility Criteria, Required Documents, and Benefit structures.
-2. **Chunking Strategies:** Since LLMs require contextually accurate segments, we are designing document splitting using semantic boundary markers rather than naive word counts.
-3. **Embedding Vectors:** Each chunk will be converted into high-dimensional dense vectors and indexed in a vector store like pgvector, categorized by state, ministry, and beneficiary type.
+1. **OCR and Structural Layout Processing:** We utilize layout analysis models to extract textual hierarchies from public portals, cleanly segmenting Eligibility Criteria, Required Documents, and Benefit structures.
+2. **Chunking Strategies:** Since LLMs require contextually accurate segments, document splitting uses semantic boundary markers rather than naive word counts.
+3. **Embedding Vectors:** Each chunk is converted into high-dimensional dense vectors and indexed in an enterprise vector store like PostgreSQL with pgvector, categorized by state, ministry, and beneficiary type.
 
 ---
 
 ### Conversational Query Pipeline
 
-When a citizen types a query—often in mixed languages (Hinglish)—we aim to go beyond standard keyword search. We are designing a multi-phase retrieval pipeline:
+When a citizen types a query—often in mixed languages (Hinglish)—the system must go far beyond standard keyword search. We engineer a multi-phase retrieval pipeline:
 
-1. **Intent Extraction:** The LLM translates and structures the user's intent. For example, \"How can my sister apply for collegiate financial aid?\" gets parsed to search fields with: \`demographics: female\`, \`education: high-school graduate\`, \`benefit_type: education subsidy\`.
-2. **Hybrid RAG Retrieval:** We plan to combine dense vector search (semantic mapping) with BM25 sparse keyword searches (precise scheme names). This aims to yield the top 5 most relevant government documents.
-3. **Reasoning and Eligibility Checker:** A localized LLM reads the scheme criteria against user credentials, outputting a step-by-step summary of whether they qualify, how much funding they can expect, and a list of links to official registration offices.
+1. **Intent Extraction:** The LLM translates and structures the user's intent. For example, "How can my sister apply for collegiate financial aid?" gets parsed to search fields with: \`demographics: female\`, \`education: high-school graduate\`, \`benefit_type: education subsidy\`.
+2. **Hybrid RAG Retrieval:** Combining dense vector search (semantic mapping) with BM25 sparse keyword searches (precise scheme names). This yields the top most relevant official documents.
+3. **Reasoning and Eligibility Checker:** A localized LLM reads the scheme criteria against user credentials, outputting a step-by-step summary of whether they qualify, expected benefits, and direct links to official registration portals (.gov.in).
 
 ---
 
 ### Overcoming Multi-lingual Boundaries
 
-A major barrier in India is language diversity. Over 70% of beneficiaries do not communicate primarily in English. SarkariMitra is being designed with translation layers based on Bhashini APIs and custom low-latency translation models:
+A major barrier in India is language diversity. Over 70% of beneficiaries do not communicate primarily in English. Our architectural pipeline incorporates translation layers based on Bhashini APIs and low-latency open-weights models:
 
-- **Speech-to-Text translation:** Allowing citizens to speak their query in Hindi, Tamil, or Marathi.
+- **Speech-to-Text translation:** Allowing users to speak their query in Hindi, Tamil, Telugu, or Marathi.
 - **Multilingual Embeddings:** Aligning semantic query matching across 12 major Indian languages directly.
 
 ### The Path Forward
 
-Simplifying government information is more than a convenience; it's a tool for social inclusion. SarkariMitra is currently in active development. By utilizing AI and RAG architectures responsibly, we aim to bridge the gap between administrative intent and active citizen empowerment.
+Simplifying public information is more than a convenience; it's a tool for inclusion. By utilizing AI and RAG architectures responsibly, technology bridges the gap between administrative intent and active citizen empowerment.
 
-*Interested in our AI solutions or what we are building with SarkariMitra? Reach us at contact@neelstack.com.*`
+*Interested in our enterprise AI engineering solutions or conversational RAG pipelines? Reach us at contact@neelstack.com.*`
   },
   {
     id: '3',
@@ -1493,7 +1493,7 @@ An AI workforce is only as capable as its memory architecture. We structure orga
 
 ---
 
-### Real-World Blueprint: DhruvaOS & AI Company OS
+### Real-World Blueprint: DhruvaOS & Enterprise AI Systems
 
 We apply this exact multi-agent workforce infrastructure in our proprietary products:
 - In **DhruvaOS (our School Operating System — Beta live, full launch 14 November 2026)**, autonomous agents handle dynamic constraint-solving for NP-hard faculty timetables in <12s, monitor biometric attendance anomalies, and draft individualized academic remediation roadmaps.

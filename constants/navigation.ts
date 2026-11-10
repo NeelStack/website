@@ -19,6 +19,11 @@ import {
   Users,
   Zap,
   Building,
+  RefreshCw,
+  Layers,
+  CheckCircle2,
+  FileCheck,
+  Handshake,
 } from 'lucide-react'
 
 export const MAIN_NAV: NavMenu[] = [
@@ -26,8 +31,14 @@ export const MAIN_NAV: NavMenu[] = [
     label: 'Services',
     groups: [
       {
-        label: 'Core Engineering',
+        label: 'Enterprise Engineering',
         items: [
+          {
+            label: 'Custom Software & ERP',
+            href: '/services/custom-software',
+            description: 'Bespoke business platforms, internal portals & scalable backends',
+            icon: Cpu,
+          },
           {
             label: 'AI Engineering & Agents',
             href: '/services/ai-development',
@@ -35,39 +46,33 @@ export const MAIN_NAV: NavMenu[] = [
             icon: Bot,
           },
           {
-            label: 'Software & Web Development',
-            href: '/services/web-applications',
-            description: 'Sub-second Next.js SSR, React & WebAssembly (WASM) platforms',
-            icon: Globe,
-          },
-          {
-            label: 'Mobile App Development',
-            href: '/services/mobile-development',
-            description: 'Native iOS/Android & cross-platform React Native/Flutter apps',
-            icon: Smartphone,
-          },
-          {
-            label: 'Custom Software & ERP Platforms',
-            href: '/services/custom-software',
-            description: 'Internal business software, portals & backend systems',
-            icon: Cpu,
+            label: 'Legacy Modernization',
+            href: '/services/legacy-modernisation',
+            description: 'Deconstruct brittle monoliths into microservices with dual-write sync',
+            icon: RefreshCw,
           },
         ],
       },
       {
-        label: 'Specialized Capabilities',
+        label: 'Platform & Infrastructure',
         items: [
           {
-            label: 'Cloud Infrastructure & DevOps',
+            label: 'Cloud Architecture & DevOps',
             href: '/services/devops-cloud',
-            description: 'AWS edge, Docker containerization & CI/CD deployment',
+            description: 'AWS multi-AZ clustering, Docker containerization & CI/CD automation',
             icon: Cloud,
           },
           {
-            label: 'UI/UX & Product Design System',
-            href: '/services/ui-ux-design',
-            description: 'Design systems, accessibility & high-fidelity interactive UX',
-            icon: Palette,
+            label: 'Web & Mobile Applications',
+            href: '/services/web-applications',
+            description: 'Next.js 16 SSR, React 19 & cross-platform React Native/Flutter apps',
+            icon: Globe,
+          },
+          {
+            label: 'All Engineering Services',
+            href: '/services',
+            description: 'Explore full catalog of 16 technology disciplines and capabilities',
+            icon: Grid,
           },
         ],
       },
@@ -77,49 +82,88 @@ export const MAIN_NAV: NavMenu[] = [
     label: 'Products',
     groups: [
       {
-        label: 'Flagship Platforms',
+        label: 'Proprietary Software',
         items: [
           {
-            label: 'DhruvaOS (School OS)',
+            label: 'DhruvaOS (Flagship School ERP)',
             href: '/products/dhruvaos',
-            description: 'Unified school operating system — Beta live · launching 14 November 2026',
+            description: 'Unified AI-native School OS — Beta live · Launching 14 November 2026',
             icon: Zap,
           },
           {
             label: 'ToolVines (Live Platform)',
             href: 'https://toolvines.com',
-            description: '320+ client-side WebAssembly developer utilities',
+            description: 'Client-side WebAssembly developer utilities & document tools',
             icon: Wrench,
             isExternal: true,
-          },
-          {
-            label: 'AI Company OS',
-            href: '/products/ai-company-os',
-            description: 'Autonomous multi-agent executive workforce platform',
-            icon: Bot,
           },
         ],
       },
       {
-        label: 'Ecosystem & Roadmap',
+        label: 'Ecosystem & Access',
         items: [
           {
-            label: 'NaukariMitra (Planned)',
-            href: '/products/naukarimitra',
-            description: 'AI exam companion for Indian competitive aspirants',
-            icon: GraduationCap,
-          },
-          {
-            label: 'SarkariMitra (Planned)',
-            href: '/products/sarkarimitra',
-            description: 'Conversational citizen welfare & scheme discovery engine',
-            icon: Building,
-          },
-          {
-            label: 'All Products & Roadmap',
+            label: 'All Products & Ecosystem',
             href: '/products',
-            description: 'Explore full 4-track software portfolio & milestones',
+            description: 'Explore our software platforms and institutional solutions',
             icon: Grid,
+          },
+          {
+            label: 'Product Roadmap',
+            href: '/roadmap',
+            description: 'Public development milestones and launch schedules',
+            icon: Layers,
+          },
+          {
+            label: 'Book DhruvaOS Demo',
+            href: '/book-consultation',
+            description: 'Schedule a tailored demonstration for school leadership',
+            icon: Sparkles,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Workforce',
+    groups: [
+      {
+        label: 'Engineering Delivery',
+        items: [
+          {
+            label: 'Contract Software Developers',
+            href: '/services/contract-engineering',
+            description: 'Vetted senior developers in Next.js, Python, Java & DevOps',
+            icon: Users,
+          },
+          {
+            label: 'Dedicated Engineering Pods',
+            href: '/services/dedicated-teams',
+            description: 'Managed squads (3–8 specialists) with tech leads & automated QA',
+            icon: Layers,
+          },
+          {
+            label: 'Vendor & Subcontracting',
+            href: '/partnerships',
+            description: 'Delivery partnerships & vendor onboarding for IT system integrators',
+            icon: Handshake,
+          },
+        ],
+      },
+      {
+        label: 'AI Data & Evaluation',
+        items: [
+          {
+            label: 'AI Model Evaluation',
+            href: '/services/ai-model-evaluation',
+            description: 'Human-in-the-loop evaluation, RLHF ranking & accuracy benchmarking',
+            icon: CheckCircle2,
+          },
+          {
+            label: 'AI Data Annotation & QA',
+            href: '/services/ai-data-annotation',
+            description: 'Multilingual Indian vernacular validation, code & multimodal labeling',
+            icon: FileCheck,
           },
         ],
       },
@@ -134,19 +178,19 @@ export const MAIN_NAV: NavMenu[] = [
           {
             label: 'About NeelStack',
             href: '/about',
-            description: 'Company background, vision & engineering principles',
+            description: 'Incorporation background, leadership & engineering principles',
             icon: Info,
           },
           {
             label: 'Leadership & Team',
             href: '/about#leadership',
-            description: 'Founders, software architects & core engineering leads',
+            description: 'Founders, software architects & core delivery leadership',
             icon: Users,
           },
           {
             label: 'Careers (Talent Registry)',
             href: '/careers',
-            description: 'Connect with our engineering lab & builders',
+            description: 'Connect with our engineering lab and specialist developer network',
             icon: Rocket,
           },
         ],
@@ -188,31 +232,37 @@ export const MAIN_NAV: NavMenu[] = [
 
 export const FOOTER_NAV = {
   services: [
+    { label: 'Custom Software & ERP', href: '/services/custom-software' },
     { label: 'AI Engineering & Agents', href: '/services/ai-development' },
-    { label: 'Software & Web Applications', href: '/services/web-applications' },
-    { label: 'Mobile App Development', href: '/services/mobile-development' },
-    { label: 'Custom Business Software', href: '/services/custom-software' },
+    { label: 'Legacy Modernization', href: '/services/legacy-modernisation' },
     { label: 'Cloud Infrastructure & DevOps', href: '/services/devops-cloud' },
-    { label: 'UI/UX & Product Design', href: '/services/ui-ux-design' },
-    { label: 'Pricing & Plans', href: '/pricing' },
+    { label: 'Web Applications & SaaS', href: '/services/web-applications' },
+    { label: 'Mobile App Development', href: '/services/mobile-development' },
+    { label: 'All Services Directory', href: '/services' },
+  ],
+  workforce: [
+    { label: 'Contract Software Developers', href: '/services/contract-engineering' },
+    { label: 'Dedicated Engineering Pods', href: '/services/dedicated-teams' },
+    { label: 'AI Model Evaluation', href: '/services/ai-model-evaluation' },
+    { label: 'AI Data Annotation & QA', href: '/services/ai-data-annotation' },
+    { label: 'Vendor Subcontracting', href: '/partnerships' },
+    { label: 'Pricing & Retainers', href: '/pricing' },
   ],
   products: [
-    { label: 'ToolVines (Live)', href: '/products/toolvines' },
-    { label: 'DhruvaOS (Ready for Launch)', href: '/products/dhruvaos' },
-    { label: 'NaukriMitra (Planned)', href: '/products/naukarimitra' },
-    { label: 'SarakariMitra (Planned)', href: '/products/sarkarimitra' },
-    { label: 'AI Workforce Platform', href: '/products/ai-company-os' },
+    { label: 'DhruvaOS (Flagship School ERP)', href: '/products/dhruvaos' },
+    { label: 'ToolVines (Live Platform)', href: 'https://toolvines.com' },
+    { label: 'All Products & Ecosystem', href: '/products' },
     { label: 'Public Product Roadmap', href: '/roadmap' },
+    { label: 'Book DhruvaOS Demo', href: '/book-consultation' },
   ],
   company: [
     { label: 'About NeelStack', href: '/about' },
     { label: 'Leadership & Team', href: '/about#leadership' },
-    { label: 'Strategic Whitepaper', href: '/whitepapers/ai-company-operating-system' },
-    { label: 'AI Agent Strategy', href: '/products/ai-company-os' },
-    { label: 'Architecture Blueprints', href: '/case-studies' },
+    { label: 'Strategic Whitepaper v1.0', href: '/whitepapers/ai-company-operating-system' },
+    { label: 'Architecture Case Studies', href: '/case-studies' },
     { label: 'Security & Compliance', href: '/security' },
     { label: 'Engineering Blog', href: '/blog' },
-    { label: 'Careers', href: '/careers' },
+    { label: 'Careers (Talent Registry)', href: '/careers' },
     { label: 'Contact Us', href: '/contact' },
   ],
   legal: [

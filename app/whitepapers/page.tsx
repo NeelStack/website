@@ -34,7 +34,7 @@ const WHITEPAPERS = [
     readUrl: '/whitepapers/ai-company-operating-system',
     description:
       'The foundational architectural blueprint for NeelStack Solutions: deploying enterprise AI solutions (LLMs, RAG, autonomous multi-agent systems, LangChain, LangGraph, MCP), Company Brain persistent memory, and the 4-level agent authority model alongside human founders.',
-    topics: ['AI Executive Workforce', 'Company Brain Memory', '4-Tier Authority Model', 'Three-Engine Strategy (Services, DhruvaOS, ToolVines)', 'Enterprise Scaling Stages'],
+    topics: ['Autonomous Agent Swarms', 'Company Brain Memory', '4-Tier Authority Model', 'Three-Engine Strategy (Services, DhruvaOS, ToolVines)', 'Enterprise Scaling Stages'],
   },
   {
     id: 'enterprise-ai-architecture-2026',

@@ -1,7 +1,7 @@
 # 💎 NeelStack Enterprise Design System (NDS) — Specification & Standards
 
 > **Unified Visual & Architectural Standard for all NeelStack Ecosystem Websites:**
-> `neelstack.com` · `dhruvaos.com` · `toolvines.com` · `neelstack-foundation` · `naukarimitra` · `sarkarimitra`
+> `neelstack.com` · `dhruvaos.com` · `toolvines.com` · `neelstack-foundation`
 
 ---
 

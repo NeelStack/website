@@ -67,7 +67,7 @@ const ENGINE_SERVICES = {
     { label: 'Edge Latency', value: '< 20ms Global', icon: Zap, detail: 'Cloudflare / Docker Edge' },
     { label: 'Agent Protocol', value: 'Model Context Protocol (MCP)', icon: Network, detail: 'Universal Agent Tooling' },
     { label: 'Data Isolation', value: '100% Tenant-Sandboxed', icon: Lock, detail: 'Dynamic Schema Routing' },
-    { label: 'System SLA', value: '99.99% Production Uptime', icon: ShieldCheck, detail: 'Fault-Tolerant Microservices' },
+    { label: 'Cloud Architecture', value: 'Multi-AZ High Availability', icon: ShieldCheck, detail: 'Fault-Tolerant Microservices' },
   ],
   pipelineSteps: [
     { step: '01', name: 'Event / Prompt Trigger' },

@@ -95,7 +95,7 @@ These rules apply to all AI agents working on this repository. They are derived 
 
 - **Legal Entity:** NeelStack Solutions Private Limited, incorporated on **31 August 2026** (CIN: `U62011UP2026PTC250857`, GSTIN: `09AALCN9356Q1ZA`, Startup India: `DIPP278202`, MSME: `UDYAM-UP-32-0131171`).
 - **Leadership Structure:**
-  - **Shyam Chaurasiya** — Founder & Legal CEO
+  - **Shyam Chaurasiya** — Founder & CEO
   - **Neelam Chaurasiya** — Co-founder & Business Operations
   - **Core AI Engineering** — We Build Enterprise AI Solutions (LLMs, RAG, Autonomous AI Agents, LangChain, LangGraph, Model Context Protocol)
 - **Three Engines Architecture:**
